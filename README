@@ -22,6 +22,18 @@ MAN PAGES
 
         man 3RPG %TIME
 
+VIM INTEGRATION
+
+    One can change the ``keywordprg'' to search the proper man pages:
+
+    :setlocal keywordprg=man\ 3RPG
+    :setlocal iskeyword+=%
+
+    Which makes ``K'' look for man pages in ``3RPG''.  If ``rpgle.vim''[0] is
+    used then ``iskeyword'' is already changed.
+
+    [0]: https://github.com/andlrc/rpgle.vim
+
 AUTHOR
     Andreas Louv <andreas@louv.dk>
 
