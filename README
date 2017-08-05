@@ -6,8 +6,15 @@ SYNOPSIS
 
 INSTALL
 
-    $ make [ all | bif ]
+    To install man pages run the following, ``sudo'' might be needed:
+
     $ make install
+
+REBUILD MAN PAGES
+
+    To download and rebuild from IBM one can run the following:
+
+    $ make [ all | bif ]
 
 MAN PAGES
     Man pages are installed in ``/usr/share/man/man3RPG'' and can be accessed
