@@ -25,16 +25,16 @@ The following functions search search-table for a value that matches arg as foll
 An exact match\[char46]
 .TP 5
 .B \fB%TLOOKUPLT\fR
-The value that is closest to arg but less than arg\[char46]
+The value that is closest to arg  but less than arg \[char46]
 .TP 5
 .B \fB%TLOOKUPLE\fR
-An exact match, or the value that is closest to arg but less than arg\[char46]
+An exact match, or the value that is closest to arg  but less than arg \[char46]
 .TP 5
 .B \fB%TLOOKUPGT\fR
-The value that is closest to arg but greater than arg\[char46]
+The value that is closest to arg  but greater than arg \[char46]
 .TP 5
 .B \fB%TLOOKUPGE\fR
-An exact match, or the value that is closest to arg but greater than arg\[char46]
+An exact match, or the value that is closest to arg  but greater than arg \[char46]
 
 If a value meets the specified condition, the current table element for the search table is set to the element that satisfies the condition, the current table element for the alternate table is set to the same element, and the function returns the value \fI*ON\fR\[char46]
 

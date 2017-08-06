@@ -23,11 +23,11 @@ When an operation code uses the \fB%HANDLER\fR built-in function, the following 
 
 .IP 1. 2
 .RS
-The operation using the %HANDLER built-in function begins\[char46]
+The operation using the \fB%HANDLER\fR built-in function begins\[char46]
 .RE
 .IP 2. 2
 .RS
-When an event occurs during the operation that must be handled by the handling procedure, the RPG runtime calls the handling procedure specified as the first operand of %HANDLER\[char46] The first parameter passed to the handling procedure is the communication area that was specified as the second operand of %HANDLER\[char46] The other parameters depend on the operation and the nature of the event that occurred\[char46]
+When an event occurs during the operation that must be handled by the handling procedure, the \fIRPG\fR runtime calls the handling procedure specified as the first operand of \fB%HANDLER\fR\[char46] The first parameter passed to the handling procedure is the communication area that was specified as the second operand of \fB%HANDLER\fR\[char46] The other parameters depend on the operation and the nature of the event that occurred\[char46]
 .RE
 .IP 3. 2
 .RS
@@ -39,7 +39,7 @@ The handling procedure returns a zero if it completed successfully, and a non-ze
 .RE
 .IP 5. 2
 .RS
-If the returned value was zero, the RPG runtime continues processing until either the operation is complete, or another event occurs\[char46] If the returned value was not zero, the operation ends\[char46]
+If the returned value was zero, the \fIRPG\fR runtime continues processing until either the operation is complete, or another event occurs\[char46] If the returned value was not zero, the operation ends\[char46]
 .RE
 .IP 6. 2
 .RS
@@ -47,7 +47,7 @@ If another event occurs, the handling procedure is called again\[char46] If the 
 .RE
 .IP 7. 2
 .RS
-When the operation is complete, control passes to the statement following the operation that used the %HANDLER built-in function\[char46] If the handling procedure changed the communication area, the changes can be seen in the procedure that used the %HANDLER built-in function\[char46]
+When the operation is complete, control passes to the statement following the operation that used the \fB%HANDLER\fR built-in function\[char46] If the handling procedure changed the communication area, the changes can be seen in the procedure that used the \fB%HANDLER\fR built-in function\[char46]
 .RE
 .PP
 
@@ -56,15 +56,15 @@ The communication area can be used for several purposes\[char46]
 
 .IP 1. 2
 .RS
-To communicate information from the procedure coding the %HANDLER built-in function to the handling procedure\[char46]
+To communicate information from the procedure coding the \fB%HANDLER\fR built-in function to the handling procedure\[char46]
 .RE
 .IP 2. 2
 .RS
-To communicate information from the handling procedure back to the procedure coding the %HANDLER built-in function\[char46]
+To communicate information from the handling procedure back to the procedure coding the \fB%HANDLER\fR built-in function\[char46]
 .RE
 .IP 3. 2
 .RS
-To keep state information between successive calls of the handling procedure\[char46] State information can also be kept in static variables in the handling procedure, but when static variables are used, incorrect results can occur if the handling procedure has been enabled by more than one %HANDLER operation\[char46] By using a communication area parameter, the usages of the handling procedure are independent from each other\[char46]
+To keep state information between successive calls of the handling procedure\[char46] State information can also be kept in static variables in the handling procedure, but when static variables are used, incorrect results can occur if the handling procedure has been enabled by more than one \fB%HANDLER\fR operation\[char46] By using a communication area parameter, the usages of the handling procedure are independent from each other\[char46]
 .RE
 .PP
 

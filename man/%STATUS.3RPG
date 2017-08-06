@@ -25,90 +25,174 @@ For more information, see File Operations, Result Operations, or Built-in Functi
 The operations that set \fB%STATUS\fR are:
 
 
-.IP \[bu] 2
-ACQ (Acquire)
-.IP \[bu] 2
-ADDDUR (Add Duration)
-.IP \[bu] 2
-ALLOC (Allocate Storage)
-.IP \[bu] 2
-CALL (Call a Program)
-.IP \[bu] 2
-CALLB (Call a Bound Procedure)
-.IP \[bu] 2
-CALLP (Call a Prototyped Procedure or Program)
-.IP \[bu] 2
-CHAIN (Random Retrieval from a File)
-.IP \[bu] 2
-CHECK (Check Characters)
-.IP \[bu] 2
-CHECKR (Check Reverse)
-.IP \[bu] 2
-CLOSE (Close Files)
-.IP \[bu] 2
-COMMIT (Commit)
-.IP \[bu] 2
-DEALLOC (Free Storage)
-.IP \[bu] 2
-DELETE (Delete Record)
-.IP \[bu] 2
-DSPLY (Display Message)
-.IP \[bu] 2
-EXFMT (Write/Then Read Format)
-.IP \[bu] 2
-EXTRCT (Extract Date/Time/Timestamp)
-.IP \[bu] 2
-FEOD (Force End of Data)
-.IP \[bu] 2
-IN (Retrieve a Data Area)
-.IP \[bu] 2
-NEXT (Next)
-.IP \[bu] 2
-OCCUR (Set/Get Occurrence of a Data Structure)
-.IP \[bu] 2
-OPEN (Open File for Processing)
-.IP \[bu] 2
-OUT (Write a Data Area)
-.IP \[bu] 2
-POST (Post)
-.IP \[bu] 2
-READ (Read a Record)
-.IP \[bu] 2
-READC (Read Next Changed Record)
-.IP \[bu] 2
-READE (Read Equal Key)
-.IP \[bu] 2
-READP (Read Prior Record)
-.IP \[bu] 2
-READPE (Read Prior Equal)
-.IP \[bu] 2
-REALLOC (Reallocate Storage with New Length)
-.IP \[bu] 2
-REL (Release)
-.IP \[bu] 2
-RESET (Reset)
-.IP \[bu] 2
-ROLBK (Roll Back)
-.IP \[bu] 2
-SCAN (Scan String)
-.IP \[bu] 2
-SETGT (Set Greater Than)
-.IP \[bu] 2
-SETLL (Set Lower Limit)
-.IP \[bu] 2
-SUBDUR (Subtract Duration)
-.IP \[bu] 2
-SUBST (Substring)
-.IP \[bu] 2
-TEST (Test Date/Time/Timestamp)
-.IP \[bu] 2
-UNLOCK (Unlock a Data Area or Release a Record)
-.IP \[bu] 2
-UPDATE (Modify Existing Record)
-.IP \[bu] 2
-WRITE (Create New Records)
-.IP \[bu] 2
-XLATE (Translate)
+.IP "" 2
+.RS
+\[bu] \fIACQ\fR (Acquire)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIADDDUR\fR (Add Duration)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIALLOC\fR (Allocate Storage)
+.RE
+.IP "" 2
+.RS
+\[bu] \fICALL\fR (Call a Program)
+.RE
+.IP "" 2
+.RS
+\[bu] \fICALLB\fR (Call a Bound Procedure)
+.RE
+.IP "" 2
+.RS
+\[bu] \fICALLP\fR (Call a Prototyped Procedure or Program)
+.RE
+.IP "" 2
+.RS
+\[bu] \fICHAIN\fR (Random Retrieval from a File)
+.RE
+.IP "" 2
+.RS
+\[bu] \fICHECK\fR (Check Characters)
+.RE
+.IP "" 2
+.RS
+\[bu] \fICHECKR\fR (Check Reverse)
+.RE
+.IP "" 2
+.RS
+\[bu] \fICLOSE\fR (Close Files)
+.RE
+.IP "" 2
+.RS
+\[bu] \fICOMMIT\fR (Commit)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIDEALLOC\fR (Free Storage)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIDELETE\fR (Delete Record)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIDSPLY\fR (Display Message)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIEXFMT\fR (Write/Then Read Format)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIEXTRCT\fR (Extract Date/Time/Timestamp)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIFEOD\fR (Force End of Data)
+.RE
+.IP "" 2
+.RS
+\[bu] IN (Retrieve a Data Area)
+.RE
+.IP "" 2
+.RS
+\[bu] \fINEXT\fR (Next)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIOCCUR\fR (Set/Get Occurrence of a Data Structure)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIOPEN\fR (Open File for Processing)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIOUT\fR (Write a Data Area)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIPOST\fR (Post)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIREAD\fR (Read a Record)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIREADC\fR (Read Next Changed Record)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIREADE\fR (Read Equal Key)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIREADP\fR (Read Prior Record)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIREADPE\fR (Read Prior Equal)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIREALLOC\fR (Reallocate Storage with New Length)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIREL\fR (Release)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIRESET\fR (Reset)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIROLBK\fR (Roll Back)
+.RE
+.IP "" 2
+.RS
+\[bu] \fISCAN\fR (Scan String)
+.RE
+.IP "" 2
+.RS
+\[bu] \fISETGT\fR (Set Greater Than)
+.RE
+.IP "" 2
+.RS
+\[bu] \fISETLL\fR (Set Lower Limit)
+.RE
+.IP "" 2
+.RS
+\[bu] \fISUBDUR\fR (Subtract Duration)
+.RE
+.IP "" 2
+.RS
+\[bu] \fISUBST\fR (Substring)
+.RE
+.IP "" 2
+.RS
+\[bu] \fITEST\fR (Test Date/Time/Timestamp)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIUNLOCK\fR (Unlock a Data Area or Release a Record)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIUPDATE\fR (Modify Existing Record)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIWRITE\fR (Create New Records)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIXLATE\fR (Translate)
+.RE
 .PP
 
 

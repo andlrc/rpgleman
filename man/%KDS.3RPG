@@ -22,7 +22,7 @@
 
 .IP 1. 2
 .RS
-The first argument must be the name of a data structure\[char46] This includes any subfield defined with keyword LIKEDS or LIKEREC\[char46]
+The first argument must be the name of a data structure\[char46] This includes any subfield defined with keyword \fILIKEDS\fR or \fILIKEREC\fR\[char46]
 .RE
 .IP 2. 2
 .RS
@@ -30,7 +30,7 @@ The second argument specifies how many of the subfields to use as the search arg
 .RE
 .IP 3. 2
 .RS
-The individual key values in the compound key are taken from the top level subfields of the data structure\[char46] Subfields defined with LIKEDS are considered character data\[char46]
+The individual key values in the compound key are taken from the top level subfields of the data structure\[char46] Subfields defined with \fILIKEDS\fR are considered character data\[char46]
 .RE
 .IP 4. 2
 .RS
@@ -42,7 +42,7 @@ The types of all subfields (up to the number specified by "num-keys") must match
 .RE
 .IP 6. 2
 .RS
-If the data structure is defined as an array data structure (using keyword DIM), an index must be supplied for the data structure\[char46]
+If the data structure is defined as an array data structure (using keyword \fIDIM\fR), an index must be supplied for the data structure\[char46]
 .RE
 .IP 7. 2
 .RS

@@ -16,31 +16,51 @@
 The operations that set \fB%EOF\fR are:
 
 
-.IP \[bu] 2
-READ (Read a Record)
-.IP \[bu] 2
-READC (Read Next Changed Record)
-.IP \[bu] 2
-READE (Read Equal Key)
-.IP \[bu] 2
-READP (Read Prior Record)
-.IP \[bu] 2
-READPE (Read Prior Equal)
-.IP \[bu] 2
-WRITE (Create New Records) (subfile only)\[char46]
+.IP "" 2
+.RS
+\[bu] \fIREAD\fR (Read a Record)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIREADC\fR (Read Next Changed Record)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIREADE\fR (Read Equal Key)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIREADP\fR (Read Prior Record)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIREADPE\fR (Read Prior Equal)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIWRITE\fR (Create New Records)  (subfile only)\[char46]
+.RE
 .PP
 
 The following operations, if successful, set \fB%EOF(filename)\fR off\[char46] If the operation is not successful, \fB%EOF(filename)\fR is not changed\[char46] \fB%EOF\fR with no parameter is not changed by these operations\[char46]
 
 
-.IP \[bu] 2
-CHAIN (Random Retrieval from a File)
-.IP \[bu] 2
-OPEN (Open File for Processing)
-.IP \[bu] 2
-SETGT (Set Greater Than)
-.IP \[bu] 2
-SETLL (Set Lower Limit)
+.IP "" 2
+.RS
+\[bu] \fICHAIN\fR (Random Retrieval from a File)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIOPEN\fR (Open File for Processing)
+.RE
+.IP "" 2
+.RS
+\[bu] \fISETGT\fR (Set Greater Than)
+.RE
+.IP "" 2
+.RS
+\[bu] \fISETLL\fR (Set Lower Limit)
+.RE
 .PP
 
 When a full-procedural file is specified, this function returns \[char39]1\[char39] if the previous operation in the list above, for the specified file, resulted in an end of file or beginning of file condition\[char46] For primary and secondary files, \fB%EOF\fR is available only if the file name is specified\[char46] It is set to \[char39]1\[char39] if the most recent input operation during \fI*GETIN\fR processing resulted in an end of file or beginning of file condition\[char46] Otherwise, it returns \[char39]0\[char39]\[char46]

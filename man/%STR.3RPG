@@ -36,7 +36,17 @@ If the pointer is not set, an error will occur\[char46]
 .RE
 .IP 3. 2
 .RS
-If the storage addressed by the pointer is shorter than indicated by the length parameter, either An error will occurData corruption will occur\[char46]
+If the storage addressed by the pointer is shorter than indicated by the length parameter, either 
+.IP 1. 2
+.RS
+An error will occur
+.RE
+.IP 2. 2
+.RS
+Data corruption will occur\[char46]
+.RE
+.PP
+
 .RE
 .PP
 

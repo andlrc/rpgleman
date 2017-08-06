@@ -25,16 +25,16 @@ The following functions return the array index of the item in the array or the k
 An exact match\[char46]
 .TP 5
 .B \fB%LOOKUPLT\fR
-The value that is closest to arg but less than arg\[char46]
+The value that is closest to arg but less than arg \[char46]
 .TP 5
 .B \fB%LOOKUPLE\fR
-An exact match, or the value that is closest to arg but less than arg\[char46]
+An exact match, or the value that is closest to arg but less than arg \[char46]
 .TP 5
 .B \fB%LOOKUPGT\fR
-The value that is closest to arg but greater than arg\[char46]
+The value that is closest to arg but greater than arg \[char46]
 .TP 5
 .B \fB%LOOKUPGE\fR
-An exact match, or the value that is closest to arg but greater than arg\[char46]
+An exact match, or the value that is closest to arg but greater than arg \[char46]
 
 If no value matches the specified condition, zero is returned\[char46] The value returned is in unsigned integer format (type U)\[char46]
 
@@ -69,12 +69,18 @@ The \fB%LOOKUPxx\fR built-in functions use a binary search for sequenced arrays 
 For more information, see:
 
 
-.IP \[bu] 2
-Array Operations
-.IP \[bu] 2
-Built-in Functions
-.IP \[bu] 2
-Array Data Structures
+.IP "" 2
+.RS
+\[bu] Array Operations
+.RE
+.IP "" 2
+.RS
+\[bu] Built-in Functions
+.RE
+.IP "" 2
+.RS
+\[bu] Array Data Structures
+.RE
 .PP
 
 

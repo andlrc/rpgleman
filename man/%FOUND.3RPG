@@ -16,12 +16,60 @@
 The operations that set \fB%FOUND\fR are:
 
 
-.IP \[bu] 2
-File operations: CHAIN (Random Retrieval from a File)DELETE (Delete Record)SETGT (Set Greater Than)SETLL (Set Lower Limit)
-.IP \[bu] 2
-String operations: CHECK (Check Characters)CHECKR (Check Reverse)SCAN (Scan String) Note:Built-in function %SCAN does not change the value of %FOUND\[char46]
-.IP \[bu] 2
-Search operations: LOOKUP (Look Up a Table or Array Element)
+.IP "" 2
+.RS
+\[bu] File operations: 
+.IP "" 2
+.RS
+\[bu] \fICHAIN\fR (Random Retrieval from a File)
+.RE
+.IP "" 2
+.RS
+\[bu] \fIDELETE\fR (Delete Record)
+.RE
+.IP "" 2
+.RS
+\[bu] \fISETGT\fR (Set Greater Than)
+.RE
+.IP "" 2
+.RS
+\[bu] \fISETLL\fR (Set Lower Limit)
+.RE
+.PP
+
+.RE
+.IP "" 2
+.RS
+\[bu] String operations: 
+.IP "" 2
+.RS
+\[bu] \fICHECK\fR (Check Characters)
+.RE
+.IP "" 2
+.RS
+\[bu] \fICHECKR\fR (Check Reverse)
+.RE
+.IP "" 2
+.RS
+\[bu] \fISCAN\fR (Scan String)   
+
+ 
+
+
+.RE
+.PP
+
+.RE
+.IP "" 2
+.RS
+\[bu] Search operations: 
+.IP "" 2
+.RS
+\[bu] \fILOOKUP\fR (Look Up a Table or Array Element)
+.RE
+.PP
+
+.RE
 .PP
 
 If \fB%FOUND\fR is used without the optional file_name parameter, then it returns the value set for the most recent relevant operation\[char46] When a file_name is specified, then it applies to the most recent relevant operation on that file\[char46]

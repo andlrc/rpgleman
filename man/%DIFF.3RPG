@@ -17,27 +17,43 @@
 \fB%DIFF\fR produces the difference (duration) between two date or time values\[char46] The first and second parameters must have the same, or compatible types\[char46] The following combinations are possible:
 
 
-.IP \[bu] 2
-Date and date
-.IP \[bu] 2
-Time and time
-.IP \[bu] 2
-Timestamp and timestamp
-.IP \[bu] 2
-Date and timestamp (only the date portion of the timestamp is considered)
-.IP \[bu] 2
-Time and timestamp (only the time portion of the timestamp is considered)\[char46]
+.IP "" 2
+.RS
+\[bu] Date and date
+.RE
+.IP "" 2
+.RS
+\[bu] Time and time
+.RE
+.IP "" 2
+.RS
+\[bu] Timestamp and timestamp
+.RE
+.IP "" 2
+.RS
+\[bu] Date and timestamp (only the date portion of the timestamp is considered)
+.RE
+.IP "" 2
+.RS
+\[bu] Time and timestamp (only the time portion of the timestamp is considered)\[char46]
+.RE
 .PP
 
 The third parameter specifies the unit\[char46] The following units are valid:
 
 
-.IP \[bu] 2
-For two dates or a date and a timestamp: *DAYS, *MONTHS, and *YEARS
-.IP \[bu] 2
-For two times or a time and a timestamp: *SECONDS, *MINUTES, and *HOURS
-.IP \[bu] 2
-For two timestamps: *MSECONDS, *SECONDS, *MINUTES, *HOURS, *DAYS, *MONTHS, and *YEARS
+.IP "" 2
+.RS
+\[bu] For two dates or a date and a timestamp: \fI*DAYS\fR, \fI*MONTHS\fR, and \fI*YEARS\fR
+.RE
+.IP "" 2
+.RS
+\[bu] For two times or a time and a timestamp: \fI*SECONDS\fR, \fI*MINUTES\fR, and \fI*HOURS\fR
+.RE
+.IP "" 2
+.RS
+\[bu] For two timestamps: \fI*MSECONDS\fR, \fI*SECONDS\fR, \fI*MINUTES\fR, \fI*HOURS\fR, \fI*DAYS\fR, \fI*MONTHS\fR, and \fI*YEARS\fR
+.RE
 .PP
 
 The difference is calculated by subtracting the second operand from the first\[char46]

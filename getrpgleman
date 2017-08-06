@@ -8,6 +8,14 @@ use HTML::TreeBuilder::XPath;
 use POSIX qw{strftime};
 use Data::Dumper;
 
+sub trim
+{
+	my ($text) = @_;
+	s/^\h+//;
+	s/\h+$//;
+	return $text;
+}
+
 sub man_build
 {
 	my ($man) = @_;
@@ -80,7 +88,7 @@ sub man_build
 
 sub man_node
 {
-	my ($node) = @_;
+	my ($node, $print_text) = @_;
 	my $tag_name = $node->{_tag};
 
 	# <p>-tags
@@ -91,13 +99,13 @@ sub man_node
 	# <dl>-tags
 	if ($tag_name =~ m{ \b dl \b }xms) {
 		my @dt_nodes = $node->findnodes_as_strings('dt');
-		my @dd_nodes = $node->findnodes_as_strings('dd');
+		my @dd_nodes = $node->findnodes('dd');
 		my @ret = ();
 		for my $i (0..$#dt_nodes) {
 			push @ret, join("\n",
 				".TP 5",
 				".B " . man_highlight($dt_nodes[$i]),
-				man_highlight($dd_nodes[$i])
+				man_node($dd_nodes[$i], 1)
 			);
 		}
 		return join "\n", @ret;
@@ -107,21 +115,23 @@ sub man_node
 	if ($tag_name =~ m{ \b ul \b }xms) {
 		return join("\n", map {
 			join("\n",
-				'.IP \\[bu] 2',
-				man_sanitize($_)
+				'.IP "" 2',
+				".RS",
+				"\\[bu] " . trim(man_node($_, 1)),
+				".RE"
 			);
-		} $node->findnodes_as_strings('li')). "\n.PP";
+		} $node->findnodes('li')). "\n.PP";
 	}
 
 	# Ordered Lists
 	if ($tag_name =~ m{ \b ol \b }xms) {
-		my @items = $node->findnodes_as_strings('li');
+		my @items = $node->findnodes('li');
 		my $index = 0;
 		return join("\n", map {
 			join("\n",
 				'.IP ' . (++$index) . '. 2',
 				".RS",
-				man_sanitize($_),
+				man_node($_, 1),
 				".RE"
 			);
 		} @items) . "\n.PP";
@@ -182,10 +192,24 @@ sub man_node
 		}
 	}
 
-	# Sometimes elements is wrapped in other elements
-	return join("\n\n", map {
-		man_node($_);
-	} $node->findnodes("*"));
+	# Print literal text (textNode)'s and element nodes:
+	if ($print_text) {
+		return join(" ", map {
+			if (!ref) {
+				man_highlight(trim($_));
+			} elsif ($_->{_tag} =~ m{ \b (a|b|i|em|string|var) \b }xmsi) {
+				man_highlight(trim($_->as_text));
+			} else {
+				"\n" . man_node($_) . "\n";
+			}
+		} @{$node->{_content}});
+	}
+	else {
+		# Sometimes nodes is wrapped.
+		return join("\n\n", map {
+			man_node($_);
+		} $node->findnodes("*"));
+	}
 }
 
 sub man_sanitize

@@ -15,7 +15,7 @@
 
 .IP 1. 2
 .RS
-A parameter defined using a *ENTRY PLIST cannot be specified as the operand for %PARMNUM\[char46]
+A parameter defined using a \fI*ENTRY\fR \fIPLIST\fR cannot be specified as the operand for \fB%PARMNUM\fR\[char46]
 .RE
 .IP 2. 2
 .RS
@@ -23,7 +23,7 @@ The parameter must be specified the same way it appears in the procedure interfa
 .RE
 .IP 3. 2
 .RS
-If the RTNPARM keyword is coded for a procedure, the return value is handled as an additional first parameter\[char46] The other parameters have a number one higher than the apparent number\[char46] For example, if a procedure defined with RTNPARM has two parameters P1 and P2, %PARMNUM(P1) will return 2 and %PARMNUM(P2) will return 3\[char46]
+If the \fIRTNPARM\fR keyword is coded for a procedure, the return value is handled as an additional first parameter\[char46] The other parameters have a number one higher than the apparent number\[char46] For example, if a procedure defined with \fIRTNPARM\fR has two parameters P1 and P2, \fB%PARMNUM(P1)\fR will return 2 and \fB%PARMNUM(P2)\fR will return 3\[char46]
 .RE
 .PP
 

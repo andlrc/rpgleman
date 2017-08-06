@@ -25,27 +25,43 @@ The optional number-of-elements parameter must be a numeric value with zero deci
 Generally, \fB%SUBARR\fR is valid in any expression where an unindexed array is allowed\[char46] However, \fB%SUBARR\fR cannot be used in the following places:
 
 
-.IP \[bu] 2
-as the array argument of built-in function %LOOKUPxx
-.IP \[bu] 2
-as a parameter passed by reference
+.IP "" 2
+.RS
+\[bu] as the array argument of built-in function \fB%LOOKUPxx\fR
+.RE
+.IP "" 2
+.RS
+\[bu] as a parameter passed by reference
+.RE
 .PP
 
 \fB%SUBARR\fR may be used in the following ways:
 
 
-.IP \[bu] 2
-On the left-hand side of an assignment using EVAL or EVALR\[char46] This changes the specified elements in the specified array\[char46]
-.IP \[bu] 2
-Within the expression on the right-hand side of an assignment using EVAL or EVALR where the target of the assignment is an array\[char46] This uses the values of the specified elements of the array\[char46] The array elements are used directly; a temporary copy of the sub-array is not made\[char46]
-.IP \[bu] 2
-In Extended Factor 2 of the SORTA operation\[char46]
-.IP \[bu] 2
-In Extended Factor 2 of the RETURN operation\[char46]
-.IP \[bu] 2
-Passed by VALUE or by read-only reference (CONST keyword) when the corresponding parameter is defined as an array\[char46]
-.IP \[bu] 2
-As the parameter of the %XFOOT built-in function\[char46]
+.IP "" 2
+.RS
+\[bu] On the left-hand side of an assignment using \fIEVAL\fR or \fIEVALR\fR\[char46] This changes the specified elements in the specified array\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Within the expression on the right-hand side of an assignment using \fIEVAL\fR or \fIEVALR\fR where the target of the assignment is an array\[char46] This uses the values of the specified elements of the array\[char46] The array elements are used directly; a temporary copy of the sub-array is not made\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] In Extended Factor 2 of the \fISORTA\fR operation\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] In Extended Factor 2 of the \fIRETURN\fR operation\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Passed by \fIVALUE\fR or by read-only reference (\fICONST\fR keyword) when the corresponding parameter is defined as an array\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] As the parameter of the \fB%XFOOT\fR built-in function\[char46]
+.RE
 .PP
 
 For more information, see Array Operations or Built-in Functions\[char46]

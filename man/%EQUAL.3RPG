@@ -16,10 +16,14 @@
 The operations that set \fB%EQUAL\fR are:
 
 
-.IP \[bu] 2
-SETLL (Set Lower Limit)
-.IP \[bu] 2
-LOOKUP (Look Up a Table or Array Element)
+.IP "" 2
+.RS
+\[bu] \fISETLL\fR (Set Lower Limit)
+.RE
+.IP "" 2
+.RS
+\[bu] \fILOOKUP\fR (Look Up a Table or Array Element)
+.RE
 .PP
 
 If \fB%EQUAL\fR is used without the optional file_name parameter, then it returns the value set for the most recent relevant operation\[char46]

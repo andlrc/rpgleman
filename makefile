@@ -1,8 +1,10 @@
 MANDIR	= $(PREFIX)/usr/share/man/man3RPG
 
-all: bif
+all: bif dcl-ds
 
 bif:	%ABS %ADDR %ALLOC %BITAND %BITNOT %BITOR %BITXOR %CHAR %CHECK %CHECKR %DATE %DAYS %DEC %DECH %DECPOS %DIFF %DIV %EDITC %EDITFLT %EDITW %ELEM %EOF %EQUAL %ERROR %FIELDS %FLOAT %FOUND %GRAPH %HANDLER %HOURS %INT %INTH %KDS %LEN %LOOKUPxx %MINUTES %MONTHS %MSECONDS %NULLIND %OCCUR %OPEN %PADDR %PARMNUM %PARMS %REALLOC %REM %REPLACE %SCAN %SCANRPL %SECONDS %SHTDN %SIZE %SQRT %STATUS %STR %SUBARR %SUBDT %SUBST %THIS %TIME %TIMESTAMP %TLOOKUPxx %TRIM %TRIML %TRIMR %UCS2 %UNS %UNSH %XFOOT %XLATE %XML %YEARS 
+
+dcl-ds:	ALIAS ALIGN ALTSEQ BASED DTAARA EXPORT EXTNAME IMPORT INZ LEN LIKEDS NOOPT OCCURS PREFIX QUALIFIED STATIC TEMPLATE
 
 clean:
 	-rm man/*.3RPG
@@ -159,3 +161,39 @@ uninstall:
 	./getrpgleman 897
 %YEARS:
 	./getrpgleman 898
+
+# DCL-DS
+ALIAS:
+	./getrpgleman 515
+ALIGN:
+	./getrpgleman 516
+ALTSEQ:
+	./getrpgleman 518
+BASED:
+	./getrpgleman 520
+DTAARA:
+	./getrpgleman 528
+EXPORT:
+	./getrpgleman 529
+EXTNAME:
+	./getrpgleman 532
+IMPORT:
+	./getrpgleman 536
+INZ:
+	./getrpgleman 537
+LEN:
+	./getrpgleman 538
+LIKEDS:
+	./getrpgleman 542
+NOOPT:
+	./getrpgleman 547
+OCCURS:
+	./getrpgleman 548
+PREFIX:
+	./getrpgleman 554
+QUALIFIED:
+	./getrpgleman 556
+STATIC:
+	./getrpgleman 558
+TEMPLATE:
+	./getrpgleman 560

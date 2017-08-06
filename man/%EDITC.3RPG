@@ -75,10 +75,14 @@ C                                + %trim(%editc(*date : \[char39]Y\[char39]))
 A common requirement is to edit a field as follows:
 
 
-.IP \[bu] 2
-Leading zeros are suppressed
-.IP \[bu] 2
-Parentheses are placed around the value if it is negative
+.IP "" 2
+.RS
+\[bu] Leading zeros are suppressed
+.RE
+.IP "" 2
+.RS
+\[bu] Parentheses are placed around the value if it is negative
+.RE
 .PP
 
 The following accomplishes this using an \fB%EDITC\fR in a subprocedure:

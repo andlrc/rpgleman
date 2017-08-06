@@ -20,12 +20,18 @@ The first parameter is the date, time, or timestamp value\[char46]
 The second parameter is the portion that you want to extract\[char46] The following values are valid:
 
 
-.IP \[bu] 2
-For a date: *DAYS, *MONTHS, and *YEARS
-.IP \[bu] 2
-For a time: *SECONDS, *MINUTES, and *HOURS
-.IP \[bu] 2
-For a timestamp: *MSECONDS, *SECONDS, *MINUTES, *HOURS, *DAYS, *MONTHS, and *YEARS
+.IP "" 2
+.RS
+\[bu] For a date: \fI*DAYS\fR, \fI*MONTHS\fR, and \fI*YEARS\fR
+.RE
+.IP "" 2
+.RS
+\[bu] For a time: \fI*SECONDS\fR, \fI*MINUTES\fR, and \fI*HOURS\fR
+.RE
+.IP "" 2
+.RS
+\[bu] For a timestamp: \fI*MSECONDS\fR, \fI*SECONDS\fR, \fI*MINUTES\fR, \fI*HOURS\fR, \fI*DAYS\fR, \fI*MONTHS\fR, and \fI*YEARS\fR
+.RE
 .PP
 
 For this function, \fI*DAYS\fR always refers to the day of the month not the day of the year (even if you are using a Julian date format)\[char46] For example, the day portion of February 10 is 10 not 41\[char46]

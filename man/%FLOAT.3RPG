@@ -19,16 +19,26 @@
 If the parameter is a character expression, the following rules apply:
 
 
-.IP \[bu] 2
-The sign is optional\[char46] It can be \[char39]+\[char39] or \[char39]-\[char39]\[char46] It must precede the numeric data\[char46]
-.IP \[bu] 2
-The decimal point is optional\[char46] It can be either a period or a comma\[char46]
-.IP \[bu] 2
-The exponent is optional\[char46] It can be either \[char39]E\[char39] or \[char39]e\[char39]\[char46] The sign for the exponent is optional\[char46] It must precede the numeric part of the exponent\[char46]
-.IP \[bu] 2
-Blanks are allowed anywhere in the data\[char46] For example, \[char39] + 3 , 5 E 9\[char39] is a valid parameter\[char46]
-.IP \[bu] 2
-If invalid numeric data is found, an exception occurs with status code 105\[char46]
+.IP "" 2
+.RS
+\[bu] The sign is optional\[char46] It can be \[char39]+\[char39] or \[char39]-\[char39]\[char46] It must precede the numeric data\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The decimal point is optional\[char46] It can be either a period or a comma\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The exponent is optional\[char46] It can be either \[char39]E\[char39] or \[char39]e\[char39]\[char46] The sign for the exponent is optional\[char46] It must precede the numeric part of the exponent\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Blanks are allowed anywhere in the data\[char46] For example, \[char39] + 3 , 5 E 9\[char39] is a valid parameter\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If invalid numeric data is found, an exception occurs with status code 105\[char46]
+.RE
 .PP
 
 For more information, see Conversion Operations or Built-in Functions\[char46]

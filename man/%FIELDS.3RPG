@@ -26,11 +26,11 @@ Each name must be the name of a field in the input buffer for the record\[char46
 .RE
 .IP 2. 2
 .RS
-The name can be a subfield from a data structure defined with the EXTNAME/LIKEREC keyword using the file/format name of the record being updated\[char46] *INPUT must be specified with the keyword used\[char46] The name specified must contain the subfield name that corresponds to the input field\[char46] For a qualified data structure, the simple qualified name of the subfield is used\[char46]
+The name can be a subfield from a data structure defined with the \fIEXTNAME\fR/\fILIKEREC\fR keyword using the file/format name of the record being updated\[char46] \fI*INPUT\fR must be specified with the keyword used\[char46] The name specified must contain the subfield name that corresponds to the input field\[char46] For a qualified data structure, the simple qualified name of the subfield is used\[char46]
 .RE
 .IP 3. 2
 .RS
-The name can be a subfield of a data structure defined with the LIKEDS keyword of a data structure defined as described above\[char46]
+The name can be a subfield of a data structure defined with the \fILIKEDS\fR keyword of a data structure defined as described above\[char46]
 .RE
 .PP
 
