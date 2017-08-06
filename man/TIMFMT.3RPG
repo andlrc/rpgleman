@@ -1,0 +1,41 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh562.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TIMFMT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+TIMFMT
+.SH SYNOPSIS
+.nf
+TIMFMT(format{separator})
+.fi
+.SH DESCRIPTION
+The \fITIMFMT\fR keyword allows the specification of an internal time format, and optionally the time separator, for any of these items of type Time: standalone field; data-structure subfield; prototyped parameter; or return value on a prototype or procedure-interface definition\[char46] This keyword will be automatically generated for an externally described data-structure subfield of type Time\[char46]
+
+
+If \fITIMFMT\fR is not specified, the Time field will have the time format and separator as specified by the \fITIMFMT\fR keyword on the control specification, if present\[char46] If none is specified on the control specification, then it will have \fI*ISO\fR format\[char46]
+
+
+See Table 36 for valid formats and separators\[char46] For more information on internal formats, see Internal and External Formats\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

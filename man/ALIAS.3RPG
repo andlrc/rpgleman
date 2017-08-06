@@ -1,0 +1,98 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh515.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ALIAS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+ALIAS
+.SH DESCRIPTION
+When the \fIALIAS\fR keyword is specified for an externally-described data structure, the \fIRPG\fR compiler will use the alias (alternate) names for the subfields, if present\[char46] If the \fIALIAS\fR keyword is not specified for the data structure, or an external field does not have an alias name defined, the \fIRPG\fR compiler will use the standard external field name\[char46]
+
+
+When alias names are being used and you want to rename a subfield, you specify the alias name as the parameter to the \fIEXTFLD\fR keyword\[char46] The \fIEXTFLD\fR keyword does not support continuation, so you must specify the entire name on one source specification\[char46] Figure 121 shows an example with two data structures, defined for the same file\[char46] The data structure that has the \fIALIAS\fR keyword coded uses the alias name, \fICUSTOMER\fR_ADDRESS, as the parameter for the \fIEXTFLD\fR keyword\[char46] The data structure that does not have the \fIALIAS\fR keyword coded uses the standard name, \fICUSTAD\fR, as the parameter for the \fIEXTFLD\fR keyword\[char46]
+
+
+
+
+
+
+
+
+When the \fIPREFIX\fR keyword is specified with the \fIALIAS\fR keyword, the second parameter of \fIPREFIX\fR, indicating the number of characters to be replaced, does not apply to the alias names\[char46] In the following discussion, assume that the external file \fIMYFILE\fR has fields \fIXYCUSTNM\fR and \fIXYID\fR_NUM, and the \fIXYCUSTNM\fR field has the alias name \fICUSTOMER\fR_NAME\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] If keyword \fIPREFIX\fR(\fINEW\fR_) is specified, there is no second parameter, so no characters will be replaced for any names\[char46] The names used for the \fIRPG\fR subfields will be \fINEW\fR_CUSTOMER_NAME and \fINEW\fR_XYID_NUM\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If keyword \fIPREFIX\fR(\fINEW\fR_:2) is specified, two characters will be removed from the names of fields that do not have an alias name\[char46] The names used for the \fIRPG\fR subfields will be \fINEW\fR_CUSTOMER_NAME and \fINEW\fR_ID_NUM\[char46] The first two characters, "XY", are replaced in \fIXYID\fR_NUM, but no characters are replaced in \fICUSTOMER\fR_NAME\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If keyword \fIPREFIX\fR(\[char39]\[char39]:2) is specified, two characters will be removed the names of fields that do not have an alias name\[char46] The names used for the \fIRPG\fR subfields will be \fICUSTOMER\fR_NAME and ID_NUM\[char46] The first two characters, "XY", are replaced in \fIXYID\fR_NUM, but no characters are replaced in \fICUSTOMER\fR_NAME\[char46]
+.RE
+.PP
+
+
+.SH EXAMPLE
+
+Using the \fIALIAS\fR keyword for an externally-described data structure
+
+.PP
+.nf
+ * The DDS specifications for file MYFILE, using the ALIAS keyword
+ * for the first two fields, to associate alias name CUSTOMER_NAME
+ * with the CUSTNM field and alias name CUSTOMER_ADDRESS
+ * with the CUSTAD field\[char46]
+A          R CUSTREC
+A            CUSTNM        25A         ALIAS(CUSTOMER_NAME)
+A            CUSTAD        25A         ALIAS(CUSTOMER_ADDRESS)
+A            ID_NUM        12P 0
+
+ * The RPG source, using the ALIAS keyword\[char46]
+ * The customer-address field is renamed to CUST_ADDR
+ * for both data structures\[char46]D aliasDs       e ds                  ALIAS
+D                                     QUALIFIED EXTNAME(myfile)
+D   cust_addr   e                     EXTFLD(CUSTOMER_ADDRESS)
+D noAliasDs     e ds
+D                                     QUALIFIED EXTNAME(myfile)
+D   cust_addr   e                     EXTFLD(CUSTAD)
+ /free
+    // The ALIAS keyword is specified for data structure "aliasDs"
+    // so the subfield corresponding to the "CUSTNM" field has
+    // the alias name "CUSTOMER_NAME"
+    aliasDs\[char46]customer_name = \[char39]John Smith\[char39];
+    aliasDs\[char46]cust_addr = \[char39]123 Mockingbird Lane\[char39];
+    aliasDs\[char46]id_num = 12345;
+
+    // The ALIAS keyword is not specified for data structure
+    // "noAliasDs", so the subfield corresponding to the "CUSTNM"
+    // field does not use the alias name
+    noAliasDs\[char46]custnm = \[char39]John Smith\[char39];
+    aliasDs\[char46]cust_addr = \[char39]123 Mockingbird Lane\[char39];
+    noAliasDs\[char46]id_num = 12345;
+
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

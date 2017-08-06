@@ -1,0 +1,41 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh565.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH VARYING 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+VARYING
+.SH SYNOPSIS
+.nf
+VARYING{(2 | 4)}
+.fi
+.SH DESCRIPTION
+The \fIVARYING\fR keyword indicates that a character, graphic, or \fIUCS\fR-2 field, defined on the definition specifications, should have a variable-length format\[char46] If this keyword is not specified for character, graphic, or \fIUCS\fR-2 fields, they are defined as fixed length\[char46]
+
+
+The parameter of the \fIVARYING\fR keyword indicates the number of bytes used to store the current length of the variable-length item\[char46] If you specify \fIVARYING\fR without a parameter, a size of 2 is assumed if the specified length is between 1 and 65535;"> for definitions whose length is between 1 and 65535\[char46] The \fIVARYING\fR(2) keyword cannot be specified for definitions whose length is greater than 65535 since 4 bytes are required to store the length\[char46]
+
+
+For more information, see Variable-Length Character, Graphic and \fIUCS\fR-2 Formats\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

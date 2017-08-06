@@ -1,0 +1,116 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh528.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DTAARA 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+DTAARA
+.SH SYNOPSIS
+.nf
+DTAARA{({*VAR:} data_area_name)}
+.fi
+.SH DESCRIPTION
+The \fIDTAARA\fR keyword is used to associate a standalone field, data structure, data-structure subfield or data-area data structure with an external data area\[char46] The \fIDTAARA\fR keyword has the same function as the \fI*DTAARA\fR \fIDEFINE\fR operation code (see \fI*DTAARA\fR \fIDEFINE\fR)\[char46]
+
+
+The \fIDTAARA\fR keyword can only be used in the main source section\[char46] It cannot be used in a subprocedure\[char46]
+
+
+You can create three kinds of data areas:
+
+
+.IP "" 2
+.RS
+\[bu] \fI*CHAR\fR Character
+.RE
+.IP "" 2
+.RS
+\[bu] \fI*DEC\fR Numeric
+.RE
+.IP "" 2
+.RS
+\[bu] \fI*LGL\fR Logical
+.RE
+.PP
+
+You can also create a \fIDDM\fR data area (type \fI*DDM\fR) that points to a data area on a remote system of one of the three types above\[char46]
+
+
+Only character and numeric types (excluding float numeric) are allowed to be associated with data areas\[char46] The actual data area on the system must be of the same type as the field in the program, with the same length and decimal positions\[char46] Indicator fields can be associated with either a logical data area or a character data area\[char46] If you want to store other types in a data area, you can use a data structure for the data area, and code the subfields of any type, except pointers\[char46] Pointers cannot be stored in data areas\[char46]
+
+
+If data_area_name is not specified, then the name specified in positions 7-21 is also the name of the external data area\[char46] If neither the parameter nor the data-structure name is specified, then the default is \fI*LDA\fR\[char46]
+
+
+If \fI*VAR\fR is not specified, the data_area_name parameter can be either a name or a literal\[char46] If a name is specified, the name of the parameter of \fIDTAARA\fR is used as the name of the data area\[char46] For example, \fIDTAARA\fR(\fIMYDTA\fR) means that the data area \fI*LIBL\fR/\fIMYDTA\fR will be used at runtime\[char46] It must be a valid data area name, including \fI*LDA\fR (for the local data area) and \fI*PDA\fR (for the program initialization parameters data area)\[char46] If a literal is specified, the value of the literal is used as the name of the data area\[char46] For example, \fIDTAARA\fR(\[char39]\fILIB\fR/\fIDTA\fR\[char39]) will use data area \fIDTA\fR in library \fILIB\fR, at runtime\[char46]
+
+
+If \fI*VAR\fR is specified, the value of data_area_name is used as the data area name\[char46] This value can be:
+
+
+.IP "" 2
+.RS
+\[bu] A named constant whose value is the name of the data area\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] A character variable that will hold the name of the data area at runtime\[char46]
+.RE
+.PP
+
+You can specify the value in any of the following forms:
+
+
+.PP
+.nf
+  dtaaraname
+  libname/dtaaraname
+  *LIBL/dtaaraname
+.fi
+
+
+
+
+
+.IP 1. 2
+.RS
+You cannot specify \fI*CURLIB\fR as the library name\[char46]
+.RE
+.IP 2. 2
+.RS
+If you specify a data area name without a library name, \fI*LIBL\fR is used\[char46]
+.RE
+.IP 3. 2
+.RS
+The name must be in the correct case\[char46] For example, if you specify \fIDTAARA\fR(\fI*VAR\fR:dtaname) and variable dtaname has the value \[char39]qtemp/mydta\[char39], the data area will not be found\[char46] Instead, it should have the value \[char39]\fIQTEMP\fR/\fIMYDTA\fR\[char39]\[char46]
+.RE
+.PP
+
+
+
+If \fIDTAARA\fR(\fI*VAR\fR) keyword is used with a \fIUDS\fR data area, and the name is a variable, then this variable must have the value set before the program starts\[char46] This can be done by initializing the variable, passing the variable as an entry parameter, or sharing the variable with another program through the \fIIMPORT\fR and \fIEXPORT\fR keywords\[char46]
+
+
+When the \fIDTAARA\fR keyword is specified, the IN, \fIOUT\fR, and \fIUNLOCK\fR operation codes can be used on the data area\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

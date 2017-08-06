@@ -1,0 +1,53 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh556.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH QUALIFIED 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+QUALIFIED
+.SH DESCRIPTION
+The \fIQUALIFIED\fR keyword specifies that the subfields of a data structure will be accessed by specifying the data structure name followed by a period and the subfield name\[char46] The data structure must have a name\[char46]
+
+
+The subfields can have any valid name, even if the name has been used elsewhere in the program\[char46] This is illustrated in the following example:
+
+
+.PP
+.nf
+  * In this example, FILE1 and FILE2 are the names of files\[char46]  FILE1 and FILE2 are
+  * also subfields of qualified data structure FILESTATUS\[char46]  This is valid,
+  * because the subfields FILE1 and FILE2 must be qualified by the data structure
+  * name: FILESTATUS\[char46]FILE1 and FILESTATUS\[char46]FILE2\[char46]
+ Ffile1     if   e             disk
+ Ffile2     if   e             disk
+
+ D fileStatus      ds                  qualified
+ D   file1                         N
+ D   file2                         N
+
+ C                   open(e)   file1
+ C                   eval      fileStatus\[char46]file1 = %error
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %ERROR (3RPG)

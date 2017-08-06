@@ -1,0 +1,95 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh554.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH PREFIX 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+PREFIX
+.SH SYNOPSIS
+.nf
+PREFIX(prefix{:nbr_of_char_replaced})
+.fi
+.SH DESCRIPTION
+The \fIPREFIX\fR keyword allows the specification of a character string or character literal which is to be prefixed to the subfield names of the externally described data structure being defined\[char46] In addition, you can optionally specify a numeric value to indicate the number of characters, if any, in the existing name to be replaced\[char46] If the parameter \[char39]nbr_of_char_replaced\[char39] is not specified, then the string is attached to the beginning of the name\[char46] To remove characters from the beginning of every name, specify an empty string as the first parameter: \fIPREFIX\fR(\[char39]\[char39]:number_to_remove)\[char46]
+
+
+If the \[char39]nbr_of_char_replaced\[char39] is specified, it must represent a numeric value between 0 and 9 with no decimal places\[char46] Specifying a value of zero is the same as not specifying \[char39]nbr_of_char_replaced\[char39] at all\[char46] For example, the specification \fIPREFIX\fR(YE:3) would change the field name \[char39]\fIYTDTOTAL\fR\[char39] to \[char39]\fIYETOTAL\fR\[char39]\[char46]
+
+
+The \[char39]nbr_of_char_replaced\[char39] parameter can be a numeric literal, a built-in function that returns a numeric value, or a numeric constant\[char46] If it is a named constant, then the constant must be defined prior to the specification containing the \fIPREFIX\fR keyword\[char46] In addition, if it is a built-in function, all parameters to the built-in function must be defined prior to the specification containing the keyword \fIPREFIX\fR\[char46]
+
+
+The following rules apply:
+
+
+.IP "" 2
+.RS
+\[bu] Subfields that are explicitly renamed using the \fIEXTFLD\fR keyword are not affected by this keyword\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The total length of a name after applying the prefix must not exceed the maximum length of an \fIRPG\fR field name\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the number of characters in the name to be prefixed is less than or equal to the value represented by the \[char39]nbr_of_char_replaced\[char39] parameter, then the entire name is replaced by the prefix_string\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The prefix cannot end in a period\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the prefix is a character literal, it must be uppercase\[char46]
+.RE
+.PP
+
+See the \fIALIAS\fR keyword for information on how the \fIPREFIX\fR keyword interacts with the \fIALIAS\fR keyword\[char46]
+
+
+
+.SH EXAMPLE
+
+Using \fIPREFIX\fR to remove characters from the names
+
+The following example uses \fIPREFIX\fR(\[char39]\[char39]:2) on the externally-described data structures DS1 and DS2\[char46] The fields of the file \fIFILE\fR1 all begin with the characters X4, and the fields of the file \fIFILE\fR2 all begin with the characters WR\[char46] If the two files have any fields whose names are the same aside from the initial two characters, then by specifying \fIPREFIX\fR(\[char39]\[char39]:2) for the externally-described data structures, the subfields will have identical names within the \fIRPG\fR program\[char46] This will enable the subfields to be assigned using the \fIEVAL-CORR\fR operation\[char46]
+
+
+.PP
+.nf
+Ffile1     if   e             disk
+Ffile2     o    e             disk
+D ds1           e ds                  extname(file1) prefix(\[char39]\[char39]:2)
+D                                     qualified
+D ds2           e ds                  extname(file2) prefix(\[char39]\[char39]:2)
+D                                     qualified
+ /free
+     read file1 ds1;      // Read into data structure
+     eval-corr ds2 = ds1; // Assign fields with same name
+     write file2 ds2;     // Write from data structure
+ /end-free
+.fi
+
+For more examples, see \fIPREFIX\fR(prefix{:nbr_of_char_replaced})\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

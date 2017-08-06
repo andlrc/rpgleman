@@ -1,0 +1,48 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh547.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH NOOPT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+NOOPT
+.SH DESCRIPTION
+The \fINOOPT\fR keyword indicates that no optimization is to be performed on the standalone field, parameter or data structure for which this keyword is specified\[char46] Specifying \fINOOPT\fR ensures that the content of the data item is the latest assigned value\[char46] This may be necessary for those fields whose values are used in exception handling\[char46]
+
+
+
+
+
+
+
+
+If a data item which is to be passed by reference is defined with the \fINOOPT\fR keyword, then any prototype or procedure interface parameter definition must also have the \fINOOPT\fR keyword specified\[char46] This requirement does not apply to parameters passed by value\[char46]
+
+
+
+
+Any data item defined in an \fIOPM\fR \fIRPG\fR/400® program is implicitly defined with \fINOOPT\fR\[char46] So if you are creating a prototype for an \fIOPM\fR program, you should specify \fINOOPT\fR for all parameters defined within the prototype\[char46] This will avoid errors for any users of the prototype\[char46]
+
+
+All keywords allowed for standalone field definitions, parameters, or data structure definitions are allowed with \fINOOPT\fR\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

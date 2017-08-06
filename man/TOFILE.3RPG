@@ -1,0 +1,44 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh563.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TOFILE 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+TOFILE
+.SH SYNOPSIS
+.nf
+TOFILE(file_name)
+.fi
+.SH DESCRIPTION
+The \fITOFILE\fR keyword allows the specification of a target file to which a prerun-time or compile-time array or table is to be written\[char46]
+
+
+If an array or table is to be written, specify the file name of the output or combined file as the keyword parameter\[char46] This file must also be defined in the file description specifications\[char46] An array or table can be written to only one output device\[char46]
+
+
+If an array or table is assigned to an output file, it is automatically written if the LR indicator is on at program termination\[char46] The array or table is written after all other records are written to the file\[char46]
+
+
+If an array or table is to be written to the same file from which it was read, the same file name that was specified as the \fIFROMFILE\fR parameter must be specified as the \fITOFILE\fR parameter\[char46] This file must be defined as a combined file (C in position 17 on the file description specification)\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

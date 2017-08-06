@@ -1,0 +1,240 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh551.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH OVERLAY 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+OVERLAY
+.SH SYNOPSIS
+.nf
+OVERLAY(name{:pos | *NEXT})
+.fi
+.SH DESCRIPTION
+The \fIOVERLAY\fR keyword overlays the storage of one subfield with that of another subfield, or with that of the data structure itself\[char46] This keyword is allowed only for data structure subfields\[char46]
+
+
+The Name-entry subfield overlays the storage specified by the name parameter at the position specified by the pos parameter\[char46] If pos is not specified, it defaults to 1\[char46]
+
+
+
+
+
+
+
+
+Specifying \fIOVERLAY\fR(name:\fI*NEXT\fR) positions the subfield at the next available position within the overlaid field\[char46] (This will be the first byte past all other subfields prior to this subfield that overlay the same subfield\[char46])
+
+
+The following rules apply to keyword \fIOVERLAY\fR:
+
+
+.IP 1. 2
+.RS
+The name parameter must be the name of a subfield defined previously in the current data structure, or the name of the current data structure\[char46]
+.RE
+.IP 2. 2
+.RS
+If the data structure is qualified, the first parameter to the \fIOVERLAY\fR keyword must be specified without the qualifying data structure name\[char46] In the following example, subfield MsgInfo\[char46]MsgPrefix overlays subfield MsgInfo\[char46]MsgId\[char46] 
+.PP
+.nf
+D MsgInfo         DS                  QUALIFIED
+D   MsgId                        7
+D     MsgPrefix                  3    OVERLAY(MsgId)
+.fi
+
+.RE
+.IP 3. 2
+.RS
+The pos parameter (if specified) must be a value greater than 0 with no decimal positions\[char46] It can be a numeric literal, a built-in function returning a numeric value, or a numeric constant\[char46] If pos is a named constant, it must be defined prior to this specification\[char46]
+.RE
+.IP 4. 2
+.RS
+The \fIOVERLAY\fR keyword is not allowed when the From-Position entry is not blank\[char46]
+.RE
+.IP 5. 2
+.RS
+If the name parameter is a subfield, the subfield being defined must be contained completely within the subfield specified by the name parameter\[char46]
+.RE
+.IP 6. 2
+.RS
+Alignment of subfields defined using the \fIOVERLAY\fR keyword must be done manually\[char46] If they are not correctly aligned, a warning message is issued\[char46]
+.RE
+.IP 7. 2
+.RS
+If the subfield specified as the first parameter for the \fIOVERLAY\fR keyword is an array, the \fIOVERLAY\fR keyword applies to each element of the array\[char46] That is, the field being defined is defined as an array with the same number of elements\[char46] The first element of this array overlays the first element of the overlaid array, the second element of this array overlays the second element of the overlaid array, and so on\[char46] No array keywords may be specified for the subfield with the \fIOVERLAY\fR keyword in this situation\[char46] (Refer to Figure 144 ) See also \fISORTA\fR (Sort an Array) \[char46] 
+If the subfield name, specified as the first parameter for the \fIOVERLAY\fR keyword, is an array and its element length is longer than the length of the subfield being defined, the array elements of the subfield being defined are not stored contiguously\[char46] Such an array is not allowed as the Result Field of a \fIPARM\fR operation or in Factor 2 or the Result Field of a \fIMOVEA\fR operation\[char46]
+
+
+.RE
+.IP 8. 2
+.RS
+If the \fIALIGN\fR keyword is specified for the data structure, subfields defined with \fIOVERLAY\fR(name:\fI*NEXT\fR) are aligned to their preferred alignment\[char46] Pointer subfields are always aligned on a 16-byte boundary\[char46]
+.RE
+.IP 9. 2
+.RS
+If a subfield with overlaying subfields is not otherwise defined, the subfield is implicitly defined as follows: 
+.IP "" 2
+.RS
+\[bu] The start position is the first available position in the data structure\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The length is the minimum length that can contain all overlaying subfields\[char46] If the subfield is defined as an array, the length will be increased to ensure proper alignment of all overlaying subfields\[char46]
+.RE
+.PP
+
+.RE
+.PP
+
+Examples
+
+
+
+.SH EXAMPLE
+
+Storage Allocation of Subfields with Keywords \fIDIM\fR and \fIOVERLAY\fR
+
+.PP
+.nf
+*\[char46]\[char46] 1 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 2 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 3 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 4 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 5 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 6 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 7 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] *
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords++++++++++++++++++++++++++++
+D DataStruct      DS
+D   A                           10    DIM(5)
+D     B                          5    OVERLAY(A)
+D     C                          5    OVERLAY(A:6)
+.fi
+
+Allocation of fields in storage:
+
+
+
+
+.TS
+allbox;
+l l l l l l l l l l  .
+T{
+A(1)
+T}	T{
+A(2)
+T}	T{
+A(3)
+T}	T{
+A(4)
+T}	T{
+A(5)
+T}
+T{
+B(1)
+T}	T{
+C(1)
+T}	T{
+B(2)
+T}	T{
+C(2)
+T}	T{
+B(3)
+T}	T{
+C(3)
+T}	T{
+B(4)
+T}	T{
+C(4)
+T}	T{
+B(5)
+T}	T{
+C(5)
+T}
+.TE
+
+
+
+.SH EXAMPLE
+
+Storage Allocation of Subfields with Keywords \fIDIM\fR and \fIOVERLAY\fR
+
+.PP
+.nf
+*\[char46]\[char46] 1 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 2 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 3 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 4 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 5 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 6 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 7 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] *
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++++
+D DataStruct      DS
+D   A                            5
+D     B                          1    OVERLAY(A) DIM(4)
+.fi
+
+Allocation of fields in storage:
+
+
+
+
+.TS
+allbox;
+l l l l l  .
+T{
+A
+T}
+T{
+B(1)
+T}	T{
+B(2)
+T}	T{
+B(3)
+T}	T{
+B(4)
+T}	T{
+
+T}
+.TE
+
+The following example shows two equivalent ways of defining subfield overlay positions: explicitly with (name:pos) and implicitly with (name:\fI*NEXT\fR)\[char46]
+
+
+
+
+.SH EXAMPLE
+
+Defining Subfield Overlay Positions with \fI*NEXT\fR
+
+.PP
+.nf
+*\[char46]\[char46] 1 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 2 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 3 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 4 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 5 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 6 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 7 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] *
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++++
+ * Define subfield overlay positions explicitly
+D DataStruct      DS
+D   PartNumber                  10A
+D     Family                     3A   OVERLAY(PartNumber)
+D     Sequence                   6A   OVERLAY(PartNumber:4)
+D     Language                   1A   OVERLAY(PartNumber:10)
+.fi
+
+.PP
+.nf
+*\[char46]\[char46] 1 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 2 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 3 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 4 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 5 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 6 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 7 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] *
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++++
+ * Define subfield overlay positions with *NEXT
+D DataStruct      DS
+D   PartNumber
+D     Family                     3A   OVERLAY(PartNumber)
+D     Sequence                   6A   OVERLAY(PartNumber:*NEXT)
+D     Language                   1A   OVERLAY(PartNumber:*NEXT)
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

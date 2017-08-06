@@ -1,0 +1,122 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh542.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH LIKEDS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+LIKEDS
+.SH SYNOPSIS
+.nf
+LIKEDS(data_structure_name)
+.fi
+.SH DESCRIPTION
+The \fILIKEDS\fR keyword is used to define a data structure, data structure subfield, prototyped return value, or prototyped parameter like another data structure\[char46] The subfields of the new item will be identical to the subfields of the parent data structure specified as the parameter to the \fILIKEDS\fR keyword\[char46]
+
+
+A data structure defined using \fILIKEDS\fR is automatically qualified even if the parent data structure is not qualified\[char46] The subfields must be referred to using the qualified notation \fIDSNAME\fR\[char46]\fISUBFIELDNAME\fR\[char46] If the parent data structure has any unnamed subfields, the child data structure will have the same unnamed subfields\[char46]
+
+
+\fILIKEDS\fR can be coded for subfields of a qualified data structure\[char46] When \fILIKEDS\fR is coded on a data structure subfield definition, the subfield data structure is automatically defined as \fIQUALIFIED\fR\[char46] Subfields in a \fILIKEDS\fR subfield data structure are referenced in fully qualified form: "ds\[char46]subf\[char46]subfa"\[char46] Subfields defined with \fILIKEDS\fR are themselves data structures, and can be used wherever a data structure is required\[char46]
+
+
+The values of the \fIALIGN\fR and \fIALTSEQ\fR keywords are inherited by the new data structure\[char46] The values of the \fIOCCURS\fR, \fIDIM\fR, \fINOOPT\fR, and \fIINZ\fR keywords are not inherited\[char46] To initialize the subfields in the same way as the parent data structure, specify \fIINZ\fR(\fI*LIKEDS\fR)\[char46]
+
+
+
+.SH EXAMPLE
+
+Defining data structures using \fILIKEDS\fR
+
+.PP
+.nf
+ * Data structure qualDs is a qualified data structure
+ * with two named subfields and one unnamed subfield
+D qualDs          DS                  QUALIFIED
+D  a1                           10A
+D                                2A
+D  a2                            5P 0 DIM(3)
+ * Data structure unqualDs is a non-qualified data structure
+ * with one named subfield and one unnamed subfield
+D unqualDs        DS
+D  b1                            5A
+D                                5A
+ * Data structure likeQual is defined LIKEDS(qualDs)
+D likeQual        DS                  LIKEDS(qualDs)
+ * Data structure likeUnqual is defined LIKEDS(unqualDs)
+D likeUnqual      DS                  LIKEDS(unqualDs)
+ /FREE
+        // Set values in the subfields of the
+        // parent data structures\[char46]
+        qualDs\[char46]a1 = \[char39]abc\[char39];
+        qualDs\[char46]a2(1) = 25;
+        b1 = \[char39]xyz\[char39];
+
+        // Set values in the subfields of the
+        // child data structures\[char46]
+        likeQual\[char46]a1 = \[char39]def\[char39];
+        likeQual\[char46]a2(2) = -250;
+        likeUnqual\[char46]b1 = \[char39]rst\[char39];
+
+        // Display some of the subfields
+        dsply likeQual\[char46]a1;  // displays \[char39]def\[char39]
+        dsply b1;           // displays \[char39]xyz\[char39]
+.fi
+
+
+
+.SH EXAMPLE
+
+Using \fIINZ\fR(\fI*LIKEDS\fR)
+
+.PP
+.nf
+D sysName         DS                  qualified
+D   lib                         10A   inz(\[char39]*LIBL\[char39])
+D   obj                         10A
+D userSpace       DS                  LIKEDS(sysName) INZ(*LIKEDS)
+ // The variable "userSpace" was initialized with *LIKEDS, so the
+ // first \[char39]lib\[char39] subfield was initialized to \[char39]*LIBL\[char39]\[char46]  The second
+ // \[char39]obj\[char39] subfield must be set using a calculation\[char46]
+C                   eval      userSpace\[char46]obj = \[char39]TEMPSPACE\[char39]
+.fi
+
+
+
+.SH EXAMPLE
+
+Using a data structure parameter in a subprocedure
+
+.PP
+.nf
+P createSpace     B
+D createSpace     PI
+D  name                               LIKEDS(sysName)
+ /free
+     if name\[char46]lib = *blanks;
+          name\[char46]lib = \[char39]*LIBL\[char39];
+     endif;
+     QUSCRTUS (name : *blanks : 4096 : \[char39] \[char39] : \[char39]*USE\[char39] : *blanks);
+ /end-free
+P createSpace     E
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

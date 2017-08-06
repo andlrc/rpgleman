@@ -1,0 +1,35 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh538.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH LEN 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+LEN
+.SH SYNOPSIS
+.nf
+LEN(length)
+.fi
+.SH DESCRIPTION
+The \fILEN\fR keyword is used to define the length in characters of a Data Structure or character, \fIUCS\fR-2 or graphic definition\[char46] It is valid for Data Structure definitions, and for Prototype, Prototyped Parameter, Standalone Field and Subfield definitions where the type entry is A (Alphanumeric), C (\fIUCS\fR-2), or G (Graphic)\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

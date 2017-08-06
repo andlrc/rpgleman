@@ -1,0 +1,72 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh548.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH OCCURS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+OCCURS
+.SH SYNOPSIS
+.nf
+OCCURS(numeric_constant)
+.fi
+.SH DESCRIPTION
+The \fIOCCURS\fR keyword allows the specification of the number of occurrences of a multiple-occurrence data structure\[char46]
+
+
+The numeric_constant parameter must be a value greater than 0 with no decimal positions\[char46] It can be a numeric literal, a built-in function returning a numeric value, or a numeric constant\[char46]
+
+
+The constant value does not need to be known at the time the keyword is processed, but the value must be known at compile-time\[char46]
+
+
+This keyword is not valid for a program status data structure, a file information data structure, or a data area data structure\[char46]
+
+
+If a multiple occurrence data structure contains pointer subfields, the distance between occurrences must be an exact multiple of 16 because of system storage restrictions for pointers\[char46] This means that the distance between occurrences may be greater than the length of each occurrence\[char46]
+
+
+The following is an example showing the storage allocation of a multiple occurrence data structure with pointer subfields\[char46]
+
+
+
+.SH EXAMPLE
+
+Storage Allocation of Multiple Occurrence Data Structure with Pointer Subfields
+
+.PP
+.nf
+*\[char46]\[char46] 1 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 2 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 3 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 4 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 5 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 6 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 7 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] *
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++++
+D DS1             DS                  OCCURS(2)
+D   POINTER                     16*
+D   FLD5                         5
+D DS2             DS                  OCCURS(2)
+D   CHAR16                      16
+D   CHR5                         5
+.fi
+
+Allocation of fields in storage\[char46] The occurrences of DS1 are 32 bytes apart, while the occurrences of DS2 are 21 bytes apart\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

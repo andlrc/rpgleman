@@ -1,0 +1,41 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh525.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DATFMT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+DATFMT
+.SH SYNOPSIS
+.nf
+DATFMT(format{separator})
+.fi
+.SH DESCRIPTION
+The \fIDATFMT\fR keyword specifies the internal date format, and optionally the separator character, for any of these items of type Date: standalone field; data-structure subfield; prototyped parameter; or return value on a prototype or procedure-interface definition\[char46] This keyword will be automatically generated for an externally described data structure subfield of type Date and determined at compile time\[char46]
+
+
+If \fIDATFMT\fR is not specified, the Date field will have the date format and separator as specified by the \fIDATFMT\fR keyword on the control specification, if present\[char46] If none is specified on the control specification, then it will have \fI*ISO\fR format\[char46]
+
+
+See Table 33 for valid formats and separators\[char46] For more information on internal formats, see Internal and External Formats\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

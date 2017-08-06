@@ -1,0 +1,66 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh519.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ASCEND 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+ASCEND
+.SH DESCRIPTION
+The \fIASCEND\fR keyword is used to describe the sequence of the data in any of the following:
+
+
+.IP "" 2
+.RS
+\[bu] An array
+.RE
+.IP "" 2
+.RS
+\[bu] A table loaded at prerun-time or compile time
+.RE
+.IP "" 2
+.RS
+\[bu] A prototyped parameter
+.RE
+.PP
+
+See also \fIDESCEND\fR\[char46]
+
+
+Ascending sequence means that the array or table entries must start with the lowest data entry (according to the collating sequence) and go to the highest\[char46] Items with equal value are allowed\[char46]
+
+
+A prerun-time array or table is checked for the specified sequence at the time the array or table is loaded with data\[char46] If the array or table is out of sequence, control passes to the \fIRPG\fR IV exception/error handling routine\[char46] A run-time array (loaded by input and/or calculation specifications) is not sequence checked\[char46]
+
+
+When \fIALTSEQ\fR(\fI*EXT\fR) is specified, the alternate collating sequence is used when checking the sequence of compile-time arrays or tables\[char46] If the alternate sequence is not known until run-time, the sequence is checked at run-time; if the array or table is out of sequence, control passes to the \fIRPG\fR IV exception/error handling routine\[char46]
+
+
+A sequence (ascending or descending) must be specified if the \fILOOKUP\fR operation, \fB%LOOKUPxx\fR built-in, or \fB%TLOOKUPxx\fR built-in is used to search an array or table for an entry to determine whether the entry is high or low compared to the search argument\[char46]
+
+
+If the \fISORTA\fR operation code is used with an array, and no sequence is specified, an ascending sequence is assumed\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %LOOKUPXX (3RPG),
+.BR %TLOOKUPXX (3RPG)

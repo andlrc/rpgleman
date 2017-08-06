@@ -1,0 +1,43 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh516.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ALIGN 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+ALIGN
+.SH DESCRIPTION
+The \fIALIGN\fR keyword is used to align float, integer, and unsigned subfields\[char46] When \fIALIGN\fR is specified, 2-byte subfields are aligned on a 2-byte boundary, 4-byte subfields are aligned on a 4-byte boundary and 8-byte subfields are aligned on an 8-byte boundary\[char46] Alignment may be desired to improve performance when accessing float, integer, or unsigned subfields\[char46]
+
+
+Specify \fIALIGN\fR on the data structure definition\[char46] However, you cannot specify \fIALIGN\fR for either the file information data structure (\fIINFDS\fR) or the program status data structure (\fIPSDS\fR)\[char46]
+
+
+Alignment occurs only to data structure subfields defined with length notation and without the keyword \fIOVERLAY\fR\[char46] A diagnostic message is issued if subfields that are defined either with absolute notation or using the \fIOVERLAY\fR keyword are not properly aligned\[char46]
+
+
+Pointer subfields are always aligned on a 16-byte boundary whether or not \fIALIGN\fR is specified\[char46]
+
+
+See Aligning Data Structure Subfields for more information\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

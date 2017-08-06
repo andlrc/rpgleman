@@ -1,0 +1,34 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh555.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH PROCPTR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+PROCPTR
+.SH DESCRIPTION
+The \fIPROCPTR\fR keyword defines an item as a procedure pointer\[char46] The internal Data-Type field (position 40) must contain a *\[char46]
+
+
+See \fIEXTPROC\fR({\fI*CL\fR|\fI*CWIDEN\fR|\fI*CNOWIDEN\fR| {\fI*JAVA\fR:class-name:}}name) for information on how to use a procedure pointer to call a procedure\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

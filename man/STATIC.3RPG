@@ -1,0 +1,87 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh558.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH STATIC 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+STATIC
+.SH SYNOPSIS
+.nf
+STATIC{(*ALLTHREAD)}
+.fi
+.SH DESCRIPTION
+The \fISTATIC\fR keyword is used:
+
+
+.IP "" 2
+.RS
+\[bu] To specify that a local variable is stored in static storage
+.RE
+.IP "" 2
+.RS
+\[bu] To specify that the same copy of a static variable will be available to all threads in a multithreaded environment
+.RE
+.IP "" 2
+.RS
+\[bu] To specify that a Java™ method is defined as a static method\[char46]
+.RE
+.PP
+
+For a local variable of a subprocedure, the \fISTATIC\fR keyword specifies that the data item is to be stored in static storage, and thereby hold its value across calls to the procedure in which it is defined\[char46] The keyword can only be used within a subprocedure\[char46] All global fields are static\[char46]
+
+
+The data item is initialized when the program or service program it is contained in is first activated\[char46] It is not reinitialized again, even if reinitialization occurs for global definitions as part of normal cycle processing\[char46]
+
+
+If \fISTATIC\fR is not specified, then any locally defined data item is stored in automatic storage\[char46] Data stored in automatic storage is initialized at the beginning of every call\[char46] When a procedure is called recursively, each invocation gets its own copy of the storage\[char46]
+
+
+For any variable in a module where \fITHREAD\fR(\fI*CONCURRENT\fR) is specified on the Control specification, \fISTATIC\fR(\fI*ALLTHREAD\fR) specifies that the same instance of a static variable will be used by all threads\[char46] If \fI*ALLTHREAD\fR is not specified for a static variable in a thread-concurrent module, then the variable will be in thread-local storage, meaning that each thread will have its own instance of the variable\[char46]
+
+
+The following rules apply to the use of the \fISTATIC\fR(\fI*ALLTHREAD\fR) keyword:
+
+
+.IP "" 2
+.RS
+\[bu] \fISTATIC\fR(\fI*ALLTHREAD\fR) is not allowed unless \fITHREAD\fR(\fI*CONCURRENT\fR) is specified on the Control specification\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The \fISTATIC\fR keyword is implied for global variables\[char46] The \fISTATIC\fR keyword cannot be specified for a global variable unless \fI*ALLTHREAD\fR is specified as a parameter\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] A variable defined with \fISTATIC\fR(\fI*ALLTHREAD\fR) cannot be initialized to the address of variables which are not also defined with \fISTATIC\fR(\fI*ALLTHREAD\fR)\[char46]
+.RE
+.PP
+
+Caution: It is up to you to ensure that a static variable used in all threads is handled in a thread-safe manner\[char46] See the "Multithreading Considerations" section in the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide, and \[char46]
+
+
+ Tip: It is a good idea to have a naming convention for your all-thread static variables to alert maintenance programmers and code reviewers that the variables need special handling\[char46] For example, you could add the prefix \fIATS\fR_ to all your variable names that are defined with \fISTATIC\fR(\fI*ALLTHREAD\fR)\[char46]
+
+
+For a Java method, the \fISTATIC\fR keyword specifies that the method is defined as static\[char46] If \fISTATIC\fR is not specified, the method is assumed to be an instance method\[char46] You must code the \fISTATIC\fR keyword for your prototype if and only if the Java method has the "static" attribute\[char46] The \fI*ALLTHREAD\fR parameter is not allowed when the \fISTATIC\fR keyword is specified for a prototype\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

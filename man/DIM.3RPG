@@ -1,0 +1,44 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh527.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DIM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+DIM
+.SH SYNOPSIS
+.nf
+DIM(numeric_constant)
+.fi
+.SH DESCRIPTION
+The \fIDIM\fR keyword defines the number of elements in an array, table, a prototyped parameter, array data structure, or a return value on a prototype or procedure-interface definition\[char46]
+
+
+The numeric constant must have zero (0) decimal positions\[char46] It can be a literal, a named constant or a built-in function\[char46]
+
+
+The constant value does not need to be known at the time the keyword is processed, but the value must be known at compile-time\[char46]
+
+
+When \fIDIM\fR is specified on a data structure definition, the data structure must be a qualified data structure, and subfields must be referenced as fully qualified names, i\[char46]e\[char46] "dsname(x)\[char46]subf"\[char46] Other array keywords, such as \fICTDATA\fR, \fIFROMFILE\fR, \fITOFILE\fR, and \fIPERRCD\fR are not allowed with an array data structure definition\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
