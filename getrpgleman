@@ -215,8 +215,6 @@ sub read_url
 {
 	my ($url, $man_file_name) = @_;
 
-	print STDERR $url . "\n";
-
 	my $resp = HTTP::Tiny->new->get($url);
 	if (!$resp->{success}) {
 		print STDERR $resp->{reason} . "\n" . $resp->{content};
@@ -319,10 +317,10 @@ sub read_url
 	$tree->delete;
 }
 
-while (<>) {
-	s{ \r? \n }{}xms;
-	next if m{ ^ \# | ^ \h* $ }xms;
-	read_url($_);
+for (@ARGV) {
+	my $url = "https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh$_.htm?view=embed";
+	read_url($url);
+
 }
 
 # vim: tabstop=4 shiftwidth=4
