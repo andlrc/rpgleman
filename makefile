@@ -1,320 +1,379 @@
-MANDIR	= $(PREFIX)/usr/share/man/man3RPG
+MANDIR	= $(PREFIX)/usr/share/man
 
-all: bif keywords
+all: bif kw cd
 
-bif:	%ABS %ADDR %ALLOC %BITAND %BITNOT %BITOR %BITXOR %CHAR %CHECK  \
-	%CHECKR %DATE %DAYS %DEC %DECH %DECPOS %DIFF %DIV %EDITC       \
-	%EDITFLT %EDITW %ELEM %EOF %EQUAL %ERROR %FIELDS %FLOAT %FOUND \
-	%GRAPH %HANDLER %HOURS %INT %INTH %KDS %LEN %LOOKUPxx %MAX     \
-	%MIN %MINUTES %MONTHS %MSECONDS %NULLIND %OCCUR %OPEN %PADDR   \
-	%PARMNUM %PARMS %REALLOC %REM %REPLACE %SCAN %SCANRPL %SECONDS \
-	%SHTDN %SIZE %SQRT %STATUS %STR %SUBARR %SUBDT %SUBST %THIS    \
-	%TIME %TIMESTAMP %TLOOKUPxx %TRIM %TRIML %TRIMR %UCS2 %UNS     \
-	%UNSH %XFOOT %XLATE %XML %YEARS 
+# Built-in Functions
+bif:	bif_ABS		bif_ADDR	bif_ALLOC	bif_BITAND	\
+	bif_BITNOT	bif_BITOR	bif_BITXOR	bif_CHAR	\
+	bif_CHECK	bif_CHECKR	bif_DATE	bif_DAYS	\
+	bif_DEC		bif_DECH	bif_DECPOS	bif_DIFF	\
+	bif_DIV		bif_EDITC	bif_EDITFLT	bif_EDITW	\
+	bif_ELEM	bif_EOF		bif_EQUAL	bif_ERROR	\
+	bif_FIELDS	bif_FLOAT	bif_FOUND	bif_GRAPH	\
+	bif_HANDLER	bif_HOURS	bif_INT		bif_INTH	\
+	bif_KDS		bif_LEN		bif_LOOKUPxx	bif_MAX		\
+	bif_MIN		bif_MINUTES	bif_MONTHS	bif_MSECONDS	\
+	bif_NULLIND	bif_OCCUR	bif_OPEN	bif_PADDR	\
+	bif_PARMNUM	bif_PARMS	bif_REALLOC	bif_REM	\
+	bif_REPLACE	bif_SCAN	bif_SCANRPL	bif_SECONDS	\
+	bif_SHTDN	bif_SIZE	bif_SQRT	bif_STATUS	\
+	bif_STR		bif_SUBARR	bif_SUBDT	bif_SUBST	\
+	bif_THIS	bif_TIME	bif_TIMESTAMP	bif_TLOOKUPxx	\
+	bif_TRIM	bif_TRIML	bif_TRIMR	bif_UCS2	\
+	bif_UNS		bif_UNSH	bif_XFOOT	bif_XLATE	\
+	bif_XML		bif_YEARS	
 
-keywords: ALIAS ALIGN ALT ALTSEQ ASCEND BASED BINDEC CCSID CHAR CLASS  \
-	CONST CTDATA DATE DATFMT DESCEND DIM DTAARA EXPORT EXT EXTFLD  \
-	EXTFMT EXTNAME EXTPGM EXTPROC FLOAT FROMFILE GRAPH IMPORT INT  \
-	IND INZ LEN LIKE LIKEDS LIKEFILE LIKEREC NOOPT NULLIND OBJECT  \
-	OCCURS OPDESC OPTIONS OVERLAY PACKED PACKEVEN PERRCD POINTER   \
-	POS PREFIX PROCPTR PSDS QUALIFIED RTNPARM STATIC TEMPLATE TIME \
-	TIMESTAMP TIMFMT TOFILE UCS2 UNS VALUE VARCHAR VARGRAPH        \
-	VARUCS2 VARYING ZONED
+# Keywords
+kw:	kw_ALIAS	kw_ALIGN	kw_ALT		kw_ALTSEQ	\
+	kw_ASCEND	kw_BASED	kw_BINDEC	kw_CCSID	\
+	kw_CHAR		kw_CLASS	kw_CONST	kw_CTDATA	\
+	kw_DATE		kw_DATFMT	kw_DESCEND	kw_DIM		\
+	kw_DTAARA	kw_EXPORT	kw_EXT		kw_EXTFLD	\
+	kw_EXTFMT	kw_EXTNAME	kw_EXTPGM	kw_EXTPROC	\
+	kw_FLOAT	kw_FROMFILE	kw_GRAPH	kw_IMPORT	\
+	kw_INT		kw_IND		kw_INZ		kw_LEN		\
+	kw_LIKE		kw_LIKEDS	kw_LIKEFILE	kw_LIKEREC	\
+	kw_NOOPT	kw_NULLIND	kw_OBJECT	kw_OCCURS	\
+	kw_OPDESC	kw_OPTIONS	kw_OVERLAY	kw_PACKED	\
+	kw_PACKEVEN	kw_PERRCD	kw_POINTER	kw_POS		\
+	kw_PREFIX	kw_PROCPTR	kw_PSDS		kw_QUALIFIED	\
+	kw_RTNPARM	kw_STATIC	kw_TEMPLATE	kw_TIME		\
+	kw_TIMESTAMP	kw_TIMFMT	kw_TOFILE	kw_UCS2		\
+	kw_UNS		kw_VALUE	kw_VARCHAR	kw_VARGRAPH	\
+	kw_VARUCS2	kw_VARYING	kw_ZONED
+
+# Compiler Directives
+cd:	cd_TITLE	cd_EJECT	cd_SPACE	cd_SET		\
+	cd_RESTORE	cd_COPY		cd_INCLUDE	cd_DEFINE	\
+	cd_UNDEFINE	cd_IF		cd_ELSEIF	cd_ELSE		\
+	cd_ENDIF	cd_EOF		cd_FREE		cd_END-FREE
 
 clean:
-	-rm man/*.3RPG
+	-rm -r man/man*
 
 install:
-	mkdir -p $(MANDIR)
-	cp man/* $(MANDIR)
+	cp -r man/man* $(MANDIR)
 
 uninstall:
-	rm -r $(MANDIR)
+	rm -r $(MANDIR)/man3RPG*
 
 # BIF
-\%ABS:
+bif_ABS:
 	./getrpgleman bbabs
-\%ADDR:
+bif_ADDR:
 	./getrpgleman bbaddr
-\%ALLOC:
+bif_ALLOC:
 	./getrpgleman bballoc
-\%BITAND:
+bif_BITAND:
 	./getrpgleman bband
-\%BITNOT:
+bif_BITNOT:
 	./getrpgleman bbnot
-\%BITOR:
+bif_BITOR:
 	./getrpgleman bbor
-\%BITXOR:
+bif_BITXOR:
 	./getrpgleman bbxor
-\%CHAR:
+bif_CHAR:
 	./getrpgleman bbchar
-\%CHECK:
+bif_CHECK:
 	./getrpgleman bbchk
-\%CHECKR:
+bif_CHECKR:
 	./getrpgleman bbchkr
-\%DATE:
+bif_DATE:
 	./getrpgleman bbdate
-\%DAYS:
+bif_DAYS:
 	./getrpgleman bbday
-\%DEC:
+bif_DEC:
 	./getrpgleman bbdec
-\%DECH:
+bif_DECH:
 	./getrpgleman bbdech
-\%DECPOS:
+bif_DECPOS:
 	./getrpgleman bbdecp
-\%DIFF:
+bif_DIFF:
 	./getrpgleman bbdif
-\%DIV:
+bif_DIV:
 	./getrpgleman bbdiv
-\%EDITC:
+bif_EDITC:
 	./getrpgleman bbeditc
-\%EDITFLT:
+bif_EDITFLT:
 	./getrpgleman bbeditf
-\%EDITW:
+bif_EDITW:
 	./getrpgleman bbeditw
-\%ELEM:
+bif_ELEM:
 	./getrpgleman bbelem
-\%EOF:
+bif_EOF:
 	./getrpgleman bbeof
-\%EQUAL:
+bif_EQUAL:
 	./getrpgleman bbequal
-\%ERROR:
+bif_ERROR:
 	./getrpgleman bberror
-\%FIELDS:
+bif_FIELDS:
 	./getrpgleman bbfields
-\%FLOAT:
+bif_FLOAT:
 	./getrpgleman bbfloat
-\%FOUND:
+bif_FOUND:
 	./getrpgleman bbfound
-\%GRAPH:
+bif_GRAPH:
 	./getrpgleman bbgraph
-\%HANDLER:
+bif_HANDLER:
 	./getrpgleman bbhandl
-\%HOURS:
+bif_HOURS:
 	./getrpgleman bbhou
-\%INT:
+bif_INT:
 	./getrpgleman bbint
-\%INTH:
+bif_INTH:
 	./getrpgleman bbinth
-\%KDS:
+bif_KDS:
 	./getrpgleman bbkds
-\%LEN:
+bif_LEN:
 	./getrpgleman bblen
-\%LOOKUPxx:
+bif_LOOKUPxx:
 	./getrpgleman bbloo
-\%MAX:
+bif_MAX:
 	./getrpgleman bbmaxvalue
-\%MIN:
+bif_MIN:
 	./getrpgleman bbminvalue
-\%MINUTES:
+bif_MINUTES:
 	./getrpgleman bbmin
-\%MONTHS:
+bif_MONTHS:
 	./getrpgleman bbmon
-\%MSECONDS:
+bif_MSECONDS:
 	./getrpgleman bbmsec
-\%NULLIND:
+bif_NULLIND:
 	./getrpgleman bbnull
-\%OCCUR:
+bif_OCCUR:
 	./getrpgleman bboccur
-\%OPEN:
+bif_OPEN:
 	./getrpgleman bbopen
-\%PADDR:
+bif_PADDR:
 	./getrpgleman bbpaddr
-\%PARMNUM:
+bif_PARMNUM:
 	./getrpgleman bbparmnum
-\%PARMS:
+bif_PARMS:
 	./getrpgleman bbparm
-\%REALLOC:
+bif_REALLOC:
 	./getrpgleman bbreall
-\%REM:
+bif_REM:
 	./getrpgleman bbrem
-\%REPLACE:
+bif_REPLACE:
 	./getrpgleman bbrepl
-\%SCAN:
+bif_SCAN:
 	./getrpgleman bbscan
-\%SCANR:
+bif_SCANR:
 	./getrpgleman bbscanr
-\%SCANRPL:
+bif_SCANRPL:
 	./getrpgleman bbscanrp
-\%SECONDS:
+bif_SECONDS:
 	./getrpgleman bbsec
-\%SHTDN:
+bif_SHTDN:
 	./getrpgleman bbshut
-\%SIZE:
+bif_SIZE:
 	./getrpgleman bbsize
-\%SQRT:
+bif_SQRT:
 	./getrpgleman bbsqrt
-\%STATUS:
+bif_STATUS:
 	./getrpgleman bbstat
-\%STR:
+bif_STR:
 	./getrpgleman bbstr
-\%SUBARR:
+bif_SUBARR:
 	./getrpgleman bbsubarr
-\%SUBDT:
+bif_SUBDT:
 	./getrpgleman bbsubd
-\%SUBST:
+bif_SUBST:
 	./getrpgleman bbsubs9
-\%THIS:
+bif_THIS:
 	./getrpgleman bbthis
-\%TIME:
+bif_TIME:
 	./getrpgleman bbtime
-\%TIMESTAMP:
+bif_TIMESTAMP:
 	./getrpgleman bbtmst
-\%TLOOKUPxx:
+bif_TLOOKUPxx:
 	./getrpgleman bbtloo
-\%TRIM:
+bif_TRIM:
 	./getrpgleman bbtrim
-\%TRIML:
+bif_TRIML:
 	./getrpgleman bbtriml
-\%TRIMR:
+bif_TRIMR:
 	./getrpgleman bbtrimr
-\%UCS2:
+bif_UCS2:
 	./getrpgleman bbucs2
-\%UNS:
+bif_UNS:
 	./getrpgleman bbuns
-\%UNSH:
+bif_UNSH:
 	./getrpgleman bbunsh
-\%XFOOT:
+bif_XFOOT:
 	./getrpgleman bbxfoot
-\%XLATE:
+bif_XLATE:
 	./getrpgleman bbxlat
-\%XML:
+bif_XML:
 	./getrpgleman bbxml
-\%YEARS:
+bif_YEARS:
 	./getrpgleman bbyear
 
 # Keywords
-ALIAS:
+kw_ALIAS:
 	./getrpgleman dalias
-ALIGN:
+kw_ALIGN:
 	./getrpgleman dalign
-ALT:
+kw_ALT:
 	./getrpgleman dalt
-ALTSEQ:
+kw_ALTSEQ:
 	./getrpgleman daltsq
-ASCEND:
+kw_ASCEND:
 	./getrpgleman dascend
-BASED:
+kw_BASED:
 	./getrpgleman dbased
-BINDEC:
+kw_BINDEC:
 	./getrpgleman dkwbindec
-CCSID:
+kw_CCSID:
 	./getrpgleman dccsid
-CHAR:
+kw_CHAR:
 	./getrpgleman dkwchar
-CLASS:
+kw_CLASS:
 	./getrpgleman dclass
-CONST:
+kw_CONST:
 	./getrpgleman dconst
-CTDATA:
+kw_CTDATA:
 	./getrpgleman dctdata
-DATE:
+kw_DATE:
 	./getrpgleman dkwdate
-DATFMT:
+kw_DATFMT:
 	./getrpgleman ddatfmt
-DESCEND:
+kw_DESCEND:
 	./getrpgleman ddescnd
-DIM:
+kw_DIM:
 	./getrpgleman ddim
-DTAARA:
+kw_DTAARA:
 	./getrpgleman ddtaara
-EXPORT:
+kw_EXPORT:
 	./getrpgleman dexport
-EXT:
+kw_EXT:
 	./getrpgleman dkwext
-EXTFLD:
+kw_EXTFLD:
 	./getrpgleman dextfld
-EXTFMT:
+kw_EXTFMT:
 	./getrpgleman dextfmt
-EXTNAME:
+kw_EXTNAME:
 	./getrpgleman dextnam
-EXTPGM:
+kw_EXTPGM:
 	./getrpgleman dextpgm
-EXTPROC:
+kw_EXTPROC:
 	./getrpgleman dextprc
-FLOAT:
+kw_FLOAT:
 	./getrpgleman dkwfloat
-FROMFILE:
+kw_FROMFILE:
 	./getrpgleman dfrfile
-GRAPH:
+kw_GRAPH:
 	./getrpgleman dkwgraph
-IMPORT:
+kw_IMPORT:
 	./getrpgleman dimport
-INT:
+kw_INT:
 	./getrpgleman dkwint
-IND:
+kw_IND:
 	./getrpgleman dkwind
-INZ:
+kw_INZ:
 	./getrpgleman dinz
-LEN:
+kw_LEN:
 	./getrpgleman dkwlen
-LIKE:
+kw_LIKE:
 	./getrpgleman dlike
-LIKEDS:
+kw_LIKEDS:
 	./getrpgleman dlikeds
-LIKEFILE:
+kw_LIKEFILE:
 	./getrpgleman dlikefile
-LIKEREC:
+kw_LIKEREC:
 	./getrpgleman dlikerec
-NOOPT:
+kw_NOOPT:
 	./getrpgleman dnoopt
-NULLIND:
+kw_NULLIND:
 	./getrpgleman dkwnullind
-OBJECT:
+kw_OBJECT:
 	./getrpgleman dkwobject
-OCCURS:
+kw_OCCURS:
 	./getrpgleman doccurs
-OPDESC:
+kw_OPDESC:
 	./getrpgleman dopdesc
-OPTIONS:
+kw_OPTIONS:
 	./getrpgleman doptns
-OVERLAY:
+kw_OVERLAY:
 	./getrpgleman doverly
-PACKED:
+kw_PACKED:
 	./getrpgleman dkwpacked
-PACKEVEN:
+kw_PACKEVEN:
 	./getrpgleman dpackev
-PERRCD:
+kw_PERRCD:
 	./getrpgleman dperrcd
-POINTER:
+kw_POINTER:
 	./getrpgleman dkwpointer
-POS:
+kw_POS:
 	./getrpgleman dkwpos
-PREFIX:
+kw_PREFIX:
 	./getrpgleman dprefix
-PROCPTR:
+kw_PROCPTR:
 	./getrpgleman dprcptr
-PSDS:
+kw_PSDS:
 	./getrpgleman dkwpsds
-QUALIFIED:
+kw_QUALIFIED:
 	./getrpgleman dqualif
-RTNPARM:
+kw_RTNPARM:
 	./getrpgleman drtnparm
-STATIC:
+kw_STATIC:
 	./getrpgleman dstatic
-TEMPLATE:
+kw_TEMPLATE:
 	./getrpgleman dtemplatekw
-TIME:
+kw_TIME:
 	./getrpgleman dkwtime
-TIMESTAMP:
+kw_TIMESTAMP:
 	./getrpgleman dkwtimestamp
-TIMFMT:
+kw_TIMFMT:
 	./getrpgleman dtimfmt
-TOFILE:
+kw_TOFILE:
 	./getrpgleman dtofile
-UCS2:
+kw_UCS2:
 	./getrpgleman dkwucs2
-UNS:
+kw_UNS:
 	./getrpgleman dkwuns
-VALUE:
+kw_VALUE:
 	./getrpgleman dvalue
-VARCHAR:
+kw_VARCHAR:
 	./getrpgleman dkwvarchar
-VARGRAPH:
+kw_VARGRAPH:
 	./getrpgleman dkwvargraph
-VARUCS2:
+kw_VARUCS2:
 	./getrpgleman dkwvarucs2
-VARYING:
+kw_VARYING:
 	./getrpgleman dvaryg
-ZONED:
+kw_ZONED:
 	./getrpgleman dkwzoned
+
+cd_TITLE:
+	./getrpgleman --section 3RPGCOMPDIR cdtitle
+cd_EJECT:
+	./getrpgleman --section 3RPGCOMPDIR cdeject
+cd_SPACE:
+	./getrpgleman --section 3RPGCOMPDIR cdspace
+cd_SET:
+	./getrpgleman --section 3RPGCOMPDIR cdset
+cd_RESTORE:
+	./getrpgleman --section 3RPGCOMPDIR cdrestore
+cd_COPY:
+	./getrpgleman --section 3RPGCOMPDIR --name COPY cdcopy
+cd_INCLUDE:
+	./getrpgleman --section 3RPGCOMPDIR --name INCLUDE cdcopy
+cd_DEFINE:
+	./getrpgleman --section 3RPGCOMPDIR cddef
+cd_UNDEFINE:
+	./getrpgleman --section 3RPGCOMPDIR cdund
+cd_IF:
+	./getrpgleman --section 3RPGCOMPDIR cdif
+cd_ELSEIF:
+	./getrpgleman --section 3RPGCOMPDIR cdeif
+cd_ELSE:
+	./getrpgleman --section 3RPGCOMPDIR cdels
+cd_ENDIF:
+	./getrpgleman --section 3RPGCOMPDIR cdendif
+cd_EOF:
+	./getrpgleman --section 3RPGCOMPDIR cdeof
+cd_FREE:
+	./getrpgleman --section 3RPGCOMPDIR --name FREE freefree
+cd_END-FREE:
+	./getrpgleman --section 3RPGCOMPDIR --name END-FREE freefree

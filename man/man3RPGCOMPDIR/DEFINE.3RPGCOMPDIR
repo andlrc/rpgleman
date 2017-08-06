@@ -1,0 +1,24 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/cddef.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DEFINE 3RPGCOMPDIR  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DEFINE
+.SH DESCRIPTION
+The /\fIDEFINE\fR compiler directive defines conditions for conditional compilation\[char46] The entries in the condition-name area are free-format (do not have to be left justified)\[char46]
+
+
+/\fIDEFINE\fR must be followed by at least one space, and then the condition-name must be specified on the same line\[char46] The remainder of the line must be blank\[char46]
+
+
+See Compiler Directives for information on the columns available for directives\[char46]
+
+
+/\fIDEFINE\fR cannot be specified within a free-form statement\[char46]
+
+
+

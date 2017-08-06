@@ -1,0 +1,57 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/cdeof.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EOF 3RPGCOMPDIR  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+EOF
+.SH DESCRIPTION
+The /\fIEOF\fR compiler directive is used to indicate that the compiler should consider that end-of-file has been reached for the current source file\[char46]
+
+
+See Compiler Directives for information on the columns available for directives\[char46]
+
+
+The remainder of the line containing /\fIEOF\fR must be blank\[char46]
+
+
+
+
+
+
+Using the /\fIEOF\fR directive will enhance compile-time performance when an entire /\fICOPY\fR member is to be used only once, but may be copied in multiple times\[char46] (This is not true if excluded lines are being printed)\[char46]
+
+
+The following is an example of the /\fIEOF\fR directive\[char46]
+
+.SH EXAMPLE
+/\fIEOF\fR Directive
+.PP
+.nf
+      *-----------------------------------------------------------------
+      * Main source file
+      *-----------------------------------------------------------------
+      \[char46]\[char46]\[char46]\[char46]
+      /IF DEFINED(READ_XYZ)                       Â 1Â
+      /COPY XYZ
+      /ENDIF                                      Â 2Â
+      \[char46]\[char46]\[char46]\[char46]
+      *-----------------------------------------------------------------
+      * /COPY file XYZ
+      *-----------------------------------------------------------------
+      /IF DEFINED(XYZ_COPIED)                     Â 3Â
+      /EOF
+      /ELSE
+      /DEFINE XYZ_COPIED
+       D \[char46]\[char46]\[char46]\[char46]\[char46]
+      /ENDIF
+.fi
+
+The first time this /\fICOPY\fR member is read, \fIXYZ\fR_COPIED will not be defined, so the /\fIEOF\fR will not be considered\[char46]
+
+
+The second time this member is read, \fIXYZ\fR_COPIED is defined, so the /\fIEOF\fR is processed\[char46] The /IF \fIDEFINED\fR(\fIXYZ\fR_COPIED) (Â 3Â ) is considered ended, and the file is closed\[char46] However, the /IF \fIDEFINED\fR(\fIREAD\fR_XYZ) (Â 1Â ) from the main source member is still active until its own /\fIENDIF\fR (Â 2Â ) is reached\[char46]
+

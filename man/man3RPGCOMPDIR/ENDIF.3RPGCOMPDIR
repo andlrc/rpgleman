@@ -1,0 +1,22 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/cdendif.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ENDIF 3RPGCOMPDIR  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ENDIF
+.SH DESCRIPTION
+The /\fIENDIF\fR compiler directive is used to end the most recent /IF, /\fIELSEIF\fR or /\fIELSE\fR group\[char46]
+
+
+/\fIENDIF\fR can be specified within any free-form statement other than a free-form calculation statement\[char46] See Conditional Directives Within a Free-Form Statement\[char46]
+
+
+The remainder of the line containing /\fIENDIF\fR must be blank\[char46]
+
+
+Following the /\fIENDIF\fR directive, if the matching /IF directive was a selected line, lines are unconditionally selected\[char46] Otherwise, the entire /IF group was not selected, so lines continue to be not selected\[char46]
+

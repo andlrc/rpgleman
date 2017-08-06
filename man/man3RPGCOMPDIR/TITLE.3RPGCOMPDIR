@@ -1,0 +1,28 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/cdtitle.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TITLE 3RPGCOMPDIR  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+TITLE
+.SH DESCRIPTION
+Use the compiler directive /\fITITLE\fR to specify heading information (such as security classification or titles) that is to appear at the top of each page of the compiler listing\[char46]
+
+
+See Compiler Directives for information on the columns available for directives\[char46]
+
+
+/\fITITLE\fR must be followed by a blank\[char46] The data following the blank is printed at the top of each subsequent page of the listing\[char46]
+
+
+/\fITITLE\fR cannot be coded within a free-form statement\[char46]
+
+
+A program can contain more than one /\fITITLE\fR statement\[char46] Each /\fITITLE\fR statement provides heading information for the compiler listing until another /\fITITLE\fR statement is encountered\[char46] A /\fITITLE\fR statement must be the first \fIRPG\fR specification encountered to print information on the first page of the compiler listing\[char46] The information specified by the /\fITITLE\fR statement is printed in addition to compiler heading information\[char46]
+
+
+The /\fITITLE\fR statement causes a skip to the next page before the title is printed\[char46] The /\fITITLE\fR statement is not printed on the compiler listing\[char46]
+

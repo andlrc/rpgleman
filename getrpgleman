@@ -6,6 +6,7 @@ use warnings;
 use HTTP::Tiny;
 use HTML::TreeBuilder::XPath;
 use POSIX qw{strftime};
+use Getopt::Long qw{:config no_ignore_case gnu_compat bundling};
 use Data::Dumper;
 
 sub trim
@@ -23,7 +24,9 @@ sub man_build
 	for my $short_name (@{$man->{short_names}}) {
 		$short_name =~ s{ \h+ }{_}xmsg,
 
-		my $out_file = "man/$short_name.$man->{section}";
+		my $out_dir  = "man/man$man->{section}";
+		my $out_file = "$out_dir/$short_name.$man->{section}";
+		mkdir $out_dir or die("$out_dir $!") unless -d $out_dir;
 		open (my $fh, '>:utf8', $out_file) or die("$out_file $!");
 
 		# Header
@@ -252,7 +255,7 @@ sub man_highlight
 
 sub read_url
 {
-	my ($url, $man_file_name) = @_;
+	my ($url, $config) = @_;
 
 	my $resp = HTTP::Tiny->new->get($url);
 	if (!$resp->{success}) {
@@ -274,6 +277,10 @@ sub read_url
 		"see_also" => []
 	};
 
+	for (keys %{$config}) {
+		$man->{$_} = $config->{$_} if defined $config->{$_};
+	}
+
 	my $tree = HTML::TreeBuilder::XPath->new;
 	my $content = $resp->{content};
 	$content =~ s{ \r }{}xmsg;
@@ -287,15 +294,16 @@ sub read_url
 
 	# Name
 	my $nameText = ($tree->findnodes_as_strings('//h1'))[0];
-	if ($nameText =~ m{ ( %? \w+ ) \h+ \( (.*) \) }xms) {
+	if ($man->{orig_short_name}) {
+		$man->{name} = $nameText;
+	} elsif ($nameText =~ m{ ( %? \w+ ) \h+ \( (.*) \) }xms) {
 		$man->{name} = $2;
 		$man->{orig_short_name} = $1;
-		push @{$man->{short_names}}, $man->{orig_short_name};
 	} else {
 		$nameText =~ m{ ( \w+ ) }xms;
 		$man->{orig_short_name} = $1;
-		push @{$man->{short_names}}, $man->{orig_short_name};
 	}
+	push @{$man->{short_names}}, $man->{orig_short_name};
 
 	# Sometimes the name is the synopsis
 	$man->{synopsis} = $nameText if $nameText =~ m{ ^ \w+ [\{\(] }xms;
@@ -354,9 +362,15 @@ sub read_url
 	$tree->delete;
 }
 
+my $man = {};
+GetOptions(
+	'n|name=s' => \$man->{orig_short_name},
+	's|section=s' => \$man->{section}
+) or exit 1;
+
 for (@ARGV) {
 	my $url = "https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/$_.htm?view=embed";
-	exit 1 if read_url($url);
+	exit 1 if read_url($url, $man);
 }
 
 # vim: tabstop=4 shiftwidth=4

@@ -1,0 +1,25 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/cdeif.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ELSEIF 3RPGCOMPDIR  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ELSEIF
+.SH DESCRIPTION
+The /\fIELSEIF\fR compiler directive is used to test a condition expression within an /IF or /\fIELSEIF\fR group\[char46]
+
+
+/\fIELSEIF\fR must be followed by at least one space, and then the condition expression must be specified on the same line\[char46] Following the condition expression, the remainder of the line must be blank\[char46]
+
+
+See Compiler Directives for information on the columns available for directives\[char46]
+
+
+/\fIELSEIF\fR can be specified in any free-form statement other than a free-form calculation statement\[char46] See Conditional Directives Within a Free-Form Statement\[char46]
+
+
+If the previous /IF or /\fIELSEIF\fR was not satisfied, and the condition expression is true, then source lines following the /\fIELSEIF\fR directive are selected to be read\[char46] Otherwise, lines are excluded until the next /\fIELSEIF\fR, /\fIELSE\fR or /\fIENDIF\fR in the same /IF group is encountered\[char46]
+

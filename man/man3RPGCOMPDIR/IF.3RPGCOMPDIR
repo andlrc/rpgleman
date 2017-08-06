@@ -1,0 +1,25 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/cdif.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH IF 3RPGCOMPDIR  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+IF
+.SH DESCRIPTION
+The /IF compiler directive is used to test a condition expression for conditional compilation\[char46]
+
+
+/IF must be followed by at least one space, and then the condition expression must be specified on the same line\[char46] Following the condition expression, the remainder of the line must be blank\[char46]
+
+
+See Compiler Directives for information on the columns available for directives\[char46]
+
+
+/IF can be specified in any free-form statement other than a free-form calculation statement\[char46] See Conditional Directives Within a Free-Form Statement\[char46]
+
+
+If the condition expression is true, source lines following the /IF directive are selected to be read by the compiler\[char46] Otherwse, lines are excluded until the next /\fIELSEIF\fR, /\fIELSE\fR or /\fIENDIF\fR in the same /IF group\[char46]
+

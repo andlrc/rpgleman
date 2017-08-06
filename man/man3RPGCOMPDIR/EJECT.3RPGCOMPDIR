@@ -1,0 +1,22 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/cdeject.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EJECT 3RPGCOMPDIR  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+EJECT
+.SH DESCRIPTION
+See Compiler Directives for information on the columns available for directives\[char46]
+
+
+/\fIEJECT\fR must be followed by at least two blanks\[char46] The remaining columns can contain comments\[char46]
+
+
+/\fIEJECT\fR cannot be coded within a free-form statement\[char46]
+
+
+Use /\fIEJECT\fR to indicate that subsequent specifications are to begin on a new page of the compiler listing\[char46] If the spool file is already at the top of a new page, /\fIEJECT\fR will not advance to a new page\[char46] /\fIEJECT\fR is not printed on the compiler listing\[char46]
+

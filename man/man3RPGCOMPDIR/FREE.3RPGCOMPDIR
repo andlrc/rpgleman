@@ -1,0 +1,16 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/freefree.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH FREE 3RPGCOMPDIR  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+FREE - /FREE... /END-FREE
+.SH DESCRIPTION
+In earlier releases, the /\fIFREE\fR compiler directive specified the beginning of a free-form calculation specifications block\[char46] /\fIEND-FREE\fR specified the end of the block\[char46]
+
+
+If you code the /\fIFREE\fR or /\fIEND-FREE\fR directive, it will be ignored, but the syntax of the directive will be checked\[char46] The columns following the directive must be blank\[char46] See Free-Form Statements for information on free-form statements\[char46]
+

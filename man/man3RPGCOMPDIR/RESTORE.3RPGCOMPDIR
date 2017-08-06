@@ -1,0 +1,34 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/cdrestore.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH RESTORE 3RPGCOMPDIR  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+RESTORE
+.SH DESCRIPTION
+
+
+.TP 5
+.B \fICCSID\fR(\fI*CHAR\fR)
+Undoes the effect of the previous /\fISET\fR directive containing the \fICCSID\fR(\fI*CHAR\fR) keyword\[char46]
+.TP 5
+.B \fICCSID\fR(\fI*GRAPH\fR)
+Undoes the effect of the previous /\fISET\fR directive containing the \fICCSID\fR(\fI*GRAPH\fR) keyword\[char46]
+.TP 5
+.B \fICCSID\fR(\fI*UCS2\fR)
+Undoes the effect of the previous /\fISET\fR directive containing the \fICCSID\fR(\fI*UCS2\fR) keyword\[char46]
+.TP 5
+.B \fIDATFMT\fR
+Undoes the effect of the previous /\fISET\fR directive containing the \fIDATFMT\fR keyword\[char46]
+.TP 5
+.B \fITIMFMT\fR
+Undoes the effect of the previous /\fISET\fR directive containing the \fITIMFMT\fR keyword\[char46]
+.PP
+
+
+
+See /\fISET\fR for information about the rules for /\fISET\fR and /\fIRESTORE\fR, and examples\[char46]
+
