@@ -44,149 +44,149 @@ uninstall:
 	rm -r $(MANDIR)
 
 # BIF
-%ABS:
+\%ABS:
 	./getrpgleman 814
-%ADDR:
+\%ADDR:
 	./getrpgleman 815
-%ALLOC:
+\%ALLOC:
 	./getrpgleman 816
-%BITAND:
+\%BITAND:
 	./getrpgleman 817
-%BITNOT:
+\%BITNOT:
 	./getrpgleman 818
-%BITOR:
+\%BITOR:
 	./getrpgleman 819
-%BITXOR:
+\%BITXOR:
 	./getrpgleman 820
-%CHAR:
+\%CHAR:
 	./getrpgleman 822
-%CHECK:
+\%CHECK:
 	./getrpgleman 823
-%CHECKR:
+\%CHECKR:
 	./getrpgleman 824
-%DATE:
+\%DATE:
 	./getrpgleman 825
-%DAYS:
+\%DAYS:
 	./getrpgleman 826
-%DEC:
+\%DEC:
 	./getrpgleman 827
-%DECH:
+\%DECH:
 	./getrpgleman 830
-%DECPOS:
+\%DECPOS:
 	./getrpgleman 832
-%DIFF:
+\%DIFF:
 	./getrpgleman 833
-%DIV:
+\%DIV:
 	./getrpgleman 834
-%EDITC:
+\%EDITC:
 	./getrpgleman 835
-%EDITFLT:
+\%EDITFLT:
 	./getrpgleman 836
-%EDITW:
+\%EDITW:
 	./getrpgleman 837
-%ELEM:
+\%ELEM:
 	./getrpgleman 838
-%EOF:
+\%EOF:
 	./getrpgleman 839
-%EQUAL:
+\%EQUAL:
 	./getrpgleman 840
-%ERROR:
+\%ERROR:
 	./getrpgleman 841
-%FIELDS:
+\%FIELDS:
 	./getrpgleman 842
-%FLOAT:
+\%FLOAT:
 	./getrpgleman 843
-%FOUND:
+\%FOUND:
 	./getrpgleman 844
-%GRAPH:
+\%GRAPH:
 	./getrpgleman 845
-%HANDLER:
+\%HANDLER:
 	./getrpgleman 846
-%HOURS:
+\%HOURS:
 	./getrpgleman 847
-%INT:
+\%INT:
 	./getrpgleman 848
-%INTH:
+\%INTH:
 	./getrpgleman 849
-%KDS:
+\%KDS:
 	./getrpgleman 850
-%LEN:
+\%LEN:
 	./getrpgleman 851
-%LOOKUPxx:
+\%LOOKUPxx:
 	./getrpgleman 855
-%MINUTES:
+\%MINUTES:
 	./getrpgleman 857
-%MONTHS:
+\%MONTHS:
 	./getrpgleman 858
-%MSECONDS:
+\%MSECONDS:
 	./getrpgleman 859
-%NULLIND:
+\%NULLIND:
 	./getrpgleman 860
-%OCCUR:
+\%OCCUR:
 	./getrpgleman 861
-%OPEN:
+\%OPEN:
 	./getrpgleman 862
-%PADDR:
+\%PADDR:
 	./getrpgleman 863
-%PARMNUM:
+\%PARMNUM:
 	./getrpgleman 866
-%PARMS:
+\%PARMS:
 	./getrpgleman 865
-%REALLOC:
+\%REALLOC:
 	./getrpgleman 867
-%REM:
+\%REM:
 	./getrpgleman 868
-%REPLACE:
+\%REPLACE:
 	./getrpgleman 869
-%SCAN:
+\%SCAN:
 	./getrpgleman 870
-%SCANRPL:
+\%SCANRPL:
 	./getrpgleman 871
-%SECONDS:
+\%SECONDS:
 	./getrpgleman 872
-%SHTDN:
+\%SHTDN:
 	./getrpgleman 873
-%SIZE:
+\%SIZE:
 	./getrpgleman 874
-%SQRT:
+\%SQRT:
 	./getrpgleman 875
-%STATUS:
+\%STATUS:
 	./getrpgleman 876
-%STR:
+\%STR:
 	./getrpgleman 877
-%SUBARR:
+\%SUBARR:
 	./getrpgleman 880
-%SUBDT:
+\%SUBDT:
 	./getrpgleman 881
-%SUBST:
+\%SUBST:
 	./getrpgleman 882
-%THIS:
+\%THIS:
 	./getrpgleman 885
-%TIME:
+\%TIME:
 	./getrpgleman 886
-%TIMESTAMP:
+\%TIMESTAMP:
 	./getrpgleman 887
-%TLOOKUPxx:
+\%TLOOKUPxx:
 	./getrpgleman 888
-%TRIM:
+\%TRIM:
 	./getrpgleman 889
-%TRIML:
+\%TRIML:
 	./getrpgleman 890
-%TRIMR:
+\%TRIMR:
 	./getrpgleman 891
-%UCS2:
+\%UCS2:
 	./getrpgleman 892
-%UNS:
+\%UNS:
 	./getrpgleman 893
-%UNSH:
+\%UNSH:
 	./getrpgleman 894
-%XFOOT:
+\%XFOOT:
 	./getrpgleman 895
-%XLATE:
+\%XLATE:
 	./getrpgleman 896
-%XML:
+\%XML:
 	./getrpgleman 897
-%YEARS:
+\%YEARS:
 	./getrpgleman 898
 
 # DCL-DS
