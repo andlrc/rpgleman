@@ -35,6 +35,7 @@ The value that is closest to arg but greater than arg \[char46]
 .TP 5
 .B \fB%LOOKUPGE\fR
 An exact match, or the value that is closest to arg but greater than arg \[char46]
+.PP
 
 If no value matches the specified condition, zero is returned\[char46] The value returned is in unsigned integer format (type U)\[char46]
 

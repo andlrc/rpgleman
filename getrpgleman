@@ -108,6 +108,7 @@ sub man_node
 				man_node($dd_nodes[$i], 1)
 			);
 		}
+		push @ret, ".PP";
 		return join "\n", @ret;
 	}
 

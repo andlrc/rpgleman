@@ -39,6 +39,7 @@ Indicates that a floating currency symbol is to be used\[char46] The actual symb
 .TP 5
 .B currency-symbol
 Indicates that floating currency is to be used with the provided currency symbol\[char46] It must be a 1-byte character constant (literal, named constant or expression that can be evaluated at compile time)\[char46] For example, \fB%EDITC(0012\[char46]5 : \[char39]K\[char39] : \[char39]X\[char39])\fR returns \[char39]   X12\[char46]5 \[char39]\[char46]
+.PP
 .SH EXAMPLE
 
 \fB%EDITC\fR Example 1

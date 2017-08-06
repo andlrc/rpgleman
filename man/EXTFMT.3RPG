@@ -52,6 +52,7 @@ The data for the array or table is in unsigned format\[char46]
 .TP 5
 .B F
 The data for the array or table is in float numeric format\[char46]
+.PP
 
 
 
