@@ -15,6 +15,9 @@ REBUILD MAN PAGES
 
     $ make {all|bif|kw|cd}
 
+    To speed up downloading one can if ``make'' supports is use ``-j'' to run
+    multiply jobs at the same time.  See ``make(1)''
+
 MAN PAGES
     Man pages for built-in functions, keywords, and operators are installed in
     ``/usr/share/man/man3RPG'' and can be accessed with:
