@@ -16,7 +16,15 @@ REBUILD MAN PAGES
     $ make {all|bif|kw|cd}
 
     To speed up downloading one can if ``make'' supports is use ``-j'' to run
-    multiply jobs at the same time.  See ``make(1)''
+    multiply jobs at the same time.  See ``make(1)'' for more information.
+
+DEPENDENCIES
+    The following Perl modules is used and should be installed in order to
+    rebuild man pages.
+
+    HTML::TreeBuilder::XPath;
+    HTTP::Tiny;
+    IO::Socket::SSL
 
 MAN PAGES
     Man pages for built-in functions, keywords, and operators are installed in
@@ -49,3 +57,7 @@ LICENSE
 
     All the content is copyright IBM and one should contact them to get a
     license.
+
+SEE ALSO
+
+    make(1), cpan(1perl)
