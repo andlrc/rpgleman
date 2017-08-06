@@ -39,11 +39,13 @@ For more information, see Size Operations or Built-in Functions\[char46]
 \fB%SIZE\fR returns the number of bytes occupied by the constant or field\[char46] The argument may be a literal, a named constant, a data structure, a data structure subfield, a field, an array or a table name\[char46] It cannot contain an expression, but some constant-valued built-in functions and constant expressions may be accepted\[char46] The value returned is in unsigned integer format (type U)\[char46]
 
 .SH EXAMPLE
+
 \fB%SIZE\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7....+....
-D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
 D arr1            S             10    DIM(4)
 D table1          S              5    DIM(20)
 D field1          S             10
@@ -54,14 +56,14 @@ D mds             DS            20    occurs(10)
 D mds_size        C                   const (%size (mds: *all))
 D mds_ptr         DS            20    OCCURS(10)
 D   pointer                       *
-D vCity           S             40A   VARYING INZ('North York')
-D fCity           S             40A           INZ('North York')
+D vCity           S             40A   VARYING INZ(\[char39]North York\[char39])
+D fCity           S             40A           INZ(\[char39]North York\[char39])
 
  /FREE
      num = %SIZE(field1);        //  10
-     num = %SIZE('HH');          //   2
-     num = %SIZE(123.4);         //   4
-     num = %SIZE(-03.00);        //   4
+     num = %SIZE(\[char39]HH\[char39]);          //   2
+     num = %SIZE(123\[char46]4);         //   4
+     num = %SIZE(-03\[char46]00);        //   4
      num = %SIZE(arr1);          //  10
      num = %SIZE(arr1:*ALL);     //  40
      num = %SIZE(table1);        //   5

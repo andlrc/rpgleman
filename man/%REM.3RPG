@@ -31,11 +31,13 @@ For more information, see Arithmetic Operations or Built-in Functions\[char46]
 \fB%REM\fR returns the remainder that results from dividing operands n by m\[char46] The two operands must be numeric values with zero decimal positions\[char46] If either operand is a packed, zoned, or binary numeric value, the result is packed numeric\[char46] If either operand is an integer numeric value, the result is integer\[char46] Otherwise, the result is unsigned numeric\[char46] Float numeric operands are not allowed\[char46] The result has the same sign as the dividend\[char46] (See also \fB%DIV\fR (Return Integer Portion of Quotient)\[char46])
 
 .SH EXAMPLE
+
 \fB%DIV\fR and \fB%REM\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
 D A               S             10I 0 INZ(123)
 D B               S             10I 0 INZ(27)
 D DIV             S             10I 0

@@ -21,15 +21,15 @@ A list of fields can be specified as the final argument to Input/Output operatio
 
 .IP 1. 2
 .RS
-Each name must be the name of a field in the input buffer for the record. If the field is renamed, the internal name is used.
+Each name must be the name of a field in the input buffer for the record\[char46] If the field is renamed, the internal name is used\[char46]
 .RE
 .IP 2. 2
 .RS
-The name can be a subfield from a data structure defined with the EXTNAME/LIKEREC keyword using the file/format name of the record being updated. *INPUT must be specified with the keyword used. The name specified must contain the subfield name that corresponds to the input field. For a qualified data structure, the simple qualified name of the subfield is used.
+The name can be a subfield from a data structure defined with the EXTNAME/LIKEREC keyword using the file/format name of the record being updated\[char46] *INPUT must be specified with the keyword used\[char46] The name specified must contain the subfield name that corresponds to the input field\[char46] For a qualified data structure, the simple qualified name of the subfield is used\[char46]
 .RE
 .IP 3. 2
 .RS
-The name can be a subfield of a data structure defined with the LIKEDS keyword of a data structure defined as described above.
+The name can be a subfield of a data structure defined with the LIKEDS keyword of a data structure defined as described above\[char46]
 .RE
 .PP
 

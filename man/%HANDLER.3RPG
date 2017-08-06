@@ -17,64 +17,66 @@ The first operand, handlingProcedure specifies the prototype of the handling pro
 The second operand, communicationArea, specifies a variable to be passed as a parameter on every call to the handling procedure\[char46] The operand must be an exact match for the first prototyped parameter of the handling procedure, according to the same rules that are used for checking prototyped parameters passed by reference\[char46] The communication-area parameter can be any type, including arrays and data structures\[char46]
 
 
-When an operation code uses the \fB%HANDLER\fR built-in function, the following sequence of events occurs: 
+When an operation code uses the \fB%HANDLER\fR built-in function, the following sequence of events occurs:
 
 
 .IP 1. 2
 .RS
-The operation using the %HANDLER built-in function begins.
+The operation using the %HANDLER built-in function begins\[char46]
 .RE
 .IP 2. 2
 .RS
-When an event occurs during the operation that must be handled by the handling procedure, the RPG runtime calls the handling procedure specified as the first operand of %HANDLER. The first parameter passed to the handling procedure is the communication area that was specified as the second operand of %HANDLER. The other parameters depend on the operation and the nature of the event that occurred.
+When an event occurs during the operation that must be handled by the handling procedure, the RPG runtime calls the handling procedure specified as the first operand of %HANDLER\[char46] The first parameter passed to the handling procedure is the communication area that was specified as the second operand of %HANDLER\[char46] The other parameters depend on the operation and the nature of the event that occurred\[char46]
 .RE
 .IP 3. 2
 .RS
-The handling procedure processes the parameters, possibly updating the communication-area parameter.
+The handling procedure processes the parameters, possibly updating the communication-area parameter\[char46]
 .RE
 .IP 4. 2
 .RS
-The handling procedure returns a zero if it completed successfully, and a non-zero value if it did not complete successfully.
+The handling procedure returns a zero if it completed successfully, and a non-zero value if it did not complete successfully\[char46]
 .RE
 .IP 5. 2
 .RS
-If the returned value was zero, the RPG runtime continues processing until either the operation is complete, or another event occurs. If the returned value was not zero, the operation ends.
+If the returned value was zero, the RPG runtime continues processing until either the operation is complete, or another event occurs\[char46] If the returned value was not zero, the operation ends\[char46]
 .RE
 .IP 6. 2
 .RS
-If another event occurs, the handling procedure is called again. If the previous call to the handling procedure changed the communication area, the changes can be seen on subsequent calls.
+If another event occurs, the handling procedure is called again\[char46] If the previous call to the handling procedure changed the communication area, the changes can be seen on subsequent calls\[char46]
 .RE
 .IP 7. 2
 .RS
-When the operation is complete, control passes to the statement following the operation that used the %HANDLER built-in function. If the handling procedure changed the communication area, the changes can be seen in the procedure that used the %HANDLER built-in function.
+When the operation is complete, control passes to the statement following the operation that used the %HANDLER built-in function\[char46] If the handling procedure changed the communication area, the changes can be seen in the procedure that used the %HANDLER built-in function\[char46]
 .RE
 .PP
 
-The communication area can be used for several purposes\[char46] 
+The communication area can be used for several purposes\[char46]
 
 
 .IP 1. 2
 .RS
-To communicate information from the procedure coding the %HANDLER built-in function to the handling procedure.
+To communicate information from the procedure coding the %HANDLER built-in function to the handling procedure\[char46]
 .RE
 .IP 2. 2
 .RS
-To communicate information from the handling procedure back to the procedure coding the %HANDLER built-in function.
+To communicate information from the handling procedure back to the procedure coding the %HANDLER built-in function\[char46]
 .RE
 .IP 3. 2
 .RS
-To keep state information between successive calls of the handling procedure. State information can also be kept in static variables in the handling procedure, but when static variables are used, incorrect results can occur if the handling procedure has been enabled by more than one %HANDLER operation. By using a communication area parameter, the usages of the handling procedure are independent from each other.
+To keep state information between successive calls of the handling procedure\[char46] State information can also be kept in static variables in the handling procedure, but when static variables are used, incorrect results can occur if the handling procedure has been enabled by more than one %HANDLER operation\[char46] By using a communication area parameter, the usages of the handling procedure are independent from each other\[char46]
 .RE
 .PP
 
 
 .SH EXAMPLE
+
 Using a communication-area with \fB%HANDLER\fR
+
 .PP
 .nf
  * Data structure used as a parameter between
  * the XML-SAX operation and the handling
- * procedure.
+ * procedure\[char46]
  *   - "attrName" is set by the procedure doing the
  *     XML-SAX operation and used by the handling procedure
  *   - "attrValue" is set by the handling procedure
@@ -99,22 +101,22 @@ D   exceptionId                 10I 0  VALUE
  /free
    // The purpose of the following XML-SAX operation
    // is to obtain the value of the first "companyname"
-   // attribute found in the XML document.
+   // attribute found in the XML document\[char46]
 
    // The communication area "info" is initialized with
    // the name of the attribute whose value is
-   // to be obtained from the XML document.
-   attrName = 'companyname';
+   // to be obtained from the XML document\[char46]
+   attrName = \[char39]companyname\[char39];
 
-   // Start SAX processing.  The procedure "myHandler"
+   // Start SAX processing\[char46]  The procedure "myHandler"
    // will be called for every SAX event; the first
-   // parameter will be the data structure "info".
+   // parameter will be the data structure "info"\[char46]
    xml-sax(e) %handler(myHandler : info) %xml(xmldoc);
-   // The XML-SAX operation is complete.  The
+   // The XML-SAX operation is complete\[char46]  The
    // communication area can be checked to get the
-   // value of the attribute.
-   if not %error() and attrValue <> '';
-     dsply (attrName + '=' + attrValue);
+   // value of the attribute\[char46]
+   if not %error() and attrValue <> \[char39]\[char39];
+     dsply (attrName + \[char39]=\[char39] + attrValue);
    endif;
 :
 :
@@ -135,6 +137,54 @@ D rc              S             10I 0  INZ(0)
 
      select;
 
+.fi
+
+.PP
+.nf
+     // When the event is a "start document" event,
+     // the handler can initialize any internal
+     // subfields in the communication area\[char46]
+     when event = *XML_START_DOCUMENT;
+        comm\[char46]haveAttr = *OFF;
+
+     // When the event is an "attribute name" event,
+     // and the value of the event is the required
+     // name, the internal subfield "haveAttr" is
+     // set to *ON\[char46]  If the next event is an
+     // attribute-value event, the value will be
+     // saved in the "attrValue" subfield\[char46]
+     when event = *XML_ATTR_NAME
+     and  %subst(value : 1 : stringLen) = comm\[char46]attrName;
+        comm\[char46]haveAttr = *ON;
+        comm\[char46]attrValue = \[char39]\[char39];
+
+     // When "haveAttr" is on, the data from any
+     // attribute-value should be saved in the "attrValue"
+     // string until the *XML_END_ATTR event occurs
+     when comm\[char46]haveAttr;
+        select;
+        when event = *XML_ATTR_CHARS
+        or   event = *XML_ATTR_PREDEF_REF;
+           comm\[char46]attrValue +=
+               %subst(value : 1 : stringLen);
+        when event = *XML_ATTR_UCS2_REF;
+           stringLen = stringLen / 2;
+           comm\[char46]attrValue +=
+               %char(%subst(ucs2value : 1 : stringLen));
+        when event = *XML_END_ATTR;
+           // We have the entire attribute value
+           // so no further parsing is necessary\[char46]
+           // A non-zero return value tells the
+           // RPG runtime that the handler does
+           // not want to continue the operation
+           rc = -1;
+       endsl;
+
+     endsl;
+
+   return rc;
+ /end-free
+P                 E
 .fi
 
 For more examples of \fB%HANDLER\fR, see \fIXML-SAX\fR (Parse an \fIXML\fR Document) and \fIXML-INTO\fR (Parse an \fIXML\fR Document into a Variable)\[char46]

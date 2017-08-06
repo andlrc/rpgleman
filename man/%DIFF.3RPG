@@ -13,7 +13,7 @@
 %DIFF(op1:op2:*MS|*S|*MN|*H|*D|*M|*Y)
 .fi
 .SH DESCRIPTION
-\fB%DIFF\fR produces the difference (duration) between two date or time values\[char46] The first and second parameters must have the same, or compatible types\[char46] The following combinations are possible: 
+\fB%DIFF\fR produces the difference (duration) between two date or time values\[char46] The first and second parameters must have the same, or compatible types\[char46] The following combinations are possible:
 
 
 .IP \[bu] 2
@@ -25,10 +25,10 @@ Timestamp and timestamp
 .IP \[bu] 2
 Date and timestamp (only the date portion of the timestamp is considered)
 .IP \[bu] 2
-Time and timestamp (only the time portion of the timestamp is considered).
+Time and timestamp (only the time portion of the timestamp is considered)\[char46]
 .PP
 
-The third parameter specifies the unit\[char46] The following units are valid: 
+The third parameter specifies the unit\[char46] The following units are valid:
 
 
 .IP \[bu] 2
@@ -56,40 +56,42 @@ For more information, see Date Operations or Built-in Functions\[char46]
 
 
 .SH EXAMPLE
+
 Using the result of \fB%DIFF\fR as a numeric value
+
 .PP
 .nf
-D due_date        S               D   INZ(D'2005-06-01')
-D today           S               D   INZ(D'2004-09-23')
-D num_days        S             15P 0  
+D due_date        S               D   INZ(D\[char39]2005-06-01\[char39])
+D today           S               D   INZ(D\[char39]2004-09-23\[char39])
+D num_days        S             15P 0
 
 D start_time      S               Z
-D time_taken      S             15P 0                        
+D time_taken      S             15P 0
 
  /FREE
 
-     // Determine the number of days between two dates.                
+     // Determine the number of days between two dates\[char46]
 
-     // If due_date has the value 2005-06-01 and    
-     // today has the value 2004-09-23, then    
-     // num_days will have the value 251.     
+     // If due_date has the value 2005-06-01 and
+     // today has the value 2004-09-23, then
+     // num_days will have the value 251\[char46]
 
-     num_days = %DIFF (due_date: today: *DAYS);      
+     num_days = %DIFF (due_date: today: *DAYS);
 
-     // If the arguments are coded in the reverse order,    
-     // num_days will have the value -251.       
+     // If the arguments are coded in the reverse order,
+     // num_days will have the value -251\[char46]
 
-     num_days = %DIFF (today: due_date: *DAYS);  
+     num_days = %DIFF (today: due_date: *DAYS);
 
-     // Determine the number of seconds required to do a task:     
-     //  1. Get the starting timestamp                             
-     //  2. Do the task                                            
-     //  3. Calculate the difference between the current           
-     //     timestamp and the starting timestamp   
-                                                        
-     start_time = %timestamp();                            
-     process();                                                    
-     time_taken = %DIFF (%timestamp() : start_time : *SECONDS);  
+     // Determine the number of seconds required to do a task:
+     //  1\[char46] Get the starting timestamp
+     //  2\[char46] Do the task
+     //  3\[char46] Calculate the difference between the current
+     //     timestamp and the starting timestamp
+
+     start_time = %timestamp();
+     process();
+     time_taken = %DIFF (%timestamp() : start_time : *SECONDS);
 
  /END-FREE
 
@@ -98,32 +100,34 @@ D time_taken      S             15P 0
 
 
 .SH EXAMPLE
+
 Using the result of \fB%DIFF\fR as a duration
+
 .PP
 .nf
 
-D estimated_end...
+D estimated_end\[char46]\[char46]\[char46]
 D                 S               D
-D prev_start      S               D   INZ(D'2003-06-21')
-D prev_end        S               D   INZ(D'2003-06-24')  
+D prev_start      S               D   INZ(D\[char39]2003-06-21\[char39])
+D prev_end        S               D   INZ(D\[char39]2003-06-24\[char39])
 
- /FREE     
+ /FREE
 
-     // Add the number of days between two dates    
-     // to a third date     
+     // Add the number of days between two dates
+     // to a third date
 
-     // prev_start is the date a previous task began    
-     // prev_end is the date a previous task ended.     
+     // prev_start is the date a previous task began
+     // prev_end is the date a previous task ended\[char46]
 
-     // The following calculation will estimate the    
-     // date a similar task will end, if it begins    
-     // today.     
+     // The following calculation will estimate the
+     // date a similar task will end, if it begins
+     // today\[char46]
 
-     // If the current date, returned by %date(), is    
-     // 2003-08-15, then estimated_end will be    
-     // 2003-08-18.     
+     // If the current date, returned by %date(), is
+     // 2003-08-15, then estimated_end will be
+     // 2003-08-18\[char46]
 
-     estimated_end = %date() + %DIFF(prev_end : prev_start : *days);  
+     estimated_end = %date() + %DIFF(prev_end : prev_start : *days);
 
  /END-FREE
 .fi

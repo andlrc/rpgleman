@@ -21,31 +21,31 @@
 
 .IP 1. 2
 .RS
-The first argument must be the name of a data structure. This includes any subfield defined with keyword LIKEDS or LIKEREC.
+The first argument must be the name of a data structure\[char46] This includes any subfield defined with keyword LIKEDS or LIKEREC\[char46]
 .RE
 .IP 2. 2
 .RS
-The second argument specifies how many of the subfields to use as the search argument.
+The second argument specifies how many of the subfields to use as the search argument\[char46]
 .RE
 .IP 3. 2
 .RS
-The individual key values in the compound key are taken from the top level subfields of the data structure. Subfields defined with LIKEDS are considered character data.
+The individual key values in the compound key are taken from the top level subfields of the data structure\[char46] Subfields defined with LIKEDS are considered character data\[char46]
 .RE
 .IP 4. 2
 .RS
-Subfields used to form the compound key must not be arrays.
+Subfields used to form the compound key must not be arrays\[char46]
 .RE
 .IP 5. 2
 .RS
-The types of all subfields (up to the number specified by "num-keys") must match the types of the actual keys. Where lengths and formats differ, the value is converted to the proper length and format.
+The types of all subfields (up to the number specified by "num-keys") must match the types of the actual keys\[char46] Where lengths and formats differ, the value is converted to the proper length and format\[char46]
 .RE
 .IP 6. 2
 .RS
-If the data structure is defined as an array data structure (using keyword DIM), an index must be supplied for the data structure.
+If the data structure is defined as an array data structure (using keyword DIM), an index must be supplied for the data structure\[char46]
 .RE
 .IP 7. 2
 .RS
-Opcode extenders H, M, or R specified on the keyed Input/Output operations code affect the moving of the search argument to the corresponding position in the key build area.
+Opcode extenders H, M, or R specified on the keyed Input/Output operations code affect the moving of the search argument to the corresponding position in the key build area\[char46]
 .RE
 .PP
 
@@ -54,29 +54,31 @@ Example:
 
 
 .SH EXAMPLE
+
 Example of Search on Keyed Input/Output Operations
+
 .PP
 .nf
-A..........T.Name++++++RLen++TDpB......Functions++++++++++++++++++
-A          R CUSTR            
+A\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]T\[char46]Name++++++RLen++TDpB\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]Functions++++++++++++++++++
+A          R CUSTR
 A            NAME         100A
 A            ZIP           10A
 A            ADDR         100A
 A          K NAME
 A          K ZIP
-FFilename++IPEASF.....L.....A.Device+.Keywords+++++++++++++++++++++++++
+FFilename++IPEASF\[char46]\[char46]\[char46]\[char46]\[char46]L\[char46]\[char46]\[char46]\[char46]\[char46]A\[char46]Device+\[char46]Keywords+++++++++++++++++++++++++
 Fcustfile  if   e           k disk    rename(CUSTR:custRec)
-DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
 D custRecKeys     ds                  likerec(custRec : *key)
- ...
+ \[char46]\[char46]\[char46]
  /free
          // custRecKeys is a qualified data structure
-         custRecKeys.name = customer;
-         custRecKeys.zip = zipcode;
+         custRecKeys\[char46]name = customer;
+         custRecKeys\[char46]zip = zipcode;
          // the *KEY data structure is used as the search argument for CHAIN
          chain %kds(custRecKeys) custRec;
  /end-free
- 
+
 .fi
 
 

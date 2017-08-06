@@ -20,30 +20,32 @@ A non-static native method works on a specific instance of its class\[char46] Th
 \fB%THIS\fR returns an Object value that contains a reference to the class instance on whose behalf the native method is being called\[char46] \fB%THIS\fR is valid only in non-static native methods\[char46] This built-in gives non-static native methods access to the class instance\[char46]
 
 .SH EXAMPLE
+
 \fB%THIS\fR Example
+
 .PP
 .nf
- * Method "vacationDays" is a method in the class 'Employee'
+ * Method "vacationDays" is a method in the class \[char39]Employee\[char39]
 D vacationDays    PR            10I 0 EXTPROC(*JAVA
-D                                           : 'Employee'
-D                                           : 'vacationDays')
+D                                           : \[char39]Employee\[char39]
+D                                           : \[char39]vacationDays\[char39])
 
- * Method "getId" is another method in the class 'Employee'
+ * Method "getId" is another method in the class \[char39]Employee\[char39]
 D getId           PR            10I 0 EXTPROC(*JAVA
-D                                           : 'Employee'
-D                                           : 'getId')
-...
- * "vacationDays" is an RPG native method.  Since the STATIC keyword
- * is not used, it is an instance method.
+D                                           : \[char39]Employee\[char39]
+D                                           : \[char39]getId\[char39])
+\[char46]\[char46]\[char46]
+ * "vacationDays" is an RPG native method\[char46]  Since the STATIC keyword
+ * is not used, it is an instance method\[char46]
 P vacationDays    B                   EXPORT
 D vacationDays    PI            10I 0
 
 D id_num          S             10I 0
 
- * Another Employee method must be called to get the Employee's
- * id-number.  This method requires an Object of class Employee.
+ * Another Employee method must be called to get the Employee\[char39]s
+ * id-number\[char46]  This method requires an Object of class Employee\[char46]
  * We use %THIS as the Object parameter, to get the id-number for
- * the object that our native method "vacationDays" is working on.
+ * the object that our native method "vacationDays" is working on\[char46]
 C                   eval      id_num = getId(%THIS)
 C     id_num        chain     EMPFILE
 C                   if        %found

@@ -19,15 +19,15 @@ If the parameter is a character expression, the following rules apply:
 
 
 .IP \[bu] 2
-The sign is optional. It can be '+' or '-'. It must precede the numeric data.
+The sign is optional\[char46] It can be \[char39]+\[char39] or \[char39]-\[char39]\[char46] It must precede the numeric data\[char46]
 .IP \[bu] 2
-The decimal point is optional. It can be either a period or a comma.
+The decimal point is optional\[char46] It can be either a period or a comma\[char46]
 .IP \[bu] 2
-The exponent is optional. It can be either 'E' or 'e'. The sign for the exponent is optional. It must precede the numeric part of the exponent.
+The exponent is optional\[char46] It can be either \[char39]E\[char39] or \[char39]e\[char39]\[char46] The sign for the exponent is optional\[char46] It must precede the numeric part of the exponent\[char46]
 .IP \[bu] 2
-Blanks are allowed anywhere in the data. For example, ' + 3 , 5 E 9' is a valid parameter.
+Blanks are allowed anywhere in the data\[char46] For example, \[char39] + 3 , 5 E 9\[char39] is a valid parameter\[char46]
 .IP \[bu] 2
-If invalid numeric data is found, an exception occurs with status code 105.
+If invalid numeric data is found, an exception occurs with status code 105\[char46]
 .PP
 
 For more information, see Conversion Operations or Built-in Functions\[char46]
@@ -35,29 +35,31 @@ For more information, see Conversion Operations or Built-in Functions\[char46]
 
 
 .SH EXAMPLE
+
 \fB%FLOAT\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
 D p1              s             15p 0 inz (1)
 D p2              s             25p13 inz (3)
-D c15a            s             15a   inz('-5.2e-1')
-D c15b            s             15a   inz(' + 5 . 2 ')
+D c15a            s             15a   inz(\[char39]-5\[char46]2e-1\[char39])
+D c15b            s             15a   inz(\[char39] + 5 \[char46] 2 \[char39])
 D result1         s             15p 5
 D result2         s             15p 5
 D result3         s             15p 5
 D result4         s              8f
  /FREE
  // using numeric parameters
-    result1 = p1 / p2;          //  "result1" is now  0.33000.
-    result2 = %float (p1) / p2; //  "result2" is now  0.33333.
-    result3 = %float (p1 / p2); //  "result3" is now  0.33333.
-   result4 = %float (12345);   //  "result4" is now 1.2345E4    
- // using character parameters 
-   result1 = %float (c15a);    //  "result1" is now -0.52000.
-   result2 = %float (c15b);    //  "result2" is now  5.20000.
-   result4 = %float (c15b);    //  "result4" is now  5.2E0  
+    result1 = p1 / p2;          //  "result1" is now  0\[char46]33000\[char46]
+    result2 = %float (p1) / p2; //  "result2" is now  0\[char46]33333\[char46]
+    result3 = %float (p1 / p2); //  "result3" is now  0\[char46]33333\[char46]
+   result4 = %float (12345);   //  "result4" is now 1\[char46]2345E4
+ // using character parameters
+   result1 = %float (c15a);    //  "result1" is now -0\[char46]52000\[char46]
+   result2 = %float (c15b);    //  "result2" is now  5\[char46]20000\[char46]
+   result4 = %float (c15b);    //  "result4" is now  5\[char46]2E0
  /END-FREE
 .fi
 

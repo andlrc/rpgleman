@@ -29,30 +29,32 @@ The prototype must a prototype for a bound call\[char46] The \fIEXTPGM\fR keywor
 \fB%PADDR\fR returns a value of type procedure pointer\[char46] The value is the address of the entry point identified by the argument\[char46]
 
 .SH EXAMPLE
+
 \fB%PADDR\fR Example with an Entry Point
+
 .PP
 .nf
-DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++++
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++
 D
 D PROC            S               *   PROCPTR
-D                                     INZ (%PADDR ('FIRSTPROG'))
+D                                     INZ (%PADDR (\[char39]FIRSTPROG\[char39]))
 D PROC1           S               *   PROCPTR
-CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq..
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]
 CL0N01Factor1+++++++Opcode(E)+Extended-factor2+++++++++++++++++++++++++++
  *
- *  The following statement calls procedure 'FIRSTPROG'.
+ *  The following statement calls procedure \[char39]FIRSTPROG\[char39]\[char46]
  *
 C                   CALLB     PROC
  *-----------------------------------------------------------------
- * The following statements call procedure 'NextProg'.
- * This a C procedure and is in mixed case.  Note that
- * the procedure name is case sensitive.
+ * The following statements call procedure \[char39]NextProg\[char39]\[char46]
+ * This a C procedure and is in mixed case\[char46]  Note that
+ * the procedure name is case sensitive\[char46]
  *
-C                   EVAL      PROC1 = %PADDR ('NextProg')
+C                   EVAL      PROC1 = %PADDR (\[char39]NextProg\[char39])
 C                   CALLB     PROC1
 .fi
 
- 
+
 
 
 

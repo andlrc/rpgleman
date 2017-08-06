@@ -14,15 +14,15 @@
 
 .IP 1. 2
 .RS
-A parameter defined using a *ENTRY PLIST cannot be specified as the operand for %PARMNUM.
+A parameter defined using a *ENTRY PLIST cannot be specified as the operand for %PARMNUM\[char46]
 .RE
 .IP 2. 2
 .RS
-The parameter must be specified the same way it appears in the procedure interface parameter list. If the parameter is an array, an index cannot be specified. If the parameter is a data structure, a subfield cannot be specified. If the parameter is a file, a record format cannot be specified.
+The parameter must be specified the same way it appears in the procedure interface parameter list\[char46] If the parameter is an array, an index cannot be specified\[char46] If the parameter is a data structure, a subfield cannot be specified\[char46] If the parameter is a file, a record format cannot be specified\[char46]
 .RE
 .IP 3. 2
 .RS
-If the RTNPARM keyword is coded for a procedure, the return value is handled as an additional first parameter. The other parameters have a number one higher than the apparent number. For example, if a procedure defined with RTNPARM has two parameters P1 and P2, %PARMNUM(P1) will return 2 and %PARMNUM(P2) will return 3.
+If the RTNPARM keyword is coded for a procedure, the return value is handled as an additional first parameter\[char46] The other parameters have a number one higher than the apparent number\[char46] For example, if a procedure defined with RTNPARM has two parameters P1 and P2, %PARMNUM(P1) will return 2 and %PARMNUM(P2) will return 3\[char46]
 .RE
 .PP
 
@@ -34,7 +34,9 @@ For more information, see Built-in Functions\[char46]
 \fB%PARMNUM\fR returns the number of the parameter in the parameter list\[char46] The operand for \fB%PARMNUM\fR is the name of a parameter defined as part of a procedure interface\[char46]
 
 .SH EXAMPLE
+
 Example of \fB%PARMNUM\fR
+
 .PP
 .nf
 D  myProc         pi            10A   RTNPARM OPDESC
@@ -43,22 +45,22 @@ D   errorCode                    1A   OPTIONS(*OMIT)
 D   cityName                    25A   OPTIONS(*NOPASS)
  /free
 
-    // test the length of companyName    
-    callp CEEDOD(%parmnum(companyName) : more parameters ...
+    // test the length of companyName
+    callp CEEDOD(%parmnum(companyName) : more parameters \[char46]\[char46]\[char46]
                : parmlen : *omit);
     if parmlen < 25;
-      // the full parameter was not passed      
+      // the full parameter was not passed
     endif;
 
-    // test the presence of the omissible errorCode parameter    
+    // test the presence of the omissible errorCode parameter
     callp CEETSTA(isPresent : %parmnum(errorCode) : *omit);
     if isPresent = 1;
-       // errorCode was not omitted       
+       // errorCode was not omitted
     endif;
 
-    // test the presence of the optional city parameter    
+    // test the presence of the optional city parameter
     if %parms >= %parmnum(cityName);
-       // cityName was passed       
+       // cityName was passed
     endif;
 .fi
 

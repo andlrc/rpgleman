@@ -10,7 +10,7 @@
 .SH DESCRIPTION
 
 
-When \fB%PARMS\fR is used in a procedure that was called by a bound call, the value returned by \fB%PARMS\fR is not available if the calling program or procedure does not pass a minimal operational descriptor\[char46] The \fIILE\fR \fIRPG\fR compiler always passes one, but other languages do not\[char46] So if the caller is written in another \fIILE\fR language, it will need to pass an operational descriptor on the call\[char46] If the operational descriptor is not passed, the value returned by \fB%PARMS\fR cannot be trusted\[char46] The value returned by \fB%PARMS\fR will be -1 if the system can determine that the operational descriptor was not passed, but in some cases when the system cannot detect this, the value returned by \fB%PARMS\fR may be an incorrect value that is zero or greater\[char46] 
+When \fB%PARMS\fR is used in a procedure that was called by a bound call, the value returned by \fB%PARMS\fR is not available if the calling program or procedure does not pass a minimal operational descriptor\[char46] The \fIILE\fR \fIRPG\fR compiler always passes one, but other languages do not\[char46] So if the caller is written in another \fIILE\fR language, it will need to pass an operational descriptor on the call\[char46] If the operational descriptor is not passed, the value returned by \fB%PARMS\fR cannot be trusted\[char46] The value returned by \fB%PARMS\fR will be -1 if the system can determine that the operational descriptor was not passed, but in some cases when the system cannot detect this, the value returned by \fB%PARMS\fR may be an incorrect value that is zero or greater\[char46]
 
 
 The value returned by \fB%PARMS\fR includes the additional first parameter that is used to handle the the return value when the \fIRTNPARM\fR keyword is specified\[char46] For more information, see \fIRTNPARM\fR\[char46]
@@ -24,10 +24,12 @@ For more information, see Call Operations or Built-in Functions\[char46]
 \fB%PARMS\fR returns the number of parameters that were passed to the procedure in which \fB%PARMS\fR is used\[char46] For a cycle-main procedure, \fB%PARMS\fR is the same as \fI*PARMS\fR in the program status data structure\[char46]
 
 .SH EXAMPLE
+
 \fB%PARMS\fR Example
+
 .PP
 .nf
-DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++++
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++
  * Prototype for procedure MaxInt which calculates the maximum
  * value of its parameters (at least 2 parameters must be passed)
 D MaxInt          PR            10I 0
@@ -39,21 +41,76 @@ D  p5                           10I 0 VALUE OPTIONS(*NOPASS)
 D Fld1            S             10A   DIM(40)
 D Fld2            S             20A
 D Fld3            S            100A
-CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq..
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]
 CL0N01Factor1+++++++Opcode(E)+Extended-factor2+++++++++++++++++++++++++++
 C     *ENTRY        PLIST
 C                   PARM                    MaxSize          10 0
  * Make sure the main procedure was passed a parameter
 C                   IF        %PARMS < 1
-C     'No parms'    DSPLY
+C     \[char39]No parms\[char39]    DSPLY
 C                   RETURN
 C                   ENDIF
  * Determine the maximum size of Fld1, Fld2 and Fld3
 C                   EVAL      MaxSize = MaxInt(%size(Fld1:*ALL) :
 C                                             %size(Fld2) :
 C                                             %size(Fld3))
-C     'MaxSize is'  DSPLY                   MaxSize
+C     \[char39]MaxSize is\[char39]  DSPLY                   MaxSize
 C                   RETURN
+.fi
+
+.PP
+.nf
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++
+ *----------------------------------------------------------------
+ * MaxInt - return the maximum value of the passed parameters
+ *----------------------------------------------------------------
+P MaxInt          B
+D MaxInt          PI            10I 0
+D  p1                           10I 0 VALUE
+D  p2                           10I 0 VALUE
+D  p3                           10I 0 VALUE OPTIONS(*NOPASS)
+D  p4                           10I 0 VALUE OPTIONS(*NOPASS)
+D  p5                           10I 0 VALUE OPTIONS(*NOPASS)
+D Max             S             10I 0 INZ(*LOVAL)
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Extended-factor2+++++++++++++++++++++++++++
+ * Branch to the point in the calculations where we will never
+ * access unpassed parameters\[char46]
+C                   SELECT
+C                   WHEN      %PARMS = 2
+C                   GOTO      PARMS2
+C                   WHEN      %PARMS = 3
+C                   GOTO      PARMS3
+C                   WHEN      %PARMS = 4
+C                   GOTO      PARMS4
+C                   WHEN      %PARMS = 5
+C                   GOTO      PARMS5
+C                   ENDSL
+ * Determine the maximum value\[char46]  Max was initialized to *LOVAL\[char46]
+C     PARMS5        TAG
+C                   IF        p5 > Max
+C                   EVAL      Max = p5
+C                   ENDIF
+ *
+C     PARMS4        TAG
+C                   IF        p4 > Max
+C                   EVAL      Max = p4
+C                   ENDIF
+ *
+C     PARMS3        TAG
+C                   IF        p3 > Max
+C                   EVAL      Max = p3
+C                   ENDIF
+ *
+C     PARMS2        TAG
+C                   IF        p2 > Max
+C                   EVAL      Max = p2
+C                   ENDIF
+C                   IF        p1 > Max
+C                   EVAL      Max = p1
+C                   ENDIF
+C                   RETURN    Max
+P MaxInt          E
 .fi
 
 

@@ -16,24 +16,24 @@
 %LOOKUPLE(arg : array | keyed array data structure {: start_index {: number_of_elements}})
 .fi
 .SH DESCRIPTION
-The following functions return the array index of the item in the array or the keyed array data structure that matches that matches arg as follows: 
+The following functions return the array index of the item in the array or the keyed array data structure that matches that matches arg as follows:
 
 
 .TP 5
 .B \fB%LOOKUP\fR
-An exact match\[char46] 
+An exact match\[char46]
 .TP 5
 .B \fB%LOOKUPLT\fR
-The value that is closest to arg but less than arg\[char46] 
+The value that is closest to arg but less than arg\[char46]
 .TP 5
 .B \fB%LOOKUPLE\fR
-An exact match, or the value that is closest to arg but less than arg\[char46] 
+An exact match, or the value that is closest to arg but less than arg\[char46]
 .TP 5
 .B \fB%LOOKUPGT\fR
-The value that is closest to arg but greater than arg\[char46] 
+The value that is closest to arg but greater than arg\[char46]
 .TP 5
 .B \fB%LOOKUPGE\fR
-An exact match, or the value that is closest to arg but greater than arg\[char46] 
+An exact match, or the value that is closest to arg but greater than arg\[char46]
 
 If no value matches the specified condition, zero is returned\[char46] The value returned is in unsigned integer format (type U)\[char46]
 
@@ -65,7 +65,7 @@ The \fB%LOOKUPxx\fR built-in functions use a binary search for sequenced arrays 
 
 
 
-For more information, see: 
+For more information, see:
 
 
 .IP \[bu] 2
@@ -78,37 +78,39 @@ Array Data Structures
 
 
 .SH EXAMPLE
+
 \fB%LOOKUPxx\fR with a scalar array
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  /FREE
-   arr(1) = 'Cornwall';
-   arr(2) = 'Kingston';
-   arr(3) = 'London';
-   arr(4) = 'Paris';
-   arr(5) = 'Scarborough';
-   arr(6) = 'York';
+   arr(1) = \[char39]Cornwall\[char39];
+   arr(2) = \[char39]Kingston\[char39];
+   arr(3) = \[char39]London\[char39];
+   arr(4) = \[char39]Paris\[char39];
+   arr(5) = \[char39]Scarborough\[char39];
+   arr(6) = \[char39]York\[char39];
 
-   n = %LOOKUP('Paris':arr);
+   n = %LOOKUP(\[char39]Paris\[char39]:arr);
    // n = 4
 
-   n = %LOOKUP('Thunder Bay':arr);
+   n = %LOOKUP(\[char39]Thunder Bay\[char39]:arr);
    // n = 0 (not found)
 
-   n = %LOOKUP('Kingston':arr:3);
+   n = %LOOKUP(\[char39]Kingston\[char39]:arr:3);
    // n = 0 (not found after start index)
 
-   n = %LOOKUPLE('Paris':arr);
+   n = %LOOKUPLE(\[char39]Paris\[char39]:arr);
    // n = 4
 
-   n = %LOOKUPLE('Milton':arr);
+   n = %LOOKUPLE(\[char39]Milton\[char39]:arr);
    // n = 3
 
-   n = %LOOKUPGT('Sudbury':arr);
+   n = %LOOKUPGT(\[char39]Sudbury\[char39]:arr);
    // n = 6
 
-   n = %LOOKUPGT('Yorks':arr:2:4);
+   n = %LOOKUPGT(\[char39]Yorks\[char39]:arr:2:4);
    // n = 0 (not found between elements 2 and 5)
  /END-FREE
 .fi
@@ -116,7 +118,9 @@ Array Data Structures
 
 
 .SH EXAMPLE
+
 \fB%LOOKUP\fR with an array data structure
+
 .PP
 .nf
 D emps            DS                  QUALIFIED DIM(20)
@@ -124,24 +128,24 @@ D    name                       25A   VARYING
 D    id                          9S 0
 D numEmps         S             10I 0
  /FREE
-   emps(1).name = 'Mary';
-   emps(1).id = 00138;
-   emps(2).name = 'Patrick';
-   emps(2).id = 10379;
-   emps(3).name = 'Juan';
-   emps(3).id = 06254;
+   emps(1)\[char46]name = \[char39]Mary\[char39];
+   emps(1)\[char46]id = 00138;
+   emps(2)\[char46]name = \[char39]Patrick\[char39];
+   emps(2)\[char46]id = 10379;
+   emps(3)\[char46]name = \[char39]Juan\[char39];
+   emps(3)\[char46]id = 06254;
    numEmps = 3;
 
-   // Search for employee 'Patrick'   
-   n = %lookup('Patrick' : emps(*).name : 1 : numEmps);
+   // Search for employee \[char39]Patrick\[char39]
+   n = %lookup(\[char39]Patrick\[char39] : emps(*)\[char46]name : 1 : numEmps);
    // n = 2
 
-   // Search for the employee with id 06254   
-   n = %lookup(06254 : emps(*).id : 1 : numEmps);
+   // Search for the employee with id 06254
+   n = %lookup(06254 : emps(*)\[char46]id : 1 : numEmps);
    // n = 3
 
-   // Search for employee 'Bill' (not found)   
-   n = %lookup('Bill' : emps(*).name : 1 : numEmps);
+   // Search for employee \[char39]Bill\[char39] (not found)
+   n = %lookup(\[char39]Bill\[char39] : emps(*)\[char46]name : 1 : numEmps);
    // n = 0
 .fi
 

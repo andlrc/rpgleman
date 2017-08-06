@@ -35,13 +35,15 @@ For more information, see Conversion Operations or Built-in Functions\[char46]
 
 
 .SH EXAMPLE
+
 \fB%CHAR\fR Examples
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-D Name            S             20G   VARYING INZ(G'oXXYYZZi')
-D date            S               D   INZ(D'1997/02/03')
-D time            S               T   INZ(T'12:23:34')
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D Name            S             20G   VARYING INZ(G\[char39]oXXYYZZi\[char39])
+D date            S               D   INZ(D\[char39]1997/02/03\[char39])
+D time            S               T   INZ(T\[char39]12:23:34\[char39])
 D result          S            100A   VARYING
 D points          S             10i 0 INZ(234)
 
@@ -49,50 +51,56 @@ D points          S             10i 0 INZ(234)
  * To format the time and date with the default formats, use this:
  *-----------------------------------------------------------------
  /FREE
-   result = 'It is ' + %CHAR(time) + ' on ' + %CHAR(date);
+   result = \[char39]It is \[char39] + %CHAR(time) + \[char39] on \[char39] + %CHAR(date);
    // If the default formats are both *USA,
-   // result = 'It is 12:23 PM on 02/03/1997'
- 
+   // result = \[char39]It is 12:23 PM on 02/03/1997\[char39]
+
    //-------------------------------------------------------------
    // To format the time and date with the job formats, use this:
    //-------------------------------------------------------------
-   result = 'It is ' + %CHAR(time : *jobrun)
-            + ' on ' + %CHAR(date : *jobrun);
-   // If the job date format is *MDY- and the time separator is '.',
-   // then the result = 'It is 12.23.34 on 97-02-03'
- 
+   result = \[char39]It is \[char39] + %CHAR(time : *jobrun)
+            + \[char39] on \[char39] + %CHAR(date : *jobrun);
+   // If the job date format is *MDY- and the time separator is \[char39]\[char46]\[char39],
+   // then the result = \[char39]It is 12\[char46]23\[char46]34 on 97-02-03\[char39]
+
    //--------------------------------------------------------------
    // To format the time and date with specific formats, use this:
    //--------------------------------------------------------------
-   result = 'It is ' + %CHAR(time : *hms:)
-            + ' on ' + %CHAR(date : *iso);
-   // result = 'It is 12:23:34 on 1997-02-03'
+   result = \[char39]It is \[char39] + %CHAR(time : *hms:)
+            + \[char39] on \[char39] + %CHAR(date : *iso);
+   // result = \[char39]It is 12:23:34 on 1997-02-03\[char39]
    //
- 
+
    //-------------------------------------------------------------
    // You can use %subst with the %char result if you only want
    // part of the result
    //-------------------------------------------------------------
-   result = 'The time is now ' + %SUBST (%CHAR(time):1:5) + '.';
-   // result = 'The time is now 12:23.'
- 
+   result = \[char39]The time is now \[char39] + %SUBST (%CHAR(time):1:5) + \[char39]\[char46]\[char39];
+   // result = \[char39]The time is now 12:23\[char46]\[char39]
+
    //-------------------------------------------------------------
    // Use %CHAR to convert a graphic value to character so it
-   // can be concatenated with a character value.
+   // can be concatenated with a character value\[char46]
    //-------------------------------------------------------------
-   result = 'The customer''s name is ' + %CHAR(Name) + '.';
-   // result = 'The customer's name is oXXYYZZi.'
- 
+   result = \[char39]The customer\[char39]\[char39]s name is \[char39] + %CHAR(Name) + \[char39]\[char46]\[char39];
+   // result = \[char39]The customer\[char39]s name is oXXYYZZi\[char46]\[char39]
+
    //----------------------------------------------------
    // Use %CHAR to convert a number to character format:
    //----------------------------------------------------
-   result = 'You have ' + %char(points) + ' points.';
-   // result = 'You have 234 points.'
+   result = \[char39]You have \[char39] + %char(points) + \[char39] points\[char46]\[char39];
+   // result = \[char39]You have 234 points\[char46]\[char39]
    //
  /END-FREE
 .fi
 
- 
+
+
+
+
+
+
+
 
 
 

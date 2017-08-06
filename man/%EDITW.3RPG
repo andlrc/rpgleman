@@ -26,21 +26,23 @@ For more information, see Conversion Operations or Built-in Functions\[char46]
 This function returns a character result representing the numeric value edited according to the edit word\[char46] The rules for the numeric value and edit word are identical to those for editing numeric values in output specifications\[char46]
 
 .SH EXAMPLE
+
 \fB%EDITW\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
 D amount          S             30A
 D salary          S              9P 2
-D editwd          C                    '$ ,   ,  **Dollars&  &Cents'
+D editwd          C                    \[char39]$ ,   ,  **Dollars&  &Cents\[char39]
 
- * If the value of salary is 2451.53, then the edited version of
- * (salary * 12) is '$***29,418*Dollars 36 Cents'. The value of
- * amount is 'The annual salary is $***29,418*Dollars 36 Cents'.
+ * If the value of salary is 2451\[char46]53, then the edited version of
+ * (salary * 12) is \[char39]$***29,418*Dollars 36 Cents\[char39]\[char46] The value of
+ * amount is \[char39]The annual salary is $***29,418*Dollars 36 Cents\[char39]\[char46]
 
  /FREE
-   amount = 'The annual salary is '
+   amount = \[char39]The annual salary is \[char39]
                  + %editw(salary * 12 : editwd);
  /END-FREE
 .fi

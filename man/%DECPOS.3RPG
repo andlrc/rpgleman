@@ -22,21 +22,23 @@ The numeric expression must not be a float variable or expression\[char46]
 \fB%DECPOS\fR returns the number of decimal positions of the numeric variable or expression\[char46] The value returned is a constant, and so may participate in constant folding\[char46]
 
 .SH EXAMPLE
+
 \fB%DECPOS\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
-D p7              s              7p 3 inz (8236.567)
-D s9              s              9s 5 inz (23.73442)
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
+D p7              s              7p 3 inz (8236\[char46]567)
+D s9              s              9s 5 inz (23\[char46]73442)
 D result1         s              5i 0
 D result2         s              5i 0
 D result3         s              5i 0
 
  /FREE
-   result1 = %decpos (p7);     //  "result1" is now  3.
-   result2 = %decpos (s9);     //  "result2" is now  5.
-   result3 = %decpos (p7 * s9);//  "result3" is now  8.
+   result1 = %decpos (p7);     //  "result1" is now  3\[char46]
+   result2 = %decpos (s9);     //  "result2" is now  5\[char46]
+   result3 = %decpos (p7 * s9);//  "result3" is now  8\[char46]
  /END-FREE
 .fi
 

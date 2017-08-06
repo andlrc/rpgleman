@@ -18,12 +18,12 @@ The second parameter, ccsid, is optional and indicates the \fICCSID\fR of the re
 If the parameter is a constant, the conversion will be done at compile time\[char46] In this case, the \fICCSID\fR is the graphic \fICCSID\fR related to the \fICCSID\fR of the source file\[char46]
 
 
- If the parameter is character, the character data must be in the form 
+ If the parameter is character, the character data must be in the form
 
 
 .PP
 .nf
-shift-out graphic-data shift-in 
+shift-out graphic-data shift-in
 .fi
 
 For example, \[char39]oAABBCCi\[char39]\[char46]
@@ -40,18 +40,20 @@ For more information, see Graphic Format, Conversion Operations, or Built-in Fun
 \fB%GRAPH\fR converts the value of the expression from character, graphic, or \fIUCS\fR-2 and returns a graphic value\[char46] The result is varying length if the parameter is varying length\[char46]
 
 .SH EXAMPLE
+
 \fB%GRAPH\fR Examples
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
 H*Keywords+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 H ccsid (*graph: 300)
 
-D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords++++++++++++++++++++++++
-D  char           S              8A   inz('oXXYYZZi')
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords++++++++++++++++++++++++
+D  char           S              8A   inz(\[char39]oXXYYZZi\[char39])
  * The %GRAPH built-in function is used to initialize a graphic field
-D  graph          S             10G   inz (%graph ('oAABBCCDDEEi'))
-D  ufield         S              2C   inz (%ucs2 ('oFFGGi'))
+D  graph          S             10G   inz (%graph (\[char39]oAABBCCDDEEi\[char39]))
+D  ufield         S              2C   inz (%ucs2 (\[char39]oFFGGi\[char39]))
 D  graph2         S              2G   ccsid (4396) inz (*hival)
 D  isEqual        S              1N
 D  proc           PR
@@ -59,23 +61,23 @@ D    gparm                       2G   ccsid (4396) value
 
  /FREE
     graph = %graph (char) + %graph (ufield);
-    // graph now has the value XXYYZZFFGG.     
-    // %graph(char) removes the shift characters from the     
-    // character data, and treats the non-shift data as     
-    // graphic data.
- 
+    // graph now has the value XXYYZZFFGG\[char46]
+    // %graph(char) removes the shift characters from the
+    // character data, and treats the non-shift data as
+    // graphic data\[char46]
+
     isEqual = graph = %graph (graph2 : 300);
     // The result of the %GRAPH built-in function is the value of
-    // graph2, converted from CCSID 4396 to CCSID 300.
- 
+    // graph2, converted from CCSID 4396 to CCSID 300\[char46]
+
     graph2 = graph;
     // The value of graph is converted from CCSID 300 to CCSID 4396
-    // and stored in graph2.
-    // This conversion is performed implicitly by the compiler.
- 
+    // and stored in graph2\[char46]
+    // This conversion is performed implicitly by the compiler\[char46]
+
     proc (graph);
     // The value of graph is converted from CCSID 300 to CCSID 4396
-    // implicitly, as part of passing the parameter by value.
+    // implicitly, as part of passing the parameter by value\[char46]
  /END-FREE
 .fi
 

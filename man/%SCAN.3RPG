@@ -38,37 +38,39 @@ For more information, see String Operations or Built-in Functions\[char46]
 \fB%SCAN\fR returns the first position of the search argument in the source string, or 0 if it was not found\[char46] If the start position is specified, the search begins at the starting position\[char46] The result is always the position in the source string even if the starting position is specified\[char46] The starting position defaults to 1\[char46]
 
 .SH EXAMPLE
+
 \fB%SCAN\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+.... 
-D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
- 
-D source          S             15A   inz ('Dr. Doolittle') 
-D pos             S              5U 0 
-D posTrim         S              5U 0 
-D posVar          S              5U 0 
-D srchFld         S             10A 
-D srchFldVar      S             10A   varying  
- /FREE          pos = %scan ('oo' : source);     
-     // After the EVAL, pos = 6 because 'oo' begins at position 6 in     
-     // 'Dr. Doolittle'.     
-     pos = %scan ('D' : source : 2);     
-     // After the EVAL, pos = 5 because the first 'D' found starting from     
-     // position 2 is in position 5.     
-     pos = %scan ('abc' : source);          // After the EVAL, pos = 0 because 'abc' is not found in     
-     // 'Dr. Doolittle'.     
-     pos = %scan ('Dr.' : source : 2);     
-     // After the EVAL, pos = 0 because 'Dr.' is not found in     
-     // 'Dr. Doolittle', if the search starts at position 2.     
-     srchFld = 'Dr.';     
-     srchFldVar = 'Dr.';     
-     pos = %scan (srchFld : source);     
-     posTrim = %scan (%trimr(srchFld) : source);     
-     posVar = %scan (srchFldVar : source);          // After the EVAL, pos = 0 because srchFld is a 10-byte field, so     
-     // the search argument is 'Dr.' followed by seven blanks.  However,     
-     // posTrim and posVar are both 1, since the %TRIMR and srchFldVar     
-     // scans both use a 3-byte search argument 'Dr.', no trailing blanks.  
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
+
+D source          S             15A   inz (\[char39]Dr\[char46] Doolittle\[char39])
+D pos             S              5U 0
+D posTrim         S              5U 0
+D posVar          S              5U 0
+D srchFld         S             10A
+D srchFldVar      S             10A   varying
+ /FREE          pos = %scan (\[char39]oo\[char39] : source);
+     // After the EVAL, pos = 6 because \[char39]oo\[char39] begins at position 6 in
+     // \[char39]Dr\[char46] Doolittle\[char39]\[char46]
+     pos = %scan (\[char39]D\[char39] : source : 2);
+     // After the EVAL, pos = 5 because the first \[char39]D\[char39] found starting from
+     // position 2 is in position 5\[char46]
+     pos = %scan (\[char39]abc\[char39] : source);          // After the EVAL, pos = 0 because \[char39]abc\[char39] is not found in
+     // \[char39]Dr\[char46] Doolittle\[char39]\[char46]
+     pos = %scan (\[char39]Dr\[char46]\[char39] : source : 2);
+     // After the EVAL, pos = 0 because \[char39]Dr\[char46]\[char39] is not found in
+     // \[char39]Dr\[char46] Doolittle\[char39], if the search starts at position 2\[char46]
+     srchFld = \[char39]Dr\[char46]\[char39];
+     srchFldVar = \[char39]Dr\[char46]\[char39];
+     pos = %scan (srchFld : source);
+     posTrim = %scan (%trimr(srchFld) : source);
+     posVar = %scan (srchFldVar : source);          // After the EVAL, pos = 0 because srchFld is a 10-byte field, so
+     // the search argument is \[char39]Dr\[char46]\[char39] followed by seven blanks\[char46]  However,
+     // posTrim and posVar are both 1, since the %TRIMR and srchFldVar
+     // scans both use a 3-byte search argument \[char39]Dr\[char46]\[char39], no trailing blanks\[char46]
  /END-FREE
 .fi
 

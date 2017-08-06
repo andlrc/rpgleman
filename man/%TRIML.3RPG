@@ -38,20 +38,22 @@ For more information, see String Operations or Built-in Functions\[char46]
 \fB%TRIML\fR with two parameters returns the given string with any leading characters that are in the characters to trim parameter removed\[char46]
 
 .SH EXAMPLE
+
 \fB%TRIML\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
- * LOCATION will have the value 'Toronto, Ontario  '.
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+ * LOCATION will have the value \[char39]Toronto, Ontario  \[char39]\[char46]
 
- /FREE     
-     // Trimming blanks     
-        
-     Location = %triml('  Toronto, Ontario  ');          // LOCATION now has the value 'Toronto, Ontario  '.       
+ /FREE
+     // Trimming blanks
 
-     // Trimming other characters        
+     Location = %triml(\[char39]  Toronto, Ontario  \[char39]);          // LOCATION now has the value \[char39]Toronto, Ontario  \[char39]\[char46]
 
-     trimmed = %triml('$******5.27***        ' : '$* ');                             // trimmed is now '5.27***        '
+     // Trimming other characters
+
+     trimmed = %triml(\[char39]$******5\[char46]27***        \[char39] : \[char39]$* \[char39]);                             // trimmed is now \[char39]5\[char46]27***        \[char39]
 .fi
 
 

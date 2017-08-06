@@ -26,37 +26,39 @@ For more information, see String Operations or Built-in Functions\[char46]
 \fB%CHECKR\fR returns the last position of the string base that contains a character that does not appear in string comparator\[char46] If all of the characters in base also appear in comparator, the function returns 0\[char46]
 
 .SH EXAMPLE
+
 \fB%CHECKR\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  *---------------------------------------------
  * If a string is padded at the end with some
  * character other than blanks, the characters
- * cannot be removed using %TRIM.
+ * cannot be removed using %TRIM\[char46]
  * %CHECKR can be used for this by searching
  * for the last character in the string that
- * is not in the list of "pad characters".
+ * is not in the list of "pad characters"\[char46]
  *---------------------------------------------
 D string1         s             50a   varying
-D                                     inz('My *dog* Spot.* @ * @ *')
+D                                     inz(\[char39]My *dog* Spot\[char46]* @ * @ *\[char39])
 D string2         s             50a   varying
-D                                     inz('someone@somewhere.com')
-D padChars        C                   ' *@'
+D                                     inz(\[char39]someone@somewhere\[char46]com\[char39])
+D padChars        C                   \[char39] *@\[char39]
 
  /free
 
     %len(string1) = %checkr(padChars:string1);
     //  %len(string1) is set to 14 (the position of the last character
-    //  that is not in "padChars").
+    //  that is not in "padChars")\[char46]
 
-    //  string1 = 'My *dog* Spot.'
+    //  string1 = \[char39]My *dog* Spot\[char46]\[char39]
 
     %len(string2) = %checkr(padChars:string2);
     //  %len(string2) is set to 21 (the position of the last character
-    //  that is not in "padChars").
+    //  that is not in "padChars")\[char46]
 
-    //  string2 = 'someone@somewhere.com'  (the string is not changed)
+    //  string2 = \[char39]someone@somewhere\[char46]com\[char39]  (the string is not changed)
 
  /end-free
 .fi
@@ -64,34 +66,36 @@ D padChars        C                   ' *@'
 
 
 .SH EXAMPLE
+
 \fB%CHECK\fR and \fB%CHECKR\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  *------------------------------------------------------
  * A string contains a numeric value, but it might
  * be surrounded by blanks and asterisks and might be
- * preceded by a currency symbol.
+ * preceded by a currency symbol\[char46]
  *------------------------------------------------------
-D string          s             50a   varying inz('$****12.345***  ')
+D string          s             50a   varying inz(\[char39]$****12\[char46]345***  \[char39])
 
  /free
-    // Find the position of the first character that is not one of ' $*'
-    numStart = %CHECK (' $*' : string);
+    // Find the position of the first character that is not one of \[char39] $*\[char39]
+    numStart = %CHECK (\[char39] $*\[char39] : string);
     //  = 6
 
-    // Find the position of the last character that is not one of ' *'
-    numEnd = %CHECKR (' *' : string);
+    // Find the position of the last character that is not one of \[char39] *\[char39]
+    numEnd = %CHECKR (\[char39] *\[char39] : string);
     //  = 11
 
     // Extract the numeric string
     string = %SUBST(string : numStart : numEnd - numStart + 1);
-    //  = '12.345'
+    //  = \[char39]12\[char46]345\[char39]
 
  /end-free
 .fi
 
- 
+
 
 
 

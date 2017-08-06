@@ -38,39 +38,43 @@ For more information, see String Operations or Built-in Functions\[char46]
 \fB%TRIMR\fR with two parameters returns the given string with any trailing characters that are in the characters to trim parameter removed\[char46]
 
 .SH EXAMPLE
+
 \fB%TRIMR\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
 D Location        S             16A   varying
-D FirstName       S             10A   inz ('Chris')
-D LastName        S             10A   inz ('Smith')
+D FirstName       S             10A   inz (\[char39]Chris\[char39])
+D LastName        S             10A   inz (\[char39]Smith\[char39])
 D Name            S             20A   varying
 
- * LOCATION will have the value '  Toronto, Ontario'.
+ * LOCATION will have the value \[char39]  Toronto, Ontario\[char39]\[char46]
  /FREE
-     Location = %trim ('  Toronto, Ontario  ');
- 
-     // Name will have the value 'Chris Smith:'.
-     Name = %trimr (FirstName) + ' ' + %trimr (LastName) + ':';
+     Location = %trim (\[char39]  Toronto, Ontario  \[char39]);
+
+     // Name will have the value \[char39]Chris Smith:\[char39]\[char46]
+     Name = %trimr (FirstName) + \[char39] \[char39] + %trimr (LastName) + \[char39]:\[char39];
  /END-FREE
 .fi
 
 
 
 .SH EXAMPLE
+
 Trimming characters other than blanks
+
 .PP
 .nf
-     string = '(' + %trimr('$******5.27***      ' : '$*') + ')';          // string is now '($******5.27***      )'     
-     //     
-     // Nothing has been trimmed from the right-hand side because     
-     // the right-most character is a blank, and a blank does not     
-     // appear in the 'characters to trim' parameter            
+     string = \[char39](\[char39] + %trimr(\[char39]$******5\[char46]27***      \[char39] : \[char39]$*\[char39]) + \[char39])\[char39];          // string is now \[char39]($******5\[char46]27***      )\[char39]
+     //
+     // Nothing has been trimmed from the right-hand side because
+     // the right-most character is a blank, and a blank does not
+     // appear in the \[char39]characters to trim\[char39] parameter
 
-     string = '(' + %trimr('$******5.27***      ' : '$ *') + ')';     
-     // string is now '($******5.27)'
+     string = \[char39](\[char39] + %trimr(\[char39]$******5\[char46]27***      \[char39] : \[char39]$ *\[char39]) + \[char39])\[char39];
+     // string is now \[char39]($******5\[char46]27)\[char39]
 
 .fi
 

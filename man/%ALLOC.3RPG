@@ -32,10 +32,12 @@ If the operation cannot complete successfully, exception 00425 or 00426 is issue
 \fB%ALLOC\fR returns a pointer to newly allocated heap storage of the length specified\[char46] The newly allocated storage is uninitialized\[char46]
 
 .SH EXAMPLE
+
 \fB%ALLOC\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  /FREE
    // Allocate an area of 200 bytes
    pointer = %ALLOC(200);

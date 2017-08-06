@@ -14,7 +14,7 @@
 The first operand specifies the document to be parsed\[char46] It can be a constant or variable character or \fIUCS\fR-2 expression containing either an \fIXML\fR document or the name of a file containing an \fIXML\fR document\[char46]
 
 
-The second operand specifies options that control how the \fIXML\fR document is to be interpreted and parsed\[char46] It can be a constant or variable character expression\[char46] The value of the character expression is a list of zero or more options specified in the form 
+The second operand specifies options that control how the \fIXML\fR document is to be interpreted and parsed\[char46] It can be a constant or variable character expression\[char46] The value of the character expression is a list of zero or more options specified in the form
 
 
 .PP
@@ -22,18 +22,18 @@ The second operand specifies options that control how the \fIXML\fR document is 
     optionname1=value1 optionname2=value2
 .fi
 
-No spaces are allowed between the option name and the equal sign or between the equal sign and the value\[char46] However, any number of spaces can appear before, between or following the options\[char46] The options can be specified in any case\[char46] The following are all valid ways to specify the "doc=file" and "allowextra=yes" options for \fIXML-INTO\fR: 
+No spaces are allowed between the option name and the equal sign or between the equal sign and the value\[char46] However, any number of spaces can appear before, between or following the options\[char46] The options can be specified in any case\[char46] The following are all valid ways to specify the "doc=file" and "allowextra=yes" options for \fIXML-INTO\fR:
 
 
 .PP
 .nf
-   'doc=file allowextra=yes'
-   '        doc=file     allowextra=yes     '
-   'ALLOWEXTRA=YES DOC=FILE     '
-   'AllowExtra=Yes Doc=File     '
+   \[char39]doc=file allowextra=yes\[char39]
+   \[char39]        doc=file     allowextra=yes     \[char39]
+   \[char39]ALLOWEXTRA=YES DOC=FILE     \[char39]
+   \[char39]AllowExtra=Yes Doc=File     \[char39]
 .fi
 
-The following are not valid option strings: 
+The following are not valid option strings:
 
 
 
@@ -71,7 +71,7 @@ When an option is specified more than once, the last value specified is the valu
 
 .PP
 .nf
-   'doc=file doc=string'
+   \[char39]doc=file doc=string\[char39]
 .fi
 
  then the parser will use the value "string" for the "doc" option\[char46]
@@ -82,24 +82,26 @@ If the parser discovers an invalid option or invalid value, the operation will f
 
 
 .SH EXAMPLE
+
 Examples of \fB%XML\fR
+
 .PP
 .nf
-// The "options" parameter is omitted.  Default values are used for
-// all options.  Since the default value for the "doc" option is
+// The "options" parameter is omitted\[char46]  Default values are used for
+// all options\[char46]  Since the default value for the "doc" option is
 // always "string", the parser will correctly assume that the first
-// parameter contains an XML document.
-xmldocument = '<myfld>new value</myfld>';
+// parameter contains an XML document\[char46]
+xmldocument = \[char39]<myfld>new value</myfld>\[char39];
 XML-INTO myfld %XML(xmldocument);
 
-// The "options" parameter is specified as a literal with two options.
-XML-INTO myds %XML(xmldocument : 'allowmissing=yes allowextra=yes');
+// The "options" parameter is specified as a literal with two options\[char46]
+XML-INTO myds %XML(xmldocument : \[char39]allowmissing=yes allowextra=yes\[char39]);
 
 // The "options" parameter is specified as a variable expression
-// with two options.
-ccsidOpt = 'ccsid=' + %char(ccsid);
+// with two options\[char46]
+ccsidOpt = \[char39]ccsid=\[char39] + %char(ccsid);
 XML-SAX %HANDLER(mySaxHandler : myCommArea)
-        %XML('myinfo.xml' : 'doc=file ' + ccsidOpt);
+        %XML(\[char39]myinfo\[char46]xml\[char39] : \[char39]doc=file \[char39] + ccsidOpt);
 .fi
 
 For more examples of \fB%XML\fR, see \fIXML-SAX\fR (Parse an \fIXML\fR Document) and \fIXML-INTO\fR (Parse an \fIXML\fR Document into a Variable)\[char46]

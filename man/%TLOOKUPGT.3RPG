@@ -16,24 +16,24 @@
 %TLOOKUPLE(arg : search-table {: alt-table})
 .fi
 .SH DESCRIPTION
-The following functions search search-table for a value that matches arg as follows: 
+The following functions search search-table for a value that matches arg as follows:
 
 
 .TP 5
 .B \fB%TLOOKUP\fR
-An exact match\[char46] 
+An exact match\[char46]
 .TP 5
 .B \fB%TLOOKUPLT\fR
-The value that is closest to arg but less than arg\[char46] 
+The value that is closest to arg but less than arg\[char46]
 .TP 5
 .B \fB%TLOOKUPLE\fR
-An exact match, or the value that is closest to arg but less than arg\[char46] 
+An exact match, or the value that is closest to arg but less than arg\[char46]
 .TP 5
 .B \fB%TLOOKUPGT\fR
-The value that is closest to arg but greater than arg\[char46] 
+The value that is closest to arg but greater than arg\[char46]
 .TP 5
 .B \fB%TLOOKUPGE\fR
-An exact match, or the value that is closest to arg but greater than arg\[char46] 
+An exact match, or the value that is closest to arg but greater than arg\[char46]
 
 If a value meets the specified condition, the current table element for the search table is set to the element that satisfies the condition, the current table element for the alternate table is set to the same element, and the function returns the value \fI*ON\fR\[char46]
 
@@ -64,13 +64,15 @@ For more information, see Array Operations or Built-in Functions\[char46]
 
 
 .SH EXAMPLE
+
 \fB%TLOOKUPxx\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  /FREE
-   *IN01 = %TLOOKUP('Paris':tab1);
-   IF %TLOOKUP('Thunder Bay':tab1:tab2);
+   *IN01 = %TLOOKUP(\[char39]Paris\[char39]:tab1);
+   IF %TLOOKUP(\[char39]Thunder Bay\[char39]:tab1:tab2);
    // code to handle Thunder Bay
    ENDIF;
  /END-FREE

@@ -21,7 +21,7 @@ The precision of the result is the minimum that can hold the result of adding to
 For example, if \fIARR\fR is an array of 500 elements of precision (17,4), the result of \fB%XFOOT(\fIARR\fR)\fR is (20,4)\[char46]
 
 
-For \fB%XFOOT(X)\fR where X has precision (m,n), the following table shows the precision of the result based on the number of elements of X: 
+For \fB%XFOOT(X)\fR where X has precision (m,n), the following table shows the precision of the result based on the number of elements of X:
 
 
 .PP
@@ -32,7 +32,7 @@ Elements of X      Precision of %XFOOT(X)
 11-100             (m+2,n)
 101-1000           (m+3,n)
 1001-10000         (m+4,n)
-10001-32767        (m+5,n) 
+10001-32767        (m+5,n)
 .fi
 
 Normal rules for array expressions apply\[char46] For example, if \fIARR\fR1 has 10 elements and \fIARR\fR2 has 20 elements, \fB%XFOOT(\fIARR\fR1+\fIARR\fR2)\fR results in the sum of the first 10 elements of \fIARR\fR1+\fIARR\fR2\[char46]

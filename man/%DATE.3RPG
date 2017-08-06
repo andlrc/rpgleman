@@ -32,15 +32,17 @@ For more information, see Information Operations or Built-in Functions\[char46]
 
 
 .SH EXAMPLE
+
 \fB%DATE\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  /FREE
 
-   string = '040596';
+   string = \[char39]040596\[char39];
    date =  %date(string:*MDY0);
-   // date now contains d'1996-04-05'
+   // date now contains d\[char39]1996-04-05\[char39]
  /END-FREE
 .fi
 

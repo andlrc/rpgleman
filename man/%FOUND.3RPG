@@ -18,7 +18,7 @@ The operations that set \fB%FOUND\fR are:
 .IP \[bu] 2
 File operations: CHAIN (Random Retrieval from a File)DELETE (Delete Record)SETGT (Set Greater Than)SETLL (Set Lower Limit)
 .IP \[bu] 2
-String operations: CHECK (Check Characters)CHECKR (Check Reverse)SCAN (Scan String) Note:Built-in function %SCAN does not change the value of %FOUND.
+String operations: CHECK (Check Characters)CHECKR (Check Reverse)SCAN (Scan String) Note:Built-in function %SCAN does not change the value of %FOUND\[char46]
 .IP \[bu] 2
 Search operations: LOOKUP (Look Up a Table or Array Element)
 .PP
@@ -43,11 +43,13 @@ For more information, see File Operations, Result Operations, or Built-in Functi
 \fB%FOUND\fR returns \[char39]1\[char39] if the most recent relevant file operation found a record, a string operation found a match, or a search operation found an element\[char46] Otherwise, this function returns \[char39]0\[char39]\[char46]
 
 .SH EXAMPLE
+
 \fB%FOUND\fR used to Test a File Operation without a Parameter
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-F*Filename+IPEASFRlen+LKlen+AIDevice+.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+F*Filename+IPEASFRlen+LKlen+AIDevice+\[char46]Keywords+++++++++++++++++++++++++
  * File CUSTS has record format CUSTREC
 FCUSTS     IF   E           K DISK
 
@@ -63,11 +65,13 @@ FCUSTS     IF   E           K DISK
 
 
 .SH EXAMPLE
+
 \fB%FOUND\fR used to Test a File Operation with a Parameter
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-F*Filename+IPEASFRlen+LKlen+AIDevice+.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+F*Filename+IPEASFRlen+LKlen+AIDevice+\[char46]Keywords+++++++++++++++++++++++++
  * File MASTER has all the customers
  * File GOLD has only the "privileged" customers
 FMASTER    IF   E           K DISK
@@ -77,7 +81,7 @@ FGOLD      IF   E           K DISK
    // Check if the customer exists, but is not a privileged customer
    chain Cust MastRec;
    chain Cust GoldRec;
- 
+
    // Note that the file name is used for %FOUND, not the record name
    if  %found (Master)  and not  %found (Gold);
    //
@@ -88,32 +92,34 @@ FGOLD      IF   E           K DISK
 
 
 .SH EXAMPLE
+
 \fB%FOUND\fR used to Test a String Operation
+
 .PP
 .nf
-*...1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++++
-D Numbers         C                   '0123456789'
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++
+D Numbers         C                   \[char39]0123456789\[char39]
 D Position        S              5I 0
-CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq....
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
  * If the actual position of the name is not required, just use
- * %FOUND to test the results of the SCAN operation.
- * If Name has the value 'Barbara' and Line has the value
- * 'in the city of Toronto.      ', then %FOUND will return '0'.
- * If Line has the value 'the city of Toronto where Barbara lives, '
- * then %FOUND will return '1'.
+ * %FOUND to test the results of the SCAN operation\[char46]
+ * If Name has the value \[char39]Barbara\[char39] and Line has the value
+ * \[char39]in the city of Toronto\[char46]      \[char39], then %FOUND will return \[char39]0\[char39]\[char46]
+ * If Line has the value \[char39]the city of Toronto where Barbara lives, \[char39]
+ * then %FOUND will return \[char39]1\[char39]\[char46]
 C     Name          SCAN      Line
 C                   IF        %FOUND
 C                   EXSR      PutLine
-C                   ENDIF                                           
- * If Value contains the value '12345.67', Position would be set
- * to 6 and %FOUND would return the value '1'.
- * If Value contains the value '10203040', Position would be set
- * to 0 and %FOUND would return the value '0'.
+C                   ENDIF
+ * If Value contains the value \[char39]12345\[char46]67\[char39], Position would be set
+ * to 6 and %FOUND would return the value \[char39]1\[char39]\[char46]
+ * If Value contains the value \[char39]10203040\[char39], Position would be set
+ * to 0 and %FOUND would return the value \[char39]0\[char39]\[char46]
 C     Numbers       CHECK     Value         Position
 C                   IF        %FOUND
 C                   EXSR      HandleNonNum
-C                   ENDIF                                           
+C                   ENDIF
 .fi
 
 

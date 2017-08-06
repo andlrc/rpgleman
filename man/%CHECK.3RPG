@@ -26,19 +26,21 @@ For more information, see String Operations or Built-in Functions\[char46]
 \fB%CHECK\fR returns the first position of the string base that contains a character that does not appear in string comparator\[char46] If all of the characters in base also appear in comparator, the function returns 0\[char46]
 
 .SH EXAMPLE
+
 \fB%CHECK\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  *--------------------------------------------------
  * A string contains a series of numbers separated
- * by blanks and/or commas.
+ * by blanks and/or commas\[char46]
  * Use %CHECK to extract the numbers
  *--------------------------------------------------
 D string          s             50a   varying
-D                                     inz('12, 233 17, 1, 234')
-D delimiters      C                   ' ,'
-D digits          C                   '0123456789'
+D                                     inz(\[char39]12, 233 17, 1, 234\[char39])
+D delimiters      C                   \[char39] ,\[char39]
+D digits          C                   \[char39]0123456789\[char39]
 D num             S             50a   varying
 D pos             S             10i 0
 D len             S             10i 0
@@ -49,7 +51,7 @@ D token           s             50a   varying
      // make sure the string ends with a delimiter
      string = string + delimiters;
 
-     dou string = '';
+     dou string = \[char39]\[char39];
 
        // Find the beginning of the group of digits
        pos = %check (delimiters : string);
@@ -65,7 +67,7 @@ D token           s             50a   varying
 
        // Extract the group of digits
        token = %subst(string : 1 : len);
-       dsply ' ' ' ' token;
+       dsply \[char39] \[char39] \[char39] \[char39] token;
 
        // Skip past the digits
        if (len < %len(string));

@@ -26,50 +26,52 @@ For more information, see Conversion Operations or Built-in Functions\[char46]
 
 
 .SH RETURN VALUE
-This function returns a character result representing the numeric value edited according to the edit code\[char46] In general, the rules for the numeric value and edit code are identical to those for editing numeric values in output specifications\[char46] The third parameter is optional, and if specified, must be one of: 
+This function returns a character result representing the numeric value edited according to the edit code\[char46] In general, the rules for the numeric value and edit code are identical to those for editing numeric values in output specifications\[char46] The third parameter is optional, and if specified, must be one of:
 
 
 .TP 5
 .B \fI*ASTFILL\fR
-Indicates that asterisk protection is to be used\[char46] This means that leading zeros are replaced with asterisks in the returned value\[char46] For example, \fB%EDITC(-0012\[char46]5 : \[char39]K\[char39] : \fI*ASTFILL\fR)\fR returns \[char39]**\fI*12\fR\[char46]5-\[char39]\[char46] 
+Indicates that asterisk protection is to be used\[char46] This means that leading zeros are replaced with asterisks in the returned value\[char46] For example, \fB%EDITC(-0012\[char46]5 : \[char39]K\[char39] : \fI*ASTFILL\fR)\fR returns \[char39]**\fI*12\fR\[char46]5-\[char39]\[char46]
 .TP 5
 .B \fI*CURSYM\fR
-Indicates that a floating currency symbol is to be used\[char46] The actual symbol will be the one specified on the control specification in the \fICURSYM\fR keyword, or the default, \[char39]$\[char39]\[char46] When \fI*CURSYM\fR is specified, the currency symbol is placed in the the result just before the first significant digit\[char46] For example, \fB%EDITC(0012\[char46]5 : \[char39]K\[char39] : \fI*CURSYM\fR)\fR returns \[char39]   $12\[char46]5 \[char39]\[char46] 
+Indicates that a floating currency symbol is to be used\[char46] The actual symbol will be the one specified on the control specification in the \fICURSYM\fR keyword, or the default, \[char39]$\[char39]\[char46] When \fI*CURSYM\fR is specified, the currency symbol is placed in the the result just before the first significant digit\[char46] For example, \fB%EDITC(0012\[char46]5 : \[char39]K\[char39] : \fI*CURSYM\fR)\fR returns \[char39]   $12\[char46]5 \[char39]\[char46]
 .TP 5
 .B currency-symbol
-Indicates that floating currency is to be used with the provided currency symbol\[char46] It must be a 1-byte character constant (literal, named constant or expression that can be evaluated at compile time)\[char46] For example, \fB%EDITC(0012\[char46]5 : \[char39]K\[char39] : \[char39]X\[char39])\fR returns \[char39]   X12\[char46]5 \[char39]\[char46] 
+Indicates that floating currency is to be used with the provided currency symbol\[char46] It must be a 1-byte character constant (literal, named constant or expression that can be evaluated at compile time)\[char46] For example, \fB%EDITC(0012\[char46]5 : \[char39]K\[char39] : \[char39]X\[char39])\fR returns \[char39]   X12\[char46]5 \[char39]\[char46]
 .SH EXAMPLE
+
 \fB%EDITC\fR Example 1
+
 .PP
 .nf
-DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++++
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++
 D msg             S            100A
 D salary          S              9P 2 INZ(1000)
  * If the value of salary is 1000, then the value of salary * 12
- * is 12000.00. The edited version of salary * 12 using the A edit
- * code with floating currency is ' $12,000.00 '.
- * The value of msg is 'The annual salary is $12,000.00'
+ * is 12000\[char46]00\[char46] The edited version of salary * 12 using the A edit
+ * code with floating currency is \[char39] $12,000\[char46]00 \[char39]\[char46]
+ * The value of msg is \[char39]The annual salary is $12,000\[char46]00\[char39]
 CL0N01Factor1+++++++Opcode&ExtExtended-factor2+++++++++++++++++++++++++++
-C                   EVAL      msg = 'The annual salary is '
+C                   EVAL      msg = \[char39]The annual salary is \[char39]
 C                                + %trim(%editc(salary * 12
-C                                              :'A': *CURSYM))
- * In the next example, the value of msg is 'The annual salary is &12,000.00'
-C                   EVAL      msg = 'The annual salary is '
+C                                              :\[char39]A\[char39]: *CURSYM))
+ * In the next example, the value of msg is \[char39]The annual salary is &12,000\[char46]00\[char39]
+C                   EVAL      msg = \[char39]The annual salary is \[char39]
 C                                + %trim(%editc(salary * 12
-C                                              :'A': '&'))
+C                                              :\[char39]A\[char39]: \[char39]&\[char39]))
 
- * In the next example, the value of msg is 'Salary is $*****12,000.00'
- * Note that the '$' comes from the text, not from the edit code.
-C                   EVAL      msg = 'Salary is $'
+ * In the next example, the value of msg is \[char39]Salary is $*****12,000\[char46]00\[char39]
+ * Note that the \[char39]$\[char39] comes from the text, not from the edit code\[char46]
+C                   EVAL      msg = \[char39]Salary is $\[char39]
 C                                + %trim(%editc(salary * 12
-C                                               :'B': *ASTFILL))
+C                                               :\[char39]B\[char39]: *ASTFILL))
 
- * In the next example, the value of msg is 'The date is 1/14/1999'
-C                   EVAL      msg = 'The date is '
-C                                + %trim(%editc(*date : 'Y'))
+ * In the next example, the value of msg is \[char39]The date is 1/14/1999\[char39]
+C                   EVAL      msg = \[char39]The date is \[char39]
+C                                + %trim(%editc(*date : \[char39]Y\[char39]))
 .fi
 
-A common requirement is to edit a field as follows: 
+A common requirement is to edit a field as follows:
 
 
 .IP \[bu] 2
@@ -84,39 +86,41 @@ The following accomplishes this using an \fB%EDITC\fR in a subprocedure:
 
 
 .SH EXAMPLE
+
 \fB%EDITC\fR Example 2
+
 .PP
 .nf
-DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++++
-D neg             S              5P 2      inz(-12.3)
-D pos             S              5P 2      inz(54.32)
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++
+D neg             S              5P 2      inz(-12\[char46]3)
+D pos             S              5P 2      inz(54\[char46]32)
 D editparens      PR            50A
 D    val                        30P 2      value
 D editedVal       S             10A
 CL0N01Factor1+++++++Opcode&ExtExtended-factor2+++++++++++++++++++++++++++
 C                   EVAL      editedVal = editparens(neg)
- * Now editedVal has the value '(12.30)   '
+ * Now editedVal has the value \[char39](12\[char46]30)   \[char39]
 C                   EVAL      editedVal = editparens(pos)
- * Now editedVal has the value ' 54.32    '
+ * Now editedVal has the value \[char39] 54\[char46]32    \[char39]
  *---------------------------------------------------------------
  * Subprocedure EDITPARENS
  *---------------------------------------------------------------
 P editparens      B
 D editparens      PI            50A
 D    val                        30P 2      value
-D lparen          S              1A        inz(' ')
-D rparen          S              1A        inz(' ')
+D lparen          S              1A        inz(\[char39] \[char39])
+D rparen          S              1A        inz(\[char39] \[char39])
 D res             S             50A
  * Use parentheses if the value is negative
 C                   IF        val < 0
-C                   EVAL      lparen = '('
-C                   EVAL      rparen = ')'
+C                   EVAL      lparen = \[char39](\[char39]
+C                   EVAL      rparen = \[char39])\[char39]
 C                   ENDIF
  * Return the edited value
- * Note that the '1' edit code does not include a sign so we
- * don't have to calculate the absolute value.
+ * Note that the \[char39]1\[char39] edit code does not include a sign so we
+ * don\[char39]t have to calculate the absolute value\[char46]
 C                   RETURN    lparen             +
-C                             %editc(val : '1')  +
+C                             %editc(val : \[char39]1\[char39])  +
 C                             rparen
 P editparens      E
 .fi

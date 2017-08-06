@@ -23,19 +23,21 @@ For more information, see Arithmetic Operations or Built-in Functions\[char46]
 \fB%ABS\fR returns the absolute value of the numeric expression specified as the parameter\[char46] If the value of the numeric expression is non-negative, the value is returned unchanged\[char46] If the value is negative, the value returned is the value of the expression but with the negative sign removed\[char46]
 
 .SH EXAMPLE
+
 \fB%ABS\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-D*Name +++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name +++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
 D f8         s              8f   inz (-1)
 D i10        s             10i 0 inz (-123)
-D p7         s              7p 3 inz (-1234.567)
+D p7         s              7p 3 inz (-1234\[char46]567)
 
  /FREE
-    f8  = %abs (f8);        // "f8" is now 1.
-    i10 = %abs (i10 - 321); // "i10" is now 444.
-    p7  = %abs (p7);        // "p7" is now 1234.567.
+    f8  = %abs (f8);        // "f8" is now 1\[char46]
+    i10 = %abs (i10 - 321); // "i10" is now 444\[char46]
+    p7  = %abs (p7);        // "p7" is now 1234\[char46]567\[char46]
  /END-FREE
 .fi
 

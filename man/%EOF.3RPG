@@ -26,7 +26,7 @@ READP (Read Prior Record)
 .IP \[bu] 2
 READPE (Read Prior Equal)
 .IP \[bu] 2
-WRITE (Create New Records) (subfile only).
+WRITE (Create New Records) (subfile only)\[char46]
 .PP
 
 The following operations, if successful, set \fB%EOF(filename)\fR off\[char46] If the operation is not successful, \fB%EOF(filename)\fR is not changed\[char46] \fB%EOF\fR with no parameter is not changed by these operations\[char46]
@@ -56,11 +56,13 @@ For more information, see File Operations or Built-in Functions\[char46]
 \fB%EOF\fR returns \[char39]1\[char39] if the most recent read operation or write to a subfile ended in an end of file or beginning of file condition; otherwise, it returns \[char39]0\[char39]\[char46]
 
 .SH EXAMPLE
+
 \fB%EOF\fR without a Filename Parameter
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-F*Filename+IPEASFRlen+LKlen+AIDevice+.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+F*Filename+IPEASFRlen+LKlen+AIDevice+\[char46]Keywords+++++++++++++++++++++++++
  * File INFILE has record format INREC
 FINFILE    IF   E             DISK
 
@@ -75,13 +77,15 @@ FINFILE    IF   E             DISK
 
 
 .SH EXAMPLE
+
 \fB%EOF\fR with a Filename Parameter
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  * This program is comparing two files
 
-F*Filename+IPEASFRlen+LKlen+AIDevice+.Keywords+++++++++++++++++++++++++
+F*Filename+IPEASFRlen+LKlen+AIDevice+\[char46]Keywords+++++++++++++++++++++++++
 FFILE1     IF   E             DISK
 FFILE2     IF   E             DISK
 
@@ -89,27 +93,27 @@ FFILE2     IF   E             DISK
  /FREE
     DOU %EOF(FILE1) OR %EOF(FILE2);
        // Read a record from each file and compare the records
- 
+
        READ REC1;
        READ REC2;
        IF %EOF(FILE1) AND %EOF(FILE2);
           // Both files have reached end-of-file
           EXSR EndCompare;
- 
+
        ELSEIF %EOF(FILE1);
           // FILE1 is shorter than FILE2
           EXSR F1Short;
- 
+
        ELSEIF %EOF(FILE2);
           // FILE2 is shorter than FILE1
           EXSR F2Short;
- 
+
        ELSE;
           // Both files still have records to be compared
           EXSR CompareRecs;
        ENDIF;
     ENDDO;
-  // ...
+  // \[char46]\[char46]\[char46]
  /END-FREE
 .fi
 

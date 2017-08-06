@@ -36,56 +36,58 @@ For more information, see String Operations or Built-in Functions\[char46]
 \fB%REPLACE\fR returns the character string produced by inserting a replacement string into the source string, starting at the start position and replacing the specified number of characters\[char46]
 
 .SH EXAMPLE
+
 \fB%REPLACE\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
-D var1            S             30A   INZ('Windsor') VARYING
-D var2            S             30A   INZ('Ontario') VARYING
-D var3            S             30A   INZ('Canada') VARYING
-D fixed1          S             15A   INZ('California')
-D date            S               D   INZ(D'1997-02-03')
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
+D var1            S             30A   INZ(\[char39]Windsor\[char39]) VARYING
+D var2            S             30A   INZ(\[char39]Ontario\[char39]) VARYING
+D var3            S             30A   INZ(\[char39]Canada\[char39]) VARYING
+D fixed1          S             15A   INZ(\[char39]California\[char39])
+D date            S               D   INZ(D\[char39]1997-02-03\[char39])
 D result          S            100A   VARYING
 
  /FREE
-     result = var1 + ', ' + 'ON';
-  // result = 'Windsor, ON'
- 
+     result = var1 + \[char39], \[char39] + \[char39]ON\[char39];
+  // result = \[char39]Windsor, ON\[char39]
+
   // %REPLACE with 2 parameters to replace text at begining of string:
-     result = %replace ('Toronto': result);
-  // result = 'Toronto, ON'
- 
+     result = %replace (\[char39]Toronto\[char39]: result);
+  // result = \[char39]Toronto, ON\[char39]
+
   // %REPLACE with 3 parameters to replace text at specified position:
-     result = %replace (var3: result: %scan(',': result) + 2);
-  // result = 'Toronto, Canada'
- 
+     result = %replace (var3: result: %scan(\[char39],\[char39]: result) + 2);
+  // result = \[char39]Toronto, Canada\[char39]
+
   // %REPLACE with 4 parameters to insert text:
-     result = %replace (', ' + var2: result: %scan (',': result): 0);
-  // result = 'Toronto, Ontario, Canada'
- 
+     result = %replace (\[char39], \[char39] + var2: result: %scan (\[char39],\[char39]: result): 0);
+  // result = \[char39]Toronto, Ontario, Canada\[char39]
+
   // %REPLACE with 4 parameters to replace strings with different length
-     result = %replace ('Scarborough': result:
-    1: %scan (',': result) - 1);
-  // result = 'Scarborough, Ontario, Canada'
- 
+     result = %replace (\[char39]Scarborough\[char39]: result:
+    1: %scan (\[char39],\[char39]: result) - 1);
+  // result = \[char39]Scarborough, Ontario, Canada\[char39]
+
   // %REPLACE with 4 parameters to delete text:
-     result = %replace ('': result: 1: %scan (',': result) + 1);
-  // result = 'Ontario, Canada'
- 
+     result = %replace (\[char39]\[char39]: result: 1: %scan (\[char39],\[char39]: result) + 1);
+  // result = \[char39]Ontario, Canada\[char39]
+
   // %REPLACE with 4 parameters to add text to the end of the string:
-     result = %replace (', ' + %char(date): result:
+     result = %replace (\[char39], \[char39] + %char(date): result:
    %len (result) + 1: 0);
-  // result = 'Ontario, Canada, 1997-02-03'
- 
+  // result = \[char39]Ontario, Canada, 1997-02-03\[char39]
+
   // %REPLACE with 3 parameters to replace fixed-length text at
   // specified position:  (fixed1 has fixed-length of 15 chars)
-     result = %replace (fixed1: result: %scan (',': result) + 2);
-  // result = 'Ontario, California     -03'
- 
+     result = %replace (fixed1: result: %scan (\[char39],\[char39]: result) + 2);
+  // result = \[char39]Ontario, California     -03\[char39]
+
   // %REPLACE with 4 parameters to prefix text at beginning:
-     result = %replace ('Somewhere else: ': result: 1: 0);
-  // result = 'Somewhere else: Ontario, California     -03'
+     result = %replace (\[char39]Somewhere else: \[char39]: result: 1: 0);
+  // result = \[char39]Somewhere else: Ontario, California     -03\[char39]
  /END-FREE
 .fi
 

@@ -23,17 +23,19 @@ For more information, see Conversion Operations or Built-in Functions\[char46]
 
 
 .SH EXAMPLE
+
 \fB%EDITFLT\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
 D f8              s              8f   inz (50000)
 D string          s             40a   varying
 
  /FREE
-    string = 'Float value is ' + %editflt (f8 - 4E4) + '.';
-    // Value of "string" is 'Float value is +1.000000000000000E+004. '
+    string = \[char39]Float value is \[char39] + %editflt (f8 - 4E4) + \[char39]\[char46]\[char39];
+    // Value of "string" is \[char39]Float value is +1\[char46]000000000000000E+004\[char46] \[char39]
  /END-FREE
 .fi
 

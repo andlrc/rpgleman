@@ -16,7 +16,7 @@
 The first parameter is the date, time, or timestamp value\[char46]
 
 
-The second parameter is the portion that you want to extract\[char46] The following values are valid: 
+The second parameter is the portion that you want to extract\[char46] The following values are valid:
 
 
 .IP \[bu] 2
@@ -41,14 +41,16 @@ For more information, see Date Operations or Built-in Functions\[char46]
 \fB%SUBDT\fR extracts a portion of the information in a date, time, or timestamp value\[char46] It returns an unsigned numeric value\[char46]
 
 .SH EXAMPLE
+
 \fB%SUBDT\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  /FREE
 
-     date = d'1999-02-17';
-     time = t'01.23.45';
+     date = d\[char39]1999-02-17\[char39];
+     time = t\[char39]01\[char46]23\[char46]45\[char39];
 
      num = %subdt(date:*YEARS);
      // num = 1999

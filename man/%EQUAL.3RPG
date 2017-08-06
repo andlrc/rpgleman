@@ -44,11 +44,13 @@ For more information, see File Operations, Result Operations, or Built-in Functi
 \fB%EQUAL\fR returns \[char39]1\[char39] if the most recent relevant operation found an exact match; otherwise, it returns \[char39]0\[char39]\[char46]
 
 .SH EXAMPLE
+
 \fB%EQUAL\fR with \fISETLL\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-F*Filename+IPEASFRlen+LKlen+AIDevice+.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+F*Filename+IPEASFRlen+LKlen+AIDevice+\[char46]Keywords+++++++++++++++++++++++++
  * File CUSTS has record format CUSTREC
 FCUSTSIF   E           K DISK
 
@@ -64,32 +66,34 @@ FCUSTSIF   E           K DISK
 
 
 .SH EXAMPLE
+
 \fB%EQUAL\fR and \fB%FOUND\fR with \fILOOKUP\fR Example
+
 .PP
 .nf
-     DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++++++
+     DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++++
      D TabNames        S             10A   DIM(5) CTDATA ASCEND
-     D SearchName      S             10A                        
+     D SearchName      S             10A
       * Position the table at or near SearchName
       * Here are the results of this program for different values
       * of SearchName:
       *   SearchName   |   DSPLY
       *   -------------+-------------------------------
-      *   'Catherine ' |   'Next greater     Martha'
-      *   'Andrea    ' |   'Exact            Andrea'
-      *   'Thomas    ' |   'Not found        Thomas'
-     CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq....
+      *   \[char39]Catherine \[char39] |   \[char39]Next greater     Martha\[char39]
+      *   \[char39]Andrea    \[char39] |   \[char39]Exact            Andrea\[char39]
+      *   \[char39]Thomas    \[char39] |   \[char39]Not found        Thomas\[char39]
+     CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
      C     SearchName    LOOKUP    TabNames                           10  10
      C                   SELECT
      C                   WHEN      %EQUAL
       * An exact match was found
-     C     'Exact       'DSPLY                   TabNames
+     C     \[char39]Exact       \[char39]DSPLY                   TabNames
      C                   WHEN      %FOUND
       * A name was found greater than SearchName
-     C     'Next greater'DSPLY                   TabNames
+     C     \[char39]Next greater\[char39]DSPLY                   TabNames
      C                   OTHER
-      * Not found.  SearchName is greater than all the names in the table
-     C     'Not found   'DSPLY                   SearchName
+      * Not found\[char46]  SearchName is greater than all the names in the table
+     C     \[char39]Not found   \[char39]DSPLY                   SearchName
      C                   ENDSL
      C                   RETURN
 **CTDATA TabNames
@@ -97,7 +101,7 @@ Alexander
 Andrea
 Bohdan
 Martha
-Samuel                          
+Samuel
 .fi
 
 

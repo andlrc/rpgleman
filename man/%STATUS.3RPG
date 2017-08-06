@@ -118,45 +118,47 @@ XLATE (Translate)
 If \fB%STATUS\fR is used without the optional file_name parameter, then it returns the program or file status most recently changed\[char46] If a file is specified, the value contained in the \fIINFDS\fR \fI*STATUS\fR field for the specified file is returned\[char46] The \fIINFDS\fR does not have to be specified for the file\[char46]
 
 .SH EXAMPLE
+
 \fB%STATUS\fR and \fB%ERROR\fR with \[char39]E\[char39] Extender
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
- * The 'E' extender indicates that if an error occurs, the error
- * is to be handled as though an error indicator were coded.
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+ * The \[char39]E\[char39] extender indicates that if an error occurs, the error
+ * is to be handled as though an error indicator were coded\[char46]
  * The success of the operation can then be checked using the
- * %ERROR built-in function.  The status associated with the error
- * can be checked using the %STATUS built-in function.
+ * %ERROR built-in function\[char46]  The status associated with the error
+ * can be checked using the %STATUS built-in function\[char46]
  /FREE
     exfmt(e) InFile;
     if %error;
        exsr CheckError;
     endif;
- 
+
   //-------------------------------------------------------------------
   // CheckError: Subroutine to process a file I/O error
   //-------------------------------------------------------------------
     begsr CheckError;
        select;
        when  %status < 01000;
- 
+
           // No error occurred
        when  %status = 01211;
           // Attempted to read a file that was not open
           exsr InternalError;
- 
+
        when  %status = 01331;
           // The wait time was exceeded for a READ operation
           exsr TimeOut;
- 
+
        when  %status = 01261;
           // Operation to unacquired device
           exsr DeviceError;
- 
+
        when  %status = 01251;
           // Permanent I/O error
           exsr PermError;
- 
+
        other;
           // Some other error occurred
           exsr FileError;
@@ -168,51 +170,53 @@ If \fB%STATUS\fR is used without the optional file_name parameter, then it retur
 
 
 .SH EXAMPLE
+
 \fB%STATUS\fR and \fB%ERROR\fR with \[char39]E\[char39] Extender, Error Indicator and \fI*PSSR\fR
+
 .PP
 .nf
-DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords++++++++++++++++++++++++++
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords++++++++++++++++++++++++++
 D Zero            S              5P 0 INZ(0)
-CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq....
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
  * %STATUS starts with a value of 0
  *
  * The following SCAN operation will cause a branch to the *PSSR
- * because the start position has a value of 0.
-C     'A'           SCAN      'ABC':Zero    Pos
+ * because the start position has a value of 0\[char46]
+C     \[char39]A\[char39]           SCAN      \[char39]ABC\[char39]:Zero    Pos
 C     BAD_SCAN      TAG
- * The following EXFMT operation has an 'E' extender, so %STATUS will
- * be set to 0 before the operation begins.  Therefore, it is
- * valid to check %STATUS after the operation.
- * Since the 'E' extender was coded, %ERROR can also be used to
- * check if an error occurred.
+ * The following EXFMT operation has an \[char39]E\[char39] extender, so %STATUS will
+ * be set to 0 before the operation begins\[char46]  Therefore, it is
+ * valid to check %STATUS after the operation\[char46]
+ * Since the \[char39]E\[char39] extender was coded, %ERROR can also be used to
+ * check if an error occurred\[char46]
 C                   EXFMT(E)  REC1
 C                   IF        %ERROR
 C                   SELECT
 C                   WHEN      %STATUS = 01255
-C ...
+C \[char46]\[char46]\[char46]
 C                   WHEN      %STATUS = 01299
-C ...                                                                
- * The following scan operation has an error indicator.  %STATUS will
+C \[char46]\[char46]\[char46]
+ * The following scan operation has an error indicator\[char46]  %STATUS will
  * not be set to 0 before the operation begins, but %STATUS can be
- * reasonably checked if the error indicator is on.
-C     'A'           SCAN      'ABC':Zero    Pos                    10
+ * reasonably checked if the error indicator is on\[char46]
+C     \[char39]A\[char39]           SCAN      \[char39]ABC\[char39]:Zero    Pos                    10
 C                   IF        *IN10 AND %STATUS = 00100
-C ...
-                                                                      
- * The following scan operation does not produce an error.
- * Since there is no 'E' extender %STATUS will not be set to 0,
- * so it would return a value of 00100 from the previous error.
+C \[char46]\[char46]\[char46]
+
+ * The following scan operation does not produce an error\[char46]
+ * Since there is no \[char39]E\[char39] extender %STATUS will not be set to 0,
+ * so it would return a value of 00100 from the previous error\[char46]
  * Therefore, it is unwise to use %STATUS after an operation that
- * does not have an error indicator or the 'E' extender coded since
+ * does not have an error indicator or the \[char39]E\[char39] extender coded since
  * you cannot be sure that the value pertains to the previous
- * operation.
-C     'A'           SCAN      'ABC'         Pos
-C ...
+ * operation\[char46]
+C     \[char39]A\[char39]           SCAN      \[char39]ABC\[char39]         Pos
+C \[char46]\[char46]\[char46]
 C     *PSSR         BEGSR
- * %STATUS can be used in the *PSSR since an error must have occurred.
+ * %STATUS can be used in the *PSSR since an error must have occurred\[char46]
 C                   IF        %STATUS = 00100
 C                   GOTO      BAD_SCAN
-C ...
+C \[char46]\[char46]\[char46]
 .fi
 
 

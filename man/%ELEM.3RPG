@@ -25,18 +25,20 @@ For more information, see Array Operations or Built-in Functions\[char46]
 \fB%ELEM\fR returns the number of elements in the specified array, table, or multiple-occurrence data structure\[char46] The value returned is in unsigned integer format (type U)\[char46] It may be specified anywhere a numeric constant is allowed in the definition specification or in an expression in the extended factor 2 field\[char46]
 
 .SH EXAMPLE
+
 \fB%ELEM\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
 D arr1d           S             20    DIM(10)
 D table           S             10    DIM(20) ctdata
 D mds             DS            20    occurs(30)
 D num             S              5p 0
 
- * like_array will be defined with a dimension of 10.
- * array_dims will be defined with a value of 10.
+ * like_array will be defined with a dimension of 10\[char46]
+ * array_dims will be defined with a value of 10\[char46]
 D like_array      S                   like(arr1d) dim(%elem(arr1d))
 D array_dims      C                   const (%elem (arr1d))
 

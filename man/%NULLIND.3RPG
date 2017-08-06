@@ -32,17 +32,19 @@ For more information, see Indicator-Setting Operations or Built-in Functions\[ch
 
 
 .SH EXAMPLE
+
 \fB%NULLIND\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
- * Test the null indicator for a null-capable field.
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+ * Test the null indicator for a null-capable field\[char46]
  /FREE
     if  %nullind (fieldname1);
         // field is null
     endif;
- 
-    // Set the null indicator for a null-capable field.
+
+    // Set the null indicator for a null-capable field\[char46]
     %nullind(fieldname1) = *ON;
     %nullind (fieldname2) = *OFF;
  /END-FREE

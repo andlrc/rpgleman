@@ -38,10 +38,12 @@ If the operation cannot complete successfully, exception 00425 or 00426 is issue
 
 
 .SH EXAMPLE
+
 \fB%REALLOC\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  /FREE
    // Allocate an area of 200 bytes
    pointer = %ALLOC(200);
@@ -52,11 +54,11 @@ If the operation cannot complete successfully, exception 00425 or 00426 is issue
    pointer1 = *NULL;;
    // The returned value was assigned to
    // "pointer2", a different variable
-   // from the input pointer "pointer1".
+   // from the input pointer "pointer1"\[char46]
    // In this case, the value of "pointer1"
    // is no longer valid, so "pointer1" must
    // be set to *NULL to avoid using the
-   // old value. /END-FREE
+   // old value\[char46] /END-FREE
 .fi
 
 

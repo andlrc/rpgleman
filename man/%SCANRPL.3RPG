@@ -44,43 +44,45 @@ For more information, see String Operations or Built-in Functions\[char46]
 \fB%SCANRPL\fR returns the string produced by replacing all occurrences of the scan string in the source string with the replacement string\[char46] The search for the scan string starts at the scan start position and continues for the scan length\[char46] The parts of the source string that are outside the range specified by the scan start position and the scan length are included in the result\[char46]
 
 .SH EXAMPLE
+
 \fB%SCANRPL\fR Example
+
 .PP
 .nf
-//         ....+....1....+....2....+....3....+...string1 = 'See NAME. See NAME run. Run NAME run.';
+//         \[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]string1 = \[char39]See NAME\[char46] See NAME run\[char46] Run NAME run\[char46]\[char39];
 
-// 1. All occurrences of "NAME" are replaced by the
-//    replacement value.  In the first case, 
-//    the resulting string is shorter than the source 
-//    string, since the replacment string is shorter 
-//    than the scan string. In the second case, the 
-//    resulting string is longer.string2 = %ScanRpl('NAME' : 'Tom' : string1);
-// string2 = 'See Tom. See Tom run. Run Tom run.'string2 = %ScanRpl('NAME' : 'Jenny' : string1);
-// string2 = 'See Jenny. See Jenny run. Run Jenny run.'
+// 1\[char46] All occurrences of "NAME" are replaced by the
+//    replacement value\[char46]  In the first case,
+//    the resulting string is shorter than the source
+//    string, since the replacment string is shorter
+//    than the scan string\[char46] In the second case, the
+//    resulting string is longer\[char46]string2 = %ScanRpl(\[char39]NAME\[char39] : \[char39]Tom\[char39] : string1);
+// string2 = \[char39]See Tom\[char46] See Tom run\[char46] Run Tom run\[char46]\[char39]string2 = %ScanRpl(\[char39]NAME\[char39] : \[char39]Jenny\[char39] : string1);
+// string2 = \[char39]See Jenny\[char46] See Jenny run\[char46] Run Jenny run\[char46]\[char39]
 
-// 2. All occurrences of ** are removed from the string.
-//    The replacement string, '', has zero length.string3 = '*Hello**There**Everyone*';
-string2 = %ScanRpl('**' : '' : string3);
-// string2 = '*HelloThereEveryone*'
+// 2\[char46] All occurrences of ** are removed from the string\[char46]
+//    The replacement string, \[char39]\[char39], has zero length\[char46]string3 = \[char39]*Hello**There**Everyone*\[char39];
+string2 = %ScanRpl(\[char39]**\[char39] : \[char39]\[char39] : string3);
+// string2 = \[char39]*HelloThereEveryone*\[char39]
 
-// 3. All occurrences of "NAME" are replaced by "Tom"
-//    starting at position 6.  Since the first "N" of 
+// 3\[char46] All occurrences of "NAME" are replaced by "Tom"
+//    starting at position 6\[char46]  Since the first "N" of
 //    the first "NAME" in the string is not part of the
 //    source string that is scanned, the first "NAME"
-//    is not considered replaceable.string2 = %ScanRpl('NAME' : 'Tom' : string1 : 6);
-// string2 = 'See NAME. See Tom run. Run Tom run.'
+//    is not considered replaceable\[char46]string2 = %ScanRpl(\[char39]NAME\[char39] : \[char39]Tom\[char39] : string1 : 6);
+// string2 = \[char39]See NAME\[char46] See Tom run\[char46] Run Tom run\[char46]\[char39]
 
-// 4. All occurrences of "NAME" are replaced by "Tom"
-//    up to length 31.  Since the final "E" of 
+// 4\[char46] All occurrences of "NAME" are replaced by "Tom"
+//    up to length 31\[char46]  Since the final "E" of
 //    the last "NAME" in the string is not part of the
 //    source string that is scanned, , the final "NAME"
-//    is not considered replaceable.string2 = %ScanRpl('NAME' : 'Tom' : string1 : 1 : 31);
-// string2 = 'See Tom. See Tom run. Run NAME run.'
+//    is not considered replaceable\[char46]string2 = %ScanRpl(\[char39]NAME\[char39] : \[char39]Tom\[char39] : string1 : 1 : 31);
+// string2 = \[char39]See Tom\[char46] See Tom run\[char46] Run NAME run\[char46]\[char39]
 
-// 5. All occurrences of "NAME" are replaced by "Tom"
-//    from position 10 for length 10.  Only the second
-//    "NAME" value falls in that range.string2 = %ScanRpl('NAME' : 'Tom' : string1 : 10 : 10);
-// string2 = 'See NAME. See Tom run. Run NAME run.'
+// 5\[char46] All occurrences of "NAME" are replaced by "Tom"
+//    from position 10 for length 10\[char46]  Only the second
+//    "NAME" value falls in that range\[char46]string2 = %ScanRpl(\[char39]NAME\[char39] : \[char39]Tom\[char39] : string1 : 10 : 10);
+// string2 = \[char39]See NAME\[char46] See Tom run\[char46] Run NAME run\[char46]\[char39]
 .fi
 
 

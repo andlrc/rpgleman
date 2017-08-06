@@ -32,15 +32,17 @@ For more information, see Information Operations or Built-in Functions\[char46]
 
 
 .SH EXAMPLE
+
 \fB%TIME\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  /FREE
 
-    string = '12:34 PM';
+    string = \[char39]12:34 PM\[char39];
     time =  %time(string:*USA);
-    // time = t'12.34.00'
+    // time = t\[char39]12\[char46]34\[char46]00\[char39]
  /END-FREE
 .fi
 

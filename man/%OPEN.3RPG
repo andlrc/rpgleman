@@ -20,11 +20,13 @@ For more information, see File Operations or Built-in Functions\[char46]
 \fB%OPEN\fR returns \[char39]1\[char39] if the specified file is open\[char46] A file is considered "open" if it has been opened by the \fIRPG\fR module during initialization or by an \fIOPEN\fR operation, and has not subsequently been closed\[char46] If the file is conditioned by an external indicator and the external indicator was off at module initialization, the file is considered closed, and \fB%OPEN\fR returns \[char39]0\[char39]\[char46]
 
 .SH EXAMPLE
+
 \fB%OPEN\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
-F*Filename+IPEASFRlen+LKlen+AIDevice+.Keywords+++++++++++++++++++++++++
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+F*Filename+IPEASFRlen+LKlen+AIDevice+\[char46]Keywords+++++++++++++++++++++++++
  * The printer file is opened in the calculation specifications
 FQSYSPRT   O    F  132        PRINTER USROPN
 

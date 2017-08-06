@@ -25,16 +25,18 @@ For more information, see Conversion Operations or Built-in Functions\[char46]
 \fB%UCS2\fR converts the value of the expression from character, graphic, or \fIUCS\fR-2 and returns a \fIUCS\fR-2 value\[char46] The result is varying length if the parameter is varying length, or if the parameter is single-byte character\[char46]
 
 .SH EXAMPLE
+
 \fB%UCS2\fR Examples
+
 .PP
 .nf
 HKeywords++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 H CCSID(*UCS2 : 13488)
-DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
-D  char           S              5A   INZ('abcde')
-D  graph          S              2G   INZ(G'oAABBi')
- * The %UCS2 built-in function is used to initialize a UCS-2 field.
-D  ufield         S             10C   INZ(%UCS2('abcdefghij'))
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
+D  char           S              5A   INZ(\[char39]abcde\[char39])
+D  graph          S              2G   INZ(G\[char39]oAABBi\[char39])
+ * The %UCS2 built-in function is used to initialize a UCS-2 field\[char46]
+D  ufield         S             10C   INZ(%UCS2(\[char39]abcdefghij\[char39]))
 D  ufield2        S              1C   CCSID(61952) INZ(*LOVAL)
 D  isLess                        1N
 D  proc           PR
@@ -42,21 +44,27 @@ D    uparm                       2G   CCSID(13488) CONST
 CL0N01Factor1+++++++Opcode&ExtExtended-factor2+++++++++++++++++++++++++
 C                   EVAL      ufield = %UCS2(char) +  %UCS2(graph)
  * ufield now has 7 UCS-2 characters representing
- * 'a.b.c.d.e.AABB' where 'x.' represents the UCS-2 form of 'x'
+ * \[char39]a\[char46]b\[char46]c\[char46]d\[char46]e\[char46]AABB\[char39] where \[char39]x\[char46]\[char39] represents the UCS-2 form of \[char39]x\[char39]
 C                   EVAL      isLess = ufield < %UCS2(ufield2:13488)
  * The result of the %UCS2 built-in function is the value of
  * ufield2, converted from CCSID 61952 to CCSID 13488
- * for the comparison.
+ * for the comparison\[char46]
 
 C                   EVAL      ufield = ufield2
  * The value of ufield2 is converted from CCSID 61952 to
- * CCSID 13488 and stored in ufield.
- * This conversion is handled implicitly by the compiler.
+ * CCSID 13488 and stored in ufield\[char46]
+ * This conversion is handled implicitly by the compiler\[char46]
 
 C                   CALLP     proc(ufield2)
  * The value of ufield2 is converted to CCSID 13488
- * implicitly, as part of passing the parameter by constant reference.
+ * implicitly, as part of passing the parameter by constant reference\[char46]
 .fi
+
+
+
+
+
+
 
 
 

@@ -32,15 +32,17 @@ For more information, see Information Operations or Built-in Functions\[char46]
 
 
 .SH EXAMPLE
+
 \fB%TIMESTAMP\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  /FREE
 
-   string = '1960-09-29-12.34.56.000000';
-   timest =  %timestamp(string);   
-    // timest now contains z'1960-09-29-12.34.56.000000'
+   string = \[char39]1960-09-29-12\[char46]34\[char46]56\[char46]000000\[char39];
+   timest =  %timestamp(string);
+    // timest now contains z\[char39]1960-09-29-12\[char46]34\[char46]56\[char46]000000\[char39]
  /END-FREE
 .fi
 

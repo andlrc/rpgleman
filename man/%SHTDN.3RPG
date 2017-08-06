@@ -20,13 +20,15 @@ For more information, see Information Operations or Built-in Functions\[char46]
 \fB%SHTDN\fR returns \[char39]1\[char39] if the system operator has requested shutdown; otherwise, it returns \[char39]0\[char39]\[char46] See \fISHTDN\fR (Shut Down) for more information\[char46]
 
 .SH EXAMPLE
+
 \fB%SHTDN\fR Example
+
 .PP
 .nf
- *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
  /FREE
    // If the operator has requested shutdown, quit the
-   // program.
+   // program\[char46]
 
    IF %SHTDN;
       QuitProgram();
