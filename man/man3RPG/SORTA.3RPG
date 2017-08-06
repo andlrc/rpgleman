@@ -1,0 +1,294 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzsorta.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH SORTA 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+SORTA - Sort an Array
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fISORTA\fR{(A/D)} array-name | keyed-ds-array
+T}
+T{
+\fISORTA\fR{(A/D)} \fB%SUBARR(array-name | keyed-ds-array: start-element { : number-of-elements })\fR
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fISORTA\fR(A/D)
+T}	T{
+Â
+T}	T{
+ Array or keyed-ds-array
+T}
+T{
+Â
+T}	T{
+Â
+T}	T{
+\fB%SUBARR(Array or keyed-ds-array : start-element {:number-of-elements} )\fR
+T}
+.TE
+
+For a scalar array, the array-name operand is the name of an array to be sorted\[char46] The array \fI*IN\fR cannot be specified\[char46] If the array is defined as a compile-time or prerun-time array with data in alternating form, the alternate array is not sorted\[char46] Only the array specified as array-name is sorted\[char46]
+
+
+For an array data structure, the keyed-ds-array operand is a qualified name consisting of the array to be sorted followed by the subfield to be used as a key for the sort\[char46] The array data structure to be sorted is indicated by specifying * as the index for the array\[char46] For example, if array data structure \fIINFO\fR has subfields \fINAME\fR and \fISALARY\fR, then to sort array \fIINFO\fR using subfield \fINAME\fR as a key, specify \fIINFO\fR(*)\[char46]\fINAME\fR as the operand for \fISORTA\fR\[char46] To sort the \fIINFO\fR array by \fISALARY\fR, specify \fIINFO\fR(*)\[char46]\fISALARY\fR as the operand for \fISORTA\fR\[char46]
+
+
+If the sequence for the array is defined by the \fIASCEND\fR or \fIDESCEND\fR keyword on the definition specification for the array, then the array is always sorted in that sequence\[char46] If no sequence is specified for the array, then the sequence defaults to ascending sequence\[char46] If the \[char39]A\[char39] operation extender is specified, then the array is sorted in ascending sequence\[char46] If the \[char39]D\[char39] operation extender is specified, then the array is sorted in descending sequence\[char46]
+
+
+
+
+If the array is defined with the \fIOVERLAY\fR keyword and the \[char39]A\[char39] or \[char39]D\[char39] operation extender is not specified, the base array will be sorted in the sequence defined by the \fIOVERLAY\fR array\[char46]
+
+
+Graphic and \fIUCS\fR-2 arrays will be sorted by the hexadecimal values of the array elements, disregarding the alternate collating sequence, in the order specified on the definition specification\[char46]
+
+
+To sort a portion of an array, use the \fB%SUBARR\fR built-in function\[char46]
+
+
+
+
+.IP 1. 2
+.RS
+Sorting an array does not preserve any previous order\[char46] For example, if you sort an array twice, using different overlay arrays, the final sequence will be that of the last sort\[char46] Elements that are equal in the sort sequence but have different hexadecimal values (for example, due to alternate collating sequence or the use of an overlay array to determine sequence), may not be in the same order after sorting as they were before\[char46]
+.RE
+.IP 2. 2
+.RS
+When sorting arrays of basing pointers, you must ensure that all values in the arrays are addresses within the same space\[char46] Otherwise, inconsistent results may occur\[char46] See Compare Operations  for more information\[char46]
+.RE
+.IP 3. 2
+.RS
+If a null-capable array is sorted, the sorting will not take the settings of the null flags into consideration\[char46]
+.RE
+.IP 4. 2
+.RS
+Sorting a dynamically allocated array without all defined elements allocated may cause errors to occur\[char46] Use the \fB%SUBARR\fR built-in function to limit the sort to only the allocated elements\[char46]
+.RE
+.IP 5. 2
+.RS
+The \[char39]A\[char39] operation extender is not allowed when sorting an array that is defined with the \fIDESCEND\fR keyword and the \[char39]D\[char39] operation extender is not allowed when sorting an array that is defined with the \fIASCEND\fR keyword\[char46]
+.RE
+.IP 6. 2
+.RS
+When sorting an array data structure: 
+.IP 1. 2
+.RS
+The part of the qualified name preceding the (*) index must represent an array, and the part of the qualified name after the (*) must represent a scalar subfield or an indexed scalar array\[char46]
+.RE
+.IP 2. 2
+.RS
+If there is more than one array subfield in a complex qualified name, only one array subfield can be sorted\[char46] All other arrays in the qualified name must have an index specified\[char46] For example, if array data structure \fIFAMILY\fR has an array subfield \fICHILD\fR and the \fICHILD\fR elements have an array subfield \fIPET\fR, and the \fIPET\fR subfield has a subfield \fINAME\fR, then only one of the \fIFAMILY\fR, \fICHILD\fR and \fIPET\fR arrays can be sorted in one \fISORTA\fR operation\[char46] If the \fICHILD\fR array is to be sorted, then the \fIFAMILY\fR and \fIPET\fR arrays must have explicit indexes\[char46] One valid operand for \fISORTA\fR would be \fIFAMILY\fR(i)\[char46]\fICHILD\fR(*)\[char46]\fIPET\fR(1)\[char46]\fINAME\fR\[char46] That \fISORTA\fR operation would sort the \fICHILD\fR array of \fIFAMILY\fR(i) by the \fINAME\fR subfield of \fIPET\fR(1)\[char46]
+.RE
+.IP 3. 2
+.RS
+An array data structure is sorted in the ascending sequence of the key unless the \[char39]D\[char39] operation extender is specified\[char46]
+.RE
+.IP 4. 2
+.RS
+If the sort key is an element of a sequenced array, its sequence is not considered when sorting the array data structure\[char46]
+.RE
+.PP
+
+.RE
+.PP
+
+For more information, see Array Operations\[char46]
+
+.SH EXAMPLE
+\fISORTA\fR Operation
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++
+DARRY             S              1A   DIM(8) ASCEND
+DARRY2            S              1A   DIM(8)
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+ *
+ *  The SORTA operation sorts ARRY into ascending sequence because
+ *  the ASCEND keyword is specified\[char46]
+ *  If the unsorted ARRY contents were GT1BA2L0, the sorted ARRY
+ *  contents would be ABGLT012\[char46]
+C                   SORTA     ARRY
+
+ *  The SORTA operation sorts ARRY2 into descending ascending sequence
+ *  the (D) operation extender is specified\[char46]
+ *  If the unsorted ARRY2 contents were GT1BA2L0, the sorted ARRY2
+ *  contents would be 210TLGBA\[char46]
+C                   SORTA(D)  ARRY2
+.fi
+
+.SH EXAMPLE
+\fISORTA\fR Operation with \fIOVERLAY\fR
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++
+ * In this example, the base array has the values aa44 bb33 cc22 dd11
+ * so the overlaid array ARRO has the values 44 33 22 11\[char46]
+D                 DS
+D ARR                            4    DIM(4) ASCEND
+D ARRO                           2    OVERLAY(ARR:3)
+D
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+C
+ * After the SORTA operation, the base array has the values
+ * dd11 cc22 bb33 aa44
+C
+C                   SORTA     ARRO
+.fi
+
+.SH EXAMPLE
+\fISORTA\fR Operation Ascending or Descending
+.PP
+.nf
+ * The names array does not have a sequence keyword
+ * (ASCEND or DESCEND) specified\[char46]D info            DS                  QUALIFIED
+D   names                       10A   DIM(2)
+
+ /free
+
+    // Initialize the array    info\[char46]names(1) = \[char39]Bart\[char39];
+    info\[char46]names(2) = \[char39]Lisa\[char39];
+
+    // Sort the info\[char46]names in descending order    SORTA(D) info\[char46]names;
+    // info\[char46]names(1) = \[char39]Lisa\[char39]
+    // info\[char46]names(2) = \[char39]Bart\[char39]
+
+    // Sort the info\[char46]names in ascending order    SORTA(A) info\[char46]names;
+    // info\[char46]names(1) = \[char39]Bart\[char39]
+    // info\[char46]names(2) = \[char39]Lisa\[char39]
+
+    // With no operation extender, it defaults to ascending order    SORTA info\[char46]names;
+    // info\[char46]names(1) = \[char39]Bart\[char39]
+    // info\[char46]names(2) = \[char39]Lisa\[char39]
+.fi
+
+.SH EXAMPLE
+\fISORTA\fR Operation with an Array Data Structure
+.PP
+.nf
+D emp             DS                  QUALIFIED DIM(25)
+D   name                        25A   VARYING
+D   salary                       9P 2
+D numEmp          S             10I 0
+
+// Initialize the data structureemp(1)\[char46]name = \[char39]Maria\[char39];
+emp(1)\[char46]salary = 1100;
+emp(2)\[char46]name = \[char39]Pablo\[char39];
+emp(2)\[char46]salary = 1200;
+emp(3)\[char46]name = \[char39]Bill\[char39];
+emp(3)\[char46]salary = 1000;
+emp(4)\[char46]name = \[char39]Alex\[char39];
+emp(4)\[char46]salary = 1300;
+numEmp = 4;
+
+// Sort the EMP array using the NAME subfield as a keySORTA %subarr(emp(*)\[char46]name : 1 : numEmp);
+// emp(1)\[char46]name = \[char39]Alex\[char39]       <-----
+// emp(1)\[char46]salary = 1300
+// emp(2)\[char46]name = \[char39]Bill\[char39]       <-----
+// emp(2)\[char46]salary = 1000
+// emp(3)\[char46]name = \[char39]Maria\[char39]      <-----
+// emp(3)\[char46]salary = 1100
+// emp(4)\[char46]name = \[char39]Pablo\[char39]      <-----
+// emp(4)\[char46]salary = 1200
+
+// Sort the EMP array using the SALARY subfield as a keySORTA %subarr(emp(*)\[char46]salary : 1 : numEmp);
+// emp(1)\[char46]name = \[char39]Bill\[char39]
+// emp(1)\[char46]salary = 1000       <-----
+// emp(2)\[char46]name = \[char39]Maria\[char39]
+// emp(2)\[char46]salary = 1100       <-----
+// emp(3)\[char46]name = \[char39]Pablo\[char39]
+// emp(3)\[char46]salary = 1200       <-----
+// emp(4)\[char46]name = \[char39]Alex\[char39]
+// emp(4)\[char46]salary = 1300       <-----
+
+// Sort the EMP array descending using the SALARY subfieldSORTA(D) %subarr(emp(*)\[char46]salary : 1 : numEmp);
+// emp(1)\[char46]name = \[char39]Alex\[char39]
+// emp(1)\[char46]salary = 1300       <-----
+// emp(2)\[char46]name = \[char39]Pablo\[char39]
+// emp(2)\[char46]salary = 1200       <-----
+// emp(3)\[char46]name = \[char39]Maria\[char39]
+// emp(3)\[char46]salary = 1100       <-----
+// emp(4)\[char46]name = \[char39]Bill\[char39]
+// emp(4)\[char46]salary = 1000       <-----
+.fi
+
+.SH EXAMPLE
+\fISORTA\fR Operation with a Complex Array Data Structure
+.PP
+.nf
+D emp_t           DS                  QUALIFIED TEMPLATE
+D   name                        25A   VARYING
+D teams           DS                  QUALIFIED DIM(2)
+D   manager                     25A   VARYING
+D   emps                              LIKEDS(emp_t) DIM(2)
+
+// Initialize the data structureteams(1)\[char46]manager = \[char39]Jack\[char39];
+teams(1)\[char46]emps(1)\[char46]name = \[char39]Yvonne\[char39];
+teams(1)\[char46]emps(2)\[char46]name = \[char39]Mary\[char39];
+teams(2)\[char46]manager = \[char39]Ann\[char39];
+teams(2)\[char46]emps(1)\[char46]name = \[char39]Wendy\[char39];
+teams(2)\[char46]emps(2)\[char46]name = \[char39]Thomas\[char39];
+
+// Sort the TEAMS array using the MANAGER subfield as a keySORTA teams(*)\[char46]manager;
+//    teams(1)\[char46]manager = \[char39]Ann\[char39]           <-----
+//    teams(1)\[char46]emps(1)\[char46]name = \[char39]Wendy\[char39]
+//    teams(1)\[char46]emps(2)\[char46]name = \[char39]Thomas\[char39]
+//    teams(2)\[char46]manager = \[char39]Jack\[char39]          <-----
+//    teams(2)\[char46]emps(1)\[char46]name = \[char39]Yvonne\[char39]
+//    teams(2)\[char46]emps(2)\[char46]name = \[char39]Mary\[char39]
+
+// Sort the TEAMS array using the EMPS(2)\[char46]NAME subfield as a keySORTA teams(*)\[char46]emps(2)\[char46]name;
+//    teams(1)\[char46]manager = \[char39]Jack\[char39]
+//    teams(1)\[char46]emps(1)\[char46]name = \[char39]Yvonne\[char39]
+//    teams(1)\[char46]emps(2)\[char46]name = \[char39]Mary\[char39]     <-----
+//    teams(2)\[char46]manager = \[char39]Ann\[char39]
+//    teams(2)\[char46]emps(1)\[char46]name = \[char39]Wendy\[char39]
+//    teams(2)\[char46]emps(2)\[char46]name = \[char39]Thomas\[char39]   <-----
+
+// Sort the TEAMS(1)\[char46]EMPS array using the NAME subfield as a keySORTA teams(1)\[char46]emps(*)\[char46]name;
+//    teams(1)\[char46]manager = \[char39]Jack\[char39]
+//    teams(1)\[char46]emps(1)\[char46]name = \[char39]Mary\[char39]     <-----
+//    teams(1)\[char46]emps(2)\[char46]name = \[char39]Yvonne\[char39]   <-----
+//    teams(2)\[char46]manager = \[char39]Ann\[char39]
+//    teams(2)\[char46]emps(1)\[char46]name = \[char39]Wendy\[char39]
+//    teams(2)\[char46]emps(2)\[char46]name = \[char39]Thomas\[char39]
+
+// Sort the TEAMS array first by the MANAGER subfield
+// and then by the EMPS\[char46]NAME subfieldsSORTA teams(*)\[char46]manager;
+for i = 1 to %ELEM(TEAMS);
+   SORTA teams(i)\[char46]emps(*)\[char46]name;
+endfor;
+// After the first sort, by MANAGER:
+//    teams(1)\[char46]manager = \[char39]Ann\[char39]           <-----
+//    teams(1)\[char46]emps(1)\[char46]name = \[char39]Wendy\[char39]
+//    teams(1)\[char46]emps(2)\[char46]name = \[char39]Thomas\[char39]
+//    teams(2)\[char46]manager = \[char39]Jack\[char39]          <-----
+//    teams(2)\[char46]emps(1)\[char46]name = \[char39]Mary\[char39]
+//    teams(2)\[char46]emps(2)\[char46]name = \[char39]Yvonne\[char39]
+// After loop with the second sort, by EMPS\[char46]NAME:
+//    teams(1)\[char46]manager = \[char39]Ann\[char39]
+//    teams(1)\[char46]emps(1)\[char46]name = \[char39]Thomas\[char39]   <----- 1
+//    teams(1)\[char46]emps(2)\[char46]name = \[char39]Wendy\[char39]    <----- 1
+//    teams(2)\[char46]manager = \[char39]Jack\[char39]
+//    teams(2)\[char46]emps(1)\[char46]name = \[char39]Mary\[char39]     <----- 2
+//    teams(2)\[char46]emps(2)\[char46]name = \[char39]Yvonne\[char39]   <----- 2
+.fi
+.SH SEE ALSO
+.BR %SUBARR (3RPG),
+.BR %ELEM (3RPG)

@@ -1,0 +1,55 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzdow.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DOW 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DOW - Do While
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIDOW\fR{(MR)} indicator-expression
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fIDOW\fR (M/R)
+T}	T{
+Â
+T}	T{
+indicator-expression
+T}
+.TE
+
+The \fIDOW\fR operation code precedes a group of operations which you want to process when a given condition exists\[char46] Its function is similar to that of the \fIDOW\fRxx operation code\[char46] An associated \fIENDDO\fR statement marks the end of the group\[char46] It differs in that the logical condition is expressed by an indicator valued expression (indicator-expression)\[char46] The operations controlled by the \fIDOW\fR operation are performed while the expression in indicator-expression is true\[char46] See Expressions for details on expressions\[char46] For information on how operation extenders M and R are used, see Precision Rules for Numeric Operations\[char46]
+
+
+For fixed-format syntax, level and conditioning indicators are valid\[char46] Factor 1 must be blank\[char46] Factor 2 contains the expression to be evaluated\[char46]
+
+
+For more information, see Compare Operations or Structured Programming Operations\[char46]
+
+.SH EXAMPLE
+\fIDOW\fR Operation
+.PP
+.nf
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+ * In this example, the do loop will be repeated until the condition
+ * is false\[char46] That is when A > 5 or B+C are not equal to zero\[char46]
+
+ /FREE
+    dow (a <= 5) and (b + c = 0);
+       do_something (a:b:c);
+    enddo;
+ /END-FREE
+.fi

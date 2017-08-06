@@ -1,0 +1,155 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzchain.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH CHAIN 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+CHAIN - Random Retrieval from a File
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fICHAIN\fR{(\fIENHMR\fR)} search-arg name {data-structure}
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fICHAIN\fR (E N)
+T}	T{
+search-arg
+T}	T{
+name (file or record format)
+T}	T{
+data-structure
+T}	T{
+NR
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The \fICHAIN\fR operation retrieves a record from a full procedural file, sets a record identifying indicator on (if specified on the input specifications), and places the data from the record into the input fields\[char46]
+
+
+The search argument, search-arg, must be the key or relative record number used to retrieve the record\[char46] If access is by key, search-arg can be a a single key in the form of a field name, a named constant, a figurative constant, or a literal\[char46]
+
+
+If the file is an externally-described file, search-arg can also be a composite key in the form of a \fIKLIST\fR name, a list of values, or \fB%KDS\fR\[char46] For keys specified using a \fIKLIST\fR, key fields must have the same \fICCSID\fR as the key in the file\[char46] For an example of \fB%KDS\fR, see the example at the end of \fB%KDS\fR (Search Arguments in Data Structure)\[char46] If access is by relative record number, search-arg must be an integer literal or a numeric field with zero decimal positions\[char46]
+
+
+The name operand specifies the file or record format name that is to be read\[char46] A record format name is valid with an externally described file\[char46] If a file name is specified in name and access is by key, the \fICHAIN\fR operation retrieves the first record that matches the search argument\[char46]
+
+
+If name is a record format name and access is by key, the \fICHAIN\fR operation retrieves the first record of the specified record type whose key matches the search argument\[char46] If no record is found of the specified record type that matches the search argument, a no-record-found condition exists\[char46]
+
+
+If the data-structure operand is specified, the record is read directly into the data structure\[char46] If name refers to a program-described file, the data structure can be any data structure of the same length as the file\[char39]s declared record length\[char46] If name refers to an externally-described file or a record format from an externally described file, the data structure must be a data structure defined with \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR)\[char46] See File Operations for information on how to define the data structure and how data is transferred between the file and the data structure\[char46]
+
+
+For a \fIWORKSTN\fR file, the \fICHAIN\fR operation retrieves a subfile record\[char46]
+
+
+For a multiple device file, you must specify a record format in the name operand\[char46] Data is read from the program device identified by the field name specified in the \fIDEVID\fR(fieldname) keyword in the file specifications for the device file\[char46] If the keyword is not specified, data is read from the device for the last successful input operation to the file\[char46]
+
+
+If the file is specified as an input \fIDISK\fR file, all records are read without locks and so no operation extender can be specified\[char46] If the file is specified as update, all records are locked if the N operation extender is not specified\[char46]
+
+
+If you are reading from an update disk file, you can specify an N operation extender to indicate that no lock should be placed on the record when it is read (e\[char46]g\[char46] \fICHAIN\fR (N))\[char46] See the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide for more information\[char46]
+
+
+You can specify an indicator in positions 71-72 that is set on if no record in the file matches the search argument\[char46] This information can also be obtained from the \fB%FOUND\fR built-in function, which returns \[char39]0\[char39] if no record is found, and \[char39]1\[char39] if a record is found\[char46]
+
+
+To handle \fICHAIN\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+
+
+Positions 75 and 76 must be blank\[char46]
+
+
+When the \fICHAIN\fR operation is successful, the file specified in name is positioned such that a subsequent read operation retrieves the record logically following or preceding the retrieved record\[char46] When the \fICHAIN\fR operation is not completed successfully (for example, an error occurs or no record is found), the file specified in name must be repositioned (for example, by a \fICHAIN\fR or \fISETLL\fR operation) before a subsequent read operation can be done on that file\[char46]
+
+
+If an update (on the calculation or output specifications) is done on the file specified in name immediately after a successful \fICHAIN\fR operation to that file, the last record retrieved is updated\[char46]
+
+
+See Database Null Value Support for information on handling records with null-capable fields and keys\[char46]
+
+
+For more information, see File Operations\[char46]
+
+
+
+.SH EXAMPLE
+\fICHAIN\fR Operation with a File Name
+.PP
+.nf
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+ *
+ *  The CHAIN operation retrieves the first record from the file,
+ *  FILEX, that has a key field with the same value as the search
+ *  argument KEY (factor 1)\[char46]
+
+ /FREE
+     CHAIN  KEY  FILEX;
+
+  //  If a record with a key value equal to the search argument is
+  //  not found, %FOUND returns \[char39]0\[char39] and the EXSR operation is
+  //  processed\[char46] If a record is found with a key value equal
+  //  to the search argument, the program continues with
+  //  the calculations after the EXSR operation\[char46]
+
+     IF  NOT %FOUND;
+        EXSR  Not_Found;
+     ENDIF;
+ /END-FREE
+.fi
+
+.SH EXAMPLE
+\fICHAIN\fR Operation Using a List of Key Fields
+.PP
+.nf
+FFilename++IPEASF\[char46]\[char46]\[char46]\[char46]\[char46]L\[char46]\[char46]\[char46]\[char46]\[char46]A\[char46]Device+\[char46]Keywords+++++++++++++++++++++++++
+FCUSTFILE   IF   E           K DISK
+ /free
+         // Specify the search keys directly in a list
+         chain (\[char39]abc\[char39] : \[char39]AB\[char39]) custrec;
+         // Expressions can be used in the list of keys
+         chain (%xlate(custname : LO : UP) : companyCode + partCode)
+                 custrec;
+         return;
+.fi
+
+.SH EXAMPLE
+\fICHAIN\fR Operation Using a Data Structure with an Externally-Described File
+.PP
+.nf
+FFilename++IPEASF\[char46]\[char46]\[char46]\[char46]\[char46]L\[char46]\[char46]\[char46]\[char46]\[char46]A\[char46]Device+\[char46]Keywords+++++++++++++++++++++++++
+FCUSTFILE   IF   E           K DISK
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
+D custRecDs       ds                  likerec(custRec)
+
+ /free
+         // Read the record directly into the data structure
+         chain (\[char39]abc\[char39] : \[char39]AB\[char39]) custRec custRecDs;
+         // Use the data structure fields
+         if (custRecDs\[char46]code = *BLANKS);
+            custRecDs\[char46]code = getCompanyCode (custRecDs);
+            update custRec custRecDs;
+         endif;
+.fi
+.SH SEE ALSO
+.BR %KDS (3RPG),
+.BR %FOUND (3RPG),
+.BR %XLATE (3RPG)

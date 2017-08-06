@@ -1,0 +1,116 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzselec.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH SELECT 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+SELECT - Begin a Select Group
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fISELECT\fR
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fISELECT\fR
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+.TE
+
+.IP "" 2
+.RS
+\[bu] A \fISELECT\fR statement
+.RE
+.IP "" 2
+.RS
+\[bu] Zero or more \fIWHEN\fRxx  or \fIWHEN\fR groups
+.RE
+.IP "" 2
+.RS
+\[bu] An optional \fIOTHER\fR  group
+.RE
+.IP "" 2
+.RS
+\[bu] \fIENDSL\fR or \fIEND\fR  statement\[char46]
+.RE
+.PP
+
+After the \fISELECT\fR operation, control passes to the statement following the first \fIWHEN\fRxx condition that is satisfied\[char46] All statements are then executed until the next \fIWHEN\fRxx operation\[char46] Control passes to the \fIENDSL\fR statement (only one \fIWHEN\fRxx is executed)\[char46] If no \fIWHEN\fRxx condition is satisfied and an \fIOTHER\fR operation is specified, control passes to the statement following the \fIOTHER\fR operation\[char46] If no \fIWHEN\fRxx condition is satisfied and no \fIOTHER\fR operation is specified, control transfers to the statement following the \fIENDSL\fR operation of the select group\[char46]
+
+
+Conditioning indicators can be used on the \fISELECT\fR operation\[char46] If they are not satisfied, control passes immediately to the statement following the \fIENDSL\fR operation of the select group\[char46] Conditioning indicators cannot be used on \fIWHEN\fRxx, \fIWHEN\fR, \fIOTHER\fR and \fIENDSL\fR operation individually\[char46]
+
+
+The select group can be specified anywhere in calculations\[char46] It can be nested within IF, DO, or other select groups\[char46] The IF and DO groups can be nested within select groups\[char46]
+
+
+If a \fISELECT\fR operation is specified inside a select group, the \fIWHEN\fRxx and \fIOTHER\fR operations apply to the new select group until an \fIENDSL\fR is specified\[char46]
+
+
+For more information, see Structured Programming Operations\[char46]
+
+.SH EXAMPLE
+\fISELECT\fR Operation
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+ *
+ * In the following example, if X equals 1, do the operations in
+ * sequence 1 (note that no END operation is needed before the
+ * next WHENxx); if X does NOT equal 1, and if Y=2 and X<10, do the
+ * operations in sequence 2\[char46]  If neither condition is true, do
+ * the operations in sequence 3\[char46]
+ *
+C                   SELECT
+C                   WHEN      X = 1
+C                   Z-ADD     A             B
+C                   MOVE      C             D
+ *  Sequence 1
+C                   :
+C                   WHEN      ((Y = 2) AND (X < 10))
+ *  Sequence 2
+C                   :
+C                   OTHER
+ *  Sequence 3
+C                   :
+C                   ENDSL
+ *
+ * The following example shows a select group with conditioning
+ * indicators\[char46]  After the CHAIN operation, if indicator 10 is on,
+ * then control passes to the ADD operation\[char46]  If indicator 10 is
+ * off, then the select group is processed\[char46]
+ *
+C     KEY           CHAIN     FILE                               10
+C  N10              SELECT
+C                   WHEN      X = 1
+ *  Sequence 1
+C                   :
+C                   WHEN      Y = 2
+ *  Sequence 2
+C                   :
+C                   ENDSL
+C                   ADD       1              N
+.fi

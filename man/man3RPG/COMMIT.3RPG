@@ -1,0 +1,65 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzcomit.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH COMMIT 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+COMMIT - Commit
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fICOMMIT\fR{(E)} {boundary}
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fICOMMIT\fR (E)
+T}	T{
+boundary
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+.IP "" 2
+.RS
+\[bu] Makes all the changes to your files, opened for commitment control, that have been specified in output operations since the previous commit or rollback \fIROLBK\fR (Roll Back)  operation (or since the beginning of operations under commitment control if there has been no previous commit or rollback operation)\[char46] You specify a file to be opened for commit by specifying the \fICOMMIT\fR keyword on the file specification\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Releases all the record locks for files you have under commitment control\[char46]
+.RE
+.PP
+
+The file changes and the record-lock releases apply to all the files you have under commitment control, whether the changes have been requested by the program issuing the \fICOMMIT\fR operation, or by another program in the same activation group or job, dependent on the commit scope specified on the \fISTRCMTCTL\fR command\[char46] The program issuing the \fICOMMIT\fR operation does not need to have any files under commitment control\[char46] The \fICOMMIT\fR operation does not change the file position\[char46]
+
+
+Commitment control starts when the CL command \fISTRCMTCTL\fR is executed\[char46] See the section on âCommitment Controlâ in the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide for more information\[char46]
+
+
+For the boundary operand, , you can specify a constant or variable (of any type except pointer) to identify the boundary between the changes made by this \fICOMMIT\fR operation and subsequent changes\[char46] If boundary is not specified, the identifier is null\[char46]
+
+
+To handle \fICOMMIT\fR exceptions (program status codes 802 to 805), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For example, an error occurs if commitment control is not active\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+
+
+For more information, see File Operations\[char46]
+

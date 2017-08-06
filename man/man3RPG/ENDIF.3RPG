@@ -1,0 +1,174 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzendyy.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ENDIF 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ENDIF - ENDyy (End a Structured Group)
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIENDDO\fR \fIENDFOR\fR \fIENDIF\fR \fIENDMON\fR \fIENDSL\fR (\fIEND\fR and \fIENDCS\fR not allowed)
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIEND\fR
+T}	T{
+Â
+T}	T{
+increment-value
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+T{
+\fIENDCS\fR
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+T{
+\fIENDDO\fR
+T}	T{
+Â
+T}	T{
+increment-value
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+T{
+\fIENDFOR\fR
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+T{
+\fIENDIF\fR
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+T{
+\fIENDMON\fR
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+T{
+\fIENDSL\fR
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+.TE
+
+The \fIEND\fRyy operation ends a \fICAS\fRxx, DO, \fIDOU\fR, \fIDOW\fR, \fIDOU\fRxx, \fIDOW\fRxx, \fIFOR\fR, IF, IFxx, \fIMONITOR\fR, or \fISELECT\fR group of operations\[char46]
+
+
+.TP 5
+.B \fIEND\fR
+End a \fICAS\fRxx, DO, \fIDOU\fR, \fIDOU\fRxx, \fIDOW\fR, \fIDOW\fRxx, \fIFOR\fR, IF, IFxx, or \fISELECT\fR group
+.TP 5
+.B \fIENDCS\fR
+End a \fICAS\fRxx group
+.TP 5
+.B \fIENDDO\fR
+End a DO, \fIDOU\fR, \fIDOU\fRxx, \fIDOW\fR, or \fIDOW\fRxx group
+.TP 5
+.B \fIENDFOR\fR
+End a \fIFOR\fR group
+.TP 5
+.B \fIENDIF\fR
+End an IF or IFxx group
+.TP 5
+.B \fIENDMON\fR
+End a \fIMONITOR\fR group
+.TP 5
+.B \fIENDSL\fR
+End a \fISELECT\fR group
+.PP
+
+The increment-value operand is allowed only on an \fIEND\fRyy operation that delimits a DO group\[char46] It contains the incrementing value of the DO group\[char46] It can be positive or negative, must have zero decimal positions, and can be one of: an array element, table name, data structure, field, named constant, or numeric literal\[char46] If increment-value is not specified on the \fIENDDO\fR, the increment defaults to 1\[char46] If increment-value is negative, the DO group will never end\[char46]
+
+
+Conditioning indicators are optional for \fIENDDO\fR or \fIENDFOR\fR and not allowed for \fIENDCS\fR, \fIENDIF\fR, \fIENDMON\fR, and \fIENDSL\fR\[char46]
+
+
+Resulting indicators are not allowed\[char46] No operands are allowed for \fIENDCS\fR, \fIENDIF\fR, \fIENDMON\fR, and \fIENDSL\fR\[char46]
+
+
+If one \fIEND\fRyy form is used with a different operation group (for example, \fIENDIF\fR with a structured group), an error results at compilation time\[char46]
+
+
+See the \fICAS\fRxx, DO, \fIDOU\fRxx, \fIDOW\fRxx, \fIFOR\fR, IFxx, and \fIDOU\fR, \fIDOW\fR, IF, \fIMONITOR\fR, and \fISELECT\fR operations for examples that use the \fIEND\fRyy operation\[char46]
+
+
+For more information, see Error-Handling Operations or Structured Programming Operations\[char46]
+

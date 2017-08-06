@@ -1,0 +1,114 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zziter.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ITER 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ITER - Iterate
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIITER\fR
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIITER\fR
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+.TE
+
+The \fIITER\fR operation transfers control from within a DO or \fIFOR\fR group to the \fIENDDO\fR or \fIENDFOR\fR statement of the group\[char46] It can be used in DO, \fIDOU\fR, \fIDOU\fRxx, \fIDOW\fR, \fIDOW\fRxx, and \fIFOR\fR loops to transfer control immediately to a loop\[char39]s \fIENDDO\fR or \fIENDFOR\fR statement\[char46] It causes the next iteration of the loop to be executed immediately\[char46] \fIITER\fR affects the innermost loop\[char46]
+
+
+If conditioning indicators are present on the \fIENDDO\fR or \fIENDFOR\fR statement to which control is passed, and the condition is not satisfied, processing continues with the statement following the \fIENDDO\fR or \fIENDFOR\fR operation\[char46]
+
+
+The \fILEAVE\fR (Leave a Do/For Group) operation is similar to the \fIITER\fR operation; however, \fILEAVE\fR transfers control to the statement following the \fIENDDO\fR or \fIENDFOR\fR operation\[char46]
+
+
+For more information, see Branching Operations or Structured Programming Operations\[char46]
+
+.SH EXAMPLE
+\fIITER\fR Operation
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+ *
+ * The following example uses a DOU loop containing a DOW loop\[char46]
+ * The IF statement checks indicator 01\[char46]  If indicator 01 is ON,
+ * the LEAVE operation is executed, transferring control out of
+ * the innermost DOW loop to the Z-ADD instruction\[char46]  If indicator
+ * 01 is not ON, subroutine PROC1 is processed\[char46]  Then indicator
+ * 12 is checked\[char46]  If it is OFF, ITER transfers control to the
+ * innermost ENDDO and the condition on the DOW is evaluated
+ * again\[char46]  If indicator 12 is ON, subroutine PROC2 is processed\[char46]
+C
+C                   DOU       FLDA = FLDB
+C                   :
+C     NUM           DOWLT     10
+C                   IF        *IN01
+C                   LEAVE
+C                   ENDIF
+C                   EXSR      PROC1
+C     *IN12         IFEQ      *OFF
+C                   ITER
+C                   ENDIF
+C                   EXSR      PROC2
+C                   ENDDO
+C                   Z-ADD     20            RSLT              2 0
+C                   :
+C                   ENDDO
+C                   :
+.fi
+
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+ *
+ * The following example uses a DOU loop containing a DOW loop\[char46]
+ * The IF statement checks indicator 1\[char46] If indicator 1 is ON, the
+ * MOVE operation is executed, followed by the LEAVE operation,
+ * transferring control from the innermost DOW loop to the Z-ADD
+ * instruction\[char46]  If indicator 1 is not ON, ITER transfers control
+ * to the innermost ENDDO and the condition on the DOW is
+ * evaluated again\[char46]
+C                   :
+C     FLDA          DOUEQ     FLDB
+C                   :
+C     NUM           DOWLT     10
+C     *IN01         IFEQ      *ON
+C                   MOVE      \[char39]UPDATE\[char39]      FIELD            20
+C                   LEAVE
+C                   ELSE
+C                   ITER
+C                   ENDIF
+C                   ENDDO
+C                   Z-ADD     20            RSLT              2 0
+C                   :
+C                   ENDDO
+C                   :
+.fi

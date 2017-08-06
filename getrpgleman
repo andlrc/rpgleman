@@ -9,6 +9,8 @@ use POSIX qw{strftime};
 use Getopt::Long qw{:config no_ignore_case gnu_compat bundling};
 use Data::Dumper;
 
+our $DEBUG = 0;
+
 sub trim
 {
 	my ($text) = @_;
@@ -27,6 +29,8 @@ sub man_build
 		my $out_dir  = "man/man$man->{section}";
 		my $out_file = "$out_dir/$short_name.$man->{section}";
 		mkdir $out_dir or die("$out_dir $!") unless -d $out_dir;
+		print STDERR "$out_file: File already exists, overriding...\n"
+			if $DEBUG && -e $out_file;
 		open (my $fh, '>:utf8', $out_file) or die("$out_file $!");
 
 		# Header
@@ -214,7 +218,7 @@ sub man_node
 			if (!ref) {
 				man_highlight(trim($_));
 			} elsif ($_->{_tag} =~ m{
-				\b (a|b|i|em|span|string|var) \b
+				\b (a|b|i|em|span|samp|string|var) \b
 			}xmsi) {
 				man_highlight(trim($_->as_text));
 			} else {
@@ -365,7 +369,8 @@ sub read_url
 my $man = {};
 GetOptions(
 	'n|name=s' => \$man->{orig_short_name},
-	's|section=s' => \$man->{section}
+	's|section=s' => \$man->{section},
+	'd|debug' => \$DEBUG
 ) or exit 1;
 
 for (@ARGV) {

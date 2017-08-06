@@ -1,0 +1,77 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzlevsr.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH LEAVESR 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+LEAVESR - Leave a Subroutine
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fILEAVESR\fR
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fILEAVESR\fR
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+.TE
+
+The \fILEAVESR\fR operation exits a subroutine from any point within the subroutine\[char46] Control passes to the \fIENDSR\fR operation for the subroutine\[char46] \fILEAVESR\fR is allowed only from within a subroutine\[char46]
+
+
+The control level entry (positions 7 and 8) can be SR or blank\[char46] Conditioning indicator entries (positions 9 to 11) can be specified\[char46]
+
+
+For more information, see Subroutine Operations\[char46]
+
+.SH EXAMPLE
+\fILEAVESR\fR Operations
+.PP
+.nf
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]
+ *
+C     CheckCustName BEGSR
+C     Name          CHAIN     CustFile
+ *
+ * Check if the name identifies a valid customer
+ *
+C                   IF        not %found(CustFile)
+C                   EVAL      Result = CustNotFound
+C                   LEAVESR
+C                   ENDIF
+ *
+ * Check if the customer qualifies for discount program
+C                   IF        Qualified = *OFF
+C                   EVAL      Result = CustNotQualified
+C                   LEAVESR
+C                   ENDIF
+ *
+ * If we get here, customer can use the discount program
+C                   EVAL      Result = CustOK
+C                   ENDSR
+.fi
+.SH SEE ALSO
+.BR %FOUND (3RPG)

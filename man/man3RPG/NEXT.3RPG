@@ -1,0 +1,73 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zznext.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH NEXT 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+NEXT - Next
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fINEXT\fR{(E)} program-device file-name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fINEXT\fR (E)
+T}	T{
+program-device
+T}	T{
+file-name
+T}	T{
+Â
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The \fINEXT\fR operation code forces the next input for a multiple device file to come from the program device specified by the program-device operand, providing the input operation is a cycle read or a \fIREAD\fR-by-file-name\[char46] Any read operation, including \fICHAIN\fR, \fIEXFMT\fR, \fIREAD\fR, and \fIREADC\fR, ends the effect of the previous \fINEXT\fR operation\[char46] If \fINEXT\fR is specified more than once between input operations, only the last operation is processed\[char46] The \fINEXT\fR operation code can be used only for a multiple device file\[char46]
+
+
+For the program-device operand, enter the name of a 10-character field that contains the program device name, a character literal, or named constant that is the program device name\[char46] The file-name operand is the name of the multiple device \fIWORKSTN\fR file for which the operation is requested\[char46]
+
+
+To handle \fINEXT\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+
+
+For more information, see File Operations\[char46]
+
+.SH EXAMPLE
+\fINEXT\fR Operations
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+C
+ * Assume devices Dev1 and Dev2  are connected to the WORKSTN file
+ * DEVICEFILE\[char46] The first READ reads data from DEV1, the second READ
+ * reads data from DEV2\[char46] The NEXT operation will direct the program
+ * to wait for data from the device specified in factor 1 (i\[char46]e\[char46] DEV1)
+ * for the third READ\[char46]
+C
+C                   READ (E)  Devicefile
+C                   :
+C                   READ (E)  Devicefile
+C                   :
+C     \[char39]DEV1\[char39]        NEXT
+C                   :
+C                   READ (E)  Devicefile
+.fi

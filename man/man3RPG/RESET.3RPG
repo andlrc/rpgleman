@@ -1,0 +1,75 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzreset.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH RESET 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+RESET - Reset
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIRESET\fR{(E)} {\fI*NOKEY\fR} {\fI*ALL\fR} name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIRESET\fR (E)
+T}	T{
+\fI*NOKEY\fR
+T}	T{
+\fI*ALL\fR
+T}	T{
+name (variable or record format)
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The \fIRESET\fR operation is used to restore a variable to the value held at the end of the \fI*INIT\fR phase\[char46] This value is called the reset value\[char46] If there is no \fI*INZSR\fR subroutine, the reset value is the same as the initial value (either the value specified by the \fIINZ\fR{(initial value)}, or the default value)\[char46] If there is a \fI*INZSR\fR subroutine, the reset value is the value the variable holds when the \fI*INZSR\fR subroutine has completed\[char46]
+
+
+The \fIRESET\fR operation can also be used to restore all the fields in a record format to their reset values\[char46]
+
+
+See Figure 1 for more information on the \fI*INIT\fR phase\[char46]
+
+
+
+
+To handle \fIRESET\fR exceptions (program status code 123), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+
+
+For more information, see Initialization Operations\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] Resetting Variables
+.RE
+.IP "" 2
+.RS
+\[bu] Resetting Record Formats
+.RE
+.IP "" 2
+.RS
+\[bu] Additional Considerations
+.RE
+.IP "" 2
+.RS
+\[bu] \fIRESET\fR Examples
+.RE
+.PP

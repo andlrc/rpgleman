@@ -1,0 +1,66 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzevalr.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EVALR 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+EVALR - Evaluate expression, right adjust
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIEVALR\fR{(MR)} result = expression
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fIEVALR\fR (M/R)
+T}	T{
+Â
+T}	T{
+Assignment Statement
+T}
+.TE
+
+The \fIEVALR\fR operation code evaluates an assignment statement of the form result=expression\[char46] The expression is evaluated and the result is placed right-adjusted in the result\[char46] Therefore, the result cannot be a literal or constant, but must be a fixed-length character, graphic, or \fIUCS\fR-2 field name, array name, array element, data structure, data structure subfield, or a string using the \fB%SUBST\fR built-in function\[char46] The type of the expression must be the same as the type of the result\[char46] The result will be right justified and padded with blanks on the left, or truncated on the left as required\[char46]
+
+
+
+
+If the result represents an unindexed array or an array specified as array(*), the value of the expression is assigned to each element of the result, according to the rules described in Specifying an Array in Calculations\[char46] Otherwise, the expression is evaluated once and the value is placed into each element of the array or sub-array\[char46]
+
+
+See Expressions for general information on expressions\[char46] See Precision Rules for Numeric Operations for information on precision rules for numeric expressions\[char46] This is especially important if the expression contains any divide operations, or if the \fIEVALR\fR uses any of the operation extenders\[char46]
+
+.SH EXAMPLE
+\fIEVALR\fR Operations
+.PP
+.nf
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
+D Name            S             20A
+
+ /FREE
+    eval  Name = \[char39]Kurt Weill\[char39];
+    // Name is now \[char39]Kurt Weill          \[char39]
+    evalr Name = \[char39]Johann Strauss\[char39];
+    // Name is now \[char39]      Johann Strauss\[char39]
+    evalr %SUBST(Name:1:12) = \[char39]Richard\[char39];
+    // Name is now \[char39]     Richard Strauss\[char39]
+    eval  Name = \[char39]Wolfgang Amadeus Mozart\[char39];
+    // Name is now \[char39]Wolfgang Amadeus Moz\[char39]
+    evalr Name = \[char39]Wolfgang Amadeus Mozart\[char39];
+    // Name is now \[char39]fgang Amadeus Mozart\[char39]
+ /END-FREE
+.fi
+.SH SEE ALSO
+.BR %SUBST (3RPG)

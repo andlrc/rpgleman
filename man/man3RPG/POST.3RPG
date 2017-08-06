@@ -1,0 +1,116 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzpost.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH POST 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+POST - Post
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIPOST\fR{(E)} {program-device} file-name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIPOST\fR (E)
+T}	T{
+program-device
+T}	T{
+file-name
+T}	T{
+\fIINFDS\fR name
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+.IP "" 2
+.RS
+\[bu] File Feedback Information specific to \fIRPG\fR I/O for the file
+.RE
+.IP "" 2
+.RS
+\[bu] Open Feedback Information for the file
+.RE
+.IP "" 2
+.RS
+\[bu] Input/Output Feedback Information and Device Dependent Feedback Information for the file OR Get Attribute Information
+.RE
+.PP
+
+The program-device operand specifies a program device name to get information about that specific program device\[char46] If you specify a program device, the file must be defined as a \fIWORKSTN\fR file\[char46] If program-device is specified, then the \fIINFDS\fR will contain Get Attribute Information following the Open Feedback Information\[char46] Use either a character field of length 10 or less, a character literal, or a character named constant\[char46] If program-device is not specified, then the \fIINFDS\fR will contain Input/Output Feedback Information and Device Dependent Feedback Information following the Open Feedback Information\[char46]
+
+
+Specify the name of a file in the file-name operand\[char46] Information for this file is posted in the \fIINFDS\fR associated with this file\[char46]
+
+
+
+
+
+
+.IP "" 2
+.RS
+\[bu] If you do not specify an \fIINFDS\fR name , the \fIINFDS\fR associated with this file using the \fIINFDS\fR keyword in the file specification will be used\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If you do not specify an \fIINFDS\fR name  in traditional syntax, you must specify the data structure name that has been used in the \fIINFDS\fR keyword for the file specification in the result field; information from the associated file in the file specification will be posted\[char46]
+.RE
+.PP
+
+To handle \fIPOST\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+
+
+
+
+.IP "" 2
+.RS
+\[bu] The presence of a \fIPOST\fR operation with no program-device specified for a file defined on a global File specification will affect the implicit posting of feedback to the \fIINFDS\fR for all global files in the module\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The presence of a \fIPOST\fR operation with no program-device specified for a global file will have no effect on the implicit posting of feedback to the \fIINFDS\fR for files defined in subprocedures\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The presence of a \fIPOST\fR operation with no program-device specified for a locally-defined file will only affect the implicit posting of feedback to the \fIINFDS\fR for that file; it will have no effect for global files, or for other files defined in that subprocedure\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The implicit posting of feedback to the \fIINFDS\fR for a file that is passed as a parameter is determined by the module in which the file is defined\[char46] A \fIPOST\fR operation with no program-device specified to a file parameter may be redundant if the feedback information is always posted to that file\[char39]s \fIINFDS\fR\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If a global file is passed as a parameter to another procedure in the same module, and that procedure does a \fIPOST\fR operation to its parameter, that \fIPOST\fR operation will not be considered to be a \fIPOST\fR operation to a global file\[char46]
+.RE
+.PP
+
+Usually, the \fIINFDS\fR is updated at each input and output operation or block of operations\[char46] However, if the presence of a \fIPOST\fR operation affects the posting of feedback to the \fIINFDS\fR of a file, then \fIRPG\fR IV updates the I/O Feedback Information area and the Device Dependent Feedback Information area in the \fIINFDS\fR of the file only when you process a \fIPOST\fR operation for the file\[char46] The File Dependent Information in the \fIINFDS\fR is updated on all Input/Output operations\[char46] If you have opened a file for multiple-member processing, the Open Feedback Information in the \fIINFDS\fR will be updated when an input operation (\fIREAD\fR, \fIREADP\fR, \fIREADE\fR \fIREADPE\fR) causes a new member to be opened\[char46]
+
+
+Note that \fIDUMP\fR retrieves its information directly from the Open Data Path and not from the \fIINFDS\fR, so the file information sections of the \fIDUMP\fR do not depend on \fIPOST\fR\[char46]
+
+
+If a program has no \fIPOST\fR operation code, or if it has only \fIPOST\fR operation codes with program-device specified, the Input/Output Feedback and Device Dependent Feedback section is updated with each input/output operation or block of operations\[char46] If \fIRPG\fR is blocking records, most of the information in the \fIINFDS\fR will be valid only for the last complete block of records processed\[char46] When doing blocked input, from a data base file, \fIRPG\fR will update the relative record number and key information in the \fIINFDS\fR for each read, not just the last block of records processed\[char46] If you require more accurate information, do not use record blocking\[char46] See File Information Data Structure for more information on record blocking\[char46] If you do not require feedback information after every input/output operation, you may be able to improve performance by using the \fIPOST\fR operation only when you require the feedback information\[char46]
+
+
+When a \fIPOST\fR operation is processed, the associated file must be open\[char46] If you specify a program device on the \fIPOST\fR operation, it does not have to be acquired by the file\[char46]
+
+
+For more information, see File Operations\[char46]
+

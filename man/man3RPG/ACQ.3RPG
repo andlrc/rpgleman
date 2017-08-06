@@ -1,0 +1,52 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzacq.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ACQ 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ACQ - Acquire
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIACQ\fR{(E)} device-name workstn-file
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIACQ\fR (E)
+T}	T{
+device- name
+T}	T{
+workstn-file
+T}	T{
+Â
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The \fIACQ\fR operation acquires the program device specified by device-name for the \fIWORKSTN\fR file specified by workstn-file\[char46] If the device is available, \fIACQ\fR attaches it to the file\[char46] If it is not available or is already attached to the file, an error occurs\[char46]
+
+
+To handle \fIACQ\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] If no error indicator or \[char39]E\[char39] extender is specified, but the \fIINFSR\fR subroutine is specified, the \fIINFSR\fR receives control when an error/exception occurs\[char46] If no indicator, \[char39]E\[char39] extender, or \fIINFSR\fR subroutine is specified, the default error/exception handler receives control when an error/exception occurs\[char46] For more information on error handling, see File Exception/Errors\[char46]
+
+
+No input or output operation occurs when the \fIACQ\fR operation is processed\[char46] \fIACQ\fR may be used with a multiple device file or, for error recovery purposes, with a single device file\[char46] One program may acquire and have the device available to any called program which shares the file and allow the called program to release the device\[char46] See the section on "Multiple-Device Files" in the chapter about using \fIWORKSTN\fR files in the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
+
+
+For more information, see File Operations\[char46]
+

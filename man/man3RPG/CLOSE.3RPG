@@ -1,0 +1,82 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzclose.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH CLOSE 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+CLOSE - Close Files
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fICLOSE\fR{(E)} file-name|\fI*ALL\fR
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fICLOSE\fR (E)
+T}	T{
+Â
+T}	T{
+file-name or \fI*ALL\fR
+T}	T{
+Â
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The explicit \fICLOSE\fR operation closes one or more files or devices and disconnects them from the module\[char46] The file cannot be used again in the module unless you specify an explicit \fIOPEN\fR for that file\[char46] A \fICLOSE\fR operation to an already closed file does not produce an error\[char46]
+
+
+file-name names the file to be closed\[char46]
+
+
+You can specify the keyword \fI*ALL\fR to close all files defined on global File specifications at once\[char46] Specifying \fICLOSE\fR \fI*ALL\fR in a subprocedure does not have any effect on local files in the subprocedure\[char46] To close all the local files in a subprocedure, you must code a separate \fICLOSE\fR operation for each file\[char46] You cannot specify an array or table file (identified by a T in position 18 of the file description specifications)\[char46]
+
+
+To handle \fICLOSE\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+
+
+Positions 71, 72, 75, and 76 must be blank\[char46]
+
+
+If an array or table is to be written to an output file (specified using the \fITOFILE\fR keyword) the array or table dump does not occur at LR time if the file is closed by a \fICLOSE\fR operation)\[char46] If the file is closed, it must be reopened for the dump to occur\[char46]
+
+
+For more information, see File Operations\[char46]
+
+.SH EXAMPLE
+\fICLOSE\fR Operation
+.PP
+.nf
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+ *  The explicit CLOSE operation closes FILEB\[char46]
+
+ /FREE
+    CLOSE FILEB;
+
+      //  The CLOSE *ALL operation closes all files in the
+      //  module\[char46] You must specify an explicit OPEN for any file that
+      //  you wish to use again\[char46]  If the CLOSE operation is not
+      //  completed successfully, %ERROR returns \[char39]1\[char39]\[char46]
+
+    CLOSE(E) *ALL;
+
+ /END-FREE
+.fi
+.SH SEE ALSO
+.BR %ERROR (3RPG)

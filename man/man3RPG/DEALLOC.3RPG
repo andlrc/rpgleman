@@ -1,0 +1,109 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzdeall.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DEALLOC 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DEALLOC - Free Storage
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIDEALLOC\fR{(EN)} pointer-name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIDEALLOC\fR (E/N)
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+pointer-name
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The \fIDEALLOC\fR operation frees one previous allocation of heap storage\[char46] pointer-name is a pointer that must be the value previously set by a heap-storage allocation operation (either an \fIALLOC\fR operation in \fIRPG\fR, or some other heap-storage allocation mechanism)\[char46] It is not sufficient to simply point to heap storage; the pointer must be set to the beginning of an allocation\[char46]
+
+
+The storage pointed to by the pointer is freed for subsequent allocation by this program or any other in the activation group\[char46]
+
+
+If operation code extender N is specified, the pointer is set to \fI*NULL\fR after a successful deallocation\[char46]
+
+
+To handle \fIDEALLOC\fR exceptions (program status code 426), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] The result field pointer will not be changed if an error occurs, even if \[char39]N\[char39] is specified\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+
+
+pointer-name must be a basing pointer scalar variable (a standalone field, data structure subfield, table name or array element)\[char46]
+
+
+No error is given at runtime if the pointer is already \fI*NULL\fR\[char46]
+
+
+When \fIRPG\fR memory management operations for the module are using single-level heap storage due to the \fIALLOC\fR keyword on the Control specification, the \fIDEALLOC\fR operation can only handle pointers to single-level heap storage\[char46] When \fIRPG\fR memory management operations for the module are using teraspace heap storage, the \fIDEALLOC\fR operation can handle pointers to both single-level and teraspace heap storage\[char46]
+
+
+For more information, see Memory Management Operations\[char46]
+
+.SH EXAMPLE
+\fIDEALLOC\fR operation
+.PP
+.nf
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
+ *
+D Ptr1            S               *
+D Fld1            S              1A
+D BasedFld        S              7A   BASED(Ptr1)
+
+ /FREE
+    // 7 bytes of storage are allocated from the heap and
+    // Ptr1 is set to point to it
+    Ptr1 = %alloc (7);
+
+    // The DEALLOC frees the storage\[char46]  This storage is now available
+    // for allocation by this program or any other program in the
+    // activation group\[char46]  (Note that the next allocation may or
+    // may not get the same storage back)\[char46]
+    dealloc Ptr1;
+
+    // Ptr1 still points at the deallocated storage, but this pointer
+    // should not be used with its current value\[char46]  Any attempt to
+    // access BasedFld which is based on Ptr1 is invalid\[char46]
+    Ptr1 = %addr (Fld1);
+
+    // The DEALLOC is not valid because the pointer is set to the
+    // address of program storage\[char46]  %ERROR is set to return \[char39]1\[char39],
+    // the program status is set to 00426 (%STATUS returns 00426),
+    // and the pointer is not changed\[char46]
+    dealloc(e) Ptr1;
+
+    // Allocate and deallocate storage again\[char46]  Since operational
+    // extender N is specified, Ptr1 has the value *NULL after the
+    // DEALLOC\[char46]
+    Ptr1 = %alloc (7);
+    dealloc(n) Ptr1;
+ /END-FREE
+.fi
+.SH SEE ALSO
+.BR %ALLOC (3RPG),
+.BR %ADDR (3RPG),
+.BR %ERROR (3RPG),
+.BR %STATUS (3RPG)

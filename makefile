@@ -1,6 +1,10 @@
 MANDIR	= $(PREFIX)/usr/share/man
+RPGLEMAN	= ./getrpgleman $(FLAGS)
 
-all: bif kw cd
+all: bif kw op cd more
+
+debug: clean
+	$(MAKE) FLAGS=-d
 
 # Built-in Functions
 bif:	bif_ABS		bif_ADDR	bif_ALLOC	bif_BITAND	\
@@ -14,7 +18,7 @@ bif:	bif_ABS		bif_ADDR	bif_ALLOC	bif_BITAND	\
 	bif_KDS		bif_LEN		bif_LOOKUPxx	bif_MAX		\
 	bif_MIN		bif_MINUTES	bif_MONTHS	bif_MSECONDS	\
 	bif_NULLIND	bif_OCCUR	bif_OPEN	bif_PADDR	\
-	bif_PARMNUM	bif_PARMS	bif_REALLOC	bif_REM	\
+	bif_PARMNUM	bif_PARMS	bif_REALLOC	bif_REM		\
 	bif_REPLACE	bif_SCAN	bif_SCANRPL	bif_SECONDS	\
 	bif_SHTDN	bif_SIZE	bif_SQRT	bif_STATUS	\
 	bif_STR		bif_SUBARR	bif_SUBDT	bif_SUBST	\
@@ -42,6 +46,23 @@ kw:	kw_ALIAS	kw_ALIGN	kw_ALT		kw_ALTSEQ	\
 	kw_UNS		kw_VALUE	kw_VARCHAR	kw_VARGRAPH	\
 	kw_VARUCS2	kw_VARYING	kw_ZONED
 
+# Free-Form Operations
+op:	op_ACQ		op_BEGSR	op_CALLP	op_CHAIN	\
+	op_CLEAR	op_CLOSE	op_COMMIT	op_DEALLOC	\
+	op_DELETE	op_DOU		op_DOW		op_DSPLY	\
+	op_DUMP		op_ELSE		op_ELSEIF	op_ENDDO	\
+	op_ENDFOR	op_ENDIF	op_ENDMON	op_ENDSL	\
+	op_ENDSR	op_EVAL		op_EVALR	op_EXCEPT	\
+	op_EXFMT	op_EXSR		op_FEOD		op_FOR		\
+	op_FORCE	op_IF		op_IN		op_ITER		\
+	op_LEAVE	op_LEAVESR	op_MONITOR	op_NEXT		\
+	op_ON-ERROR	op_ON-EXIT	op_OPEN		op_OTHER	\
+	op_OUT		op_POST		op_READ		op_READC	\
+	op_READE	op_READP	op_READPE	op_REL		\
+	op_RESET	op_RETURN	op_ROLBK	op_SELECT	\
+	op_SETGT	op_SETLL	op_SORTA	op_TEST		\
+	op_UNLOCK	op_UPDATE	op_WHEN		op_WRITE
+
 # Compiler Directives
 cd:	cd_TITLE	cd_EJECT	cd_SPACE	cd_SET		\
 	cd_RESTORE	cd_COPY		cd_INCLUDE	cd_DEFINE	\
@@ -59,321 +80,444 @@ uninstall:
 
 # BIF
 bif_ABS:
-	./getrpgleman bbabs
+	$(RPGLEMAN) bbabs
 bif_ADDR:
-	./getrpgleman bbaddr
+	$(RPGLEMAN) bbaddr
 bif_ALLOC:
-	./getrpgleman bballoc
+	$(RPGLEMAN) bballoc
 bif_BITAND:
-	./getrpgleman bband
+	$(RPGLEMAN) bband
 bif_BITNOT:
-	./getrpgleman bbnot
+	$(RPGLEMAN) bbnot
 bif_BITOR:
-	./getrpgleman bbor
+	$(RPGLEMAN) bbor
 bif_BITXOR:
-	./getrpgleman bbxor
+	$(RPGLEMAN) bbxor
 bif_CHAR:
-	./getrpgleman bbchar
+	$(RPGLEMAN) bbchar
 bif_CHECK:
-	./getrpgleman bbchk
+	$(RPGLEMAN) bbchk
 bif_CHECKR:
-	./getrpgleman bbchkr
+	$(RPGLEMAN) bbchkr
 bif_DATE:
-	./getrpgleman bbdate
+	$(RPGLEMAN) bbdate
 bif_DAYS:
-	./getrpgleman bbday
+	$(RPGLEMAN) bbday
 bif_DEC:
-	./getrpgleman bbdec
+	$(RPGLEMAN) bbdec
 bif_DECH:
-	./getrpgleman bbdech
+	$(RPGLEMAN) bbdech
 bif_DECPOS:
-	./getrpgleman bbdecp
+	$(RPGLEMAN) bbdecp
 bif_DIFF:
-	./getrpgleman bbdif
+	$(RPGLEMAN) bbdif
 bif_DIV:
-	./getrpgleman bbdiv
+	$(RPGLEMAN) bbdiv
 bif_EDITC:
-	./getrpgleman bbeditc
+	$(RPGLEMAN) bbeditc
 bif_EDITFLT:
-	./getrpgleman bbeditf
+	$(RPGLEMAN) bbeditf
 bif_EDITW:
-	./getrpgleman bbeditw
+	$(RPGLEMAN) bbeditw
 bif_ELEM:
-	./getrpgleman bbelem
+	$(RPGLEMAN) bbelem
 bif_EOF:
-	./getrpgleman bbeof
+	$(RPGLEMAN) bbeof
 bif_EQUAL:
-	./getrpgleman bbequal
+	$(RPGLEMAN) bbequal
 bif_ERROR:
-	./getrpgleman bberror
+	$(RPGLEMAN) bberror
 bif_FIELDS:
-	./getrpgleman bbfields
+	$(RPGLEMAN) bbfields
 bif_FLOAT:
-	./getrpgleman bbfloat
+	$(RPGLEMAN) bbfloat
 bif_FOUND:
-	./getrpgleman bbfound
+	$(RPGLEMAN) bbfound
 bif_GRAPH:
-	./getrpgleman bbgraph
+	$(RPGLEMAN) bbgraph
 bif_HANDLER:
-	./getrpgleman bbhandl
+	$(RPGLEMAN) bbhandl
 bif_HOURS:
-	./getrpgleman bbhou
+	$(RPGLEMAN) bbhou
 bif_INT:
-	./getrpgleman bbint
+	$(RPGLEMAN) bbint
 bif_INTH:
-	./getrpgleman bbinth
+	$(RPGLEMAN) bbinth
 bif_KDS:
-	./getrpgleman bbkds
+	$(RPGLEMAN) bbkds
 bif_LEN:
-	./getrpgleman bblen
+	$(RPGLEMAN) bblen
 bif_LOOKUPxx:
-	./getrpgleman bbloo
+	$(RPGLEMAN) bbloo
 bif_MAX:
-	./getrpgleman bbmaxvalue
+	$(RPGLEMAN) bbmaxvalue
 bif_MIN:
-	./getrpgleman bbminvalue
+	$(RPGLEMAN) bbminvalue
 bif_MINUTES:
-	./getrpgleman bbmin
+	$(RPGLEMAN) bbmin
 bif_MONTHS:
-	./getrpgleman bbmon
+	$(RPGLEMAN) bbmon
 bif_MSECONDS:
-	./getrpgleman bbmsec
+	$(RPGLEMAN) bbmsec
 bif_NULLIND:
-	./getrpgleman bbnull
+	$(RPGLEMAN) bbnull
 bif_OCCUR:
-	./getrpgleman bboccur
+	$(RPGLEMAN) bboccur
 bif_OPEN:
-	./getrpgleman bbopen
+	$(RPGLEMAN) bbopen
 bif_PADDR:
-	./getrpgleman bbpaddr
+	$(RPGLEMAN) bbpaddr
 bif_PARMNUM:
-	./getrpgleman bbparmnum
+	$(RPGLEMAN) bbparmnum
 bif_PARMS:
-	./getrpgleman bbparm
+	$(RPGLEMAN) bbparm
 bif_REALLOC:
-	./getrpgleman bbreall
+	$(RPGLEMAN) bbreall
 bif_REM:
-	./getrpgleman bbrem
+	$(RPGLEMAN) bbrem
 bif_REPLACE:
-	./getrpgleman bbrepl
+	$(RPGLEMAN) bbrepl
 bif_SCAN:
-	./getrpgleman bbscan
+	$(RPGLEMAN) bbscan
 bif_SCANR:
-	./getrpgleman bbscanr
+	$(RPGLEMAN) bbscanr
 bif_SCANRPL:
-	./getrpgleman bbscanrp
+	$(RPGLEMAN) bbscanrp
 bif_SECONDS:
-	./getrpgleman bbsec
+	$(RPGLEMAN) bbsec
 bif_SHTDN:
-	./getrpgleman bbshut
+	$(RPGLEMAN) bbshut
 bif_SIZE:
-	./getrpgleman bbsize
+	$(RPGLEMAN) bbsize
 bif_SQRT:
-	./getrpgleman bbsqrt
+	$(RPGLEMAN) bbsqrt
 bif_STATUS:
-	./getrpgleman bbstat
+	$(RPGLEMAN) bbstat
 bif_STR:
-	./getrpgleman bbstr
+	$(RPGLEMAN) bbstr
 bif_SUBARR:
-	./getrpgleman bbsubarr
+	$(RPGLEMAN) bbsubarr
 bif_SUBDT:
-	./getrpgleman bbsubd
+	$(RPGLEMAN) bbsubd
 bif_SUBST:
-	./getrpgleman bbsubs9
+	$(RPGLEMAN) bbsubs9
 bif_THIS:
-	./getrpgleman bbthis
+	$(RPGLEMAN) bbthis
 bif_TIME:
-	./getrpgleman bbtime
+	$(RPGLEMAN) bbtime
 bif_TIMESTAMP:
-	./getrpgleman bbtmst
+	$(RPGLEMAN) bbtmst
 bif_TLOOKUPxx:
-	./getrpgleman bbtloo
+	$(RPGLEMAN) bbtloo
 bif_TRIM:
-	./getrpgleman bbtrim
+	$(RPGLEMAN) bbtrim
 bif_TRIML:
-	./getrpgleman bbtriml
+	$(RPGLEMAN) bbtriml
 bif_TRIMR:
-	./getrpgleman bbtrimr
+	$(RPGLEMAN) bbtrimr
 bif_UCS2:
-	./getrpgleman bbucs2
+	$(RPGLEMAN) bbucs2
 bif_UNS:
-	./getrpgleman bbuns
+	$(RPGLEMAN) bbuns
 bif_UNSH:
-	./getrpgleman bbunsh
+	$(RPGLEMAN) bbunsh
 bif_XFOOT:
-	./getrpgleman bbxfoot
+	$(RPGLEMAN) bbxfoot
 bif_XLATE:
-	./getrpgleman bbxlat
+	$(RPGLEMAN) bbxlat
 bif_XML:
-	./getrpgleman bbxml
+	$(RPGLEMAN) bbxml
 bif_YEARS:
-	./getrpgleman bbyear
+	$(RPGLEMAN) bbyear
 
 # Keywords
 kw_ALIAS:
-	./getrpgleman dalias
+	$(RPGLEMAN) dalias
 kw_ALIGN:
-	./getrpgleman dalign
+	$(RPGLEMAN) dalign
 kw_ALT:
-	./getrpgleman dalt
+	$(RPGLEMAN) dalt
 kw_ALTSEQ:
-	./getrpgleman daltsq
+	$(RPGLEMAN) daltsq
 kw_ASCEND:
-	./getrpgleman dascend
+	$(RPGLEMAN) dascend
 kw_BASED:
-	./getrpgleman dbased
+	$(RPGLEMAN) dbased
 kw_BINDEC:
-	./getrpgleman dkwbindec
+	$(RPGLEMAN) dkwbindec
 kw_CCSID:
-	./getrpgleman dccsid
+	$(RPGLEMAN) dccsid
 kw_CHAR:
-	./getrpgleman dkwchar
+	$(RPGLEMAN) dkwchar
 kw_CLASS:
-	./getrpgleman dclass
+	$(RPGLEMAN) dclass
 kw_CONST:
-	./getrpgleman dconst
+	$(RPGLEMAN) dconst
 kw_CTDATA:
-	./getrpgleman dctdata
+	$(RPGLEMAN) dctdata
 kw_DATE:
-	./getrpgleman dkwdate
+	$(RPGLEMAN) dkwdate
 kw_DATFMT:
-	./getrpgleman ddatfmt
+	$(RPGLEMAN) ddatfmt
 kw_DESCEND:
-	./getrpgleman ddescnd
+	$(RPGLEMAN) ddescnd
 kw_DIM:
-	./getrpgleman ddim
+	$(RPGLEMAN) ddim
 kw_DTAARA:
-	./getrpgleman ddtaara
+	$(RPGLEMAN) ddtaara
 kw_EXPORT:
-	./getrpgleman dexport
+	$(RPGLEMAN) dexport
 kw_EXT:
-	./getrpgleman dkwext
+	$(RPGLEMAN) dkwext
 kw_EXTFLD:
-	./getrpgleman dextfld
+	$(RPGLEMAN) dextfld
 kw_EXTFMT:
-	./getrpgleman dextfmt
+	$(RPGLEMAN) dextfmt
 kw_EXTNAME:
-	./getrpgleman dextnam
+	$(RPGLEMAN) dextnam
 kw_EXTPGM:
-	./getrpgleman dextpgm
+	$(RPGLEMAN) dextpgm
 kw_EXTPROC:
-	./getrpgleman dextprc
+	$(RPGLEMAN) dextprc
 kw_FLOAT:
-	./getrpgleman dkwfloat
+	$(RPGLEMAN) dkwfloat
 kw_FROMFILE:
-	./getrpgleman dfrfile
+	$(RPGLEMAN) dfrfile
 kw_GRAPH:
-	./getrpgleman dkwgraph
+	$(RPGLEMAN) dkwgraph
 kw_IMPORT:
-	./getrpgleman dimport
+	$(RPGLEMAN) dimport
 kw_INT:
-	./getrpgleman dkwint
+	$(RPGLEMAN) dkwint
 kw_IND:
-	./getrpgleman dkwind
+	$(RPGLEMAN) dkwind
 kw_INZ:
-	./getrpgleman dinz
+	$(RPGLEMAN) dinz
 kw_LEN:
-	./getrpgleman dkwlen
+	$(RPGLEMAN) dkwlen
 kw_LIKE:
-	./getrpgleman dlike
+	$(RPGLEMAN) dlike
 kw_LIKEDS:
-	./getrpgleman dlikeds
+	$(RPGLEMAN) dlikeds
 kw_LIKEFILE:
-	./getrpgleman dlikefile
+	$(RPGLEMAN) dlikefile
 kw_LIKEREC:
-	./getrpgleman dlikerec
+	$(RPGLEMAN) dlikerec
 kw_NOOPT:
-	./getrpgleman dnoopt
+	$(RPGLEMAN) dnoopt
 kw_NULLIND:
-	./getrpgleman dkwnullind
+	$(RPGLEMAN) dkwnullind
 kw_OBJECT:
-	./getrpgleman dkwobject
+	$(RPGLEMAN) dkwobject
 kw_OCCURS:
-	./getrpgleman doccurs
+	$(RPGLEMAN) doccurs
 kw_OPDESC:
-	./getrpgleman dopdesc
+	$(RPGLEMAN) dopdesc
 kw_OPTIONS:
-	./getrpgleman doptns
+	$(RPGLEMAN) doptns
 kw_OVERLAY:
-	./getrpgleman doverly
+	$(RPGLEMAN) doverly
 kw_PACKED:
-	./getrpgleman dkwpacked
+	$(RPGLEMAN) dkwpacked
 kw_PACKEVEN:
-	./getrpgleman dpackev
+	$(RPGLEMAN) dpackev
 kw_PERRCD:
-	./getrpgleman dperrcd
+	$(RPGLEMAN) dperrcd
 kw_POINTER:
-	./getrpgleman dkwpointer
+	$(RPGLEMAN) dkwpointer
 kw_POS:
-	./getrpgleman dkwpos
+	$(RPGLEMAN) dkwpos
 kw_PREFIX:
-	./getrpgleman dprefix
+	$(RPGLEMAN) dprefix
 kw_PROCPTR:
-	./getrpgleman dprcptr
+	$(RPGLEMAN) dprcptr
 kw_PSDS:
-	./getrpgleman dkwpsds
+	$(RPGLEMAN) dkwpsds
 kw_QUALIFIED:
-	./getrpgleman dqualif
+	$(RPGLEMAN) dqualif
 kw_RTNPARM:
-	./getrpgleman drtnparm
+	$(RPGLEMAN) drtnparm
 kw_STATIC:
-	./getrpgleman dstatic
+	$(RPGLEMAN) dstatic
 kw_TEMPLATE:
-	./getrpgleman dtemplatekw
+	$(RPGLEMAN) dtemplatekw
 kw_TIME:
-	./getrpgleman dkwtime
+	$(RPGLEMAN) dkwtime
 kw_TIMESTAMP:
-	./getrpgleman dkwtimestamp
+	$(RPGLEMAN) dkwtimestamp
 kw_TIMFMT:
-	./getrpgleman dtimfmt
+	$(RPGLEMAN) dtimfmt
 kw_TOFILE:
-	./getrpgleman dtofile
+	$(RPGLEMAN) dtofile
 kw_UCS2:
-	./getrpgleman dkwucs2
+	$(RPGLEMAN) dkwucs2
 kw_UNS:
-	./getrpgleman dkwuns
+	$(RPGLEMAN) dkwuns
 kw_VALUE:
-	./getrpgleman dvalue
+	$(RPGLEMAN) dvalue
 kw_VARCHAR:
-	./getrpgleman dkwvarchar
+	$(RPGLEMAN) dkwvarchar
 kw_VARGRAPH:
-	./getrpgleman dkwvargraph
+	$(RPGLEMAN) dkwvargraph
 kw_VARUCS2:
-	./getrpgleman dkwvarucs2
+	$(RPGLEMAN) dkwvarucs2
 kw_VARYING:
-	./getrpgleman dvaryg
+	$(RPGLEMAN) dvaryg
 kw_ZONED:
-	./getrpgleman dkwzoned
+	$(RPGLEMAN) dkwzoned
 
+# Free-Form Operations
+op_ACQ:
+	$(RPGLEMAN) zzacq
+op_BEGSR:
+	$(RPGLEMAN) zzbegsr
+op_CALLP:
+	$(RPGLEMAN) zzcallp
+op_CHAIN:
+	$(RPGLEMAN) zzchain
+op_CLEAR:
+	$(RPGLEMAN) zzclear
+op_CLOSE:
+	$(RPGLEMAN) zzclose
+op_COMMIT:
+	$(RPGLEMAN) zzcomit
+op_DEALLOC:
+	$(RPGLEMAN) zzdeall
+op_DELETE:
+	$(RPGLEMAN) zzdelet
+op_DOU:
+	$(RPGLEMAN) zzdou
+op_DOW:
+	$(RPGLEMAN) zzdow
+op_DSPLY:
+	$(RPGLEMAN) zzdsply
+op_DUMP:
+	$(RPGLEMAN) zzdump
+op_ELSE:
+	$(RPGLEMAN) zzelse
+op_ELSEIF:
+	$(RPGLEMAN) zzelsif
+op_ENDDO:
+	$(RPGLEMAN) --name ENDDO zzendyy
+op_ENDFOR:
+	$(RPGLEMAN) --name ENDFOR zzendyy
+op_ENDIF:
+	$(RPGLEMAN) --name ENDIF zzendyy
+op_ENDMON:
+	$(RPGLEMAN) --name ENDMON zzendyy
+op_ENDSL:
+	$(RPGLEMAN) --name ENDSL zzendyy
+op_ENDSR:
+	$(RPGLEMAN) zzendsr
+op_EVAL:
+	$(RPGLEMAN) zzeval
+op_EVALR:
+	$(RPGLEMAN) zzevalr
+op_EXCEPT:
+	$(RPGLEMAN) zzexcpt
+op_EXFMT:
+	$(RPGLEMAN) zzexfmt
+op_EXSR:
+	$(RPGLEMAN) zzexsr
+op_FEOD:
+	$(RPGLEMAN) zzfeod
+op_FOR:
+	$(RPGLEMAN) zzfor
+op_FORCE:
+	$(RPGLEMAN) zzforce
+op_IF:
+	$(RPGLEMAN) zzif
+op_IN:
+	$(RPGLEMAN) zzin
+op_ITER:
+	$(RPGLEMAN) zziter
+op_LEAVE:
+	$(RPGLEMAN) zzleave
+op_LEAVESR:
+	$(RPGLEMAN) zzlevsr
+op_MONITOR:
+	$(RPGLEMAN) zzmonit
+op_NEXT:
+	$(RPGLEMAN) zznext
+op_ON-ERROR:
+	$(RPGLEMAN) zzonerr
+op_ON-EXIT:
+	$(RPGLEMAN) zzonexit
+op_OPEN:
+	$(RPGLEMAN) zzopen
+op_OTHER:
+	$(RPGLEMAN) zzother
+op_OUT:
+	$(RPGLEMAN) zzout
+op_POST:
+	$(RPGLEMAN) zzpost
+op_READ:
+	$(RPGLEMAN) zzread
+op_READC:
+	$(RPGLEMAN) zzreadc
+op_READE:
+	$(RPGLEMAN) zzreade
+op_READP:
+	$(RPGLEMAN) zzreadp
+op_READPE:
+	$(RPGLEMAN) zzredpe
+op_REL:
+	$(RPGLEMAN) zzrel
+op_RESET:
+	$(RPGLEMAN) zzreset
+op_RETURN:
+	$(RPGLEMAN) zzretrn
+op_ROLBK:
+	$(RPGLEMAN) zzrolbk
+op_SELECT:
+	$(RPGLEMAN) zzselec
+op_SETGT:
+	$(RPGLEMAN) zzsetgt
+op_SETLL:
+	$(RPGLEMAN) zzsetll
+op_SORTA:
+	$(RPGLEMAN) zzsorta
+op_TEST:
+	$(RPGLEMAN) zztest
+op_UNLOCK:
+	$(RPGLEMAN) zzunlck
+op_UPDATE:
+	$(RPGLEMAN) zzupdat
+op_WHEN:
+	$(RPGLEMAN) zzwhen
+op_WRITE:
+	$(RPGLEMAN) zzwrite
+
+# Compiler Directives
 cd_TITLE:
-	./getrpgleman --section 3RPGCOMPDIR cdtitle
+	$(RPGLEMAN) --section 3RPGCOMPDIR cdtitle
 cd_EJECT:
-	./getrpgleman --section 3RPGCOMPDIR cdeject
+	$(RPGLEMAN) --section 3RPGCOMPDIR cdeject
 cd_SPACE:
-	./getrpgleman --section 3RPGCOMPDIR cdspace
+	$(RPGLEMAN) --section 3RPGCOMPDIR cdspace
 cd_SET:
-	./getrpgleman --section 3RPGCOMPDIR cdset
+	$(RPGLEMAN) --section 3RPGCOMPDIR cdset
 cd_RESTORE:
-	./getrpgleman --section 3RPGCOMPDIR cdrestore
+	$(RPGLEMAN) --section 3RPGCOMPDIR cdrestore
 cd_COPY:
-	./getrpgleman --section 3RPGCOMPDIR --name COPY cdcopy
+	$(RPGLEMAN) --section 3RPGCOMPDIR --name COPY cdcopy
 cd_INCLUDE:
-	./getrpgleman --section 3RPGCOMPDIR --name INCLUDE cdcopy
+	$(RPGLEMAN) --section 3RPGCOMPDIR --name INCLUDE cdcopy
 cd_DEFINE:
-	./getrpgleman --section 3RPGCOMPDIR cddef
+	$(RPGLEMAN) --section 3RPGCOMPDIR cddef
 cd_UNDEFINE:
-	./getrpgleman --section 3RPGCOMPDIR cdund
+	$(RPGLEMAN) --section 3RPGCOMPDIR cdund
 cd_IF:
-	./getrpgleman --section 3RPGCOMPDIR cdif
+	$(RPGLEMAN) --section 3RPGCOMPDIR cdif
 cd_ELSEIF:
-	./getrpgleman --section 3RPGCOMPDIR cdeif
+	$(RPGLEMAN) --section 3RPGCOMPDIR cdeif
 cd_ELSE:
-	./getrpgleman --section 3RPGCOMPDIR cdels
+	$(RPGLEMAN) --section 3RPGCOMPDIR cdels
 cd_ENDIF:
-	./getrpgleman --section 3RPGCOMPDIR cdendif
+	$(RPGLEMAN) --section 3RPGCOMPDIR cdendif
 cd_EOF:
-	./getrpgleman --section 3RPGCOMPDIR cdeof
+	$(RPGLEMAN) --section 3RPGCOMPDIR cdeof
 cd_FREE:
-	./getrpgleman --section 3RPGCOMPDIR --name FREE freefree
+	$(RPGLEMAN) --section 3RPGCOMPDIR --name FREE freefree
 cd_END-FREE:
-	./getrpgleman --section 3RPGCOMPDIR --name END-FREE freefree
+	$(RPGLEMAN) --section 3RPGCOMPDIR --name END-FREE freefree

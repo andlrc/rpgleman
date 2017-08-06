@@ -1,0 +1,69 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzdou.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DOU 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DOU - Do Until
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIDOU\fR{(MR)} indicator-expression
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fIDOU\fR (M/R)
+T}	T{
+Â
+T}	T{
+indicator-expression
+T}
+.TE
+
+The \fIDOU\fR operation code precedes a group of operations which you want to execute at least once and possibly more than once\[char46] Its function is similar to that of the \fIDOU\fRxx operation code\[char46] An associated \fIENDDO\fR statement marks the end of the group\[char46] It differs in that the logical condition is expressed by an indicator valued expression (indicator-expression)\[char46] The operations controlled by the \fIDOU\fR operation are performed until the expression in indicator-expression is true\[char46] For information on how operation extenders M and R are used, see Precision Rules for Numeric Operations\[char46]
+
+
+For fixed-format syntax, level and conditioning indicators are valid\[char46] Factor 1 must be blank\[char46] Extended factor 2 contains the expression to be evaluated\[char46]
+
+
+For more information, see Compare Operations or Structured Programming Operations\[char46]
+
+.SH EXAMPLE
+\fIDOU\fR Operation
+.PP
+.nf
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+ /FREE
+    // In this example, the do loop will be repeated until the F3
+    // is pressed\[char46]
+    dou *inkc;
+       do_something();
+    enddo;
+
+    // The following do loop will be repeated until *In01 is on
+    // or until FIELD2 is greater than FIELD3
+    dou *in01 or (Field2 > Field3);
+       do_something_else ();
+    enddo;
+
+    // The following loop will be repeated until X is greater than
+    // the number of elements in Array
+    dou X > %elem (Array);
+       Total = Total + Array(x);
+       X = X + 1;
+    enddo;
+ /END-FREE
+.fi
+.SH SEE ALSO
+.BR %ELEM (3RPG)

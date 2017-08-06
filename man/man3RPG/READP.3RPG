@@ -1,0 +1,103 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzreadp.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH READP 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+READP - Read Prior Record
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIREADP\fR{(EN)} name {data-structure}
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIREADP\fR (E N)
+T}	T{
+Â
+T}	T{
+name (file or record format)
+T}	T{
+data-structure
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+\fIBOF\fR
+T}
+.TE
+
+The \fIREADP\fR operation reads the prior record from a full procedural file\[char46]
+
+
+The name operand must be the name of a file or record format to be read\[char46] A record format name is allowed only with an externally described file\[char46] If a record format name is specified in name, the record retrieved is the first prior record of the specified type\[char46] Intervening records are bypassed\[char46]
+
+
+If the data-structure operand is specified, the record is read directly into the data structure\[char46] If name refers to a program-described file, the data structure can be any data structure of the same length as the file\[char39]s declared record length\[char46] If name refers to an externally-described file or a record format from an externally described file, the data structure must be a data structure defined with \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR)\[char46] See File Operations for information on how to define the data structure and how data is transferred between the file and the data structure\[char46]
+
+
+If a \fIREADP\fR operation is successful, the file is positioned at the previous record that satisfies the read\[char46]
+
+
+If the file from which you are reading is an update disk file, you can specify an N operation extender to indicate that no lock should be placed on the record when it is read\[char46] See the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide for more information\[char46]
+
+
+To handle \fIREADP\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+
+
+You can specify an indicator in positions 75-76 that will be set on when no prior records exist in the file (beginning of file condition)\[char46] This information can also be obtained from the \fB%EOF\fR built-in function, which returns \[char39]1\[char39] if a \fIBOF\fR condition occurs and \[char39]0\[char39] otherwise\[char46]
+
+
+If there is a record-lock error (status 1218), the file is still positioned at the locked record and the next read operation will attempt to read that record again\[char46] Otherwise, if there is any other error or a beginning of file condition, you must reposition the file (using a \fICHAIN\fR, \fISETLL\fR, or \fISETGT\fR operation)\[char46]
+
+
+See Database Null Value Support for information on reading records with null-capable fields\[char46]
+
+
+For more information, see File Operations\[char46]
+
+
+Figure 1 shows \fIREADP\fR operations with a file name and record format name specified in factor 2\[char46]
+
+.SH EXAMPLE
+\fIREADP\fR Operation
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+ *
+ *  The READP operation reads the prior record from FILEA\[char46]
+ *
+ *  The %EOF built-in function is set to return \[char39]1\[char39] if beginning
+ *  of file is encountered\[char46]  When %EOF returns \[char39]1\[char39], the program
+ *  branches to the label BOF specified in the GOTO operation\[char46]
+C                   READP     FILEA
+C                   IF        %EOF
+C                   GOTO      BOF
+C                   ENDIF
+ *
+ *  The READP operation reads the next prior record of the type
+ *  REC1 from an externally described file\[char46]  (REC1 is a record
+ *  format name\[char46])  Indicator 72 is set on if beginning of file is
+ *  encountered during processing of the READP operation\[char46]  When
+ *  indicator 72 is set on, the program branches to the label BOF
+ *  specified in the GOTO operation\[char46]
+C                   READP     PREC1                                  72
+C   72              GOTO      BOF
+ *
+C     BOF           TAG
+.fi
+.SH SEE ALSO
+.BR %EOF (3RPG)

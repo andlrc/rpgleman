@@ -1,0 +1,120 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzwrite.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH WRITE 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+WRITE - Create New Records
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIWRITE\fR{(E)} name {data-structure}
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIWRITE\fR (E)
+T}	T{
+Â
+T}	T{
+name (file or record format)
+T}	T{
+data-structure
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+\fIEOF\fR
+T}
+.TE
+
+The \fIWRITE\fR operation writes a new record to a file\[char46]
+
+
+The name operand must be the name of a program-described file or a record format from an externally-described file\[char46]
+
+
+If the data-structure operand is specified, the record is written directly from the data structure to the file\[char46] If name refers to a program described file, the data structure is required and can be any data structure of the same length as the file\[char39]s declared record length\[char46] If name refers to a record format from an externally described file, the data structure must be a data structure defined with type \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*OUTPUT\fR or \fI*ALL\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*OUTPUT\fR or \fI*ALL\fR)\[char46] For a \fIDISK\fR file, if the data structure is defined with \fILIKEREC\fR and the type of fields is not specified, the data structure can be used for a \fIWRITE\fR operation if the output buffer layout exactly matches the input buffer layout\[char46] See Figure 2 for an example\[char46] See File Operations for information on how to define the data structure and how data is transferred between the file and the data structure\[char46]
+
+
+To handle \fIWRITE\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] An error occurs if overflow is reached to an externally described print file and no overflow indicator has been specified on the File description specification\[char46] For more information on error handling, see File Exception/Errors\[char46]
+
+
+You can specify an indicator in positions 75-76 to signal whether an end of file occurred (subfile is filled) on the \fIWRITE\fR operation\[char46] The indicator is set on (an \fIEOF\fR condition) or off every time the \fIWRITE\fR operation is performed\[char46] This information can also be obtained from the \fB%EOF\fR built-in function, which returns \[char39]1\[char39] if an \fIEOF\fR condition occurs and \[char39]0\[char39] otherwise\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] When name  is a record format name, the current values in the program for all the fields in the record definition are used to construct the record\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When records that use relative record numbers are written to a file, you must update the field name specified on the \fIRECNO\fR File specification keyword (relative record number), so it contains the relative record number of the record to be written\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] 
+
+ When you use the \fIWRITE\fR operation to add records to an input-capable or update-capable \fIDISK\fR file (see the \fIUSAGE\fR  keyword for a free-form file definition or position 17  for a fixed-form file definition), you must also define the file so that it is output-capable (specify \fI*OUTPUT\fR for the \fIUSAGE\fR keyword of a free-form definition or specify an A in position 20  of the file description specifications\[char46] 
+
+
+.RE
+.IP "" 2
+.RS
+\[bu] Device dependent functions are limited\[char46] For example, if a "\fIWRITE\fR" is issued to a "\fIPRINTER\fR" device, the space after will be set to 1 if the keyword \fIPRTCTL\fR is not specified on the file specification (normally spacing or skipping information are specified in columns 41 through 51 of the output specifications)\[char46] If the file is externally described, these functions are part of the external description\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] For a multiple device file, data is written to the program device named in the field name specified with the \fIDEVID\fR keyword on the file description specifications\[char46] (See \fIDEVID\fR(fieldname) \[char46]) If the \fIDEVID\fR keyword is not specified, data is written to the program device for which the last successful input operation was processed\[char46]
+.RE
+.PP
+
+See Database Null Value Support for information on adding records with null-capable fields containing null values\[char46]
+
+
+For more information, see File Operations\[char46]
+
+.SH EXAMPLE
+\fIWRITE\fR Operation with a Program Described File
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+ *
+ *  The WRITE operation writes the fields in the data structure
+ *  DS1 to the file, FILE1\[char46]
+ *
+C                   WRITE     FILE1         DS1
+.fi
+
+
+
+.SH EXAMPLE
+\fIWRITE\fR Operation for a \fIDISK\fR file with \fILIKEREC\fR Data Structures
+.PP
+.nf
+    dcl-f FILE1 DISK USAGE(*OUTPUT);
+
+    dcl-ds likerec_default LIKEREC(FMT1);
+    dcl-ds likerec_output LIKEREC(FMT1 : *OUTPUT);
+    dcl-ds likerec_all LIKEREC(FMT1 : *ALL);
+
+    WRITE FMT1 likerec_default;
+    WRITE FMT1 likerec_output;
+    WRITE FMT1 likerec_all;
+.fi
+
+
+.SH SEE ALSO
+.BR %EOF (3RPG)

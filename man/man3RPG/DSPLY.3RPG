@@ -1,0 +1,184 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzdsply.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DSPLY 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DSPLY - Display Message
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIDSPLY\fR{(E)} {message {message-queue {response}}}
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIDSPLY\fR (E)
+T}	T{
+message
+T}	T{
+message-queue
+T}	T{
+response
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The \fIDSPLY\fR operation allows the program to communicate with the display work station that requested the program\[char46] Either message, response, or both operands must be specified\[char46] The operation can display a message and accept a response\[char46]
+
+
+The value in the message operand and possibly the response operand are used to create the message to be displayed\[char46] message can be a field name, a literal, a named constant, a table name, or an array element whose value is used to create the message to be displayed\[char46] Within free-form calculations, the message operand can be an expression, provided the expression is enclosed by parentheses\[char46] The message operand can also be \fI*M\fR, followed by a message identifier that identifies the message to be retrieved from the message file, \fIQUSERMSG\fR\[char46] Use the \fIOVRMSGF\fR CL command to use a different message file\[char46] \fIQUSERMSG\fR must be in a library in the library list of the job receiving the message\[char46]
+
+
+The message identifier must be 7 characters in length consisting 3 alphabetic characters and four numeric characters (for example, \fI*MUSR0001\fR, this means message \fIUSR\fR0001 is used)\[char46]
+
+
+If specified, the message-queue operand can be a character field, a literal, a named constant, a table name, or an array element whose value is the symbolic name of the object meant to receive the message and from which the optional response can be sent\[char46] Any queue name, except a program message queue name, can be the value contained in the message-queue operand\[char46] The queue must be declared to the operating system before it can be used during program execution\[char46] (For information on how to create a queue, see the CL Programming)\[char46] There are two predefined queues:
+
+
+.TP 5
+.B Queue
+
+
+
+.TP 5
+.B \fIQSYSOPR\fR
+The message is sent to the system operator\[char46] Note that the \fIQSYSOPR\fR message queue severity level must be zero (00) to enable the \fIDSPLY\fR operation to immediately display a message to the system operator\[char46]
+.TP 5
+.B \fI*EXT\fR
+The message is sent to the external message queue\[char46]
+.PP
+
+
+
+
+
+The response operand is optional\[char46] If it is specified, the response is placed in it\[char46] response can be a field name, a table name, or an array element in which the response is placed\[char46] If no data is entered, response is unchanged\[char46] To specify a response but no message queue in a free-form specification, specify \[char39]Â \[char39] for message-queue\[char46]
+
+
+Fully qualified names may be specified as the Result-Field operand, and expressions are allowed as Factor 1 and Factor 2 operands, when coded in free-form calculation specifications\[char46] However, if the operand is more complex than a fully qualified name, the expression must be enclosed in parentheses\[char46]
+
+
+To handle \fIDSPLY\fR exceptions (program status code 333), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] The exception is handled by the specified method if an error occurs on the operation\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+
+
+
+
+.IP "" 2
+.RS
+\[bu] If the message  operand is specified but the response  operand is not, the contents of the message  operand are displayed\[char46] The program does not wait for a response unless a display file with the parameter \fIRSTDSP\fR (\fI*NO\fR) specified was used to display a format at the workstation\[char46] Then the program waits for the user to press Enter\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the message  operand is not specified but the response  operand is, the contents of the response  operand are displayed and the program waits for the user to enter data for the response\[char46] The reply is placed in the response  operand\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When both message  and response  operands are specified,, their contents are combined and displayed\[char46] The program waits for the user to enter data for the response\[char46] The response is placed in the result field\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If you request help on the message, you can find the type and attributes of the data that is expected and the number of unsuccessful attempts that have been made\[char46] 
+The maximum length of information that can be displayed is 52 bytes\[char46]
+
+
+.RE
+.PP
+
+The format of the record written by the \fIDSPLY\fR operation with no message identifier specified by the message operand follows:
+
+
+
+When you specify the \fIDSPLY\fR operation with a message identifier in the message operand, the operation functions as follows: the message identified in the message operand is retrieved from \fIQUSERMSG\fR, the message is displayed, and the program waits for the user to respond by entering data if the response operand is specified\[char46] The response is placed in the result field\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] Non-float numeric fields sent to the display are right-adjusted and zero-suppressed\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If a non-float numeric field is entered with a length greater than the number of digits in the result field and the rightmost character is not a minus sign (-), an error is detected and a second wait occurs\[char46] The user must key in the field again\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] A float value is entered in the external display representation\[char46] It can be no longer than 14 characters for 4-byte float fields, and no longer than 23 characters for 8-byte float fields\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If graphic, \fIUCS\fR-2, or character data is entered, the length must be equal or less than the receiving field length\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the result field is variable-length, its length will be set to the length of the value that you enter\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If a date, time, or timestamp field is entered, the format and separator must match the format and separator of the result field\[char46] If the format or separator do not match, or the value is not valid (for example a date of 1999/99/99), an error is detected and a second wait occurs\[char46] The user must key in the field again\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The \fIDSPLY\fR operation allows the workstation user up to 5 attempts to respond to the message\[char46] After the fifth unsuccessful attemp, the \fIDSPLY\fR operation fails\[char46] If the \fIDSPLY\fR operation does not have a message identifier specified in the message  operand, the user can request help on the message to find the type and attributes of the expected response\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] To enter a null response to the system operator queue (\fIQSYSOPR\fR), the user must enter the characters \fI*N\fR and then press Enter\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Graphic, \fIUCS\fR-2, or character fields are padded on the right with blanks after all characters are entered\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] \fIUCS\fR-2 fields are displayed and entered as single-byte characters\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Numeric fields are right-adjusted and padded on the left with zeros after all characters are entered\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Lowercase characters are not converted to uppercase\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If factor 1 or the result field is of graphic data type, they will be bracketed by SO/SI when displayed\[char46] The SO/SI will be stripped from the value to be assigned to the graphic result field on input\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Float fields are displayed in the external display representation\[char46] Float values can be entered as numeric literals or float literals\[char46] When entering a response, the float value does not have to be normalized\[char46]
+.RE
+.PP
+
+For more information, see Message Operation\[char46]
+
+
+.SH EXAMPLE
+\fIDSPLY\fR Operation Code Examples
+.PP
+.nf
+   /free
+       // Display prompt and wait for response:
+       dsply prompt \[char39]\[char39] result;
+       // Display string constructed in an expression:
+       dsply (\[char39]Length of name is \[char39] + %char(%len(str)) + \[char39] bytes\[char46]\[char39]);
+   /end-free
+.fi
+.SH SEE ALSO
+.BR %CHAR (3RPG),
+.BR %LEN (3RPG)

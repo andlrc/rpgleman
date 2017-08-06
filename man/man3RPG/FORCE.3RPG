@@ -1,0 +1,58 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzforce.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH FORCE 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+FORCE - Force a Certain File to Be Read Next Cycle
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIFORCE\fR file-name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIFORCE\fR
+T}	T{
+Â
+T}	T{
+file-name
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+.TE
+
+The \fIFORCE\fR operation allows selection of the file from which the next record is to be read\[char46] It can be used only for primary or secondary files\[char46]
+
+
+The file-name operand must be the name of a file from which the next record is to be selected\[char46]
+
+
+If the \fIFORCE\fR operation is processed, the record is read at the start of the next program cycle\[char46] If more than one \fIFORCE\fR operation is processed during the same program cycle, all but the last is ignored\[char46] \fIFORCE\fR must be issued at detail time, not total time\[char46]
+
+
+\fIFORCE\fR operations override the multi-file processing method by which the program normally selects records\[char46] However, the first record to be processed is always selected by the normal method\[char46] The remaining records can be selected by \fIFORCE\fR operations\[char46] For information on how the \fIFORCE\fR operation affects match-field processing, see Figure 1\[char46]
+
+
+If \fIFORCE\fR is specified for a file that is at end of file, no record is retrieved from the file\[char46] The program cycle determines the next record to be read\[char46]
+
+
+For more information, see File Operations\[char46]
+

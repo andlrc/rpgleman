@@ -1,0 +1,52 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzunlck.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH UNLOCK 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+UNLOCK - Unlock a Data Area or Release a Record
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIUNLOCK\fR{(E)} name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIUNLOCK\fR (E)
+T}	T{
+Â
+T}	T{
+name (file or data area)
+T}	T{
+Â
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The \fIUNLOCK\fR operation is used to unlock data areas and release record locks\[char46]
+
+
+To handle \fIUNLOCK\fR exceptions (program status codes 401-421, 431, and 432), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+
+
+Positions 71,72,75 and 76 must be blank\[char46]
+
+
+For further rules for the \fIUNLOCK\fR operation, see Data-Area Operations\[char46]
+

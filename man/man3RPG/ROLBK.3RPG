@@ -1,0 +1,69 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzrolbk.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ROLBK 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ROLBK - Roll Back
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIROLBK\fR{(E)}
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIROLBK\fR (E)
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+.IP "" 2
+.RS
+\[bu] Eliminates all the changes to your files that have been specified in output operations since the previous \fICOMMIT\fR or \fIROLBK\fR operation (or since the beginning of operations under commitment control if there has been no previous \fICOMMIT\fR or \fIROLBK\fR operation)\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Releases all the record locks for the files you have under commitment control\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Repositions the file to its position at the time of the previous \fICOMMIT\fR operation (or at the time of the file \fIOPEN\fR, if there has been no previous \fICOMMIT\fR operation\[char46])
+.RE
+.PP
+
+Commitment control starts when the CL command \fISTRCMTCTL\fR is executed\[char46] See the chapter on âCommitment Controlâ in the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide for more information\[char46]
+
+
+The file changes and the record-lock releases apply to all the files under commitment control in your activation group or job, whether the changes have been requested by the program issuing the \fIROLBK\fR operation or by another program in the same activation group or job\[char46] The program issuing the \fIROLBK\fR operation does not need to have any files under commitment control\[char46] For example, suppose program A calls program B and program C\[char46] Program B has files under commitment control, and program C does not\[char46] A \fIROLBK\fR operation in program C still affects the files changed by program B\[char46]
+
+
+To handle \fIROLBK\fR exceptions (program status codes 802 to 805), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+
+
+For information on how the rollback function is performed by the system, refer to Recovering your system, SC41-5304\[char46]
+
+
+For more information, see File Operations\[char46]
+

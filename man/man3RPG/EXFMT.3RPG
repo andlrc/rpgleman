@@ -1,0 +1,120 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzexfmt.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EXFMT 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+EXFMT - Write/Then Read Format
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIEXFMT\fR{(E)} format-name {data-structure}
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIEXFMT\fR (E)
+T}	T{
+Â
+T}	T{
+format-name
+T}	T{
+data-structure
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The \fIEXFMT\fR operation is a combination of a \fIWRITE\fR followed by a \fIREAD\fR to the same record format\[char46] \fIEXFMT\fR is valid only for a \fIWORKSTN\fR file defined as a full procedural combined file that is externally described\[char46]
+
+
+The format-name operand must be the name of the record format to be written and then read\[char46]
+
+
+If the data-structure operand is specified, the record is written from and read into the data structure\[char46] The data structure must be a data structure defined with \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*ALL\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*ALL\fR)\[char46] See File Operations for information on how to define the data structure and how data is transferred between the file and the data structure\[char46]
+
+
+To handle \fIEXFMT\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] When an error occurs, the read portion of the operation is not processed (record-identifying indicators and fields are not modified)\[char46] For more information on error handling, see File Exception/Errors\[char46]
+
+
+Positions 71, 72, 75, and 76 must be blank\[char46]
+
+
+For the use of \fIEXFMT\fR with multiple device files, see the descriptions of the \fIREAD\fR (by format name) and \fIWRITE\fR operations\[char46]
+
+
+For more information, see File Operations\[char46]
+
+.SH EXAMPLE
+\fIEXFMT\fR Operation
+.PP
+.nf
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+F*Flename++IPEASFRLen+LKlen+AIDevice+\[char46]Keywords+++++++++++++++++++++++++
+ *
+ * PROMTD is a WORKSTN file which prompts the user for an option\[char46]
+ * Based on what user enters, this program executes different
+ * subroutines to add, delete, or change a record\[char46]
+ *
+FPROMTD    CF   E             WORKSTN
+
+ /free
+    // If user enters F3 function key, indicator *IN03 is set
+    // on and the do while loop is exited\[char46]
+    dow not *in03;
+
+       // EXFMT writes out the prompt to the screen and expects user to
+       // enter an option\[char46] SCR1 is a record format name defined in the
+       // WORKSTN file and OPT is a field defined in the record\[char46]
+       exfmt SCR1;
+       select;
+       when opt = \[char39]A\[char39];
+          exsr AddRec;
+       when opt = \[char39]D\[char39];
+          exsr DelRec;
+       when opt = \[char39]C\[char39];
+          exsr ChgRec;
+       endsl;
+    enddo;
+    do_something ();
+    do_more_stuff ();
+ /end-free
+.fi
+
+.SH EXAMPLE
+Using a result data structure with \fIEXFMT\fR
+.PP
+.nf
+  * DDS for display file MYDSPF
+A          R REC
+A            QUESTION      40A  O  5  2
+A            NAME          20A  I  7  5
+A            CITY          20A  B  8  5
+ * RPG program using MYDSPF
+Fmydspf    cf   e             workstn
+ * Define a data structure for use with EXFMT REC
+D recDs           ds                  likerec(rec : *all)
+ /free
+        // Set the output-capable fields
+        recDs\[char46]question = \[char39]What is your name?\[char39];
+        recDs\[char46]city = \[char39]Toronto\[char39];        // Show the screen to the user
+        exfmt rec recDs;
+        // Use the input-capable fields
+        // Since the "city" field is both input and output
+        // capable, its value may have changed during EXFMT
+        dsply (\[char39]Hello \[char39] + recDs\[char46]name + \[char39] in \[char39] + recDs\[char46]city);
+.fi

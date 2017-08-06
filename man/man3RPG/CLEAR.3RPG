@@ -1,0 +1,49 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzclear.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH CLEAR 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+CLEAR - Clear
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fICLEAR\fR {\fI*NOKEY\fR} {\fI*ALL\fR} name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fICLEAR\fR
+T}	T{
+\fI*NOKEY\fR
+T}	T{
+\fI*ALL\fR
+T}	T{
+name (variable or record format)
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+.TE
+
+The \fICLEAR\fR operation sets elements in a structure (record format, data structure, array, or table) or a variable (field, subfield, array element or indicator), to their default initialization value depending on field type (numeric, character, graphic, \fIUCS\fR-2, indicator, pointer, or date/time/timestamp)\[char46] For the default initialization value for a data type, see Data Types and Data Formats\[char46]
+
+
+Fully qualified names may be specified as the Result-Field operand for \fICLEAR\fR when coded in free-form calculation specifications\[char46] If the structure or variable being cleared is variable-length, its length changes to 0\[char46] The \fICLEAR\fR operation allows you to clear structures on a global basis, as well as element by element, during run time\[char46]
+
+
+See Initialization Operations\[char46]
+

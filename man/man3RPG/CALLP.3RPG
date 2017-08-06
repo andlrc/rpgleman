@@ -1,0 +1,215 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzcallp.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH CALLP 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+CALLP - Call a Prototyped Procedure or Program
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+{\fICALLP\fR{(\fIEMR\fR)}} name( {parm1{:parm2\[char46]\[char46]\[char46]}} )
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fICALLP\fR (E M/R)
+T}	T{
+Â
+T}	T{
+name{ (parm1 {:parm2â¦}) }
+T}
+.TE
+
+The \fICALLP\fR operation is used to call prototyped procedures or programs\[char46]
+
+
+Unlike the other call operations, \fICALLP\fR uses a free-form syntax\[char46] You use the name operand to specify the name of the prototype of the called program or procedure, as well as any parameters to be passed\[char46] (This is similar to calling a built-in function\[char46]) A maximum of 255 parameters are allowed for a program call, and a maximum of 399 for a procedure call\[char46]
+
+
+On a free-form calculation specification, the operation code name may be omitted if no extenders are needed, and if the prototype does not have the same name as an operation code\[char46]
+
+
+ The compiler then uses the prototype name to obtain an external name, if required, for the call\[char46] If the keyword \fIEXTPGM\fR is specified on the prototype, the call will be a dynamic external call; otherwise it will be a bound procedure call\[char46]
+
+
+If the called program or procedure is defined in a different module, a prototype for the program or procedure being called must be included in the definition specifications preceding the \fICALLP\fR\[char46] If the called program or procedure is defined in the same module as the call, an explicit prototype is not required; the prototype can be implicitly defined from the procedure interface of the called program or procedure\[char46]
+
+
+Note that if \fICALLP\fR is used to call a procedure which returns a value, that value will not be available to the caller\[char46] If the value is required, call the prototyped procedure from within an expression\[char46]
+
+
+
+
+
+
+
+
+.PP
+.nf
+CALLP(E) PROGNAME(FileRecs(Fld) + 1)
+.fi
+
+For more information on call operations, see Call Operations\[char46] For more information on defining prototypes, see Prototypes and Parameters\[char46] For information on how operation extenders M and R are used, see Precision Rules for Numeric Operations\[char46]
+
+.SH EXAMPLE
+Calling a Prototyped Program Using \fICALLP\fR
+.PP
+.nf
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+ *-------------------------------------------------------------
+ *  This prototype for QCMDEXC defines two parameters:
+ *   1- a character field that may be shorter in length
+ *      than expected
+ *   2- any numeric field
+ *-------------------------------------------------------------
+D qcmdexc         PR                  extpgm(\[char39]QCMDEXC\[char39])
+D   cmd                        200A   options(*varsize) const
+D   cmdlen                      15P 5 const
+
+ /FREE
+      qcmdexc (\[char39]WRKSPLF\[char39] : %size (\[char39]WRKSPLF\[char39]));
+ /END-FREE
+.fi
+
+.SH EXAMPLE
+Passing an array parameter using \fICALLP\fR
+.PP
+.nf
+ * The prototype for the procedure has an array parameter\[char46]
+D proc            pr
+D   parm                        10a   dim(5)
+
+* An array to pass to the procedure
+D array           s             10a   dim(5)
+
+* Call the procedure, passing the array
+C                   callp     proc (array)
+.fi
+
+The following example of \fICALLP\fR is from the service program example in Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46] CvtToHex is a procedure in a service program created to hold conversion routines\[char46] CvtToHex converts an input string to its hexadecimal form\[char46] The prototyped calls are to the \fIILE\fR \fICEE\fR \fIAPI\fR, \fICEEDOD\fR (Retrieve Operational Descriptor)\[char46] It is used to determine the length of the input string\[char46]
+
+
+.SH EXAMPLE
+Calling a Prototyped Procedure Using \fICALLP\fR
+.PP
+.nf
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+ *=================================================================*
+ * CvtToHex - convert input string to hex output string            *
+ *=================================================================*
+D/COPY MYLIB/QRPGLESRC,CVTHEXPR
+
+ *-----------------------------------------------------------------*
+ * Main entry parameters                                           *
+ * 1\[char46] Input:   string                   character(n)               *
+ * 2\[char46] Output:  hex string               character(2 * n)           *
+ *-----------------------------------------------------------------*
+D CvtToHex        PI                    OPDESC
+D   InString                 16383      CONST OPTIONS(*VARSIZE)
+D   HexString                32766      OPTIONS(*VARSIZE)
+
+ *-----------------------------------------------------------------*
+ * Prototype for CEEDOD (Retrieve operational descriptor)          *
+ *-----------------------------------------------------------------*
+D CEEDOD          PR
+D                               10I 0 CONST
+D                               10I 0
+D                               10I 0
+D                               10I 0
+D                               10I 0
+D                               10I 0
+D                               12A   OPTIONS(*OMIT)
+
+ * Parameters passed to CEEDOD
+D ParmNum         S             10I 0
+D DescType        S             10I 0
+D DataType        S             10I 0
+D DescInfo1       S             10I 0
+D DescInfo2       S             10I 0
+D InLen           S             10I 0
+D HexLen          S             10I 0
+.fi
+
+.SH EXAMPLE
+
+.PP
+.nf
+ *-----------------------------------------------------------------*
+ * Other fields used by the program                                *
+ *-----------------------------------------------------------------*
+D HexDigits       C                   CONST(\[char39]0123456789ABCDEF\[char39])
+D IntDs           DS
+D   IntNum                       5I 0 INZ(0)
+D   IntChar                      1    OVERLAY(IntNum:2)
+D HexDs           DS
+D   HexC1                        1
+D   HexC2                        1
+D InChar          S              1
+D Pos             S              5P 0
+D HexPos          S              5P 0
+
+ /FREE
+    //-------------------------------------------------------------//
+    // Use the operational descriptors to determine the lengths of //
+    // the parameters that were passed\[char46]                            //
+    //-------------------------------------------------------------//
+    CEEDOD (1 : DescType : DataType :
+                DescInfo1 : DescInfo2 : Inlen : *OMIT);
+    CEEDOD (2 : DescType : DataType :
+                DescInfo1 : DescInfo2 : HexLen : *OMIT);
+
+    //-------------------------------------------------------------//
+    // Determine the length to handle (minimum of the input length //
+    // and half of the hex length)                                 //
+    //-------------------------------------------------------------//
+    if InLen > HexLen / 2;
+       InLen = HexLen / 2;
+    endif;
+
+    //-------------------------------------------------------------//
+    // For each character in the input string, convert to a 2-byte //
+    // hexadecimal representation (for example, \[char39]5\[char39] --> \[char39]F5\[char39])      //
+    //-------------------------------------------------------------//
+    HexPos = 1;
+    for Pos = 1 to InLen;
+        InChar = %SUBST(InString : Pos :1);
+        exsr GetHex;
+        %subst (HexString: HexPos: 2) = HexDs;
+        HexPos = HexPos + 2;
+    endfor;
+
+    return;
+
+    //================================================================//
+    // GetHex - subroutine to convert \[char39]InChar\[char39] to \[char39]HexDs\[char39]             //
+    // Use division by 16 to separate the two hexadecimal digits\[char46]     //
+    // The quotient is the first digit, the remainder is the second\[char46]  //
+    //================================================================//
+    begsr GetHex;
+       IntChar = InChar;
+
+       //-----------------------------------------------------//
+       // Use the hexadecimal digit (plus 1) to substring the //
+       // list of hexadecimal characters \[char39]012\[char46]\[char46]\[char46]CDEF\[char39]\[char46]        //
+       //-----------------------------------------------------//
+       HexC1 = %subst (HexDigits: %div(IntNum:16) + 1: 1);
+       HexC2 = %subst (HexDigits: %rem(IntNum:16) + 1: 1);
+    endsr;  // GetHex
+
+.fi
+.SH SEE ALSO
+.BR %SIZE (3RPG),
+.BR %SUBST (3RPG),
+.BR %DIV (3RPG),
+.BR %REM (3RPG)

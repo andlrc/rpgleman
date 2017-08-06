@@ -1,0 +1,101 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzopen.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH OPEN 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+OPEN - Open File for Processing
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIOPEN\fR{(E)} file-name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIOPEN\fR (E)
+T}	T{
+Â
+T}	T{
+file-name
+T}	T{
+Â
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The explicit \fIOPEN\fR operation opens the file named in the file-name operand\[char46] The file named cannot be designated as a primary, secondary, or table file\[char46]
+
+
+To handle \fIOPEN\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+
+
+To open the file specified in the file-name operand for the first time in a module or subprocedure with an explicit \fIOPEN\fR operation, specify the \fIUSROPN\fR keyword on the file description specifications\[char46] (See File Description Specifications for restrictions when using the \fIUSROPN\fR keyword\[char46])
+
+
+If a file is opened and later closed by the \fICLOSE\fR operation in the module or subprocedure, the programmer can reopen the file with the \fIOPEN\fR operation and the \fIUSROPN\fR keyword on the file description specification is not required\[char46] When the \fIUSROPN\fR keyword is not specified on the file description specification, the file is opened at module initialization for global files, or subprocedure initialization for local files\[char46] If an \fIOPEN\fR operation is specified for a file that is already open, an error occurs\[char46]
+
+
+Multiple \fIOPEN\fR operations in a program to the same file are valid as long as the file is closed when the \fIOPEN\fR operation is issued to it\[char46]
+
+
+When you open a file with the \fIDEVID\fR keyword specified (on the file description specifications), the fieldname specified as a parameter on the \fIDEVID\fR keyword is set to blanks\[char46] See the description of the \fIDEVID\fR keyword, in File Description Specifications\[char46]
+
+
+For more information, see File Operations\[char46]
+
+.SH EXAMPLE
+\fIOPEN\fR Operation with \fICLOSE\fR Operation
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+FFilename++IPEASFRlen+LKlen+AIDevice+\[char46]Keywords++++++++++++++++++++++++++++
+F
+FEXCEPTN   O    E             DISK    USROPN
+FFILEX     F    E             DISK
+F
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Extended-factor2+++++++++++++++++++++++++++\[char46]\[char46]
+ *
+ *  The explicit OPEN operation opens the EXCEPTN file for
+ *  processing if indicator 97 is on and indicator 98 is off\[char46]
+ *  Note that the EXCEPTN file on the file description
+ *  specifications has the USROPN keyword specified\[char46]
+ *  %ERROR is set to return \[char39]1\[char39] if the OPEN operation fails\[char46]
+ *
+C                   IF        *in97 and not *in98
+C                   OPEN(E)   EXCEPTN
+C                   IF        not %ERROR
+C                   WRITE     ERREC
+C                   ENDIF
+C                   ENDIF
+ *
+ *  FILEX is opened at program initialization\[char46]  The explicit
+ *  CLOSE operation closes FILEX before control is passed to RTNX\[char46]
+ *  RTNX or another program can open and use FILEX\[char46]  Upon return,
+ *  the OPEN operation reopens the file\[char46]  Because the USROPN
+ *  keyword is not specified for FILEX, the file is opened at
+ *  program initialization
+ *
+C                   CLOSE     FILEX
+C                   CALL      \[char39]RTNX\[char39]
+C                   OPEN      FILEX
+.fi
+.SH SEE ALSO
+.BR %ERROR (3RPG)

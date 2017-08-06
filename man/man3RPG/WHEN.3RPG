@@ -1,0 +1,65 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzwhen.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH WHEN 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+WHEN - When True Then Select
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIWHEN\fR{(MR)} indicator-expression
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fIWHEN\fR (M/R)
+T}	T{
+Â
+T}	T{
+indicator-expression
+T}
+.TE
+
+The \fIWHEN\fR operation code is similar to the \fIWHEN\fRxx operation code in that it controls the processing of lines in a \fISELECT\fR operation\[char46] It differs in that the condition is specified by a logical expression in the indicator-expression operand\[char46] The operations controlled by the \fIWHEN\fR operation are performed when the expression in the indicator-expression operand is true\[char46] See Expressions for details on expressions\[char46] For information on how operation extenders M and R are used, see Precision Rules for Numeric Operations\[char46]
+
+
+For more information, see Compare Operations or Structured Programming Operations\[char46]
+
+.SH EXAMPLE
+\fIWHEN\fR Operation
+.PP
+.nf
+CL0N01Factor1+++++++Opcode(E)+Extended-factor2+++++++++++++++++++++++++++\[char46]\[char46]
+ *
+C                   SELECT
+C                   WHEN    *INKA
+C                   :
+C                   :
+C                   :
+C                   WHEN    NOT(*IN01) AND (DAY = \[char39]FRIDAY\[char39])
+C                   :
+C                   :
+C                   :
+C                   WHEN    %SUBST(A:(X+4):3) = \[char39]ABC\[char39]
+C                   :
+C                   :
+C                   :
+C                   OTHER
+C                   :
+C                   :
+C                   :
+C                   ENDSL
+.fi
+.SH SEE ALSO
+.BR %SUBST (3RPG)

@@ -1,0 +1,127 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzeval.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EVAL 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+EVAL - Evaluate expression
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+{\fIEVAL\fR{(\fIHMR\fR)}} result = expression
+T}
+T{
+{\fIEVAL\fR{(\fIHMR\fR)}} result += expression
+T}
+T{
+{\fIEVAL\fR{(\fIHMR\fR)}} result -= expression
+T}
+T{
+{\fIEVAL\fR{(\fIHMR\fR)}} result *= expression
+T}
+T{
+{\fIEVAL\fR{(\fIHMR\fR)}} result /= expression
+T}
+T{
+{\fIEVAL\fR{(\fIHMR\fR)}} result **= expression
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fIEVAL\fR (H M/R)
+T}	T{
+Â
+T}	T{
+Assignment Statement
+T}
+.TE
+
+The \fIEVAL\fR operation code evaluates an assignment statement of the form "result = expression" or "result op = expression"\[char46] The expression is evaluated and the result placed in result\[char46] Therefore, result cannot be a literal or constant but must be a field name, array name, array element, data structure, data structure subfield, or a string using the \fB%SUBST\fR built-in function\[char46]
+
+
+The expression may yield any of the \fIRPG\fR data types\[char46] The type of the expression must be the same as the type of the result\[char46] A character, graphic, or \fIUCS\fR-2 result will be left justified and padded with blanks on the right or truncated as required\[char46] If result is a variable-length field, its length will be set to the length of the result of the expression\[char46]
+
+
+If the result represents an unindexed array or an array specified as array(*), the value of the expression is assigned to each element of the result, according to the rules described in Specifying an Array in Calculations\[char46] Otherwise, the expression is evaluated once and the value is placed into each element of the array or sub-array\[char46] For numeric expressions, the half-adjust operation code extender is allowed\[char46] The rules for half adjusting are equivalent to those for the arithmetic operations\[char46]
+
+
+On a free-form calculation specification, the operation code name may be omitted if no extenders are needed, and if the variable does not have the same name as an operation code\[char46]
+
+
+.PP
+.nf
+     warnings(getNextCustId(OVERDRAWN)) += 1;
+.fi
+
+See Expressions for general information on expressions\[char46] See Precision Rules for Numeric Operations for information on precision rules for numeric expressions\[char46] This is especially important if the expression contains any divide operations, or if the \fIEVAL\fR uses any of the operation extenders\[char46]
+
+.SH EXAMPLE
+\fIEVAL\fR Operations
+.PP
+.nf
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+ *                   Assume FIELD1 = 10
+ *                          FIELD2 =  9
+ *                          FIELD3 =  8
+ *                          FIELD4 =  7
+ *                          ARR is defined with DIM(10)
+ *                          *IN01 = *ON
+ *                          A = \[char39]abcdefghijklmno\[char39] (define as 15 long)
+ *                          CHARFIELD1 = \[char39]There\[char39]  (define as  5 long)
+
+ /FREE
+   // The content of RESULT after the operation is 20
+   eval RESULT=FIELD1 + FIELD2+(FIELD3-FIELD4);
+   // The indicator *IN03  will be set to *ON
+   *IN03 = *IN01 OR (FIELD2 > FIELD3);
+   //  Each element of array ARR will be assigned the value 72
+   ARR(*) = FIELD2 * FIELD3;
+   //  After the operation, the content of A = \[char39]Hello There   \[char39]
+   A = \[char39]Hello \[char39] + CHARFIELD1;
+   //  After the operation the content of A = \[char39]HelloThere    \[char39]
+   A = %TRIMR(\[char39]Hello \[char39]) + %TRIML(CHARFIELD1);
+   //  Date in assignment
+   ISODATE = DMYDATE;
+   //  Relational expression
+   //  After the operation the value of *IN03 = *ON
+   *IN03 = FIELD3 < FIELD2;
+   //  Date in Relational expression
+   // After the operation, *IN05 will be set to *ON if Date1 represents
+   // a date that is later that the date in Date2
+   *IN05 = Date1 > Date2;
+   // After the EVAL the original value of A contains \[char39]ab****ghijklmno\[char39]
+   %SUBST(A(3:4))= \[char39]****\[char39];
+   // After the EVAL PTR has the address of variable CHARFIELD1
+   PTR = %ADDR(CHARFIELD1);
+   //  An example to show that the result of a logical expression is
+   //  compatible with the character data type\[char46]
+   //  The following EVAL statement consisting of 3 logical expressions
+   //  whose results are concatenated using the \[char39]+\[char39] operator
+   //  The resulting value of the character field RES is \[char39]010\[char39]
+   RES = (FIELD1<10) + *in01 + (field2 >= 17);
+   // An example of calling a user-defined function using EVAL\[char46]
+   // The procedure FormatDate converts a date field into a character
+   // string, and returns that string\[char46]  In this EVAL statement, the
+   // field DateStrng1 is assigned the output of formatdate\[char46]
+   DateStrng1 = FormatDate(Date1);
+   // Subtract value in complex data structure\[char46]
+   cust(custno)\[char46]account(accnum)\[char46]balance -= purchase_amount;
+   // Append characters to varying length character variable
+   line += \[char39]<br />\[char39];
+ /END-FREE
+.fi
+.SH SEE ALSO
+.BR %SUBST (3RPG),
+.BR %TRIMR (3RPG),
+.BR %TRIML (3RPG),
+.BR %ADDR (3RPG)

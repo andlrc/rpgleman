@@ -1,0 +1,60 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzendsr.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ENDSR 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ENDSR - End of Subroutine
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIENDSR\fR {return-point}
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIENDSR\fR
+T}	T{
+label
+T}	T{
+return-point
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+.TE
+
+The \fIENDSR\fR operation defines the end of an \fIRPG\fR IV subroutine and the return point (return-point) to the cycle-main program\[char46] \fIENDSR\fR must be the last statement in the subroutine\[char46] In traditional syntax, the label operand can be specified as a point to which a \fIGOTO\fR operation within the subroutine can branch\[char46] (You cannot specify a label in free-form syntax\[char46]) The control level entry (positions 7 and 8) can be SR or blank\[char46] Conditioning indicator entries are not allowed\[char46]
+
+
+
+
+
+
+
+
+
+
+See File Exception/Error Subroutine (\fIINFSR\fR) for more detail on return points\[char46]
+
+
+See Figure 1 for an example of coding an \fIRPG\fR IV subroutine\[char46]
+
+
+For more information, see Subroutine Operations\[char46]
+

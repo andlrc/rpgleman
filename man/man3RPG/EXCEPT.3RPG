@@ -1,0 +1,125 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzexcpt.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EXCEPT 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+EXCEPT - Calculation Time Output
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIEXCEPT\fR {except-name}
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIEXCEPT\fR
+T}	T{
+Â
+T}	T{
+except-name
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+.TE
+
+The \fIEXCEPT\fR operation allows one or more records to be written during either detail calculations or total calculations\[char46] See Figure 1 for examples of the \fIEXCEPT\fR operation\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] The exception records that are to be written during calculation time are indicated by an E in position 17  of the output specifications\[char46] An \fIEXCEPT\fR name, which is the same name as specified by the except-name  operand of an \fIEXCEPT\fR operation, can be specified in positions 30 through 39  of the output specifications of the exception records\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Only exception records, not heading, detail, or total records, can contain an \fIEXCEPT\fR name\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When the \fIEXCEPT\fR operation with a name specified in the except-name  operand is processed, only those exception records with the same \fIEXCEPT\fR name are checked and written if the conditioning indicators are satisfied\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When no except-name  is specified, only those exception records with no name in positions 30 through 39 of the output specifications are checked and written if the conditioning indicators are satisfied\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If an exception record is conditioned by an overflow indicator on the output specification, the record is written only during the overflow portion of the \fIRPG\fR IV  cycle or during fetch overflow\[char46] The record is not written at the time the \fIEXCEPT\fR operation is processed\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If an exception output is specified to a format that contains no fields, the following occurs: 
+.IP "" 2
+.RS
+\[bu] If an output file is specified, a record is written with default values\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If a record is locked, the system treats the operation as a request to unlock the record\[char46] This is the alternative form of requesting an unlock\[char46] The preferred method is with the \fIUNLOCK\fR operation\[char46]
+.RE
+.PP
+
+.RE
+.PP
+
+For more information, see File Operations\[char46]
+
+.SH EXAMPLE
+\fIEXCEPT\fR Operation with/without Factor 2 Specified
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+ *
+ *  When the EXCEPT operation with HDG specified in factor 2 is
+ *  processed, all exception records with the EXCEPT name HDG are
+ *  written\[char46]  In this example, UDATE and PAGE would be printed
+ *  and then the printer would space 2 lines\[char46]
+ *  The second HDG record would print a line of dots and then the
+ *  printer would space 3 lines\[char46]
+ *
+C                   EXCEPT    HDG
+ *
+ *  When the EXCEPT operation with no entry in factor 2 is
+ *  processed, all exception records that do not have an EXCEPT
+ *  name specified in positions 30 through 39 are written if the
+ *  conditioning indicators are satisfied\[char46]  Any exception records
+ *  without conditioning indicators and without an EXCEPT name
+ *  are always written by an EXCEPT operation with no entry in
+ *  factor 2\[char46]  In this example,  if indicator 10 is on, TITLE and
+ *  AUTH would be printed and then the printer would space 1 line\[char46]
+ *
+C                   EXCEPT
+O*
+OFilename++DF\[char46]\[char46]N01N02N03Excnam++++B++A++Sb+Sa+\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]
+O\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]N01N02N03Field+++++++++YB\[char46]End++PConstant/editword/DTformat++
+O
+O          E    10                     1
+O                       TITLE
+O                       AUTH
+O          E            HDG            2
+O                       UDATE
+O                       PAGE
+O          E            HDG            3
+O                                              \[char39]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char39]
+O                                              \[char39]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char39]
+O          E            DETAIL         1
+O                       AUTH
+O                       VERSNO
+.fi

@@ -1,0 +1,228 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zztest.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TEST 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+TEST - Test Date/Time/Timestamp
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fITEST\fR{(\fIEDTZ\fR)} {dtz-format} field-name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fITEST\fR (E)
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Date/Time or Timestamp Field
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+T{
+\fITEST\fR (D E)
+T}	T{
+Date Format
+T}	T{
+Â
+T}	T{
+Character or Numeric field
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+T{
+\fITEST\fR (E T)
+T}	T{
+Time Format
+T}	T{
+Â
+T}	T{
+Character or Numeric field
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+T{
+\fITEST\fR (E Z)
+T}	T{
+Timestamp Format
+T}	T{
+Â
+T}	T{
+Character or Numeric field
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The \fITEST\fR operation code allows users to test the validity of date, time, or timestamp fields prior to using them\[char46]
+
+
+
+
+
+
+
+
+.IP "" 2
+.RS
+\[bu] If the field-name  operand is a field declared as Date, Time, or Timestamp: 
+.IP "" 2
+.RS
+\[bu] The dtz-format  operand cannot be specified
+.RE
+.IP "" 2
+.RS
+\[bu] Operation code extenders \[char39]D\[char39], \[char39]T\[char39], and \[char39]Z\[char39] are not allowed
+.RE
+.PP
+
+.RE
+.IP "" 2
+.RS
+\[bu] If the field-name  operand is a field declared as character or numeric, then one of the operation code extenders \[char39]D\[char39], \[char39]T\[char39], or \[char39]Z\[char39] must be specified\[char46] 
+
+
+
+
+
+ 
+.IP "" 2
+.RS
+\[bu] If the operation code extender includes \[char39]D\[char39] (test Date), 
+.IP "" 2
+.RS
+\[bu] dtz-format  is optional and may by any of the valid Date formats (See Date Data Type )\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If dtz-format  is not specified, the format specified on the control specification with the \fIDATFMT\fR keyword is assumed\[char46] If this keyword is not specified, \fI*ISO\fR is assumed\[char46]
+.RE
+.PP
+
+.RE
+.IP "" 2
+.RS
+\[bu] If the operation code extender includes \[char39]T\[char39] (test Time), 
+.IP "" 2
+.RS
+\[bu] dtz-format  is optional and may be any of the valid Time formats (See Time Data Type )\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If dtz-format  is not specified, the format specified on the control specification with the \fITIMFMT\fR keyword is assumed\[char46] If this keyword is not specified, \fI*ISO\fR is assumed\[char46]
+.RE
+.PP
+ 
+
+
+.RE
+.IP "" 2
+.RS
+\[bu] If the operation code extender includes \[char39]Z\[char39] (test Timestamp), 
+.IP "" 2
+.RS
+\[bu] dtz-format  is optional and may be \fI*ISO\fR or \fI*ISO0\fR (See Timestamp Data Type )\[char46]
+.RE
+.PP
+
+.RE
+.PP
+
+.RE
+.PP
+
+Numeric fields and character fields without separators are tested for valid digit portions of a Date, Time, or Timestamp value\[char46] Character fields are tested for both valid digits and separators\[char46]
+
+
+If the character or numeric field specified as the field-name operand is longer than required by the format being tested, extra data is ignored\[char46] For character data, only the leftmost data is used; for numeric data, only the rightmost data is used\[char46] For example, if the dtz-format operand is \fI*MDY\fR for a test of a numeric date, only the rightmost 6 digits of the field-name operand are examined\[char46]
+
+
+For the test operation, either the operation code extender \[char39]E\[char39] or an error indicator ER must be specified, but not both\[char46] If the content of the field-name operand is not valid, program status code 112 is signaled\[char46] Then, the error indicator is set on or the \fB%ERROR\fR built-in function is set to return \[char39]1\[char39] depending on the error handling method specified\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+
+
+If a numeric or character field is specified with the \[char39]Z\[char39] operation code extender, the value is assumed to have exactly 6 fractional seconds\[char46]
+
+
+For more information, see Date Operations or Test Operations\[char46]
+
+.SH EXAMPLE
+\fITEST\fR (E D/T/Z) Example
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++++
+D
+D Datefield       S               D   DATFMT(*JIS)
+D Num_Date        S              6P 0 INZ(910921)
+D Char_Time       S              8    INZ(\[char39]13:05 PM\[char39])
+D Char_Date       S              6    INZ(\[char39]041596\[char39])
+D Char_Tstmp      S             20    INZ(\[char39]19960723140856834000\[char39])
+D Char_Date2      S              9A   INZ(\[char39]402/10/66\[char39])
+D Char_Date3      S              8A   INZ(\[char39]2120/115\[char39])
+D
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+ *
+ *  Indicator 18 will not be set on, since the character field is a
+ *  valid *ISO timestamp field, without separators\[char46]
+C     *ISO0         TEST (Z)                Char_Tstmp             18
+ *  Indicator 19 will not be set on, since the character field is a
+ *  valid *MDY date, without separators\[char46]
+C     *MDY0         TEST (D)                Char_Date              19
+ *
+ *  %ERROR will return \[char39]1\[char39], since Num_Date is not *DMY\[char46]
+ *
+C     *DMY          TEST (DE)               Num_Date
+ *
+ *  No Factor 1 since result is a D data type field
+ *  %ERROR will return \[char39]0\[char39], since the field
+ *  contains a valid date
+C
+C                   TEST (E)                Datefield
+C
+ * In the following test, %ERROR will return \[char39]1\[char39] since the
+ * Timefield does not contain a valid USA time\[char46]
+C
+C     *USA          TEST (ET)               Char_Time
+C
+ *  In the following test, indicator 20 will be set on since the
+ *  character field is a valid *CMDY, but there are separators\[char46]
+C
+C     *CMDY0        TEST (D)                char_date2             20
+C
+ *  In the following test, %ERROR will return \[char39]0\[char39] since
+ *  the character field is a valid *LONGJUL date\[char46]
+C
+C     *LONGJUL      TEST (DE)               char_date3
+.fi
+.SH SEE ALSO
+.BR %ERROR (3RPG)

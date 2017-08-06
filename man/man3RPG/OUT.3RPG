@@ -1,0 +1,75 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzout.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH OUT 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+OUT - Write a Data Area
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIOUT\fR{(E)} {\fI*LOCK\fR} data-area-name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIOUT\fR (E)
+T}	T{
+\fI*LOCK\fR
+T}	T{
+data-area-name
+T}	T{
+Â
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+
+
+
+
+.IP "" 2
+.RS
+\[bu] The data area must also be specified in the result field of a \fI*DTAARA\fR \fIDEFINE\fR  statement, or defined using the \fIDTAARA\fR keyword on the Definition specification\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The data area must have been locked previously by a \fI*LOCK\fR IN  statement or it must have been specified as a data area data structure by a U in position 23  of the definition specifications\[char46] (The \fIRPG\fR IV  language implicitly retrieves and locks data area data structures at program initialization\[char46])
+.RE
+.PP
+
+You can specify the optional reserved word \fI*LOCK\fR\[char46] When \fI*LOCK\fR is specified, the data area remains locked after it is updated\[char46] When \fI*LOCK\fR is not specified, the data area is unlocked after it is updated\[char46]
+
+
+\fI*LOCK\fR cannot be specified when the data-area-name operand is the name of the local data area or the Program Initialization Parameters (\fIPIP\fR) data area\[char46]
+
+
+The data-area-name operand must be either the name of the data area or the reserved word \fI*DTAARA\fR\[char46] When \fI*DTAARA\fR is specified, all data areas defined in the program are updated\[char46] If an error occurs when one or more data areas are updated (for example, if you specify an \fIOUT\fR operation to a data area that has not been locked by the program), an error occurs on the \fIOUT\fR operation and the \fIRPG\fR IV exception/error handling routine receives control\[char46] If a message is issued to the requester, the message identifies the data area in error\[char46]
+
+
+To handle \fIOUT\fR exceptions (program status codes 401-421, 431, or 432), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+
+
+Positions 71-72 and 75-76 must be blank\[char46]
+
+
+For further rules for the \fIOUT\fR operation, see Data-Area Operations\[char46]
+
+
+See Figure 1 for an example of the \fIOUT\fR operation\[char46]
+

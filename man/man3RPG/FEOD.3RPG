@@ -1,0 +1,61 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzfeod.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH FEOD 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+FEOD - Force End of Data
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIFEOD\fR{(EN)} file-name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIFEOD\fR (EN)
+T}	T{
+Â
+T}	T{
+file-name
+T}	T{
+Â
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The \fIFEOD\fR operation signals the logical end of data for a primary, secondary, or full procedural file\[char46] The \fIFEOD\fR function differs, depending on the file type and device\[char46] (For an explanation of how \fIFEOD\fR differs per file type and device, see the \fIIBM\fRÂ® i Information Center database and file systems category)\[char46]
+
+
+\fIFEOD\fR differs from the \fICLOSE\fR operation: the program is not disconnected from the device or file; the file can be used again for subsequent file operations without an explicit \fIOPEN\fR operation being specified to the file\[char46]
+
+
+You can specify conditioning indicators\[char46] The file-name operand names the file to which \fIFEOD\fR is specified\[char46]
+
+
+Operation extender N may be specified for an \fIFEOD\fR to an output-capable \fIDISK\fR or \fISEQ\fR file that uses blocking (see Blocking Considerations)\[char46] If operation extender N is specified, any unwritten records in the block will be written out to the database, but they will not necessarily be written to non-volatile storage\[char46] Using the N extender can improve performance\[char46]
+
+
+To handle \fIFEOD\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+
+
+To process any further sequential operations to the file after the \fIFEOD\fR operation (for example, \fIREAD\fR or \fIREADP\fR), you must reposition the file\[char46]
+
+
+For more information, see File Operations\[char46]
+

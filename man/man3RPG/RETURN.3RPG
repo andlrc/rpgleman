@@ -1,0 +1,155 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzretrn.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH RETURN 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+RETURN - Return to Caller
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIRETURN\fR{(\fIHMR\fR)} expression
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fIRETURN\fR (H M/R)
+T}	T{
+Â
+T}	T{
+expression
+T}
+.TE
+
+The \fIRETURN\fR operation causes a return to the caller\[char46] If a value is returned to the caller, the return value is specified in the expression operand\[char46]
+
+
+
+
+
+
+.IP 1. 2
+.RS
+The halt indicators are checked\[char46] If a halt indicator is on, the procedure ends abnormally\[char46] (All open files are closed, an error return code is set to indicate to the calling routine that the procedure has ended abnormally, and control returns to the calling routine\[char46])
+.RE
+.IP 2. 2
+.RS
+If no halt indicators are on, the LR indicator is checked\[char46] If LR is on, the program ends normally\[char46] (Locked data area structures, arrays, and tables are written, and external indicators are reset\[char46])
+.RE
+.IP 3. 2
+.RS
+If no halt indicator is on and LR is not on, the procedure returns to the calling routine\[char46] Data is preserved for the next time the procedure is run\[char46] Files and data areas are not written out\[char46] See the chapter on calling programs and procedures in the 
+
+  for information on how running in a \fI*NEW\fR activation group affects the operation of \fIRETURN\fR\[char46]
+.RE
+.PP
+
+When a subprocedure returns, the return value, if specified on the prototype of the called program or procedure, is passed to the caller\[char46] Automatic files are closed\[char46] Nothing else occurs automatically\[char46] All static or global files and data areas must be closed manually\[char46] You can set on indicators such as LR, but this will not cause program termination to occur\[char46]
+
+
+For information on how operation extenders H, M, and R are used, see Precision Rules for Numeric Operations\[char46]
+
+
+In a subprocedure that returns a value, a \fIRETURN\fR operation must be coded within the subprocedure\[char46] The actual returned value has the same role as the left-hand side of the \fIEVAL\fR expression, while the extended factor 2 of the \fIRETURN\fR operation has the same role as the right-hand side\[char46] An array may be returned only if the prototype has defined the return value as an array\[char46]
+
+
+
+If the subprocedure returns a value, you should ensure that a \fIRETURN\fR operation is performed before reaching the end of the procedure\[char46] If the subprocedure ends without encountering a \fIRETURN\fR operation, an exception is signalled to the caller\[char46]
+
+
+
+
+Specifying the \fIRTNPARM\fR keyword on your prototype may significantly improve the performance for returning large values\[char46] See \fIRTNPARM\fR for more information\[char46]
+
+
+For more information, see Call Operations\[char46]
+
+
+.SH EXAMPLE
+Examples of the \fIRETURN\fR Operation
+.PP
+.nf
+      * This is the prototype for subprocedure RETNONE\[char46] Since the
+      * prototype specification does not have a data type, this
+      * subprocedure does not return a value\[char46]
+     D RetNone         PR
+      * This is the prototype for subprocedure RETFLD\[char46] Since the
+      * prototype specification has the type 5P 2, this subprocedure
+      * returns a packed value with 5 digits and 2 decimals\[char46]
+      * The subprocedure has a 5-digit integer parameter, PARM,
+      * passed by reference\[char46]
+     D RetFld          PR             5P 2
+     D   Parm                         5I 0
+      * This is the prototype for subprocedure RETARR\[char46] The data
+      * type entries for the prototype specification show that
+      * this subprocedure returns a date array with 3 elements\[char46]
+      * The dates are in *YMD/ format\[char46]
+     D RetArr          PR              D   DIM(3) DATFMT(*YMD/)
+      * This procedure (P) specification indicates the beginning of
+      * subprocedure RETNONE\[char46] The data specification (D) specification
+      * immediately following is the procedure-interface
+      * specification for this subprocedure\[char46] Note that the
+      * procedure interface is the same as the prototype except for
+      * the definition type (PI vs PR)\[char46]
+     P RetNone         B
+     D RetNone         PI
+      * RetNone does not return a value, so the RETURN
+      * operation does not have factor 2 specified\[char46]
+     C                   RETURN
+     P RetNone         E
+      * The following 3 specifications contain the beginning of
+      * the subprocedure RETFLD as well as its procedure interface\[char46]
+     P RetFld          B
+     D RetFld          PI             5P 2
+     D   Parm                         5I 0
+     D Fld             S             12S 1 INZ(13\[char46]8)
+      * RetFld returns a numeric value\[char46]  The following RETURN
+      * operations show returning a literal, an expression and a
+      * variable\[char46] Note that the variable is not exactly the same
+      * format or length as the actual return value\[char46]
+     C                   RETURN       7
+     C                   RETURN       Parm * 15
+     C                   RETURN       Fld
+     P RetFld          E
+.fi
+
+.SH EXAMPLE
+
+.PP
+.nf
+      * The following 3 specifications contain the beginning of the
+      * subprocedure RETARR as well as its procedure interface\[char46]
+     P RetArr          B
+     D RetArr          PI              D   DIM(3)
+     D SmallArr        S               D   DIM(2) DATFMT(*ISO)
+     D BigArr          S               D   DIM(4) DATFMT(*USA)
+      * RetArr returns a date array\[char46]  Note that the date
+      * format of the value specified on the RETURN operation
+      * does not have to be the same as the defined return
+      * value\[char46]
+      * The following RETURN operation specifies a literal\[char46]
+      * The caller receives an array with the value of the
+      * literal in every element of the array\[char46]
+     C                   RETURN        D\[char39]1995-06-27\[char39]
+      * The following return operation returns an array
+      * with a smaller dimension than the actual return value\[char46]
+      * In this case, the third element would be set to the
+      * default value for the array\[char46]
+     C                   RETURN        SmallArr
+      * The following return operation returns an array
+      * with a larger dimension than the actual return
+      * value\[char46]  In this case, the fourth element of BigArr
+      * would be ignored\[char46]
+     C                   RETURN        BigArr
+     P RetArr          E
+.fi

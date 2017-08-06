@@ -2,8 +2,8 @@ NAME
     rpgleman - Get man pages for ILE RPG
 
 SYNOPSIS
-    Download and install man pages built-in functions, keywords, compiler
-    directives, etc. in ILE RPG.
+    Download and install man pages built-in functions, keywords, free-form
+    operations and compiler directives in ILE RPG.
 
 INSTALL
     To install man pages run the following, ``sudo'' might be needed:
@@ -16,7 +16,7 @@ REBUILD MAN PAGES
     $ make {all|bif|kw|cd}
 
 MAN PAGES
-    Man pages for built-in functions and keywords are installed in
+    Man pages for built-in functions, keywords, and operators are installed in
     ``/usr/share/man/man3RPG'' and can be accessed with:
 
     $ man 3RPG %TIME
@@ -24,7 +24,7 @@ MAN PAGES
     Man pages for compiler directives are installed in
     ``/usr/share/man/man3RPGCOMPDIR'' and can be accessed with:
 
-    $ man 3RPGCOMPDIR %TIME
+    $ man 3RPGCOMPDIR DEFINE
 
 VIM INTEGRATION
     One can change the ``keywordprg'' to search the proper man pages:

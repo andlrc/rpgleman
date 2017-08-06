@@ -76,9 +76,7 @@ LIKEREC(intrecname{:extract-types})
 .RE
 .IP "" 2
 .RS
-\[bu] \fILIKEREC\fR can be coded for subfields of a qualified data structure\[char46] When \fILIKEREC\fR is coded on a data structure subfield definition, the subfield data structure is automatically defined as \fIQUALIFIED\fR\[char46] Subfields in a \fILIKEREC\fR subfield data structure are referenced in fully qualified form: 
-
- \[char46] Subfields defined with \fILIKEREC\fR are themselves data structures, and can be used wherever a data structure is required\[char46]
+\[bu] \fILIKEREC\fR can be coded for subfields of a qualified data structure\[char46] When \fILIKEREC\fR is coded on a data structure subfield definition, the subfield data structure is automatically defined as \fIQUALIFIED\fR\[char46] Subfields in a \fILIKEREC\fR subfield data structure are referenced in fully qualified form: "ds\[char46]subf\[char46]subfa" \[char46] Subfields defined with \fILIKEREC\fR are themselves data structures, and can be used wherever a data structure is required\[char46]
 .RE
 .IP "" 2
 .RS

@@ -1,0 +1,168 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzfor.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH FOR 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+FOR - For
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIFOR\fR{(MR)} index-name {= start-value} {BY increment} {TO|\fIDOWNTO\fR limit}
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fIFOR\fR
+T}	T{
+Â
+T}	T{
+index-name = start-value BY increment TO | \fIDOWNTO\fR limit
+T}
+.TE
+
+The \fIFOR\fR operation begins a group of operations and controls the number of times the group will be processed\[char46] To indicate the number of times the group of operations is to be processed, specify an index name, a starting value, an increment value, and a limit value\[char46] The optional starting, increment, and limit values can be a free-form expressions\[char46] An associated \fIEND\fR or \fIENDFOR\fR statement marks the end of the group\[char46] For further information on \fIFOR\fR groups, see Structured Programming Operations\[char46]
+
+
+.PP
+.nf
+      FOR         index-name { = starting-value }
+                  { BY increment-value }
+                  { TO | DOWNTO limit-value }
+         { loop body }
+      ENDFOR | END
+.fi
+
+ The starting-value, increment-value, and limit-value can be numeric values or expressions with zero decimal positions\[char46] The increment value, if specified, cannot be zero\[char46]
+
+
+The BY and TO (or \fIDOWNTO\fR) clauses can be specified in either order\[char46] Both "BY 2 TO 10" and "TO 10 BY 2" are allowed\[char46]
+
+
+In addition to the \fIFOR\fR operation itself, the conditioning indicators on the \fIFOR\fR and \fIENDFOR\fR (or \fIEND\fR) statements control the \fIFOR\fR group\[char46] The conditioning indicators on the \fIFOR\fR statement control whether or not the \fIFOR\fR operation begins\[char46] These indicators are checked only once, at the beginning of the for loop\[char46] The conditioning indicators on the associated \fIEND\fR or \fIENDFOR\fR statement control whether or not the \fIFOR\fR group is repeated another time\[char46] These indicators are checked at the end of each loop\[char46]
+
+
+.IP 1. 2
+.RS
+If the conditioning indicators on the \fIFOR\fR statement line are satisfied, the \fIFOR\fR operation is processed (step 2)\[char46] If the indicators are not satisfied, control passes to the next operation to be processed following the associated \fIEND\fR or \fIENDFOR\fR statement (step 8)\[char46]
+.RE
+.IP 2. 2
+.RS
+If specified, the initial value is assigned to the index name\[char46] Otherwise, the index name retains the same value it had before the start of the loop\[char46]
+.RE
+.IP 3. 2
+.RS
+If specified, the limit value is evaluated and compared to the index name\[char46] If no limit value is specified, the loop repeats indefinitely until it encounters a statement that exits the loop (such as a \fILEAVE\fR or \fIGOTO\fR) or that ends the program or procedure (such as a \fIRETURN\fR)\[char46] 
+If the TO clause is specified and the index name value is greater than the limit value, control passes to the first statement following the \fIENDFOR\fR statement\[char46] If \fIDOWNTO\fR is specified and the index name is less than the limit value, control passes to the first statement after the \fIENDFOR\fR\[char46]
+
+
+.RE
+.IP 4. 2
+.RS
+The operations in the \fIFOR\fR group are processed\[char46]
+.RE
+.IP 5. 2
+.RS
+If the conditioning indicators on the \fIEND\fR or \fIENDFOR\fR statement are not satisfied, control passes to the statement after the associated \fIEND\fR or \fIENDFOR\fR and the loop ends\[char46]
+.RE
+.IP 6. 2
+.RS
+If the increment value is specified, it is evaluated\[char46] Otherwise, it defaults to 1\[char46]
+.RE
+.IP 7. 2
+.RS
+The increment value is either added to (for TO) or subtracted from (for \fIDOWNTO\fR) the index name\[char46] Control passes to step 3\[char46] (Note that the conditioning indicators on the \fIFOR\fR statement are not tested again (step 1) when control passes to step 3\[char46])
+.RE
+.IP 8. 2
+.RS
+The statement after the \fIEND\fR or \fIENDFOR\fR statement is processed when the conditioning indicators on the \fIFOR\fR, \fIEND\fR, or \fIENDFOR\fR statements are not satisfied (step 1 or 5), or when the index value is greater than (for TO) or less than (for \fIDOWNTO\fR) the limit value (step 3), or when the index value overflows\[char46]
+.RE
+.PP
+
+
+
+
+
+
+
+
+
+.IP "" 2
+.RS
+\[bu] The index name cannot be declared on the \fIFOR\fR operation\[char46] Variables should be declared in the Definition  specifications\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The index-name  can be any fully-qualified name, including an indexed array element\[char46]
+.RE
+.PP
+
+See \fILEAVE\fR (Leave a Do/For Group) and \fIITER\fR (Iterate) for information on how those operations affect a \fIFOR\fR operation\[char46]
+
+
+For more information, see Structured Programming Operations\[char46]
+
+.SH EXAMPLE
+Examples of the \fIFOR\fR Operation
+.PP
+.nf
+ *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+ /free
+    // Example 1
+    // Compute n!
+
+    factorial = 1;
+    for i = 1 to n;
+       factorial = factorial * i;
+    endfor;
+
+    // Example 2
+    // Search for the last nonblank character in a field\[char46]
+    // If the field is all blanks, "i" will be zero\[char46]
+    // Otherwise, "i" will be the position of nonblank\[char46]
+
+    for i = %len (field) downto 1;
+       if %subst(field: i: 1) <> \[char39] \[char39];
+          leave;
+       endif;
+    endfor;
+
+    // Example 3
+    // Extract all blank-delimited words from a sentence\[char46]
+
+    WordCnt = 0;
+    for i = 1 by WordIncr to %len (Sentence);
+       // Is there a blank?
+       if %subst(Sentence: i: 1) = \[char39] \[char39];
+          WordIncr = 1;
+          iter;
+       endif;
+
+       // We\[char39]ve found a word - determine its length:
+       for j = i+1 to %len(Sentence);
+          if %subst (Sentence: j: 1) = \[char39] \[char39];
+             leave;
+          endif;
+       endfor;
+
+       // Store the word:
+       WordIncr = j - i;
+       WordCnt = WordCnt + 1;
+       Word (WordCnt) = %subst (Sentence: i: WordIncr);
+    endfor;
+
+ /end-free
+.fi
+.SH SEE ALSO
+.BR %LEN (3RPG),
+.BR %SUBST (3RPG)

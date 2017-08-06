@@ -1,0 +1,97 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzleave.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH LEAVE 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+LEAVE - Leave a Do/For Group
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fILEAVE\fR
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fILEAVE\fR
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+.TE
+
+The \fILEAVE\fR operation transfers control from within a DO or \fIFOR\fR group to the statement following the \fIENDDO\fR or \fIENDFOR\fR operation\[char46]
+
+
+You can use \fILEAVE\fR within a DO, \fIDOU\fR, \fIDOU\fRxx, \fIDOW\fR, \fIDOW\fRxx, or \fIFOR\fR loop to transfer control immediately from the innermost loop to the statement following the innermost loop\[char39]s \fIENDDO\fR or \fIENDFOR\fR operation\[char46] Using \fILEAVE\fR to leave a DO or \fIFOR\fR group does not increment the index\[char46]
+
+
+In nested loops, \fILEAVE\fR causes control to transfer âoutwardsâ by one level only\[char46] \fILEAVE\fR is not allowed outside a DO or \fIFOR\fR group\[char46]
+
+
+The \fIITER\fR (Iterate) operation is similar to the \fILEAVE\fR operation; however, \fIITER\fR transfers control to the \fIENDDO\fR or \fIENDFOR\fR statement\[char46]
+
+
+For more information, see Branching Operations or Structured Programming Operations\[char46]
+
+.SH EXAMPLE
+\fILEAVE\fR Operation
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+ *
+ * The following example uses an infinite loop\[char46]  When the user
+ * types \[char39]q\[char39], control transfers to the LEAVE operation, which in
+ * turn transfers control out of the loop to the Z-ADD operation\[char46]
+ *
+C     2             DOWNE     1
+C                   :
+C                   IF        ANSWER = \[char39]q\[char39]
+C                   LEAVE
+C                   ENDIF
+C                   :
+C                   ENDDO
+C                   Z-ADD     A             B
+ *
+ * The following example uses a DOUxx loop containing a DOWxx\[char46]
+ * The IF statement checks indicator 1\[char46] If it is ON, indicator
+ * 99 is turned ON, control passes to the LEAVE operation and
+ * out of the inner DOWxx loop\[char46]
+ *
+ * A second LEAVE instruction is then executed because indicator 99
+ * is ON, which in turn transfers control out of the DOUxx loop\[char46]
+ *
+C                   :
+C     FLDA          DOUEQ     FLDB
+C     NUM           DOWLT     10
+C     *IN01         IFEQ      *ON
+C                   SETON                                        99
+C                   LEAVE
+C                   :
+C                   ENDIF
+C                   ENDDO
+C  99               LEAVE
+C                   :
+C                   ENDDO
+C                   :
+.fi

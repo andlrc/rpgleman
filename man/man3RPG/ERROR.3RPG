@@ -1,0 +1,68 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzonerr.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ERROR 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ERROR - On Error
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+ON-\fIERROR\fR {exception-id1 {:exception-id2â¦}}
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+ON-\fIERROR\fR
+T}	T{
+Â
+T}	T{
+List of exception IDs
+T}
+.TE
+
+
+
+
+
+.TP 5
+.B nnnnn
+A status code
+.TP 5
+.B \fI*PROGRAM\fR
+Handles all program-error status codes, from 00100 to 00999
+.TP 5
+.B \fI*FILE\fR
+Handles all file-error status codes, from 01000 to 09999
+.TP 5
+.B \fI*ALL\fR
+Handles both program-error and file-error codes, from 00100 to 09999\[char46] This is the default\[char46]
+.PP
+
+Status codes outside the range of 00100 to 09999, for example codes from 0 to 99, are not monitored for\[char46] You cannot specify these values for an on-error group\[char46] You also cannot specify any status codes that are not valid for the particular version of the compiler being used\[char46]
+
+
+If the same status code is covered by more than one on-error group, only the first one is used\[char46] For this reason, you should specify special values such as \fI*ALL\fR after the specific status codes\[char46]
+
+
+Any errors that occur within an on-error group are not handled by the monitor group\[char46] To handle errors, you can specify a monitor group within an on-error group\[char46]
+
+
+When all the statements in an on-error block have been processed, control passes to the statement following the \fIENDMON\fR statement\[char46]
+
+
+For an example of the ON-\fIERROR\fR statement, see \fIMONITOR\fR (Begin a Monitor Group)\[char46]
+
+
+For more information, see Error-Handling Operations\[char46]
+

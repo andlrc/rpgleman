@@ -1,0 +1,101 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzother.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH OTHER 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+OTHER - Otherwise Select
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIOTHER\fR
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIOTHER\fR
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+.TE
+
+The \fIOTHER\fR operation begins the sequence of operations to be processed if no \fIWHEN\fRxx or \fIWHEN\fR (When True Then Select) condition is satisfied in a \fISELECT\fR group\[char46] The sequence ends with the \fIENDSL\fR or \fIEND\fR operation\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] The \fIOTHER\fR operation is optional in a \fISELECT\fR group\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Only one \fIOTHER\fR operation can be specified in a \fISELECT\fR group\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] No \fIWHEN\fRxx or \fIWHEN\fR operation can be specified after an \fIOTHER\fR operation in the same \fISELECT\fR group\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The sequence of calculation operations in the \fIOTHER\fR group can be empty; the effect is the same as not specifying an \fIOTHER\fR statement\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Within total calculations, the control level entry (positions 7 and 8)  can be blank or can contain an L1 through L9 indicator, an LR indicator, or an L0 entry to group the statement within the appropriate section of the program\[char46] The control level entry is for documentation purposes only\[char46] Conditioning indicator entries (positions 9 through 11) are not allowed\[char46]
+.RE
+.PP
+
+For more information, see Structured Programming Operations\[char46]
+
+.SH EXAMPLE
+\fIOTHER\fR Operation
+.PP
+.nf
+*\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq\[char46]\[char46]\[char46]\[char46]
+ *
+ * Example of a SELECT group with WHENxx and OTHER\[char46]  If X equals 1,
+ * do the operations in sequence 1; if X does not equal 1 and Y
+ * equals 2, do the operations in sequence 2\[char46]  If neither
+ * condition is true, do the operations in sequence 3\[char46]
+ *
+C                   SELECT
+C     X             WHENEQ    1
+ *
+ * Sequence 1
+ *
+C                      :
+C                      :
+C     Y             WHENEQ    2
+ *
+ * Sequence 2
+ *
+C                      :
+C                      :
+C                   OTHER
+ *
+ * Sequence 3
+ *
+C                      :
+C                      :
+C                   ENDSL
+.fi

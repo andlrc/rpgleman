@@ -1,0 +1,54 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzrel.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH REL 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+REL - Release
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIREL\fR{(E)} program-device file-name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIREL\fR (E)
+T}	T{
+program-device
+T}	T{
+file-name
+T}	T{
+Â
+T}	T{
+_
+T}	T{
+ER
+T}	T{
+_
+T}
+.TE
+
+The \fIREL\fR operation releases the program device specified in program-device from the \fIWORKSTN\fR file specified in file-name\[char46]
+
+
+Specify the program device name in the program-device operand\[char46] Use either a character field of length 10 or less, a character literal, or a named constant\[char46] Specify the file name in file-name operand\[char46]
+
+
+To handle \fIREL\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+
+
+
+
+For more information, see File Operations\[char46]
+

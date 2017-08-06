@@ -1,0 +1,49 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzbegsr.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH BEGSR 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+BEGSR - Beginning of Subroutine
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIBEGSR\fR subroutine-name
+T}
+.TE
+
+.TS
+allbox;
+l l l l l l l  .
+T{
+\fIBEGSR\fR
+T}	T{
+subroutine-name
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}	T{
+Â
+T}
+.TE
+
+The \fIBEGSR\fR operation identifies the beginning of an \fIRPG\fR IV subroutine\[char46] subroutine-name is the subroutine name\[char46] You may specify the same name as the subroutine-name on the \fIEXSR\fR operation referring to the subroutine, in the result field of the \fICAS\fRxx operation referring to the subroutine, or in the entry of an \fIINFSR\fR file specification keyword of the subroutine is a file-error subroutine\[char46] The control level entry (positions 7 and 8) can be SR or blank\[char46] Conditioning indicator entries are not permitted\[char46]
+
+
+Every subroutine must have a unique symbolic name\[char46] The keyword \fI*PSSR\fR used in factor 1 specifies that this is a program exception/error subroutine to handle program-detected exception/errors\[char46] Only one subroutine can be defined by this keyword\[char46] \fI*INZSR\fR in factor 1 specifies a subroutine to be run during the initialization step\[char46] Only one subroutine can be defined \fI*INZSR\fR\[char46]
+
+
+See Figure 1 for an example of coding subroutines; see Subroutine Operations for general information on subroutine operations\[char46]
+
