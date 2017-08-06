@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh895.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbxfoot.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH XFOOT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH XFOOT 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %XFOOT - Sum Array Expression Elements
 .SH SYNOPSIS
@@ -20,9 +20,6 @@ The precision of the result is the minimum that can hold the result of adding to
 
 
 For example, if \fIARR\fR is an array of 500 elements of precision (17,4), the result of \fB%XFOOT(\fIARR\fR)\fR is (20,4)\[char46]
-
-
-For \fB%XFOOT(X)\fR where X has precision (m,n), the following table shows the precision of the result based on the number of elements of X:
 
 
 .PP
@@ -43,22 +40,4 @@ This built-in function is similar to the \fIXFOOT\fR operation, except that floa
 
 
 For more information, see Array Operations or Built-in Functions\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh554.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dprefix.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH PREFIX 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH PREFIX 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 PREFIX
 .SH SYNOPSIS
@@ -20,9 +20,6 @@ If the \[char39]nbr_of_char_replaced\[char39] is specified, it must represent a 
 
 
 The \[char39]nbr_of_char_replaced\[char39] parameter can be a numeric literal, a built-in function that returns a numeric value, or a numeric constant\[char46] If it is a named constant, then the constant must be defined prior to the specification containing the \fIPREFIX\fR keyword\[char46] In addition, if it is a built-in function, all parameters to the built-in function must be defined prior to the specification containing the keyword \fIPREFIX\fR\[char46]
-
-
-The following rules apply:
 
 
 .IP "" 2
@@ -49,12 +46,8 @@ The following rules apply:
 
 See the \fIALIAS\fR keyword for information on how the \fIPREFIX\fR keyword interacts with the \fIALIAS\fR keyword\[char46]
 
-
-
 .SH EXAMPLE
-
 Using \fIPREFIX\fR to remove characters from the names
-
 The following example uses \fIPREFIX\fR(\[char39]\[char39]:2) on the externally-described data structures DS1 and DS2\[char46] The fields of the file \fIFILE\fR1 all begin with the characters X4, and the fields of the file \fIFILE\fR2 all begin with the characters WR\[char46] If the two files have any fields whose names are the same aside from the initial two characters, then by specifying \fIPREFIX\fR(\[char39]\[char39]:2) for the externally-described data structures, the subfields will have identical names within the \fIRPG\fR program\[char46] This will enable the subfields to be assigned using the \fIEVAL-CORR\fR operation\[char46]
 
 
@@ -74,22 +67,4 @@ D                                     qualified
 .fi
 
 For more examples, see \fIPREFIX\fR(prefix{:nbr_of_char_replaced})\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

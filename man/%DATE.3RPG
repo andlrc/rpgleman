@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh825.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbdate.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH DATE 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH DATE 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %DATE - Convert to Date
 .SH SYNOPSIS
@@ -22,7 +22,7 @@ The first parameter is the value to be converted\[char46] If you do not specify 
 The second parameter is the date format for character or numeric input\[char46] Regardless of the input format, the output is returned in \fI*ISO\fR format\[char46]
 
 
-For information on the input formats that can be used, see Date Data Type\[char46] If the date format is not specified for character or numeric input, the default value is either the format specified on the \fIDATFMT\fR control-specification keyword or \fI*ISO\fR\[char46] For more information, see \fIDATFMT\fR(fmt{separator})\[char46]
+For information on the input formats that can be used, see Date Data Type\[char46] If the date format is not specified for character or numeric input, the default format is \fI*ISO\fR\[char46] For more information, see \fIDATFMT\fR(fmt{separator})\[char46]
 
 
 If the first parameter is a timestamp, \fI*DATE\fR, or \fIUDATE\fR, do not specify the second parameter\[char46] The system knows the format of the input in these cases\[char46]
@@ -30,12 +30,8 @@ If the first parameter is a timestamp, \fI*DATE\fR, or \fIUDATE\fR, do not speci
 
 For more information, see Information Operations or Built-in Functions\[char46]
 
-
-
 .SH EXAMPLE
-
 \fB%DATE\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -46,21 +42,3 @@ For more information, see Information Operations or Built-in Functions\[char46]
    // date now contains d\[char39]1996-04-05\[char39]
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

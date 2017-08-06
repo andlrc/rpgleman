@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh840.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbequal.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH EQUAL 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH EQUAL 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %EQUAL - Return Exact Match Condition
 .SH SYNOPSIS
@@ -13,9 +13,6 @@
 %EQUAL{(file_name)}
 .fi
 .SH DESCRIPTION
-The operations that set \fB%EQUAL\fR are:
-
-
 .IP "" 2
 .RS
 \[bu] \fISETLL\fR (Set Lower Limit)
@@ -38,20 +35,16 @@ For the \fILOOKUP\fR operation with the EQ indicator specified, this function re
 If a file name is specified, this function applies to the most recent \fISETLL\fR operation for the specified file\[char46] This function is allowed only for files that allow the \fISETLL\fR operation code\[char46]
 
 
-For more examples, see Figure 332 and Figure 378\[char46]
+For more examples, see Figure 1 and Figure 1\[char46]
 
 
 For more information, see File Operations, Result Operations, or Built-in Functions\[char46]
-
-
 
 .SH RETURN VALUE
 \fB%EQUAL\fR returns \[char39]1\[char39] if the most recent relevant operation found an exact match; otherwise, it returns \[char39]0\[char39]\[char46]
 
 .SH EXAMPLE
-
 \fB%EQUAL\fR with \fISETLL\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -68,12 +61,8 @@ FCUSTSIF   E           K DISK
  /END-FREE
 .fi
 
-
-
 .SH EXAMPLE
-
 \fB%EQUAL\fR and \fB%FOUND\fR with \fILOOKUP\fR Example
-
 .PP
 .nf
      DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++++
@@ -108,23 +97,5 @@ Bohdan
 Martha
 Samuel
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %FOUND (3RPG)

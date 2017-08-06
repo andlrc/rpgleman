@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh830.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbdech.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH DECH 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH DECH 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %DECH - Convert to Packed Decimal Format with Half Adjust
 .SH SYNOPSIS
@@ -20,24 +20,6 @@ Unlike, \fB%DEC\fR, all three parameters are required\[char46]
 
 
 For more information, see Conversion Operations or Built-in Functions\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .SH SEE ALSO
 .BR %DEC (3RPG)

@@ -1,23 +1,25 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh881.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbsubd.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH SUBDT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH SUBDT 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %SUBDT - Extract a Portion of a Date, Time, or Timestamp
 .SH SYNOPSIS
 .nf
-%SUBDT(value:*MSECONDS|*SECONDS|*MINUTES|*HOURS|*DAYS|*MONTHS|*YEARS)
-%SUBDT(value:*MS|*S|*MN|*H|*D|*M|*Y)
+%SUBDT(value : unit { : digits { : decpos } })
 .fi
 .SH DESCRIPTION
+The unit can be \fI*MSECONDS\fR, \fI*SECONDS\fR, \fI*MINUTES\fR, \fI*HOURS\fR, \fI*DAYS\fR, \fI*MONTHS\fR, or \fI*YEARS\fR\[char46] You can also use the following abbreviated forms of the units: \fI*MS\fR, \fI*S\fR, \fI*MN\fR, \fI*H\fR, \fI*D\fR, \fI*M\fR, or \fI*Y\fR\[char46]
+
+
+\fB%SUBDT\fR extracts a portion of the information in a date, time, or timestamp value\[char46] It returns an unsigned numeric value\[char46]
+
+
 The first parameter is the date, time, or timestamp value\[char46]
-
-
-The second parameter is the portion that you want to extract\[char46] The following values are valid:
 
 
 .IP "" 2
@@ -32,6 +34,14 @@ The second parameter is the portion that you want to extract\[char46] The follow
 .RS
 \[bu] For a timestamp: \fI*MSECONDS\fR, \fI*SECONDS\fR, \fI*MINUTES\fR, \fI*HOURS\fR, \fI*DAYS\fR, \fI*MONTHS\fR, and \fI*YEARS\fR
 .RE
+.IP "" 2
+.RS
+\[bu] The third parameter is optional\[char46] It represents the number of digits in the returned value\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The fourth parameter is optional\[char46] It represents the number of decimal places, or fractional seconds, in the returned value\[char46] It can be specified when the first parameter is a timestamp and the second parameter is \fI*SECONDS\fR or \fI*S\fR\[char46] For example, if you want the returned value to have 7 decimal places, specify 9 for the digits  parameter and 7 for the decpos  parameter\[char46]
+.RE
 .PP
 
 For this function, \fI*DAYS\fR always refers to the day of the month not the day of the year (even if you are using a Julian date format)\[char46] For example, the day portion of February 10 is 10 not 41\[char46]
@@ -44,43 +54,25 @@ For more information, see Date Operations or Built-in Functions\[char46]
 
 
 
-.SH RETURN VALUE
-\fB%SUBDT\fR extracts a portion of the information in a date, time, or timestamp value\[char46] It returns an unsigned numeric value\[char46]
-
 .SH EXAMPLE
-
 \fB%SUBDT\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
- /FREE
 
      date = d\[char39]1999-02-17\[char39];
      time = t\[char39]01\[char46]23\[char46]45\[char39];
+     timestamp = z\[char39]1999-02-17-01\[char46]23\[char46]45\[char46]98765\[char39];
 
      num = %subdt(date:*YEARS);
      // num = 1999
 
      num = %subdt(time:*MN);
      // num = 23
- /END-FREE
+
+     seconds = %subdt(timestamp:*S:5:3);
+     // seconds = 45\[char46]987
+
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

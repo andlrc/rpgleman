@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh550.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/doptns.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH OPTIONS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH OPTIONS 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 OPTIONS
 .SH SYNOPSIS
@@ -13,9 +13,6 @@ OPTIONS
 OPTIONS(*NOPASS *OMIT *VARSIZE *STRING *TRIM *RIGHTADJ *NULLIND)
 .fi
 .SH DESCRIPTION
-The \fIOPTIONS\fR keyword is used to specify one or more parameter passing options:
-
-
 .IP "" 2
 .RS
 \[bu] Whether a parameter must be passed
@@ -49,18 +46,19 @@ The \fIOPTIONS\fR keyword is used to specify one or more parameter passing optio
 When \fIOPTIONS\fR(\fI*NOPASS\fR) is specified on a definition specification, the parameter does not have to be passed on the call\[char46] Any parameters following that specification must also have \fI*NOPASS\fR specified\[char46] When the parameter is not passed to a program or procedure, the called program or procedure will simply function as if the parameter list did not include that parameter\[char46] If the unpassed parameter is accessed in the called program or procedure, unpredictable results will occur\[char46]
 
 
-When \fIOPTIONS\fR(\fI*OMIT\fR) is specified, then the value \fI*OMIT\fR is allowed for that parameter\[char46] \fI*OMIT\fR is only allowed for \fICONST\fR parameters and parameters which are passed by reference\[char46] For more information on omitted parameters, see the chapter on calling programs and procedures in \fIIBM\fR® Rational® Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
+When \fIOPTIONS\fR(\fI*OMIT\fR) is specified, then the value \fI*OMIT\fR is allowed for that parameter\[char46] \fI*OMIT\fR is only allowed for \fICONST\fR parameters and parameters which are passed by reference\[char46] For more information on omitted parameters, see the chapter on calling programs and procedures in Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
 
 
 \fIOPTIONS\fR(\fI*VARSIZE\fR) is valid only for parameters passed by reference that have a character, graphic, or \fIUCS\fR-2 data type, or that represent an array of any type\[char46]
+
+
+For parameters passed by reference, the address of the passed parameter is passed on the call except when a temporary is used for a read-only reference parameter; in that case, the address of the temporary is passed on the call\[char46] For more information about the use of a temporary with a read-only reference parameter, see \fICONST\fR{(constant)}\[char46]
 
 
 When \fIOPTIONS\fR(\fI*VARSIZE\fR) is specified, the passed parameter may be shorter or longer in length than is defined in the prototype\[char46] It is then up to the called program or subprocedure to ensure that it accesses only as much data as was passed\[char46] To communicate the amount of data passed, you can either pass an extra parameter containing the length, or use operational descriptors for the subprocedure\[char46] For variable-length fields, you can use the \fB%LEN\fR built-in function to determine the current length of the passed parameter\[char46]
 
 
 When \fIOPTIONS\fR(\fI*VARSIZE\fR) is omitted for fixed-length fields, you must pass at least as much data as is required by the prototype; for variable-length fields, the parameter must have the same declared maximum length as indicated on the definition\[char46]
-
-
 
 
 
@@ -81,9 +79,6 @@ When \fIOPTIONS\fR(\fI*TRIM\fR) is specified for a \fICONST\fR or \fIVALUE\fR pa
 When \fIOPTIONS\fR(\fI*STRING\fR : \fI*TRIM\fR) is specified for a \fICONST\fR or \fIVALUE\fR parameter of type pointer, the character parameter or \fB%STR\fR of the pointer parameter is copied without leading or trailing blanks to a temporary, a null-terminator is added to the temporary and the address of the temporary is passed\[char46]
 
 
-When \fIOPTIONS\fR(\fI*NULLIND\fR) is specified for a parameter, the null-byte map is passed with the parameter, giving the called procedure direct access to the null-byte map of the caller\[char39]s parameter\[char46] Note the following rules for \fIOPTIONS\fR(\fI*NULLIND\fR)\[char46]
-
-
 .IP "" 2
 .RS
 \[bu] \fIALWNULL\fR(\fI*USRCTL\fR) must be in effect\[char46]
@@ -91,6 +86,14 @@ When \fIOPTIONS\fR(\fI*NULLIND\fR) is specified for a parameter, the null-byte m
 .IP "" 2
 .RS
 \[bu] \fIOPTIONS\fR(\fI*NULLIND\fR) is not valid for parameters passed by value\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] 
+
+ \fIOPTIONS\fR(\fI*NULLIND\fR) is not valid for parameters defined with the \fINULLIND\fR  keyword\[char46] 
+
+
 .RE
 .IP "" 2
 .RS
@@ -125,12 +128,8 @@ You can specify more than one option\[char46] For example, to specify that an op
 
 The following example shows how to code a prototype and procedure that use \fIOPTIONS\fR(\fI*NOPASS\fR) to indicate that a parameter is optional\[char46]
 
-
-
 .SH EXAMPLE
-
 Using \fIOPTIONS\fR(\fI*NOPASS\fR) to Indicate that a Parameter is Optional
-
 .PP
 .nf
  * The following prototype describes a procedure that expects
@@ -169,12 +168,8 @@ P FormatAddress   E
 The following example shows how to code a prototype and procedure using \fIOPTIONS\fR(\fI*OMIT\fR) to indicate that the special value \fI*OMIT\fR may be passed as a parameter\[char46]
 
 
-
-
 .SH EXAMPLE
-
 Using \fIOPTIONS\fR(\fI*OMIT\fR)
-
 .PP
 .nf
 FQSYSPRT   O    F   10        PRINTER USROPN
@@ -222,12 +217,8 @@ P OpenFile        E
 The following example shows how to code a prototype and procedure allowing variable-length parameters, using \fIOPTIONS\fR(\fI*VARSIZE\fR)\[char46]
 
 
-
-
 .SH EXAMPLE
-
 Using \fIOPTIONS\fR(\fI*VARSIZE\fR)
-
 .PP
 .nf
  * The following prototype describes a procedure that allows
@@ -257,6 +248,8 @@ C                                        %SIZE(Arr2) : %ELEM(Arr2) :
 C                                        \[char39]Pink\[char39] : 4)
 C                   RETURN
 .fi
+
+.SH EXAMPLE
 
 .PP
 .nf
@@ -304,12 +297,8 @@ Yellow
 The following example shows how to use \fIOPTIONS\fR(\fI*STRING\fR) to code a prototype and procedure that use a null-terminated string parameter\[char46]
 
 
-
-
 .SH EXAMPLE
-
 Using \fIOPTIONS\fR(\fI*STRING\fR)
-
 .PP
 .nf
  * The following prototype describes a procedure that expects
@@ -324,7 +313,7 @@ D Len             S              5U 0
 C                   EVAL      Len = StringLen(\[char39]abcd\[char39])
  * Call StringLen with a pointer to a string\[char46]  Use ALLOC to get
  * storage for the pointer, and use %STR to initialize the storage
- * to \[char39]My string¬\[char39] where \[char39]¬\[char39] represents the null-termination
+ * to \[char39]My stringÂ¬\[char39] where \[char39]Â¬\[char39] represents the null-termination
  * character x\[char39]00\[char39]\[char46]
  * The result will be 9 which is the length of \[char39]My string\[char39]\[char46]
 C                   ALLOC     25            P
@@ -345,12 +334,8 @@ C                   RETURN    %LEN(%STR(Pointer))
 P StringLen       E
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fIOPTIONS\fR(\fI*TRIM\fR)
-
 .PP
 .nf
 * The following prototype describes a procedure that expects
@@ -384,6 +369,8 @@ D   var                         10a   value varying
 *                      possibly with leading or trailing blanks
 .fi
 
+.SH EXAMPLE
+
 .PP
 .nf
 D trimStringProc  PR
@@ -408,9 +395,9 @@ D ptr             s               *
        // for both parameters
        //
        // The called procedure receives the following parameters,
-       // where ¬ represents x\[char39]00\[char39]
-       //   trimstring     pointer to \[char39]abc¬\[char39]
-       //   string         pointer to \[char39] abc ¬\[char39]
+       // where Â¬ represents x\[char39]00\[char39]
+       //   trimstring     pointer to \[char39]abcÂ¬\[char39]
+       //   string         pointer to \[char39] abc Â¬\[char39]
 
        callp trimStringProc (\[char39] abc \[char39] : \[char39] abc \[char39]);
 
@@ -418,22 +405,18 @@ D ptr             s               *
        // to both parameters
        //
        // The called procedure receives the following parameters,
-       // where ¬ represents x\[char39]00\[char39]
-       //   trimstring     pointer to \[char39]xyz¬\[char39]
+       // where Â¬ represents x\[char39]00\[char39]
+       //   trimstring     pointer to \[char39]xyzÂ¬\[char39]
        //   string
 
-       pointer to \[char39] xyz ¬\[char39]
+       pointer to \[char39] xyz Â¬\[char39]
        ptr = %alloc (6);
        %str(ptr : 6) = \[char39] xyz \[char39];
        callp trimStringProc (ptr : ptr);
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fIOPTIONS\fR(\fI*NULLIND\fR)
-
 .PP
 .nf
  *-----------------------------------
@@ -489,7 +472,10 @@ D   parm3                       10A   OPTIONS(*NULLIND) CONST
      dsply ds2\[char46]null2;             // displays \[char39]newval\[char39]
      dsply (%nullind(ds2\[char46]null2)); // displays \[char39]0\[char39]
  /end-free
+
 .fi
+
+.SH EXAMPLE
 
 .PP
 .nf
@@ -526,24 +512,6 @@ D   parm3                       10A   OPTIONS(*NULLIND) CONST
  /end-free
 P                 E
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %LEN (3RPG),
 .BR %PARMNUM (3RPG),

@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh880.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbsubarr.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH SUBARR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH SUBARR 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %SUBARR - Set/Get Portion of an Array
 .SH SYNOPSIS
@@ -22,9 +22,6 @@ The start-index parameter must be a numeric value with zero decimal positions\[c
 The optional number-of-elements parameter must be a numeric value with zero decimal positions\[char46] A float numeric value is not allowed\[char46] The value must be greater than or equal to 1 and less than or equal to the number of elements remaining in the array after applying the start-index value\[char46]
 
 
-Generally, \fB%SUBARR\fR is valid in any expression where an unindexed array is allowed\[char46] However, \fB%SUBARR\fR cannot be used in the following places:
-
-
 .IP "" 2
 .RS
 \[bu] as the array argument of built-in function \fB%LOOKUPxx\fR
@@ -34,9 +31,6 @@ Generally, \fB%SUBARR\fR is valid in any expression where an unindexed array is 
 \[bu] as a parameter passed by reference
 .RE
 .PP
-
-\fB%SUBARR\fR may be used in the following ways:
-
 
 .IP "" 2
 .RS
@@ -66,13 +60,11 @@ Generally, \fB%SUBARR\fR is valid in any expression where an unindexed array is 
 
 For more information, see Array Operations or Built-in Functions\[char46]
 
-
-
+.SH RETURN VALUE
+Built-in function \fB%SUBARR\fR returns a section of the specified array starting at start-index\[char46] The number of elements returned is specified by the optional number-of-elements parameter\[char46] If not specified, the number-of-elements defaults to the remainder of the array\[char46]
 
 .SH EXAMPLE
-
 Using \fB%SUBARR\fR
-
 .PP
 .nf
 D a               s             10i 0 dim(5)
@@ -80,7 +72,7 @@ D b               s             10i 0 dim(15)
 D resultArr       s             10i 0 dim(20)
 D sum             s             20i 0
  /free
-	    a(1)=9;
+     a(1)=9;
      a(2)=5;
      a(3)=16;
      a(4)=13;
@@ -99,7 +91,7 @@ D sum             s             20i 0
      // B has 15 elements and A has 5 elements\[char46]  Starting from element 2
      // in array A means that only 4 elements will be copied to array B\[char46]
      // The remaining elements in B will not be changed\[char46]
-     	b = %subarr(a : 2);
+       b = %subarr(a : 2);
 
      // Sort a subset of an array:
      sorta %subarr(a:1:4);
@@ -117,21 +109,16 @@ D sum             s             20i 0
      resultArr = %trim(%subst(%subarr(stringArr:i):j));
           // this is equivalent to:
           //   resultArr(1) = %trim(%subst(stringArr(i+0):j))
-          //	 resultArr(2) = %trim(%subst(stringArr(i+1):j))
+          //    resultArr(2) = %trim(%subst(stringArr(i+1):j))
           //   resultArr(3) = %trim(%subst(stringArr(i+2):j))
 
      // Sum a subset of an array
      sum = %xfoot (%subarr(a:2:3));
           // Now sum = 9 + 13 + 16 = 38
-
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fB%SUBARR\fR with dynamically allocated arrays
-
 .PP
 .nf
 // Using %SUBARR with dynamically allocated arrays
@@ -153,7 +140,7 @@ D otherArray      s              3a   dim(10) inz(\[char39]xy\[char39])
 
      // Set the two elements to some values
      dynArr(1) = \[char39]Dog\[char39];
-						   dynArr(2) = \[char39]Cat\[char39];
+                     dynArr(2) = \[char39]Cat\[char39];
 
      // Sort the two elements
      sorta %subarr(dynArr : 1 : dynarrInfo\[char46]current);
@@ -179,7 +166,6 @@ D otherArray      s              3a   dim(10) inz(\[char39]xy\[char39])
           // Initialize new elements to blanks
          clear %subarr(dynArr : oldElems + 1 : dynArrInfo\[char46]current - oldElems);
      endif;
-
 .fi
 
 
@@ -187,27 +173,6 @@ D otherArray      s              3a   dim(10) inz(\[char39]xy\[char39])
 
 
 For more information, see Built-in Functions\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.SH RETURN VALUE
-Built-in function \fB%SUBARR\fR returns a section of the specified array starting at start-index\[char46] The number of elements returned is specified by the optional number-of-elements parameter\[char46] If not specified, the number-of-elements defaults to the remainder of the array\[char46]
 
 .SH SEE ALSO
 .BR %LOOKUPXX (3RPG),

@@ -1,15 +1,15 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh892.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbucs2.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH UCS2 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH UCS2 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %UCS2 - Convert to UCS-2 Value
 .SH DESCRIPTION
-The second parameter, ccsid, is optional and indicates the \fICCSID\fR of the resulting expression\[char46] The \fICCSID\fR defaults to 13488\[char46]
+The second parameter, ccsid, is optional and indicates the \fICCSID\fR of the resulting expression\[char46] The \fICCSID\fR defaults to the default \fIUCS\fR-2 \fICCSID\fR of the module as specified by control keyword \fICCSID\fR(\fI*UCS2\fR)\[char46]
 
 
 If the parameter is a constant, the conversion will be done at compile time\[char46]
@@ -20,15 +20,11 @@ If the conversion results in substitution characters, a warning message is issue
 
 For more information, see Conversion Operations or Built-in Functions\[char46]
 
-
-
 .SH RETURN VALUE
 \fB%UCS2\fR converts the value of the expression from character, graphic, or \fIUCS\fR-2 and returns a \fIUCS\fR-2 value\[char46] The result is varying length if the parameter is varying length, or if the parameter is single-byte character\[char46]
 
 .SH EXAMPLE
-
 \fB%UCS2\fR Examples
-
 .PP
 .nf
 HKeywords++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -60,26 +56,6 @@ C                   CALLP     proc(ufield2)
  * The value of ufield2 is converted to CCSID 13488
  * implicitly, as part of passing the parameter by constant reference\[char46]
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh871.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbscanrp.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH SCANRPL 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH SCANRPL 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %SCANRPL - Scan and Replace Characters
 .SH SYNOPSIS
@@ -39,15 +39,11 @@ Tip: \fB%SCANRPL\fR can be used to completely remove occurrences of the scan str
 
 For more information, see String Operations or Built-in Functions\[char46]
 
-
-
 .SH RETURN VALUE
 \fB%SCANRPL\fR returns the string produced by replacing all occurrences of the scan string in the source string with the replacement string\[char46] The search for the scan string starts at the scan start position and continues for the scan length\[char46] The parts of the source string that are outside the range specified by the scan start position and the scan length are included in the result\[char46]
 
 .SH EXAMPLE
-
 \fB%SCANRPL\fR Example
-
 .PP
 .nf
 //         \[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]string1 = \[char39]See NAME\[char46] See NAME run\[char46] Run NAME run\[char46]\[char39];
@@ -85,21 +81,3 @@ string2 = %ScanRpl(\[char39]**\[char39] : \[char39]\[char39] : string3);
 //    "NAME" value falls in that range\[char46]string2 = %ScanRpl(\[char39]NAME\[char39] : \[char39]Tom\[char39] : string1 : 10 : 10);
 // string2 = \[char39]See NAME\[char46] See Tom run\[char46] Run NAME run\[char46]\[char39]
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh838.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbelem.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH ELEM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH ELEM 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %ELEM - Get Number of Elements
 .SH SYNOPSIS
@@ -18,17 +18,16 @@
 The parameter must be the name of an array, table, or multiple occurrence data structure\[char46]
 
 
+The parameter cannot be a complex-qualified name\[char46] If you want to find the number of elements for a complex-qualified subfield, specify the data structure used in the \fILIKEDS\fR keyword that defines the data structure subfield that contains the required subfield\[char46] For example, if you want to find the number of elements of \fIINFO\fR\[char46]\fICUST\fR\[char46]\fIORDERS\fR, and the \fICUST\fR subfield of data structure \fIINFO\fR was defined with keyword \fILIKEDS\fR(\fICUST\fR_T), then specify \fB%ELEM(\fICUST\fR_T\[char46]\fIORDERS\fR)\fR\[char46]
+
+
 For more information, see Array Operations or Built-in Functions\[char46]
-
-
 
 .SH RETURN VALUE
 \fB%ELEM\fR returns the number of elements in the specified array, table, or multiple-occurrence data structure\[char46] The value returned is in unsigned integer format (type U)\[char46] It may be specified anywhere a numeric constant is allowed in the definition specification or in an expression in the extended factor 2 field\[char46]
 
 .SH EXAMPLE
-
 \fB%ELEM\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -49,21 +48,3 @@ D array_dims      C                   const (%elem (arr1d))
     num = %elem (mds);    // num is now 30
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

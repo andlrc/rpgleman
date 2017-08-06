@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh820.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbxor.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH BITXOR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH BITXOR 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %BITXOR - Bitwise Exclusive-OR Operation
 .SH SYNOPSIS
@@ -26,24 +26,6 @@ The length is the length of the largest operand\[char46] If the arguments have d
 
 
 For more information, see Bit Operations or Built-in Functions\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .SH RETURN VALUE
 \fB%BITXOR\fR returns the bit-wise exclusive ORing of the bits of the two arguments\[char46] That is, the result bit is ON when just one of the corresponding bits in the arguments are ON, and \fIOFF\fR otherwise\[char46]

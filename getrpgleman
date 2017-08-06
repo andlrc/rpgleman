@@ -11,8 +11,8 @@ use Data::Dumper;
 sub trim
 {
 	my ($text) = @_;
-	s/^\h+//;
-	s/\h+$//;
+	s/^\s+//;
+	s/\s+$//;
 	return $text;
 }
 
@@ -175,19 +175,31 @@ sub man_node
 
 	# Code Blocks
 	if (($node->attr('class') || '') =~ m{
-		\b (?: figbox | fignone ) \b
+		\b (?: fig ) \b
 	}xms) {
 		my @ex_nodes = $node->findnodes('*');
-		if (@ex_nodes >= 2) {
-			my $cap = $ex_nodes[0]->as_text;
+		if (@ex_nodes >= 1) {
+			my $cap = '';
+			if (($ex_nodes[0]->attr('class') || '') =~ m{
+				\b figcap \b
+			}xms) {
+				$cap = shift(@ex_nodes)->as_text; 
+			}
 			$cap =~ s{ Figure \h+ \d+ . \h* }{}xms;
-			return join("\n\n",
-				".SH EXAMPLE",
-				man_highlight($cap),
+			my $ex_body = trim(join("\n\n",
 				map {
 					man_node($_);
-				} @ex_nodes[1..$#ex_nodes]
-			);
+				} @ex_nodes[0..$#ex_nodes]
+			));
+			if ($ex_body =~ m{ \S }xms) {
+				return join("\n",
+					".SH EXAMPLE",
+					man_highlight($cap),
+					$ex_body
+				);
+			} else {
+				return '';
+			}
 		} else {
 			return '';
 		}
@@ -198,7 +210,9 @@ sub man_node
 		return join(" ", map {
 			if (!ref) {
 				man_highlight(trim($_));
-			} elsif ($_->{_tag} =~ m{ \b (a|b|i|em|string|var) \b }xmsi) {
+			} elsif ($_->{_tag} =~ m{
+				\b (a|b|i|em|span|string|var) \b
+			}xmsi) {
 				man_highlight(trim($_->as_text));
 			} else {
 				"\n" . man_node($_) . "\n";
@@ -243,7 +257,7 @@ sub read_url
 	my $resp = HTTP::Tiny->new->get($url);
 	if (!$resp->{success}) {
 		print STDERR $resp->{reason} . "\n" . $resp->{content};
-		return;
+		return 1;
 	}
 
 	my $man = {
@@ -266,18 +280,13 @@ sub read_url
 	$tree->parse_content($content);
 
 	# Take change date from page if provided:
-	$man->{date} = $_->attr('content')
-		for $tree->findnodes('//meta[@name="dc.date"]');
-
-	my $skip = 1;
-	my $prev_node;
-	my @nodes = $tree->findnodes('//body/*');
+	for ($tree->findnodes('//meta')) {
+		$man->{date} = '"' . $_->attr('content') . '"'
+			if (($_->attr('name') || '') =~ m{ DC\.date }xmsi);
+	}
 
 	# Name
-	while ($nodes[0] && $nodes[0]->{_tag} !~ m{ \b (?: h2 | h3 ) \b }xmsi) {
-		shift @nodes;
-	}
-	my $nameText = $nodes[0]->as_text;
+	my $nameText = ($tree->findnodes_as_strings('//h1'))[0];
 	if ($nameText =~ m{ ( %? \w+ ) \h+ \( (.*) \) }xms) {
 		$man->{name} = $2;
 		$man->{orig_short_name} = $1;
@@ -287,13 +296,14 @@ sub read_url
 		$man->{orig_short_name} = $1;
 		push @{$man->{short_names}}, $man->{orig_short_name};
 	}
-	shift @nodes;
 
 	# Sometimes the name is the synopsis
 	$man->{synopsis} = $nameText if $nameText =~ m{ ^ \w+ [\{\(] }xms;
 
+	my @nodes = $tree->findnodes('//*[@class="body"]/*');
+
 	# Synopsis
-	while ($nodes[0] && $nodes[0]->{_tag} =~ m{ \b (?: a ) \b }xmsi) {
+	while ($nodes[0] && $nodes[0]->{_tag} =~ m{ \b (?:a|img|span) \b }xmsi) {
 		shift @nodes;
 	}
 	if ($nodes[0] && $nodes[0]->{_tag} =~ m{ \b pre \b }xmsi) {
@@ -319,7 +329,9 @@ sub read_url
 
 	# Description
 	while ($nodes[0]
-		&& ($nodes[0]->attr('class') || '') !~ m{ \b figbox \b }xmsi) {
+		&& ($nodes[0]->attr('class') || '') !~ m{
+			\b (?:fig|section) \b
+		}xmsi) {
 		push @{$man->{description}}, shift @nodes;
 	}
 
@@ -343,9 +355,8 @@ sub read_url
 }
 
 for (@ARGV) {
-	my $url = "https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh$_.htm?view=embed";
-	read_url($url);
-
+	my $url = "https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/$_.htm?view=embed";
+	exit 1 if read_url($url);
 }
 
 # vim: tabstop=4 shiftwidth=4

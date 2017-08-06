@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh867.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbreall.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH REALLOC 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH REALLOC 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %REALLOC - Reallocate Storage
 .SH SYNOPSIS
@@ -36,12 +36,8 @@ For more information, see Memory Management Operations\[char46]
 
 If the operation cannot complete successfully, exception 00425 or 00426 is issued\[char46]
 
-
-
 .SH EXAMPLE
-
 \fB%REALLOC\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -59,25 +55,8 @@ If the operation cannot complete successfully, exception 00425 or 00426 is issue
    // In this case, the value of "pointer1"
    // is no longer valid, so "pointer1" must
    // be set to *NULL to avoid using the
-   // old value\[char46] /END-FREE
+   // old value\[char46]
+ /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %ALLOC (3RPG)

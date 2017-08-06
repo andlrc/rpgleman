@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh832.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbdecp.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH DECPOS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH DECPOS 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %DECPOS - Get Number of Decimal Positions
 .SH SYNOPSIS
@@ -15,17 +15,11 @@
 .SH DESCRIPTION
 The numeric expression must not be a float variable or expression\[char46]
 
-
-
-
-
 .SH RETURN VALUE
 \fB%DECPOS\fR returns the number of decimal positions of the numeric variable or expression\[char46] The value returned is a constant, and so may participate in constant folding\[char46]
 
 .SH EXAMPLE
-
 \fB%DECPOS\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -43,28 +37,10 @@ D result3         s              5i 0
  /END-FREE
 .fi
 
-See Figure 227 for an example of \fB%DECPOS\fR with \fB%LEN\fR\[char46]
+See Figure 1 for an example of \fB%DECPOS\fR with \fB%LEN\fR\[char46]
 
 
 For more information, see Size Operations or Built-in Functions\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .SH SEE ALSO
 .BR %LEN (3RPG)

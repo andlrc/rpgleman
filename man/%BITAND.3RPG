@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh817.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bband.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH BITAND 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH BITAND 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %BITAND - Bitwise AND Operation
 .SH SYNOPSIS
@@ -25,28 +25,10 @@ The length is the length of the largest operand\[char46] If the arguments have d
 \fB%BITAND\fR can be coded in any expression\[char46] It can also be coded as the argument to a File or Definition Specification keyword if all arguments are known at compile-time\[char46] If all arguments of this built-in function are hex literals, the compiler produces a constant-folded result that is a hex literal\[char46]
 
 
-Please see Figure 194, Figure 195, and Figure 196 for examples demonstrating the use of \fB%BITAND\fR\[char46]
+Please see Figure 1, Figure 2, and Figure 3 for examples demonstrating the use of \fB%BITAND\fR\[char46]
 
 
 For more information, see Bit Operations or Built-in Functions\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .SH RETURN VALUE
 \fB%BITAND\fR returns the bit-wise \fIAND\fRing of the bits of all the arguments\[char46] That is, the result bit is ON when all of the corresponding bits in the arguments are ON, and \fIOFF\fR otherwise\[char46]

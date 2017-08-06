@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh824.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbchkr.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH CHECKR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH CHECKR 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %CHECKR - Check Reverse
 .SH SYNOPSIS
@@ -21,15 +21,11 @@ The first parameter must be of type character, graphic, or \fIUCS\fR-2, fixed or
 
 For more information, see String Operations or Built-in Functions\[char46]
 
-
-
 .SH RETURN VALUE
 \fB%CHECKR\fR returns the last position of the string base that contains a character that does not appear in string comparator\[char46] If all of the characters in base also appear in comparator, the function returns 0\[char46]
 
 .SH EXAMPLE
-
 \fB%CHECKR\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -64,12 +60,8 @@ D padChars        C                   \[char39] *@\[char39]
  /end-free
 .fi
 
-
-
 .SH EXAMPLE
-
 \fB%CHECK\fR and \fB%CHECKR\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -96,25 +88,7 @@ D string          s             50a   varying inz(\[char39]$****12\[char46]345**
  /end-free
 .fi
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Â
 
 .SH SEE ALSO
 .BR %TRIM (3RPG),

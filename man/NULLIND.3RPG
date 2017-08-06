@@ -1,0 +1,247 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dkwnullind.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH NULLIND 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+NULLIND
+.SH SYNOPSIS
+.nf
+NULLIND{(null-indicator)}
+.fi
+.SH DESCRIPTION
+The \fINULLIND\fR keyword allows you to explicitly define the \fB%NULLIND\fR value for a field or data structure\[char46]
+
+
+When the \fINULLIND\fR keyword is specified for an item, the parameter for the keyword is used as the null-indicator, null-indicator array, or null-indicator data structure for the item being defined\[char46]
+
+
+You can omit the parameter for the \fINULLIND\fR keyword if the item being defined is not a data structure\[char46] In that case, the variable or array is null-capable, but the null-indicators must be addressed by using the \fB%NULLIND\fR built-in function\[char46]
+
+
+An indicator specified as a parameter to a \fINULLIND\fR keyword can be addressed either by its name, or by the \fB%NULLIND\fR built-in function for the associated item\[char46] For example, if field myField is defined with \fINULLIND\fR(myNullind), then \fB%NULLIND(myField)\fR and myNullind both represent the indicator myNullind\[char46] If array data structure myDs is defined with \fINULLIND\fR(myDsNulls), then myDsNulls(i)\[char46]addr and \fB%NULLIND(myDs(i)\fR\[char46]addr) both represent the indicator myDsNulls(i)\[char46]addr\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] The parameter for the \fINULLIND\fR keyword must be identical to the item being defined in every way other than the data type of the subfields\[char46] 
+.IP "" 2
+.RS
+\[bu] If the item is a data structure, it must be an externally-described data structure\[char46] The parameter for the \fINULLIND\fR keyword must also be externally-described with the extract-type for the \fIEXTNAME\fR  or \fILIKEREC\fR  keyword as the item, with the addition of the \fI*NULL\fR parameter\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The \fINULLIND\fR keyword cannot be specified for an individual external subfield\[char46] Subfields of externally-described data structures are automatically defined as null-capable if the external field is null-capable\[char46] To define a specific indicator as the null-indicator for an externally-described subfield, you must define an externally-described null-indicator data structure and associate it with the externally-described data structure\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The \fINULLIND\fR keyword cannot be specified for a program-described data structure\[char46] The \fINULLIND\fR keyword can be specified for additional program-described subfields of an externally-described data structure, but the null-indicators for program-described subfields will not be considered when the data structure is used with an I/O operation\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the item is an array, the parameter for the \fINULLIND\fR keyword must also be an array, with the same dimension\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the item is a subfield, the parameter for the \fINULLIND\fR keyword must be a subfield in the same data structure\[char46] If the data structure is qualified, the parameter for the \fINULLIND\fR keyword must be specified without the qualifying data structure name\[char46] See the example  below\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Fields that are defined with the \fILIKE\fR keyword, or data structures that are defined with the \fILIKEDS\fR keyword do not inherit the \fINULLIND\fR keyword for the parameter of the \fILIKE\fR or \fILIKEDS\fR keyword\[char46] However, data structures that defined with the \fILIKEDS\fR keyword do inherit the relationships defined by the \fINULLIND\fR keywords specified for the subfields of the data structure specified as the parameter of the \fINULLIND\fR keyword\[char46] See the example  below\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The parameter for the \fINULLIND\fR keyword must have the same scope and the same storage type as the item\[char46] For example, if the item is a static field in a subprocedure, the parameter for the \fINULLIND\fR keyword must also be a static field in the same subprocedure\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When the \fINULLIND\fR keyword is specified for a prototyped parameter 
+.IP "" 2
+.RS
+\[bu] The parameter for the \fINULLIND\fR keyword is required\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The parameter for the \fINULLIND\fR keyword must be another parameter in the parameter list\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] \fIOPTIONS\fR(\fI*NULLIND\fR) is not allowed for the parameter
+.RE
+.PP
+
+.RE
+.PP
+
+.RE
+.IP "" 2
+.RS
+\[bu] The parameter for the \fINULLIND\fR keyword cannot be null-capable or have null-capable subfields\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The parameter for the \fINULLIND\fR keyword can be specified for only one item\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The \fINULLIND\fR keyword is allowed only if the \fIALWNULL\fR(\fI*USRCTL\fR)  keyword is in effect\[char46]
+.RE
+.PP
+
+
+.IP "" 2
+.RS
+\[bu] In the following example, field \fIDUEDATE\fR is defined with the \fINULLIND\fR keyword with no parameter\[char46] The null-indicator for \fIDUEDATE\fR is addressed by using the \fB%NULLIND\fR built-in function\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+    dcl-s dueDate date nullind;
+
+    if not %nullind(dueDate) and dueDate > %date();
+       sendReminder (custId : dueDate);
+    endif;
+.fi
+
+.RE
+.IP "" 2
+.RS
+\[bu] In the following example, array empBonus  is defined with the \fINULLIND\fR keyword with parameter empBonus_null \[char46] empBonus_null  is also defined as an array with the same dimension\[char46] The null-indicator for empBonus  can be addressed by using either the \fB%NULLIND\fR built-in function or the empBonus_null  array\[char46] 
+.IP 1. 2
+.RS
+In the first \fIFOR\fR loop, the null-indicator is used directly\[char46]
+.RE
+.IP 2. 2
+.RS
+In the second \fIFOR\fR loop, the \fB%NULLIND\fR is used\[char46]
+.RE
+.PP
+ 
+.SH EXAMPLE
+
+.PP
+.nf
+    dcl-c MAX_EMPLOYEES
+    dcl-s empBonus packed(5:2) dim(MAX_EMPLOYEES) nullind(empBonus_null);
+    dcl-s empBonus_null ind dim(MAX_EMPLOYEES);
+    dcl-s numEmployees int(10);
+
+    for i = 1 to numEmployees;
+       if not empBonus_null(i); // Â 1Â
+          applyBonus (emp(i) : empBonus(i));
+       endif;
+    endfor;
+
+    for i = 1 to numEmployees;
+       if not %nullind(empBonus(i)); // Â 2Â
+          applyBonus (emp(i) : empBonus(i));
+       endif;
+    endfor;
+.fi
+
+.RE
+.IP "" 2
+.RS
+\[bu] In the following example of a trigger program, data structure beforeDs  is defined with \fIEXTNAME\fR(\fI*INPUT\fR), and data structure beforeNull  is defined with \fIEXTNAME\fR(\fI*INPUT\fR : \fI*NULL\fR)\[char46] Data structure beforeNull  is specified as the null-indicator data structure for data structure beforeDsl \[char46] The subfields of the beforeNull  data structure can be addressed either by their names, or by using the \fB%NULLIND\fR built-in function with the subfields of the beforeDsl  data structure\[char46] 
+.IP 1. 2
+.RS
+In the first IF statement, the null-indicator is used directly\[char46]
+.RE
+.IP 2. 2
+.RS
+In the second IF statement, \fB%NULLIND\fR is used to address the null-indicator\[char46]
+.RE
+.PP
+ 
+.SH EXAMPLE
+
+.PP
+.nf
+    dcl-ds before extname(\[char39]CUSTFILE\[char39]:*input) based(pBefore)
+                  nullind(beforeNull) end-ds;
+    dcl-ds beforeNull extname(\[char39]CUSTFILE\[char39]:*input) based(pBeforeNull)
+                  end-ds;
+
+    pBefore = %addr(trgbuf) + trgbuf\[char46]beforeOffset;
+    pBeforeNull = %addr(trgbuf) + trgbuf\[char46]beforeNullMapOffset;
+
+    if beforeNull\[char46]quantity; // Â 1Â
+       \[char46]\[char46]\[char46]
+
+    if %nullind(beforeDs\[char46]quantity); // Â 2Â
+       \[char46]\[char46]\[char46]
+.fi
+
+.RE
+.IP "" 2
+.RS
+\[bu] In the following example, qualified data structure ds1  has two subfields that are defined with the \fINULLIND\fR keyword\[char46] 
+.IP 1. 2
+.RS
+When subfields sub1_null  and sub2_null  are specified as the parameters for the \fINULLIND\fR keywords, they are specified without being qualified by the data structure name\[char46]
+.RE
+.IP 2. 2
+.RS
+When the subfields of data structure DS1  are used in calculations, they are qualified by the data structure name, since the data structure is qualified\[char46]
+.RE
+.PP
+ 
+.SH EXAMPLE
+
+.PP
+.nf
+    dcl-ds ds1 qualified;
+       sub1 char(10) nullind(sub1_null); Â 1Â
+       sub2 likerec(custRec:*input) nullind(sub2_nulls); Â 1Â
+       sub1_null ind;
+       sub2_nulls likerec(custRec:*input:*null);
+    end-ds;
+
+    if ds1\[char46]sub1_null Â 2Â
+    or ds1\[char46]sub2_nulls\[char46]quantity; Â 2Â ;
+       \[char46]\[char46]\[char46]
+.fi
+
+.RE
+.IP "" 2
+.RS
+\[bu] The following example shows how the null-indicator relationship for subfields is inherited by a data structure that is defined with the \fILIKEDS\fR keyword, but null-capability is not inherited by a field that is defined with the \fILIKE\fR keyword\[char46] 
+.IP 1. 2
+.RS
+Data structure DS2  is defined with the \fILIKEDS\fR keyword with data structure DS1  specified as the parameter\[char46] Refer to the example above for the definition of DS1 \[char46]
+.RE
+.IP 2. 2
+.RS
+Field \fIFLD\fR1  is defined with the \fINULLIND\fR keyword\[char46]
+.RE
+.IP 3. 2
+.RS
+Field \fIFLD\fR2  is defined with the \fILIKE\fR keyword with field \fIFLD\fR1  specified as the parameter\[char46] \fIFLD\fR2  is not null-capable, since null-capability is not inherited by the \fILIKE\fR keyword\[char46]
+.RE
+.IP 4. 2
+.RS
+The null-indicator relationships for the subfields of DS2  are inherited from the \fINULLIND\fR keywords defined for the subfields of DS1 \[char46] DS2\[char46]\fISUB\fR1  is null-capable; its null-indicator is DS2\[char46]\fISUB\fR1_NULL \[char46]
+.RE
+.PP
+ 
+.SH EXAMPLE
+
+.PP
+.nf
+    dcl-ds ds2 likeds(ds1) inz; Â 1Â
+    dcl-s fld1 char(10) nullind(null1); Â 2Â
+    dcl-s fld2 like(fld1); Â 3Â
+
+    if %nullind(ds2\[char46]sub1); Â 4Â
+      \[char46]\[char46]\[char46]
+.fi
+
+.RE
+.PP
+.SH SEE ALSO
+.BR %NULLIND (3RPG),
+.BR %DATE (3RPG),
+.BR %ADDR (3RPG)

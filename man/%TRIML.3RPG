@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh890.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbtriml.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH TRIML 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH TRIML 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %TRIML - Trim Leading Characters
 .SH SYNOPSIS
@@ -19,18 +19,9 @@ The string can be character, graphic, or \fIUCS\fR-2 data\[char46]
 If the characters to trim parameter is specified, it must be the same type as the string parameter\[char46]
 
 
-When specified as a parameter for a definition specification keyword, the string parameter must be a constant\[char46]
-
-
-
-
-
-
 
 
 For more information, see String Operations or Built-in Functions\[char46]
-
-
 
 .SH RETURN VALUE
 \fB%TRIML\fR with only one parameter returns the given string with any leading blanks removed\[char46]
@@ -39,9 +30,7 @@ For more information, see String Operations or Built-in Functions\[char46]
 \fB%TRIML\fR with two parameters returns the given string with any leading characters that are in the characters to trim parameter removed\[char46]
 
 .SH EXAMPLE
-
 \fB%TRIML\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -49,28 +38,11 @@ For more information, see String Operations or Built-in Functions\[char46]
 
  /FREE
      // Trimming blanks
-
-     Location = %triml(\[char39]  Toronto, Ontario  \[char39]);          // LOCATION now has the value \[char39]Toronto, Ontario  \[char39]\[char46]
+     Location = %triml(\[char39]  Toronto, Ontario  \[char39]);
+     // LOCATION now has the value \[char39]Toronto, Ontario  \[char39]\[char46]
 
      // Trimming other characters
 
-     trimmed = %triml(\[char39]$******5\[char46]27***        \[char39] : \[char39]$* \[char39]);                             // trimmed is now \[char39]5\[char46]27***        \[char39]
+     trimmed = %triml(\[char39]$******5\[char46]27***        \[char39] : \[char39]$* \[char39]);
+     // trimmed is now \[char39]5\[char46]27***        \[char39]
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

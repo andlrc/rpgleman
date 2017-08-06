@@ -1,21 +1,18 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh841.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bberror.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH ERROR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH ERROR 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %ERROR - Return Error Condition
 .SH DESCRIPTION
-For examples of the \fB%ERROR\fR built-in function, see Figure 249 and Figure 250\[char46]
+For examples of the \fB%ERROR\fR built-in function, see Figure 1 and Figure 2\[char46]
 
 
 For more information, see Result Operations or Built-in Functions\[char46]
-
-
-The operations that set \fB%ERROR\fR are:
 
 
 .IP "" 2
@@ -187,24 +184,6 @@ The operations that set \fB%ERROR\fR are:
 \[bu] \fIXLATE\fR (Translate)
 .RE
 .PP
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH RETURN VALUE
 \fB%ERROR\fR returns \[char39]1\[char39] if the most recent operation with extender \[char39]E\[char39] specified resulted in an error condition\[char46] This is the same as the error indicator being set on for the operation\[char46] Before an operation with extender \[char39]E\[char39] specified begins, \fB%ERROR\fR is set to return \[char39]0\[char39] and remains unchanged following the operation if no error occurs\[char46] All operations that allow an error indicator can also set the \fB%ERROR\fR built-in function\[char46] The \fICALLP\fR operation can also set \fB%ERROR\fR\[char46]
 

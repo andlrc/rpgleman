@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh860.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbnull.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH NULLIND 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH NULLIND 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %NULLIND - Query or Set Null Indicator
 .SH SYNOPSIS
@@ -30,12 +30,8 @@ See Database Null Value Support for more information on handling records with nu
 
 For more information, see Indicator-Setting Operations or Built-in Functions\[char46]
 
-
-
 .SH EXAMPLE
-
 \fB%NULLIND\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -50,21 +46,3 @@ For more information, see Indicator-Setting Operations or Built-in Functions\[ch
     %nullind (fieldname2) = *OFF;
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

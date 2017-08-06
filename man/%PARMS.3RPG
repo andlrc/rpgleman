@@ -1,16 +1,14 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh865.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbparm.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH PARMS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH PARMS 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %PARMS - Return Number of Parameters
 .SH DESCRIPTION
-
-
 When \fB%PARMS\fR is used in a procedure that was called by a bound call, the value returned by \fB%PARMS\fR is not available if the calling program or procedure does not pass a minimal operational descriptor\[char46] The \fIILE\fR \fIRPG\fR compiler always passes one, but other languages do not\[char46] So if the caller is written in another \fIILE\fR language, it will need to pass an operational descriptor on the call\[char46] If the operational descriptor is not passed, the value returned by \fB%PARMS\fR cannot be trusted\[char46] The value returned by \fB%PARMS\fR will be -1 if the system can determine that the operational descriptor was not passed, but in some cases when the system cannot detect this, the value returned by \fB%PARMS\fR may be an incorrect value that is zero or greater\[char46]
 
 
@@ -19,15 +17,11 @@ The value returned by \fB%PARMS\fR includes the additional first parameter that 
 
 For more information, see Call Operations or Built-in Functions\[char46]
 
-
-
 .SH RETURN VALUE
 \fB%PARMS\fR returns the number of parameters that were passed to the procedure in which \fB%PARMS\fR is used\[char46] For a cycle-main procedure, \fB%PARMS\fR is the same as \fI*PARMS\fR in the program status data structure\[char46]
 
 .SH EXAMPLE
-
 \fB%PARMS\fR Example
-
 .PP
 .nf
 DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++
@@ -58,6 +52,8 @@ C                                             %size(Fld3))
 C     \[char39]MaxSize is\[char39]  DSPLY                   MaxSize
 C                   RETURN
 .fi
+
+.SH EXAMPLE
 
 .PP
 .nf
@@ -113,23 +109,5 @@ C                   ENDIF
 C                   RETURN    Max
 P MaxInt          E
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %SIZE (3RPG)

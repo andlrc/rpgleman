@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh827.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbdec.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH DEC 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH DEC 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %DEC - Convert to Packed Decimal Format
 .SH SYNOPSIS
@@ -15,22 +15,4 @@
 .fi
 .SH DESCRIPTION
 \fB%DEC\fR converts the value of the first parameter to decimal (packed) format\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

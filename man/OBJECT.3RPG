@@ -1,0 +1,56 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dkwobject.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH OBJECT 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+OBJECT
+.SH SYNOPSIS
+.nf
+OBJECT{(*JAVA:class-name)}
+.fi
+.SH DESCRIPTION
+The \fIOBJECT\fR keyword is used in a free-form definition to indicate that the item has type object\[char46]
+
+
+It must be the first keyword\[char46]
+
+
+The parameters are optional if the \fIOBJECT\fR keyword is used to define the type of the return value for a Javaâ¢ constructor method\[char46] In this case, the class of the return value is the same as the class of the Java method, so it is not necessary to specify the class again\[char46] See \fIEXTPROC\fR({\fI*CL\fR|\fI*CWIDEN\fR|\fI*CNOWIDEN\fR| {\fI*JAVA\fR:class-name:}}name) for information on defining the prototype for a Java constructor\[char46]
+
+
+Otherwise, both parameters are required\[char46]
+
+
+The first parameter must be \fI*JAVA\fR\[char46]
+
+
+The second parameter specifies the Java class of the object\[char46] See Object Data Type for information on specifying the Java class\[char46] The parameter must be a literal or a named constant\[char46]
+
+
+
+
+.IP "" 2
+.RS
+\[bu] Field str  is defined as an object field of class java\[char46]lang\[char46]String\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The return value of the prototype newBigDecimal  for the Java BigDecimal object constructor is defined as an object\[char46] The \fIOBJECT\fR keyword has no parameters, so the class of the return value, \[char39]java\[char46]math\[char46]BigDecimal\[char39], is derived from the class specified in the \fIEXTPROC\fR keyword\[char46]
+.RE
+.PP
+
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-S str OBJECT(*JAVA : \[char39]java\[char46]lang\[char46]String\[char39]);
+
+  DCL-PR newBigDecimal OBJECT EXTPROC(*JAVA : \[char39]java\[char46]math\[char46]BigDecimal\[char39]
+                                            : *CONSTRUCTOR);
+     val VARUCS2(100) CONST;
+  END-PR;
+.fi

@@ -1,0 +1,39 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dkwuns.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH UNS 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+UNS
+.SH SYNOPSIS
+.nf
+UNS(digits)
+.fi
+.SH DESCRIPTION
+The \fIUNS\fR keyword is a numeric data type keyword\[char46] It is used in a free-form definition to indicate that the item has unsigned integer format\[char46]
+
+
+It must be the first keyword\[char46]
+
+
+The parameter specifies the length in digits\[char46] It must be one of 3, 5, 10 or 20, occupying 1, 2, 4, and 8 bytes respectively\[char46]
+
+
+The parameter can be a literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] field num_elems  is defined as an unsigned integer field with 10 digits\[char46] It occupies 4 bytes in storage\[char46]
+.RE
+.PP
+
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-S num_elems UNS(10);
+.fi

@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh837.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbeditw.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH EDITW 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH EDITW 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %EDITW - Edit Value Using an Editword
 .SH SYNOPSIS
@@ -21,15 +21,11 @@ The edit word must be a character constant\[char46]
 
 For more information, see Conversion Operations or Built-in Functions\[char46]
 
-
-
 .SH RETURN VALUE
 This function returns a character result representing the numeric value edited according to the edit word\[char46] The rules for the numeric value and edit word are identical to those for editing numeric values in output specifications\[char46]
 
 .SH EXAMPLE
-
 \fB%EDITW\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -47,23 +43,5 @@ D editwd          C                    \[char39]$ ,   ,  **Dollars&  &Cents\[cha
                  + %editw(salary * 12 : editwd);
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %DEC (3RPG)

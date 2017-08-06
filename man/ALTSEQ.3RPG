@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh518.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/daltsq.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH ALTSEQ 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH ALTSEQ 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 ALTSEQ
 .SH SYNOPSIS
@@ -14,9 +14,6 @@ ALTSEQ(*NONE)
 .fi
 .SH DESCRIPTION
 When the \fIALTSEQ\fR(\fI*NONE\fR) keyword is specified, the alternate collating sequence will not be used for comparisons involving this field, even when the \fIALTSEQ\fR keyword is specified on the control specification\[char46] \fIALTSEQ\fR(\fI*NONE\fR) on Data Definition specifications will be meaningful only if one of \fIALTSEQ\fR, \fIALTSEQ\fR(\fI*SRC\fR) or \fIALTSEQ\fR(\fI*EXT\fR) is coded in the control specifications\[char46] It is ignored if this is not true\[char46]
-
-
-\fIALTSEQ\fR(\fI*NONE\fR) is a valid keyword for:
 
 
 .IP "" 2
@@ -48,21 +45,3 @@ When the \fIALTSEQ\fR(\fI*NONE\fR) keyword is specified, the alternate collating
 \[bu] Character Prototyped Parameters
 .RE
 .PP
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

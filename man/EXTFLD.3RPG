@@ -1,23 +1,107 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh530.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dextfld.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH EXTFLD 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH EXTFLD 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 EXTFLD
 .SH SYNOPSIS
 .nf
-EXTFLD(field_name)
+EXTFLD{(field_name)}
 .fi
 .SH DESCRIPTION
-The \fIEXTFLD\fR keyword is used to rename a subfield in an externally described data structure\[char46] Enter the external name of the subfield as the parameter to the \fIEXTFLD\fR keyword, and specify the name to be used in the program in the Name field (positions 7-21)\[char46]
+The \fIEXTFLD\fR keyword is used to rename a subfield in an externally described data structure\[char46] In a free-form definition, it is also used to indicate that the subfield is an external subfield\[char46]
 
 
-The external name can be either a simple name or a character literals\[char46] If a character literal is specified, the external name name name must be specified in the correct case\[char46] For example, if the external name is \fIMYFIELD\fR, the file-name parameter could be specified as a name in mixed case such as myField or myfield, but if specified as a literal it must be \[char39]\fIMYFIELD\fR\[char39]\[char46]
+Enter the external name of the subfield as the parameter to the \fIEXTFLD\fR keyword\[char46]
 
+
+.IP "" 2
+.RS
+\[bu] 
+
+ In a free-form definition, the \fIEXTFLD\fR keyword must be the first keyword\[char46] If the name of the subfield is the same as the external name of the field, the parameter is optional\[char46] If specified, the external name must be specified as a character literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46] 
+
+
+.RE
+.IP "" 2
+.RS
+\[bu] 
+
+ In a fixed-form definition, enter the external name of the subfield as the parameter to the \fIEXTFLD\fR keyword, and specify the name to be used in the program in the Name field (positions 7-21)\[char46] The external name can be either a simple name or a character literal\[char46] 
+
+
+.RE
+.PP
+
+If a character literal is specified, the external name must be specified in the correct case\[char46] For example, if the external name is \fIMYFIELD\fR, the field-name parameter could be specified in a fixed-form definition as a name in mixed case such as myField or myfield, but if specified as a literal it must be \[char39]\fIMYFIELD\fR\[char39]\[char46]
+
+
+In the following example, three of the external field names in the file are \fINAME\fR, \fIADR\fR, and ID\[char46]
+
+
+.IP 1. 2
+.RS
+Subfield name  is initialized to \[char39]\fIUNKNOWN\fR\[char39]\[char46] 
+.IP 1. 2
+.RS
+In the free-form version of the code, the parameter for \fIEXTFLD\fR is not needed because the subfield name is the same as the external name\[char46]
+.RE
+.IP 2. 2
+.RS
+In the fixed-form version of the code, the \fIEXTFLD\fR keyword is not specified, because the subfield is not being renamed\[char46]
+.RE
+.PP
+
+.RE
+.IP 2. 2
+.RS
+Subfield address  is renamed from external field \fIADR\fR \[char46] 
+.IP 1. 2
+.RS
+In the free-form version of the code, the external name is specified as a literal\[char46]
+.RE
+.IP 2. 2
+.RS
+In the fixed-form version of the code, the external name is specified as a simple name\[char46]
+.RE
+.PP
+
+.RE
+.IP 3. 2
+.RS
+Subfield id_number  is renamed from external field ID  and initialized to -1\[char46] 
+.IP 1. 2
+.RS
+In the free-form version of the code, the external name is specified as a named constant, ID_EXT_NAME  whose value is \[char39]ID\[char39]\[char46]
+.RE
+.IP 2. 2
+.RS
+In the fixed-form version of the code, the external name is specified as a literal\[char46]
+.RE
+.PP
+
+.RE
+.PP
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-C ID_EXT_NAME \[char39]ID\[char39]; Â 3aÂ
+  DCL-DS custInfo EXTNAME(\[char39]CUSTMAST\[char39]);
+     name EXTFLD INZ(\[char39]UNKNOWN\[char39]); Â 1aÂ
+     address EXTFLD(\[char39]ADR\[char39]); Â 2aÂ
+     id_number EXTFLD(ID_EXT_NAME) INZ(-1); Â 3aÂ
+  END-DS;
+
+D custInfo      E DS                  EXTNAME(custMast)
+D  name         E                     INZ(\[char39]UNKNOWN\[char39]) Â 1bÂ
+D  address      E                     EXTFLD(adr) Â 2bÂ
+D  id_number    E                     EXTFLD(\[char39]ID\[char39]) INZ(-1) Â 3bÂ
+.fi
 
 If the name is not a valid simple \fIRPG\fR name, it must be specified as a literal\[char46] For example, to rename external field A\[char46]B, specify \fIEXTFLD\fR(\[char39]A\[char46]B\[char39])\[char46]
 
@@ -25,23 +109,5 @@ If the name is not a valid simple \fIRPG\fR name, it must be specified as a lite
 The keyword is optional\[char46] If not specified, the name extracted from the external definition is used as the data-structure subfield name\[char46]
 
 
-If the \fIPREFIX\fR keyword is specified for the data structure, the prefix will not be applied to fields renamed with \fIEXTFLD\fR\[char46] Figure 121 shows an example of the \fIEXTFLD\fR keyword with the \fIALIAS\fR keyword\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+If the \fIPREFIX\fR keyword is specified for the data structure, the prefix will not be applied to fields renamed with \fIEXTFLD\fR\[char46] Figure 1 shows an example of the \fIEXTFLD\fR keyword with the \fIALIAS\fR keyword\[char46]
 

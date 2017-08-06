@@ -1,0 +1,53 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dkwpacked.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH PACKED 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+PACKED
+.SH SYNOPSIS
+.nf
+PACKED(digits {: decimal-positions})
+.fi
+.SH DESCRIPTION
+The \fIPACKED\fR keyword is a numeric data type keyword\[char46] It is used in a free-form definition to indicate that the item has packed-decimal format\[char46]
+
+
+It must be the first keyword\[char46]
+
+
+The first parameter is required\[char46] It specifies the total number of digits\[char46] It can be a value between 1 and 63\[char46]
+
+
+The second parameter is optional\[char46] It specifies the number of decimal positions\[char46] It can be a value between zero and the number of digits\[char46] It defaults to zero\[char46]
+
+
+Each parameter can be a literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] field salary  is defined as a packed field with 5 digits and 2 decimal places
+.RE
+.IP "" 2
+.RS
+\[bu] field age  is defined as a packed field with 3 digits and the default of 0 decimal places
+.RE
+.IP "" 2
+.RS
+\[bu] field price  is defined as a packed field with 7 digits and 3 decimal positions\[char46] The number of decimal positions is defined using named constant \fINUM\fR_DEC_POS \[char46]
+.RE
+.PP
+
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-S salary PACKED(5 : 2);
+  DCL-S age PACKED(3);
+  DCL-C NUM_DEC_POS 3;
+  DCL-S price PACKED(7 : NUM_DEC_POS);
+.fi

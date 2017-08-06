@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh876.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbstat.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH STATUS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH STATUS 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %STATUS - Return File or Program Status
 .SH SYNOPSIS
@@ -20,9 +20,6 @@
 
 
 For more information, see File Operations, Result Operations, or Built-in Functions\[char46]
-
-
-The operations that set \fB%STATUS\fR are:
 
 
 .IP "" 2
@@ -194,8 +191,6 @@ The operations that set \fB%STATUS\fR are:
 \[bu] \fIXLATE\fR (Translate)
 .RE
 .PP
-
-
 .SH RETURN VALUE
 \fB%STATUS\fR returns the most recent value set for the program or file status\[char46] \fB%STATUS\fR is set whenever the program status or any file status changes, usually when an error occurs\[char46]
 
@@ -203,9 +198,7 @@ The operations that set \fB%STATUS\fR are:
 If \fB%STATUS\fR is used without the optional file_name parameter, then it returns the program or file status most recently changed\[char46] If a file is specified, the value contained in the \fIINFDS\fR \fI*STATUS\fR field for the specified file is returned\[char46] The \fIINFDS\fR does not have to be specified for the file\[char46]
 
 .SH EXAMPLE
-
 \fB%STATUS\fR and \fB%ERROR\fR with \[char39]E\[char39] Extender
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -252,12 +245,8 @@ If \fB%STATUS\fR is used without the optional file_name parameter, then it retur
  /END-FREE
 .fi
 
-
-
 .SH EXAMPLE
-
 \fB%STATUS\fR and \fB%ERROR\fR with \[char39]E\[char39] Extender, Error Indicator and \fI*PSSR\fR
-
 .PP
 .nf
 DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords++++++++++++++++++++++++++
@@ -303,23 +292,5 @@ C                   IF        %STATUS = 00100
 C                   GOTO      BAD_SCAN
 C \[char46]\[char46]\[char46]
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %ERROR (3RPG)

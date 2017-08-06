@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh850.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbkds.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH KDS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH KDS 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %KDS - Search Arguments in Data Structure
 .SH SYNOPSIS
@@ -14,8 +14,6 @@
 .fi
 .SH DESCRIPTION
 \fB%KDS\fR is allowed as the search argument for any keyed Input/Output operation (\fICHAIN\fR, \fIDELETE\fR, \fIREADE\fR, \fIREADPE\fR, \fISETGT\fR, \fISETLL\fR) coded in a free-form group\[char46] The search argument is specified by the subfields of the data structure name coded as the first argument of the built-in function\[char46] The key data structure may be (but is not limited to), an externally described data structure with keyword \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*KEY\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*KEY\fR)\[char46]\[char46]
-
-
 
 
 
@@ -38,7 +36,11 @@ Subfields used to form the compound key must not be arrays\[char46]
 .RE
 .IP 5. 2
 .RS
-The types of all subfields (up to the number specified by "num-keys") must match the types of the actual keys\[char46] Where lengths and formats differ, the value is converted to the proper length and format\[char46]
+
+
+ The types of all subfields (up to the number specified by "num-keys") must match the types of the actual keys\[char46] Where lengths, formats and \fICCSID\fRs differ, the value is converted\[char46] 
+
+
 .RE
 .IP 6. 2
 .RS
@@ -52,12 +54,8 @@ Opcode extenders H, M, or R specified on the keyed Input/Output operations code 
 
 Example:
 
-
-
 .SH EXAMPLE
-
 Example of Search on Keyed Input/Output Operations
-
 .PP
 .nf
 A\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]T\[char46]Name++++++RLen++TDpB\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]Functions++++++++++++++++++
@@ -79,23 +77,4 @@ D custRecKeys     ds                  likerec(custRec : *key)
          // the *KEY data structure is used as the search argument for CHAIN
          chain %kds(custRecKeys) custRec;
  /end-free
-
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

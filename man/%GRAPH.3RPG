@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh845.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbgraph.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH GRAPH 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH GRAPH 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %GRAPH - Convert to Graphic Value
 .SH SYNOPSIS
@@ -13,13 +13,12 @@
 %GRAPH(char-expr | graph-expr | UCS-2-expr { : ccsid })
 .fi
 .SH DESCRIPTION
-The second parameter, ccsid, is optional and indicates the \fICCSID\fR of the resulting expression\[char46] The \fICCSID\fR defaults to the graphic \fICCSID\fR related to the \fICCSID\fR of the job\[char46] If \fICCSID\fR(\fI*GRAPH\fR : \fI*IGNORE\fR) is specified on the control specification or assumed for the module, the \fB%GRAPH\fR built-in is not allowed\[char46]
+The second parameter, ccsid, is optional and indicates the \fICCSID\fR of the resulting expression\[char46] The \fICCSID\fR defaults to the default graphic \fICCSID\fR of the module as specified by control keyword \fICCSID\fR(\fI*GRAPH\fR)\[char46] If \fICCSID\fR(\fI*GRAPH\fR : \fI*IGNORE\fR) is specified on the control specification or assumed for the module, the \fB%GRAPH\fR built-in is not allowed\[char46]
 
 
 If the parameter is a constant, the conversion will be done at compile time\[char46] In this case, the \fICCSID\fR is the graphic \fICCSID\fR related to the \fICCSID\fR of the source file\[char46]
 
 
- If the parameter is character, the character data must be in the form
 
 
 .PP
@@ -27,23 +26,18 @@ If the parameter is a constant, the conversion will be done at compile time\[cha
 shift-out graphic-data shift-in
 .fi
 
-For example, \[char39]oAABBCCi\[char39]\[char46]
 
 
-If the conversion results in substitution characters, a warning message is issued at compile time\[char46] At run time, status 00050 is set and no error message is issued\[char46]
+See Conversions for information about the possibility that converting some data to graphic may not be able to convert all the data successfully\[char46]
 
 
 For more information, see Graphic Format, Conversion Operations, or Built-in Functions\[char46]
-
-
 
 .SH RETURN VALUE
 \fB%GRAPH\fR converts the value of the expression from character, graphic, or \fIUCS\fR-2 and returns a graphic value\[char46] The result is varying length if the parameter is varying length\[char46]
 
 .SH EXAMPLE
-
 \fB%GRAPH\fR Examples
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -81,20 +75,6 @@ D    gparm                       2G   ccsid (4396) value
     // implicitly, as part of passing the parameter by value\[char46]
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

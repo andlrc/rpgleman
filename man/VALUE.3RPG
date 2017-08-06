@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh564.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dvalue.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH VALUE 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH VALUE 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 VALUE
 .SH DESCRIPTION
@@ -16,22 +16,4 @@ The \fIVALUE\fR keyword cannot be specified for a parameter if its prototype was
 
 
 The rules for what can be passed as a value parameter to a called procedure are the same as the rules for what can be assigned using the \fIEVAL\fR operation\[char46] The parameter received by the procedure corresponds to the left-hand side of the expression; the passed parameter corresponds to the right-hand side\[char46] See \fIEVAL\fR (Evaluate expression) for more information\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

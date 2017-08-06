@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh537.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dinz.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH INZ 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH INZ 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 INZ
 .SH SYNOPSIS
@@ -13,9 +13,6 @@ INZ
 INZ{(initial value)}
 .fi
 .SH DESCRIPTION
-The \fIINZ\fR keyword initializes the standalone field, data structure, data-structure subfield, or object to the default value for its data type or, optionally, to the constant specified in parentheses\[char46]
-
-
 .IP "" 2
 .RS
 \[bu] For a program described data structure, no parameter is allowed for the \fIINZ\fR keyword\[char46]
@@ -26,9 +23,7 @@ The \fIINZ\fR keyword initializes the standalone field, data structure, data-str
 .RE
 .IP "" 2
 .RS
-\[bu] For a data structure that is defined with the \fILIKEDS\fR keyword, the value \fI*LIKEDS\fR specifies that subfields are initialized in the same way as the parent data structure\[char46] 
-
-
+\[bu] For a data structure that is defined with the \fILIKEDS\fR keyword, the value \fI*LIKEDS\fR specifies that subfields are initialized in the same way as the parent data structure\[char46]  This applies only to initialization specified by the \fIINZ\fR keyword on the parent subfield\[char46] It does not apply to initialization specified by the \fICTDATA\fR or \fIFROMFILE\fR keywords\[char46] If the parent data structure has some subfields initialized by \fICTDATA\fR or \fIFROMFILE\fR, the data structure initialized with \fIINZ\fR(\fI*LIKEDS\fR) will not have the \fICTDATA\fR or \fIFROMFILE\fR data\[char46]
 .RE
 .IP "" 2
 .RS
@@ -49,9 +44,6 @@ Specifying \fIINZ\fR(\fI*EXTDFT\fR) initializes externally described data-struct
 
 
 Specifying \fIINZ\fR(\fI*EXTDFT\fR) on the external data structure definition, initializes all externally described subfields to their \fIDDS\fR default values\[char46] If the externally described data structure has additional program described subfields, these are initialized to the \fIRPG\fR default values\[char46]
-
-
-When using \fIINZ\fR(\fI*EXTDFT\fR), take note of the following:
 
 
 .IP "" 2
@@ -76,24 +68,13 @@ When using \fIINZ\fR(\fI*EXTDFT\fR), take note of the following:
 .RE
 .PP
 
-
-
 Specifying \fIINZ\fR(\fI*USER\fR) intializes any character field or subfield to the name of the current user profile\[char46] Character fields must be at least 10 characters long\[char46] If the field is longer than 10 characters, the user name is left-justified in the field with blanks in the remainder\[char46]
-
-
-
-
 
 
 Date fields can be initialized to \fI*SYS\fR or \fI*JOB\fR\[char46] Time and Timestamp fields can be initialized to \fI*SYS\fR\[char46]
 
 
 Please see Initialization of Nested Data Structures for a complete description of the use of the \fIINZ\fR keyword in the inititlization of nested data structures\[char46]
-
-
-A data structure, data-structure subfield, or standalone field defined with the \fIINZ\fR keyword cannot be specified as a parameter on an \fI*ENTRY\fR \fIPLIST\fR\[char46]
-
-
 
 
 
@@ -111,22 +92,4 @@ A data structure, data-structure subfield, or standalone field defined with the 
 .PP
 
 This keyword is not valid in combination with \fIBASED\fR or \fIIMPORT\fR\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

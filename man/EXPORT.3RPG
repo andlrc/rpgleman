@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh529.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dexport.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH EXPORT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH EXPORT 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 EXPORT
 .SH SYNOPSIS
@@ -16,16 +16,12 @@ EXPORT{(external_name)}
 The specification of the \fIEXPORT\fR keyword allows a globally defined data structure or standalone field defined within a module to be used by another module in the program\[char46] The storage for the data item is allocated in the module containing the \fIEXPORT\fR definition\[char46] The external_name parameter, if specified, must be a character literal or constant\[char46]
 
 
+In a free-form definition, you can specify \fI*DCLCASE\fR for the external_name parameter, indicating that the external name of the item is the same as the name of the item, in the same case as the name is specified\[char46] See Specifying \fI*DCLCASE\fR as the External Name\[char46]
+
+
 The \fIEXPORT\fR keyword on the definition specification is used to export data items and cannot be used to export procedure names\[char46] To export a procedure name, use the \fIEXPORT\fR keyword on the procedure specification\[char46]
 
 
-
-
-
-
-
-
-The following restrictions apply when \fIEXPORT\fR is specified:
 
 
 .IP "" 2
@@ -63,22 +59,4 @@ See also \fIIMPORT\fR{(external_name)}\[char46]
 
 
 The keywords \fIIMPORT\fR and \fIEXPORT\fR allow you to define a "hidden" interface between modules\[char46] As a result, use of these keywords should be limited only to those data items which are global throughout the application\[char46] It is also suggested that this global data be limited to things like global attributes which are set once and never modified elsewhere\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh814.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbabs.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH ABS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH ABS 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %ABS - Absolute Value of Expression
 .SH SYNOPSIS
@@ -18,15 +18,11 @@
 
 For more information, see Arithmetic Operations or Built-in Functions\[char46]
 
-
-
 .SH RETURN VALUE
 \fB%ABS\fR returns the absolute value of the numeric expression specified as the parameter\[char46] If the value of the numeric expression is non-negative, the value is returned unchanged\[char46] If the value is negative, the value returned is the value of the expression but with the negative sign removed\[char46]
 
 .SH EXAMPLE
-
 \fB%ABS\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -41,21 +37,3 @@ D p7         s              7p 3 inz (-1234\[char46]567)
     p7  = %abs (p7);        // "p7" is now 1234\[char46]567\[char46]
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

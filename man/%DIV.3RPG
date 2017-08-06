@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh834.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbdiv.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH DIV 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH DIV 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %DIV - Return Integer Portion of Quotient
 .SH SYNOPSIS
@@ -19,25 +19,7 @@ If the operands are constants that can fit in 8-byte integer or unsigned fields,
 For more information, see Arithmetic Operations or Built-in Functions\[char46]
 
 
-This function is illustrated in Figure 242\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+This function is illustrated in Figure 1\[char46]
 
 .SH RETURN VALUE
 \fB%DIV\fR returns the integer portion of the quotient that results from dividing operands n by m\[char46] The two operands must be numeric values with zero decimal positions\[char46] If either operand is a packed, zoned, or binary numeric value, the result is packed numeric\[char46] If either operand is an integer numeric value, the result is integer\[char46] Otherwise, the result is unsigned numeric\[char46] Float numeric operands are not allowed\[char46] (See also \fB%REM\fR (Return Integer Remainder)\[char46])

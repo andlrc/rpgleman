@@ -1,0 +1,29 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dkwind.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH IND 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+IND
+.SH DESCRIPTION
+The \fIIND\fR keyword is used in a free-form definition to indicate that the item is an indicator\[char46]
+
+
+It must be the first keyword\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] field found  is defined as an indicator\[char46]
+.RE
+.PP
+
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-S found IND;
+.fi

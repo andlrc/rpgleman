@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh527.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/ddim.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH DIM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH DIM 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 DIM
 .SH SYNOPSIS
@@ -23,22 +23,4 @@ The constant value does not need to be known at the time the keyword is processe
 
 
 When \fIDIM\fR is specified on a data structure definition, the data structure must be a qualified data structure, and subfields must be referenced as fully qualified names, i\[char46]e\[char46] "dsname(x)\[char46]subf"\[char46] Other array keywords, such as \fICTDATA\fR, \fIFROMFILE\fR, \fITOFILE\fR, and \fIPERRCD\fR are not allowed with an array data structure definition\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

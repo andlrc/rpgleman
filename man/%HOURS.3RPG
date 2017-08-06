@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh847.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbhou.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH HOURS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH HOURS 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %HOURS - Number of Hours
 .SH SYNOPSIS
@@ -19,29 +19,11 @@
 
 
 
-\fB%HOURS\fR can only be the right-hand value in an addition or subtraction operation\[char46] The left-hand value must be a time or timestamp\[char46] The result is a time or timestamp value with the appropriate number of hours added or subtracted\[char46] For a time, the resulting value is in \fI*ISO\fR format\[char46]
+\fB%HOURS\fR can only follow the plus or minus sign in an addition or subtraction expression\[char46] The value before the plus or minus sign must be a time or timestamp\[char46] The result is a time or timestamp value with the appropriate number of hours added or subtracted\[char46] For a time, the resulting value is in \fI*ISO\fR format\[char46]
 
 
-For an example of date and time arithmetic operations, see Figure 232\[char46]
+For an example of date and time arithmetic operations, see Figure 1\[char46]
 
 
 For more information, see Date Operations or Built-in Functions\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

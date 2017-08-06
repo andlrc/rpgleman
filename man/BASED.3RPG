@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh520.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dbased.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH BASED 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH BASED 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 BASED
 .SH SYNOPSIS
@@ -13,9 +13,6 @@ BASED
 BASED(basing_pointer_name)
 .fi
 .SH DESCRIPTION
-When the \fIBASED\fR keyword is specified for a data structure or standalone field, a basing pointer is created using the name specified as the keyword parameter\[char46] This basing pointer holds the address (storage location) of the based data structure or standalone field being defined\[char46] In other words, the name specified in positions 7-21 is used to refer to the data stored at the location contained in the basing pointer\[char46]
-
-
 
 
 
@@ -26,22 +23,4 @@ If an array is defined as a based standalone field it must be a run-time array\[
 
 
 If a based field is defined within a subprocedure, then both the field and the basing pointer are local\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

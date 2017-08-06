@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh534.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dextprc.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH EXTPROC 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH EXTPROC 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 EXTPROC
 .SH SYNOPSIS
@@ -13,9 +13,6 @@ EXTPROC
 EXTPROC({*CL|*CWIDEN|*CNOWIDEN| {*JAVA:class-name:}}name)
 .fi
 .SH DESCRIPTION
-The \fIEXTPROC\fR keyword can have one of the following formats:
-
-
 .TP 5
 .B 
 
@@ -33,8 +30,8 @@ Use \fI*CNOWIDEN\fR if the \fIILE\fR C source contains #pragma argument(procedur
 
 .TP 5
 .B \fIEXTPROC\fR(\fI*JAVA\fR:class-name:name)
-Specifies a method that is written in Java™, or an \fIRPG\fR native method to be called by Java\[char46] The first parameter is \fI*JAVA\fR\[char46] The second parameter is a character constant containing the class of the method\[char46] The third parameter is a character constant containing the method name\[char46] The special method name \fI*CONSTRUCTOR\fR means that the method is a constructor; this method can be used to instantiate a class (create a new class instance)\[char46] 
-For more information about invoking Java procedures, see \fIIBM\fR® Rational® Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
+Specifies a method that is written in Javaâ¢, or an \fIRPG\fR native method to be called by Java\[char46] The first parameter is \fI*JAVA\fR\[char46] The second parameter is a character constant containing the class of the method\[char46] The third parameter is a character constant containing the method name\[char46] The special method name \fI*CONSTRUCTOR\fR means that the method is a constructor; this method can be used to instantiate a class (create a new class instance)\[char46] 
+For more information about invoking Java procedures, see Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
 
 
 .TP 5
@@ -42,16 +39,19 @@ For more information about invoking Java procedures, see \fIIBM\fR® Rational® 
 Specifies an external procedure that is written in or to be called by \fIRPG\fR or \fICOBOL\fR\[char46] This format should also be used for a procedure that can be called by any of \fIRPG\fR, \fICOBOL\fR, C, or CL; in this case, you must ensure that the return value and the parameters do not have any of the problems listed above for \fI*CL\fR, \fI*CWIDEN\fR, and \fI*CNOWIDEN\fR\[char46]
 .PP
 
-The \fIEXTPROC\fR keyword indicates the external name of the procedure whose prototype is being defined\[char46] The name can be a character constant or a procedure pointer\[char46] When \fIEXTPROC\fR is specified, a bound call will be done\[char46]
+The \fIEXTPROC\fR keyword indicates the external name of the procedure whose prototype is being defined\[char46] The name can be a character constant, or procedure pointer\[char46]
+
+
+In a free-form definition, you can specify \fI*DCLCASE\fR as the name indicating that the external name is derived from the name of item being defined, in the same case as the name was specified\[char46] See Specifying \fI*DCLCASE\fR as the External Name\[char46]
+
+
+When \fIEXTPROC\fR is specified, a bound call will be done\[char46]
 
 
 If neither \fIEXTPGM\fR or \fIEXTPROC\fR is specified, then the compiler assumes that you are defining a procedure, and assigns it the external name found in positions 7-21\[char46]
 
 
-If the name specified for \fIEXTPROC\fR (or the prototype or procedure name, if neither \fIEXTPGM\fR or \fIEXTPROC\fR is specified) starts with "\fICEE\fR" or an underscore (\[char39]_\[char39]), the compiler will treat this as a system built-in\[char46] To avoid confusion with system provided \fIAPI\fRs, you should not name your procedures starting with "\fICEE\fR"\[char46]
-
-
-For example, to define the prototype for the procedure \fISQLA\fRllocEnv, that is in the service program \fIQSQCLI\fR, the following definition specification could be coded:
+If the name specified for \fIEXTPROC\fR (or the prototype or procedure name, if neither \fIEXTPGM\fR or \fIEXTPROC\fR is specified or if \fIEXTPROC\fR(\fI*DCLCASE\fR) is specified) starts with "\fICEE\fR" or an underscore (\[char39]_\[char39]), the compiler will treat this as a system built-in\[char46] To avoid confusion with system provided \fIAPI\fRs, you should not name your procedures starting with "\fICEE\fR"\[char46]
 
 
 .PP
@@ -65,18 +65,10 @@ If a procedure pointer is specified, it must be assigned a valid address before 
 When a prototype is specified for a procedure, the \fIEXTPROC\fR keyword is specified for the prototype\[char46] Otherwise, the \fIEXTPROC\fR keyword is specified for the procedure interface\[char46] It is only necessary to explicitly specify a prototype when the procedure will be called from another \fIRPG\fR module\[char46] When the procedure is only called from within the same module, or when it is only called by non-\fIRPG\fR callers, the prototype can be implicitly derived from the procedure interface\[char46]
 
 
-Figure 122 shows an example of the \fIEXTPROC\fR keyword with a procedure pointer as its parameter\[char46]
-
-
-
-
-
-
+Figure 1 shows an example of the \fIEXTPROC\fR keyword with a procedure pointer as its parameter\[char46]
 
 .SH EXAMPLE
-
 Using \fIEXTPROC\fR with a Procedure Pointer
-
 .PP
 .nf
  * Assume you are calling a procedure that has a procedure
@@ -99,12 +91,8 @@ C                    EVAL      Reply = DspMsg(Msg, %size(Msg))
 P MyDspMsg       B
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fIEXTPROC\fR with \fI*CNOWIDEN\fR - C Code
-
 .PP
 .nf
    char RPG_PROC (short s, float f);
@@ -139,19 +127,15 @@ Using \fIEXTPROC\fR with \fI*CNOWIDEN\fR - C Code
    }
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fIEXTPROC\fR with \fI*CNOWIDEN\fR - \fIRPG\fR Code
-
 .PP
 .nf
 D RPG_PROC        PR             1A   EXTPROC(*CNOWIDEN : \[char39]RPG_PROC\[char39])
 D   short                        5I 0 VALUE
 D   float                        4F   VALUE
 
-D C_RPOC          PR             1A   EXTPROC(*CNOWIDEN : \[char39]C_PROC\[char39])
+D C_PROC          PR             1A   EXTPROC(*CNOWIDEN : \[char39]C_PROC\[char39])
 D   short                        5I 0 VALUE
 D   float                        4F   VALUE
 
@@ -175,12 +159,8 @@ C                   ENDIF
 P                 E
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fIEXTPROC\fR with \fI*CWIDEN\fR - C Code
-
 .PP
 .nf
    char RPG_PROC (short s, float f);
@@ -213,12 +193,8 @@ Using \fIEXTPROC\fR with \fI*CWIDEN\fR - C Code
    }
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fIEXTPROC\fR with \fI*CWIDEN\fR - \fIRPG\fR Code
-
 .PP
 .nf
 D RPG_PROC        PR             1A   EXTPROC(*CWIDEN : \[char39]RPG_PROC\[char39])
@@ -249,12 +225,8 @@ C                   ENDIF
 P                 E
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fIEXTPROC\fR with \fI*CL\fR - CL Code
-
 .PP
 .nf
          /* CL procedure CL_PROC */
@@ -264,12 +236,8 @@ Using \fIEXTPROC\fR with \fI*CL\fR - CL Code
          CALLPRC RPG_PROC RTNVAR(&CHAR1)
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fIEXTPROC\fR with \fI*CL\fR - \fIRPG\fR Code
-
 .PP
 .nf
 D RPG_PROC        PR             1A   EXTPROC(*CL : \[char39]RPG_PROC\[char39])
@@ -282,12 +250,8 @@ C                   RETURN    \[char39]X\[char39]
 P                 E
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fIEXTPROC\fR on a procedure interface for a procedure intended to be called only by CL callers
-
 .PP
 .nf
 P isValidCust     B                   EXPORT
@@ -295,29 +259,10 @@ D                 PI             N    EXTPROC(*CL : \[char39]isValidCust\[char39
 D   custId                     10A    CONST
 D isValid         S              N    INZ(*OFF)
  /free
-    \[char46]\[char46]\[char46] calculations using the "custId" parameter
-    return isValid;
+    \[char46]\[char46]\[char46] calculations using the "custId" parameter    return isValid;
  /end-free
 P                 E
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %PADDR (3RPG),
 .BR %SIZE (3RPG)

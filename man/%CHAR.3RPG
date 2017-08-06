@@ -1,125 +1,19 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh822.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbchar.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH CHAR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH CHAR 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %CHAR - Convert to Character Data
 .SH SYNOPSIS
 .nf
-%CHAR(expression{:format})
+%CHAR(expression{: format | ccsid})
 .fi
 .SH DESCRIPTION
-\fB%CHAR\fR converts the value of the expression from graphic, \fIUCS\fR-2, numeric, date, time or timestamp data to type character\[char46] The converted value remains unchanged, but is returned in a format that is compatible with character data\[char46]
 
 
-If the parameter is a constant, the conversion will be done at compile time\[char46]
+\fB%CHAR\fR converts the value of the expression from character, graphic, \fIUCS\fR-2, numeric, date, time or timestamp data to type character\[char46]
 
-
-If a \fIUCS\fR-2 conversion results in substitution characters, a warning message will be given in the compiler listing if the parameter is a constant\[char46] Otherwise, status 00050 will be set at run time but no error message will be given\[char46]
-
-
-For graphic data, the value returned includes the shift-in and shift-out characters\[char46] For example, if a 5 character graphic field is converted, the returned value is 12 characters (10 bytes of graphic data plus the two shift characters)\[char46] If the value of the expression has a variable length, the value returned is in varying format\[char46]
-
-
-For date, time, or timestamp data, the second parameter contains the date, time, or timestamp format to which the returned character data is converted\[char46] The value returned will include separator characters unless the format specified is followed by a zero\[char46]
-
-
-For numeric data, if the value of the expression is float, the result will be in float format (for example \[char39]+1\[char46]125000000000000E+020\[char39])\[char46] Otherwise, the result will be in decimal format with a leading negative sign if the value is negative, and without leading zeros\[char46] The character used for any decimal point will be the character indicated by the control specification \fIDECEDIT\fR keyword (default is \[char39]\[char46]\[char39])\[char46] For example, \fB%CHAR\fR of a packed(7,3) expression might return the value \[char39]-1\[char46]234\[char39]\[char46]
-
-
-For more information, see Conversion Operations or Built-in Functions\[char46]
-
-
-
-.SH EXAMPLE
-
-\fB%CHAR\fR Examples
-
-.PP
-.nf
- *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
-D Name            S             20G   VARYING INZ(G\[char39]oXXYYZZi\[char39])
-D date            S               D   INZ(D\[char39]1997/02/03\[char39])
-D time            S               T   INZ(T\[char39]12:23:34\[char39])
-D result          S            100A   VARYING
-D points          S             10i 0 INZ(234)
-
- *-----------------------------------------------------------------
- * To format the time and date with the default formats, use this:
- *-----------------------------------------------------------------
- /FREE
-   result = \[char39]It is \[char39] + %CHAR(time) + \[char39] on \[char39] + %CHAR(date);
-   // If the default formats are both *USA,
-   // result = \[char39]It is 12:23 PM on 02/03/1997\[char39]
-
-   //-------------------------------------------------------------
-   // To format the time and date with the job formats, use this:
-   //-------------------------------------------------------------
-   result = \[char39]It is \[char39] + %CHAR(time : *jobrun)
-            + \[char39] on \[char39] + %CHAR(date : *jobrun);
-   // If the job date format is *MDY- and the time separator is \[char39]\[char46]\[char39],
-   // then the result = \[char39]It is 12\[char46]23\[char46]34 on 97-02-03\[char39]
-
-   //--------------------------------------------------------------
-   // To format the time and date with specific formats, use this:
-   //--------------------------------------------------------------
-   result = \[char39]It is \[char39] + %CHAR(time : *hms:)
-            + \[char39] on \[char39] + %CHAR(date : *iso);
-   // result = \[char39]It is 12:23:34 on 1997-02-03\[char39]
-   //
-
-   //-------------------------------------------------------------
-   // You can use %subst with the %char result if you only want
-   // part of the result
-   //-------------------------------------------------------------
-   result = \[char39]The time is now \[char39] + %SUBST (%CHAR(time):1:5) + \[char39]\[char46]\[char39];
-   // result = \[char39]The time is now 12:23\[char46]\[char39]
-
-   //-------------------------------------------------------------
-   // Use %CHAR to convert a graphic value to character so it
-   // can be concatenated with a character value\[char46]
-   //-------------------------------------------------------------
-   result = \[char39]The customer\[char39]\[char39]s name is \[char39] + %CHAR(Name) + \[char39]\[char46]\[char39];
-   // result = \[char39]The customer\[char39]s name is oXXYYZZi\[char46]\[char39]
-
-   //----------------------------------------------------
-   // Use %CHAR to convert a number to character format:
-   //----------------------------------------------------
-   result = \[char39]You have \[char39] + %char(points) + \[char39] points\[char46]\[char39];
-   // result = \[char39]You have 234 points\[char46]\[char39]
-   //
- /END-FREE
-.fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.SH SEE ALSO
-.BR %SUBST (3RPG)

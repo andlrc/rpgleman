@@ -1,19 +1,27 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh870.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbscan.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH SCAN 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH SCAN 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %SCAN - Scan for Characters
 .SH SYNOPSIS
 .nf
-%SCAN(search argument : source string {: start})
+%SCAN(search argument : source string {: start position {: length}})
 .fi
 .SH DESCRIPTION
-The first parameter must be of type character, graphic, or \fIUCS\fR-2\[char46] The second parameter must be the same type as the first parameter\[char46] The third parameter, if specified, must be numeric with zero decimal positions\[char46]
+
+
+\fB%SCAN\fR returns the first position of the search argument in the source string, or 0 if it was not found\[char46]
+
+
+The start position and length specify the substring of the source string to be searched\[char46] The start position defaults to 1 and the length defaults to the remainder of the source string\[char46] The result is always the position in the source string even if the starting position is specified\[char46]
+
+
+The first parameter must be of type character, graphic, or \fIUCS\fR-2\[char46] The second parameter must be the same type as the first parameter\[char46] The third and fourth parameters, if specified, must be numeric with zero decimal positions\[char46]
 
 
 When any parameter is variable in length, the values of the other parameters are checked against the current length, not the maximum length\[char46]
@@ -31,67 +39,97 @@ For more information, see String Operations or Built-in Functions\[char46]
 
 
 
-
-
-
-
-.SH RETURN VALUE
-\fB%SCAN\fR returns the first position of the search argument in the source string, or 0 if it was not found\[char46] If the start position is specified, the search begins at the starting position\[char46] The result is always the position in the source string even if the starting position is specified\[char46] The starting position defaults to 1\[char46]
-
 .SH EXAMPLE
-
-\fB%SCAN\fR Example
 
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
 D*Name++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++
-
 D source          S             15A   inz (\[char39]Dr\[char46] Doolittle\[char39])
 D pos             S              5U 0
 D posTrim         S              5U 0
 D posVar          S              5U 0
 D srchFld         S             10A
 D srchFldVar      S             10A   varying
- /FREE          pos = %scan (\[char39]oo\[char39] : source);
-     // After the EVAL, pos = 6 because \[char39]oo\[char39] begins at position 6 in
-     // \[char39]Dr\[char46] Doolittle\[char39]\[char46]
+.fi
+
+.SH EXAMPLE
+
+.PP
+.nf
+     pos = %scan (\[char39]oo\[char39] : source);
+.fi
+
+After the previous assignment, the value of pos is 6 because \[char39]oo\[char39] begins at position 6 in \[char39]Dr\[char46] Doolittle\[char39]\[char46]
+
+
+.SH EXAMPLE
+
+.PP
+.nf
      pos = %scan (\[char39]D\[char39] : source : 2);
-     // After the EVAL, pos = 5 because the first \[char39]D\[char39] found starting from
-     // position 2 is in position 5\[char46]
-     pos = %scan (\[char39]abc\[char39] : source);          // After the EVAL, pos = 0 because \[char39]abc\[char39] is not found in
-     // \[char39]Dr\[char46] Doolittle\[char39]\[char46]
+.fi
+
+After the previous assignment, the value of pos is 5 because the first \[char39]D\[char39] found, starting from position 2, is in position 5\[char46]
+
+
+.SH EXAMPLE
+
+.PP
+.nf
+     pos = %scan (\[char39]D\[char39] : source : 2 : 3);
+.fi
+
+After the previous assignment, the value of pos is 0 because no \[char39]D\[char39] is found starting at position 2 for a length of 3\[char46]
+
+
+.SH EXAMPLE
+
+.PP
+.nf
+     pos = %scan (\[char39]D\[char39] : source : 2 : 4);
+.fi
+
+After the previous assignment, the value of pos is 5 because the \[char39]D\[char39] is found when the search starts at position 2 for a length of 4\[char46]
+
+
+.SH EXAMPLE
+
+.PP
+.nf
+     pos = %scan (\[char39]abc\[char39] : source);
+.fi
+
+After the previous assignment, the value of pos is 0 because \[char39]abc\[char39] is not found in \[char39]Dr\[char46] Doolittle\[char39]\[char46]
+
+
+.SH EXAMPLE
+
+.PP
+.nf
      pos = %scan (\[char39]Dr\[char46]\[char39] : source : 2);
-     // After the EVAL, pos = 0 because \[char39]Dr\[char46]\[char39] is not found in
-     // \[char39]Dr\[char46] Doolittle\[char39], if the search starts at position 2\[char46]
+.fi
+
+After the previous assignment, the value of pos is 0 because \[char39]Dr\[char46]\[char39] is not found in \[char39]Dr\[char46] Doolittle\[char39], if the search starts at position 2\[char46]
+
+
+.SH EXAMPLE
+
+.PP
+.nf
      srchFld = \[char39]Dr\[char46]\[char39];
      srchFldVar = \[char39]Dr\[char46]\[char39];
      pos = %scan (srchFld : source);
      posTrim = %scan (%trimr(srchFld) : source);
-     posVar = %scan (srchFldVar : source);          // After the EVAL, pos = 0 because srchFld is a 10-byte field, so
-     // the search argument is \[char39]Dr\[char46]\[char39] followed by seven blanks\[char46]  However,
-     // posTrim and posVar are both 1, since the %TRIMR and srchFldVar
-     // scans both use a 3-byte search argument \[char39]Dr\[char46]\[char39], no trailing blanks\[char46]
- /END-FREE
+     posVar = %scan (srchFldVar : source);
 .fi
 
+After the previous statements, the value of pos is 0 because srchFld is a 10-byte field, so the search argument is \[char39]Dr\[char46]\[char39] followed by seven blanks\[char46] However, the values of posTrim and posVar are both 1, since the \fB%TRIMR\fR and srchFldVar scans both use a 3-byte search argument \[char39]Dr\[char46]\[char39], with no trailing blanks\[char46]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+For an example comparing \fB%SCAN\fR and \fB%SCANR\fR, see Example using \fB%SCAN\fR and \fB%SCANR\fR together\[char46]
 
 .SH SEE ALSO
 .BR %TRIMR (3RPG),
-.BR %FOUND (3RPG)
+.BR %FOUND (3RPG),
+.BR %SCANR (3RPG)

@@ -1,26 +1,41 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh532.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dextnam.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH EXTNAME 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH EXTNAME 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 EXTNAME
 .SH SYNOPSIS
 .nf
-EXTNAME(file-name{:format-name}{:*ALL| *INPUT|*OUTPUT|*KEY})
+EXTNAME(file-name{:format-name}{:*ALL| *INPUT|*OUTPUT|*KEY|*NULL})
 .fi
 .SH DESCRIPTION
-The \fIEXTNAME\fR keyword is used to specify the name of the file which contains the field descriptions used as the subfield description for the data structure being defined\[char46]
+The \fIEXTNAME\fR keyword is used to specify the name of the file that contains the field descriptions used as the subfield description for the data structure being defined\[char46]
 
 
 The file_name parameter is required\[char46] Optionally a format name may be specified to direct the compiler to a specific format within a file\[char46] If format_name parameter is not specified the first record format is used\[char46]
 
 
-The file-name and format-name parameters can be either names or character literals\[char46] If a character literal is specified, the file or format name name must be specified in the correct case\[char46] For example, if the external file is \fIMYFILE\fR, the file-name parameter could be specified as a name in mixed case such as myFile or myfile, but if specified as a literal it must be \[char39]\fIMYFILE\fR\[char39]\[char46] If the file-name is a character literal, it can be in any of the following forms
+.IP "" 2
+.RS
+\[bu] 
 
+ In a free-form definition, the file-name and format-name parameters must be character literals or named constants representing character literals\[char46] If a parameter is a named constant, the constant must be defined prior to the definition statement\[char46] 
+
+
+.RE
+.IP "" 2
+.RS
+\[bu] 
+
+ In a fixed-form definition, the file-name and format-name parameters can be either names or character literals\[char46] 
+
+
+.RE
+.PP
 
 .PP
 .nf
@@ -29,38 +44,31 @@ The file-name and format-name parameters can be either names or character litera
 \[char39]*LIBL/FILE\[char39]
 .fi
 
-The last parameter specifies which fields in the external record to extract:
+The remaining extract-type parameters specify which fields in the external record to extract\[char46]
 
 
 .IP "" 2
 .RS
-\[bu] 
-
-  extracts all fields\[char46]
+\[bu] \fI*ALL\fR  extracts all fields\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] 
-
-  extracts just input capable fields\[char46]
+\[bu] \fI*INPUT\fR  extracts just input capable fields\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] 
-
-  extracts just output capable fields\[char46]
+\[bu] \fI*OUTPUT\fR  extracts just output capable fields\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] 
-
-  extracts just key fields\[char46]
+\[bu] \fI*KEY\fR  extracts just key fields\[char46]
 .RE
 .PP
 
-If this parameter is not specified, the compiler extracts the fields of the input buffer\[char46]
+\fI*NULL\fR can also be specified to indicate that instead of defining the subfields with the same data types as the fields in the file, the subfields are all indicators\[char46] For a database file, these indicators have the same layout as the null byte map for the record\[char46]
 
 
+If no extract-type is specified, or only \fI*NULL\fR is specified, the compiler extracts the fields of the input buffer\[char46]
 
 
 
@@ -71,19 +79,22 @@ If the format-name is not specified, the record defaults to the first record in 
 .RE
 .IP 2. 2
 .RS
-For \fI*INPUT\fR and \fI*OUTPUT\fR, subfields included in the data structure occupy the same start positions as in the external record description\[char46]
+
+
+ For \fI*INPUT\fR and \fI*OUTPUT\fR when \fI*NULL\fR is not specified, subfields included in the data structure occupy the same start positions as in the external record description\[char46] When \fI*NULL\fR is specified, the indicators occupy the same start position as the null indicators in the null byte map for the external record for a database file\[char46] For other types of files, the start positions of the indicator subfields are assigned sequentially\[char46] 
+
+
 .RE
 .PP
 
-If the data structure definition contains an E in position 22, and the \fIEXTNAME\fR keyword is not specified, the name specified in positions 7-21 is used\[char46]
+If an externally-described data structure (\fIEXT\fR keyword for a free-form definition, or E in position 22 for a free-form definition, and the \fIEXTNAME\fR keyword is not specified, the data structure name is used for the external name\[char46]
 
 
-The compiler will generate the following definition specification entries for all fields of the externally described data structure:
 
 
 .IP "" 2
 .RS
-\[bu] Subfield name (Name will be the same as the external name, unless the \fIALIAS\fR  keyword is specified for the data structure, or the is field renamed by the \fIEXTFLD\fR  keyword, or the \fIPREFIX\fR  keyword on a definition specification is used to apply a prefix)\[char46]
+\[bu] Subfield name (Name will be the same as the external name, unless the \fIALIAS\fR  keyword is specified for the data structure, or the field is renamed by the \fIEXTFLD\fR  keyword, or the \fIPREFIX\fR  keyword on a definition specification is used to apply a prefix)\[char46]
 .RE
 .IP "" 2
 .RS
@@ -95,23 +106,19 @@ The compiler will generate the following definition specification entries for al
 .RE
 .PP
 
+
+
+If \fI*NULL\fR is specified, the subfield name will be generated in the same way\[char46] However, the length will be 1 and the data type will be indicator\[char46]
+
+
 All data structure keywords except \fILIKEDS\fR and \fILIKEREC\fR are allowed with the \fIEXTNAME\fR keyword\[char46]
 
 
+However, if \fI*NULL\fR is specified, \fICCSID\fR(\fI*EXACT\fR) is not allowed\[char46]
 
 
+Data structures that are defined with the extract-type \fI*NULL\fR cannot be used with I/O operations\[char46]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+Data structures that are defined with no extract-type cannot be used with I/O operations\[char46]
 

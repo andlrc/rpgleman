@@ -1,41 +1,38 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh533.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dextpgm.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH EXTPGM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH EXTPGM 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 EXTPGM
 .SH SYNOPSIS
 .nf
-EXTPGM(name)
+EXTPGM{(name)}
 .fi
 .SH DESCRIPTION
-The \fIEXTPGM\fR keyword indicates the external name of the program whose prototype is being defined\[char46] The name can be a character constant or a character variable\[char46] When \fIEXTPGM\fR is specified, then a dynamic call will be done\[char46]
+The \fIEXTPGM\fR keyword indicates that the prototype represents a dynamic call to a program\[char46]
 
 
-If neither \fIEXTPGM\fR or \fIEXTPROC\fR is specified for a prototype, then the compiler assumes that you are defining a prototype for a procedure, and assigns it the external name found in positions 7-21\[char46]
+The parameter specifies the external name of the program whose prototype is being defined\[char46] The name can be a character constant or a character variable\[char46]
+
+
+
+
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-PR qcmdExc EXTPGM;
+     \[char46]\[char46]\[char46]
+.fi
+
+
+
+If neither \fIEXTPGM\fR or \fIEXTPROC\fR is specified for a prototype, then the compiler assumes that you are defining a prototype for a procedure, and assigns the external procedure name to be the upper-case form of the prototype name\[char46]
 
 
 Any parameters defined by a prototype or procedure interface with \fIEXTPGM\fR must be passed by reference\[char46] In addition, you cannot define a return value\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

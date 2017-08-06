@@ -1,20 +1,23 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh833.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbdif.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH DIFF 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH DIFF 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %DIFF - Difference Between Two Date, Time, or Timestamp Values
 .SH SYNOPSIS
 .nf
-%DIFF(op1:op2:*MSECONDS|*SECONDS|*MINUTES|*HOURS|*DAYS|*MONTHS|*YEARS)
-%DIFF(op1:op2:*MS|*S|*MN|*H|*D|*M|*Y)
+%DIFF(op1 : op2 : unit {: frac })
 .fi
 .SH DESCRIPTION
-\fB%DIFF\fR produces the difference (duration) between two date or time values\[char46] The first and second parameters must have the same, or compatible types\[char46] The following combinations are possible:
+
+
+The unit can be \fI*MSECONDS\fR, \fI*SECONDS\fR, \fI*MINUTES\fR, \fI*HOURS\fR, \fI*DAYS\fR, \fI*MONTHS\fR, or \fI*YEARS\fR\[char46] You can also use the following abbreviated forms of the unit: \fI*MS\fR, \fI*S\fR, \fI*MN\fR, \fI*H\fR, \fI*D\fR, \fI*M\fR, or \fI*Y\fR\[char46]
+
+
 
 
 .IP "" 2
@@ -39,9 +42,6 @@
 .RE
 .PP
 
-The third parameter specifies the unit\[char46] The following units are valid:
-
-
 .IP "" 2
 .RS
 \[bu] For two dates or a date and a timestamp: \fI*DAYS\fR, \fI*MONTHS\fR, and \fI*YEARS\fR
@@ -56,6 +56,12 @@ The third parameter specifies the unit\[char46] The following units are valid:
 .RE
 .PP
 
+The results for \fI*MONTHS\fR and \fI*YEARS\fR may be surprising\[char46] See Unexpected Results\[char46]
+
+
+If the third operand is \fI*SECONDS\fR or \fI*S\fR, and both of the operands are timestamps, you can specify a fourth parameter indicating the number of fractional seconds to return\[char46] You can specify a value between 0 and 12\[char46] This represents the number of decimal positions in the returned number of seconds\[char46]
+
+
 The difference is calculated by subtracting the second operand from the first\[char46]
 
 
@@ -65,17 +71,13 @@ The result is rounded down, with any remainder discarded\[char46] For example, 6
 The value returned by the function is compatible with both type numeric and type duration\[char46] You can add the result to a number (type numeric) or a date, time, or timestamp (type duration)\[char46]
 
 
-If you ask for the difference in microseconds between two timestamps that are more than 32 years 9 months apart, you will exceed the 15-digit limit for duration values\[char46] This will result in an error or truncation\[char46]
+If you ask for the difference in microseconds between two timestamps that are more than 32 years 9 months apart, you will exceed the 15-digit limit for duration values\[char46] This will result in an error or truncation\[char46] However, you can obtain the number of microseconds between any two dates by asking for the difference in seconds with 6 fractional seconds, and then multiply the resulting value by 1000000\[char46] For example, if the difference in seconds is 1041379205\[char46]123456, then the difference in microseconds is 1041379205123456\[char46]
 
 
 For more information, see Date Operations or Built-in Functions\[char46]
 
-
-
 .SH EXAMPLE
-
 Using the result of \fB%DIFF\fR as a numeric value
-
 .PP
 .nf
 D due_date        S               D   INZ(D\[char39]2005-06-01\[char39])
@@ -83,6 +85,7 @@ D today           S               D   INZ(D\[char39]2004-09-23\[char39])
 D num_days        S             15P 0
 
 D start_time      S               Z
+
 D time_taken      S             15P 0
 
  /FREE
@@ -111,18 +114,12 @@ D time_taken      S             15P 0
      time_taken = %DIFF (%timestamp() : start_time : *SECONDS);
 
  /END-FREE
-
 .fi
 
-
-
 .SH EXAMPLE
-
 Using the result of \fB%DIFF\fR as a duration
-
 .PP
 .nf
-
 D estimated_end\[char46]\[char46]\[char46]
 D                 S               D
 D prev_start      S               D   INZ(D\[char39]2003-06-21\[char39])
@@ -148,24 +145,6 @@ D prev_end        S               D   INZ(D\[char39]2003-06-24\[char39])
 
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %TIMESTAMP (3RPG),
 .BR %DATE (3RPG)

@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh557.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/drtnparm.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH RTNPARM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH RTNPARM 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 RTNPARM
 .SH DESCRIPTION
@@ -19,8 +19,6 @@ The impact on performance due to the \fIRTNPARM\fR keyword will vary from having
 
 
 Using \fIRTNPARM\fR for a procedure prototype may also reduce the amount of automatic storage required for other procedures that contain calls to that procedure\[char46] For example, if procedure \fIMYCALLER\fR contains a call to procedure \fIMYPROC\fR that returns a large value, procedure \fIMYCALLER\fR will require additional automatic storage (even if \fIMYCALLER\fR does not actually call procedure \fIMYPROC\fR at run time)\[char46] In some cases, procedure \fIMYCALLER\fR will not compile due to excessive automatic storage requirements; in other cases, \fIMYCALLER\fR is not able to be called because the total automatic storage on the call stack would exceed the maximum\[char46] Using \fIRTNPARM\fR avoids this problem with additional automatic storage\[char46]
-
-
 
 
 
@@ -51,32 +49,31 @@ When \fIRTNPARM\fR is specified for the procedure, the maximum number of prototy
 .RE
 .IP 7. 2
 .RS
-The \fIRTNPARM\fR keyword is not allowed for a Java™ method call\[char46]
+The \fIRTNPARM\fR keyword is not allowed for a Javaâ¢ method call\[char46]
 .RE
 .PP
 
 The \fIRTNPARM\fR keyword applies both to a prototype definition and to a procedure-interface definition\[char46]
 
-
-
 .SH EXAMPLE
-
 Example of a procedure with the \fIRTNPARM\fR keyword
-
 .PP
 .nf
-1\[char46] The prototype for the procedureD center          pr        100000a   varying
+1\[char46] The prototype for the procedure
+D center          pr        100000a   varying
 D                                     rtnparm
 D   text                     50000a   const varying
 D   len                         10i 0 value
 
 
-2\[char46] Calling the procedureD title           s            100a   varying
+2\[char46] Calling the procedure
+D title           s            100a   varying
  /free
     title = center (\[char39]Chapter 1\[char39] : 20);
     // title = \[char39]     Chapter 1     \[char39]
 
-3\[char46]The procedureP center          b                   export
+3\[char46]The procedure
+P center          b                   export
 D center          pi        100000a   varying
 D                                     rtnparm
 D   text                     50000a   const varying
@@ -99,12 +96,8 @@ D endBlanks       s             10i 0
 P center          e
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fB%PARMS\fR and calling \fICEEDOD\fR with the \fIRTNPARM\fR keyword
-
 .PP
 .nf
 D proc            pi              a   len(16773100) varying
@@ -149,62 +142,41 @@ D   feedback                    12a   options(*omit)
     endif;
 .fi
 
-
-
 .SH EXAMPLE
-
 Calling a procedure with the \fIRTNPARM\fR keyword from another language
-
 .PP
 .nf
-1\[char46] The RPG prototypeD myproc          pr           200a   rtnparm
+1\[char46] The RPG prototype
+D myproc          pr           200a   rtnparm
 D   name                        10a   const
 
-2\[char46] A CL module calling this RPG proceduredcl &retval type(*char) len(200)
+2\[char46] A CL module calling this RPG procedure
+dcl &retval type(*char) len(200)
 
 callprc myproc parm(&retval \[char39]Jack Smith\[char39])
 .fi
 
-
-
 .SH EXAMPLE
-
 Calling a procedure with the \fIRTNPARM\fR keyword written in another language
-
 .PP
 .nf
-1\[char46] CL procedure GETLIBTEXTPGM PARM(&retText &lib)
+1\[char46] CL procedure GETLIBTEXT
+PGM PARM(&retText &lib)
 
 DCL &retText type(*char) len(50)
 DCL &lib     type(*char) len(10)
 
-/* Set &retText to the library text */rtvobjd obj(&lib) objtype(*lib) text(&retText)
+/* Set &retText to the library text */
+rtvobjd obj(&lib) objtype(*lib) text(&retText)
 return
 
-2\[char46] RPG procedure calling this CL procedure using the RTNPARM keywordD getLibText      pr            50a   rtnparm
+2\[char46] RPG procedure calling this CL procedure using the RTNPARM keyword
+D getLibText      pr            50a   rtnparm
 D   name                        10a   const
  /free
       if getLibText(\[char39]MYLIB\[char39]) = *blanks;
           \[char46]\[char46]\[char46]
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %PARMS (3RPG),
 .BR %PARMNUM (3RPG),

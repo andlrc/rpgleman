@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh891.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbtrimr.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH TRIMR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH TRIMR 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %TRIMR - Trim Trailing Characters
 .SH SYNOPSIS
@@ -19,18 +19,9 @@ The string can be character, graphic, or \fIUCS\fR-2 data\[char46]
 If the characters to trim parameter is specified, it must be the same type as the string parameter\[char46]
 
 
-When specified as a parameter for a definition specification keyword, the string parameter must be a constant\[char46]
-
-
-
-
-
-
 
 
 For more information, see String Operations or Built-in Functions\[char46]
-
-
 
 .SH RETURN VALUE
 \fB%TRIMR\fR with only one parameter returns the given string with any trailing blanks removed\[char46]
@@ -39,9 +30,7 @@ For more information, see String Operations or Built-in Functions\[char46]
 \fB%TRIMR\fR with two parameters returns the given string with any trailing characters that are in the characters to trim parameter removed\[char46]
 
 .SH EXAMPLE
-
 \fB%TRIMR\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -51,24 +40,18 @@ D FirstName       S             10A   inz (\[char39]Chris\[char39])
 D LastName        S             10A   inz (\[char39]Smith\[char39])
 D Name            S             20A   varying
 
- * LOCATION will have the value \[char39]  Toronto, Ontario\[char39]\[char46]
- /FREE
-     Location = %trim (\[char39]  Toronto, Ontario  \[char39]);
-
+     // LOCATION will have the value \[char39]  Toronto, Ontario\[char39]\[char46]
+     Location = %trimr (\[char39]  Toronto, Ontario  \[char39]);
      // Name will have the value \[char39]Chris Smith:\[char39]\[char46]
      Name = %trimr (FirstName) + \[char39] \[char39] + %trimr (LastName) + \[char39]:\[char39];
- /END-FREE
 .fi
 
-
-
 .SH EXAMPLE
-
 Trimming characters other than blanks
-
 .PP
 .nf
-     string = \[char39](\[char39] + %trimr(\[char39]$******5\[char46]27***      \[char39] : \[char39]$*\[char39]) + \[char39])\[char39];          // string is now \[char39]($******5\[char46]27***      )\[char39]
+     string = \[char39](\[char39] + %trimr(\[char39]$******5\[char46]27***      \[char39] : \[char39]$*\[char39]) + \[char39])\[char39];
+     // string is now \[char39]($******5\[char46]27***      )\[char39]
      //
      // Nothing has been trimmed from the right-hand side because
      // the right-most character is a blank, and a blank does not
@@ -76,25 +59,4 @@ Trimming characters other than blanks
 
      string = \[char39](\[char39] + %trimr(\[char39]$******5\[char46]27***      \[char39] : \[char39]$ *\[char39]) + \[char39])\[char39];
      // string is now \[char39]($******5\[char46]27)\[char39]
-
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.SH SEE ALSO
-.BR %TRIM (3RPG)

@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh863.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbpaddr.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH PADDR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH PADDR 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %PADDR - Get Procedure Address
 .SH SYNOPSIS
@@ -24,15 +24,11 @@ The character constant can be a character or hexadecimal literal or constant nam
 
 The prototype must a prototype for a bound call\[char46] The \fIEXTPGM\fR keyword cannot be used\[char46] The entry point identified by the prototype is the procedure identified in the \fIEXTPROC\fR keyword for the prototype\[char46] If the \fIEXTPROC\fR keyword is not specified, the entry point is the the same as the prototype name (in upper case)\[char46]
 
-
-
 .SH RETURN VALUE
 \fB%PADDR\fR returns a value of type procedure pointer\[char46] The value is the address of the entry point identified by the argument\[char46]
 
 .SH EXAMPLE
-
 \fB%PADDR\fR Example with an Entry Point
-
 .PP
 .nf
 DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++
@@ -55,23 +51,5 @@ C                   EVAL      PROC1 = %PADDR (\[char39]NextProg\[char39])
 C                   CALLB     PROC1
 .fi
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Â
 

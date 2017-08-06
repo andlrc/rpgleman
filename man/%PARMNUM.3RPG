@@ -1,16 +1,14 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh866.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbparmnum.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH PARMNUM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH PARMNUM 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %PARMNUM - Return Parameter Number
 .SH DESCRIPTION
-
-
 
 
 .IP 1. 2
@@ -29,15 +27,11 @@ If the \fIRTNPARM\fR keyword is coded for a procedure, the return value is handl
 
 For more information, see Built-in Functions\[char46]
 
-
-
 .SH RETURN VALUE
 \fB%PARMNUM\fR returns the number of the parameter in the parameter list\[char46] The operand for \fB%PARMNUM\fR is the name of a parameter defined as part of a procedure interface\[char46]
 
 .SH EXAMPLE
-
 Example of \fB%PARMNUM\fR
-
 .PP
 .nf
 D  myProc         pi            10A   RTNPARM OPDESC
@@ -64,23 +58,5 @@ D   cityName                    25A   OPTIONS(*NOPASS)
        // cityName was passed
     endif;
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %PARMS (3RPG)

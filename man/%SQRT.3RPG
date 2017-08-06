@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh875.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbsqrt.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH SQRT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH SQRT 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %SQRT - Square Root of Expression
 .SH SYNOPSIS
@@ -15,15 +15,11 @@
 .SH DESCRIPTION
 For more information, see Arithmetic Operations or Built-in Functions\[char46]
 
-
-
 .SH RETURN VALUE
 \fB%SQRT\fR returns the square root of the specified numeric expression\[char46] If the operand is of type float, the result is of type float; otherwise, the result is packed decimal numeric\[char46] If the parameter has a value less than zero, exception 00101 is issued\[char46]
 
 .SH EXAMPLE
-
 \fB%SQRT\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -43,21 +39,3 @@ D f               S              4F
    // f = 489\[char46]7693
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

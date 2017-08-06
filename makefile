@@ -1,37 +1,25 @@
 MANDIR	= $(PREFIX)/usr/share/man/man3RPG
 
-all: bif dcl-ds dcl-c dcl-s dcl-pi dcl-pi-parm
+all: bif keywords
 
-bif:	%ABS %ADDR %ALLOC %BITAND %BITNOT %BITOR %BITXOR %CHAR %CHECK %CHECKR \
-	%DATE %DAYS %DEC %DECH %DECPOS %DIFF %DIV %EDITC %EDITFLT %EDITW \
-	%ELEM %EOF %EQUAL %ERROR %FIELDS %FLOAT %FOUND %GRAPH %HANDLER %HOURS \
-	%INT %INTH %KDS %LEN %LOOKUPxx %MINUTES %MONTHS %MSECONDS %NULLIND \
-	%OCCUR %OPEN %PADDR %PARMNUM %PARMS %REALLOC %REM %REPLACE %SCAN \
-	%SCANRPL %SECONDS %SHTDN %SIZE %SQRT %STATUS %STR %SUBARR %SUBDT \
-	%SUBST %THIS %TIME %TIMESTAMP %TLOOKUPxx %TRIM %TRIML %TRIMR %UCS2 \
-	%UNS %UNSH %XFOOT %XLATE %XML %YEARS 
+bif:	%ABS %ADDR %ALLOC %BITAND %BITNOT %BITOR %BITXOR %CHAR %CHECK  \
+	%CHECKR %DATE %DAYS %DEC %DECH %DECPOS %DIFF %DIV %EDITC       \
+	%EDITFLT %EDITW %ELEM %EOF %EQUAL %ERROR %FIELDS %FLOAT %FOUND \
+	%GRAPH %HANDLER %HOURS %INT %INTH %KDS %LEN %LOOKUPxx %MAX     \
+	%MIN %MINUTES %MONTHS %MSECONDS %NULLIND %OCCUR %OPEN %PADDR   \
+	%PARMNUM %PARMS %REALLOC %REM %REPLACE %SCAN %SCANRPL %SECONDS \
+	%SHTDN %SIZE %SQRT %STATUS %STR %SUBARR %SUBDT %SUBST %THIS    \
+	%TIME %TIMESTAMP %TLOOKUPxx %TRIM %TRIML %TRIMR %UCS2 %UNS     \
+	%UNSH %XFOOT %XLATE %XML %YEARS 
 
-dcl-ds:	ALIAS ALIGN ALTSEQ BASED DTAARA EXPORT EXTNAME IMPORT INZ LEN LIKEDS \
-	NOOPT OCCURS PREFIX QUALIFIED STATIC TEMPLATE \
-	dcl-ds-subf
-
-dcl-ds-subf:	ALT ALTSEQ ASCEND CTDATA DATFMT DESCEND DIM DTAARA EXTFLD \
-	EXTFMT FROMFILE INZ LEN LIKE LIKEDS LIKEREC OVERLAY PACKEVEN PERRCD \
-	PROCPTR TIMFMT TOFILE VARYING
-
-dcl-c:	CONST
-
-dcl-s:	ALT ALTSEQ ASCEND BASED CCSID CLASS CTDATA DATFMT DESCEND DIM DTAARA \
-	EXPORT EXTFMT FROMFILE IMPORT INZ LEN LIKE NOOPT PERRCD PROCPTR \
-	STATIC TEMPLATE TIMFMT TOFILE VARYING
-
-dcl-pr:	dcl-pi
-dcl-pi: ALTSEQ CCSID CLASS DATFMT DIM EXTPGM EXTPROC LEN LIKE LIKEDS LIKEREC \
-	OPDESC PROCPTR RTNPARM STATIC TIMFMT VARYING \
-	dcl-pi-parm
-
-dcl-pi-parm: ALTSEQ ASCEND CCSID CLASS CONST DATFMT DESCEND DIM LIKEFILE LIKE \
-	LIKEDS LIKEREC NOOPT OPTIONS PROCPTR TIMFMT VALUE VARYING
+keywords: ALIAS ALIGN ALT ALTSEQ ASCEND BASED BINDEC CCSID CHAR CLASS  \
+	CONST CTDATA DATE DATFMT DESCEND DIM DTAARA EXPORT EXT EXTFLD  \
+	EXTFMT EXTNAME EXTPGM EXTPROC FLOAT FROMFILE GRAPH IMPORT INT  \
+	IND INZ LEN LIKE LIKEDS LIKEFILE LIKEREC NOOPT NULLIND OBJECT  \
+	OCCURS OPDESC OPTIONS OVERLAY PACKED PACKEVEN PERRCD POINTER   \
+	POS PREFIX PROCPTR PSDS QUALIFIED RTNPARM STATIC TEMPLATE TIME \
+	TIMESTAMP TIMFMT TOFILE UCS2 UNS VALUE VARCHAR VARGRAPH        \
+	VARUCS2 VARYING ZONED
 
 clean:
 	-rm man/*.3RPG
@@ -45,248 +33,288 @@ uninstall:
 
 # BIF
 \%ABS:
-	./getrpgleman 814
+	./getrpgleman bbabs
 \%ADDR:
-	./getrpgleman 815
+	./getrpgleman bbaddr
 \%ALLOC:
-	./getrpgleman 816
+	./getrpgleman bballoc
 \%BITAND:
-	./getrpgleman 817
+	./getrpgleman bband
 \%BITNOT:
-	./getrpgleman 818
+	./getrpgleman bbnot
 \%BITOR:
-	./getrpgleman 819
+	./getrpgleman bbor
 \%BITXOR:
-	./getrpgleman 820
+	./getrpgleman bbxor
 \%CHAR:
-	./getrpgleman 822
+	./getrpgleman bbchar
 \%CHECK:
-	./getrpgleman 823
+	./getrpgleman bbchk
 \%CHECKR:
-	./getrpgleman 824
+	./getrpgleman bbchkr
 \%DATE:
-	./getrpgleman 825
+	./getrpgleman bbdate
 \%DAYS:
-	./getrpgleman 826
+	./getrpgleman bbday
 \%DEC:
-	./getrpgleman 827
+	./getrpgleman bbdec
 \%DECH:
-	./getrpgleman 830
+	./getrpgleman bbdech
 \%DECPOS:
-	./getrpgleman 832
+	./getrpgleman bbdecp
 \%DIFF:
-	./getrpgleman 833
+	./getrpgleman bbdif
 \%DIV:
-	./getrpgleman 834
+	./getrpgleman bbdiv
 \%EDITC:
-	./getrpgleman 835
+	./getrpgleman bbeditc
 \%EDITFLT:
-	./getrpgleman 836
+	./getrpgleman bbeditf
 \%EDITW:
-	./getrpgleman 837
+	./getrpgleman bbeditw
 \%ELEM:
-	./getrpgleman 838
+	./getrpgleman bbelem
 \%EOF:
-	./getrpgleman 839
+	./getrpgleman bbeof
 \%EQUAL:
-	./getrpgleman 840
+	./getrpgleman bbequal
 \%ERROR:
-	./getrpgleman 841
+	./getrpgleman bberror
 \%FIELDS:
-	./getrpgleman 842
+	./getrpgleman bbfields
 \%FLOAT:
-	./getrpgleman 843
+	./getrpgleman bbfloat
 \%FOUND:
-	./getrpgleman 844
+	./getrpgleman bbfound
 \%GRAPH:
-	./getrpgleman 845
+	./getrpgleman bbgraph
 \%HANDLER:
-	./getrpgleman 846
+	./getrpgleman bbhandl
 \%HOURS:
-	./getrpgleman 847
+	./getrpgleman bbhou
 \%INT:
-	./getrpgleman 848
+	./getrpgleman bbint
 \%INTH:
-	./getrpgleman 849
+	./getrpgleman bbinth
 \%KDS:
-	./getrpgleman 850
+	./getrpgleman bbkds
 \%LEN:
-	./getrpgleman 851
+	./getrpgleman bblen
 \%LOOKUPxx:
-	./getrpgleman 855
+	./getrpgleman bbloo
+\%MAX:
+	./getrpgleman bbmaxvalue
+\%MIN:
+	./getrpgleman bbminvalue
 \%MINUTES:
-	./getrpgleman 857
+	./getrpgleman bbmin
 \%MONTHS:
-	./getrpgleman 858
+	./getrpgleman bbmon
 \%MSECONDS:
-	./getrpgleman 859
+	./getrpgleman bbmsec
 \%NULLIND:
-	./getrpgleman 860
+	./getrpgleman bbnull
 \%OCCUR:
-	./getrpgleman 861
+	./getrpgleman bboccur
 \%OPEN:
-	./getrpgleman 862
+	./getrpgleman bbopen
 \%PADDR:
-	./getrpgleman 863
+	./getrpgleman bbpaddr
 \%PARMNUM:
-	./getrpgleman 866
+	./getrpgleman bbparmnum
 \%PARMS:
-	./getrpgleman 865
+	./getrpgleman bbparm
 \%REALLOC:
-	./getrpgleman 867
+	./getrpgleman bbreall
 \%REM:
-	./getrpgleman 868
+	./getrpgleman bbrem
 \%REPLACE:
-	./getrpgleman 869
+	./getrpgleman bbrepl
 \%SCAN:
-	./getrpgleman 870
+	./getrpgleman bbscan
+\%SCANR:
+	./getrpgleman bbscanr
 \%SCANRPL:
-	./getrpgleman 871
+	./getrpgleman bbscanrp
 \%SECONDS:
-	./getrpgleman 872
+	./getrpgleman bbsec
 \%SHTDN:
-	./getrpgleman 873
+	./getrpgleman bbshut
 \%SIZE:
-	./getrpgleman 874
+	./getrpgleman bbsize
 \%SQRT:
-	./getrpgleman 875
+	./getrpgleman bbsqrt
 \%STATUS:
-	./getrpgleman 876
+	./getrpgleman bbstat
 \%STR:
-	./getrpgleman 877
+	./getrpgleman bbstr
 \%SUBARR:
-	./getrpgleman 880
+	./getrpgleman bbsubarr
 \%SUBDT:
-	./getrpgleman 881
+	./getrpgleman bbsubd
 \%SUBST:
-	./getrpgleman 882
+	./getrpgleman bbsubs9
 \%THIS:
-	./getrpgleman 885
+	./getrpgleman bbthis
 \%TIME:
-	./getrpgleman 886
+	./getrpgleman bbtime
 \%TIMESTAMP:
-	./getrpgleman 887
+	./getrpgleman bbtmst
 \%TLOOKUPxx:
-	./getrpgleman 888
+	./getrpgleman bbtloo
 \%TRIM:
-	./getrpgleman 889
+	./getrpgleman bbtrim
 \%TRIML:
-	./getrpgleman 890
+	./getrpgleman bbtriml
 \%TRIMR:
-	./getrpgleman 891
+	./getrpgleman bbtrimr
 \%UCS2:
-	./getrpgleman 892
+	./getrpgleman bbucs2
 \%UNS:
-	./getrpgleman 893
+	./getrpgleman bbuns
 \%UNSH:
-	./getrpgleman 894
+	./getrpgleman bbunsh
 \%XFOOT:
-	./getrpgleman 895
+	./getrpgleman bbxfoot
 \%XLATE:
-	./getrpgleman 896
+	./getrpgleman bbxlat
 \%XML:
-	./getrpgleman 897
+	./getrpgleman bbxml
 \%YEARS:
-	./getrpgleman 898
+	./getrpgleman bbyear
 
-# DCL-DS
+# Keywords
 ALIAS:
-	./getrpgleman 515
+	./getrpgleman dalias
 ALIGN:
-	./getrpgleman 516
-ALTSEQ:
-	./getrpgleman 518
-BASED:
-	./getrpgleman 520
-DTAARA:
-	./getrpgleman 528
-EXPORT:
-	./getrpgleman 529
-EXTNAME:
-	./getrpgleman 532
-IMPORT:
-	./getrpgleman 536
-INZ:
-	./getrpgleman 537
-LEN:
-	./getrpgleman 538
-LIKEDS:
-	./getrpgleman 542
-NOOPT:
-	./getrpgleman 547
-OCCURS:
-	./getrpgleman 548
-PREFIX:
-	./getrpgleman 554
-QUALIFIED:
-	./getrpgleman 556
-STATIC:
-	./getrpgleman 558
-TEMPLATE:
-	./getrpgleman 560
-
-# DCL-DS-SUBF
+	./getrpgleman dalign
 ALT:
-	./getrpgleman 517
+	./getrpgleman dalt
+ALTSEQ:
+	./getrpgleman daltsq
 ASCEND:
-	./getrpgleman 519
-CTDATA:
-	./getrpgleman 524
-DATFMT:
-	./getrpgleman 525
-DESCEND:
-	./getrpgleman 526
-DIM:
-	./getrpgleman 527
-EXTFLD:
-	./getrpgleman 530
-EXTFMT:
-	./getrpgleman 531
-FROMFILE:
-	./getrpgleman 535
-LIKE:
-	./getrpgleman 540
-LIKEREC:
-	./getrpgleman 546
-OVERLAY:
-	./getrpgleman 551
-PACKEVEN:
-	./getrpgleman 552
-PERRCD:
-	./getrpgleman 553
-PROCPTR:
-	./getrpgleman 555
-TIMFMT:
-	./getrpgleman 562
-TOFILE:
-	./getrpgleman 563
-VARYING:
-	./getrpgleman 565
-
-# DCL-C
-CONST:
-	./getrpgleman 523
-
-# DCL-S:
+	./getrpgleman dascend
+BASED:
+	./getrpgleman dbased
+BINDEC:
+	./getrpgleman dkwbindec
 CCSID:
-	./getrpgleman 521
+	./getrpgleman dccsid
+CHAR:
+	./getrpgleman dkwchar
 CLASS:
-	./getrpgleman 522
-
-# DCL-PI:
+	./getrpgleman dclass
+CONST:
+	./getrpgleman dconst
+CTDATA:
+	./getrpgleman dctdata
+DATE:
+	./getrpgleman dkwdate
+DATFMT:
+	./getrpgleman ddatfmt
+DESCEND:
+	./getrpgleman ddescnd
+DIM:
+	./getrpgleman ddim
+DTAARA:
+	./getrpgleman ddtaara
+EXPORT:
+	./getrpgleman dexport
+EXT:
+	./getrpgleman dkwext
+EXTFLD:
+	./getrpgleman dextfld
+EXTFMT:
+	./getrpgleman dextfmt
+EXTNAME:
+	./getrpgleman dextnam
 EXTPGM:
-	./getrpgleman 533
+	./getrpgleman dextpgm
 EXTPROC:
-	./getrpgleman 534
-OPDESC:
-	./getrpgleman 549
-RTNPARM:
-	./getrpgleman 557
-
-# DCL-PI-PARM:
+	./getrpgleman dextprc
+FLOAT:
+	./getrpgleman dkwfloat
+FROMFILE:
+	./getrpgleman dfrfile
+GRAPH:
+	./getrpgleman dkwgraph
+IMPORT:
+	./getrpgleman dimport
+INT:
+	./getrpgleman dkwint
+IND:
+	./getrpgleman dkwind
+INZ:
+	./getrpgleman dinz
+LEN:
+	./getrpgleman dkwlen
+LIKE:
+	./getrpgleman dlike
+LIKEDS:
+	./getrpgleman dlikeds
 LIKEFILE:
-	./getrpgleman 543
+	./getrpgleman dlikefile
+LIKEREC:
+	./getrpgleman dlikerec
+NOOPT:
+	./getrpgleman dnoopt
+NULLIND:
+	./getrpgleman dkwnullind
+OBJECT:
+	./getrpgleman dkwobject
+OCCURS:
+	./getrpgleman doccurs
+OPDESC:
+	./getrpgleman dopdesc
 OPTIONS:
-	./getrpgleman 550
+	./getrpgleman doptns
+OVERLAY:
+	./getrpgleman doverly
+PACKED:
+	./getrpgleman dkwpacked
+PACKEVEN:
+	./getrpgleman dpackev
+PERRCD:
+	./getrpgleman dperrcd
+POINTER:
+	./getrpgleman dkwpointer
+POS:
+	./getrpgleman dkwpos
+PREFIX:
+	./getrpgleman dprefix
+PROCPTR:
+	./getrpgleman dprcptr
+PSDS:
+	./getrpgleman dkwpsds
+QUALIFIED:
+	./getrpgleman dqualif
+RTNPARM:
+	./getrpgleman drtnparm
+STATIC:
+	./getrpgleman dstatic
+TEMPLATE:
+	./getrpgleman dtemplatekw
+TIME:
+	./getrpgleman dkwtime
+TIMESTAMP:
+	./getrpgleman dkwtimestamp
+TIMFMT:
+	./getrpgleman dtimfmt
+TOFILE:
+	./getrpgleman dtofile
+UCS2:
+	./getrpgleman dkwucs2
+UNS:
+	./getrpgleman dkwuns
 VALUE:
-	./getrpgleman 564
+	./getrpgleman dvalue
+VARCHAR:
+	./getrpgleman dkwvarchar
+VARGRAPH:
+	./getrpgleman dkwvargraph
+VARUCS2:
+	./getrpgleman dkwvarucs2
+VARYING:
+	./getrpgleman dvaryg
+ZONED:
+	./getrpgleman dkwzoned

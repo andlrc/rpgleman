@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh859.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbmsec.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH MSECONDS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH MSECONDS 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %MSECONDS - Number of Microseconds
 .SH SYNOPSIS
@@ -19,29 +19,16 @@
 
 
 
-\fB%MSECONDS\fR can only be the right-hand value in an addition or subtraction operation\[char46] The left-hand value must be a time or timestamp\[char46] The result is a time or timestamp value with the appropriate number of microseconds added or subtracted\[char46] For a time, the resulting value is in \fI*ISO\fR format\[char46]
+\fB%MSECONDS\fR can only follow the plus or minus sign in an addition or subtraction expression\[char46] The value before the plus or minus sign must be a time or timestamp\[char46] The result is a time or timestamp value with the appropriate number of microseconds added or subtracted\[char46] For a time, the resulting value is in \fI*ISO\fR format\[char46]
 
 
-For an example of date and time arithmetic operations, see Figure 232\[char46]
+You can also use \fB%SECONDS\fR to add or subtract microseconds or any other size of fractional seconds such as milliseconds to a timestamp by specifying a value with decimal positions\[char46] \fB%SECONDS(\[char46]000005)\fR and \fB%MSECONDS(5)\fR both represent 5 microseconds\[char46] \fB%SECONDS(\[char46]123)\fR represents 123 milliseconds\[char46] See \fB%SECONDS\fR (Number of Seconds) for more information\[char46]
+
+
+For an example of date and time arithmetic operations, see Figure 1\[char46]
 
 
 For more information, see Date Operations or Built-in Functions\[char46]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.SH SEE ALSO
+.BR %SECONDS (3RPG)

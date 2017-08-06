@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh542.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dlikeds.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH LIKEDS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH LIKEDS 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 LIKEDS
 .SH SYNOPSIS
@@ -22,14 +22,13 @@ A data structure defined using \fILIKEDS\fR is automatically qualified even if t
 \fILIKEDS\fR can be coded for subfields of a qualified data structure\[char46] When \fILIKEDS\fR is coded on a data structure subfield definition, the subfield data structure is automatically defined as \fIQUALIFIED\fR\[char46] Subfields in a \fILIKEDS\fR subfield data structure are referenced in fully qualified form: "ds\[char46]subf\[char46]subfa"\[char46] Subfields defined with \fILIKEDS\fR are themselves data structures, and can be used wherever a data structure is required\[char46]
 
 
-The values of the \fIALIGN\fR and \fIALTSEQ\fR keywords are inherited by the new data structure\[char46] The values of the \fIOCCURS\fR, \fIDIM\fR, \fINOOPT\fR, and \fIINZ\fR keywords are not inherited\[char46] To initialize the subfields in the same way as the parent data structure, specify \fIINZ\fR(\fI*LIKEDS\fR)\[char46]
+The values of the \fIALIGN\fR and \fIALTSEQ\fR keywords are inherited by the new data structure\[char46] The values of the \fIOCCURS\fR, \fIDIM\fR, \fINOOPT\fR, \fINULLIND\fR, and \fIINZ\fR keywords are not inherited\[char46] To initialize the subfields in the same way as the parent data structure, specify \fIINZ\fR(\fI*LIKEDS\fR)\[char46]
 
 
+However, the values of the \fIDIM\fR, \fINOOPT\fR, and \fINULLIND\fR keywords specified for the subfields of the parent data structure are inherited by the new data structure\[char46]
 
 .SH EXAMPLE
-
 Defining data structures using \fILIKEDS\fR
-
 .PP
 .nf
  * Data structure qualDs is a qualified data structure
@@ -65,12 +64,8 @@ D likeUnqual      DS                  LIKEDS(unqualDs)
         dsply b1;           // displays \[char39]xyz\[char39]
 .fi
 
-
-
 .SH EXAMPLE
-
 Using \fIINZ\fR(\fI*LIKEDS\fR)
-
 .PP
 .nf
 D sysName         DS                  qualified
@@ -83,12 +78,8 @@ D userSpace       DS                  LIKEDS(sysName) INZ(*LIKEDS)
 C                   eval      userSpace\[char46]obj = \[char39]TEMPSPACE\[char39]
 .fi
 
-
-
 .SH EXAMPLE
-
 Using a data structure parameter in a subprocedure
-
 .PP
 .nf
 P createSpace     B
@@ -102,21 +93,3 @@ D  name                               LIKEDS(sysName)
  /end-free
 P createSpace     E
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

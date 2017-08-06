@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh868.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbrem.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH REM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH REM 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %REM - Return Integer Remainder
 .SH SYNOPSIS
@@ -13,9 +13,6 @@
 %REM(n:m)
 .fi
 .SH DESCRIPTION
-\fB%REM\fR and \fB%DIV\fR have the following relationship:
-
-
 .PP
 .nf
 %REM(A:B) = A - (%DIV(A:B) * B)
@@ -26,15 +23,11 @@ If the operands are constants that can fit in 8-byte integer or unsigned fields,
 
 For more information, see Arithmetic Operations or Built-in Functions\[char46]
 
-
-
 .SH RETURN VALUE
 \fB%REM\fR returns the remainder that results from dividing operands n by m\[char46] The two operands must be numeric values with zero decimal positions\[char46] If either operand is a packed, zoned, or binary numeric value, the result is packed numeric\[char46] If either operand is an integer numeric value, the result is integer\[char46] Otherwise, the result is unsigned numeric\[char46] Float numeric operands are not allowed\[char46] The result has the same sign as the dividend\[char46] (See also \fB%DIV\fR (Return Integer Portion of Quotient)\[char46])
 
 .SH EXAMPLE
-
 \fB%DIV\fR and \fB%REM\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -51,23 +44,5 @@ D E               S             10I 0
     E = DIV*B + REM;  // E is now 123
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %DIV (3RPG)

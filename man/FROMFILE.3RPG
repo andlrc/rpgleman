@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh535.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dfrfile.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH FROMFILE 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH FROMFILE 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 FROMFILE
 .SH SYNOPSIS
@@ -17,22 +17,4 @@ The \fIFROMFILE\fR keyword is used to specify the file with input data for the p
 
 
 See also \fITOFILE\fR(file_name)\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

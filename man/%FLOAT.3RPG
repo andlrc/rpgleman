@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh843.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbfloat.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH FLOAT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH FLOAT 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %FLOAT - Convert to Floating Format
 .SH SYNOPSIS
@@ -14,9 +14,6 @@
 .fi
 .SH DESCRIPTION
 \fB%FLOAT\fR converts the value of the expression to float format\[char46] This built-in function may only be used in expressions\[char46]
-
-
-If the parameter is a character expression, the following rules apply:
 
 
 .IP "" 2
@@ -43,12 +40,8 @@ If the parameter is a character expression, the following rules apply:
 
 For more information, see Conversion Operations or Built-in Functions\[char46]
 
-
-
 .SH EXAMPLE
-
 \fB%FLOAT\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -73,21 +66,3 @@ D result4         s              8f
    result4 = %float (c15b);    //  "result4" is now  5\[char46]2E0
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

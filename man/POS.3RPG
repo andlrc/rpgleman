@@ -1,0 +1,49 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dkwpos.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH POS 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+POS
+.SH SYNOPSIS
+.nf
+POS(starting-position)
+.fi
+.SH DESCRIPTION
+The \fIPOS\fR keyword is used in a free-form subfield definition to specify the starting position of the subfield in the data structure\[char46]
+
+
+The starting-position parameter must be a value between 1 and the length of the data structure\[char46]
+
+
+The parameter can be a literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46]
+
+
+
+
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-DS indds LEN(99);
+      exit IND POS(3);
+      refresh IND POS(5);
+      cancel IND pos(12);
+      sflclr IND pos(55);
+      sfldsp IND pos(56);
+   END-DS;
+.fi
+
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-DS Qwc JOBI0100_t QUALIFIED;
+      Job_Type CHAR(1) POS(61);
+      Job_Subtype CHAR(1) POS(62);
+      Default_Wait INT(10) POS(73);
+   END-DS;
+.fi

@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh836.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbeditf.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH EDITFLT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH EDITFLT 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %EDITFLT - Convert to Float External Representation
 .SH SYNOPSIS
@@ -21,12 +21,8 @@ If specified as a parameter to a definition specification keyword, the parameter
 
 For more information, see Conversion Operations or Built-in Functions\[char46]
 
-
-
 .SH EXAMPLE
-
 \fB%EDITFLT\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -39,21 +35,3 @@ D string          s             40a   varying
     // Value of "string" is \[char39]Float value is +1\[char46]000000000000000E+004\[char46] \[char39]
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

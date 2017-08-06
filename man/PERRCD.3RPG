@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh553.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dperrcd.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH PERRCD 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH PERRCD 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 PERRCD
 .SH SYNOPSIS
@@ -20,22 +20,4 @@ The numeric_constant parameter must be a value greater than 0 with no decimal po
 
 
 The \fIPERRCD\fR keyword is valid only when the keyword \fIFROMFILE\fR, \fITOFILE\fR, or \fICTDATA\fR is specified\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

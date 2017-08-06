@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh548.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/doccurs.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH OCCURS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH OCCURS 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 OCCURS
 .SH SYNOPSIS
@@ -30,12 +30,8 @@ If a multiple occurrence data structure contains pointer subfields, the distance
 
 The following is an example showing the storage allocation of a multiple occurrence data structure with pointer subfields\[char46]
 
-
-
 .SH EXAMPLE
-
 Storage Allocation of Multiple Occurrence Data Structure with Pointer Subfields
-
 .PP
 .nf
 *\[char46]\[char46] 1 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 2 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 3 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 4 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 5 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 6 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] 7 \[char46]\[char46]\[char46]+\[char46]\[char46]\[char46] *
@@ -49,24 +45,6 @@ D   CHR5                         5
 .fi
 
 Allocation of fields in storage\[char46] The occurrences of DS1 are 32 bytes apart, while the occurrences of DS2 are 21 bytes apart\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

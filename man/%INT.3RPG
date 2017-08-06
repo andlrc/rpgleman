@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh848.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbint.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH INT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH INT 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %INT - Convert to Integer Format
 .SH SYNOPSIS
@@ -14,9 +14,6 @@
 .fi
 .SH DESCRIPTION
 \fB%INT\fR converts the value of the expression to integer\[char46] Any decimal digits are truncated\[char46] This built-in function may only be used in expressions\[char46] \fB%INT\fR can be used to truncate the decimal positions from a float or decimal value allowing it to be used as an array index\[char46]
-
-
-If the parameter is a character expression, the following rules apply:
 
 
 .IP "" 2
@@ -44,23 +41,7 @@ If the parameter is a character expression, the following rules apply:
 For more information, see Conversion Operations or Built-in Functions\[char46]
 
 
-Figure 225 shows an example of the \fB%INT\fR built-in function\[char46]
+Figure 1 shows an example of the \fB%INT\fR built-in function\[char46]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.SH SEE ALSO
+.BR %INTH (3RPG)

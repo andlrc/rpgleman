@@ -1,31 +1,13 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh552.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dpackev.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH PACKEVEN 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH PACKEVEN 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 PACKEVEN
 .SH DESCRIPTION
 The \fIPACKEVEN\fR keyword indicates that the packed field or array has an even number of digits\[char46] The keyword is only valid for packed program-described data-structure subfields defined using \fIFROM\fR/TO positions\[char46] For a field or array element of length N, if the \fIPACKEVEN\fR keyword is not specified, the number of digits is 2N - 1; if the \fIPACKEVEN\fR keyword is specified, the number of digits is 2(N-1)\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

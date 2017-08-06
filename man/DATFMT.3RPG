@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh525.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/ddatfmt.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH DATFMT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH DATFMT 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 DATFMT
 .SH SYNOPSIS
@@ -19,7 +19,6 @@ The \fIDATFMT\fR keyword specifies the internal date format, and optionally the 
 If \fIDATFMT\fR is not specified, the Date field will have the date format and separator as specified by the \fIDATFMT\fR keyword on the control specification, if present\[char46] If none is specified on the control specification, then it will have \fI*ISO\fR format\[char46]
 
 
-See Table 33 for valid formats and separators\[char46] For more information on internal formats, see Internal and External Formats\[char46]
 
 
 
@@ -28,14 +27,5 @@ See Table 33 for valid formats and separators\[char46] For more information on i
 
 
 
-
-
-
-
-
-
-
-
-
-
+See Table 1 for valid formats and separators\[char46] For more information on internal formats, see Internal and External Formats\[char46]
 

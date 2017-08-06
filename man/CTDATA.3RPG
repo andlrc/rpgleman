@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh524.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dctdata.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH CTDATA 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH CTDATA 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 CTDATA
 .SH DESCRIPTION
@@ -13,22 +13,4 @@ The \fICTDATA\fR keyword indicates that the array or table is loaded using compi
 
 
 When an array or table is loaded at compilation time, it is compiled along with the source program and included in the program\[char46] Such an array or table does not need to be loaded separately every time the program is run\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

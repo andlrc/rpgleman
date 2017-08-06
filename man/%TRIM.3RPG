@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh889.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbtrim.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH TRIM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH TRIM 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %TRIM - Trim Characters at Edges
 .SH SYNOPSIS
@@ -19,18 +19,9 @@ The string can be character, graphic, or \fIUCS\fR-2 data\[char46]
 If the characters to trim parameter is specified, it must be the same type as the string parameter\[char46]
 
 
-When specified as a parameter for a definition specification keyword, the string parameter must be a constant\[char46]
-
-
-
-
-
-
 
 
 For more information, see String Operations or Built-in Functions\[char46]
-
-
 
 .SH RETURN VALUE
 \fB%TRIM\fR with only one parameter returns the given string with any leading and trailing blanks removed\[char46]
@@ -39,9 +30,7 @@ For more information, see String Operations or Built-in Functions\[char46]
 \fB%TRIM\fR with two parameters returns the given string with any leading and trailing characters that are in the characters to trim parameter removed\[char46]
 
 .SH EXAMPLE
-
 \fB%TRIM\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -61,12 +50,8 @@ D Name            S             20A
  /END-FREE
 .fi
 
-
-
 .SH EXAMPLE
-
 Trimming characters other than blank
-
 .PP
 .nf
 D edited          S             20A   INZ(\[char39]$******5\[char46]27***      \[char39])
@@ -78,34 +63,15 @@ D numeric         S             15P 3
      // Note: blanks will not be trimmed, since a blank
      // is not specified in the \[char39]characters to trim\[char39] parameter
 
-     trimmed = %trim(edited : \[char39]$*\[char39]);          // trimmed is now \[char39]5\[char46]27***      \[char39]
+     trimmed = %trim(edited : \[char39]$*\[char39]);     // trimmed is now \[char39]5\[char46]27***      \[char39]
 
      // Trim \[char39]$\[char39] and \[char39]*\[char39] and blank from the edited numeric value
 
-     trimmed = %trim(edited : \[char39]$* \[char39]);          // trimmed is now \[char39]5\[char46]27\[char39]
+     trimmed = %trim(edited : \[char39]$* \[char39]);     // trimmed is now \[char39]5\[char46]27\[char39]
 
      // Get the numeric value from the edited value
 
-     numeric = %dec(%trim(edited : \[char39]$* \[char39]) : 31 : 9);          // numeric is now 5\[char46]27
-
+     numeric = %dec(%trim(edited : \[char39]$* \[char39]) : 31 : 9);     // numeric is now 5\[char46]27
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %DEC (3RPG)

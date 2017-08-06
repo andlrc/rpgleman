@@ -1,0 +1,35 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dkwdate.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DATE 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DATE
+.SH SYNOPSIS
+.nf
+DATE{(format{separator})}
+.fi
+.SH DESCRIPTION
+The \fIDATE\fR keyword is used in a free-form definition to indicate that the item has type date\[char46]
+
+
+It must be the first keyword\[char46]
+
+
+The parameter is optional\[char46] It specifies the date format and separator\[char46] See Date Data Type for information on the default format for date items\[char46]
+
+
+
+
+
+
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-S date_dft DATE;
+  DCL-S date_mdy DATE(*MDY-);
+.fi

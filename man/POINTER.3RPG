@@ -1,0 +1,45 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dkwpointer.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH POINTER 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+POINTER
+.SH SYNOPSIS
+.nf
+POINTER{(*PROC)}
+.fi
+.SH DESCRIPTION
+The \fIPOINTER\fR keyword is used in a free-form definition to indicate that the item has type basing pointer or type procedure pointer\[char46]
+
+
+It must be the first keyword\[char46]
+
+
+The parameter is optional\[char46] If the parameter is specified, it must be \fI*PROC\fR, indicating that the item is a procedure pointer\[char46]
+
+
+If the parameter is not specified, the item is a basing pointer\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] Field userspace  is defined as a basing pointer field
+.RE
+.IP "" 2
+.RS
+\[bu] Field callback  is defined as a procedure-pointer field\[char46]
+.RE
+.PP
+
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-S userspace POINTER;
+
+  DCL-S callback POINTER(*PROC);
+.fi

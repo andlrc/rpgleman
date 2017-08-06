@@ -1,31 +1,13 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh560.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dtemplatekw.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH TEMPLATE 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH TEMPLATE 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 TEMPLATE
 .SH DESCRIPTION
 The \fITEMPLATE\fR keyword indicates that the definition is to be used only for further \fILIKE\fR or \fILIKEDS\fR definitions\[char46] The \fITEMPLATE\fR keyword is valid for Data Structure definitions and Standalone field definitions\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

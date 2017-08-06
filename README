@@ -12,7 +12,7 @@ INSTALL
 REBUILD MAN PAGES
     To download and rebuild from IBM one can run the following:
 
-    $ make {all|bif|dcl-ds|dcl-c|dcl-s|dcl-pi}
+    $ make {all|bif|keywords}
 
 MAN PAGES
     Man pages are installed in ``/usr/share/man/man3RPG'' and can be accessed

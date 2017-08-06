@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh536.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dimport.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH IMPORT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH IMPORT 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 IMPORT
 .SH SYNOPSIS
@@ -16,13 +16,13 @@ IMPORT{(external_name)}
 The \fIIMPORT\fR keyword specifies that storage for the data item being defined is allocated in another module, but may be accessed in this module\[char46] The external_name parameter, if specified, must be a character literal or constant\[char46]
 
 
+In a free-form definition, you can specify \fI*DCLCASE\fR for the external_name parameter, indicating that the external name of the item is the same as the name of the item, in the same case as the name is specified\[char46] See Specifying \fI*DCLCASE\fR as the External Name\[char46]
+
+
 If a name is defined as imported but no module in the program contains an exported definition of the name, an error will occur at link time\[char46] See \fIEXPORT\fR{(external_name)}\[char46]
 
 
 The \fIIMPORT\fR keyword on the definition specification is used to import data items and cannot be used to import procedure names\[char46] Procedure names are imported implicitly, to all modules in the program, when the \fIEXPORT\fR keyword is specified on a procedure specification\[char46]
-
-
-The following restrictions apply when \fIIMPORT\fR is specified:
 
 
 .IP "" 2
@@ -60,22 +60,4 @@ The following restrictions apply when \fIIMPORT\fR is specified:
 .PP
 
 For a multiple-occurrence data structure or table, each module will contain its own copy of the occurrence number or table index\[char46] An \fIOCCUR\fR or \fILOOKUP\fR operation in any module will have only a local impact since the occurrence number or index is local to each module\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

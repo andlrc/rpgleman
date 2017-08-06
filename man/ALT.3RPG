@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh517.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dalt.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH ALT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH ALT 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 ALT
 .SH SYNOPSIS
@@ -23,22 +23,4 @@ The keywords on the main array define the loading for both arrays\[char46] The i
 
 
 In the alternate array definition, the \fIPERRCD\fR, \fIFROMFILE\fR, \fITOFILE\fR, and \fICTDATA\fR keywords are not valid\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

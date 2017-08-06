@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh886.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbtime.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH TIME 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH TIME 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %TIME - Convert to Time
 .SH SYNOPSIS
@@ -22,7 +22,7 @@ The first parameter is the value to be converted\[char46] If you do not specify 
 The second parameter is the time format for numeric or character input\[char46] Regardless of the input format, the output is returned in \fI*ISO\fR format\[char46]
 
 
-For information on the input formats that can be used, see Time Data Type\[char46] If the time format is not specified for numeric or character input, the default value is either the format specified on the \fITIMFMT\fR control-specification keyword or \fI*ISO\fR\[char46] For more information, see \fITIMFMT\fR(fmt{separator})\[char46]
+For information on the input formats that can be used, see Time Data Type\[char46] If the time format is not specified for numeric or character input, the default format is \fI*ISO\fR\[char46] For more information, see \fITIMFMT\fR(fmt{separator})\[char46]
 
 
 If the first parameter is a timestamp, do not specify the second parameter\[char46] The system knows the format of the input in this case\[char46]
@@ -30,12 +30,8 @@ If the first parameter is a timestamp, do not specify the second parameter\[char
 
 For more information, see Information Operations or Built-in Functions\[char46]
 
-
-
 .SH EXAMPLE
-
 \fB%TIME\fR Example
-
 .PP
 .nf
  *\[char46]\[char46]1\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]2\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]3\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]4\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]5\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]6\[char46]\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]7\[char46]\[char46]\[char46]+\[char46]\[char46]\[char46]\[char46]
@@ -46,21 +42,3 @@ For more information, see Information Operations or Built-in Functions\[char46]
     // time = t\[char39]12\[char46]34\[char46]00\[char39]
  /END-FREE
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

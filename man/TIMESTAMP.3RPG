@@ -1,0 +1,38 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dkwtimestamp.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TIMESTAMP 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+TIMESTAMP
+.SH SYNOPSIS
+.nf
+TIMESTAMP{(fractional-seconds)}
+.fi
+.SH DESCRIPTION
+The \fITIMESTAMP\fR keyword is used in a free-form definition to indicate that the item has type timestamp\[char46]
+
+
+The optional parameter specifies the number of fractional seconds\[char46] If the parameter is not specified, the number of fractional seconds defaults to 6\[char46]
+
+
+It must be the first keyword\[char46]
+
+
+
+
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-S TS0 TIMESTAMP(0);    // YYYY-MM-DD-hh-mm-ss
+  DCL-S TS1 TIMESTAMP(1);    // YYYY-MM-DD-hh-mm-ss\[char46]f
+  DCL-S TS6A TIMESTAMP;      // YYYY-MM-DD-hh-mm-ss\[char46]ffffff
+  DCL-S TS6B TIMESTAMP(6);   // YYYY-MM-DD-hh-mm-ss\[char46]ffffff
+  DCL-S TS12 TIMESTAMP(12);  // YYYY-MM-DD-hh-mm-ss\[char46]ffffffffffff
+.fi
+
+

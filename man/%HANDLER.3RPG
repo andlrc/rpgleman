@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh846.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbhandl.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH HANDLER 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH HANDLER 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %HANDLER - handlingProcedure : communicationArea 
 .SH DESCRIPTION
@@ -16,9 +16,6 @@ The first operand, handlingProcedure specifies the prototype of the handling pro
 
 
 The second operand, communicationArea, specifies a variable to be passed as a parameter on every call to the handling procedure\[char46] The operand must be an exact match for the first prototyped parameter of the handling procedure, according to the same rules that are used for checking prototyped parameters passed by reference\[char46] The communication-area parameter can be any type, including arrays and data structures\[char46]
-
-
-When an operation code uses the \fB%HANDLER\fR built-in function, the following sequence of events occurs:
 
 
 .IP 1. 2
@@ -51,9 +48,6 @@ When the operation is complete, control passes to the statement following the op
 .RE
 .PP
 
-The communication area can be used for several purposes\[char46]
-
-
 .IP 1. 2
 .RS
 To communicate information from the procedure coding the \fB%HANDLER\fR built-in function to the handling procedure\[char46]
@@ -67,12 +61,8 @@ To communicate information from the handling procedure back to the procedure cod
 To keep state information between successive calls of the handling procedure\[char46] State information can also be kept in static variables in the handling procedure, but when static variables are used, incorrect results can occur if the handling procedure has been enabled by more than one \fB%HANDLER\fR operation\[char46] By using a communication area parameter, the usages of the handling procedure are independent from each other\[char46]
 .RE
 .PP
-
-
 .SH EXAMPLE
-
 Using a communication-area with \fB%HANDLER\fR
-
 .PP
 .nf
  * Data structure used as a parameter between
@@ -137,8 +127,9 @@ D rc              S             10I 0  INZ(0)
  /free
 
      select;
-
 .fi
+
+.SH EXAMPLE
 
 .PP
 .nf
@@ -192,24 +183,6 @@ For more examples of \fB%HANDLER\fR, see \fIXML-SAX\fR (Parse an \fIXML\fR Docum
 
 
 For more information, see \fIXML\fR Operations or Built-in Functions\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .SH SEE ALSO
 .BR %XML (3RPG),

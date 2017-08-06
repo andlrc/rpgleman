@@ -1,43 +1,133 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh516.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/dalign.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH ALIGN 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH ALIGN 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 ALIGN
+.SH SYNOPSIS
+.nf
+ALIGN{(*FULL)}
+.fi
 .SH DESCRIPTION
-The \fIALIGN\fR keyword is used to align float, integer, and unsigned subfields\[char46] When \fIALIGN\fR is specified, 2-byte subfields are aligned on a 2-byte boundary, 4-byte subfields are aligned on a 4-byte boundary and 8-byte subfields are aligned on an 8-byte boundary\[char46] Alignment may be desired to improve performance when accessing float, integer, or unsigned subfields\[char46]
+The \fIALIGN\fR keyword is used to align float, integer, and unsigned subfields\[char46] When \fIALIGN\fR is specified, 2-byte subfields are aligned on a 2-byte boundary, 4-byte subfields are aligned on a 4-byte boundary, and 8-byte subfields are aligned on an 8-byte boundary\[char46] Alignment might improve performance when accessing float, integer, or unsigned subfields\[char46]
 
 
 Specify \fIALIGN\fR on the data structure definition\[char46] However, you cannot specify \fIALIGN\fR for either the file information data structure (\fIINFDS\fR) or the program status data structure (\fIPSDS\fR)\[char46]
 
 
-Alignment occurs only to data structure subfields defined with length notation and without the keyword \fIOVERLAY\fR\[char46] A diagnostic message is issued if subfields that are defined either with absolute notation or using the \fIOVERLAY\fR keyword are not properly aligned\[char46]
+Alignment occurs only to data structure subfields defined with length notation and without the keyword \fIOVERLAY\fR\[char46] A diagnostic message is issued if subfields that are defined with absolute notation or by using the \fIOVERLAY\fR keyword are not properly aligned\[char46]
 
 
 Pointer subfields are always aligned on a 16-byte boundary whether or not \fIALIGN\fR is specified\[char46]
 
 
+
+
+.IP "" 2
+.RS
+\[bu] 
+
+ The data structure length might need to be a multiple of the required alignment when you are passing the parameter to some functions or \fIAPI\fRs\[char46] For example, when calling a C function or \fIAPI\fR with a data structure parameter that is defined in C without the _packed  keyword, the \fIRPG\fR data structure for the \fIAPI\fR should be defined with \fIALIGN\fR(\fI*FULL\fR)\[char46] Using \fIALIGN\fR(\fI*FULL\fR) will ensure that the data structure is large enough\[char46] For example, the regex_t  data structure, which is defined in member \fIREGEX\fR  of source file \fIQSYSINC\fR/H  has a length of 656\[char46] A matching data structure that is defined in \fIRPG\fR with the \fIALIGN\fR keyword has a length of only 644, while a matching data structure defined with the \fIALIGN\fR(\fI*FULL\fR) keyword has the correct length of 656\[char46] If \fIALIGN\fR(\fI*FULL\fR) is not specified with the \fI*FULL\fR parameter, then calling the regcomp()  \fIAPI\fR might result in data corruption because the \fIRPG\fR data structure is smaller than the \fIAPI\fR requires\[char46] 
+
+
+.RE
+.IP "" 2
+.RS
+\[bu] When using \fB%SIZE\fR to determine the distance between elements of an array of data structures, or the occurrences of a multiple-occurrence data structure, if the data structure is defined with \fIALIGN\fR(\fI*FULL\fR), you can use \fB%SIZE(ds_name)\fR\[char46] However, if the data structure is defined simply with \fIALIGN\fR, or if the \fIALIGN\fR keyword is not specified and the data structure contains a pointer, then you must use \fB%SIZE(ds_name:\fI*ALL\fR)\fR divided by \fB%ELEM(ds_name)\fR\[char46] 
+
+
+
+
+.RE
+.PP
+
+
+
+
+
+
+.IP 1. 2
+.RS
+Data structure ds1_no_align  is defined without the \fIALIGN\fR keyword\[char46] Integer subfield sub2 is in position 2\[char46] Character subfield sub3 is in position 6\[char46] There is no padding at the end of the data structure so the size is 6\[char46] 
+For the array version of the data structure, the result of \fB%SIZE\fR with \fI*ALL\fR (Â 2Â ) is a multiple of the result of \fB%SIZE\fR with only one parameter (Â 1Â )\[char46]
+
+ 
+.SH EXAMPLE
+
+.PP
+.nf
+     DCL-DS ds1_no_align QUALIFIED;
+        sub1 CHAR(1);
+        sub2 INT(10);
+        sub3 CHAR(1);
+     END-DS;
+
+     DCL-DS ds1_no_align_arr LIKEDS(ds1_no_align) DIM(2);
+
+     size = %SIZE(ds1_no_align);             // 6
+     size = %SIZE(ds1_no_align_arr);         // 6  Â 1Â
+     size = %SIZE(ds1_no_align_arr : *ALL);  // 12 Â 2Â
+.fi
+
+.RE
+.IP 2. 2
+.RS
+Data structure ds2_simple_align  is defined with the \fIALIGN\fR keyword with no parameter\[char46] Integer subfield sub2 requires 4-byte alignment, so it is in position 5\[char46] Character subfield sub3 is in position 9\[char46] There is no padding at the end of the data structure so the size is 9\[char46] 
+For the array version of the data structure, the result of \fB%SIZE\fR with \fI*ALL\fR (Â 2Â ) is not a multiple of the result of \fB%SIZE\fR with only one parameter (Â 1Â )\[char46]
+
+ 
+.SH EXAMPLE
+
+.PP
+.nf
+     DCL-DS ds2_simple_align ALIGN QUALIFIED;
+        sub1 CHAR(1);
+        sub2 INT(10);
+        sub3 CHAR(1);
+     END-DS;
+
+     DCL-DS ds2_simple_align_arr LIKEDS(ds2_simple_align) DIM(2);
+
+     size = %SIZE(ds2_simple_align);            // 9
+     size = %SIZE(ds2_simple_align_arr);        // 9  Â 1Â
+     size = %SIZE(ds2_simple_align_arr : *ALL); // 24 Â 2Â
+.fi
+
+.RE
+.IP 3. 2
+.RS
+Data structure ds3_align_full  is defined with the \fIALIGN\fR(\fI*FULL\fR) keyword\[char46] Integer subfield sub2 requires 4-byte alignment, so it is in position 5\[char46] Character subfield sub3 is in position 9\[char46] The natural size of the data structure is 9, but the size of the data structure must be a multiple of the highest alignment that is required by any subfield\[char46] Padding is added at the end of the data structure to force the size to be 12\[char46] 
+For the array version of the data structure, the result of \fB%SIZE\fR with \fI*ALL\fR (Â 2Â ) is a multiple of the result of \fB%SIZE\fR with only one parameter (Â 1Â )\[char46]
+
+ 
+.SH EXAMPLE
+
+.PP
+.nf
+     DCL-DS ds3_align_full ALIGN(*FULL) QUALIFIED;
+        sub1 CHAR(1);
+        sub2 INT(10);
+        sub3 CHAR(1);
+     END-DS;
+
+     DCL-DS ds3_align_full_arr LIKEDS(ds3_align_full) DIM(2);
+
+     size = %SIZE(ds3_align_full);             // 12
+     size = %SIZE(ds3_align_full_arr);         // 12  Â 1Â
+     size = %SIZE(ds3_align_full_arr : *ALL);  // 24 Â 2Â
+.fi
+
+.RE
+.PP
+
+
+
 See Aligning Data Structure Subfields for more information\[char46]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.SH SEE ALSO
+.BR %SIZE (3RPG),
+.BR %ELEM (3RPG)

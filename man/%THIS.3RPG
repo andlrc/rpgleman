@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh885.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbthis.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH THIS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH THIS 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %THIS - Return Class Instance for Native Method
 .SH SYNOPSIS
@@ -13,17 +13,13 @@
 %THIS
 .fi
 .SH DESCRIPTION
-A non-static native method works on a specific instance of its class\[char46] This object is actually passed as a parameter to the native method by Java™, but it does not appear in the prototype or procedure interface for the native method\[char46] In a Java method, the object instance is referred to by the Java reserved word this\[char46] In an \fIRPG\fR native method, the object instance is referred to by the \fB%THIS\fR built-in function\[char46]
-
-
+A non-static native method works on a specific instance of its class\[char46] This object is actually passed as a parameter to the native method by Javaâ¢, but it does not appear in the prototype or procedure interface for the native method\[char46] In a Java method, the object instance is referred to by the Java reserved word this\[char46] In an \fIRPG\fR native method, the object instance is referred to by the \fB%THIS\fR built-in function\[char46]
 
 .SH RETURN VALUE
 \fB%THIS\fR returns an Object value that contains a reference to the class instance on whose behalf the native method is being called\[char46] \fB%THIS\fR is valid only in non-static native methods\[char46] This built-in gives non-static native methods access to the class instance\[char46]
 
 .SH EXAMPLE
-
 \fB%THIS\fR Example
-
 .PP
 .nf
  * Method "vacationDays" is a method in the class \[char39]Employee\[char39]
@@ -57,23 +53,5 @@ C                   endif
 
 P vacationDays    E
 .fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .SH SEE ALSO
 .BR %FOUND (3RPG)

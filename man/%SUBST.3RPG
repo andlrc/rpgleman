@@ -1,11 +1,11 @@
 .\" Copyright 2017 Andreas Louv <andreas@louv.dk>
 .\" All content is copyright IBM
-.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh882.htm?view=embed
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/bbsubs9.htm?view=embed
 .\"
 .\" This man page is generated with ``rpgleman''
 .\" Project URL: https://github.com/andlrc/rpgleman
 .\"
-.TH SUBST 3RPG  2010-03-10 "ILE RPG Language Reference"
+.TH SUBST 3RPG  "June 2012" "ILE RPG Language Reference"
 .SH NAME
 %SUBST - Get Substring
 .SH SYNOPSIS
@@ -29,24 +29,6 @@ When specified as a parameter for a definition specification keyword, the parame
 
 
 For more information, see String Operations or Built-in Functions\[char46]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .SH RETURN VALUE
 \fB%SUBST\fR returns a portion of argument string\[char46] It may also be used as the result of an assignment with the \fIEVAL\fR operation code\[char46]
