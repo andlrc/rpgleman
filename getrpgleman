@@ -21,6 +21,7 @@ sub man_build
 		# Header
 		print $fh ".\\\" Copyright 2017 Andreas Louv <andreas\@louv.dk>\n";
 		print $fh ".\\\" All content is copyright IBM\n";
+		print $fh ".\\\" Original URL: $man->{url}\n";
 		print $fh ".\\\"\n";
 		print $fh ".\\\" This man page is generated with \`\`rpgleman''\n";
 		print $fh ".\\\" Project URL: https://github.com/andlrc/rpgleman\n";
@@ -223,6 +224,7 @@ sub read_url
 	}
 
 	my $man = {
+		"url" => "$url",
 		"date" => strftime("%Y-%m-%d", localtime),
 		"section" => "3RPG",
 		"name" => "",
