@@ -1,0 +1,559 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh550.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH OPTIONS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+OPTIONS
+.SH SYNOPSIS
+.nf
+OPTIONS(*NOPASS *OMIT *VARSIZE *STRING *TRIM *RIGHTADJ *NULLIND)
+.fi
+.SH DESCRIPTION
+The \fIOPTIONS\fR keyword is used to specify one or more parameter passing options:
+
+
+.IP "" 2
+.RS
+\[bu] Whether a parameter must be passed
+.RE
+.IP "" 2
+.RS
+\[bu] Whether the special value \fI*OMIT\fR can be passed for the parameter passed by reference\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Whether a parameter that is passed by reference can be shorter in length than is specified in the prototype\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Whether the called program or procedure is expecting a pointer to a null-terminated string, allowing you to specify a character expression as the passed parameter\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Whether the parameter should be trimmed of blanks before being passed\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Whether the parameter value should be right-adjusted in the passed parameter\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Whether the null-byte-map should be passed with the parameter\[char46]
+.RE
+.PP
+
+When \fIOPTIONS\fR(\fI*NOPASS\fR) is specified on a definition specification, the parameter does not have to be passed on the call\[char46] Any parameters following that specification must also have \fI*NOPASS\fR specified\[char46] When the parameter is not passed to a program or procedure, the called program or procedure will simply function as if the parameter list did not include that parameter\[char46] If the unpassed parameter is accessed in the called program or procedure, unpredictable results will occur\[char46]
+
+
+When \fIOPTIONS\fR(\fI*OMIT\fR) is specified, then the value \fI*OMIT\fR is allowed for that parameter\[char46] \fI*OMIT\fR is only allowed for \fICONST\fR parameters and parameters which are passed by reference\[char46] For more information on omitted parameters, see the chapter on calling programs and procedures in \fIIBM\fR® Rational® Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
+
+
+\fIOPTIONS\fR(\fI*VARSIZE\fR) is valid only for parameters passed by reference that have a character, graphic, or \fIUCS\fR-2 data type, or that represent an array of any type\[char46]
+
+
+When \fIOPTIONS\fR(\fI*VARSIZE\fR) is specified, the passed parameter may be shorter or longer in length than is defined in the prototype\[char46] It is then up to the called program or subprocedure to ensure that it accesses only as much data as was passed\[char46] To communicate the amount of data passed, you can either pass an extra parameter containing the length, or use operational descriptors for the subprocedure\[char46] For variable-length fields, you can use the \fB%LEN\fR built-in function to determine the current length of the passed parameter\[char46]
+
+
+When \fIOPTIONS\fR(\fI*VARSIZE\fR) is omitted for fixed-length fields, you must pass at least as much data as is required by the prototype; for variable-length fields, the parameter must have the same declared maximum length as indicated on the definition\[char46]
+
+
+
+
+
+
+
+
+
+
+When \fIOPTIONS\fR(\fI*STRING\fR) is specified for a basing pointer parameter passed by value or by constant-reference, you may either pass a pointer or a character expression\[char46] If you pass a character expression, a temporary value will be created containing the value of the character expression followed by a null-terminator (x\[char39]00\[char39])\[char46] The address of this temporary value will be passed to the called program or procedure\[char46]
+
+
+When \fIOPTIONS\fR(\fI*RIGHTADJ\fR) is specified for a \fICONST\fR or \fIVALUE\fR parameter in a prototype, the character, graphic, or \fIUCS\fR-2 parameter value is right adjusted\[char46] This keyword is not allowed for a varying length parameter within a procedure prototype\[char46] Varying length values may be passed as parameters on a procedure call where the corresponding parameter is defined with \fIOPTIONS\fR(\fI*RIGHTADJ\fR)\[char46]
+
+
+When \fIOPTIONS\fR(\fI*TRIM\fR) is specified for a \fICONST\fR or \fIVALUE\fR parameter of type character, \fIUCS\fR-2 or graphic, the passed parameter is copied without leading and trailing blanks to a temporary\[char46] If the parameter is not a varying length parameter, the trimmed value is padded with blanks (on the left if \fIOPTIONS\fR(\fI*RIGHTADJ\fR) is specified, otherwise on the right)\[char46] Then the temporary is passed instead of the original parameter\[char46] Specifying \fIOPTIONS\fR(\fI*TRIM\fR) causes the parameter to be passed exactly as though \fB%TRIM\fR were coded on every call to the procedure\[char46]
+
+
+When \fIOPTIONS\fR(\fI*STRING\fR : \fI*TRIM\fR) is specified for a \fICONST\fR or \fIVALUE\fR parameter of type pointer, the character parameter or \fB%STR\fR of the pointer parameter is copied without leading or trailing blanks to a temporary, a null-terminator is added to the temporary and the address of the temporary is passed\[char46]
+
+
+When \fIOPTIONS\fR(\fI*NULLIND\fR) is specified for a parameter, the null-byte map is passed with the parameter, giving the called procedure direct access to the null-byte map of the caller\[char39]s parameter\[char46] Note the following rules for \fIOPTIONS\fR(\fI*NULLIND\fR)\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] \fIALWNULL\fR(\fI*USRCTL\fR) must be in effect\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] \fIOPTIONS\fR(\fI*NULLIND\fR) is not valid for parameters passed by value\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The only other options that can be specified with \fIOPTIONS\fR(\fI*NULLIND\fR) are \fI*NOPASS\fR and \fI*OMIT\fR\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Only variables may be passed as the parameter when \fIOPTIONS\fR(\fI*NULLIND\fR) is specified, and the variable must be an exact match even when \fICONST\fR is specified\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the parameter is a data structure, the passed parameter must be defined with the same parent \fILIKEDS\fR or \fILIKEREC\fR as the prototyped parameter\[char46] Furthermore, the null-capability of the prototyped parameter and passed parameter must match exactly\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] A prototyped data structure parameter can have \fIOPTIONS\fR(\fI*NULLIND\fR) specified whether or not there are any null-capable subfields\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If a non-data-structure prototyped parameter is defined with \fIOPTIONS\fR(\fI*NULLIND\fR), the parameter in the procedure interface is defined as null-capable\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] See 
+
+  for information about using \fIOPTIONS\fR(\fI*NULLIND\fR) when the calling procedure or called procedure is not written using \fIILE\fR \fIRPG\fR\[char46]
+.RE
+.PP
+
+You can specify more than one option\[char46] For example, to specify that an optional parameter can be shorter than the prototype indicates, you would code \fIOPTIONS\fR(\fI*VARSIZE\fR : \fI*NOPASS\fR)\[char46]
+
+
+The following example shows how to code a prototype and procedure that use \fIOPTIONS\fR(\fI*NOPASS\fR) to indicate that a parameter is optional\[char46]
+
+
+
+.SH EXAMPLE
+
+Using \fIOPTIONS\fR(\fI*NOPASS\fR) to Indicate that a Parameter is Optional
+
+.PP
+.nf
+ * The following prototype describes a procedure that expects
+ * either one or two parameters\[char46]
+D FormatAddress   PR            45A
+D   City                        20A   CONST
+D   Province                    20A   CONST OPTIONS(*NOPASS)
+ * The first call to FormatAddress only passes one parameter\[char46]  The
+ * second call passes both parameters\[char46]
+C                   EVAL      A = FormatAddress(\[char39]North York\[char39])
+C                   EVAL      A = FormatAddress(\[char39]Victoria\[char39] : \[char39]B\[char46]C\[char46]\[char39])
+C                   RETURN
+ *----------------------------------------------------------------
+ * FormatAddress:
+ * This procedure must check the number of parameters since the
+ * second was defined with OPTIONS(*NOPASS)\[char46]
+ * It should only use the second parameter if it was passed\[char46]
+ *----------------------------------------------------------------
+P FormatAddress   B
+D FormatAddress   PI            45A
+D   City                        20A   CONST
+D   ProvParm                    20A   CONST OPTIONS(*NOPASS)
+D Province        S             20A   INZ(\[char39]Ontario\[char39])
+ * Set the local variable Province to the value of the second
+ * parameter if it was passed\[char46]  Otherwise let it default to
+ * \[char39]Ontario\[char39] as it was initialized\[char46]
+C                   IF        %PARMS > 1
+C                   EVAL      Province = ProvParm
+C                   ENDIF
+ * Return the city and province in the form City, Province
+ * for example \[char39]North York, Ontario\[char39]
+C                   RETURN    %TRIMR(City) + \[char39],\[char39] + Province
+P FormatAddress   E
+.fi
+
+The following example shows how to code a prototype and procedure using \fIOPTIONS\fR(\fI*OMIT\fR) to indicate that the special value \fI*OMIT\fR may be passed as a parameter\[char46]
+
+
+
+
+.SH EXAMPLE
+
+Using \fIOPTIONS\fR(\fI*OMIT\fR)
+
+.PP
+.nf
+FQSYSPRT   O    F   10        PRINTER USROPN
+ * The following prototype describes a procedure that allows
+ * the special value *OMIT to be passed as a parameter\[char46]
+ * If the parameter is passed, it is set to \[char39]1\[char39] if an error
+ * occurred, and \[char39]0\[char39] otherwise\[char46]
+D OpenFile        PR
+D   Error                        1A   OPTIONS(*OMIT)
+C                   SETOFF                                       10
+ * The first call to OpenFile assumes that no error will occur,
+ * so it does not bother with the error code and passes *OMIT\[char46]
+C                   CALLP     OpenFile(*OMIT)
+ * The second call to OpenFile passes an indicator so that
+ * it can check whether an error occurred\[char46]
+C                   CALLP     OpenFile(*IN10)
+C                   IF        *IN10
+C                   \[char46]\[char46]\[char46] an error occurred
+C                   ENDIF
+C                   RETURN
+ *----------------------------------------------------------------
+ * OpenFile
+ * This procedure must check the number of parameters since the
+ * second was defined with OPTIONS(*OMIT)\[char46]
+ * It should only use the second parameter if it was passed\[char46]
+ *----------------------------------------------------------------
+P OpenFile        B
+D OpenFile        PI
+D   Error                        1A   OPTIONS(*OMIT)
+D SaveIn01        S              1A
+ * Save the current value of indicator 01 in case it is being
+ * used elsewhere\[char46]
+C                   EVAL      SaveIn01 = *IN01
+ * Open the file\[char46]  *IN01 will indicate if an error occurs\[char46]
+C                   OPEN      QSYSPRT                              01
+ * If the Error parameter was passed, update it with the indicator
+C                   IF        %ADDR(Error) <> *NULL
+C                   EVAL      Error = *IN01
+C                   ENDIF
+ * Restore *IN01 to its original value\[char46]
+C                   EVAL      *IN01 = SaveIn01
+P OpenFile        E
+.fi
+
+The following example shows how to code a prototype and procedure allowing variable-length parameters, using \fIOPTIONS\fR(\fI*VARSIZE\fR)\[char46]
+
+
+
+
+.SH EXAMPLE
+
+Using \fIOPTIONS\fR(\fI*VARSIZE\fR)
+
+.PP
+.nf
+ * The following prototype describes a procedure that allows
+ * both a variable-length array and a variable-length character
+ * field to be passed\[char46]  Other parameters indicate the lengths\[char46]
+D Search          PR             5U 0
+D   SearchIn                    50A   OPTIONS(*VARSIZE)
+D                                     DIM(100) CONST
+D   ArrayLen                     5U 0 VALUE
+D   ArrayDim                     5U 0 VALUE
+D   SearchFor                   50A   OPTIONS(*VARSIZE) CONST
+D   FieldLen                     5U 0 VALUE
+D Arr1            S              1A   DIM(7) CTDATA PERRCD(7)
+D Arr2            S             10A   DIM(3) CTDATA
+D Elem            S              5U 0
+ * Call Search to search an array of 7 elements of length 1 with
+ * a search argument of length 1\[char46]  Since the \[char39]*\[char39] is in the 5th
+ * element of the array, Elem will have the value 5\[char46]
+C                   EVAL      Elem = Search(Arr1 :
+C                                        %SIZE(Arr1) : %ELEM(Arr1) :
+C                                        \[char39]*\[char39] : 1)
+ * Call Search to search an array of 3 elements of length 10 with
+ * a search argument of length 4\[char46]  Since \[char39]Pink\[char39] is not in the
+ * array, Elem will have the value 0\[char46]
+C                   EVAL      Elem = Search(Arr2 :
+C                                        %SIZE(Arr2) : %ELEM(Arr2) :
+C                                        \[char39]Pink\[char39] : 4)
+C                   RETURN
+.fi
+
+.PP
+.nf
+ *------------------------------------------------------------
+ * Search:
+ *   Searches for SearchFor in the array SearchIn\[char46]  Returns
+ *   the element where the value is found, or 0 if not found\[char46]
+ *   The character parameters can be of any length or
+ *   dimension since OPTIONS(*VARSIZE) is specified for both\[char46]
+ *------------------------------------------------------------
+P Search          B
+D Search          PI             5U 0
+D   SearchIn                    50A   OPTIONS(*VARSIZE)
+D                                     DIM(100) CONST
+D   ArrayLen                     5U 0 VALUE
+D   ArrayDim                     5U 0 VALUE
+D   SearchFor                   50A   OPTIONS(*VARSIZE) CONST
+D   FieldLen                     5U 0 VALUE
+D I               S              5U 0
+ * Check each element of the array to see if it the same
+ * as the SearchFor\[char46]  Use the dimension that was passed as
+ * a parameter rather than the declared dimension\[char46]  Use
+ * %SUBST with the length parameter since the parameters may
+ * not have the declared length\[char46]
+C     1             DO        ArrayDim      I                 5 0
+ * If this element matches SearchFor, return the index\[char46]
+C                   IF        %SUBST(SearchIn(I) : 1 : ArrayLen)
+C                             = %SUBST(SearchFor : 1 : FieldLen)
+C                   RETURN    I
+C                   ENDIF
+C                   ENDDO
+ * No matching element was found\[char46]
+C                   RETURN    0
+P Search          E
+Compile-time data section:
+
+**CTDATA ARR1
+A2$@*jM
+**CTDATA ARR2
+Red
+Blue
+Yellow
+.fi
+
+The following example shows how to use \fIOPTIONS\fR(\fI*STRING\fR) to code a prototype and procedure that use a null-terminated string parameter\[char46]
+
+
+
+
+.SH EXAMPLE
+
+Using \fIOPTIONS\fR(\fI*STRING\fR)
+
+.PP
+.nf
+ * The following prototype describes a procedure that expects
+ * a null-terminated string parameter\[char46]  It returns the length
+ * of the string\[char46]
+D StringLen       PR             5U 0
+D   Pointer                       *   VALUE OPTIONS(*STRING)
+D P               S               *
+D Len             S              5U 0
+ * Call StringLen with a character literal\[char46]  The result will be
+ * 4 since the literal is 4 bytes long\[char46]
+C                   EVAL      Len = StringLen(\[char39]abcd\[char39])
+ * Call StringLen with a pointer to a string\[char46]  Use ALLOC to get
+ * storage for the pointer, and use %STR to initialize the storage
+ * to \[char39]My string¬\[char39] where \[char39]¬\[char39] represents the null-termination
+ * character x\[char39]00\[char39]\[char46]
+ * The result will be 9 which is the length of \[char39]My string\[char39]\[char46]
+C                   ALLOC     25            P
+C                   EVAL      %STR(P:25) = \[char39]My string\[char39]
+C                   EVAL      Len = StringLen(P)
+ * Free the storage\[char46]
+C                   DEALLOC                 P
+C                   RETURN
+ *------------------------------------------------------------
+ * StringLen:
+ *   Returns the length of the string that the parameter is
+ *   pointing to\[char46]
+ *------------------------------------------------------------
+P StringLen       B
+D StringLen       PI             5U 0
+D   Pointer                       *   VALUE OPTIONS(*STRING)
+C                   RETURN    %LEN(%STR(Pointer))
+P StringLen       E
+.fi
+
+
+
+.SH EXAMPLE
+
+Using \fIOPTIONS\fR(\fI*TRIM\fR)
+
+.PP
+.nf
+* The following prototype describes a procedure that expects
+* these parameters:
+*   1\[char46] trimLeftAdj   - a fixed length parameter with the
+*                      non-blank data left-adjusted
+*   2\[char46] leftAdj       - a fixed length parameter with the
+*                      value left-adjusted (possibly with
+*                      leading blanks)
+*   3\[char46] trimRightAdj  - a fixed length parameter with the
+*                      non-blank data right-adjusted
+*   4\[char46] rightAdj      - a fixed length parameter with the
+*                      value right-adjusted (possibly with
+*                      trailing blanks)
+*   5\[char46] trimVar       - a varying parameter with no leading
+*                      or trailing blanks
+*   6\[char46] var           - a varying parameter, possibly with
+*                      leading or trailing blanks
+D trimProc        PR
+D   trimLeftAdj                 10a   const options(*trim)
+D   leftAdj                     10a   const
+D   trimRightAdj                10a   value options(*rightadj : *trim)
+D   rightAdj                    10a   value options(*rightadj)
+D   trimVar                     10a   const varying options(*trim)
+D   var                         10a   value varying
+* The following prototype describes a procedure that expects
+* these parameters:
+*   1\[char46] trimString    - a pointer to a null-terminated string
+*                      with no leading or trailing blanks
+*   2\[char46] string        - a pointer to a null-terminated string,
+*                      possibly with leading or trailing blanks
+.fi
+
+.PP
+.nf
+D trimStringProc  PR
+D   trimString                    *   value options(*string : *trim)
+D   string                        *   value options(*string)
+D ptr             s               *
+ /free
+       // trimProc is called with the same value passed
+       // for every parameter
+       //
+       // The called procedure receives the following parameters
+       //   trimLeftAdj    \[char39]abc       \[char39]
+       //   leftAdj        \[char39] abc      \[char39]
+       //   trimRightAdj   \[char39]       abc\[char39]
+       //   rightAdj       \[char39]      abc \[char39]
+       //   trimVar        \[char39]abc\[char39]
+       //   var            \[char39] abc \[char39]
+
+       callp trimProc (\[char39] abc \[char39] : \[char39] abc \[char39] : \[char39] abc \[char39] :
+                                  \[char39] abc \[char39] : \[char39] abc \[char39] : \[char39] abc \[char39] );
+       // trimStringProc is called with the same value passed
+       // for both parameters
+       //
+       // The called procedure receives the following parameters,
+       // where ¬ represents x\[char39]00\[char39]
+       //   trimstring     pointer to \[char39]abc¬\[char39]
+       //   string         pointer to \[char39] abc ¬\[char39]
+
+       callp trimStringProc (\[char39] abc \[char39] : \[char39] abc \[char39]);
+
+       // trimStringProc is called with the same pointer passed
+       // to both parameters
+       //
+       // The called procedure receives the following parameters,
+       // where ¬ represents x\[char39]00\[char39]
+       //   trimstring     pointer to \[char39]xyz¬\[char39]
+       //   string
+
+       pointer to \[char39] xyz ¬\[char39]
+       ptr = %alloc (6);
+       %str(ptr : 6) = \[char39] xyz \[char39];
+       callp trimStringProc (ptr : ptr);
+.fi
+
+
+
+.SH EXAMPLE
+
+Using \fIOPTIONS\fR(\fI*NULLIND\fR)
+
+.PP
+.nf
+ *-----------------------------------
+ * DDS for file NULLFILE
+ *-----------------------------------
+A          R TESTREC
+A            NULL1         10A         ALWNULL
+A            NOTNULL2      10A
+A            NULL3         10A         ALWNULL
+
+
+ *-----------------------------------
+ * Calling procedure
+ *-----------------------------------
+
+ * The externally-described data structure DS, and the
+ * data structure DS2 defined LIKEDS(ds) have
+ * null-capable fields NULL1 and NULL3\[char46]
+D ds            E DS                  EXTNAME(nullFile)
+D ds2             DS                  LIKEDS(ds)
+ * Procedure PROC specifies OPTIONS(*NULLIND) for all its
+ * parameters\[char46]  When the procedure is called, the
+ * null-byte maps of the calling procedure\[char39]s parameters
+ * will be passed to the called procedure allowing the
+ * called procedure to use %NULLIND(parmname) to access the
+ * null-byte map\[char46]
+D proc            PR
+D   parm                              LIKEDS(ds)
+D                                     OPTIONS(*NULLIND)
+D   parm2                       10A   OPTIONS(*NULLIND)
+D   parm3                       10A   OPTIONS(*NULLIND) CONST
+
+ /free
+     // The calling procedure sets some values
+     // in the parameters and their null indicators
+     %nullind(ds\[char46]null1) = *on;
+     ds\[char46]notnull2 = \[char39]abcde\[char39];
+     ds\[char46]null3 = \[char39]fghij\[char39];
+     %nullind(ds\[char46]null3) = *off;
+     ds2\[char46]null1 = \[char39]abcde\[char39];
+     %nullind(ds2\[char46]null1) = *on;
+     %nullind(ds3\[char46]null3) = *off;
+     // The procedure is called (see the code for
+     // the procedure below
+     proc (ds : ds2\[char46]null1 : ds2\[char46]null3);
+
+     // After "proc" returns, the calling procedure
+     // displays some results showing that the
+     // called procedure changed the values of
+     // the calling procedure\[char39]s parameters and
+     // their null-indicators
+     dsply (%nullind(ds\[char46]null1));  // displays \[char39]0\[char39]
+     dsply ds2\[char46]null2;             // displays \[char39]newval\[char39]
+     dsply (%nullind(ds2\[char46]null2)); // displays \[char39]0\[char39]
+ /end-free
+.fi
+
+.PP
+.nf
+ *-----------------------------------
+ * Called procedure PROC
+ *-----------------------------------
+P                 B
+D proc            PI
+D   parm                              LIKEDS(ds)
+D                                     OPTIONS(*NULLIND)
+D   parm2                       10A   OPTIONS(*NULLIND)
+D   parm3                       10A   OPTIONS(*NULLIND) CONST
+ /free
+     if %NULLIND(parm\[char46]null1);
+        // This code will be executed because the
+        // caller set on the null indicator for
+        // subfield NULL1 of the parameter DS
+     endif;
+
+     if %NULLIND(parm3);
+        // PARM3 is defined as null-capable since it was
+        // defined with OPTIONS(*NULLIND)\[char46]
+        // This code will not be executed, because the
+        // caller set off the null-indicator for the parameter
+     endif;
+
+     // Change some data values and null-indicator values
+     // The calling procedure will see the updated values\[char46]
+     parm2 = \[char39]newvalue\[char39];
+     %NULLIND(parm2) = *OFF;
+     %NULLIND(parm\[char46]null1) = *OFF;
+     parm\[char46]null1 = \[char39]newval\[char39];
+     return;
+ /end-free
+P                 E
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %LEN (3RPG),
+.BR %PARMNUM (3RPG),
+.BR %TRIM (3RPG),
+.BR %STR (3RPG),
+.BR %PARMS (3RPG),
+.BR %TRIMR (3RPG),
+.BR %ADDR (3RPG),
+.BR %SIZE (3RPG),
+.BR %ELEM (3RPG),
+.BR %SUBST (3RPG),
+.BR %ALLOC (3RPG),
+.BR %NULLIND (3RPG)

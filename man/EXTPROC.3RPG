@@ -1,0 +1,323 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh534.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EXTPROC 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+EXTPROC
+.SH SYNOPSIS
+.nf
+EXTPROC({*CL|*CWIDEN|*CNOWIDEN| {*JAVA:class-name:}}name)
+.fi
+.SH DESCRIPTION
+The \fIEXTPROC\fR keyword can have one of the following formats:
+
+
+.TP 5
+.B 
+
+.TP 5
+.B \fIEXTPROC\fR(\fI*CL\fR:name)
+Specifies an external procedure that is written in \fIILE\fR CL, or an \fIRPG\fR procedure to be called by \fIILE\fR CL\[char46] Use \fI*CL\fR if your program uses return values with data types that CL handles differently from \fIRPG\fR\[char46] For example, use \fI*CL\fR when prototyping an \fIRPG\fR procedure that is to be called by a CL procedure when the return value is 1A\[char46]
+.TP 5
+.B \fIEXTPROC\fR(\fI*CWIDEN\fR:name|\fI*CNOWIDEN\fR:name)
+Specifies an external procedure that is written in \fIILE\fR C, or an \fIRPG\fR procedure to be called by \fIILE\fR C\[char46] 
+Use \fI*CNOWIDEN\fR or \fI*CWIDEN\fR if your program uses return values or parameters passed by value with data types that C handles differently from \fIRPG\fR\[char46] Use \fI*CWIDEN\fR or \fI*CNOWIDEN\fR when defining an \fIRPG\fR procedure that is to be called by C, or when defining the prototype for a C procedure, where the returned value or a parameter passed by value is 1A, 1G or 1C, 5U, 5I, or 4F\[char46]
+
+ 
+Use \fI*CNOWIDEN\fR if the \fIILE\fR C source contains #pragma argument(procedure-name,nowiden) for the procedure; otherwise, use \fI*CWIDEN\fR\[char46]
+
+
+.TP 5
+.B \fIEXTPROC\fR(\fI*JAVA\fR:class-name:name)
+Specifies a method that is written in Java™, or an \fIRPG\fR native method to be called by Java\[char46] The first parameter is \fI*JAVA\fR\[char46] The second parameter is a character constant containing the class of the method\[char46] The third parameter is a character constant containing the method name\[char46] The special method name \fI*CONSTRUCTOR\fR means that the method is a constructor; this method can be used to instantiate a class (create a new class instance)\[char46] 
+For more information about invoking Java procedures, see \fIIBM\fR® Rational® Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
+
+
+.TP 5
+.B \fIEXTPROC\fR(name)
+Specifies an external procedure that is written in or to be called by \fIRPG\fR or \fICOBOL\fR\[char46] This format should also be used for a procedure that can be called by any of \fIRPG\fR, \fICOBOL\fR, C, or CL; in this case, you must ensure that the return value and the parameters do not have any of the problems listed above for \fI*CL\fR, \fI*CWIDEN\fR, and \fI*CNOWIDEN\fR\[char46]
+.PP
+
+The \fIEXTPROC\fR keyword indicates the external name of the procedure whose prototype is being defined\[char46] The name can be a character constant or a procedure pointer\[char46] When \fIEXTPROC\fR is specified, a bound call will be done\[char46]
+
+
+If neither \fIEXTPGM\fR or \fIEXTPROC\fR is specified, then the compiler assumes that you are defining a procedure, and assigns it the external name found in positions 7-21\[char46]
+
+
+If the name specified for \fIEXTPROC\fR (or the prototype or procedure name, if neither \fIEXTPGM\fR or \fIEXTPROC\fR is specified) starts with "\fICEE\fR" or an underscore (\[char39]_\[char39]), the compiler will treat this as a system built-in\[char46] To avoid confusion with system provided \fIAPI\fRs, you should not name your procedures starting with "\fICEE\fR"\[char46]
+
+
+For example, to define the prototype for the procedure \fISQLA\fRllocEnv, that is in the service program \fIQSQCLI\fR, the following definition specification could be coded:
+
+
+.PP
+.nf
+      D SQLEnv          PR                  EXTPROC(\[char39]SQLAllocEnv\[char39])
+.fi
+
+If a procedure pointer is specified, it must be assigned a valid address before it is used in a call\[char46] It should point to a procedure whose return value and parameters are consistent with the prototype definition\[char46]
+
+
+When a prototype is specified for a procedure, the \fIEXTPROC\fR keyword is specified for the prototype\[char46] Otherwise, the \fIEXTPROC\fR keyword is specified for the procedure interface\[char46] It is only necessary to explicitly specify a prototype when the procedure will be called from another \fIRPG\fR module\[char46] When the procedure is only called from within the same module, or when it is only called by non-\fIRPG\fR callers, the prototype can be implicitly derived from the procedure interface\[char46]
+
+
+Figure 122 shows an example of the \fIEXTPROC\fR keyword with a procedure pointer as its parameter\[char46]
+
+
+
+
+
+
+
+.SH EXAMPLE
+
+Using \fIEXTPROC\fR with a Procedure Pointer
+
+.PP
+.nf
+ * Assume you are calling a procedure that has a procedure
+ * pointer as the EXTPROC\[char46] Here is how the prototype would
+ * be defined:
+D DspMsg          PR            10A   EXTPROC(DspMsgPPtr)
+D  Msg                       32767A
+D  Length                        4B 0 VALUE
+ * Here is how you would define the prototype for a procedure
+ * that DspMsgPPtr could be assigned to\[char46]
+D MyDspMsg        PR                  LIKE(DspMsg)
+D  Msg                       32767A
+D  Length                        4B 0 VALUE
+ * Before calling DSPMSG, you would assign DSPMSGPPTR
+ * to the actual procedure name of MyDspMsg, that is
+ * MYDSPMSG\[char46]
+C                    EVAL      DspMsgPPtr = %paddr(\[char39]MYDSPMSG\[char39])
+C                    EVAL      Reply = DspMsg(Msg, %size(Msg))
+ \[char46]\[char46]\[char46]
+P MyDspMsg       B
+.fi
+
+
+
+.SH EXAMPLE
+
+Using \fIEXTPROC\fR with \fI*CNOWIDEN\fR - C Code
+
+.PP
+.nf
+   char RPG_PROC (short s, float f);
+   char C_PROC (short s, float f);
+   #pragma argument(RPG_PROC, nowiden)
+   #pragma argument(C_PROC, nowiden)
+
+   /* "fn" calls the RPG procedure with unwidened parameters,       */
+   /* and expects the return value to be passed according to C      */
+   /* conventions\[char46]                                                  */
+   void fn(void)
+   {
+      char c;
+
+      c = RPG_PROC(5, 15\[char46]3);
+   }
+
+   /* Function C_PROC expects its parameters to be passed unwidened\[char46]*/
+   /* It will return its return value using C conventions\[char46]          */
+   char C_PROC (short s, float f);
+   {
+      char c = \[char39]x\[char39];
+
+      if (s == 5 || f < 0)
+      {
+         return \[char39]S\[char39];
+      }
+      else
+      {
+         return \[char39]F\[char39];
+      }
+   }
+.fi
+
+
+
+.SH EXAMPLE
+
+Using \fIEXTPROC\fR with \fI*CNOWIDEN\fR - \fIRPG\fR Code
+
+.PP
+.nf
+D RPG_PROC        PR             1A   EXTPROC(*CNOWIDEN : \[char39]RPG_PROC\[char39])
+D   short                        5I 0 VALUE
+D   float                        4F   VALUE
+
+D C_RPOC          PR             1A   EXTPROC(*CNOWIDEN : \[char39]C_PROC\[char39])
+D   short                        5I 0 VALUE
+D   float                        4F   VALUE
+
+P RPG_PROC        B                   EXPORT
+D                 PI             1A
+D   short                        5I 0 VALUE
+D   float                        4F   VALUE
+
+D   char          S              1A
+
+ * Call the C procedure
+C                   EVAL      c = C_PROC(4 : 14\[char46]7)
+
+ * Return the value depending on the values of the parameters
+C                   IF        short < float
+C                   RETURN    \[char39]L\[char39]
+C                   ELSE
+C                   RETURN    \[char39]G\[char39]
+C                   ENDIF
+
+P                 E
+.fi
+
+
+
+.SH EXAMPLE
+
+Using \fIEXTPROC\fR with \fI*CWIDEN\fR - C Code
+
+.PP
+.nf
+   char RPG_PROC (short s, float f);
+   char C_PROC (short s, float f);
+
+   /* Function "fn" calls the RPG procedure with widened parameters,*/
+   /* and expects the return value to be passed according to C      */
+   /* conventions\[char46]                                                  */
+   void fn(void)
+   {
+      char c;
+
+      c = RPG_PROC(5, 15\[char46]3);
+   }
+
+   /* Function C_PROC expects its parameters to be passed widened\[char46]  */
+   /* It will return its return value using C conventions\[char46]          */
+   char C_PROC (short s, float f);
+   {
+      char c = \[char39]x\[char39];
+
+      if (s == 5 || f < 0)
+      {
+         return \[char39]S\[char39];
+      }
+      else
+      {
+         return \[char39]F\[char39];
+      }
+   }
+.fi
+
+
+
+.SH EXAMPLE
+
+Using \fIEXTPROC\fR with \fI*CWIDEN\fR - \fIRPG\fR Code
+
+.PP
+.nf
+D RPG_PROC        PR             1A   EXTPROC(*CWIDEN : \[char39]RPG_PROC\[char39])
+D   short                        5I 0 VALUE
+D   float                        4F   VALUE
+
+D C_PROC          PR             1A   EXTPROC(*CWIDEN : \[char39]C_PROC\[char39])
+D   short                        5I 0 VALUE
+D   float                        4F   VALUE
+
+P RPG_PROC        B                   EXPORT
+D                 PI             1A
+D   short                        5I 0 VALUE
+D   float                        4F   VALUE
+
+D   char          S              1A
+
+ * Call the C procedure
+C                   EVAL      c = C_PROC(4 : 14\[char46]7)
+
+ * Return the value depending on the values of the parameters
+C                   IF        short < float
+C                   RETURN    \[char39]L\[char39]
+C                   ELSE
+C                   RETURN    \[char39]G\[char39]
+C                   ENDIF
+
+P                 E
+.fi
+
+
+
+.SH EXAMPLE
+
+Using \fIEXTPROC\fR with \fI*CL\fR - CL Code
+
+.PP
+.nf
+         /* CL procedure CL_PROC */
+         DCL &CHAR1 TYPE(*CHAR) LEN(1)
+
+         /* Call the RPG procedure */
+         CALLPRC RPG_PROC RTNVAR(&CHAR1)
+.fi
+
+
+
+.SH EXAMPLE
+
+Using \fIEXTPROC\fR with \fI*CL\fR - \fIRPG\fR Code
+
+.PP
+.nf
+D RPG_PROC        PR             1A   EXTPROC(*CL : \[char39]RPG_PROC\[char39])
+
+P RPG_PROC        B                   EXPORT
+D                 PI             1A
+
+C                   RETURN    \[char39]X\[char39]
+
+P                 E
+.fi
+
+
+
+.SH EXAMPLE
+
+Using \fIEXTPROC\fR on a procedure interface for a procedure intended to be called only by CL callers
+
+.PP
+.nf
+P isValidCust     B                   EXPORT
+D                 PI             N    EXTPROC(*CL : \[char39]isValidCust\[char39])
+D   custId                     10A    CONST
+D isValid         S              N    INZ(*OFF)
+ /free
+    \[char46]\[char46]\[char46] calculations using the "custId" parameter
+    return isValid;
+ /end-free
+P                 E
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %PADDR (3RPG),
+.BR %SIZE (3RPG)

@@ -1,0 +1,213 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh557.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH RTNPARM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+RTNPARM
+.SH DESCRIPTION
+The \fIRTNPARM\fR keyword specifies that the return value of a procedure is to be handled internally as a parameter of the same type as the defined returned value, passed by reference\[char46]
+
+
+Using \fIRTNPARM\fR may improve performance when returning large values\[char46]
+
+
+The impact on performance due to the \fIRTNPARM\fR keyword will vary from having a small negative impact to having a large positive impact\[char46] There may be a small negative impact when the prototyped return value is relatively small, such as an integer, or a small data structure\[char46] There will be some improvement when the prototyped return value is a larger value such as a 32767 byte data structure\[char46] The performance improvement is most apparent when the prototyped return value is a large varying length string, and the actual returned value is relatively small; for example, the prototype defines the return value as a one million byte varying length character string, and the value \[char39]abc\[char39] is returned\[char46]
+
+
+Using \fIRTNPARM\fR for a procedure prototype may also reduce the amount of automatic storage required for other procedures that contain calls to that procedure\[char46] For example, if procedure \fIMYCALLER\fR contains a call to procedure \fIMYPROC\fR that returns a large value, procedure \fIMYCALLER\fR will require additional automatic storage (even if \fIMYCALLER\fR does not actually call procedure \fIMYPROC\fR at run time)\[char46] In some cases, procedure \fIMYCALLER\fR will not compile due to excessive automatic storage requirements; in other cases, \fIMYCALLER\fR is not able to be called because the total automatic storage on the call stack would exceed the maximum\[char46] Using \fIRTNPARM\fR avoids this problem with additional automatic storage\[char46]
+
+
+
+
+
+
+.IP 1. 2
+.RS
+The additional parameter is passed as the first parameter\[char46]
+.RE
+.IP 2. 2
+.RS
+The \fB%PARMS\fR and \fB%PARMNUM\fR built-in functions include the additional parameter in the parameter count\[char46] When the \fIRTNPARM\fR keyword is specified, the value returned by \fB%PARMNUM\fR will be one higher than the apparent parameter number\[char46]
+.RE
+.IP 3. 2
+.RS
+When calling \fIAPI\fRs that require a parameter number, such as \fICEEDOD\fR or \fICEETSTA\fR, you must account for the extra first parameter\[char46] For example, if your procedure has three parameters, and you want to find the length of the third parameter as it appears in your parameter list, you must ask for information about the fourth parameter\[char46] If you use the \fB%PARMNUM\fR built-in function to return the correct parameter number for calling these \fIAPI\fRs, you do not need to worry about manually determining the correct parameter number\[char46]
+.RE
+.IP 4. 2
+.RS
+When the calling procedure is written in a language other than \fIRPG\fR, the caller must code the call as though the procedure has no return value, and as though there is an additional first parameter passed by reference with the same type as the \fIRPG\fR return value\[char46]
+.RE
+.IP 5. 2
+.RS
+Similarly, when the called procedure is written in a language other than \fIRPG\fR, the procedure must be coded without a return value, and having an additional first parameter passed by reference with the same type as the \fIRPG\fR return value\[char46]
+.RE
+.IP 6. 2
+.RS
+When \fIRTNPARM\fR is specified for the procedure, the maximum number of prototyped parameters is 398\[char46]
+.RE
+.IP 7. 2
+.RS
+The \fIRTNPARM\fR keyword is not allowed for a Java™ method call\[char46]
+.RE
+.PP
+
+The \fIRTNPARM\fR keyword applies both to a prototype definition and to a procedure-interface definition\[char46]
+
+
+
+.SH EXAMPLE
+
+Example of a procedure with the \fIRTNPARM\fR keyword
+
+.PP
+.nf
+1\[char46] The prototype for the procedureD center          pr        100000a   varying
+D                                     rtnparm
+D   text                     50000a   const varying
+D   len                         10i 0 value
+
+
+2\[char46] Calling the procedureD title           s            100a   varying
+ /free
+    title = center (\[char39]Chapter 1\[char39] : 20);
+    // title = \[char39]     Chapter 1     \[char39]
+
+3\[char46]The procedureP center          b                   export
+D center          pi        100000a   varying
+D                                     rtnparm
+D   text                     50000a   const varying
+D   len                         10i 0 value
+D blanks          s          50000a   inz(*blanks)
+D numBlanks       s             10i 0
+D startBlanks     s             10i 0
+D endBlanks       s             10i 0
+ /free
+    if len < %len(text);
+       \[char46]\[char46]\[char46] handle invalid input
+    endif;
+    numBlanks = len - %len(text);
+    startBlanks = numBlanks / 2;
+    endBlanks = numBlanks - startBlanks;
+    return %subst(blanks : 1 : startBlanks)
+         + text
+         + %subst(blanks : 1 : endBlanks);
+ /end-free
+P center          e
+.fi
+
+
+
+.SH EXAMPLE
+
+Using \fB%PARMS\fR and calling \fICEEDOD\fR with the \fIRTNPARM\fR keyword
+
+.PP
+.nf
+D proc            pi              a   len(16773100) varying
+D                                     rtnparm opdesc
+D   p1                          10a
+D   p2                          10a   options(*varsize)
+D   p3                          10a   options(*omit : *nopass)
+
+D num_parms       s             10i 0
+D parm_len        s             10i 0
+D desc_type       s             10i 0
+D data_type       s             10i 0
+D desc_info1      s             10i 0
+D desc_info2      s             10i 0
+D CEEDOD          pr
+D   parm_num                    10i 0 const
+D   desc_type                   10i 0
+D   data_type                   10i 0
+D   desc_info1                  10i 0
+D   desc_info2                  10i 0
+D   parm_len                    10i 0
+D   feedback                    12a   options(*omit)
+ /free
+    // Get information about parameter p2
+    callp CEEDOD(%parmnum(p2) : desc_type : data_type
+               : desc_info1 : desc_info2
+               : parm_len : *omit);
+    if parm_len < 10;
+       // The parameter passed for p2 is shorter than 10
+    endif;
+
+    // Find out the number of parameters passed
+    num_parms = %parms();
+    // If all three parameters were passed, num_parms = 4
+
+    // test if p3 was passed
+    if num_parms >= %parmnum(p3);
+       // Parameter p3 was passed
+       if %addr(p3) <> *null;
+          // Parameter p3 was not omitted
+       endif;
+    endif;
+.fi
+
+
+
+.SH EXAMPLE
+
+Calling a procedure with the \fIRTNPARM\fR keyword from another language
+
+.PP
+.nf
+1\[char46] The RPG prototypeD myproc          pr           200a   rtnparm
+D   name                        10a   const
+
+2\[char46] A CL module calling this RPG proceduredcl &retval type(*char) len(200)
+
+callprc myproc parm(&retval \[char39]Jack Smith\[char39])
+.fi
+
+
+
+.SH EXAMPLE
+
+Calling a procedure with the \fIRTNPARM\fR keyword written in another language
+
+.PP
+.nf
+1\[char46] CL procedure GETLIBTEXTPGM PARM(&retText &lib)
+
+DCL &retText type(*char) len(50)
+DCL &lib     type(*char) len(10)
+
+/* Set &retText to the library text */rtvobjd obj(&lib) objtype(*lib) text(&retText)
+return
+
+2\[char46] RPG procedure calling this CL procedure using the RTNPARM keywordD getLibText      pr            50a   rtnparm
+D   name                        10a   const
+ /free
+      if getLibText(\[char39]MYLIB\[char39]) = *blanks;
+          \[char46]\[char46]\[char46]
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %PARMS (3RPG),
+.BR %PARMNUM (3RPG),
+.BR %LEN (3RPG),
+.BR %SUBST (3RPG),
+.BR %ADDR (3RPG)

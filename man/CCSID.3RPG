@@ -1,0 +1,50 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/SS4QVT_8.5.1/com.ibm.etools.iseries.langref.doc/evfrilsh521.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH CCSID 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+CCSID
+.SH SYNOPSIS
+.nf
+CCSID(number | *DFT)
+.fi
+.SH DESCRIPTION
+This keyword sets the \fICCSID\fR for graphic and \fIUCS\fR-2 definitions\[char46]
+
+
+number must be an integer between 0 and 65535\[char46] It must be a valid graphic or \fIUCS\fR-2 \fICCSID\fR value\[char46] A valid graphic \fICCSID\fR is 65535 or a \fICCSID\fR with the \fIEBCDIC\fR double-byte encoding scheme (X\[char39]1200\[char39])\[char46] A valid \fIUCS\fR-2 \fICCSID\fR has the \fIUCS\fR-2 encoding scheme (x\[char39]7200\[char39])\[char46]
+
+
+For program-described fields, \fICCSID\fR(number) overrides the defaults set on the control specification with the \fICCSID\fR(\fI*GRAPH\fR: \fI*SRC\fR), \fICCSID\fR(\fI*GRAPH\fR: number), or \fICCSID\fR(\fI*UCS2\fR: number) keyword\[char46]
+
+
+\fICCSID\fR(\fI*DFT\fR) indicates that the default \fICCSID\fR for the module is to be used\[char46] This is useful when the \fILIKE\fR keyword is used since the new field would otherwise inherit the \fICCSID\fR of the source field\[char46]
+
+
+If the keyword is not specified, the default graphic or \fIUCS\fR-2 \fICCSID\fR of the module is assumed\[char46] (This keyword is not allowed for graphic fields when \fICCSID\fR(\fI*GRAPH\fR : \fI*IGNORE\fR) is specified or assumed)\[char46]
+
+
+If this keyword is not specified and the \fILIKE\fR keyword is specified, the new field will have the same \fICCSID\fR as the \fILIKE\fR field\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
