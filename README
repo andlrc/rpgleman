@@ -2,8 +2,9 @@ NAME
     rpgleman - Get man pages for ILE RPG
 
 SYNOPSIS
-    Download and install man pages built-in functions, declaration keywords,
-    control keywords, calculation operations and compiler directives in ILE RPG.
+    Download and install man pages for built-in functions, declaration
+    keywords, control keywords, calculation operations and compiler
+    directives in ILE RPG.
 
 INSTALL
     To install man pages run the following, ``sudo'' might be needed:
@@ -22,8 +23,8 @@ DEPENDENCIES
     The following Perl modules is used and should be installed in order to
     rebuild man pages:
 
-    HTML::TreeBuilder::XPath;
-    HTTP::Tiny;
+    HTML::TreeBuilder::XPath
+    HTTP::Tiny
     IO::Socket::SSL
 
 MAN PAGES
