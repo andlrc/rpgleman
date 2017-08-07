@@ -1,0 +1,72 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH XLATE 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%XLATE - Translate
+.SH SYNOPSIS
+.nf
+%XLATE(from:to:string{:startpos})
+.fi
+.SH DESCRIPTION
+\fB%XLATE\fR translates string according to the values of from, to, and startpos\[char46]
+
+
+The first parameter contains a list of characters that should be replaced, and the second parameter contains their replacements\[char46] For example, if the string contains the third character in from, every occurrence of that character is replaced with the third character in to\[char46]
+
+
+The third parameter is the string to be translated\[char46] The fourth parameter is the starting position for translation\[char46] By default, translation starts at position 1\[char46]
+
+
+If the first parameter is longer than the second parameter, the additional characters in the first parameter are ignored\[char46]
+
+
+The first three parameters can be of type character, graphic, or \fIUCS\fR-2\[char46] All three must have the same type\[char46] The value returned has the same type and length as string\[char46]
+
+
+The fourth parameter is a non-float numeric with zero decimal positions\[char46]
+
+
+For more information, see String Operations or Built-in Functions\[char46]
+
+
+
+.SH EXAMPLE
+\fB%XLATE\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D up              C                   'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+D lo              C                   'abcdefghijklmnopqrstuvwxyz'
+D string          S             10A   inz('rpg dept')
+
+ /FREE
+
+   string = %XLATE(lo:up:'rpg dept');
+   // string now contains 'RPG DEPT'
+
+   string = %XLATE(up:lo:'RPG DEPT':6);
+   // string now contains 'RPG Dept'
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

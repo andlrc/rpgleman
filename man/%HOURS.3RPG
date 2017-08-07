@@ -1,0 +1,46 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH HOURS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%HOURS - Number of Hours
+.SH SYNOPSIS
+.nf
+%HOURS(number)
+.fi
+.SH DESCRIPTION
+\fB%HOURS\fR converts a number into a duration that can be added to a time or timestamp value\[char46]
+
+
+
+
+
+\fB%HOURS\fR can only be the right-hand value in an addition or subtraction operation\[char46] The left-hand value must be a time or timestamp\[char46] The result is a time or timestamp value with the appropriate number of hours added or subtracted\[char46] For a time, the resulting value is in \fI*ISO\fR format\[char46]
+
+
+For an example of date and time arithmetic operations, see Figure 232\[char46]
+
+
+For more information, see Date Operations or Built-in Functions\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

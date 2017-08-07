@@ -1,0 +1,118 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH CHECKR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%CHECKR - Check Reverse
+.SH SYNOPSIS
+.nf
+%CHECKR(comparator : base {: start})
+.fi
+.SH DESCRIPTION
+The check begins at the starting position and continues to the left until a character that is not contained in the comparator string is found\[char46] The starting position defaults to the end of the string\[char46]
+
+
+The first parameter must be of type character, graphic, or \fIUCS\fR-2, fixed or varying length\[char46] The second parameter must be the same type as the first parameter\[char46] The third parameter, if specified, must be a non-float numeric with zero decimal positions\[char46]
+
+
+For more information, see String Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%CHECKR\fR returns the last position of the string base that contains a character that does not appear in string comparator\[char46] If all of the characters in base also appear in comparator, the function returns 0\[char46]
+
+.SH EXAMPLE
+\fB%CHECKR\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *---------------------------------------------
+ * If a string is padded at the end with some
+ * character other than blanks, the characters
+ * cannot be removed using %TRIM.
+ * %CHECKR can be used for this by searching
+ * for the last character in the string that
+ * is not in the list of "pad characters".
+ *---------------------------------------------
+D string1         s             50a   varying
+D                                     inz('My *dog* Spot.* @ * @ *')
+D string2         s             50a   varying
+D                                     inz('someone@somewhere.com')
+D padChars        C                   ' *@'
+
+ /free
+
+    %len(string1) = %checkr(padChars:string1);
+    //  %len(string1) is set to 14 (the position of the last character
+    //  that is not in "padChars").
+
+    //  string1 = 'My *dog* Spot.'
+
+    %len(string2) = %checkr(padChars:string2);
+    //  %len(string2) is set to 21 (the position of the last character
+    //  that is not in "padChars").
+
+    //  string2 = 'someone@somewhere.com'  (the string is not changed)
+
+ /end-free
+.fi
+
+
+
+.SH EXAMPLE
+\fB%CHECK\fR and \fB%CHECKR\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *------------------------------------------------------
+ * A string contains a numeric value, but it might
+ * be surrounded by blanks and asterisks and might be
+ * preceded by a currency symbol.
+ *------------------------------------------------------
+D string          s             50a   varying inz('$****12.345***  ')
+
+ /free
+    // Find the position of the first character that is not one of ' $*'
+    numStart = %CHECK (' $*' : string);
+    //  = 6
+
+    // Find the position of the last character that is not one of ' *'
+    numEnd = %CHECKR (' *' : string);
+    //  = 11
+
+    // Extract the numeric string
+    string = %SUBST(string : numStart : numEnd - numStart + 1);
+    //  = '12.345'
+
+ /end-free
+.fi
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %TRIM (3RPG),
+.BR %LEN (3RPG),
+.BR %CHECK (3RPG),
+.BR %SUBST (3RPG)

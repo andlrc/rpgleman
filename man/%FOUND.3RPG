@@ -1,0 +1,137 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH FOUND 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%FOUND - Return Found Condition
+.SH SYNOPSIS
+.nf
+%FOUND{(file_name)}
+.fi
+.SH DESCRIPTION
+The operations that set \fB%FOUND\fR are:
+
+
+.IP \[bu] 2
+File operations: CHAIN (Random Retrieval from a File)DELETE (Delete Record)SETGT (Set Greater Than)SETLL (Set Lower Limit)
+.IP \[bu] 2
+String operations: CHECK (Check Characters)CHECKR (Check Reverse)SCAN (Scan String) Note:Built-in function %SCAN does not change the value of %FOUND.
+.IP \[bu] 2
+Search operations: LOOKUP (Look Up a Table or Array Element)
+.PP
+
+If \fB%FOUND\fR is used without the optional file_name parameter, then it returns the value set for the most recent relevant operation\[char46] When a file_name is specified, then it applies to the most recent relevant operation on that file\[char46]
+
+
+For file operations, \fB%FOUND\fR is opposite in function to the "no record found NR" indicator\[char46]
+
+
+For string operations, \fB%FOUND\fR is the same in function as the "found FD" indicator\[char46]
+
+
+For the \fILOOKUP\fR operation, \fB%FOUND\fR returns \[char39]1\[char39] if the operation found an element satisfying the search conditions\[char46] For an example of \fB%FOUND\fR with \fILOOKUP\fR, see Figure Figure 217\[char46]
+
+
+For more information, see File Operations, Result Operations, or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%FOUND\fR returns \[char39]1\[char39] if the most recent relevant file operation found a record, a string operation found a match, or a search operation found an element\[char46] Otherwise, this function returns \[char39]0\[char39]\[char46]
+
+.SH EXAMPLE
+\fB%FOUND\fR used to Test a File Operation without a Parameter
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+F*Filename+IPEASFRlen+LKlen+AIDevice+.Keywords+++++++++++++++++++++++++
+ * File CUSTS has record format CUSTREC
+FCUSTS     IF   E           K DISK
+
+ /FREE
+    // Check if the customer is in the file
+    chain Cust CustRec;
+    if %found;
+       exsr HandleCustomer;
+    endif;
+ /END-FREE
+.fi
+
+
+
+.SH EXAMPLE
+\fB%FOUND\fR used to Test a File Operation with a Parameter
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+F*Filename+IPEASFRlen+LKlen+AIDevice+.Keywords+++++++++++++++++++++++++
+ * File MASTER has all the customers
+ * File GOLD has only the "privileged" customers
+FMASTER    IF   E           K DISK
+FGOLD      IF   E           K DISK
+
+ /FREE
+   // Check if the customer exists, but is not a privileged customer
+   chain Cust MastRec;
+   chain Cust GoldRec;
+ 
+   // Note that the file name is used for %FOUND, not the record name
+   if  %found (Master)  and not  %found (Gold);
+   //
+   endif;
+ /END-FREE
+.fi
+
+
+
+.SH EXAMPLE
+\fB%FOUND\fR used to Test a String Operation
+.PP
+.nf
+*...1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++++
+D Numbers         C                   '0123456789'
+D Position        S              5I 0
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq....
+ * If the actual position of the name is not required, just use
+ * %FOUND to test the results of the SCAN operation.
+ * If Name has the value 'Barbara' and Line has the value
+ * 'in the city of Toronto.      ', then %FOUND will return '0'.
+ * If Line has the value 'the city of Toronto where Barbara lives, '
+ * then %FOUND will return '1'.
+C     Name          SCAN      Line
+C                   IF        %FOUND
+C                   EXSR      PutLine
+C                   ENDIF                                           
+ * If Value contains the value '12345.67', Position would be set
+ * to 6 and %FOUND would return the value '1'.
+ * If Value contains the value '10203040', Position would be set
+ * to 0 and %FOUND would return the value '0'.
+C     Numbers       CHECK     Value         Position
+C                   IF        %FOUND
+C                   EXSR      HandleNonNum
+C                   ENDIF                                           
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %SCAN (3RPG)

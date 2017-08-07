@@ -1,0 +1,284 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use HTTP::Tiny;
+use HTML::TreeBuilder::XPath;
+use POSIX qw{strftime};
+use Data::Dumper;
+
+sub man_node
+{
+	my ($node) = @_;
+	my $tag_name = $node->{_tag};
+
+	if ($tag_name =~ m{ \b p \b }xms) {
+		return man_highlight($node->as_text . "\n");
+	} elsif ($tag_name =~ m{ \b dl \b }xms) {
+		my @dt_nodes = $node->findnodes_as_strings('dt');
+		my @dd_nodes = $node->findnodes_as_strings('dd');
+		my @ret = ();
+		for my $i (0..$#dt_nodes) {
+			push @ret, join("\n", 
+				".TP 5",
+				".B " . man_highlight($dt_nodes[$i]),
+				man_highlight($dd_nodes[$i])
+			);
+		}
+		return join "\n", @ret;
+	} elsif ($tag_name =~ m{ \b ul \b }xms) {
+		return join("\n", map {
+			join("\n", 
+				'.IP \\[bu] 2',
+				$_
+			);
+		} $node->findnodes_as_strings('li')). "\n.PP";
+	} elsif ($tag_name =~ m{ \b ol \b }xms) {
+		my @items = $node->findnodes_as_strings('li'); 
+		my $index = 0;
+		return join("\n", map {
+			join("\n", 
+				'.IP ' . (++$index) . '. 2',
+				".RS",
+				$_,
+				".RE"
+			);
+		} @items) . "\n.PP";
+	} elsif ($tag_name =~ m{ \b pre \b }xms) {
+		return join("\n",
+			".PP",
+			".nf",
+			$node->as_text,
+			".fi"
+		);
+	} elsif ($tag_name =~ m{ \b table \b }xms) {
+
+		my @rows = ();
+		my $size = -1;
+
+		for my $tr ($node->findnodes('tbody/tr')) {
+			my @tds = $tr->findnodes_as_strings('td');
+			if ($tds[0] !~ m{ ^ \h* Note }xms) {
+				$size = @tds if (@tds > $size);
+				push @rows, \@tds;
+			}
+		}
+
+		return join("\n",
+			".TS",
+			"allbox;",
+			("l " x $size) . " .",
+			join("\n", map {
+				join("\t", map {
+					"T{\n" . man_highlight($_) . "\nT}";
+				} @{$_});
+			} @rows),
+			".TE");
+	} elsif (($node->attr('class') || '') =~ m{
+		\b (?: figbox | fignone ) \b
+	}xms) {
+		my @example = $node->findnodes_as_strings('*');
+		if (@example >= 2) {
+			$example[0] =~ s{ Figure \h+ \d+ . \h* }{}xms;
+			return join("\n",
+				".SH EXAMPLE",
+				man_highlight($example[0]),
+				".PP",
+				".nf",
+				$example[1],
+				".fi"
+			);
+		} else {
+			return '';
+		}
+	}
+}
+
+sub man_highlight
+{
+	my ($text) = @_;
+	$text =~ s{ [.'] }{ "\\[char" . ord($&) . "]"}xmsge;
+	$text =~ s{ \b (?<! [%*] ) [A-Z]{3,} (?: - [A-Z]{3,} )* }{\\fI$&\\fR}xmsg;
+	$text =~ s{ %\w+ (?: \( .*? \) )? }{\\fB$&\\fR}xmsg;
+	$text =~ s{ \*\w+ }{\\fI$&\\fR}xmsg;
+
+	return $text;
+}
+
+sub man_build
+{
+	my ($man) = @_;
+
+	for my $short_name (@{$man->{short_names}}) {
+		$short_name =~ s{ \h+ }{_}xmsg,
+		my $out_file = "man/$short_name.$man->{section}";
+		open (my $fh, '>:utf8', $out_file) or die("$out_file $!");
+
+		# Header
+		print $fh ".\\\" Copyright 2017 Andreas Louv <andreas\@louv.dk>\n";
+		print $fh ".\\\" All content is copyright IBM\n";
+		print $fh ".\\\"\n";
+		print $fh ".\\\" This man page is generated with \`\`rpgleman''\n";
+		print $fh ".\\\" Project URL: https://github.com/andlrc/rpgleman\n";
+		print $fh ".\\\"\n";
+		print $fh ".TH " . join(" ", (
+			$short_name =~ s{ % }{}xmsr,
+			$man->{section},
+			"",
+			$man->{date},
+			'"ILE RPG Language Reference"')) . "\n";
+
+		# NAME
+		print $fh ".SH NAME\n";
+		print $fh "${short_name} - $man->{name}\n";
+
+		# SYNOPSIS
+		if ($man->{synopsis}) {
+			print $fh ".SH SYNOPSIS\n";
+			print $fh ".nf\n";
+			print $fh $man->{synopsis} . "\n";
+			print $fh ".fi\n";
+		}
+
+		print $fh ".SH DESCRIPTION\n";
+		print $fh join("\n\n", map {
+			man_node($_);
+		} @{$man->{description}}) . "\n";
+
+		if (@{$man->{return_value}}) {
+			print $fh ".SH RETURN VALUE\n";
+			print $fh join("\n\n", map {
+				man_node($_);
+			} @{$man->{return_value}}) . "\n";
+		}
+
+		if (@{$man->{examples}}) {
+			print $fh join("\n\n", map {
+				man_node($_);
+			} @{$man->{examples}}) . "\n";
+		}
+
+		if (@{$man->{see_also}}) {
+			print $fh ".SH SEE ALSO\n";
+			print $fh join(",\n", map {
+				".BR $_ ($man->{section})";
+			} @{$man->{see_also}}) . "\n";
+		}
+
+		close($fh);
+	}
+}
+
+sub read_url
+{
+	my ($url) = @_;
+
+	my $resp = HTTP::Tiny->new->get($url);
+	if (!$resp->{success}) {
+		print STDERR $resp->{reason} . "\n" . $resp->{content};
+		return;
+	}
+
+	my $man = {
+		"date" => strftime("%Y-%m-%d", localtime),
+		"section" => "3RPG",
+		"name" => "",
+		"orig_short_name" => "",
+		"short_names" => [],
+		"synopsis" => "",
+		"description" => [],
+		"examples" => [],
+		"return_value" => [],
+		"see_also" => []
+	};
+
+	print STDERR $url . "\n";
+
+	my $tree = HTML::TreeBuilder::XPath->new;
+	my $content = $resp->{content};
+	$content =~ s{ \r }{}xmsg;
+	$content =~ s{ \xA0 }{ }xmsg;
+	$tree->parse_content($content);
+
+	# Take change date from page if provided:
+	$man->{date} = $_->attr('content')
+		for $tree->findnodes('//meta[@name="dc.date"]');
+
+	my $skip = 1;
+	my $prev_node;
+	my @nodes = $tree->findnodes('//body/*');
+
+	# Name
+	while ($nodes[0] && $nodes[0]->{_tag} !~ m{ \b (?: h2 | h3 ) \b }xmsi) {
+		shift @nodes;
+	}
+	if ($nodes[0]->as_text =~ m{ ( %? \w+ ) \h+ \( (.*) \) }xms) {
+		$man->{name} = $2;
+		$man->{orig_short_name} = $1;
+		push @{$man->{short_names}}, $man->{orig_short_name};
+	}
+	else {
+		$man->{orig_short_name} = $nodes[0]->as_text;
+		push @{$man->{short_names}}, $man->{orig_short_name};
+	}
+	shift @nodes;
+
+	# Synopsis
+	while ($nodes[0] && $nodes[0]->{_tag} =~ m{ \b (?: a ) \b }xmsi) {
+		shift @nodes;
+	}
+	if ($nodes[0] && $nodes[0]->{_tag} =~ m{ \b pre \b }xmsi) {
+		$man->{synopsis} = $nodes[0]->as_text;
+		my @short_names = do {
+			my %seen = ();
+			grep { !$seen{$_}++ } $man->{synopsis} =~ m{ % \w+ (?= \( ) }xmsg;
+		};
+		$man->{short_names} = \@short_names if @short_names > 1;
+
+		shift @nodes;
+	}
+
+	# Return Value
+	while ($nodes[0] && $nodes[0]->as_text =~ m{ \b returns \b }xmsi) {
+		push @{$man->{return_value}}, shift @nodes;
+
+		# Check if a list follows
+		if ($nodes[0]->{_tag} =~ m{ \b (?: dl | ul | ol ) \b }xmsi) {
+			push @{$man->{return_value}}, shift @nodes;
+		}
+	}
+
+	# Description
+	while ($nodes[0]
+		&& ($nodes[0]->attr('class') || '') !~ m{ \b figbox \b }xmsi) {
+		push @{$man->{description}}, shift @nodes;
+	}
+
+	while ($nodes[0]) {
+		push @{$man->{examples}}, shift @nodes;
+	}
+	
+	@{$man->{see_also}} = do {
+		my %seen = ();
+		grep {
+			my $bif = $_;
+			!$seen{$bif}++ && !grep {
+				m{ $bif \b }xmsi;
+			} @{$man->{short_names}}, $man->{orig_short_name};
+		} map { uc } $tree->findnodes_as_string('//body') =~ m{ % \w+ }xmsg;
+
+	};
+
+	man_build($man);
+	$tree->delete;
+}
+
+
+while (<>) {
+	next if m{ ^ \# }xms;
+	chomp(my $url = $_);
+	read_url($url);
+}
+
+# vim: tabstop=4 shiftwidth=4

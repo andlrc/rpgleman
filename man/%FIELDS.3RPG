@@ -1,0 +1,69 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH FIELDS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%FIELDS - Fields to update
+.SH SYNOPSIS
+.nf
+%FIELDS(name{:name...})
+.fi
+.SH DESCRIPTION
+A list of fields can be specified as the final argument to Input/Output operation \fIUPDATE\fR coded in a free-form group\[char46] Only the fields specified are updated into the Input/Output buffer\[char46]
+
+
+
+
+
+
+.IP 1. 2
+.RS
+Each name must be the name of a field in the input buffer for the record. If the field is renamed, the internal name is used.
+.RE
+.IP 2. 2
+.RS
+The name can be a subfield from a data structure defined with the EXTNAME/LIKEREC keyword using the file/format name of the record being updated. *INPUT must be specified with the keyword used. The name specified must contain the subfield name that corresponds to the input field. For a qualified data structure, the simple qualified name of the subfield is used.
+.RE
+.IP 3. 2
+.RS
+The name can be a subfield of a data structure defined with the LIKEDS keyword of a data structure defined as described above.
+.RE
+.PP
+
+\fB%FIELDS\fR specifies a list of fields to update\[char46] For example:
+
+
+
+
+
+
+.PP
+.nf
+ /free
+   chain empno record;
+   salary = salary + 2000;
+   status = STATEXEMPT;
+   update record %fields(salary:status);
+ /end-free
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

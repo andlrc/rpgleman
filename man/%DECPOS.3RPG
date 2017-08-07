@@ -1,0 +1,67 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DECPOS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%DECPOS - Get Number of Decimal Positions
+.SH SYNOPSIS
+.nf
+%DECPOS(numeric expression)
+.fi
+.SH DESCRIPTION
+The numeric expression must not be a float variable or expression\[char46]
+
+
+
+
+
+.SH RETURN VALUE
+\fB%DECPOS\fR returns the number of decimal positions of the numeric variable or expression\[char46] The value returned is a constant, and so may participate in constant folding\[char46]
+
+.SH EXAMPLE
+\fB%DECPOS\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D p7              s              7p 3 inz (8236.567)
+D s9              s              9s 5 inz (23.73442)
+D result1         s              5i 0
+D result2         s              5i 0
+D result3         s              5i 0
+
+ /FREE
+   result1 = %decpos (p7);     //  "result1" is now  3.
+   result2 = %decpos (s9);     //  "result2" is now  5.
+   result3 = %decpos (p7 * s9);//  "result3" is now  8.
+ /END-FREE
+.fi
+
+See Figure 227 for an example of \fB%DECPOS\fR with \fB%LEN\fR\[char46]
+
+
+For more information, see Size Operations or Built-in Functions\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %LEN (3RPG)

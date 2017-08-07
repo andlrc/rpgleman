@@ -1,0 +1,74 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH PADDR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%PADDR - Get Procedure Address
+.SH SYNOPSIS
+.nf
+%PADDR(string|prototype)
+.fi
+.SH DESCRIPTION
+\fB%PADDR\fR may be compared with and assigned to only items of type procedure pointer\[char46]
+
+
+The parameter to \fB%PADDR\fR must be a character constant or a prototype name\[char46] If the prototype for a procedure is implicitly defined from its procedure interface, the prototype name is the same as the procedure name\[char46]
+
+
+The character constant can be a character or hexadecimal literal or constant name that represents a character or hexadecimal literal\[char46] When a character constant is used, this identifies the entry point by name\[char46]
+
+
+The prototype must a prototype for a bound call\[char46] The \fIEXTPGM\fR keyword cannot be used\[char46] The entry point identified by the prototype is the procedure identified in the \fIEXTPROC\fR keyword for the prototype\[char46] If the \fIEXTPROC\fR keyword is not specified, the entry point is the the same as the prototype name (in upper case)\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%PADDR\fR returns a value of type procedure pointer\[char46] The value is the address of the entry point identified by the argument\[char46]
+
+.SH EXAMPLE
+\fB%PADDR\fR Example with an Entry Point
+.PP
+.nf
+DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++++
+D
+D PROC            S               *   PROCPTR
+D                                     INZ (%PADDR ('FIRSTPROG'))
+D PROC1           S               *   PROCPTR
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq..
+CL0N01Factor1+++++++Opcode(E)+Extended-factor2+++++++++++++++++++++++++++
+ *
+ *  The following statement calls procedure 'FIRSTPROG'.
+ *
+C                   CALLB     PROC
+ *-----------------------------------------------------------------
+ * The following statements call procedure 'NextProg'.
+ * This a C procedure and is in mixed case.  Note that
+ * the procedure name is case sensitive.
+ *
+C                   EVAL      PROC1 = %PADDR ('NextProg')
+C                   CALLB     PROC1
+.fi
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

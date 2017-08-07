@@ -1,0 +1,77 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH SUBDT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%SUBDT - Extract a Portion of a Date, Time, or Timestamp
+.SH SYNOPSIS
+.nf
+%SUBDT(value:*MSECONDS|*SECONDS|*MINUTES|*HOURS|*DAYS|*MONTHS|*YEARS)
+%SUBDT(value:*MS|*S|*MN|*H|*D|*M|*Y)
+.fi
+.SH DESCRIPTION
+The first parameter is the date, time, or timestamp value\[char46]
+
+
+The second parameter is the portion that you want to extract\[char46] The following values are valid: 
+
+
+.IP \[bu] 2
+For a date: *DAYS, *MONTHS, and *YEARS
+.IP \[bu] 2
+For a time: *SECONDS, *MINUTES, and *HOURS
+.IP \[bu] 2
+For a timestamp: *MSECONDS, *SECONDS, *MINUTES, *HOURS, *DAYS, *MONTHS, and *YEARS
+.PP
+
+For this function, \fI*DAYS\fR always refers to the day of the month not the day of the year (even if you are using a Julian date format)\[char46] For example, the day portion of February 10 is 10 not 41\[char46]
+
+
+This function always returns a 4-digit year, even if the date format has a 2-digit year\[char46]
+
+
+For more information, see Date Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%SUBDT\fR extracts a portion of the information in a date, time, or timestamp value\[char46] It returns an unsigned numeric value\[char46]
+
+.SH EXAMPLE
+\fB%SUBDT\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ /FREE
+
+     date = d'1999-02-17';
+     time = t'01.23.45';
+
+     num = %subdt(date:*YEARS);
+     // num = 1999
+
+     num = %subdt(time:*MN);
+     // num = 23
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

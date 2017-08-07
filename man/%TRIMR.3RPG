@@ -1,0 +1,95 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TRIMR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%TRIMR - Trim Trailing Characters
+.SH SYNOPSIS
+.nf
+%TRIMR(string {: characters to trim})
+.fi
+.SH DESCRIPTION
+The string can be character, graphic, or \fIUCS\fR-2 data\[char46]
+
+
+If the characters to trim parameter is specified, it must be the same type as the string parameter\[char46]
+
+
+When specified as a parameter for a definition specification keyword, the string parameter must be a constant\[char46]
+
+
+
+
+
+
+
+
+For more information, see String Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%TRIMR\fR with only one parameter returns the given string with any trailing blanks removed\[char46]
+
+
+\fB%TRIMR\fR with two parameters returns the given string with any trailing characters that are in the characters to trim parameter removed\[char46]
+
+.SH EXAMPLE
+\fB%TRIMR\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D Location        S             16A   varying
+D FirstName       S             10A   inz ('Chris')
+D LastName        S             10A   inz ('Smith')
+D Name            S             20A   varying
+
+ * LOCATION will have the value '  Toronto, Ontario'.
+ /FREE
+     Location = %trim ('  Toronto, Ontario  ');
+ 
+     // Name will have the value 'Chris Smith:'.
+     Name = %trimr (FirstName) + ' ' + %trimr (LastName) + ':';
+ /END-FREE
+.fi
+
+
+
+.SH EXAMPLE
+Trimming characters other than blanks
+.PP
+.nf
+     string = '(' + %trimr('$******5.27***      ' : '$*') + ')';          // string is now '($******5.27***      )'     
+     //     
+     // Nothing has been trimmed from the right-hand side because     
+     // the right-most character is a blank, and a blank does not     
+     // appear in the 'characters to trim' parameter            
+
+     string = '(' + %trimr('$******5.27***      ' : '$ *') + ')';     
+     // string is now '($******5.27)'
+
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %TRIM (3RPG)

@@ -1,0 +1,61 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ALLOC 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%ALLOC - Allocate Storage
+.SH SYNOPSIS
+.nf
+%ALLOC(num)
+.fi
+.SH DESCRIPTION
+The parameter must be a non-float numeric value with zero decimal places\[char46] The length specified must be between 1 and the maximum size allowed\[char46]
+
+
+The maximum size allowed depends on the type of heap storage used for \fIRPG\fR memory management operations due to the \fIALLOC\fR keyword on the Control specification\[char46] If the module uses teraspace heap storage, the maximum size allowed is 4294967295 bytes\[char46] Otherwise, the maximum size allowed is 16776704 bytes\[char46]
+
+
+The maximum size available at runtime may be less than the maximum size allowed by \fIRPG\fR\[char46]
+
+
+For more information, see Memory Management Operations\[char46]
+
+
+If the operation cannot complete successfully, exception 00425 or 00426 is issued\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%ALLOC\fR returns a pointer to newly allocated heap storage of the length specified\[char46] The newly allocated storage is uninitialized\[char46]
+
+.SH EXAMPLE
+\fB%ALLOC\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ /FREE
+   // Allocate an area of 200 bytes
+   pointer = %ALLOC(200);
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

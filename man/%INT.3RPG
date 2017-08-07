@@ -1,0 +1,55 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH INT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%INT - Convert to Integer Format
+.SH SYNOPSIS
+.nf
+%INT(numeric or character expression)
+.fi
+.SH DESCRIPTION
+\fB%INT\fR converts the value of the expression to integer\[char46] Any decimal digits are truncated\[char46] This built-in function may only be used in expressions\[char46] \fB%INT\fR can be used to truncate the decimal positions from a float or decimal value allowing it to be used as an array index\[char46]
+
+
+If the parameter is a character expression, the following rules apply:
+
+
+.IP \[bu] 2
+The sign is optional. It can be '+' or '-'. It can precede or follow the numeric data.
+.IP \[bu] 2
+The decimal point is optional. It can be either a period or a comma.
+.IP \[bu] 2
+Blanks are allowed anywhere in the data. For example, ' + 3 ' is a valid parameter.
+.IP \[bu] 2
+Floating point data is not allowed. That is, where the numeric value is followed by E and an exponent, for example '1.2E6'.
+.IP \[bu] 2
+If invalid numeric data is found, an exception occurs with status code 105
+.PP
+
+For more information, see Conversion Operations or Built-in Functions\[char46]
+
+
+Figure 225 shows an example of the \fB%INT\fR built-in function\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EDITFLT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%EDITFLT - Convert to Float External Representation
+.SH SYNOPSIS
+.nf
+%EDITFLT(numeric expression)
+.fi
+.SH DESCRIPTION
+\fB%EDITFLT\fR converts the value of the numeric expression to the character external display representation of float\[char46] The result is either 14 or 23 characters\[char46] If the argument is a 4-byte float field, the result is 14 characters\[char46] Otherwise, it is 23 characters\[char46]
+
+
+If specified as a parameter to a definition specification keyword, the parameter must be a numeric literal, float literal, or numeric valued constant name or built-in function\[char46] When specified in an expression, constant folding is applied if the numeric expression has a constant value\[char46]
+
+
+For more information, see Conversion Operations or Built-in Functions\[char46]
+
+
+
+.SH EXAMPLE
+\fB%EDITFLT\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D f8              s              8f   inz (50000)
+D string          s             40a   varying
+
+ /FREE
+    string = 'Float value is ' + %editflt (f8 - 4E4) + '.';
+    // Value of "string" is 'Float value is +1.000000000000000E+004. '
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

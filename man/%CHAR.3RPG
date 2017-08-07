@@ -1,0 +1,116 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH CHAR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%CHAR - Convert to Character Data
+.SH SYNOPSIS
+.nf
+%CHAR(expression{:format})
+.fi
+.SH DESCRIPTION
+\fB%CHAR\fR converts the value of the expression from graphic, \fIUCS\fR-2, numeric, date, time or timestamp data to type character\[char46] The converted value remains unchanged, but is returned in a format that is compatible with character data\[char46]
+
+
+If the parameter is a constant, the conversion will be done at compile time\[char46]
+
+
+If a \fIUCS\fR-2 conversion results in substitution characters, a warning message will be given in the compiler listing if the parameter is a constant\[char46] Otherwise, status 00050 will be set at run time but no error message will be given\[char46]
+
+
+For graphic data, the value returned includes the shift-in and shift-out characters\[char46] For example, if a 5 character graphic field is converted, the returned value is 12 characters (10 bytes of graphic data plus the two shift characters)\[char46] If the value of the expression has a variable length, the value returned is in varying format\[char46]
+
+
+For date, time, or timestamp data, the second parameter contains the date, time, or timestamp format to which the returned character data is converted\[char46] The value returned will include separator characters unless the format specified is followed by a zero\[char46]
+
+
+For numeric data, if the value of the expression is float, the result will be in float format (for example \[char39]+1\[char46]125000000000000E+020\[char39])\[char46] Otherwise, the result will be in decimal format with a leading negative sign if the value is negative, and without leading zeros\[char46] The character used for any decimal point will be the character indicated by the control specification \fIDECEDIT\fR keyword (default is \[char39]\[char46]\[char39])\[char46] For example, \fB%CHAR\fR of a packed(7,3) expression might return the value \[char39]-1\[char46]234\[char39]\[char46]
+
+
+For more information, see Conversion Operations or Built-in Functions\[char46]
+
+
+
+.SH EXAMPLE
+\fB%CHAR\fR Examples
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D Name            S             20G   VARYING INZ(G'oXXYYZZi')
+D date            S               D   INZ(D'1997/02/03')
+D time            S               T   INZ(T'12:23:34')
+D result          S            100A   VARYING
+D points          S             10i 0 INZ(234)
+
+ *-----------------------------------------------------------------
+ * To format the time and date with the default formats, use this:
+ *-----------------------------------------------------------------
+ /FREE
+   result = 'It is ' + %CHAR(time) + ' on ' + %CHAR(date);
+   // If the default formats are both *USA,
+   // result = 'It is 12:23 PM on 02/03/1997'
+ 
+   //-------------------------------------------------------------
+   // To format the time and date with the job formats, use this:
+   //-------------------------------------------------------------
+   result = 'It is ' + %CHAR(time : *jobrun)
+            + ' on ' + %CHAR(date : *jobrun);
+   // If the job date format is *MDY- and the time separator is '.',
+   // then the result = 'It is 12.23.34 on 97-02-03'
+ 
+   //--------------------------------------------------------------
+   // To format the time and date with specific formats, use this:
+   //--------------------------------------------------------------
+   result = 'It is ' + %CHAR(time : *hms:)
+            + ' on ' + %CHAR(date : *iso);
+   // result = 'It is 12:23:34 on 1997-02-03'
+   //
+ 
+   //-------------------------------------------------------------
+   // You can use %subst with the %char result if you only want
+   // part of the result
+   //-------------------------------------------------------------
+   result = 'The time is now ' + %SUBST (%CHAR(time):1:5) + '.';
+   // result = 'The time is now 12:23.'
+ 
+   //-------------------------------------------------------------
+   // Use %CHAR to convert a graphic value to character so it
+   // can be concatenated with a character value.
+   //-------------------------------------------------------------
+   result = 'The customer''s name is ' + %CHAR(Name) + '.';
+   // result = 'The customer's name is oXXYYZZi.'
+ 
+   //----------------------------------------------------
+   // Use %CHAR to convert a number to character format:
+   //----------------------------------------------------
+   result = 'You have ' + %char(points) + ' points.';
+   // result = 'You have 234 points.'
+   //
+ /END-FREE
+.fi
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %SUBST (3RPG)

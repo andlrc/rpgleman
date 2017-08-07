@@ -1,0 +1,58 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ABS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%ABS - Absolute Value of Expression
+.SH SYNOPSIS
+.nf
+%ABS(numeric expression)
+.fi
+.SH DESCRIPTION
+\fB%ABS\fR may be used either in expressions or as parameters to keywords\[char46] When used with keywords, the operand must be a numeric literal, a constant name representing a numeric value, or a built-in function with a numeric value known at compile-time\[char46]
+
+
+For more information, see Arithmetic Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%ABS\fR returns the absolute value of the numeric expression specified as the parameter\[char46] If the value of the numeric expression is non-negative, the value is returned unchanged\[char46] If the value is negative, the value returned is the value of the expression but with the negative sign removed\[char46]
+
+.SH EXAMPLE
+\fB%ABS\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name +++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D f8         s              8f   inz (-1)
+D i10        s             10i 0 inz (-123)
+D p7         s              7p 3 inz (-1234.567)
+
+ /FREE
+    f8  = %abs (f8);        // "f8" is now 1.
+    i10 = %abs (i10 - 321); // "i10" is now 444.
+    p7  = %abs (p7);        // "p7" is now 1234.567.
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,125 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ERROR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%ERROR - Return Error Condition
+.SH DESCRIPTION
+For examples of the \fB%ERROR\fR built-in function, see Figure 249 and Figure 250\[char46]
+
+
+For more information, see Result Operations or Built-in Functions\[char46]
+
+
+The operations that set \fB%ERROR\fR are:
+
+
+.IP \[bu] 2
+ACQ (Acquire)
+.IP \[bu] 2
+ADDDUR (Add Duration)
+.IP \[bu] 2
+ALLOC (Allocate Storage)
+.IP \[bu] 2
+CALL (Call a Program)
+.IP \[bu] 2
+CALLB (Call a Bound Procedure)
+.IP \[bu] 2
+CALLP (Call a Prototyped Procedure or Program)
+.IP \[bu] 2
+CHAIN (Random Retrieval from a File)
+.IP \[bu] 2
+CHECK (Check Characters)
+.IP \[bu] 2
+CHECKR (Check Reverse)
+.IP \[bu] 2
+CLOSE (Close Files)
+.IP \[bu] 2
+COMMIT (Commit)
+.IP \[bu] 2
+DEALLOC (Free Storage)
+.IP \[bu] 2
+DELETE (Delete Record)
+.IP \[bu] 2
+DSPLY (Display Message)
+.IP \[bu] 2
+EXFMT (Write/Then Read Format)
+.IP \[bu] 2
+EXTRCT (Extract Date/Time/Timestamp)
+.IP \[bu] 2
+FEOD (Force End of Data)
+.IP \[bu] 2
+IN (Retrieve a Data Area)
+.IP \[bu] 2
+NEXT (Next)
+.IP \[bu] 2
+OCCUR (Set/Get Occurrence of a Data Structure)
+.IP \[bu] 2
+OPEN (Open File for Processing)
+.IP \[bu] 2
+OUT (Write a Data Area)
+.IP \[bu] 2
+POST (Post)
+.IP \[bu] 2
+READ (Read a Record)
+.IP \[bu] 2
+READC (Read Next Changed Record)
+.IP \[bu] 2
+READE (Read Equal Key)
+.IP \[bu] 2
+READP (Read Prior Record)
+.IP \[bu] 2
+READPE (Read Prior Equal)
+.IP \[bu] 2
+REALLOC (Reallocate Storage with New Length)
+.IP \[bu] 2
+REL (Release)
+.IP \[bu] 2
+RESET (Reset)
+.IP \[bu] 2
+ROLBK (Roll Back)
+.IP \[bu] 2
+SCAN (Scan String)
+.IP \[bu] 2
+SETGT (Set Greater Than)
+.IP \[bu] 2
+SETLL (Set Lower Limit)
+.IP \[bu] 2
+SUBDUR (Subtract Duration)
+.IP \[bu] 2
+SUBST (Substring)
+.IP \[bu] 2
+TEST (Test Date/Time/Timestamp)
+.IP \[bu] 2
+UNLOCK (Unlock a Data Area or Release a Record)
+.IP \[bu] 2
+UPDATE (Modify Existing Record)
+.IP \[bu] 2
+WRITE (Create New Records)
+.IP \[bu] 2
+XLATE (Translate)
+.PP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH RETURN VALUE
+\fB%ERROR\fR returns \[char39]1\[char39] if the most recent operation with extender \[char39]E\[char39] specified resulted in an error condition\[char46] This is the same as the error indicator being set on for the operation\[char46] Before an operation with extender \[char39]E\[char39] specified begins, \fB%ERROR\fR is set to return \[char39]0\[char39] and remains unchanged following the operation if no error occurs\[char46] All operations that allow an error indicator can also set the \fB%ERROR\fR built-in function\[char46] The \fICALLP\fR operation can also set \fB%ERROR\fR\[char46]
+

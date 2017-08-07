@@ -1,0 +1,106 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TRIM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%TRIM - Trim Characters at Edges
+.SH SYNOPSIS
+.nf
+%TRIM(string {: characters to trim})
+.fi
+.SH DESCRIPTION
+The string can be character, graphic, or \fIUCS\fR-2 data\[char46]
+
+
+If the characters to trim parameter is specified, it must be the same type as the string parameter\[char46]
+
+
+When specified as a parameter for a definition specification keyword, the string parameter must be a constant\[char46]
+
+
+
+
+
+
+
+
+For more information, see String Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%TRIM\fR with only one parameter returns the given string with any leading and trailing blanks removed\[char46]
+
+
+\fB%TRIM\fR with two parameters returns the given string with any leading and trailing characters that are in the characters to trim parameter removed\[char46]
+
+.SH EXAMPLE
+\fB%TRIM\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D Location        S             16A
+D FirstName       S             10A   inz ('   Chris ')
+D LastName        S             10A   inz ('   Smith ')
+
+D Name            S             20A
+
+ * LOCATION will have the value 'Toronto, Ontario'.
+ /FREE
+     Location = %trim ('  Toronto, Ontario  ');
+ 
+  // Name will have the value 'Chris Smith!        '.
+   Name = %trim (FirstName) + ' ' + %trim (LastName) + '!'; 
+ /END-FREE
+.fi
+
+
+
+.SH EXAMPLE
+Trimming characters other than blank
+.PP
+.nf
+D edited          S             20A   INZ('$******5.27***      ')
+D trimmed         S             20A   varying
+D numeric         S             15P 3  
+ /FREE      
+
+     // Trim '$' and '*' from the edited numeric value     
+     // Note: blanks will not be trimmed, since a blank     
+     // is not specified in the 'characters to trim' parameter      
+
+     trimmed = %trim(edited : '$*');          // trimmed is now '5.27***      '      
+
+     // Trim '$' and '*' and blank from the edited numeric value      
+
+     trimmed = %trim(edited : '$* ');          // trimmed is now '5.27'      
+
+     // Get the numeric value from the edited value      
+
+     numeric = %dec(%trim(edited : '$* ') : 31 : 9);          // numeric is now 5.27
+
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %DEC (3RPG)

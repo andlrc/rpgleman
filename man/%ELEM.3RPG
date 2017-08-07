@@ -1,0 +1,66 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ELEM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%ELEM - Get Number of Elements
+.SH SYNOPSIS
+.nf
+%ELEM(table_name)
+%ELEM(array_name)
+%ELEM(multiple_occurrence_data_structure_name)
+.fi
+.SH DESCRIPTION
+The parameter must be the name of an array, table, or multiple occurrence data structure\[char46]
+
+
+For more information, see Array Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%ELEM\fR returns the number of elements in the specified array, table, or multiple-occurrence data structure\[char46] The value returned is in unsigned integer format (type U)\[char46] It may be specified anywhere a numeric constant is allowed in the definition specification or in an expression in the extended factor 2 field\[char46]
+
+.SH EXAMPLE
+\fB%ELEM\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D arr1d           S             20    DIM(10)
+D table           S             10    DIM(20) ctdata
+D mds             DS            20    occurs(30)
+D num             S              5p 0
+
+ * like_array will be defined with a dimension of 10.
+ * array_dims will be defined with a value of 10.
+D like_array      S                   like(arr1d) dim(%elem(arr1d))
+D array_dims      C                   const (%elem (arr1d))
+
+ /FREE
+    num = %elem (arr1d);  // num is now 10
+    num = %elem (table);  // num is now 20
+    num = %elem (mds);    // num is now 30
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

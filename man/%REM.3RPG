@@ -1,0 +1,70 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH REM 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%REM - Return Integer Remainder
+.SH SYNOPSIS
+.nf
+%REM(n:m)
+.fi
+.SH DESCRIPTION
+\fB%REM\fR and \fB%DIV\fR have the following relationship:
+
+
+.PP
+.nf
+%REM(A:B) = A - (%DIV(A:B) * B)
+.fi
+
+If the operands are constants that can fit in 8-byte integer or unsigned fields, constant folding is applied to the built-in function\[char46] In this case, the \fB%REM\fR built-in function can be coded in the definition specifications\[char46]
+
+
+For more information, see Arithmetic Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%REM\fR returns the remainder that results from dividing operands n by m\[char46] The two operands must be numeric values with zero decimal positions\[char46] If either operand is a packed, zoned, or binary numeric value, the result is packed numeric\[char46] If either operand is an integer numeric value, the result is integer\[char46] Otherwise, the result is unsigned numeric\[char46] Float numeric operands are not allowed\[char46] The result has the same sign as the dividend\[char46] (See also \fB%DIV\fR (Return Integer Portion of Quotient)\[char46])
+
+.SH EXAMPLE
+\fB%DIV\fR and \fB%REM\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D A               S             10I 0 INZ(123)
+D B               S             10I 0 INZ(27)
+D DIV             S             10I 0
+D REM             S             10I 0
+D E               S             10I 0
+
+ /FREE
+    DIV = %DIV(A:B);  // DIV is now 4
+    REM = %REM(A:B);  // REM is now 15
+    E = DIV*B + REM;  // E is now 123
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %DIV (3RPG)

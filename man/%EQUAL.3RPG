@@ -1,0 +1,121 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EQUAL 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%EQUAL - Return Exact Match Condition
+.SH SYNOPSIS
+.nf
+%EQUAL{(file_name)}
+.fi
+.SH DESCRIPTION
+The operations that set \fB%EQUAL\fR are:
+
+
+.IP \[bu] 2
+SETLL (Set Lower Limit)
+.IP \[bu] 2
+LOOKUP (Look Up a Table or Array Element)
+.PP
+
+If \fB%EQUAL\fR is used without the optional file_name parameter, then it returns the value set for the most recent relevant operation\[char46]
+
+
+For the \fISETLL\fR operation, this function returns \[char39]1\[char39] if a record is present whose key or relative record number is equal to the search argument\[char46]
+
+
+For the \fILOOKUP\fR operation with the EQ indicator specified, this function returns \[char39]1\[char39] if an element is found that exactly matches the search argument\[char46]
+
+
+If a file name is specified, this function applies to the most recent \fISETLL\fR operation for the specified file\[char46] This function is allowed only for files that allow the \fISETLL\fR operation code\[char46]
+
+
+For more examples, see Figure 332 and Figure 378\[char46]
+
+
+For more information, see File Operations, Result Operations, or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%EQUAL\fR returns \[char39]1\[char39] if the most recent relevant operation found an exact match; otherwise, it returns \[char39]0\[char39]\[char46]
+
+.SH EXAMPLE
+\fB%EQUAL\fR with \fISETLL\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+F*Filename+IPEASFRlen+LKlen+AIDevice+.Keywords+++++++++++++++++++++++++
+ * File CUSTS has record format CUSTREC
+FCUSTSIF   E           K DISK
+
+ /FREE
+    // Check if the file contains a record with a key matching Cust
+    setll Cust CustRec;
+    if %equal;
+    // an exact match was found in the file
+    endif;
+ /END-FREE
+.fi
+
+
+
+.SH EXAMPLE
+\fB%EQUAL\fR and \fB%FOUND\fR with \fILOOKUP\fR Example
+.PP
+.nf
+     DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++++++
+     D TabNames        S             10A   DIM(5) CTDATA ASCEND
+     D SearchName      S             10A                        
+      * Position the table at or near SearchName
+      * Here are the results of this program for different values
+      * of SearchName:
+      *   SearchName   |   DSPLY
+      *   -------------+-------------------------------
+      *   'Catherine ' |   'Next greater     Martha'
+      *   'Andrea    ' |   'Exact            Andrea'
+      *   'Thomas    ' |   'Not found        Thomas'
+     CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq....
+     C     SearchName    LOOKUP    TabNames                           10  10
+     C                   SELECT
+     C                   WHEN      %EQUAL
+      * An exact match was found
+     C     'Exact       'DSPLY                   TabNames
+     C                   WHEN      %FOUND
+      * A name was found greater than SearchName
+     C     'Next greater'DSPLY                   TabNames
+     C                   OTHER
+      * Not found.  SearchName is greater than all the names in the table
+     C     'Not found   'DSPLY                   SearchName
+     C                   ENDSL
+     C                   RETURN
+**CTDATA TabNames
+Alexander
+Andrea
+Bohdan
+Martha
+Samuel                          
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %FOUND (3RPG)

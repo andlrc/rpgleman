@@ -1,0 +1,70 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH MONTHS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%MONTHS - Number of Months
+.SH SYNOPSIS
+.nf
+%MONTHS(number)
+.fi
+.SH DESCRIPTION
+\fB%MONTHS\fR converts a number into a duration that can be added to a date or timestamp value\[char46]
+
+
+
+
+
+\fB%MONTHS\fR can only be the right-hand value in an addition or subtraction operation\[char46] The left-hand value must be a date or timestamp\[char46] The result is a date or timestamp value with the appropriate number of months added or subtracted\[char46] For a date, the resulting value is in \fI*ISO\fR format\[char46]
+
+
+In most cases, the result of adding or subtracting a given number of months is obvious\[char46] For example, 2000-03-15 + \fB%MONTHS(1)\fR is 2000-04-15\[char46] If the addition or subtraction would produce a nonexistent date (for example, February 30), the last day of the month is used instead\[char46]
+
+
+Adding or subtracting a number of months to the 29th, 30th, or 31st day of a month may not be reversible\[char46] For example, 2000-03-31 + \fB%MONTHS(1)\fR - \fB%MONTHS(1)\fR is 2000-03-30\[char46]
+
+
+For more information, see Date Operations or Built-in Functions\[char46]
+
+
+
+.SH EXAMPLE
+\fB%MONTHS\fR and \fB%YEARS\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ /FREE
+
+     // Determine the date in 3 years
+     newdate = date + %YEARS(3);
+
+     // Determine the date in 6 months prior
+     loandate = duedate - %MONTHS(6);
+
+     // Construct a timestamp from a date and time
+     duestamp = duedate + t'12.00.00';
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %YEARS (3RPG)

@@ -1,0 +1,132 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EOF 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%EOF - Return End or Beginning of File Condition
+.SH SYNOPSIS
+.nf
+%EOF{(file_name)}
+.fi
+.SH DESCRIPTION
+The operations that set \fB%EOF\fR are:
+
+
+.IP \[bu] 2
+READ (Read a Record)
+.IP \[bu] 2
+READC (Read Next Changed Record)
+.IP \[bu] 2
+READE (Read Equal Key)
+.IP \[bu] 2
+READP (Read Prior Record)
+.IP \[bu] 2
+READPE (Read Prior Equal)
+.IP \[bu] 2
+WRITE (Create New Records) (subfile only).
+.PP
+
+The following operations, if successful, set \fB%EOF(filename)\fR off\[char46] If the operation is not successful, \fB%EOF(filename)\fR is not changed\[char46] \fB%EOF\fR with no parameter is not changed by these operations\[char46]
+
+
+.IP \[bu] 2
+CHAIN (Random Retrieval from a File)
+.IP \[bu] 2
+OPEN (Open File for Processing)
+.IP \[bu] 2
+SETGT (Set Greater Than)
+.IP \[bu] 2
+SETLL (Set Lower Limit)
+.PP
+
+When a full-procedural file is specified, this function returns \[char39]1\[char39] if the previous operation in the list above, for the specified file, resulted in an end of file or beginning of file condition\[char46] For primary and secondary files, \fB%EOF\fR is available only if the file name is specified\[char46] It is set to \[char39]1\[char39] if the most recent input operation during \fI*GETIN\fR processing resulted in an end of file or beginning of file condition\[char46] Otherwise, it returns \[char39]0\[char39]\[char46]
+
+
+This function is allowed for input, update, and record-address files; and for display files allowing \fIWRITE\fR to subfile records\[char46]
+
+
+For more information, see File Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%EOF\fR returns \[char39]1\[char39] if the most recent read operation or write to a subfile ended in an end of file or beginning of file condition; otherwise, it returns \[char39]0\[char39]\[char46]
+
+.SH EXAMPLE
+\fB%EOF\fR without a Filename Parameter
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+F*Filename+IPEASFRlen+LKlen+AIDevice+.Keywords+++++++++++++++++++++++++
+ * File INFILE has record format INREC
+FINFILE    IF   E             DISK
+
+ /FREE
+    READ INREC;  // read a record
+    IF  %EOF;
+                 // handle end of file
+    ENDIF;
+ /END-FREE
+.fi
+
+
+
+.SH EXAMPLE
+\fB%EOF\fR with a Filename Parameter
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ * This program is comparing two files
+
+F*Filename+IPEASFRlen+LKlen+AIDevice+.Keywords+++++++++++++++++++++++++
+FFILE1     IF   E             DISK
+FFILE2     IF   E             DISK
+
+ * Loop until either FILE1 or FILE2 has reached end-of-file
+ /FREE
+    DOU %EOF(FILE1) OR %EOF(FILE2);
+       // Read a record from each file and compare the records
+ 
+       READ REC1;
+       READ REC2;
+       IF %EOF(FILE1) AND %EOF(FILE2);
+          // Both files have reached end-of-file
+          EXSR EndCompare;
+ 
+       ELSEIF %EOF(FILE1);
+          // FILE1 is shorter than FILE2
+          EXSR F1Short;
+ 
+       ELSEIF %EOF(FILE2);
+          // FILE2 is shorter than FILE1
+          EXSR F2Short;
+ 
+       ELSE;
+          // Both files still have records to be compared
+          EXSR CompareRecs;
+       ENDIF;
+    ENDDO;
+  // ...
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

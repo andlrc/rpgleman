@@ -1,0 +1,63 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH XFOOT 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%XFOOT - Sum Array Expression Elements
+.SH SYNOPSIS
+.nf
+%XFOOT(array-expression)
+.fi
+.SH DESCRIPTION
+\fB%XFOOT\fR results in the sum of all elements of the specified numeric array expression\[char46]
+
+
+The precision of the result is the minimum that can hold the result of adding together all array elements, up to a maximum of 63 digits\[char46] The number of decimal places in the result is always the same as the decimal places of the array expression\[char46]
+
+
+For example, if \fIARR\fR is an array of 500 elements of precision (17,4), the result of \fB%XFOOT(\fIARR\fR)\fR is (20,4)\[char46]
+
+
+For \fB%XFOOT(X)\fR where X has precision (m,n), the following table shows the precision of the result based on the number of elements of X: 
+
+
+.PP
+.nf
+Elements of X      Precision of %XFOOT(X)
+1                  (m,n)
+2-10               (m+1,n)
+11-100             (m+2,n)
+101-1000           (m+3,n)
+1001-10000         (m+4,n)
+10001-32767        (m+5,n) 
+.fi
+
+Normal rules for array expressions apply\[char46] For example, if \fIARR\fR1 has 10 elements and \fIARR\fR2 has 20 elements, \fB%XFOOT(\fIARR\fR1+\fIARR\fR2)\fR results in the sum of the first 10 elements of \fIARR\fR1+\fIARR\fR2\[char46]
+
+
+This built-in function is similar to the \fIXFOOT\fR operation, except that float arrays are summed like all other types, beginning from index 1 on up\[char46]
+
+
+For more information, see Array Operations or Built-in Functions\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

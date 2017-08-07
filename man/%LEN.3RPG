@@ -1,0 +1,45 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH LEN 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%LEN - Get or Set Length
+.SH SYNOPSIS
+.nf
+%LEN(expression)
+.fi
+.SH DESCRIPTION
+.PP
+.nf
+%LEN(varying-length expression : *MAX)
+.fi
+
+\fB%LEN\fR can be used to get the length of a variable expression, to set the current length of a variable-length field, or to get the maximum length of a varying-length expression\[char46]
+
+
+The parameter must not be a figurative constant\[char46]
+
+
+For more information, see Size Operations or Built-in Functions\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

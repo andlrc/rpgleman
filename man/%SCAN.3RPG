@@ -1,0 +1,94 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH SCAN 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%SCAN - Scan for Characters
+.SH SYNOPSIS
+.nf
+%SCAN(search argument : source string {: start})
+.fi
+.SH DESCRIPTION
+The first parameter must be of type character, graphic, or \fIUCS\fR-2\[char46] The second parameter must be the same type as the first parameter\[char46] The third parameter, if specified, must be numeric with zero decimal positions\[char46]
+
+
+When any parameter is variable in length, the values of the other parameters are checked against the current length, not the maximum length\[char46]
+
+
+The type of the return value is unsigned integer\[char46] This built-in function can be used anywhere that an unsigned integer expression is valid\[char46]
+
+
+If the search argument contains trailing blanks, the scan will include those trailing blanks\[char46] For example if \[char39]b\[char39] represents a blank, \fB%SCAN(\[char39]12b\[char39]:\[char39]12312b\[char39])\fR would return 4\[char46] If trailing blanks should not be considered in the scan, use \fB%TRIMR\fR on the search argument\[char46] For example \fB%SCAN(%TRIMR(\[char39]12b\[char39])\fR:\[char39]12312b\[char39]) would return 1\[char46]
+
+
+For more information, see String Operations or Built-in Functions\[char46]
+
+
+
+
+
+
+
+
+
+.SH RETURN VALUE
+\fB%SCAN\fR returns the first position of the search argument in the source string, or 0 if it was not found\[char46] If the start position is specified, the search begins at the starting position\[char46] The result is always the position in the source string even if the starting position is specified\[char46] The starting position defaults to 1\[char46]
+
+.SH EXAMPLE
+\fB%SCAN\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+.... 
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+ 
+D source          S             15A   inz ('Dr. Doolittle') 
+D pos             S              5U 0 
+D posTrim         S              5U 0 
+D posVar          S              5U 0 
+D srchFld         S             10A 
+D srchFldVar      S             10A   varying  
+ /FREE          pos = %scan ('oo' : source);     
+     // After the EVAL, pos = 6 because 'oo' begins at position 6 in     
+     // 'Dr. Doolittle'.     
+     pos = %scan ('D' : source : 2);     
+     // After the EVAL, pos = 5 because the first 'D' found starting from     
+     // position 2 is in position 5.     
+     pos = %scan ('abc' : source);          // After the EVAL, pos = 0 because 'abc' is not found in     
+     // 'Dr. Doolittle'.     
+     pos = %scan ('Dr.' : source : 2);     
+     // After the EVAL, pos = 0 because 'Dr.' is not found in     
+     // 'Dr. Doolittle', if the search starts at position 2.     
+     srchFld = 'Dr.';     
+     srchFldVar = 'Dr.';     
+     pos = %scan (srchFld : source);     
+     posTrim = %scan (%trimr(srchFld) : source);     
+     posVar = %scan (srchFldVar : source);          // After the EVAL, pos = 0 because srchFld is a 10-byte field, so     
+     // the search argument is 'Dr.' followed by seven blanks.  However,     
+     // posTrim and posVar are both 1, since the %TRIMR and srchFldVar     
+     // scans both use a 3-byte search argument 'Dr.', no trailing blanks.  
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %TRIMR (3RPG),
+.BR %FOUND (3RPG)

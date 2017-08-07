@@ -1,0 +1,102 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH SCANRPL 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%SCANRPL - Scan and Replace Characters
+.SH SYNOPSIS
+.nf
+%SCANRPL(scan string : replacement : source { : scan start  { : scan length  } )
+.fi
+.SH DESCRIPTION
+The first, second and third parameters must be of type character, graphic, or \fIUCS\fR-2\[char46] They can be in either fixed-length or variable-length format\[char46] These parameters must all be of the same type and \fICCSID\fR\[char46]
+
+
+The fourth parameter represents the starting position, measured in characters, where the search for the scan string should begin\[char46] If it is not specified, the starting position defaults to one\[char46] The value may range from one to the current length of the source string\[char46]
+
+
+The fifth parameter represents the number of characters in the source string to be scanned\[char46] If the parameter is not specified, the length defaults to remainder of the source string starting from the start position\[char46] The value must be greater than or equal to zero, and less than or equal to the remaining length of the source string starting at the start position\[char46]
+
+
+The starting position and length may be any numeric value or numeric expression with no decimal positions\[char46]
+
+
+The returned value may be larger, equal to or smaller than the source string\[char46] The resulting length depends on the lengths of the scan string and the replacement string, and also on the number of times the replacement is performed\[char46] For example, assume the scan string is \[char39]a\[char39] and the replacement string is \[char39]bc\[char39]\[char46] If the source string is \[char39]ada\[char39], the returned value has a length of five (\[char39]bcdbc\[char39])\[char46] If the source string is \[char39]ddd\[char39], the returned value has a length of three (\[char39]ddd\[char39])\[char46]
+
+
+The returned value is varying length if the source string and replacement string have different lengths, or if any of the strings are varying length\[char46] Otherwise, the returned value is fixed length\[char46] The returned value has the same type as the source string\[char46]
+
+
+Each position in the source string is scanned only once\[char46] For example, if the scan string is \[char39]aa\[char39], and the source string is \[char39]baaaaac\[char39], then the first match is in positions 2 and 3\[char46] The next scan begins at position 4, and finds a match in positions 4 and 5\[char46] The next scan begins at position 6, and does not find any further matches\[char46] If the replacement string is \[char39]xy\[char39], then the returned value is \[char39]bxyxyac\[char39]\[char46]
+
+
+Tip: \fB%SCANRPL\fR can be used to completely remove occurrences of the scan string from the source string by specifying an empty replacement string\[char46]
+
+
+For more information, see String Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%SCANRPL\fR returns the string produced by replacing all occurrences of the scan string in the source string with the replacement string\[char46] The search for the scan string starts at the scan start position and continues for the scan length\[char46] The parts of the source string that are outside the range specified by the scan start position and the scan length are included in the result\[char46]
+
+.SH EXAMPLE
+\fB%SCANRPL\fR Example
+.PP
+.nf
+//         ....+....1....+....2....+....3....+...string1 = 'See NAME. See NAME run. Run NAME run.';
+
+// 1. All occurrences of "NAME" are replaced by the
+//    replacement value.  In the first case, 
+//    the resulting string is shorter than the source 
+//    string, since the replacment string is shorter 
+//    than the scan string. In the second case, the 
+//    resulting string is longer.string2 = %ScanRpl('NAME' : 'Tom' : string1);
+// string2 = 'See Tom. See Tom run. Run Tom run.'string2 = %ScanRpl('NAME' : 'Jenny' : string1);
+// string2 = 'See Jenny. See Jenny run. Run Jenny run.'
+
+// 2. All occurrences of ** are removed from the string.
+//    The replacement string, '', has zero length.string3 = '*Hello**There**Everyone*';
+string2 = %ScanRpl('**' : '' : string3);
+// string2 = '*HelloThereEveryone*'
+
+// 3. All occurrences of "NAME" are replaced by "Tom"
+//    starting at position 6.  Since the first "N" of 
+//    the first "NAME" in the string is not part of the
+//    source string that is scanned, the first "NAME"
+//    is not considered replaceable.string2 = %ScanRpl('NAME' : 'Tom' : string1 : 6);
+// string2 = 'See NAME. See Tom run. Run Tom run.'
+
+// 4. All occurrences of "NAME" are replaced by "Tom"
+//    up to length 31.  Since the final "E" of 
+//    the last "NAME" in the string is not part of the
+//    source string that is scanned, , the final "NAME"
+//    is not considered replaceable.string2 = %ScanRpl('NAME' : 'Tom' : string1 : 1 : 31);
+// string2 = 'See Tom. See Tom run. Run NAME run.'
+
+// 5. All occurrences of "NAME" are replaced by "Tom"
+//    from position 10 for length 10.  Only the second
+//    "NAME" value falls in that range.string2 = %ScanRpl('NAME' : 'Tom' : string1 : 10 : 10);
+// string2 = 'See NAME. See Tom run. Run NAME run.'
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

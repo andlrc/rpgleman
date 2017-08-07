@@ -1,0 +1,80 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH REALLOC 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%REALLOC - Reallocate Storage
+.SH SYNOPSIS
+.nf
+%REALLOC(ptr:num)
+.fi
+.SH DESCRIPTION
+\fB%REALLOC\fR changes the heap storage pointed to by the first parameter to be the length specified in the second parameter\[char46] The heap storage pointed to by the returned pointer has the same value as the heap storage pointed to by ptr\[char46] If the new length is longer than the old length, the additional storage is uninitialized\[char46]
+
+
+The first parameter must be a basing pointer value\[char46] The second parameter must be a non-float numeric value with zero decimal places\[char46] The length specified must be between 1 and the maximum size allowed\[char46]
+
+
+The maximum size allowed depends on the type of heap storage used for \fIRPG\fR memory management operations due to the \fIALLOC\fR keyword on the Control specification\[char46] If the module uses teraspace heap storage, the maximum size allowed is 4294967295 bytes\[char46] Otherwise, the maximum size allowed is 16776704 bytes\[char46]
+
+
+The maximum size available at runtime may be less than the maximum size allowed by \fIRPG\fR\[char46]
+
+
+The function returns a pointer to the allocated storage\[char46] This may be the same as ptr or different\[char46] If the \fB%REALLOC\fR function is successful, the original pointer value specified in the first operand should not be used\[char46]
+
+
+When \fIRPG\fR memory management operations for the module are using single-level heap storage due to the \fIALLOC\fR keyword on the Control specification, the \fB%REALLOC\fR built-in function can only handle pointers to single-level heap storage\[char46] When \fIRPG\fR memory management operations for the module are using teraspace heap storage, the \fB%REALLOC\fR built-in function operation can handle pointers to both single-level and teraspace heap storage\[char46]
+
+
+For more information, see Memory Management Operations\[char46]
+
+
+If the operation cannot complete successfully, exception 00425 or 00426 is issued\[char46]
+
+
+
+.SH EXAMPLE
+\fB%REALLOC\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ /FREE
+   // Allocate an area of 200 bytes
+   pointer = %ALLOC(200);
+   // Change the size of the area to 500 bytes
+   pointer = %REALLOC(pointer:500);
+   // Using two different pointers:
+   pointer2 = %REALLOC(pointer1:500);
+   pointer1 = *NULL;;
+   // The returned value was assigned to
+   // "pointer2", a different variable
+   // from the input pointer "pointer1".
+   // In this case, the value of "pointer1"
+   // is no longer valid, so "pointer1" must
+   // be set to *NULL to avoid using the
+   // old value. /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %ALLOC (3RPG)

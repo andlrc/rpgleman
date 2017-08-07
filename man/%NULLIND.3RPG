@@ -1,0 +1,67 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH NULLIND 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%NULLIND - Query or Set Null Indicator
+.SH SYNOPSIS
+.nf
+%NULLIND(fieldname)
+.fi
+.SH DESCRIPTION
+The \fB%NULLIND\fR built-in function can be used to query or set the null indicator for null-capable fields\[char46] This built-in function can only be used if the \fIALWNULL\fR(\fI*USRCTL\fR) keyword is specified on a control specification or as a command parameter\[char46] The fieldname can be a null-capable array element, data structure, stand-alone field, subfield, or multiple occurrence data structure\[char46]
+
+
+\fB%NULLIND\fR can only be used in expressions in extended factor 2\[char46]
+
+
+When used on the right-hand side of an expression, this function returns the setting of the null indicator for the null-capable field\[char46] The setting can be \fI*ON\fR or \fI*OFF\fR\[char46]
+
+
+When used on the left-hand side of an expression, this function can be used to set the null indicator for null-capable fields to \fI*ON\fR or \fI*OFF\fR\[char46] The content of a null-capable field remains unchanged\[char46]
+
+
+See Database Null Value Support for more information on handling records with null-capable fields and keys\[char46]
+
+
+For more information, see Indicator-Setting Operations or Built-in Functions\[char46]
+
+
+
+.SH EXAMPLE
+\fB%NULLIND\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ * Test the null indicator for a null-capable field.
+ /FREE
+    if  %nullind (fieldname1);
+        // field is null
+    endif;
+ 
+    // Set the null indicator for a null-capable field.
+    %nullind(fieldname1) = *ON;
+    %nullind (fieldname2) = *OFF;
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

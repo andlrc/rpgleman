@@ -1,0 +1,157 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ADDR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%ADDR - Get Address of Variable
+.SH SYNOPSIS
+.nf
+%ADDR(variable)
+%ADDR(varying-length variable : *DATA)
+.fi
+.SH DESCRIPTION
+If \fB%ADDR\fR with an array index parameter is specified as parameter for definition specification keywords \fIINZ\fR or \fICONST\fR, the array index must be known at compile-time\[char46] The index must be either a numeric literal or a numeric constant\[char46]
+
+
+In an \fIEVAL\fR operation where the result of the assignment is an array with no index, \fB%ADDR\fR on the right hand side of the assignment operator has a different meaning depending on the argument for the \fB%ADDR\fR\[char46] If the argument for \fB%ADDR\fR is an array name without an index and the result is an array name, each element of the result array will contain the address of the beginning of the argument array\[char46] If the argument for \fB%ADDR\fR is an array name with an index of (*), then each element of the result array will contain the address of the corresponding element in the argument array\[char46] This is illustrated in Figure 191\[char46]
+
+
+If the variable specified as parameter is a table, multiple occurrence data structure, or subfield of a multiple occurrence data structure, the address will be the address of the current table index or occurrence number\[char46]
+
+
+If the variable is based, \fB%ADDR\fR returns the value of the basing pointer for the variable\[char46] If the variable is a subfield of a based data structure, the value of \fB%ADDR\fR is the value of the basing pointer plus the offset of the subfield\[char46]
+
+
+If the variable is specified as a \fIPARM\fR of the \fI*ENTRY\fR \fIPLIST\fR, \fB%ADDR\fR returns the address passed to the program by the caller\[char46]
+
+
+When the argument of \fB%ADDR\fR cannot be modified, \fB%ADDR\fR can only be used in a comparison operation\[char46] An example of an argument that cannot be modified is a read-only reference parameter (\fICONST\fR keyword specified on the Procedure Interface)\[char46]
+
+
+
+
+
+.SH RETURN VALUE
+\fB%ADDR\fR returns a value of type basing pointer\[char46] The value is the address of the specified variable\[char46] It may only be compared with and assigned to items of type basing pointer\[char46]
+
+
+\fB%ADDR\fR returns the address of the data portion of a variable-length field when \fI*DATA\fR is specified as the second parameter of \fB%ADDR\fR\[char46]
+
+.SH EXAMPLE
+\fB%ADDR\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+ *
+ * The following set of definitions is valid since the array
+ * index has a compile-time value
+ *
+D   ARRAY         S             20A   DIM (100)
+ * Set the pointer to the address of the seventh element of the array.
+D   PTR           S               *   INZ (%ADDR(ARRAY(SEVEN)))
+D   SEVEN         C                   CONST (7)
+ *
+D DS1             DS                  OCCURS (100)D                               20A
+D   SUBF                        10A
+D                               30A
+D CHAR10          S             10A   BASED (P)
+D PARRAY          S               *   DIM(100)
+
+
+  /FREE
+    %OCCUR(DS1) = 23;
+    SUBF = *ALL'abcd';
+    P = %ADDR (SUBF);
+    IF CHAR10 = SUBF;
+       // This condition is true.
+    ENDIF;
+    IF %ADDR (CHAR10) = %ADDR (SUBF);
+       // This condition is also true.
+    ENDIF;
+    // The following statement also changes the value of SUBF.
+    CHAR10 = *ALL'efgh';
+    IF CHAR10 = SUBF;
+       // This condition is still true.
+    ENDIF;
+    //--------------------------------------------------------------
+    %OCCUR(DS1) = 24;
+    IF CHAR10 = SUBF;
+      // This condition is no longer true.
+    ENDIF;
+    //--------------------------------------------------------------
+    // The address of an array element is taken using an expression
+    // as the array index.
+    P = %ADDR (ARRAY (X + 10));
+    //--------------------------------------------------------------
+    // Each element of the array PARRAY contains the address of the
+    // first element of the array ARRAY.
+    PARRAY = %ADDR(ARRAY);
+    // Each element of the array PARRAY contains the address of the
+    // corresponding element of the array ARRAY.
+    PARRAY = %ADDR(ARRAY(*));
+
+    // The first three elements of the array PARRAY     
+    // contain the addresses of the first three elements     
+    // of the array ARRAY.     
+    %SUBARR(PARRAY : 1 : 3) = %ADDR(ARRAY(*));
+  /END-FREE     
+.fi
+
+
+
+.SH EXAMPLE
+Example of \fB%ADDR\fR with \fI*DATA\fR
+.PP
+.nf
+1. Use %ADDR(fld:*DATA) to call a procedure with the 
+   address of the data portion of a varying field.
+
+// Assume procedure "uppercaseData" requires a pointer and a length.
+// %ADDR(fld:*DATA) returns the pointer to the data portion of 
+// the varying field, and %LEN(fld) returns the length.
+uppercaseData (%ADDR(fld : *DATA) : %LEN(fld));
+
+2. Use %ADDR(fld:*DATA) to determine the maximum size 
+   of the data portion of a varying field.
+
+// The number of bytes used for the prefix is the
+// offset between the address of the field and the 
+// address of the data.
+prefix_size = %addr(fld : *data) - %addr(fld);   
+
+// The number of bytes used for the data is the
+// difference between the total bytes and the 
+// bytes used for the prefix.
+data_size = %size(fld) - prefix_size;   
+
+// If variable "fld" is UCS-2 or DBCS, the number
+// of characters is half the number of bytes
+max_dbcs_chars = data_size / 2;
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %OCCUR (3RPG),
+.BR %SUBARR (3RPG),
+.BR %LEN (3RPG),
+.BR %SIZE (3RPG)

@@ -1,0 +1,100 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH GRAPH 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%GRAPH - Convert to Graphic Value
+.SH SYNOPSIS
+.nf
+%GRAPH(char-expr | graph-expr | UCS-2-expr { : ccsid })
+.fi
+.SH DESCRIPTION
+The second parameter, ccsid, is optional and indicates the \fICCSID\fR of the resulting expression\[char46] The \fICCSID\fR defaults to the graphic \fICCSID\fR related to the \fICCSID\fR of the job\[char46] If \fICCSID\fR(\fI*GRAPH\fR : \fI*IGNORE\fR) is specified on the control specification or assumed for the module, the \fB%GRAPH\fR built-in is not allowed\[char46]
+
+
+If the parameter is a constant, the conversion will be done at compile time\[char46] In this case, the \fICCSID\fR is the graphic \fICCSID\fR related to the \fICCSID\fR of the source file\[char46]
+
+
+ If the parameter is character, the character data must be in the form 
+
+
+.PP
+.nf
+shift-out graphic-data shift-in 
+.fi
+
+For example, \[char39]oAABBCCi\[char39]\[char46]
+
+
+If the conversion results in substitution characters, a warning message is issued at compile time\[char46] At run time, status 00050 is set and no error message is issued\[char46]
+
+
+For more information, see Graphic Format, Conversion Operations, or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%GRAPH\fR converts the value of the expression from character, graphic, or \fIUCS\fR-2 and returns a graphic value\[char46] The result is varying length if the parameter is varying length\[char46]
+
+.SH EXAMPLE
+\fB%GRAPH\fR Examples
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+H*Keywords+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+H ccsid (*graph: 300)
+
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords++++++++++++++++++++++++
+D  char           S              8A   inz('oXXYYZZi')
+ * The %GRAPH built-in function is used to initialize a graphic field
+D  graph          S             10G   inz (%graph ('oAABBCCDDEEi'))
+D  ufield         S              2C   inz (%ucs2 ('oFFGGi'))
+D  graph2         S              2G   ccsid (4396) inz (*hival)
+D  isEqual        S              1N
+D  proc           PR
+D    gparm                       2G   ccsid (4396) value
+
+ /FREE
+    graph = %graph (char) + %graph (ufield);
+    // graph now has the value XXYYZZFFGG.     
+    // %graph(char) removes the shift characters from the     
+    // character data, and treats the non-shift data as     
+    // graphic data.
+ 
+    isEqual = graph = %graph (graph2 : 300);
+    // The result of the %GRAPH built-in function is the value of
+    // graph2, converted from CCSID 4396 to CCSID 300.
+ 
+    graph2 = graph;
+    // The value of graph is converted from CCSID 300 to CCSID 4396
+    // and stored in graph2.
+    // This conversion is performed implicitly by the compiler.
+ 
+    proc (graph);
+    // The value of graph is converted from CCSID 300 to CCSID 4396
+    // implicitly, as part of passing the parameter by value.
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %UCS2 (3RPG)

@@ -1,0 +1,73 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TRIML 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%TRIML - Trim Leading Characters
+.SH SYNOPSIS
+.nf
+%TRIML(string {: characters to trim})
+.fi
+.SH DESCRIPTION
+The string can be character, graphic, or \fIUCS\fR-2 data\[char46]
+
+
+If the characters to trim parameter is specified, it must be the same type as the string parameter\[char46]
+
+
+When specified as a parameter for a definition specification keyword, the string parameter must be a constant\[char46]
+
+
+
+
+
+
+
+
+For more information, see String Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%TRIML\fR with only one parameter returns the given string with any leading blanks removed\[char46]
+
+
+\fB%TRIML\fR with two parameters returns the given string with any leading characters that are in the characters to trim parameter removed\[char46]
+
+.SH EXAMPLE
+\fB%TRIML\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ * LOCATION will have the value 'Toronto, Ontario  '.
+
+ /FREE     
+     // Trimming blanks     
+        
+     Location = %triml('  Toronto, Ontario  ');          // LOCATION now has the value 'Toronto, Ontario  '.       
+
+     // Trimming other characters        
+
+     trimmed = %triml('$******5.27***        ' : '$* ');                             // trimmed is now '5.27***        '
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

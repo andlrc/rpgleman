@@ -1,0 +1,66 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EDITW 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%EDITW - Edit Value Using an Editword
+.SH SYNOPSIS
+.nf
+%EDITW(numeric : editword)
+.fi
+.SH DESCRIPTION
+Float expressions are not allowed in the first parameter\[char46] Use \fB%DEC\fR to convert a float to an editable format\[char46]
+
+
+The edit word must be a character constant\[char46]
+
+
+For more information, see Conversion Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+This function returns a character result representing the numeric value edited according to the edit word\[char46] The rules for the numeric value and edit word are identical to those for editing numeric values in output specifications\[char46]
+
+.SH EXAMPLE
+\fB%EDITW\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D amount          S             30A
+D salary          S              9P 2
+D editwd          C                    '$ ,   ,  **Dollars&  &Cents'
+
+ * If the value of salary is 2451.53, then the edited version of
+ * (salary * 12) is '$***29,418*Dollars 36 Cents'. The value of
+ * amount is 'The annual salary is $***29,418*Dollars 36 Cents'.
+
+ /FREE
+   amount = 'The annual salary is '
+                 + %editw(salary * 12 : editwd);
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %DEC (3RPG)

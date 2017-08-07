@@ -1,0 +1,168 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH LOOKUPLE 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%LOOKUPLE - Look Up an Array Element
+.SH SYNOPSIS
+.nf
+%LOOKUP(arg : array | keyed array data structure {: start_index {: number_of_elements}})
+%LOOKUPLT(arg : array | keyed array data structure {: start_index {: number_of_elements}})
+%LOOKUPGE(arg : array | keyed array data structure {: start_index {: number_of_elements}})
+%LOOKUPGT(arg : array | keyed array data structure {: start_index {: number_of_elements}})
+%LOOKUPLE(arg : array | keyed array data structure {: start_index {: number_of_elements}})
+.fi
+.SH DESCRIPTION
+The following functions return the array index of the item in the array or the keyed array data structure that matches that matches arg as follows: 
+
+
+.TP 5
+.B \fB%LOOKUP\fR
+An exact match\[char46] 
+.TP 5
+.B \fB%LOOKUPLT\fR
+The value that is closest to arg but less than arg\[char46] 
+.TP 5
+.B \fB%LOOKUPLE\fR
+An exact match, or the value that is closest to arg but less than arg\[char46] 
+.TP 5
+.B \fB%LOOKUPGT\fR
+The value that is closest to arg but greater than arg\[char46] 
+.TP 5
+.B \fB%LOOKUPGE\fR
+An exact match, or the value that is closest to arg but greater than arg\[char46] 
+
+If no value matches the specified condition, zero is returned\[char46] The value returned is in unsigned integer format (type U)\[char46]
+
+
+The search starts at index start_index and continues for number_of_elems elements\[char46] By default, the entire array is searched\[char46]
+
+
+The second parameter can be a scalar array in the form \fIARRAY\fR_NAME, or a keyed array data structure in the form \fIARRAY\fR_DS_NAME(*)\[char46]\fISUBFIELD\fR_NAME\[char46]
+
+
+To search an array data structure, specify the data structure name with an index of (*), then specify the subfield to be used as the key for the search\[char46] For example, to search for a value of \[char39]XP2\[char39] in the \fICODE\fR subfield of array data structure \fIINFO\fR, specify \[char39]XP2\[char39] as the first parameter and specify \fIINFO\fR(*)\[char46]\fICODE\fR as the second parameter\[char46] The part of the qualified name up to the (*) index must represent an array, and the part of the qualified name after the (*) must represent a scalar subfield, or indexed array of scalars\[char46]
+
+
+The first two parameters can have any type but must have the same type\[char46] For a keyed data structure array, the first parameter must have the same type as the key\[char46] They do not need to have the same length or number of decimal positions\[char46] The third and fourth parameters must be non-float numeric values with zero decimal positions\[char46]
+
+
+For \fB%LOOKUPLT\fR, \fB%LOOKUPLE\fR, \fB%LOOKUPGT\fR, and \fB%LOOKUPGE\fR, the array must be defined with keyword \fIASCEND\fR or \fIDESCEND\fR\[char46] The \fIALTSEQ\fR table is used, unless arg or array is defined with \fIALTSEQ\fR(\fI*NONE\fR)\[char46]
+
+
+Built-in functions \fB%FOUND\fR and \fB%EQUAL\fR are not set following a \fB%LOOKUP\fR operation\[char46]
+
+
+The \fB%LOOKUPxx\fR built-in functions use a binary search for sequenced arrays (arrays that have the \fIASCEND\fR or \fIDESCEND\fR keyword specified)\[char46]
+
+
+
+
+
+
+
+
+For more information, see: 
+
+
+.IP \[bu] 2
+Array Operations
+.IP \[bu] 2
+Built-in Functions
+.IP \[bu] 2
+Array Data Structures
+.PP
+
+
+.SH EXAMPLE
+\fB%LOOKUPxx\fR with a scalar array
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ /FREE
+   arr(1) = 'Cornwall';
+   arr(2) = 'Kingston';
+   arr(3) = 'London';
+   arr(4) = 'Paris';
+   arr(5) = 'Scarborough';
+   arr(6) = 'York';
+
+   n = %LOOKUP('Paris':arr);
+   // n = 4
+
+   n = %LOOKUP('Thunder Bay':arr);
+   // n = 0 (not found)
+
+   n = %LOOKUP('Kingston':arr:3);
+   // n = 0 (not found after start index)
+
+   n = %LOOKUPLE('Paris':arr);
+   // n = 4
+
+   n = %LOOKUPLE('Milton':arr);
+   // n = 3
+
+   n = %LOOKUPGT('Sudbury':arr);
+   // n = 6
+
+   n = %LOOKUPGT('Yorks':arr:2:4);
+   // n = 0 (not found between elements 2 and 5)
+ /END-FREE
+.fi
+
+
+
+.SH EXAMPLE
+\fB%LOOKUP\fR with an array data structure
+.PP
+.nf
+D emps            DS                  QUALIFIED DIM(20)
+D    name                       25A   VARYING
+D    id                          9S 0
+D numEmps         S             10I 0
+ /FREE
+   emps(1).name = 'Mary';
+   emps(1).id = 00138;
+   emps(2).name = 'Patrick';
+   emps(2).id = 10379;
+   emps(3).name = 'Juan';
+   emps(3).id = 06254;
+   numEmps = 3;
+
+   // Search for employee 'Patrick'   
+   n = %lookup('Patrick' : emps(*).name : 1 : numEmps);
+   // n = 2
+
+   // Search for the employee with id 06254   
+   n = %lookup(06254 : emps(*).id : 1 : numEmps);
+   // n = 3
+
+   // Search for employee 'Bill' (not found)   
+   n = %lookup('Bill' : emps(*).name : 1 : numEmps);
+   // n = 0
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %FOUND (3RPG),
+.BR %EQUAL (3RPG),
+.BR %TLOOKUP (3RPG)

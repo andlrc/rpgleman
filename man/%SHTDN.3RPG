@@ -1,0 +1,53 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH SHTDN 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%SHTDN - Shut Down
+.SH SYNOPSIS
+.nf
+%SHTDN
+.fi
+.SH DESCRIPTION
+For more information, see Information Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%SHTDN\fR returns \[char39]1\[char39] if the system operator has requested shutdown; otherwise, it returns \[char39]0\[char39]\[char46] See \fISHTDN\fR (Shut Down) for more information\[char46]
+
+.SH EXAMPLE
+\fB%SHTDN\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ /FREE
+   // If the operator has requested shutdown, quit the
+   // program.
+
+   IF %SHTDN;
+      QuitProgram();
+   ENDIF;
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

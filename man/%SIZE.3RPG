@@ -1,0 +1,96 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH SIZE 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%SIZE - Get Size in Bytes
+.SH SYNOPSIS
+.nf
+%SIZE(variable)
+%SIZE(literal)
+%SIZE(array{:*ALL})
+%SIZE(table{:*ALL})
+%SIZE(multiple occurrence data structure{:*ALL})
+.fi
+.SH DESCRIPTION
+For a graphic literal, the size is the number of bytes occupied by the graphic characters, not including leading and trailing shift characters\[char46] For a hexadecimal or \fIUCS\fR-2 literal, the size returned is half the number of hexadecimal digits in the literal\[char46]
+
+
+For variable-length fields, \fB%SIZE\fR returns the total number of bytes occupied by the field (two bytes longer than the declared maximum length)\[char46]
+
+
+The length returned for a null-capable field (\fB%SIZE\fR) is always its full length, regardless of the setting of its null indicator\[char46]
+
+
+If the argument is an array name, table name, or multiple occurrence data structure name, the value returned is the size of one element or occurrence\[char46] If \fI*ALL\fR is specified as the second parameter for \fB%SIZE\fR, the value returned is the storage taken up by all elements or occurrences\[char46] For a multiple-occurrence data structure containing pointer subfields, the size may be greater than the size of one occurrence times the number of occurrences\[char46] The system requires that pointers be placed in storage at addresses evenly divisible by 16\[char46] As a result, the length of each occurrence may have to be increased enough to make the length an exact multiple of 16 so that the pointer subfields will be positioned correctly in storage for every occurrence\[char46] If the array is non-contiguous due to being overlaid on a larger array, the value returned is the same as it would be if the array were contiguous; it does not include the storage between the non-contiguous array elements\[char46]
+
+
+\fB%SIZE\fR may be specified anywhere that a numeric constant is allowed on the definition specification and in an expression in the extended factor 2 field of the calculation specification\[char46]
+
+
+For more information, see Size Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%SIZE\fR returns the number of bytes occupied by the constant or field\[char46] The argument may be a literal, a named constant, a data structure, a data structure subfield, a field, an array or a table name\[char46] It cannot contain an expression, but some constant-valued built-in functions and constant expressions may be accepted\[char46] The value returned is in unsigned integer format (type U)\[char46]
+
+.SH EXAMPLE
+\fB%SIZE\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7....+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D arr1            S             10    DIM(4)
+D table1          S              5    DIM(20)
+D field1          S             10
+D field2          S              9B 0
+D field3          S              5P 2
+D num             S              5P 0
+D mds             DS            20    occurs(10)
+D mds_size        C                   const (%size (mds: *all))
+D mds_ptr         DS            20    OCCURS(10)
+D   pointer                       *
+D vCity           S             40A   VARYING INZ('North York')
+D fCity           S             40A           INZ('North York')
+
+ /FREE
+     num = %SIZE(field1);        //  10
+     num = %SIZE('HH');          //   2
+     num = %SIZE(123.4);         //   4
+     num = %SIZE(-03.00);        //   4
+     num = %SIZE(arr1);          //  10
+     num = %SIZE(arr1:*ALL);     //  40
+     num = %SIZE(table1);        //   5
+     num = %SIZE(table1:*ALL);   // 100
+     num = %SIZE(mds);           //  20
+     num = %SIZE(mds:*ALL);      // 200
+     num = %SIZE(mds_ptr);       //  20
+     num = %SIZE(mds_ptr:*ALL);  // 320
+     num = %SIZE(field2);        //   4
+     num = %SIZE(field3);        //   3
+     n1 = %SIZE(vCity);          //  42
+     n2 = %SIZE(fCity);          //  40
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

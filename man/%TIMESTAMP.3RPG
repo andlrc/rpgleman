@@ -1,0 +1,63 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TIMESTAMP 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%TIMESTAMP - Convert to Timestamp
+.SH SYNOPSIS
+.nf
+%TIMESTAMP{(expression{:*ISO|*ISO0})}
+.fi
+.SH DESCRIPTION
+\fB%TIMESTAMP\fR converts the value of the expression from character, numeric, or date data to type timestamp\[char46] The converted value is returned as a timestamp\[char46]
+
+
+The first parameter is the value to be converted\[char46] If you do not specify a value, \fB%TIMESTAMP\fR returns the current system timestamp\[char46] The last three digits of the microsecond portion of the current system timestamp will be 000\[char46]
+
+
+The second parameter is the timestamp format for character input\[char46] Regardless of the input format, the output is returned in \fI*ISO\fR format\[char46] You can specify either \fI*ISO\fR (the default) or \fI*ISO0\fR\[char46] For more information, see Timestamp Data Type\[char46]
+
+
+If the first parameter is numeric, you do not need to specify the second parameter\[char46] The only allowed value is \fI*ISO\fR (the default)\[char46]
+
+
+If the first parameter is a date, do not specify the second parameter\[char46] The system converts the date from its current format to \fI*ISO\fR format and adds 00\[char46]00\[char46]00\[char46]0000\[char46]
+
+
+For more information, see Information Operations or Built-in Functions\[char46]
+
+
+
+.SH EXAMPLE
+\fB%TIMESTAMP\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ /FREE
+
+   string = '1960-09-29-12.34.56.000000';
+   timest =  %timestamp(string);   
+    // timest now contains z'1960-09-29-12.34.56.000000'
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

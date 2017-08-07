@@ -1,0 +1,42 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DECH 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%DECH - Convert to Packed Decimal Format with Half Adjust
+.SH SYNOPSIS
+.nf
+%DECH(numeric or character expression :precision:decimal places )
+.fi
+.SH DESCRIPTION
+\fB%DECH\fR is the same as \fB%DEC\fR except that if the expression is a decimal or float value, half adjust is applied to the value of the expression when converting to the desired precision\[char46] No message is issued if half adjust cannot be performed\[char46]\[char46]
+
+
+Unlike, \fB%DEC\fR, all three parameters are required\[char46]
+
+
+For more information, see Conversion Operations or Built-in Functions\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %DEC (3RPG)

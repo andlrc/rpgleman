@@ -1,0 +1,98 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH KDS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%KDS - Search Arguments in Data Structure
+.SH SYNOPSIS
+.nf
+%KDS(data-structure-name{:num-keys})
+.fi
+.SH DESCRIPTION
+\fB%KDS\fR is allowed as the search argument for any keyed Input/Output operation (\fICHAIN\fR, \fIDELETE\fR, \fIREADE\fR, \fIREADPE\fR, \fISETGT\fR, \fISETLL\fR) coded in a free-form group\[char46] The search argument is specified by the subfields of the data structure name coded as the first argument of the built-in function\[char46] The key data structure may be (but is not limited to), an externally described data structure with keyword \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*KEY\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*KEY\fR)\[char46]\[char46]
+
+
+
+
+
+
+.IP 1. 2
+.RS
+The first argument must be the name of a data structure. This includes any subfield defined with keyword LIKEDS or LIKEREC.
+.RE
+.IP 2. 2
+.RS
+The second argument specifies how many of the subfields to use as the search argument.
+.RE
+.IP 3. 2
+.RS
+The individual key values in the compound key are taken from the top level subfields of the data structure. Subfields defined with LIKEDS are considered character data.
+.RE
+.IP 4. 2
+.RS
+Subfields used to form the compound key must not be arrays.
+.RE
+.IP 5. 2
+.RS
+The types of all subfields (up to the number specified by "num-keys") must match the types of the actual keys. Where lengths and formats differ, the value is converted to the proper length and format.
+.RE
+.IP 6. 2
+.RS
+If the data structure is defined as an array data structure (using keyword DIM), an index must be supplied for the data structure.
+.RE
+.IP 7. 2
+.RS
+Opcode extenders H, M, or R specified on the keyed Input/Output operations code affect the moving of the search argument to the corresponding position in the key build area.
+.RE
+.PP
+
+Example:
+
+
+
+.SH EXAMPLE
+Example of Search on Keyed Input/Output Operations
+.PP
+.nf
+A..........T.Name++++++RLen++TDpB......Functions++++++++++++++++++
+A          R CUSTR            
+A            NAME         100A
+A            ZIP           10A
+A            ADDR         100A
+A          K NAME
+A          K ZIP
+FFilename++IPEASF.....L.....A.Device+.Keywords+++++++++++++++++++++++++
+Fcustfile  if   e           k disk    rename(CUSTR:custRec)
+DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D custRecKeys     ds                  likerec(custRec : *key)
+ ...
+ /free
+         // custRecKeys is a qualified data structure
+         custRecKeys.name = customer;
+         custRecKeys.zip = zipcode;
+         // the *KEY data structure is used as the search argument for CHAIN
+         chain %kds(custRecKeys) custRec;
+ /end-free
+ 
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

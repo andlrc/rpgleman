@@ -1,0 +1,71 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH INTH 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%INTH - Convert to Integer Format with Half Adjust
+.SH SYNOPSIS
+.nf
+%INTH(numeric or character expression)
+.fi
+.SH DESCRIPTION
+\fB%INTH\fR is the same as \fB%INT\fR except that if the expression is a decimal, float or character value, half adjust is applied to the value of the expression when converting to integer type\[char46] No message is issued if half adjust cannot be performed\[char46]
+
+
+For more information, see Conversion Operations or Built-in Functions\[char46]
+
+
+
+.SH EXAMPLE
+\fB%INT\fR and \fB%INTH\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D p7              s              7p 3 inz (1234.567)
+D s9              s              9s 5 inz (73.73442)
+D f8              s              8f   inz (123.789)
+D c15a            s             15a   inz (' 12345.6789 -') 
+D c15b            s             15a   inz (' + 9 8 7 . 6 5 4 ') 
+D result1         s             15p 5
+D result2         s             15p 5
+D result3         s             15p 5
+D array           s              1a   dim (200)
+D a               s              1a
+
+ /FREE
+ // using numeric parameters     
+    result1 = %int (p7) + 0.011;  // "result1" is now 1234.01100.
+    result2 = %int (s9);          // "result2" is now   73.00000
+    result3 = %inth (f8);         // "result3" is now  124.00000.
+ // using character parameters 
+    result1 = %int (c15a);        // "result1" is now  -12345.00000 
+    result2 = %inth (c15b);       // "result2" is now     988.00000 
+ 
+    // %INT and %INTH can be used as array indexes
+    a = array (%inth (f8));
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %INT (3RPG)

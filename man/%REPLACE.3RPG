@@ -1,0 +1,112 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH REPLACE 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%REPLACE - Replace Character String
+.SH SYNOPSIS
+.nf
+%REPLACE(replacement string: source string{:start position {:source
+length to replace}})
+.fi
+.SH DESCRIPTION
+The first and second parameter must be of type character, graphic, or \fIUCS\fR-2 and can be in either fixed- or variable-length format\[char46] The second parameter must be the same type as the first\[char46]
+
+
+The third parameter represents the starting position, measured in characters, for the replacement string\[char46] If it is not specified, the starting position is at the beginning of the source string\[char46] The value may range from one to the current length of the source string plus one\[char46]
+
+
+The fourth parameter represents the number of characters in the source string to be replaced\[char46] If zero is specified, then the replacement string is inserted before the specified starting position\[char46] If the parameter is not specified, the number of characters replaced is the same as the length of the replacement string\[char46] The value must be greater than or equal to zero, and less than or equal to the current length of the source string\[char46]
+
+
+The starting position and length may be any numeric value or numeric expression with no decimal positions\[char46]
+
+
+The returned value is varying length if the source string or replacement string are varying length, or if the start position or source length to replace are variables\[char46] Otherwise, the result is fixed length\[char46]
+
+
+For more information, see String Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%REPLACE\fR returns the character string produced by inserting a replacement string into the source string, starting at the start position and replacing the specified number of characters\[char46]
+
+.SH EXAMPLE
+\fB%REPLACE\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D var1            S             30A   INZ('Windsor') VARYING
+D var2            S             30A   INZ('Ontario') VARYING
+D var3            S             30A   INZ('Canada') VARYING
+D fixed1          S             15A   INZ('California')
+D date            S               D   INZ(D'1997-02-03')
+D result          S            100A   VARYING
+
+ /FREE
+     result = var1 + ', ' + 'ON';
+  // result = 'Windsor, ON'
+ 
+  // %REPLACE with 2 parameters to replace text at begining of string:
+     result = %replace ('Toronto': result);
+  // result = 'Toronto, ON'
+ 
+  // %REPLACE with 3 parameters to replace text at specified position:
+     result = %replace (var3: result: %scan(',': result) + 2);
+  // result = 'Toronto, Canada'
+ 
+  // %REPLACE with 4 parameters to insert text:
+     result = %replace (', ' + var2: result: %scan (',': result): 0);
+  // result = 'Toronto, Ontario, Canada'
+ 
+  // %REPLACE with 4 parameters to replace strings with different length
+     result = %replace ('Scarborough': result:
+    1: %scan (',': result) - 1);
+  // result = 'Scarborough, Ontario, Canada'
+ 
+  // %REPLACE with 4 parameters to delete text:
+     result = %replace ('': result: 1: %scan (',': result) + 1);
+  // result = 'Ontario, Canada'
+ 
+  // %REPLACE with 4 parameters to add text to the end of the string:
+     result = %replace (', ' + %char(date): result:
+   %len (result) + 1: 0);
+  // result = 'Ontario, Canada, 1997-02-03'
+ 
+  // %REPLACE with 3 parameters to replace fixed-length text at
+  // specified position:  (fixed1 has fixed-length of 15 chars)
+     result = %replace (fixed1: result: %scan (',': result) + 2);
+  // result = 'Ontario, California     -03'
+ 
+  // %REPLACE with 4 parameters to prefix text at beginning:
+     result = %replace ('Somewhere else: ': result: 1: 0);
+  // result = 'Somewhere else: Ontario, California     -03'
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %SCAN (3RPG),
+.BR %CHAR (3RPG),
+.BR %LEN (3RPG)

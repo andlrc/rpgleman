@@ -1,0 +1,102 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH CHECK 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%CHECK - Check Characters
+.SH SYNOPSIS
+.nf
+%CHECK(comparator : base {: start})
+.fi
+.SH DESCRIPTION
+The check begins at the starting position and continues to the right until a character that is not contained in the comparator string is found\[char46] The starting position defaults to 1\[char46]
+
+
+The first parameter must be of type character, graphic, or \fIUCS\fR-2, fixed or varying length\[char46] The second parameter must be the same type as the first parameter\[char46] The third parameter, if specified, must be a non-float numeric with zero decimal positions\[char46]
+
+
+For more information, see String Operations or Built-in Functions\[char46]
+
+
+
+.SH RETURN VALUE
+\fB%CHECK\fR returns the first position of the string base that contains a character that does not appear in string comparator\[char46] If all of the characters in base also appear in comparator, the function returns 0\[char46]
+
+.SH EXAMPLE
+\fB%CHECK\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ *--------------------------------------------------
+ * A string contains a series of numbers separated
+ * by blanks and/or commas.
+ * Use %CHECK to extract the numbers
+ *--------------------------------------------------
+D string          s             50a   varying
+D                                     inz('12, 233 17, 1, 234')
+D delimiters      C                   ' ,'
+D digits          C                   '0123456789'
+D num             S             50a   varying
+D pos             S             10i 0
+D len             S             10i 0
+D token           s             50a   varying
+
+ /free
+
+     // make sure the string ends with a delimiter
+     string = string + delimiters;
+
+     dou string = '';
+
+       // Find the beginning of the group of digits
+       pos = %check (delimiters : string);
+       if (pos = 0);
+          leave;
+       endif;
+
+       // skip past the delimiters
+       string = %subst(string : pos);
+
+       // Find the length of the group of digits
+       len = %check (digits : string) - 1;
+
+       // Extract the group of digits
+       token = %subst(string : 1 : len);
+       dsply ' ' ' ' token;
+
+       // Skip past the digits
+       if (len < %len(string));
+         string = %subst (string : len + 1);
+       endif;
+
+     enddo;
+
+ /end-free
+.fi
+
+See also Figure 201\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %SUBST (3RPG),
+.BR %LEN (3RPG)

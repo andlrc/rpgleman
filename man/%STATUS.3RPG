@@ -1,0 +1,236 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH STATUS 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%STATUS - Return File or Program Status
+.SH SYNOPSIS
+.nf
+%STATUS{(file_name)}
+.fi
+.SH DESCRIPTION
+\fB%STATUS\fR starts with a return value of 00000 and is reset to 00000 before any operation with an \[char39]E\[char39] extender specified begins\[char46]
+
+
+\fB%STATUS\fR is best checked immediately after an operation with the \[char39]E\[char39] extender or an error indicator specified, or at the beginning of an \fIINFSR\fR or the \fI*PSSR\fR subroutine\[char46]
+
+
+For more information, see File Operations, Result Operations, or Built-in Functions\[char46]
+
+
+The operations that set \fB%STATUS\fR are:
+
+
+.IP \[bu] 2
+ACQ (Acquire)
+.IP \[bu] 2
+ADDDUR (Add Duration)
+.IP \[bu] 2
+ALLOC (Allocate Storage)
+.IP \[bu] 2
+CALL (Call a Program)
+.IP \[bu] 2
+CALLB (Call a Bound Procedure)
+.IP \[bu] 2
+CALLP (Call a Prototyped Procedure or Program)
+.IP \[bu] 2
+CHAIN (Random Retrieval from a File)
+.IP \[bu] 2
+CHECK (Check Characters)
+.IP \[bu] 2
+CHECKR (Check Reverse)
+.IP \[bu] 2
+CLOSE (Close Files)
+.IP \[bu] 2
+COMMIT (Commit)
+.IP \[bu] 2
+DEALLOC (Free Storage)
+.IP \[bu] 2
+DELETE (Delete Record)
+.IP \[bu] 2
+DSPLY (Display Message)
+.IP \[bu] 2
+EXFMT (Write/Then Read Format)
+.IP \[bu] 2
+EXTRCT (Extract Date/Time/Timestamp)
+.IP \[bu] 2
+FEOD (Force End of Data)
+.IP \[bu] 2
+IN (Retrieve a Data Area)
+.IP \[bu] 2
+NEXT (Next)
+.IP \[bu] 2
+OCCUR (Set/Get Occurrence of a Data Structure)
+.IP \[bu] 2
+OPEN (Open File for Processing)
+.IP \[bu] 2
+OUT (Write a Data Area)
+.IP \[bu] 2
+POST (Post)
+.IP \[bu] 2
+READ (Read a Record)
+.IP \[bu] 2
+READC (Read Next Changed Record)
+.IP \[bu] 2
+READE (Read Equal Key)
+.IP \[bu] 2
+READP (Read Prior Record)
+.IP \[bu] 2
+READPE (Read Prior Equal)
+.IP \[bu] 2
+REALLOC (Reallocate Storage with New Length)
+.IP \[bu] 2
+REL (Release)
+.IP \[bu] 2
+RESET (Reset)
+.IP \[bu] 2
+ROLBK (Roll Back)
+.IP \[bu] 2
+SCAN (Scan String)
+.IP \[bu] 2
+SETGT (Set Greater Than)
+.IP \[bu] 2
+SETLL (Set Lower Limit)
+.IP \[bu] 2
+SUBDUR (Subtract Duration)
+.IP \[bu] 2
+SUBST (Substring)
+.IP \[bu] 2
+TEST (Test Date/Time/Timestamp)
+.IP \[bu] 2
+UNLOCK (Unlock a Data Area or Release a Record)
+.IP \[bu] 2
+UPDATE (Modify Existing Record)
+.IP \[bu] 2
+WRITE (Create New Records)
+.IP \[bu] 2
+XLATE (Translate)
+.PP
+
+
+.SH RETURN VALUE
+\fB%STATUS\fR returns the most recent value set for the program or file status\[char46] \fB%STATUS\fR is set whenever the program status or any file status changes, usually when an error occurs\[char46]
+
+
+If \fB%STATUS\fR is used without the optional file_name parameter, then it returns the program or file status most recently changed\[char46] If a file is specified, the value contained in the \fIINFDS\fR \fI*STATUS\fR field for the specified file is returned\[char46] The \fIINFDS\fR does not have to be specified for the file\[char46]
+
+.SH EXAMPLE
+\fB%STATUS\fR and \fB%ERROR\fR with \[char39]E\[char39] Extender
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+ * The 'E' extender indicates that if an error occurs, the error
+ * is to be handled as though an error indicator were coded.
+ * The success of the operation can then be checked using the
+ * %ERROR built-in function.  The status associated with the error
+ * can be checked using the %STATUS built-in function.
+ /FREE
+    exfmt(e) InFile;
+    if %error;
+       exsr CheckError;
+    endif;
+ 
+  //-------------------------------------------------------------------
+  // CheckError: Subroutine to process a file I/O error
+  //-------------------------------------------------------------------
+    begsr CheckError;
+       select;
+       when  %status < 01000;
+ 
+          // No error occurred
+       when  %status = 01211;
+          // Attempted to read a file that was not open
+          exsr InternalError;
+ 
+       when  %status = 01331;
+          // The wait time was exceeded for a READ operation
+          exsr TimeOut;
+ 
+       when  %status = 01261;
+          // Operation to unacquired device
+          exsr DeviceError;
+ 
+       when  %status = 01251;
+          // Permanent I/O error
+          exsr PermError;
+ 
+       other;
+          // Some other error occurred
+          exsr FileError;
+       endsl;
+    endsr;
+ /END-FREE
+.fi
+
+
+
+.SH EXAMPLE
+\fB%STATUS\fR and \fB%ERROR\fR with \[char39]E\[char39] Extender, Error Indicator and \fI*PSSR\fR
+.PP
+.nf
+DName+++++++++++ETDsFrom+++To/L+++IDc.Keywords++++++++++++++++++++++++++
+D Zero            S              5P 0 INZ(0)
+CL0N01Factor1+++++++Opcode(E)+Factor2+++++++Result++++++++Len++D+HiLoEq....
+ * %STATUS starts with a value of 0
+ *
+ * The following SCAN operation will cause a branch to the *PSSR
+ * because the start position has a value of 0.
+C     'A'           SCAN      'ABC':Zero    Pos
+C     BAD_SCAN      TAG
+ * The following EXFMT operation has an 'E' extender, so %STATUS will
+ * be set to 0 before the operation begins.  Therefore, it is
+ * valid to check %STATUS after the operation.
+ * Since the 'E' extender was coded, %ERROR can also be used to
+ * check if an error occurred.
+C                   EXFMT(E)  REC1
+C                   IF        %ERROR
+C                   SELECT
+C                   WHEN      %STATUS = 01255
+C ...
+C                   WHEN      %STATUS = 01299
+C ...                                                                
+ * The following scan operation has an error indicator.  %STATUS will
+ * not be set to 0 before the operation begins, but %STATUS can be
+ * reasonably checked if the error indicator is on.
+C     'A'           SCAN      'ABC':Zero    Pos                    10
+C                   IF        *IN10 AND %STATUS = 00100
+C ...
+                                                                      
+ * The following scan operation does not produce an error.
+ * Since there is no 'E' extender %STATUS will not be set to 0,
+ * so it would return a value of 00100 from the previous error.
+ * Therefore, it is unwise to use %STATUS after an operation that
+ * does not have an error indicator or the 'E' extender coded since
+ * you cannot be sure that the value pertains to the previous
+ * operation.
+C     'A'           SCAN      'ABC'         Pos
+C ...
+C     *PSSR         BEGSR
+ * %STATUS can be used in the *PSSR since an error must have occurred.
+C                   IF        %STATUS = 00100
+C                   GOTO      BAD_SCAN
+C ...
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %ERROR (3RPG)

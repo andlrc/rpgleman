@@ -1,0 +1,70 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH UNSH 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%UNSH - Convert to Unsigned Format with Half Adjust
+.SH SYNOPSIS
+.nf
+%UNSH(numeric or character expression)
+.fi
+.SH DESCRIPTION
+\fB%UNSH\fR is the same as \fB%UNS\fR except that if the expression is a decimal, float or character value, half adjust is applied to the value of the expression when converting to integer type\[char46] No message is issued if half adjust cannot be performed\[char46]
+
+
+For more information, see Conversion Operations or Built-in Functions\[char46]
+
+
+
+.SH EXAMPLE
+\fB%UNS\fR and \fB%UNSH\fR Example
+.PP
+.nf
+ *..1....+....2....+....3....+....4....+....5....+....6....+....7...+....
+D*Name++++++++++ETDsFrom+++To/L+++IDc.Keywords+++++++++++++++++++++++++
+D p7              s              7p 3 inz (8236.567)
+D s9              s              9s 5 inz (23.73442)
+D f8              s              8f   inz (173.789)
+D c15a            s             15a   inz (' 12345.6789 +') 
+D c15b            s             15a   inz (' + 5 , 6 7 ') 
+D result1         s             15p 5
+D result2         s             15p 5
+D result3         s             15p 5
+D array           s              1a   dim (200)
+D a               s              1a
+
+ /FREE
+ // using numeric parameters 
+    result1 = %uns (p7) + 0.1234; // "result1" is now 8236.12340
+    result2 = %uns (s9);          // "result2" is now   23.00000
+    result3 = %unsh (f8);         // "result3" is now  174.00000
+ // using character parameters
+     result1 = %uns (c15a);        // "result1" is now 12345.0000
+     result2 = %unsh (c15b);       // "result2" is now     6.00000
+    // %UNS and %UNSH can be used as array indexes
+    a = array (%unsh (f8));
+ /END-FREE
+.fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH SEE ALSO
+.BR %UNS (3RPG)

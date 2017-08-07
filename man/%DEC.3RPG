@@ -1,0 +1,35 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DEC 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%DEC - Convert to Packed Decimal Format
+.SH SYNOPSIS
+.nf
+%DEC(numeric or character expression{:precision:decimal places})
+%DEC(date time or timestamp expression {:format})
+.fi
+.SH DESCRIPTION
+\fB%DEC\fR converts the value of the first parameter to decimal (packed) format\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,198 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH SUBARR 3RPG  2010-03-10 "ILE RPG Language Reference"
+.SH NAME
+%SUBARR - Set/Get Portion of an Array
+.SH SYNOPSIS
+.nf
+%SUBARR(array:start-index{:number-of-elements})
+.fi
+.SH DESCRIPTION
+The first parameter of \fB%SUBARR\fR must be an array\[char46] That is, a standalone field, data structure, or subfield defined as an array\[char46] The first parameter must not be a table name or procedure call\[char46]
+
+
+The start-index parameter must be a numeric value with zero decimal positions\[char46] A float numeric value is not allowed\[char46] The value must be greater than or equal to 1 and less than or equal to the number of elements of the array\[char46]
+
+
+The optional number-of-elements parameter must be a numeric value with zero decimal positions\[char46] A float numeric value is not allowed\[char46] The value must be greater than or equal to 1 and less than or equal to the number of elements remaining in the array after applying the start-index value\[char46]
+
+
+Generally, \fB%SUBARR\fR is valid in any expression where an unindexed array is allowed\[char46] However, \fB%SUBARR\fR cannot be used in the following places: 
+
+
+.IP \[bu] 2
+as the array argument of built-in function %LOOKUPxx
+.IP \[bu] 2
+as a parameter passed by reference
+.PP
+
+\fB%SUBARR\fR may be used in the following ways:
+
+
+.IP \[bu] 2
+On the left-hand side of an assignment using EVAL or EVALR. This changes the specified elements in the specified array.
+.IP \[bu] 2
+Within the expression on the right-hand side of an assignment using EVAL or EVALR where the target of the assignment is an array. This uses the values of the specified elements of the array. The array elements are used directly; a temporary copy of the sub-array is not made.
+.IP \[bu] 2
+In Extended Factor 2 of the SORTA operation.
+.IP \[bu] 2
+In Extended Factor 2 of the RETURN operation.
+.IP \[bu] 2
+Passed by VALUE or by read-only reference (CONST keyword) when the corresponding parameter is defined as an array.
+.IP \[bu] 2
+As the parameter of the %XFOOT built-in function.
+.PP
+
+For more information, see Array Operations or Built-in Functions\[char46]
+
+
+
+
+.SH EXAMPLE
+Using \fB%SUBARR\fR
+.PP
+.nf
+D a               s             10i 0 dim(5)
+D b               s             10i 0 dim(15)
+D resultArr       s             10i 0 dim(20)
+D sum             s             20i 0 
+ /free  
+	    a(1)=9;  
+     a(2)=5;  
+     a(3)=16;  
+     a(4)=13;  
+     a(5)=3;  
+     // Copy part of an array to another array:  
+     resultArr = %subarr(a:4:n);     
+          // this is equivalent to:     
+          //   resultArr(1) = a(4)     
+          //   resultArr(2) = a(5)     
+          //   ...     
+          //   resultArr(n) = a(4 + n - 1)  
+
+     // Copy part of an array to part of another array:  
+     %subarr(b:3:n) = %subarr(a:m:n);  
+     // Specifying the array from the start element to the end of the array  
+     // B has 15 elements and A has 5 elements.  Starting from element 2  
+     // in array A means that only 4 elements will be copied to array B.  
+     // The remaining elements in B will not be changed.  
+     	b = %subarr(a : 2);  
+
+     // Sort a subset of an array:  
+     sorta %subarr(a:1:4);     
+          // Now, A=(5 9 13 16 3);     
+          // Since only 4 elements were sorted, the fifth element     
+          // is out of order.  
+          // Using %SUBARR in an implicit array indexing assignment  
+     resultArr = b + %subarr(a:2:3)     
+     // this is equivalent to:     
+     //   resultArr(1) = b(1) + a(2)     
+     //   resultArr(2) = b(2) + a(3)     
+     //   resultArr(3) = b(3) + a(4)  
+
+     // Using %SUBARR nested within an expression  
+     resultArr = %trim(%subst(%subarr(stringArr:i):j));     
+          // this is equivalent to:     
+          //   resultArr(1) = %trim(%subst(stringArr(i+0):j))     
+          //	 resultArr(2) = %trim(%subst(stringArr(i+1):j))     
+          //   resultArr(3) = %trim(%subst(stringArr(i+2):j))  
+
+     // Sum a subset of an array  
+     sum = %xfoot (%subarr(a:2:3));     
+          // Now sum = 9 + 13 + 16 = 38
+
+.fi
+
+
+
+.SH EXAMPLE
+Using \fB%SUBARR\fR with dynamically allocated arrays
+.PP
+.nf
+// Using %SUBARR with dynamically allocated arrays
+D dynArrInfo      ds                  qualified
+D   numAlloc                    10i 0 inz(0)
+D   current                     10i 0 inz(0)
+D   p                             *
+D dynArr          s              5a   dim(32767) based(dynArrInfo.p)
+D otherArray      s              3a   dim(10) inz('xy') 
+ /free  
+     // Start the array with an allocation of five elements,   
+     // and with two current elements  
+     dynArrInfo.numAlloc = 5;  
+     dynArrInfo.p = %alloc(%size(dynArr) * 
+                    dynarrInfo.numAlloc);  
+     dynArrInfo.current = 2;  
+     // Initialize to blanks  
+     %subarr(dynArr : 1 : dynarrInfo.current) = *blank;  
+
+     // Set the two elements to some values  
+     dynArr(1) = 'Dog'; 
+						   dynArr(2) = 'Cat';  
+
+     // Sort the two elements  
+     sorta %subarr(dynArr : 1 : dynarrInfo.current);     
+          // dynArr(1) = 'Cat'     
+          // dynArr(2) = 'Dog'  
+
+     // Assign another array to the two elements  
+     otherArray(1) = 'ab';  
+     otherArray(2) = 'cd';  
+     otherArray(3) = 'ef';  
+     %subarr(dynArr : 1 : dynarrInfo.current) = otherArray;     
+          // dynArr(1) = 'ab'     
+          // dynArr(2) = 'cd'  
+
+     // Changing the size of the array  
+     oldElems = dynArrInfo.current;  
+     dynArrInfo.current = 7;  
+     if (dynArrInfo.current > dynArrInfo.numAlloc);     
+          dynArrInfo.p = %realloc (dynArrInfo.p : dynArrInfo.current);     
+          dynArrInfo.numAlloc = dynArrInfo.current;  
+     endif;  
+     if (oldElems < dynArrInfo.current);     
+          // Initialize new elements to blanks     
+         clear %subarr(dynArr : oldElems + 1 : dynArrInfo.current - oldElems);      
+     endif; 
+
+.fi
+
+
+
+
+
+For more information, see Built-in Functions\[char46]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SH RETURN VALUE
+Built-in function \fB%SUBARR\fR returns a section of the specified array starting at start-index\[char46] The number of elements returned is specified by the optional number-of-elements parameter\[char46] If not specified, the number-of-elements defaults to the remainder of the array\[char46]
+
+.SH SEE ALSO
+.BR %LOOKUPXX (3RPG),
+.BR %XFOOT (3RPG),
+.BR %TRIM (3RPG),
+.BR %SUBST (3RPG),
+.BR %ALLOC (3RPG),
+.BR %SIZE (3RPG),
+.BR %REALLOC (3RPG)
