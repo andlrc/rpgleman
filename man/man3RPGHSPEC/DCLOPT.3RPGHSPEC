@@ -1,0 +1,112 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hdclopt.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DCLOPT 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DCLOPT
+.SH SYNOPSIS
+.nf
+DCLOPT(*NOCHGDSLEN)
+.fi
+.SH DESCRIPTION
+The \fIDCLOPT\fR keyword specifies options related to declarations\[char46]
+
+
+The parameter must be \fI*NOCHGDSLEN\fR\[char46]
+
+
+When \fIDCLOPT\fR(\fI*NOCHGDSLEN\fR)  is specified, you can use \fB%SIZE\fR  with a data structure parameter in a free-form File or Definition statement if the following conditions are met: 
+.IP "" 2
+.RS
+\[bu] All the subfields are defined\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the data structure is defined with the \fIDIM\fR  or \fIOCCURS\fR  keyword, the dimension must be defined when \fB%SIZE\fR  appears\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The usage of \fB%SIZE\fR  and the data structure definition must be either both in the global declarations or both in the same subprocedure\[char46]
+.RE
+.PP
+
+
+The following additional rules apply: 
+.IP "" 2
+.RS
+\[bu] A data structure cannot be specified on an Input specification\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If a data structure appears in the result field of a Calculation specification, the Length entry cannot be specified\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If an externally-described file has Input or Output specifications generated, a field name in the file cannot be the name of a data structure\[char46] (Input and Output specifications are generated for any global file that does not have the \fIQUALIFIED\fR  or \fILIKEFILE\fR  keyword\[char46])
+.RE
+.PP
+
+
+In the following example, 
+.IP 1. 2
+.RS
+Keyword \fIDCLOPT\fR(\fI*NOCHGDSLEN\fR)  is specified in the Control statement\[char46]
+.RE
+.IP 2. 2
+.RS
+The data structure \fIMYDS\fR is defined without an explicit length\[char46]
+.RE
+.IP 3. 2
+.RS
+Subfield \fIDATA\fR  is defined like \fILINE\fR \[char46]
+.RE
+.IP 4. 2
+.RS
+The first file declaration is not valid because the value of \fB%SIZE(\fIMYDS\fR)\fR  is not yet known\[char46]
+.RE
+.IP 5. 2
+.RS
+When field \fILINE\fR  is defined, all the subfields of \fIMYDS\fR  are defined, and due to the presence of \fIDCLOPT\fR(\fI*NOCHGDSLEN\fR)  in the Control statement, data structure \fIMYDS\fR  is defined and its size is known\[char46]
+.RE
+.IP 6. 2
+.RS
+The second file declaration is valid because the value of \fB%SIZE(\fIMYDS\fR)\fR  is known\[char46]
+.RE
+.PP
+
+
+Without \fIDCLOPT\fR(\fI*NOCHGDSLEN\fR), neither file declaration would be valid because the size of \fIMYDS\fR would not be known until the compiler had processed all the statements of the procedure\[char46]
+
+.SH EXAMPLE
+
+.PP
+.nf
+ctl-opt dclopt(*nochgdslen); //Â 1Â
+
+dcl-ds myDs; //Â 2Â
+  seq zoned(6:2);
+  dat zoned(6);
+  data like(line); //Â 3Â
+end-ds;
+
+dcl-f myfile1 disk(%size(myDS)); //Â 4Â
+
+dcl-s line char(100); //Â 5Â
+
+dcl-f myfile2 disk(%size(myDS)); //Â 6Â
+.fi
+.SH SEE ALSO
+.BR %SIZE,
+.BR DATA,
+.BR DCLOPT,
+.BR DIM,
+.BR LIKEFILE,
+.BR LINE,
+.BR MYDS,
+.BR OCCURS,
+.BR OCHGDSLEN,
+.BR QUALIFIED

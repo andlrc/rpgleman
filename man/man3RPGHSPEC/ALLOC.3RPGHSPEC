@@ -1,0 +1,44 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/halloc.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ALLOC 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ALLOC
+.SH SYNOPSIS
+.nf
+ALLOC(*STGMDL | *TERASPACE | *SNGLVL)
+.fi
+.SH DESCRIPTION
+The \fIALLOC\fR keyword specifies the storage model for storage management operations in the module\[char46]
+
+
+If the \fIALLOC\fR keyword is not specified, \fIALLOC\fR(\fI*STGMDL\fR) is assumed\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] \fI*STGMDL\fR is used to specify that the storage model for memory management operations will be the same as the storage model of the module\[char46] You use the \fISTGMDL\fR  keyword on the Control specification to control the storage model of the module\[char46] If the storage model of the module is \fI*INHERIT\fR, the storage model used for memory management operations is determined at runtime\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] \fI*SNGLVL\fR is used to specify that the single-level storage model will be used for memory management operations\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] \fI*TERASPACE\fR is used to specify that the teraspace storage model will be used for memory management operations\[char46]
+.RE
+.PP
+
+See Memory Management Operations for more information on teraspace and single-level memory management operations\[char46]
+
+.SH SEE ALSO
+.BR ALLOC,
+.BR ERASPACE,
+.BR NGLVL,
+.BR NHERIT,
+.BR STGMDL,
+.BR TGMDL

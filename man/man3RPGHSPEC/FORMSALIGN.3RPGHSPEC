@@ -1,0 +1,49 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hforms.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH FORMSALIGN 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+FORMSALIGN
+.SH SYNOPSIS
+.nf
+FORMSALIGN{(*NO | *YES)}
+.fi
+.SH DESCRIPTION
+The \fIFORMSALIGN\fR keyword indicates that the first line of an output file conditioned with the 1P indicator can be printed repeatedly, allowing you to align the printer\[char46] If not specified or specified with \fI*NO\fR, no alignment will be performed\[char46] If specified, optionally with \fI*YES\fR, first page forms alignment will occur\[char46]
+
+
+
+
+ 
+.IP "" 2
+.RS
+\[bu] The records specified on Output Specifications for a file with a device entry for a printer type device conditioned by the first page indicator (1P) may be written as many times as desired\[char46] The line will print once\[char46] The operator will then have the option to print the line again or continue with the rest of the program\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] All spacing and skipping specified will be performed each time the line is printed\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When the option to continue with the rest of the program is selected, the line will not be reprinted\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The function may be performed for all printer files\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If a page field is specified, it will be incremented only the first time the line is printed\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When the continue option is selected, the line count will be the same as if the function were performed only once when line counter is specified\[char46]
+.RE
+.PP
+
+.SH SEE ALSO
+.BR FORMSALIGN

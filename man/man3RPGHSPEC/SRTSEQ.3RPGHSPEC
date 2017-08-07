@@ -1,0 +1,51 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hsrtseq.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH SRTSEQ 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+SRTSEQ
+.SH SYNOPSIS
+.nf
+SRTSEQ(*HEX | *JOB | *JOBRUN | *LANGIDUNQ | *LANGIDSHR | 'sort-table-name')
+.fi
+.SH DESCRIPTION
+The \fISRTSEQ\fR keyword specifies the sort sequence table that is to be used in the \fIILE\fR \fIRPG\fR source program\[char46]
+
+
+If \fI*HEX\fR is specified, no sort sequence table is used\[char46]
+
+
+If \fI*JOB\fR is specified, the \fISRTSEQ\fR value for the job when the \fI*PGM\fR is created is used\[char46]
+
+
+If \fI*JOBRUN\fR is specified, the \fISRTSEQ\fR value for the job when the \fI*PGM\fR is run is used\[char46]
+
+
+If \fI*LANGIDUNQ\fR is specified, a unique-weight table is used\[char46] This special value is used in conjunction with the \fILANGID\fR command parameter or keyword to determine the proper sort sequence table\[char46]
+
+
+If \fI*LANGIDSHR\fR is specified, a shared-weight table is used\[char46] This special value is used in conjunction with the \fILANGID\fR command parameter or keyword to determine the proper sort sequence table\[char46]
+
+
+A sort table name can be specified to indicate the name of the sort sequence table to be used with the object\[char46] It can also be qualified by a library name followed by a slash delimiter (\[char39]library-name/sort-table-name\[char39])\[char46] The library-name is the name of the library to be searched\[char46] If a library name is not specified, \fI*LIBL\fR is used to find the sort table name\[char46]
+
+
+If you want to use the \fISRTSEQ\fR and \fILANGID\fR parameters to determine the alternate collating sequence, you must also specify \fIALTSEQ\fR(\fI*EXT\fR) on the control specification\[char46]
+
+
+If the \fISRTSEQ\fR keyword is not specified, then the value specified on the command is used\[char46]
+
+.SH SEE ALSO
+.BR ALTSEQ,
+.BR ANGIDSHR,
+.BR ANGIDUNQ,
+.BR IBL,
+.BR ILE,
+.BR LANGID,
+.BR OBRUN,
+.BR RPG,
+.BR SRTSEQ

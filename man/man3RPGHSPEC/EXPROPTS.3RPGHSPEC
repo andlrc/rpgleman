@@ -1,0 +1,22 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hexprop.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EXPROPTS 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+EXPROPTS
+.SH SYNOPSIS
+.nf
+EXPROPTS(*MAXDIGITS | *RESDECPOS)
+.fi
+.SH DESCRIPTION
+The \fIEXPROPTS\fR (expression options) keyword specifies the type of precision rules to be used for an entire program\[char46] If not specified or specified with \fI*MAXDIGITS\fR, the default precision rules apply\[char46] If \fIEXPROPTS\fR is specified, with \fI*RESDECPOS\fR, the "Result Decimal Position" precision rules apply and force intermediate results in expressions to have no fewer decimal positions than the result\[char46] 
+
+
+.SH SEE ALSO
+.BR AXDIGITS,
+.BR ESDECPOS,
+.BR EXPROPTS

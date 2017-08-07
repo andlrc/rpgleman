@@ -1,0 +1,22 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hgenlvl.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH GENLVL 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+GENLVL
+.SH SYNOPSIS
+.nf
+GENLVL(number)
+.fi
+.SH DESCRIPTION
+The \fIGENLVL\fR keyword controls the creation of the object\[char46] The object is created if all errors encountered during compilation have a severity level less than or equal to the generation severity level specified\[char46] The value must be between 0 and 20 inclusive\[char46] For errors greater than severity 20, the object will not be created\[char46]
+
+
+If the \fIGENLVL\fR keyword is not specified, then the value specified on the command is used\[char46]
+
+.SH SEE ALSO
+.BR GENLVL

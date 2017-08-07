@@ -2,8 +2,8 @@ NAME
     rpgleman - Get man pages for ILE RPG
 
 SYNOPSIS
-    Download and install man pages built-in functions, keywords, free-form
-    operations and compiler directives in ILE RPG.
+    Download and install man pages built-in functions, declaration keywords,
+    control keywords, calculation operations and compiler directives in ILE RPG.
 
 INSTALL
     To install man pages run the following, ``sudo'' might be needed:
@@ -13,7 +13,7 @@ INSTALL
 REBUILD MAN PAGES
     To download and rebuild from IBM one can run the following:
 
-    $ make {all|bif|kw|cd}
+    $ make {all|bif|dkw|cop|hkw|cd}
 
     To speed up downloading one can if ``make'' supports is use ``-j'' to run
     multiply jobs at the same time.  See ``make(1)'' for more information.
@@ -27,10 +27,16 @@ DEPENDENCIES
     IO::Socket::SSL
 
 MAN PAGES
-    Man pages for built-in functions, keywords, and operators are installed in
-    ``/usr/share/man/man3RPG'' and can be accessed with:
+    Man pages for built-in functions, declaration keywords, and calculation
+    operators are installed in ``/usr/share/man/man3RPG'' and can be accessed
+    with:
 
     $ man 3RPG %TIME
+
+    Man pages for control keywords are installed in
+    ``/usr/share/man/man3RPGHSPEC'' and can be accessed with:
+
+    $ man 3RPGHSPEC BNDDIR
 
     Man pages for compiler directives are installed in
     ``/usr/share/man/man3RPGCOMPDIR'' and can be accessed with:
@@ -40,11 +46,12 @@ MAN PAGES
 VIM INTEGRATION
     One can change the ``keywordprg'' to search the proper man pages:
 
-    :setlocal keywordprg=man\ --sections=3RPG,3RPGCOMPDIR
+    :setlocal keywordprg=man\ --sections=3RPG,3RPGHSPEC,3RPGCOMPDIR
     :setlocal iskeyword+=%
 
-    Which makes ``K'' look for man pages in ``3RPG'' and ``3RPGCOMPDIR''.  If
-    ``rpgle.vim''[0] is used then ``iskeyword'' is already updated.
+    Which makes ``K'' look for man pages in ``3RPG'', ``3RPGHSPEC'' and
+    ``3RPGCOMPDIR''.  If ``rpgle.vim''[0] is used then ``iskeyword'' is already
+    updated.
 
     [0]: https://github.com/andlrc/rpgle.vim
 

@@ -1,0 +1,62 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hstgmdl.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH STGMDL 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+STGMDL
+.SH SYNOPSIS
+.nf
+STGMDL(*INHERIT | *SNGLVL | *TERASPACE)
+.fi
+.SH DESCRIPTION
+The \fISTGMDL\fR keyword specifies the storage model for the program or module\[char46] 
+.IP "" 2
+.RS
+\[bu] \fI*SNGLVL\fR is used to specify the single-level storage model\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] \fI*INHERIT\fR is used to specify the inherit storage model\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] \fI*TERASPACE\fR is used to specify the teraspace storage model\[char46]
+.RE
+.PP
+
+
+When a single-level storage model program or service program is activated and run, it is supplied single-level storage for automatic and static storage\[char46] A single-level storage program or service program runs only in a single-level storage activation group\[char46] A program compiled with \fIDFTACTGRP\fR(\fI*YES\fR) must be a single-level storage model program\[char46]
+
+
+See \fIDFTACTGRP\fR(\fI*YES\fR | \fI*NO\fR) for information on how the \fISTGMDL\fR keyword affects the setting of the \fIDFTACTGRP\fR keyword\[char46]
+
+
+When a teraspace storage model program or service program is activated and run, it is supplied teraspace storage for automatic and static storage\[char46] A teraspace storage program or service program runs only in a teraspace storage activation group\[char46]
+
+
+When an inherit storage model program or service program is activated, it adopts the storage model of the activation group into which it is activated\[char46] An equivalent view is that it inherits the storage model of its caller\[char46] When the \fI*INHERIT\fR storage model is selected, \fI*CALLER\fR must be specified for the activation group through the \fIACTGRP\fR parameter or keyword\[char46]
+
+
+An inherit storage model module can be bound into programs and service programs with a storage model of single-level, teraspace or inherit\[char46]
+
+
+A single-level storage model module can only be bound into programs and service programs that use single-level storage\[char46]
+
+
+A teraspace storage model module can only be bound into programs and service programs that use teraspace storage\[char46]
+
+
+If the \fISTGMDL\fR keyword is not specified, then the value specified on the command is used\[char46]
+
+.SH SEE ALSO
+.BR ACTGRP,
+.BR ALLER,
+.BR DFTACTGRP,
+.BR ERASPACE,
+.BR NGLVL,
+.BR NHERIT,
+.BR STGMDL

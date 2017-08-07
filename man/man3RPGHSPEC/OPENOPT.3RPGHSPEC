@@ -1,0 +1,48 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hopenop.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH OPENOPT 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+OPENOPT - *{NO}INZOFL *{NO}CVTDATA
+.SH DESCRIPTION
+You can specify any or all of the options in any order\[char46] However, if an option is specified, the \fI*NOxxxx\fR option cannot also be specified, and vice versa\[char46] For example, you can only specify one of \fI*INZOFL\fR and \fI*NOINZOFL\fR\[char46] Separate the options with a colon\[char46]
+
+
+.TP 5
+.B \fI*CVTDATA\fR
+
+
+ The *{NO}\fICVTDATA\fR option sets the default for the \fIDATA\fR keyword for database files (defined as \fIDISK\fR or \fISEQ\fR)\[char46] If you specify \fI*CVTDATA\fR, \fIDATA\fR(\fI*CVT\fR) is the default for database files\[char46] If you specify \fI*NOCVTDATA\fR, \fIDATA\fR(\fI*NOCVT\fR) is the default for database files\[char46] 
+If you do not specify \fI*CVTDATA\fR or \fI*NOCVTDATA\fR, and you specify control keyword \fICCSID\fR(\fI*EXACT\fR) then \fIOPENOPT\fR(\fI*CVTDATA\fR is assumed\[char46]
+
+ 
+If you do not specify \fI*CVTDATA\fR or \fI*NOCVTDATA\fR, and you do not specify \fICCSID\fR(\fI*EXACT\fR), and a database file does not have the \fIDATA\fR keyword explicitly specified, then the file is considered not to have the \fIDATA\fR keyword in effect\[char46]
+
+ 
+See \fIDATA\fR(\fI*CVT\fR | \fI*NOCVT\fR) for more information\[char46]
+
+ 
+
+
+.TP 5
+.B \fI*INZOFL\fR
+For a program that has one or more printer files defined with an overflow indicator (OA-OG or OV), the keyword specifies whether the overflow indicator should be reset to \fI*OFF\fR when the file is opened\[char46] If the \fIOPENOPT\fR keyword is specified, with \fI*NOINZOFL\fR, the overflow indicator will remain unchanged when the associated printer file is opened\[char46] If not specified or specified with \fI*INZOFL\fR, the overflow indicator will be set to \fI*OFF\fR when the associated printer file is opened\[char46]
+.PP
+.SH SEE ALSO
+.BR CCSID,
+.BR CVTDATA,
+.BR DATA,
+.BR DISK,
+.BR INZOFL,
+.BR NZOFL,
+.BR OCVT,
+.BR OCVTDATA,
+.BR OINZOFL,
+.BR OPENOPT,
+.BR SEQ,
+.BR VTDATA,
+.BR XACT

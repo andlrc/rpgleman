@@ -1,0 +1,87 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hdebug.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DEBUG 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DEBUG
+.SH SYNOPSIS
+.nf
+DEBUG{(*INPUT | *DUMP | *XMLSAX | *NO | *YES)}
+.fi
+.SH DESCRIPTION
+The \fIDEBUG\fR keyword controls what debugging aids are generated into the module\[char46]
+
+
+When the \fIDEBUG\fR keyword is specified with one or more of the \fI*INPUT\fR, \fIDUMP\fR or \fI*XMLSAX\fR parameters, you can choose exactly which debugging aids are to be generated into the module\[char46] When the \fIDEBUG\fR keyword is specified with \fI*YES\fR or \fI*NO\fR, no other parameters can be specified\[char46]
+
+
+.TP 5
+.B \fI*INPUT\fR
+All externally described input fields will be read during input operations even if they are not used in the program\[char46] Normally, externally described input fields are only read during input operations if the field is otherwise used within the program\[char46]
+.TP 5
+.B \fI*DUMP\fR
+\fIDUMP\fR operations are performed\[char46] 
+Note: You can force a \fIDUMP\fR operation to be performned by specifying operation extender A on the \fIDEBUG\fR operation code\[char46] This operation extender means that a dump is always performed, regardless of the value of the \fIDEBUG\fR keyword\[char46]
+
+
+.TP 5
+.B \fI*XMLSAX\fR
+An array with the name _QRNU_XMLSAX will be generated into the module if it has a debug view (if it is compiled with a value for the \fIDBGVIEW\fR parameter other than \fI*NONE\fR)\[char46] The values of the array will be the names of the \fI*XML\fR special words, without the "\fI*XML_\fR" prefix\[char46] For example, if \fI*XML_START_DOCUMENT\fR has the value 1, _QRNU_XMLSAX(1) will have the value "\fISTART\fR_DOCUMENT"\[char46] 
+Sample debug session: 
+.PP
+.nf
+> EVAL event
+  EVENT = 2
+> EVAL _QRNU_XMLSAX(event)
+  _QRNU_XMLSAX(EVENT) = \[char39]END_DOCUMENT   \[char39]
+.fi
+
+
+.PP
+
+Specifying the \fIDEBUG\fR keyword with \fI*NO\fR indicates that no debugging aids should be generated into the module\[char46] This is the same as omitting the \fIDEBUG\fR keyword entirely\[char46] No other parameters can be specified when \fI*NO\fR is specified\[char46]
+
+
+Specifying the \fIDEBUG\fR keyword with \fI*YES\fR or with no parameters is the same as specifying \fIDEBUG\fR(\fI*INPUT\fR : \fI*DUMP\fR)\[char46] No other parameters can be specified when \fI*YES\fR is specified\[char46] The value \fI*YES\fR is retained for compatibility; it is preferable to specify the more granular values \fI*INPUT\fR, \fI*DUMP\fR and \fI*XMLSAX\fR\[char46]
+
+
+
+
+  
+.PP
+.nf
+  * 1\[char46] All of the debugging aids are available
+ H DEBUG(*INPUT : *DUMP : *XMLSAX)
+* 2\[char46] None of the debugging aids are available
+ H DEBUG(*NO)
+* 3\[char46] Only the debugging aid related to input fields is available
+ H DEBUG(*INPUT)
+* 4\[char46] The debugging aids related to the DUMP operation and
+*    to XML-SAX parsing are available
+ H DEBUG(*XMLSAX : *DUMP)
+.fi
+
+.SH NOTICE
+Note:  The \fIDEBUG\fR keyword does not control whether the module is created to be debuggable\[char46] That is controlled by the \fIDBGVIEW\fR parameter for the \fICRTBNDRPG\fR or \fICRTRPGMOD\fR command\[char46] The \fIDEBUG\fR keyword controls additional debugging aids\[char46]
+.SH SEE ALSO
+.BR CRTBNDRPG,
+.BR CRTRPGMOD,
+.BR DBGVIEW,
+.BR DEBUG,
+.BR DOCUMENT,
+.BR DUMP,
+.BR END,
+.BR EVAL,
+.BR EVENT,
+.BR MLSAX,
+.BR NPUT,
+.BR ONE,
+.BR QRNU,
+.BR START,
+.BR UMP,
+.BR XML-SAX,
+.BR XMLSAX

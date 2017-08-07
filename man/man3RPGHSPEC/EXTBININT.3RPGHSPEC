@@ -1,0 +1,44 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hextbin.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EXTBININT 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+EXTBININT
+.SH SYNOPSIS
+.nf
+EXTBININT{(*NO | *YES)}
+.fi
+.SH DESCRIPTION
+
+
+ The \fIEXTBININT\fR keyword is used to process externally described fields with binary external format and zero decimal positions as if they had an external integer format\[char46] If not specified or specified with \fI*NO\fR, then an externally described binary field is processed with an external binary-decimal  format\[char46] If \fIEXTBININT\fR is specified, optionally with \fI*YES\fR, then an externally described field is processed as follows: 
+.TP 5
+.B \fIDDS\fR Definition
+
+
+
+.TP 5
+.B B(n,0) where 1 â¤ n â¤ 4
+\fIINT\fR(5)
+.TP 5
+.B B(n,0) where 5 â¤ n â¤ 9
+\fIINT\fR(10)
+.PP
+ 
+
+
+
+By specifying the \fIEXTBININT\fR keyword, your program can make use of the full range of \fIDDS\fR binary values available\[char46] (The range of \fIDDS\fR binary values is the same as for signed integers: -32768 to 32767 for a 5-digit field or -2147483648 to 2147483647 for a 10-digit field\[char46]) 
+
+
+
+
+.SH SEE ALSO
+.BR DDS,
+.BR EXTBININT,
+.BR INT,
+.BR RPG

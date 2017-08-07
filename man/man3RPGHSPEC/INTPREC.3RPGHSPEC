@@ -1,0 +1,25 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hintprc.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH INTPREC 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+INTPREC
+.SH SYNOPSIS
+.nf
+INTPREC(10 | 20)
+.fi
+.SH DESCRIPTION
+The \fIINTPREC\fR keyword is used to specify the decimal precision of integer and unsigned intermediate values in binary arithmetic operations in expressions\[char46] Integer and unsigned intermediate values are always maintained in 8-byte format\[char46] This keyword affects only the way integer and unsigned intermediate values are converted to decimal format when used in binary arithmetic operations (+, -, *, /)\[char46]
+
+
+\fIINTPREC\fR(10), the default, indicates a decimal precision of 10 digits for integer and unsigned operations\[char46] However, if at least one operand in the expression is an 8-byte integer or unsigned field, the result of the expression has a decimal precision of 20 digits regardless of the \fIINTPREC\fR value\[char46]
+
+
+\fIINTPREC\fR(20) indicates that the decimal precision of integer and unsigned operations is 20 digits\[char46]
+
+.SH SEE ALSO
+.BR INTPREC

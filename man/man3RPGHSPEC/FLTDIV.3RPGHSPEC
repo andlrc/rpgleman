@@ -1,0 +1,22 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hfltdiv.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH FLTDIV 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+FLTDIV
+.SH SYNOPSIS
+.nf
+FLTDIV{(*NO | *YES)}
+.fi
+.SH DESCRIPTION
+The \fIFLTDIV\fR keyword indicates that all divide operations within expressions are computed in floating point and return a value of type float\[char46] If not specified or specified with \fI*NO\fR, then divide operations are performed in packed-decimal format (unless one of the two operands is already in float format)\[char46]
+
+
+If \fIFLTDIV\fR is specified, optionally with \fI*YES\fR, then all divide operations are performed in float format (guaranteeing that the result always has 15 digits of precision)\[char46]
+
+.SH SEE ALSO
+.BR FLTDIV

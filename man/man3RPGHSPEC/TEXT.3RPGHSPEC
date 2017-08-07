@@ -1,0 +1,33 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/htext.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TEXT 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+TEXT
+.SH SYNOPSIS
+.nf
+TEXT(*SRCMBRTXT | *BLANK | 'description')
+.fi
+.SH DESCRIPTION
+The \fITEXT\fR keyword allows you to enter text that briefly describes the object and its function\[char46] The text is used when creating the object and appears when object information is displayed\[char46]
+
+
+If \fI*SRCMBRTXT\fR is specified, the text of the source member is used\[char46]
+
+
+If \fI*BLANK\fR is specified, no text will appear\[char46]
+
+
+If a literal is specified, it can be a maximum of 50 characters and must be enclosed in apostrophes\[char46] (The apostrophes are not part of the 50-character string\[char46])
+
+
+If the \fITEXT\fR keyword is not specified, then the value specified on the command is used\[char46]
+
+.SH SEE ALSO
+.BR LANK,
+.BR RCMBRTXT,
+.BR TEXT

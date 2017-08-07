@@ -1,0 +1,23 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hdftnam.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DFTNAME 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DFTNAME
+.SH SYNOPSIS
+.nf
+DFTNAME(rpg_name)
+.fi
+.SH DESCRIPTION
+The \fIDFTNAME\fR keyword specifies a default program or module name\[char46] When \fI*CTLSPEC\fR is specified on the create command, the rpg_name is used as the program or module name\[char46] If rpg_name is not specified, then the default name is \fIRPGPGM\fR or \fIRPGMOD\fR for a program or module respectively\[char46] The \fIRPG\fR rules for names (see Symbolic Names) apply\[char46]
+
+.SH SEE ALSO
+.BR DFTNAME,
+.BR RPG,
+.BR RPGMOD,
+.BR RPGPGM,
+.BR TLSPEC

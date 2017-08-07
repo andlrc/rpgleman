@@ -1,0 +1,46 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/haltseq.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ALTSEQ 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ALTSEQ
+.SH SYNOPSIS
+.nf
+ALTSEQ{(*NONE | *SRC | *EXT)}
+.fi
+.SH DESCRIPTION
+The \fIALTSEQ\fR keyword indicates whether an alternate collating sequence is used, if so, whether it is internal or external to the source\[char46] The following list shows what happens for the different possible keyword and parameter combinations\[char46] 
+.TP 5
+.B Keyword/Parameter
+
+
+
+.TP 5
+.B \fIALTSEQ\fR not specified
+Normal collating sequence
+.TP 5
+.B \fIALTSEQ\fR(\fI*NONE\fR)
+Normal collating sequence
+.TP 5
+.B \fIALTSEQ\fR, no parameters
+Alternate collating sequence specified in source
+.TP 5
+.B \fIALTSEQ\fR(\fI*SRC\fR)
+Alternate collating sequence specified in source
+.TP 5
+.B \fIALTSEQ\fR(\fI*EXT\fR)
+Alternate collating sequence specified by the \fISRTSEQ\fR and \fILANGID\fR command parameters or keywords\[char46]
+.PP
+
+
+If \fIALTSEQ\fR is not specified or specified with \fI*NONE\fR or \fI*EXT\fR, an alternate collating sequence table must not be specified in the program\[char46]
+
+.SH SEE ALSO
+.BR ALTSEQ,
+.BR LANGID,
+.BR ONE,
+.BR SRTSEQ

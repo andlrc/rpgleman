@@ -1,0 +1,35 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hindent.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH INDENT 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+INDENT
+.SH SYNOPSIS
+.nf
+INDENT(*NONE | 'character-value')
+.fi
+.SH DESCRIPTION
+The \fIINDENT\fR keyword specifies whether structured operations should be indented in the source listing for enhanced readability\[char46] It also specifies the characters that are used to mark the structured operation clauses\[char46]
+
+
+If \fI*NONE\fR is specified, structured operations will not be indented in the source listing\[char46]
+
+
+If character-value is specified, the source listing is indented for structured operation clauses\[char46] Alignment of statements and clauses are marked using the characters you choose\[char46] You can choose any character literal up to 2 characters in length\[char46]
+
+
+If the \fIINDENT\fR keyword is not specified, then the value specified on the command is used\[char46]
+
+.SH NOTICE
+Note:  Any indentation that you request here will not be reflected in the listing debug view that is created when you specify \fIDBGVIEW\fR(\fI*LIST\fR)\[char46]
+
+Note:  The indentation may not appear as expected if there are errors in the source\[char46]
+.SH SEE ALSO
+.BR DBGVIEW,
+.BR INDENT,
+.BR IST,
+.BR ONE

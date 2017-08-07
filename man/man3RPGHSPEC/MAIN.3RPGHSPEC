@@ -1,0 +1,117 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hmainkw.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH MAIN 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+MAIN
+.SH SYNOPSIS
+.nf
+MAIN(main_procedure_name)
+.fi
+.SH DESCRIPTION
+The \fIMAIN\fR keyword indicates that this source program is for a linear-main module and contains a linear-main procedure, identified by the main_procedure_name parameter, which will be the program entry procedure for the module\[char46]
+
+
+The main_procedure_name must be the name of a procedure defined in the source program\[char46] The linear-main procedure is intended to be called only through the program call interface and not as a bound procedure call; if you make a recursive call to the linear-main procedure, the call will be a dynamic program call\[char46]
+
+
+Therefore, the following rules apply: 
+.IP "" 2
+.RS
+\[bu] If a prototype is specified for the linear-main procedure, it must specify the \fIEXTPGM\fR keyword\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If a prototype is not specified for the linear-main procedure, and a procedure interface is specified, the procedure interface must specify the \fIEXTPGM\fR keyword\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the program has no parameters, and the program is not called from an \fIRPG\fR program, neither a prototype nor a procedure interface is required\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu]  The procedure cannot be exported; the \fIEXPORT\fR keyword may not be specified on the procedure-begin specification for main_procedure_name\[char46]
+.RE
+.PP
+
+
+A linear-main module will not include logic for the \fIRPG\fR program cycle; thus language features dependent on the cycle may not be specified\[char46] 
+
+  See Linear Module  for more information\[char46]
+
+The following two examples show a linear-main program and its /\fICOPY\fR file\[char46]
+
+.SH EXAMPLE
+/\fICOPY\fR file \fIDSPCURTIME\fR used in the following sample linear-main program
+.PP
+.nf
+      *  The prototype for the linear-main procedure must have
+      *  the EXTPGM keyword with the name of the actual program\[char46]
+     D DisplayCurTime  PR                  EXTPGM(\[char39]DSPCURTIME\[char39])
+.fi
+
+.SH EXAMPLE
+A sample linear-main procedure used in a program
+.PP
+.nf
+* The program is named DSPCURTIME, and the module has
+      * a linear-main procedure called DisplayCurTime\[char46]
+
+      * The Control specification MAIN keyword signifies that this is
+      * a linear-main module, and identifies which procedure is the
+      * special subprocedure which serves as the linear-main procedure,
+      * which will act as the program-entry procedure\[char46]
+
+     H MAIN(DisplayCurTime)
+      * Copy in the prototype for the program
+      /COPY DSPCURTIME
+      *--------------------------------------------------
+      * Procedure name: DisplayCurTime
+      *--------------------------------------------------
+     P DisplayCurTime  B
+     D DisplayCurTime  PI
+      /FREE
+       dsply (\[char39]It is now \[char39] + %char(%time()));
+      /END-FREE
+     P DisplayCurTime  E
+.fi
+
+The following example shows a linear main program that does not require a prototype\[char46] The program is named \fIPRTCUSTRPT\fR, and the module has a linear-main procedure called PrintCustomerReport\[char46] The program is intended to be the command processing program for a \fI*CMD\fR object, so there is no need for an \fIRPG\fR prototype\[char46] The Control specification \fIMAIN\fR keyword signifies that this is a linear-main module, and identifies which procedure is the special subprocedure which serves as the linear-main procedure, which will act as the program-entry procedure\[char46]
+
+
+.SH EXAMPLE
+A linear main program that is not intended to be called from within any \fIRPG\fR program or procedure
+.PP
+.nf
+     H MAIN(PrintCustomerReport)
+
+      *--------------------------------------------------
+      * Program name: PrintCustomerReport (PRTCUSTRPT)
+      *--------------------------------------------------     P PrintCustomerReport\[char46]\[char46]\[char46]
+     P                 B
+     F \[char46]\[char46]\[char46] file specifications
+     D                 PI              EXTPGM(\[char39]PRTCUSTRPT\[char39])
+     D  custName                  25A  CONST
+
+       \[char46]\[char46]\[char46] calculations, using the custName parameter
+     P PrintCustomerReport\[char46]\[char46]\[char46]
+     P                 E
+.fi
+.SH SEE ALSO
+.BR %CHAR,
+.BR %TIME,
+.BR CONST,
+.BR COPY,
+.BR DSPCURTIME,
+.BR END-FREE,
+.BR EXPORT,
+.BR EXTPGM,
+.BR FREE,
+.BR MAIN,
+.BR NOMAIN,
+.BR PRTCUSTRPT,
+.BR RPG

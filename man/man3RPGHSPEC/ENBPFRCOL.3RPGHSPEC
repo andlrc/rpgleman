@@ -1,0 +1,33 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/henbpfr.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ENBPFRCOL 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ENBPFRCOL
+.SH SYNOPSIS
+.nf
+ENBPFRCOL(*PEP | *ENTRYEXIT | *FULL)
+.fi
+.SH DESCRIPTION
+The \fIENBPFRCOL\fR keyword specifies whether performance collection is enabled\[char46]
+
+
+If \fI*PEP\fR is specified, then performance statistics are gathered on the entry and exit of the program-entry procedure only\[char46] This applies to the actual program-entry procedure for an object, not to the main procedure of the object within the object\[char46]
+
+
+If \fI*ENTRYEXIT\fR is specified, then performance statistics are gathered on the entry and exit of all procedures of the object\[char46]
+
+
+If \fI*FULL\fR is specified, then performance statistics are gathered on entry and exit of all procedures\[char46] Also, statistics are gathered before and after each call to an external procedure\[char46]
+
+
+If the \fIENBPFRCOL\fR keyword is not specified, then the value specified on the command is used\[char46]
+
+.SH SEE ALSO
+.BR ENBPFRCOL,
+.BR NTRYEXIT,
+.BR ULL

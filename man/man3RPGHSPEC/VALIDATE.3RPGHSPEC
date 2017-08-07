@@ -1,0 +1,91 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hvalidate.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH VALIDATE 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+VALIDATE
+.SH SYNOPSIS
+.nf
+VALIDATE(*NODATETIME)
+.fi
+.SH DESCRIPTION
+The \fIVALIDATE\fR keyword specifies whether Date, Time and Timestamp data must be validated before it is used\[char46]
+
+
+If this keyword is not specified, then Date, Time and Timestamp data is validated before it is used\[char46]
+
+
+If \fI*NODATETIME\fR is specified, the compiler may omit performing validation for Date, Time and Timestamp data before it is used\[char46]
+
+
+Specifying this keyword may improve the performance of the \fIRPG\fR program\[char46] In some cases, the compiler may be able to treat the Date, Time, or Timestamp data as though it was Alphanumeric data, avoiding the costly operations that deal with true Date, Time and Timestamp data\[char46]
+
+
+Some examples of validations that will be omitted with \fIVALIDATE\fR(\fI*NODATETIME\fR) : 
+.IP "" 2
+.RS
+\[bu] When Timestamp fields are being used in comparison, sort or search operations, the Timestamp fields will be not be validated during the comparison\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When Date fields with date-format \fI*ISO\fR  or \fI*JIS\fR  are being used in comparison, sort or search operations, the Date fields will not be validated during the comparison\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When Time fields with a time-format other than \fI*USA\fR  are being used in comparison, sort or search operations, the Time fields not be validated during the comparison\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When Date, Time, or Timestamp data is being assigned, and the formats and separators of the source and target are the same, the source will not be validated before the assignment\[char46] This applies to assignment operations, assignments to temporary values for parameters passed by constant reference and parameters passed by value, the \fIRETURN\fR  operation, field moves for Input specifications, and field moves for Output specifications\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When Date, Time, or Timestamp data is being compared for Match Field or Control Level processing, the data will not be validated if it has \fI*ISO\fR  format\[char46]
+.RE
+.PP
+
+
+
+
+Recommendations: 
+.IP "" 2
+.RS
+\[bu] If you are confident that your Date, Time and Timestamp data is always valid, then 
+.IP "" 2
+.RS
+\[bu] Where possible, use the \fI*ISO\fR or \fI*JIS\fR format for Date fields, and a format other than \fI*USA\fR for Time fields\[char46] This will allow operations involving comparisons and assignment to be done as though the data were alphanumeric\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Otherwise, use the same format for all Date and Time fields where possible\[char46] This will allow operations involving assignment to be done as though the data were alphanumeric\[char46]
+.RE
+.PP
+
+.RE
+.IP "" 2
+.RS
+\[bu] If you are not confident that your Date, Time and timestamp data is always valid, do not specify the \fIVALIDATE\fR(\fI*NODATETIME\fR)  keyword\[char46] This keyword is only intended to eliminate unnecessary validations\[char46] It is not intended to allow incorrect Date, Time, or Timestamp data to be used without error\[char46]
+.RE
+.PP
+
+.SH NOTICE
+
+When validation is not done, incorrect data will not be detected\[char46]
+
+ 
+Use this keyword only if you are confident that the data in all your date, time, and timestamp fields is always valid\[char46] For example, if you have a data structure that has the default initialization of blanks, the date, time, and timestamp subfields will be initialized with the invalid value of blanks\[char46] If you specify \fIVALIDATE\fR(\fI*NODATETIME\fR), and use any of these subfields, the invalid data will be used in the operation, and it may be propagated to other fields in your program through assignments, or you may get meaningless results for comparison operations\[char46]
+
+ 
+This warning applies even for Date, Time and Timestamp operations that do not appear in the list of the validations that will be omitted\[char46] In the future, additional validations may be omitted when \fIVALIDATE\fR(\fI*NODATETIME\fR) is specified\[char46]
+
+
+.SH SEE ALSO
+.BR CAUTION,
+.BR ODATETIME,
+.BR RETURN,
+.BR RPG,
+.BR VALIDATE

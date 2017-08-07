@@ -1,0 +1,35 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hthread.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH THREAD 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+THREAD
+.SH SYNOPSIS
+.nf
+THREAD(*CONCURRENT | *SERIALIZE) 
+.fi
+.SH DESCRIPTION
+The \fITHREAD\fR keyword indicates that the \fIILE\fR \fIRPG\fR module being created is intended to run safely in a multithreaded environment\[char46] One of the major thread-safety issues is the handling of static storage\[char46] When multiple threads access the same storage location at the same time, unpredictable results can occur\[char46]
+
+
+Specifying the \fITHREAD\fR keyword helps you make your module thread-safe with regards to the static storage in the module\[char46] You can choose between having separate static storage for each thread, or limiting access to the module to only one thread at a time\[char46] You can mix the two types of modules in the same program, or service program\[char46] However, you should not omit the \fITHREAD\fR keyword in any module that may run in a multithreaded environment\[char46]
+
+
+You do not have to be concerned about automatic variables\[char46] Automatic variables are naturally thread-safe because they are created for each invocation of a procedure\[char46] Automatic storage for a procedure is allocated in storage which is unique for each thread\[char46]
+
+
+If \fITHREAD\fR(\fI*CONCURRENT\fR) is coded, condition \fI*THREAD_CONCURRENT\fR is defined\[char46] If \fITHREAD\fR(\fI*SERIALIZE\fR) is coded, condition \fI*THREAD_SERIALIZE\fR is defined\[char46] See Conditions Relating to Control Specification Keywords for more information\[char46]
+
+.SH SEE ALSO
+.BR CONCURRENT,
+.BR ERIALIZE,
+.BR HREAD,
+.BR ILE,
+.BR ONCURRENT,
+.BR RPG,
+.BR SERIALIZE,
+.BR THREAD

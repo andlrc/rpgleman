@@ -1,0 +1,30 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/htimfmt.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TIMFMT 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+TIMFMT
+.SH SYNOPSIS
+.nf
+TIMFMT(fmt{separator})
+.fi
+.SH DESCRIPTION
+The \fITIMFMT\fR keyword specifies the internal time format for time literals and the default internal format for time fields within the program\[char46] You can specify a different internal time format for a particular field by specifying the format with the \fITIMFMT\fR keyword on the definition specification for that field\[char46]
+
+
+The default time format for definitions can be temporarily changed using the /\fISET\fR and /\fIRESTORE\fR directives\[char46] See /\fISET\fR\[char46]
+
+
+If the \fITIMFMT\fR keyword is not specified the \fI*ISO\fR format is assumed\[char46] For more information on internal formats, see Internal and External Formats\[char46]
+
+
+Table 1 shows the time formats supported and their separators\[char46]
+
+.SH SEE ALSO
+.BR RESTORE,
+.BR SET,
+.BR TIMFMT

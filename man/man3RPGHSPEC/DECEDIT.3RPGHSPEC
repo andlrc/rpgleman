@@ -1,0 +1,121 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hdeced.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DECEDIT 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DECEDIT
+.SH SYNOPSIS
+.nf
+DECEDIT(*JOBRUN | 'value')
+.fi
+.SH DESCRIPTION
+The \fIDECEDIT\fR keyword specifies the character used as the decimal point for edited decimal numbers and whether or not leading zeros are printed\[char46]
+
+
+If \fI*JOBRUN\fR is specified, the \fIDECFMT\fR value associated with the job at runtime is used\[char46] The possible job decimal formats are listed in the following table:
+
+
+.TS
+allbox;
+l l l l  .
+T{
+Job Decimal Format
+T}	T{
+Decimal Point
+T}	T{
+Print Leading Zeros
+T}	T{
+Edited Decimal Number
+T}
+T{
+blank
+T}	T{
+period (\[char46])
+T}	T{
+No
+T}	T{
+\[char46]123
+T}
+T{
+I
+T}	T{
+comma (,)
+T}	T{
+No
+T}	T{
+,123
+T}
+T{
+J
+T}	T{
+comma (,)
+T}	T{
+Yes
+T}	T{
+0,123
+T}
+.TE
+
+If a value is specified, then the edited decimal numbers are printed according to the following possible values: 
+.TS
+allbox;
+l l l l  .
+T{
+\[char39]Value\[char39]
+T}	T{
+Decimal Point
+T}	T{
+Print Leading Zeros
+T}	T{
+Edited Decimal Number
+T}
+T{
+\[char39]\[char46]\[char39]
+T}	T{
+period (\[char46])
+T}	T{
+No
+T}	T{
+\[char46]123
+T}
+T{
+\[char39],\[char39]
+T}	T{
+comma (,)
+T}	T{
+No
+T}	T{
+,123
+T}
+T{
+\[char39]0\[char46]\[char39]
+T}	T{
+period (\[char46])
+T}	T{
+Yes
+T}	T{
+0\[char46]123
+T}
+T{
+\[char39]0,\[char39]
+T}	T{
+comma (,)
+T}	T{
+Yes
+T}	T{
+0,123
+T}
+.TE
+
+
+If \fIDECEDIT\fR is not specified, a period (\[char46]) is used for editing numeric values\[char46] 
+
+
+.SH SEE ALSO
+.BR DECEDIT,
+.BR DECFMT,
+.BR OBRUN

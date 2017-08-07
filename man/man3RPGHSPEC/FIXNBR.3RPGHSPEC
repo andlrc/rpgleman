@@ -1,0 +1,45 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hfixnbr.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH FIXNBR 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+FIXNBR
+.SH SYNOPSIS
+.nf
+FIXNBR(*{NO}ZONED *{NO}INPUTPACKED)
+.fi
+.SH DESCRIPTION
+The \fIFIXNBR\fR keyword specifies whether decimal data that is not valid is fixed by the compiler\[char46]
+
+
+You can specify any or all of the data types in any order\[char46] However, if a decimal data type is specified, the \fI*NOxxxx\fR parameter for the same data type cannot also be used, and vice versa\[char46] For example, if you specify \fI*ZONED\fR you cannot also specify \fI*NOZONED\fR, and vice versa\[char46] Separate the parameters with a colon\[char46] A parameter cannot be specified more than once\[char46]
+
+
+If \fI*ZONED\fR is specified, then zoned decimal data that is not valid will be fixed by the compiler on the conversion to packed data\[char46] Blanks in numeric fields will be treated as zeros\[char46] Each decimal digit will be checked for validity\[char46] If a decimal digit is not valid, it is replaced with zero\[char46] If a sign is not valid, the sign will be forced to a positive sign code of hex \[char39]F\[char39]\[char46] If the sign is valid, it will be changed to either a positive sign hex \[char39]F\[char39] or a negative sign hex \[char39]D\[char39], as appropriate\[char46] If the resulting packed data is not valid, it will not be fixed\[char46]
+
+
+If \fI*NOZONED\fR is specified, then zoned decimal data is not fixed by the compiler on the conversion to packed data and will result in decimal errors during runtime if used\[char46]
+
+
+If \fI*INPUTPACKED\fR is specified, then the internal variable will be set to zero if packed decimal data that is not valid is encountered while processing input specifications\[char46]
+
+
+If \fI*NOINPUTPACKED\fR is specified, then decimal errors will occur if packed decimal data that is not valid is encountered while processing input specifications\[char46]
+
+
+If the \fIFIXNBR\fR keyword is not specified, then the values specified on the command are used\[char46]
+
+.SH NOTICE
+Note:  If the keyword \fIFIXNBR\fR does not contain a member from a pair, then the value specified on the command for this particular data type will be used\[char46] For example, if the keyword \fIFIXNBR\fR(\fI*NOINPUTPACKED\fR) is specified on the Control specification, then for the pair (\fI*ZONED\fR, \fI*NOZONED\fR), whatever was specified implicitly or explicitly on the command will be used\[char46]
+.SH SEE ALSO
+.BR FIXNBR,
+.BR INPUTPACKED,
+.BR NPUTPACKED,
+.BR OINPUTPACKED,
+.BR ONED,
+.BR OZONED,
+.BR ZONED

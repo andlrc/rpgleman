@@ -1,0 +1,105 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/pgminfokw.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH PGMINFO 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+PGMINFO
+.SH SYNOPSIS
+.nf
+PGMINFO(*PCML | *NO | *DCLCASE { : *MODULE ... } )
+.fi
+.SH DESCRIPTION
+The \fIPGMINFO\fR keyword specifies how program-interface information is to be generated for the module or program\[char46]
+
+
+
+
+.TP 5
+.B \fI*NO\fR
+Specifying \fI*NO\fR indicates that no program-interface information is to be generated\[char46]
+.TP 5
+.B \fI*PCML\fR
+Specifying \fI*PCML\fR indicates that program-interface information is to be generated in the form of Program Call Markup Language\[char46]
+.TP 5
+.B \fI*MODULE\fR
+Specifying \fI*MODULE\fR indicates that program-interface information is to be generated directly into the module\[char46] If the module is later used to create a program or service program, the program-interface information will also be placed in the program or service program\[char46] The information can then be retrieved using \fIAPI\fR \fIQBNRPII\fR\[char46]
+.TP 5
+.B \fI*DCLCASE\fR
+Specifying \fI*DCLCASE\fR indicates that the names in the \fIPCML\fR will be generated in the declaration case of the name\[char46] See The declaration case of a name \[char46]
+.PP
+
+
+
+The first parameter must be one of \fI*NO\fR, \fI*PCML\fR, or \fI*DCLCASE\fR\[char46] Additional parameters are not allowed if the first parameter is \fI*NO\fR or \fI*DCLCASE\fR\[char46]
+
+
+If the first parameter is \fI*PCML\fR, at least one additional parameter is required\[char46] The additional parameters can be \fI*DCLCASE\fR or \fI*MODULE\fR or both\[char46]
+
+
+The \fIPGMINFO\fR setting defaults to the values specified on the \fIPGMINFO\fR and \fIINFOSTMF\fR parameters of the \fICRTRPGMOD\fR or \fICRTBNDRPG\fR command\[char46] If the \fIPGMINFO\fR keyword conflicts with the \fIPGMINFO\fR and \fIINFOSTMF\fR command parameters, the value of the Control specification keyword overrides the values specified on the command\[char46] However, if the requests from the command parameters and the \fIPGMINFO\fR keyword are different but not in conflict, the compiler will merge the values of the command parameters and the \fIPGMINFO\fR keyword\[char46]
+
+
+
+
+
+.IP "" 2
+.RS
+\[bu] If a data structure, field, or subfield is defined by a definition statement, the case used for the definition statement is considered to be the declaration case of the name\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If a data structure is defined as a \fILIKEREC\fR data structure, then the declaration case of the subfields is upper case\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If a data structure is defined as an externally-described data structure, then the declaration case of the subfields is upper case unless the subfield appears on an external subfield statement\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If a field is not defined by a definition statement, then the declaration case is the case used for the first occurrence of any of the following uses of the name in the source: 
+.IP "" 2
+.RS
+\[bu] An input specification
+.RE
+.IP "" 2
+.RS
+\[bu] A fixed-form calculation specification where the length entry is specified
+.RE
+.IP "" 2
+.RS
+\[bu] A \fI*LIKE\fR \fIDEFINE\fR statement where the name appears in the Result field entry
+.RE
+.PP
+
+.RE
+.IP "" 2
+.RS
+\[bu] If a data structure is defined using \fILIKEDS\fR, then the subfields of the new data structure will have the same declaration case as the subfield of the parent data structure\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The declaration case of a procedure is the case of the name specified in the \fIDCL-PROC\fR or Procedure-Begin statement for the procedure\[char46]
+.RE
+.PP
+
+
+.SH SEE ALSO
+.BR API,
+.BR CLCASE,
+.BR CML,
+.BR CRTBNDRPG,
+.BR CRTRPGMOD,
+.BR DCL-PROC,
+.BR DEFINE,
+.BR IKE,
+.BR INFOSTMF,
+.BR LIKEDS,
+.BR LIKEREC,
+.BR ODULE,
+.BR PCML,
+.BR PGMINFO,
+.BR QBNRPII

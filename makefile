@@ -1,7 +1,7 @@
 MANDIR	= $(PREFIX)/usr/share/man
 RPGLEMAN	= ./getrpgleman $(FLAGS)
 
-all: bif dkw cop cd more
+all: bif dkw cop hkw cd
 
 debug: clean
 	$(MAKE) FLAGS=-d
@@ -62,6 +62,20 @@ cop:	cop_ACQ		cop_BEGSR	cop_CALLP	cop_CHAIN	\
 	cop_RESET	cop_RETURN	cop_ROLBK	cop_SELECT	\
 	cop_SETGT	cop_SETLL	cop_SORTA	cop_TEST	\
 	cop_UNLOCK	cop_UPDATE	cop_WHEN	cop_WRITE
+
+# Control Keywords
+hkw:	hkw_ALLOC	hkw_ACTGRP	hkw_ALTSEQ	hkw_ALWNULL	\
+	hkw_AUT		hkw_BNDDIR	hkw_CCSID	hkw_CCSIDCVT	\
+	hkw_COPYNEST	hkw_COPYRIGHT	hkw_CURSYM	hkw_CVTOPT	\
+	hkw_DATEDIT	hkw_DATFMT	hkw_DCLOPT	hkw_DEBUG	\
+	hkw_DECEDIT	hkw_DECPREC	hkw_DFTACTGRP	hkw_DFTNAME	\
+	hkw_ENBPFRCOL	hkw_EXPROPTS	hkw_EXTBININT	hkw_FIXNBR	\
+	hkw_FLYDIV	hkw_FORMSALIGN	hkw_FTRANS	hkw_GENLVL	\
+	hkw_INDENT	hkw_INTPREC	hkw_LANGID	hkw_MAIN	\
+	hkw_NOMAIN	hkw_OPENOPT	hkw_OPTIMIZE	hkw_OPTION	\
+	hkw_PGMINFO	hkw_PRFDTA	hkw_SRTSEQ	hkw_STGMDL	\
+	hkw_TEXT	hkw_THREAD	hkw_TIMFMT	hkw_TRUNCNBR	\
+	hkw_USERPRF	hkw_VALIDATE
 
 # Compiler Directives
 cd:	cd_TITLE	cd_EJECT	cd_SPACE	cd_SET		\
@@ -367,126 +381,220 @@ dkw_ZONED:
 	$(RPGLEMAN) dkwzoned
 
 # Free-Form Operations
-op_ACQ:
+cop_ACQ:
 	$(RPGLEMAN) zzacq
-op_BEGSR:
+cop_BEGSR:
 	$(RPGLEMAN) zzbegsr
-op_CALLP:
+cop_CALLP:
 	$(RPGLEMAN) zzcallp
-op_CHAIN:
+cop_CHAIN:
 	$(RPGLEMAN) zzchain
-op_CLEAR:
+cop_CLEAR:
 	$(RPGLEMAN) zzclear
-op_CLOSE:
+cop_CLOSE:
 	$(RPGLEMAN) zzclose
-op_COMMIT:
+cop_COMMIT:
 	$(RPGLEMAN) zzcomit
-op_DEALLOC:
+cop_DEALLOC:
 	$(RPGLEMAN) zzdeall
-op_DELETE:
+cop_DELETE:
 	$(RPGLEMAN) zzdelet
-op_DOU:
+cop_DOU:
 	$(RPGLEMAN) zzdou
-op_DOW:
+cop_DOW:
 	$(RPGLEMAN) zzdow
-op_DSPLY:
+cop_DSPLY:
 	$(RPGLEMAN) zzdsply
-op_DUMP:
+cop_DUMP:
 	$(RPGLEMAN) zzdump
-op_ELSE:
+cop_ELSE:
 	$(RPGLEMAN) zzelse
-op_ELSEIF:
+cop_ELSEIF:
 	$(RPGLEMAN) zzelsif
-op_ENDDO:
+cop_ENDDO:
 	$(RPGLEMAN) --name ENDDO zzendyy
-op_ENDFOR:
+cop_ENDFOR:
 	$(RPGLEMAN) --name ENDFOR zzendyy
-op_ENDIF:
+cop_ENDIF:
 	$(RPGLEMAN) --name ENDIF zzendyy
-op_ENDMON:
+cop_ENDMON:
 	$(RPGLEMAN) --name ENDMON zzendyy
-op_ENDSL:
+cop_ENDSL:
 	$(RPGLEMAN) --name ENDSL zzendyy
-op_ENDSR:
+cop_ENDSR:
 	$(RPGLEMAN) zzendsr
-op_EVAL:
+cop_EVAL:
 	$(RPGLEMAN) zzeval
-op_EVALR:
+cop_EVALR:
 	$(RPGLEMAN) zzevalr
-op_EXCEPT:
+cop_EXCEPT:
 	$(RPGLEMAN) zzexcpt
-op_EXFMT:
+cop_EXFMT:
 	$(RPGLEMAN) zzexfmt
-op_EXSR:
+cop_EXSR:
 	$(RPGLEMAN) zzexsr
-op_FEOD:
+cop_FEOD:
 	$(RPGLEMAN) zzfeod
-op_FOR:
+cop_FOR:
 	$(RPGLEMAN) zzfor
-op_FORCE:
+cop_FORCE:
 	$(RPGLEMAN) zzforce
-op_IF:
+cop_IF:
 	$(RPGLEMAN) zzif
-op_IN:
+cop_IN:
 	$(RPGLEMAN) zzin
-op_ITER:
+cop_ITER:
 	$(RPGLEMAN) zziter
-op_LEAVE:
+cop_LEAVE:
 	$(RPGLEMAN) zzleave
-op_LEAVESR:
+cop_LEAVESR:
 	$(RPGLEMAN) zzlevsr
-op_MONITOR:
+cop_MONITOR:
 	$(RPGLEMAN) zzmonit
-op_NEXT:
+cop_NEXT:
 	$(RPGLEMAN) zznext
-op_ON-ERROR:
+cop_ON-ERROR:
 	$(RPGLEMAN) zzonerr
-op_ON-EXIT:
+cop_ON-EXIT:
 	$(RPGLEMAN) zzonexit
-op_OPEN:
+cop_OPEN:
 	$(RPGLEMAN) zzopen
-op_OTHER:
+cop_OTHER:
 	$(RPGLEMAN) zzother
-op_OUT:
+cop_OUT:
 	$(RPGLEMAN) zzout
-op_POST:
+cop_POST:
 	$(RPGLEMAN) zzpost
-op_READ:
+cop_READ:
 	$(RPGLEMAN) zzread
-op_READC:
+cop_READC:
 	$(RPGLEMAN) zzreadc
-op_READE:
+cop_READE:
 	$(RPGLEMAN) zzreade
-op_READP:
+cop_READP:
 	$(RPGLEMAN) zzreadp
-op_READPE:
+cop_READPE:
 	$(RPGLEMAN) zzredpe
-op_REL:
+cop_REL:
 	$(RPGLEMAN) zzrel
-op_RESET:
+cop_RESET:
 	$(RPGLEMAN) zzreset
-op_RETURN:
+cop_RETURN:
 	$(RPGLEMAN) zzretrn
-op_ROLBK:
+cop_ROLBK:
 	$(RPGLEMAN) zzrolbk
-op_SELECT:
+cop_SELECT:
 	$(RPGLEMAN) zzselec
-op_SETGT:
+cop_SETGT:
 	$(RPGLEMAN) zzsetgt
-op_SETLL:
+cop_SETLL:
 	$(RPGLEMAN) zzsetll
-op_SORTA:
+cop_SORTA:
 	$(RPGLEMAN) zzsorta
-op_TEST:
+cop_TEST:
 	$(RPGLEMAN) zztest
-op_UNLOCK:
+cop_UNLOCK:
 	$(RPGLEMAN) zzunlck
-op_UPDATE:
+cop_UPDATE:
 	$(RPGLEMAN) zzupdat
-op_WHEN:
+cop_WHEN:
 	$(RPGLEMAN) zzwhen
-op_WRITE:
+cop_WRITE:
 	$(RPGLEMAN) zzwrite
+
+# Control Keywords
+hkw_ALLOC:
+	$(RPGLEMAN) --section 3RPGHSPEC halloc
+hkw_ACTGRP:
+	$(RPGLEMAN) --section 3RPGHSPEC hactgrp
+hkw_ALTSEQ:
+	$(RPGLEMAN) --section 3RPGHSPEC haltseq
+hkw_ALWNULL:
+	$(RPGLEMAN) --section 3RPGHSPEC halwnul
+hkw_AUT:
+	$(RPGLEMAN) --section 3RPGHSPEC haut
+hkw_BNDDIR:
+	$(RPGLEMAN) --section 3RPGHSPEC hbnddir
+hkw_CCSID:
+	$(RPGLEMAN) --section 3RPGHSPEC hccsid
+hkw_CCSIDCVT:
+	$(RPGLEMAN) --section 3RPGHSPEC hccsidcvt
+hkw_COPYNEST:
+	$(RPGLEMAN) --section 3RPGHSPEC hcopyn
+hkw_COPYRIGHT:
+	$(RPGLEMAN) --section 3RPGHSPEC hcopyr
+hkw_CURSYM:
+	$(RPGLEMAN) --section 3RPGHSPEC hcursym
+hkw_CVTOPT:
+	$(RPGLEMAN) --section 3RPGHSPEC hcvtopt
+hkw_DATEDIT:
+	$(RPGLEMAN) --section 3RPGHSPEC hdedit
+hkw_DATFMT:
+	$(RPGLEMAN) --section 3RPGHSPEC hdatfmt
+hkw_DCLOPT:
+	$(RPGLEMAN) --section 3RPGHSPEC hdclopt
+hkw_DEBUG:
+	$(RPGLEMAN) --section 3RPGHSPEC hdebug
+hkw_DECEDIT:
+	$(RPGLEMAN) --section 3RPGHSPEC hdeced
+hkw_DECPREC:
+	$(RPGLEMAN) --section 3RPGHSPEC hdecprec
+hkw_DFTACTGRP:
+	$(RPGLEMAN) --section 3RPGHSPEC hdftact
+hkw_DFTNAME:
+	$(RPGLEMAN) --section 3RPGHSPEC hdftnam
+hkw_ENBPFRCOL:
+	$(RPGLEMAN) --section 3RPGHSPEC henbpfr
+hkw_EXPROPTS:
+	$(RPGLEMAN) --section 3RPGHSPEC hexprop
+hkw_EXTBININT:
+	$(RPGLEMAN) --section 3RPGHSPEC hextbin
+hkw_FIXNBR:
+	$(RPGLEMAN) --section 3RPGHSPEC hfixnbr
+hkw_FLYDIV:
+	$(RPGLEMAN) --section 3RPGHSPEC hfltdiv
+hkw_FORMSALIGN:
+	$(RPGLEMAN) --section 3RPGHSPEC hforms
+hkw_FTRANS:
+	$(RPGLEMAN) --section 3RPGHSPEC hftrans
+hkw_GENLVL:
+	$(RPGLEMAN) --section 3RPGHSPEC hgenlvl
+hkw_INDENT:
+	$(RPGLEMAN) --section 3RPGHSPEC hindent
+hkw_INTPREC:
+	$(RPGLEMAN) --section 3RPGHSPEC hintprc
+hkw_LANGID:
+	$(RPGLEMAN) --section 3RPGHSPEC hlangid
+hkw_MAIN:
+	$(RPGLEMAN) --section 3RPGHSPEC hmainkw
+hkw_NOMAIN:
+	$(RPGLEMAN) --section 3RPGHSPEC hnomain
+hkw_OPENOPT:
+	$(RPGLEMAN) --section 3RPGHSPEC hopenop
+hkw_OPTIMIZE:
+	$(RPGLEMAN) --section 3RPGHSPEC hoptim
+hkw_OPTION:
+	$(RPGLEMAN) --section 3RPGHSPEC hoption
+hkw_PGMINFO:
+	$(RPGLEMAN) --section 3RPGHSPEC pgminfokw
+hkw_PRFDTA:
+	$(RPGLEMAN) --section 3RPGHSPEC hprfdta
+hkw_SRTSEQ:
+	$(RPGLEMAN) --section 3RPGHSPEC hsrtseq
+hkw_STGMDL:
+	$(RPGLEMAN) --section 3RPGHSPEC hstgmdl
+hkw_TEXT:
+	$(RPGLEMAN) --section 3RPGHSPEC htext
+hkw_THREAD:
+	$(RPGLEMAN) --section 3RPGHSPEC hthread
+hkw_TIMFMT:
+	$(RPGLEMAN) --section 3RPGHSPEC htimfmt
+hkw_TRUNCNBR:
+	$(RPGLEMAN) --section 3RPGHSPEC htrunc
+hkw_USERPRF:
+	$(RPGLEMAN) --section 3RPGHSPEC husrprf
+hkw_VALIDATE:
+	$(RPGLEMAN) --section 3RPGHSPEC hvalidate
 
 # Compiler Directives
 cd_TITLE:

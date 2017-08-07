@@ -1,0 +1,60 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/hcursym.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH CURSYM 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+CURSYM
+.SH SYNOPSIS
+.nf
+CURSYM('sym')
+.fi
+.SH DESCRIPTION
+The \fICURSYM\fR keyword specifies a character used as a currency symbol in editing\[char46] The symbol must be a single character enclosed in quotes\[char46] Any character in the \fIRPG\fR character set (see Symbolic Names and Reserved Words ) may be used except: 
+.IP "" 2
+.RS
+\[bu] 0 (zero)
+.RE
+.IP "" 2
+.RS
+\[bu] * (asterisk)
+.RE
+.IP "" 2
+.RS
+\[bu] , (comma)
+.RE
+.IP "" 2
+.RS
+\[bu] & (ampersand)
+.RE
+.IP "" 2
+.RS
+\[bu] \[char46] (period)
+.RE
+.IP "" 2
+.RS
+\[bu] - (minus sign)
+.RE
+.IP "" 2
+.RS
+\[bu] C (letter C)
+.RE
+.IP "" 2
+.RS
+\[bu] R (letter R)
+.RE
+.IP "" 2
+.RS
+\[bu] Blank
+.RE
+.PP
+
+
+If the keyword is not specified, $ (dollar sign) will be used as the currency symbol\[char46]
+
+.SH SEE ALSO
+.BR CURSYM,
+.BR RPG

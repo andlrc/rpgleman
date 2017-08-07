@@ -1,0 +1,30 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/htrunc.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH TRUNCNBR 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+TRUNCNBR
+.SH SYNOPSIS
+.nf
+TRUNCNBR(*YES | *NO)
+.fi
+.SH DESCRIPTION
+The \fITRUNCNBR\fR keyword specifies if the truncated value is moved to the result field or if an error is generated when numeric overflow occurs while running the object\[char46]
+
+
+If \fI*YES\fR is specified, numeric overflow is ignored and the truncated value is moved to the result field\[char46]
+
+
+If \fI*NO\fR is specified, a run-time error is generated when numeric overflow is detected\[char46]
+
+
+If the \fITRUNCNBR\fR keyword is not specified, then the value specified on the command is used\[char46]
+
+.SH NOTICE
+Note:  The \fITRUNCNBR\fR option does not apply to calculations performed within expressions\[char46] (Expressions are found in the Extended-Factor 2 field\[char46]) If overflow occurs for these calculations, an error will always occur\[char46]
+.SH SEE ALSO
+.BR TRUNCNBR

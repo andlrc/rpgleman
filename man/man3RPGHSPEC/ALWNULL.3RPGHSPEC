@@ -1,0 +1,57 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/halwnul.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH ALWNULL 3RPGHSPEC  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+ALWNULL
+.SH SYNOPSIS
+.nf
+ALWNULL(*NO | *INPUTONLY | *USRCTL)
+.fi
+.SH DESCRIPTION
+The \fIALWNULL\fR keyword specifies how you will use records containing null-capable fields from externally described database files\[char46]
+
+
+It also controls whether you can define your own null-capable fields using the \fINULLIND\fR keyword\[char46] The \fINULLIND\fR keyword is allowed when \fIALWNULL\fR(\fI*USRCTL\fR) is specified\[char46]
+
+
+If \fIALWNULL\fR(\fI*NO\fR) is specified, then you cannot process records with null-value fields from externally described files\[char46] If you attempt to retrieve a record containing null values, no data in the record will be accessible and a data-mapping error will occur\[char46]
+
+
+If \fIALWNULL\fR(\fI*INPUTONLY\fR) is specified, then you can successfully read records with null-capable fields containing null values from externally described input-only database files\[char46] When a record containing null values is retrieved, no data-mapping errors will occur and the database default values are placed into any fields that contain null values\[char46] However, you cannot do any of the following: 
+.IP "" 2
+.RS
+\[bu] Use null-capable key fields
+.RE
+.IP "" 2
+.RS
+\[bu] Create or update records containing null-capable fields
+.RE
+.IP "" 2
+.RS
+\[bu] Determine whether a null-capable field is actually null while the program is running
+.RE
+.IP "" 2
+.RS
+\[bu] Set a null-capable field to be null\[char46]
+.RE
+.PP
+
+
+If \fIALWNULL\fR(\fI*USRCTL\fR) is specified, then you can read, write, and update records with null values from externally described database files\[char46] Records with null keys can be retrieved using keyed operations\[char46] You can determine whether a null-capable field is actually null, and you can set a null-capable field to be null for output or update\[char46] You are responsible for ensuring that fields containing null values are used correctly\[char46]
+
+
+If the \fIALWNULL\fR keyword is not specified, then the value specified on the command is used\[char46]
+
+
+For more information, see Database Null Value Support
+
+.SH SEE ALSO
+.BR ALWNULL,
+.BR NPUTONLY,
+.BR NULLIND,
+.BR SRCTL
