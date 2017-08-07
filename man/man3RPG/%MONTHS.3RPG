@@ -48,4 +48,7 @@ For more information, see Date Operations, Built-in Functions, and Unexpected Re
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %YEARS (3RPG)
+.BR %MONTHS,
+.BR %YEARS,
+.BR END-FREE,
+.BR FREE

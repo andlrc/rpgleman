@@ -39,6 +39,7 @@ T}	T{
 T}
 .TE
 
+The select group conditionally processes one of several alternative sequences of operations\[char46] It consists of: 
 .IP "" 2
 .RS
 \[bu] A \fISELECT\fR statement
@@ -56,6 +57,7 @@ T}
 \[bu] \fIENDSL\fR or \fIEND\fR  statement\[char46]
 .RE
 .PP
+
 
 After the \fISELECT\fR operation, control passes to the statement following the first \fIWHEN\fRxx condition that is satisfied\[char46] All statements are then executed until the next \fIWHEN\fRxx operation\[char46] Control passes to the \fIENDSL\fR statement (only one \fIWHEN\fRxx is executed)\[char46] If no \fIWHEN\fRxx condition is satisfied and an \fIOTHER\fR operation is specified, control passes to the statement following the \fIOTHER\fR operation\[char46] If no \fIWHEN\fRxx condition is satisfied and no \fIOTHER\fR operation is specified, control transfers to the statement following the \fIENDSL\fR operation of the select group\[char46]
 
@@ -114,3 +116,16 @@ C                   :
 C                   ENDSL
 C                   ADD       1              N
 .fi
+.SH SEE ALSO
+.BR ADD,
+.BR AND,
+.BR CHAIN,
+.BR END,
+.BR ENDSL,
+.BR FILE,
+.BR KEY,
+.BR MOVE,
+.BR NOT,
+.BR OTHER,
+.BR SELECT,
+.BR WHEN

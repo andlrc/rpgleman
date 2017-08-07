@@ -59,4 +59,10 @@ If the operation cannot complete successfully, exception 00425 or 00426 is issue
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %ALLOC (3RPG)
+.BR %ALLOC,
+.BR %REALLOC,
+.BR ALLOC,
+.BR END-FREE,
+.BR FREE,
+.BR RPG,
+.BR ULL

@@ -22,6 +22,7 @@ The unit can be \fI*MSECONDS\fR, \fI*SECONDS\fR, \fI*MINUTES\fR, \fI*HOURS\fR, \
 The first parameter is the date, time, or timestamp value\[char46]
 
 
+The second parameter is the portion that you want to extract\[char46] The following values are valid: 
 .IP "" 2
 .RS
 \[bu] For a date: \fI*DAYS\fR, \fI*MONTHS\fR, and \fI*YEARS\fR
@@ -43,6 +44,7 @@ The first parameter is the date, time, or timestamp value\[char46]
 \[bu] The fourth parameter is optional\[char46] It represents the number of decimal places, or fractional seconds, in the returned value\[char46] It can be specified when the first parameter is a timestamp and the second parameter is \fI*SECONDS\fR or \fI*S\fR\[char46] For example, if you want the returned value to have 7 decimal places, specify 9 for the digits  parameter and 7 for the decpos  parameter\[char46]
 .RE
 .PP
+
 
 For this function, \fI*DAYS\fR always refers to the day of the month not the day of the year (even if you are using a Julian date format)\[char46] For example, the day portion of February 10 is 10 not 41\[char46]
 
@@ -76,3 +78,12 @@ For more information, see Date Operations or Built-in Functions\[char46]
 .fi
 
 
+.SH SEE ALSO
+.BR %SUBDT,
+.BR AYS,
+.BR EARS,
+.BR ECONDS,
+.BR INUTES,
+.BR ONTHS,
+.BR OURS,
+.BR SECONDS

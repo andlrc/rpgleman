@@ -42,12 +42,7 @@ T}
 The \fIREADPE\fR operation retrieves the next prior sequential record from a full procedural file if the key of the record matches the search argument\[char46] If the key of the record does not match the search argument, a \fIBOF\fR condition occurs, and the record is not returned to the program\[char46] A \fIBOF\fR condition also applies when beginning of file occurs\[char46]
 
 
-
-
-
-
-
-
+The search argument, search-arg , identifies the record to be retrieved\[char46] The search-arg  operand is optional in traditional syntax but required in free-form syntax\[char46] search-arg  can be: 
 .IP "" 2
 .RS
 \[bu] A field name, a literal, a named constant, or a figurative constant\[char46]
@@ -70,6 +65,7 @@ The \fIREADPE\fR operation retrieves the next prior sequential record from a ful
 .RE
 .PP
 
+
 For keys specified using a \fIKLIST\fR, key fields must have the same \fICCSID\fR as the key in the file\[char46]
 
 
@@ -91,11 +87,23 @@ You can specify an indicator in positions 75-76 that will be set on if a \fIBOF\
 If there is a record-lock error (status 1218), the file is still positioned at the locked record and the next read operation will attempt to read that record again\[char46] Otherwise, if there is any other error or a beginning of file condition, you must reposition the file (using a \fICHAIN\fR, \fISETLL\fR, or \fISETGT\fR operation)\[char46] See \fICHAIN\fR (Random Retrieval from a File), \fISETGT\fR (Set Greater Than), or \fISETLL\fR (Set Lower Limit)\[char46]
 
 
+Normally, the comparison between the specified key and the actual key in the file is done by data management\[char46] In some cases this is impossible, causing the comparison to be done using the hexadecimal collating sequence\[char46] This can give different results than expected\[char46] For more information, see the section "Unexpected Results Using Keyed Files" in Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
 
 
+A \fIREADPE\fR with the search-arg operand specified that immediately follows an \fIOPEN\fR operation or a \fIBOF\fR condition returns \fIBOF\fR\[char46] A \fIREADPE\fR with no search-arg specified that immediately follows an \fIOPEN\fR operation or a \fIBOF\fR condition results in an error condition\[char46] The error indicator in positions 73 and 74, if specified, is set on or the \[char39]E\[char39] extender, checked with \fB%ERROR\fR, if specified, is set on\[char46] The file must be repositioned using a \fICHAIN\fR, \fISETLL\fR, \fIREAD\fR, \fIREADE\fR or \fIREADP\fR with search-arg specified, prior to issuing a \fIREADPE\fR operation with factor 1 blank\[char46] A \fISETGT\fR operation code should not be used to position the file prior to issuing a \fIREADPE\fR (with no search-arg specified) as this results in a record-not-found condition (because the record previous to the current record never has the same key as the current record after a \fISETGT\fR is issued)\[char46] If search-arg is specified with the same key for both operation codes, then this error condition will not occur\[char46]
+
+
+See Database Null Value Support for information on handling records with null-capable fields and keys\[char46]
+
+
+For more information, see File Operations\[char46]
+
+.SH NOTICE
+Note:  If a file is defined as update and the N operation extender is not specified , occasionally a \fIREADPE\fR operation will be forced to wait for a temporary record lock for a record whose key value does not match the search argument\[char46] Once the temporary lock has been obtained, if the key value does not match the search argument, the temporary lock is released\[char46] 
 In most cases, \fIRPG\fR can perform \fIREADPE\fR by using system support that does not require obtaining a temporary record lock to determine whether there is a matching record\[char46] However, in other cases, \fIRPG\fR cannot use this support, and must request the next record before it can determine whether the record matches the \fIREADPE\fR request\[char46]
 
-
+ 
+Some of the reasons that would require \fIRPG\fR to obtain a temporary lock on the next record for a \fIREADPE\fR operation are: 
 .IP "" 2
 .RS
 \[bu] the key of the current record is not the same as the search argument
@@ -122,19 +130,9 @@ In most cases, \fIRPG\fR can perform \fIREADPE\fR by using system support that d
 .RE
 .PP
 
-Normally, the comparison between the specified key and the actual key in the file is done by data management\[char46] In some cases this is impossible, causing the comparison to be done using the hexadecimal collating sequence\[char46] This can give different results than expected\[char46] For more information, see the section "Unexpected Results Using Keyed Files" in Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
 
 
-A \fIREADPE\fR with the search-arg operand specified that immediately follows an \fIOPEN\fR operation or a \fIBOF\fR condition returns \fIBOF\fR\[char46] A \fIREADPE\fR with no search-arg specified that immediately follows an \fIOPEN\fR operation or a \fIBOF\fR condition results in an error condition\[char46] The error indicator in positions 73 and 74, if specified, is set on or the \[char39]E\[char39] extender, checked with \fB%ERROR\fR, if specified, is set on\[char46] The file must be repositioned using a \fICHAIN\fR, \fISETLL\fR, \fIREAD\fR, \fIREADE\fR or \fIREADP\fR with search-arg specified, prior to issuing a \fIREADPE\fR operation with factor 1 blank\[char46] A \fISETGT\fR operation code should not be used to position the file prior to issuing a \fIREADPE\fR (with no search-arg specified) as this results in a record-not-found condition (because the record previous to the current record never has the same key as the current record after a \fISETGT\fR is issued)\[char46] If search-arg is specified with the same key for both operation codes, then this error condition will not occur\[char46]
-
-
-See Database Null Value Support for information on handling records with null-capable fields and keys\[char46]
-
-
-For more information, see File Operations\[char46]
-
-
-
+Note:  Operation code extenders H, M, and R are allowed only when the search argument is a list or is \fB%KDS()\fR\[char46]
 .SH EXAMPLE
 \fIREADPE\fR Operation
 .PP
@@ -180,6 +178,25 @@ C                   READPE    FileB         Ds1                      99
 C                   READPE    RecA                                 8899
 .fi
 .SH SEE ALSO
-.BR %KDS (3RPG),
-.BR %EOF (3RPG),
-.BR %ERROR (3RPG)
+.BR %EOF,
+.BR %ERROR,
+.BR %KDS,
+.BR ALWNULL,
+.BR BOF,
+.BR CCSID,
+.BR CHAIN,
+.BR ENHMR,
+.BR EXTNAME,
+.BR ILE,
+.BR KLIST,
+.BR LIKEREC,
+.BR NPUT,
+.BR OPEN,
+.BR READ,
+.BR READE,
+.BR READP,
+.BR READPE,
+.BR RPG,
+.BR SETGT,
+.BR SETLL,
+.BR SRCTL

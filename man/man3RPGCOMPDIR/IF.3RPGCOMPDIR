@@ -23,3 +23,7 @@ See Compiler Directives for information on the columns available for directives\
 
 If the condition expression is true, source lines following the /IF directive are selected to be read by the compiler\[char46] Otherwse, lines are excluded until the next /\fIELSEIF\fR, /\fIELSE\fR or /\fIENDIF\fR in the same /IF group\[char46]
 
+.SH SEE ALSO
+.BR ELSE,
+.BR ELSEIF,
+.BR ENDIF

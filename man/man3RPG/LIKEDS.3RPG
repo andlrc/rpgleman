@@ -93,3 +93,20 @@ D  name                               LIKEDS(sysName)
  /end-free
 P createSpace     E
 .fi
+.SH SEE ALSO
+.BR ALIGN,
+.BR ALTSEQ,
+.BR DIM,
+.BR DSNAME,
+.BR FREE,
+.BR IBL,
+.BR IKEDS,
+.BR INZ,
+.BR LIKEDS,
+.BR NOOPT,
+.BR NULLIND,
+.BR OCCURS,
+.BR QUALIFIED,
+.BR QUSCRTUS,
+.BR SUBFIELDNAME,
+.BR TEMPSPACE

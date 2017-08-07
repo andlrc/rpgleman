@@ -68,9 +68,8 @@ See Database Null Value Support for information on handling records with null-ca
 
 For more information, see File Operations\[char46]
 
-
-
-
+.SH NOTICE
+Note: 
 .IP 1. 2
 .RS
 Operation code extenders H, M, and R are allowed only when the search argument is a list or is \fB%KDS()\fR\[char46]
@@ -80,6 +79,18 @@ Operation code extenders H, M, and R are allowed only when the search argument i
 Leave positions 75 and 76 blank\[char46]
 .RE
 .PP
+
 .SH SEE ALSO
-.BR %KDS (3RPG),
-.BR %FOUND (3RPG)
+.BR %FOUND,
+.BR %KDS,
+.BR CCSID,
+.BR CHAIN,
+.BR DELETE,
+.BR EHMR,
+.BR ELETE,
+.BR IBM,
+.BR KLIST,
+.BR PDATE,
+.BR READ,
+.BR UCS,
+.BR USAGE

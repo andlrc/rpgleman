@@ -33,3 +33,7 @@ For more information, see String Operations or Built-in Functions\[char46]
 .SH RETURN VALUE
 \fB%SUBST\fR returns a portion of argument string\[char46] It may also be used as the result of an assignment with the \fIEVAL\fR operation code\[char46]
 
+.SH SEE ALSO
+.BR %SUBST,
+.BR EVAL,
+.BR UCS

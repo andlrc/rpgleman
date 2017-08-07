@@ -20,3 +20,7 @@ The remainder of the line containing /\fIENDIF\fR must be blank\[char46]
 
 Following the /\fIENDIF\fR directive, if the matching /IF directive was a selected line, lines are unconditionally selected\[char46] Otherwise, the entire /IF group was not selected, so lines continue to be not selected\[char46]
 
+.SH SEE ALSO
+.BR ELSE,
+.BR ELSEIF,
+.BR ENDIF

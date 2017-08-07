@@ -12,6 +12,7 @@ QUALIFIED
 The \fIQUALIFIED\fR keyword specifies that the subfields of a data structure will be accessed by specifying the data structure name followed by a period and the subfield name\[char46] The data structure must have a name\[char46]
 
 
+The subfields can have any valid name, even if the name has been used elsewhere in the program\[char46] This is illustrated in the following example: 
 .PP
 .nf
   * In this example, FILE1 and FILE2 are the names of files\[char46]  FILE1 and FILE2 are
@@ -28,5 +29,9 @@ The \fIQUALIFIED\fR keyword specifies that the subfields of a data structure wil
  C                   open(e)   file1
  C                   eval      fileStatus\[char46]file1 = %error
 .fi
+
 .SH SEE ALSO
-.BR %ERROR (3RPG)
+.BR %ERROR,
+.BR FILE,
+.BR FILESTATUS,
+.BR QUALIFIED

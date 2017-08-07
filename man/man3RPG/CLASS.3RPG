@@ -18,11 +18,13 @@ This keyword indicates the class for an object definition\[char46]
 
 class-name must be a constant character value\[char46]
 
+.SH NOTICE
+Note:  
+
+ The \fICLASS\fR keyword is not used in a free-form definition\[char46] Instead, the class information is specified by the \fIOBJECT\fR  keyword\[char46] 
 
 
-
-
-
-
-
-
+.SH SEE ALSO
+.BR AVA,
+.BR CLASS,
+.BR OBJECT

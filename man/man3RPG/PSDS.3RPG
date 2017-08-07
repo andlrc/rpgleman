@@ -11,3 +11,5 @@ PSDS
 .SH DESCRIPTION
 The \fIPSDS\fR keyword is used in a free-form data structure definition to indicate that the data structure is a Program-Status Data Structure\[char46]
 
+.SH SEE ALSO
+.BR PSDS

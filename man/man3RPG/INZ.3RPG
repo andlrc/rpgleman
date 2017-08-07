@@ -13,6 +13,7 @@ INZ
 INZ{(initial value)}
 .fi
 .SH DESCRIPTION
+The \fIINZ\fR keyword initializes the standalone field, data structure, data-structure subfield, or object to the default value for its data type or, optionally, to the constant specified in parentheses\[char46] 
 .IP "" 2
 .RS
 \[bu] For a program described data structure, no parameter is allowed for the \fIINZ\fR keyword\[char46]
@@ -31,6 +32,7 @@ INZ{(initial value)}
 .RE
 .PP
 
+
 The initial value specified must be consistent with the type being initialized\[char46] The initial value can be a literal, named constant, figurative constant, built-in function, or one of the special values \fI*SYS\fR, \fI*JOB\fR, \fI*EXTDFT\fR, \fI*USER\fR, \fI*LIKEDS\fR, or \fI*NULL\fR\[char46] When initializing Date or Time data type fields or named constants with Date or Time values, the format of the literal must be consistent with the default format as derived from the Control specification, regardless of the actual format of the date or time field\[char46]
 
 
@@ -46,6 +48,7 @@ Specifying \fIINZ\fR(\fI*EXTDFT\fR) initializes externally described data-struct
 Specifying \fIINZ\fR(\fI*EXTDFT\fR) on the external data structure definition, initializes all externally described subfields to their \fIDDS\fR default values\[char46] If the externally described data structure has additional program described subfields, these are initialized to the \fIRPG\fR default values\[char46]
 
 
+When using \fIINZ\fR(\fI*EXTDFT\fR), take note of the following: 
 .IP "" 2
 .RS
 \[bu] If the \fIDDS\fR value for a date or time field is not in the \fIRPG\fR internal format, the value will be converted to the internal format in effect for the program\[char46]
@@ -68,6 +71,7 @@ Specifying \fIINZ\fR(\fI*EXTDFT\fR) on the external data structure definition, i
 .RE
 .PP
 
+
 Specifying \fIINZ\fR(\fI*USER\fR) intializes any character field or subfield to the name of the current user profile\[char46] Character fields must be at least 10 characters long\[char46] If the field is longer than 10 characters, the user name is left-justified in the field with blanks in the remainder\[char46]
 
 
@@ -77,6 +81,7 @@ Date fields can be initialized to \fI*SYS\fR or \fI*JOB\fR\[char46] Time and Tim
 Please see Initialization of Nested Data Structures for a complete description of the use of the \fIINZ\fR keyword in the inititlization of nested data structures\[char46]
 
 
+A data structure, data-structure subfield, or standalone field defined with the \fIINZ\fR keyword cannot be specified as a parameter on an \fI*ENTRY\fR \fIPLIST\fR\[char46] 
 
 
 
@@ -91,5 +96,24 @@ Please see Initialization of Nested Data Structures for a complete description o
 .RE
 .PP
 
+
 This keyword is not valid in combination with \fIBASED\fR or \fIIMPORT\fR\[char46]
 
+.SH SEE ALSO
+.BR BASED,
+.BR CTDATA,
+.BR CVTOPT,
+.BR DDS,
+.BR DFT,
+.BR FROMFILE,
+.BR IKEDS,
+.BR IMPORT,
+.BR INZ,
+.BR LIKEDS,
+.BR NTRY,
+.BR PLIST,
+.BR RPG,
+.BR SER,
+.BR UCS,
+.BR ULL,
+.BR XTDFT

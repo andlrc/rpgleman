@@ -21,10 +21,12 @@ If the parameter is a constant, the conversion will be done at compile time\[cha
 
 
 
+ If the parameter is character data with an \fIEBCDIC\fR \fICCSID\fR, the character data must be in the form 
 .PP
 .nf
 shift-out graphic-data shift-in
 .fi
+  For example, \[char39]oAABBCCi\[char39]\[char46] 
 
 
 
@@ -80,4 +82,19 @@ D    gparm                       2G   ccsid (4396) value
 
 
 .SH SEE ALSO
-.BR %UCS2 (3RPG)
+.BR %GRAPH,
+.BR %UCS2,
+.BR AABBCC,
+.BR AABBCCDDEE,
+.BR CCSID,
+.BR DBCS,
+.BR EBCDIC,
+.BR END-FREE,
+.BR ETD,
+.BR FFGG,
+.BR FREE,
+.BR GNORE,
+.BR RAPH,
+.BR UCS,
+.BR XXYYZZ,
+.BR XXYYZZFFGG

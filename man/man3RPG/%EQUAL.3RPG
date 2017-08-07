@@ -13,6 +13,7 @@
 %EQUAL{(file_name)}
 .fi
 .SH DESCRIPTION
+The operations that set \fB%EQUAL\fR are: 
 .IP "" 2
 .RS
 \[bu] \fISETLL\fR (Set Lower Limit)
@@ -22,6 +23,7 @@
 \[bu] \fILOOKUP\fR (Look Up a Table or Array Element)
 .RE
 .PP
+
 
 If \fB%EQUAL\fR is used without the optional file_name parameter, then it returns the value set for the most recent relevant operation\[char46]
 
@@ -98,4 +100,26 @@ Martha
 Samuel
 .fi
 .SH SEE ALSO
-.BR %FOUND (3RPG)
+.BR %EQUAL,
+.BR %FOUND,
+.BR AID,
+.BR ASCEND,
+.BR CTDATA,
+.BR CUSTREC,
+.BR CUSTS,
+.BR DIM,
+.BR DISK,
+.BR DSPLY,
+.BR END-FREE,
+.BR ENDSL,
+.BR ETD,
+.BR FCUSTSIF,
+.BR FREE,
+.BR IPEASFR,
+.BR LOOKUP,
+.BR OTHER,
+.BR RETURN,
+.BR SELECT,
+.BR SETLL,
+.BR TDATA,
+.BR WHEN

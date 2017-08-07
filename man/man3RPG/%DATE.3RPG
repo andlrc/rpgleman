@@ -42,3 +42,10 @@ For more information, see Information Operations or Built-in Functions\[char46]
    // date now contains d\[char39]1996-04-05\[char39]
  /END-FREE
 .fi
+.SH SEE ALSO
+.BR %DATE,
+.BR ATE,
+.BR DATFMT,
+.BR END-FREE,
+.BR FREE,
+.BR UDATE

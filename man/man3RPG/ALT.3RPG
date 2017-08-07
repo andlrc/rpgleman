@@ -24,3 +24,9 @@ The keywords on the main array define the loading for both arrays\[char46] The i
 
 In the alternate array definition, the \fIPERRCD\fR, \fIFROMFILE\fR, \fITOFILE\fR, and \fICTDATA\fR keywords are not valid\[char46]
 
+.SH SEE ALSO
+.BR ALT,
+.BR CTDATA,
+.BR FROMFILE,
+.BR PERRCD,
+.BR TOFILE

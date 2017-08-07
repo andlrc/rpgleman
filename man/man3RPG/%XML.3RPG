@@ -15,11 +15,14 @@
 The first operand specifies the document to be parsed\[char46] It can be a constant or variable character or \fIUCS\fR-2 expression containing either an \fIXML\fR document or the name of a file containing an \fIXML\fR document\[char46]
 
 
+The second operand specifies options that control how the \fIXML\fR document is to be interpreted and parsed\[char46] It can be a constant or variable character expression\[char46] The value of the character expression is a list of zero or more options specified in the form 
 .PP
 .nf
     optionname1=value1 optionname2=value2
 .fi
 
+
+No spaces are allowed between the option name and the equal sign or between the equal sign and the value\[char46] However, any number of spaces can appear before, between or following the options\[char46] The options can be specified in any case\[char46] The following are all valid ways to specify the "doc=file" and "allowextra=yes" options for \fIXML-INTO\fR: 
 .PP
 .nf
    \[char39]doc=file allowextra=yes\[char39]
@@ -29,10 +32,17 @@ The first operand specifies the document to be parsed\[char46] It can be a const
 .fi
 
 
+The following are 
 
+  valid option strings: 
 .TS
 allbox;
 l l  .
+T{
+Option string
+T}	T{
+The problem with the option string
+T}
 T{
 \[char39]doc = file\[char39]
 T}	T{
@@ -55,13 +65,16 @@ The \[char39]allowextra\[char39] value can only be \[char39]yes\[char39] or \[ch
 T}
 .TE
 
+
 The valid options and values depend on the context of the \fB%XML\fR built-in function\[char46] See \fIXML-SAX\fR (Parse an \fIXML\fR Document) and \fIXML-INTO\fR (Parse an \fIXML\fR Document into a Variable) for a complete list of valid options and values\[char46]
 
 
+When an option is specified more than once, the last value specified is the value that is used\[char46] For example, if the options parameter has the value 
 .PP
 .nf
    \[char39]doc=file doc=string\[char39]
 .fi
+  then the parser will use the value "string" for the "doc" option\[char46]
 
 If the parser discovers an invalid option or invalid value, the operation will fail with status code 00352\[char46]
 
@@ -92,5 +105,14 @@ For more examples of \fB%XML\fR, see \fIXML-SAX\fR (Parse an \fIXML\fR Document)
 For more information, see \fIXML\fR Operations or Built-in Functions\[char46]
 
 .SH SEE ALSO
-.BR %CHAR (3RPG),
-.BR %HANDLER (3RPG)
+.BR %CHAR,
+.BR %HANDLER,
+.BR %XML,
+.BR ALLOWEXTRA,
+.BR DOC,
+.BR FILE,
+.BR UCS,
+.BR XML,
+.BR XML-INTO,
+.BR XML-SAX,
+.BR YES

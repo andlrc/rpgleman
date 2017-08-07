@@ -42,6 +42,7 @@ T}
 The \fIEXCEPT\fR operation allows one or more records to be written during either detail calculations or total calculations\[char46] See Figure 1 for examples of the \fIEXCEPT\fR operation\[char46]
 
 
+When specifying the \fIEXCEPT\fR operation remember: 
 .IP "" 2
 .RS
 \[bu] The exception records that are to be written during calculation time are indicated by an E in position 17  of the output specifications\[char46] An \fIEXCEPT\fR name, which is the same name as specified by the except-name  operand of an \fIEXCEPT\fR operation, can be specified in positions 30 through 39  of the output specifications of the exception records\[char46]
@@ -77,6 +78,7 @@ The \fIEXCEPT\fR operation allows one or more records to be written during eithe
 
 .RE
 .PP
+
 
 For more information, see File Operations\[char46]
 
@@ -123,3 +125,14 @@ O          E            DETAIL         1
 O                       AUTH
 O                       VERSNO
 .fi
+.SH SEE ALSO
+.BR AUTH,
+.BR DETAIL,
+.BR EXCEPT,
+.BR HDG,
+.BR PAGE,
+.BR RPG,
+.BR TITLE,
+.BR UDATE,
+.BR UNLOCK,
+.BR VERSNO

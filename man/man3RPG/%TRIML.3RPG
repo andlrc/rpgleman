@@ -19,6 +19,8 @@ The string can be character, graphic, or \fIUCS\fR-2 data\[char46]
 If the characters to trim parameter is specified, it must be the same type as the string parameter\[char46]
 
 
+When specified as a parameter for a definition specification keyword, the string parameter must be a constant\[char46] 
+
 
 
 For more information, see String Operations or Built-in Functions\[char46]
@@ -46,3 +48,8 @@ For more information, see String Operations or Built-in Functions\[char46]
      trimmed = %triml(\[char39]$******5\[char46]27***        \[char39] : \[char39]$* \[char39]);
      // trimmed is now \[char39]5\[char46]27***        \[char39]
 .fi
+.SH SEE ALSO
+.BR %TRIML,
+.BR FREE,
+.BR LOCATION,
+.BR UCS

@@ -25,15 +25,20 @@ The parameter specifies the length in bytes\[char46] It must be one of 4 or 8\[c
 The parameter can be a literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46]
 
 
+In the following example 
 .IP "" 2
 .RS
 \[bu] field variance  is defined as an 8-byte float field\[char46]
 .RE
 .PP
-
+ 
 .SH EXAMPLE
 
 .PP
 .nf
   DCL-S variance FLOAT(8);
 .fi
+
+.SH SEE ALSO
+.BR DCL,
+.BR FLOAT

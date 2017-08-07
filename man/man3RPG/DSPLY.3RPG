@@ -64,10 +64,6 @@ The message is sent to the system operator\[char46] Note that the \fIQSYSOPR\fR 
 The message is sent to the external message queue\[char46]
 .PP
 
-
-
-
-
 The response operand is optional\[char46] If it is specified, the response is placed in it\[char46] response can be a field name, a table name, or an array element in which the response is placed\[char46] If no data is entered, response is unchanged\[char46] To specify a response but no message queue in a free-form specification, specify \[char39]Â \[char39] for message-queue\[char46]
 
 
@@ -77,8 +73,7 @@ Fully qualified names may be specified as the Result-Field operand, and expressi
 To handle \fIDSPLY\fR exceptions (program status code 333), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] The exception is handled by the specified method if an error occurs on the operation\[char46] For more information on error handling, see Program Exception/Errors\[char46]
 
 
-
-
+When you specify the \fIDSPLY\fR operation with no message identifier in the message operand , the operation functions as follows: 
 .IP "" 2
 .RS
 \[bu] If the message  operand is specified but the response  operand is not, the contents of the message  operand are displayed\[char46] The program does not wait for a response unless a display file with the parameter \fIRSTDSP\fR (\fI*NO\fR) specified was used to display a format at the workstation\[char46] Then the program waits for the user to press Enter\[char46]
@@ -100,13 +95,17 @@ The maximum length of information that can be displayed is 52 bytes\[char46]
 .RE
 .PP
 
+
 The format of the record written by the \fIDSPLY\fR operation with no message identifier specified by the message operand follows:
 
+.SH NOTICE
+Note:  For a batch job, if no message-queue  value is specified, the default is \fIQSYSOPR\fR\[char46] For an interactive job, the default value is \fI*EXT\fR\[char46]
 
 
 When you specify the \fIDSPLY\fR operation with a message identifier in the message operand, the operation functions as follows: the message identified in the message operand is retrieved from \fIQUSERMSG\fR, the message is displayed, and the program waits for the user to respond by entering data if the response operand is specified\[char46] The response is placed in the result field\[char46]
 
 
+When replying to a message, remember the following: 
 .IP "" 2
 .RS
 \[bu] Non-float numeric fields sent to the display are right-adjusted and zero-suppressed\[char46]
@@ -165,6 +164,7 @@ When you specify the \fIDSPLY\fR operation with a message identifier in the mess
 .RE
 .PP
 
+
 For more information, see Message Operation\[char46]
 
 
@@ -180,5 +180,12 @@ For more information, see Message Operation\[char46]
    /end-free
 .fi
 .SH SEE ALSO
-.BR %CHAR (3RPG),
-.BR %LEN (3RPG)
+.BR %CHAR,
+.BR %LEN,
+.BR DSPLY,
+.BR OVRMSGF,
+.BR QSYSOPR,
+.BR QUSERMSG,
+.BR RSTDSP,
+.BR UCS,
+.BR USR

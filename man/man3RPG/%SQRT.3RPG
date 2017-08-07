@@ -39,3 +39,7 @@ D f               S              4F
    // f = 489\[char46]7693
  /END-FREE
 .fi
+.SH SEE ALSO
+.BR %SQRT,
+.BR END-FREE,
+.BR FREE

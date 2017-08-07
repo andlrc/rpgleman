@@ -54,6 +54,7 @@ To handle \fIWRITE\fR exceptions (file status codes greater than 1000), either t
 You can specify an indicator in positions 75-76 to signal whether an end of file occurred (subfile is filled) on the \fIWRITE\fR operation\[char46] The indicator is set on (an \fIEOF\fR condition) or off every time the \fIWRITE\fR operation is performed\[char46] This information can also be obtained from the \fB%EOF\fR built-in function, which returns \[char39]1\[char39] if an \fIEOF\fR condition occurs and \[char39]0\[char39] otherwise\[char46]
 
 
+When using the \fIWRITE\fR operation remember: 
 .IP "" 2
 .RS
 \[bu] When name  is a record format name, the current values in the program for all the fields in the record definition are used to construct the record\[char46]
@@ -79,6 +80,7 @@ You can specify an indicator in positions 75-76 to signal whether an end of file
 \[bu] For a multiple device file, data is written to the program device named in the field name specified with the \fIDEVID\fR keyword on the file description specifications\[char46] (See \fIDEVID\fR(fieldname) \[char46]) If the \fIDEVID\fR keyword is not specified, data is written to the program device for which the last successful input operation was processed\[char46]
 .RE
 .PP
+
 
 See Database Null Value Support for information on adding records with null-capable fields containing null values\[char46]
 
@@ -117,4 +119,17 @@ C                   WRITE     FILE1         DS1
 
 
 .SH SEE ALSO
-.BR %EOF (3RPG)
+.BR %EOF,
+.BR DEVID,
+.BR DISK,
+.BR EOF,
+.BR EXTNAME,
+.BR FILE,
+.BR FMT,
+.BR LIKEREC,
+.BR PRINTER,
+.BR PRTCTL,
+.BR RECNO,
+.BR USAGE,
+.BR UTPUT,
+.BR WRITE

@@ -13,10 +13,12 @@
 %REM(n:m)
 .fi
 .SH DESCRIPTION
+\fB%REM\fR and \fB%DIV\fR have the following relationship: 
 .PP
 .nf
 %REM(A:B) = A - (%DIV(A:B) * B)
 .fi
+
 
 If the operands are constants that can fit in 8-byte integer or unsigned fields, constant folding is applied to the built-in function\[char46] In this case, the \fB%REM\fR built-in function can be coded in the definition specifications\[char46]
 
@@ -45,4 +47,11 @@ D E               S             10I 0
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %DIV (3RPG)
+.BR %DIV,
+.BR %REM,
+.BR DIV,
+.BR END-FREE,
+.BR ETD,
+.BR FREE,
+.BR INZ,
+.BR REM

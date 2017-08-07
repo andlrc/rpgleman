@@ -19,7 +19,7 @@ The \fILIKE\fR keyword is used to define an item like an existing one\[char46] F
 When the \fILIKE\fR keyword is specified, the item being defined takes on the length and the data format of the item specified as the parameter\[char46] Standalone fields, prototypes, parameters, and data-structure subfields may be defined using this keyword\[char46] The parameter of \fILIKE\fR can be a standalone field, a data structure, a data structure subfield, a parameter in a procedure interface definition, or a prototype name\[char46] The data type entry (position 40) must be blank\[char46]
 
 
-
+This keyword is similar to the \fI*LIKE\fR \fIDEFINE\fR operation code (see \fI*LIKE\fR \fIDEFINE\fR )\[char46] However, it differs from \fI*LIKE\fR \fIDEFINE\fR in that the defined data takes on the data format and \fICCSID\fR as well as the length\[char46] 
 
 
 
@@ -36,6 +36,7 @@ If the parameter of \fILIKE\fR is a prototype, then the item being defined will 
 The length of the item being defined can be adjusted\[char46] You specify the length adjustment in the second parameter of the \fILIKE\fR keyword in free-form definitions, or the Length entry in fixed-form definitions\[char46] The length adjust must be specified with either a positive (+) or negative (-) sign\[char46]
 
 
+Here are some considerations for using the \fILIKE\fR keyword with different data types: 
 .IP "" 2
 .RS
 \[bu] 
@@ -77,6 +78,7 @@ The length of the item being defined can be adjusted\[char46] You specify the le
 
 .RE
 .PP
+
 
 Use \fILIKEDS\fR to define a data structure like another data structure, with the same subfields\[char46]
 
@@ -140,4 +142,24 @@ D   Employee_Id                 10I 0 VALUE
 
 
 .SH SEE ALSO
-.BR %ELEM (3RPG)
+.BR %ELEM,
+.BR ALTSEQ,
+.BR ASCEND,
+.BR CCSID,
+.BR CHAR,
+.BR CONST,
+.BR DCL,
+.BR DEFINE,
+.BR DESCEND,
+.BR DIM,
+.BR END,
+.BR ETD,
+.BR IKE,
+.BR INT,
+.BR INZ,
+.BR LIKE,
+.BR LIKEDS,
+.BR NOOPT,
+.BR ONE,
+.BR UCS,
+.BR VALUE

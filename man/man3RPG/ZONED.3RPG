@@ -28,6 +28,7 @@ The second parameter is optional\[char46] It specifies the number of decimal pos
 Each parameter can be a literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46]
 
 
+In the following example 
 .IP "" 2
 .RS
 \[bu] field salary  is defined as a zoned field with 5 digits and 2 decimal places
@@ -41,7 +42,7 @@ Each parameter can be a literal or a named constant\[char46] If it is a named co
 \[bu] field price  is defined as a zoned field with 7 digits and 3 decimal positions\[char46] The number of decimal positions is defined using named constant \fINUM\fR_DEC_POS \[char46]
 .RE
 .PP
-
+ 
 .SH EXAMPLE
 
 .PP
@@ -51,3 +52,10 @@ Each parameter can be a literal or a named constant\[char46] If it is a named co
   DCL-C NUM_DEC_POS 3;
   DCL-S price ZONED(7 : NUM_DEC_POS);
 .fi
+
+.SH SEE ALSO
+.BR DCL,
+.BR DEC,
+.BR NUM,
+.BR POS,
+.BR ZONED

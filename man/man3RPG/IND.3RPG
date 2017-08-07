@@ -15,15 +15,20 @@ The \fIIND\fR keyword is used in a free-form definition to indicate that the ite
 It must be the first keyword\[char46]
 
 
+In the following example 
 .IP "" 2
 .RS
 \[bu] field found  is defined as an indicator\[char46]
 .RE
 .PP
-
+ 
 .SH EXAMPLE
 
 .PP
 .nf
   DCL-S found IND;
 .fi
+
+.SH SEE ALSO
+.BR DCL,
+.BR IND

@@ -13,6 +13,7 @@ CONST
 CONST{(constant)}
 .fi
 .SH DESCRIPTION
+The \fICONST\fR keyword is used 
 .IP "" 2
 .RS
 \[bu] To specify the value of a named constant
@@ -22,6 +23,7 @@ CONST{(constant)}
 \[bu] To indicate that a parameter passed by reference is read-only\[char46]
 .RE
 .PP
+
 
 When specifying the value of a named constant, the \fICONST\fR keyword itself is optional\[char46] That is, the constant value can be specified with or without the \fICONST\fR keyword\[char46]
 
@@ -50,3 +52,9 @@ Although a \fICONST\fR parameter cannot be changed by statements within the proc
 
 Passing a parameter by constant value has the same advantages as passing by value\[char46] In particular, it allows you to pass literals and expressions\[char46]
 
+.SH SEE ALSO
+.BR CONST,
+.BR DIM,
+.BR OCCURS,
+.BR OVERLAY,
+.BR PERRCD

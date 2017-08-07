@@ -121,4 +121,19 @@ D fCity           S             40A           INZ(\[char39]North York\[char39])
 See Examples showing the effect of the \fIALIGN\fR keyword for an example of \fB%SIZE\fR for data structures with and without \fIALIGN\fR(\fI*FULL\fR)\[char46]
 
 .SH SEE ALSO
-.BR %ADDR (3RPG)
+.BR %ADDR,
+.BR %SIZE,
+.BR ALIGN,
+.BR CUST,
+.BR DIM,
+.BR END-FREE,
+.BR ETD,
+.BR FREE,
+.BR INFO,
+.BR INZ,
+.BR LIKEDS,
+.BR NAME,
+.BR OCCURS,
+.BR UCS,
+.BR ULL,
+.BR VARYING

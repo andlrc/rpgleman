@@ -56,3 +56,5 @@ If \fIFORCE\fR is specified for a file that is at end of file, no record is retr
 
 For more information, see File Operations\[char46]
 
+.SH SEE ALSO
+.BR FORCE

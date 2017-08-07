@@ -27,6 +27,7 @@ Pointer subfields are always aligned on a 16-byte boundary whether or not \fIALI
 
 
 
+ Specify \fIALIGN\fR(\fI*FULL\fR) if you want the data structure length to be a multiple of the required alignment\[char46] 
 .IP "" 2
 .RS
 \[bu] 
@@ -44,12 +45,14 @@ Pointer subfields are always aligned on a 16-byte boundary whether or not \fIALI
 
 .RE
 .PP
+ 
 
 
 
 
 
 
+The data structures in the following examples all have the same subfields\[char46] 
 .IP 1. 2
 .RS
 Data structure ds1_no_align  is defined without the \fIALIGN\fR keyword\[char46] Integer subfield sub2 is in position 2\[char46] Character subfield sub3 is in position 6\[char46] There is no padding at the end of the data structure so the size is 6\[char46] 
@@ -126,8 +129,25 @@ For the array version of the data structure, the result of \fB%SIZE\fR with \fI*
 
 
 
+
 See Aligning Data Structure Subfields for more information\[char46]
 
 .SH SEE ALSO
-.BR %SIZE (3RPG),
-.BR %ELEM (3RPG)
+.BR %ELEM,
+.BR %SIZE,
+.BR ALIGN,
+.BR API,
+.BR CHAR,
+.BR DCL,
+.BR DIM,
+.BR END,
+.BR INFDS,
+.BR INT,
+.BR LIKEDS,
+.BR OVERLAY,
+.BR PSDS,
+.BR QSYSINC,
+.BR QUALIFIED,
+.BR REGEX,
+.BR RPG,
+.BR ULL

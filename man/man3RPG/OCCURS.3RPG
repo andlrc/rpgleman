@@ -48,3 +48,11 @@ Allocation of fields in storage\[char46] The occurrences of DS1 are 32 bytes apa
 
 
 
+.SH SEE ALSO
+.BR CHAR,
+.BR CHR,
+.BR ETD,
+.BR FLD,
+.BR OCCURS,
+.BR POINTER,
+.BR REQTEXT

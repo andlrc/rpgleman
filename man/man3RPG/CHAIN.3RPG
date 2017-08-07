@@ -89,8 +89,8 @@ See Database Null Value Support for information on handling records with null-ca
 
 For more information, see File Operations\[char46]
 
-
-
+.SH NOTICE
+Note:  Operation code extenders H, M, and R are allowed only when the search argument is a list or is \fB%KDS()\fR\[char46]
 .SH EXAMPLE
 \fICHAIN\fR Operation with a File Name
 .PP
@@ -150,6 +150,30 @@ D custRecDs       ds                  likerec(custRec)
          endif;
 .fi
 .SH SEE ALSO
-.BR %KDS (3RPG),
-.BR %FOUND (3RPG),
-.BR %XLATE (3RPG)
+.BR %FOUND,
+.BR %KDS,
+.BR %XLATE,
+.BR CCSID,
+.BR CHAIN,
+.BR DEVID,
+.BR DISK,
+.BR END-FREE,
+.BR ENDIF,
+.BR ENHMR,
+.BR ETD,
+.BR EXSR,
+.BR EXTNAME,
+.BR FCUSTFILE,
+.BR FILEX,
+.BR FREE,
+.BR ILE,
+.BR IPEASF,
+.BR KEY,
+.BR KLIST,
+.BR LANKS,
+.BR LIKEREC,
+.BR NOT,
+.BR NPUT,
+.BR RPG,
+.BR SETLL,
+.BR WORKSTN

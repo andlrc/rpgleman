@@ -62,4 +62,14 @@ C                   :
 C                   ENDSL
 .fi
 .SH SEE ALSO
-.BR %SUBST (3RPG)
+.BR %SUBST,
+.BR ABC,
+.BR AND,
+.BR DAY,
+.BR ENDSL,
+.BR FRIDAY,
+.BR NKA,
+.BR NOT,
+.BR OTHER,
+.BR SELECT,
+.BR WHEN

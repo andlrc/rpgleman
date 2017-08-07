@@ -15,6 +15,7 @@ For examples of the \fB%ERROR\fR built-in function, see Figure 1 and Figure 2\[c
 For more information, see Result Operations or Built-in Functions\[char46]
 
 
+The operations that set \fB%ERROR\fR are: 
 .IP "" 2
 .RS
 \[bu] \fIACQ\fR (Acquire)
@@ -184,6 +185,50 @@ For more information, see Result Operations or Built-in Functions\[char46]
 \[bu] \fIXLATE\fR (Translate)
 .RE
 .PP
+
 .SH RETURN VALUE
 \fB%ERROR\fR returns \[char39]1\[char39] if the most recent operation with extender \[char39]E\[char39] specified resulted in an error condition\[char46] This is the same as the error indicator being set on for the operation\[char46] Before an operation with extender \[char39]E\[char39] specified begins, \fB%ERROR\fR is set to return \[char39]0\[char39] and remains unchanged following the operation if no error occurs\[char46] All operations that allow an error indicator can also set the \fB%ERROR\fR built-in function\[char46] The \fICALLP\fR operation can also set \fB%ERROR\fR\[char46]
 
+.SH SEE ALSO
+.BR %ERROR,
+.BR ACQ,
+.BR ADDDUR,
+.BR ALLOC,
+.BR CALL,
+.BR CALLB,
+.BR CALLP,
+.BR CHAIN,
+.BR CHECK,
+.BR CHECKR,
+.BR CLOSE,
+.BR COMMIT,
+.BR DEALLOC,
+.BR DELETE,
+.BR DSPLY,
+.BR EXFMT,
+.BR EXTRCT,
+.BR FEOD,
+.BR NEXT,
+.BR OCCUR,
+.BR OPEN,
+.BR OUT,
+.BR POST,
+.BR READ,
+.BR READC,
+.BR READE,
+.BR READP,
+.BR READPE,
+.BR REALLOC,
+.BR REL,
+.BR RESET,
+.BR ROLBK,
+.BR SCAN,
+.BR SETGT,
+.BR SETLL,
+.BR SUBDUR,
+.BR SUBST,
+.BR TEST,
+.BR UNLOCK,
+.BR UPDATE,
+.BR WRITE,
+.BR XLATE

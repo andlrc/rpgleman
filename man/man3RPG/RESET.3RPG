@@ -50,12 +50,15 @@ See Figure 1 for more information on the \fI*INIT\fR phase\[char46]
 
 
 
+
+
 To handle \fIRESET\fR exceptions (program status code 123), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see Program Exception/Errors\[char46]
 
 
 For more information, see Initialization Operations\[char46]
 
 
+See also: 
 .IP "" 2
 .RS
 \[bu] Resetting Variables
@@ -73,3 +76,10 @@ For more information, see Initialization Operations\[char46]
 \[bu] \fIRESET\fR Examples
 .RE
 .PP
+
+.SH SEE ALSO
+.BR INZ,
+.BR NIT,
+.BR NZSR,
+.BR OKEY,
+.BR RESET

@@ -17,10 +17,7 @@
 %TLOOKUPLE(arg : search-table {: alt-table})
 .fi
 .SH DESCRIPTION
-
-
-
-
+The following functions search search-table for a value that matches arg as follows: 
 .TP 5
 .B \fB%TLOOKUP\fR
 An exact match\[char46]
@@ -38,6 +35,7 @@ The value that is closest to arg but greater than arg \[char46]
 An exact match, or the value that is closest to arg but greater than arg \[char46]
 .PP
 
+
 If a value meets the specified condition, the current table element for the search table is set to the element that satisfies the condition, the current table element for the alternate table is set to the same element, and the function returns the value \fI*ON\fR\[char46]
 
 
@@ -53,13 +51,13 @@ The \fIALTSEQ\fR table is used, unless arg or search-table is defined with \fIAL
 Built-in functions \fB%FOUND\fR and \fB%EQUAL\fR are not set following a \fB%LOOKUP\fR operation\[char46]
 
 
-
-
 The \fB%TLOOKUPxx\fR built-in functions use a binary search for sequenced tables (tables that have the \fIASCEND\fR or \fIDESCEND\fR keyword specified)\[char46] See Sequenced arrays that are not in the correct sequence\[char46]
 
 
 For more information, see Array Operations or Built-in Functions\[char46]
 
+.SH NOTICE
+Note: Unlike the \fILOOKUP\fR operation code, \fB%TLOOKUP\fR applies only to tables\[char46] To look up a value in an array, use the \fB%LOOKUP\fR built-in function\[char46]
 .SH EXAMPLE
 \fB%TLOOKUPxx\fR Example
 .PP
@@ -73,6 +71,20 @@ For more information, see Array Operations or Built-in Functions\[char46]
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %FOUND (3RPG),
-.BR %EQUAL (3RPG),
-.BR %LOOKUP (3RPG)
+.BR %EQUAL,
+.BR %FOUND,
+.BR %LOOKUP,
+.BR %TLOOKUP,
+.BR %TLOOKUPGE,
+.BR %TLOOKUPGT,
+.BR %TLOOKUPLE,
+.BR %TLOOKUPLT,
+.BR %TLOOKUPXX,
+.BR ALTSEQ,
+.BR ASCEND,
+.BR DESCEND,
+.BR END-FREE,
+.BR ENDIF,
+.BR FREE,
+.BR LOOKUP,
+.BR ONE

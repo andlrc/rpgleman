@@ -39,6 +39,7 @@ T}	T{
 T}
 .TE
 
+The monitor group performs conditional error handling based on the status code\[char46] It consists of: 
 .IP "" 2
 .RS
 \[bu] A \fIMONITOR\fR statement
@@ -52,6 +53,7 @@ T}
 \[bu] An \fIENDMON\fR  statement\[char46]
 .RE
 .PP
+
 
 After the \fIMONITOR\fR statement, control passes to the next statement\[char46] The monitor block consists of all the statements from the \fIMONITOR\fR statement to the first ON-\fIERROR\fR statement\[char46] If an error occurs when the monitor block is processed, control is passed to the appropriate ON-\fIERROR\fR group\[char46]
 
@@ -119,6 +121,21 @@ C                   \[char46]\[char46]\[char46] handle all other errors
 C                  ENDMON
 .fi
 .SH SEE ALSO
-.BR %EOF (3RPG),
-.BR %SUBST (3RPG),
-.BR %SCAN (3RPG)
+.BR %EOF,
+.BR %SCAN,
+.BR %SUBST,
+.BR ENDIF,
+.BR ENDMON,
+.BR ERROR,
+.BR EVAL,
+.BR FILE,
+.BR ILE,
+.BR ITER,
+.BR LEAVE,
+.BR LEAVESR,
+.BR MONITOR,
+.BR NOT,
+.BR READ,
+.BR RETURN,
+.BR SELECT,
+.BR SSR

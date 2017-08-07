@@ -118,3 +118,23 @@ D recDs           ds                  likerec(rec : *all)
         // capable, its value may have changed during EXFMT
         dsply (\[char39]Hello \[char39] + recDs\[char46]name + \[char39] in \[char39] + recDs\[char46]city);
 .fi
+.SH SEE ALSO
+.BR AID,
+.BR CITY,
+.BR DDS,
+.BR EXFMT,
+.BR EXTNAME,
+.BR FPROMTD,
+.BR IPEASFRL,
+.BR LIKEREC,
+.BR MYDSPF,
+.BR NAME,
+.BR OPT,
+.BR PROMTD,
+.BR QUESTION,
+.BR READ,
+.BR REC,
+.BR RPG,
+.BR SCR,
+.BR WORKSTN,
+.BR WRITE

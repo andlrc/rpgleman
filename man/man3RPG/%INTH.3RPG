@@ -49,4 +49,8 @@ D a               s              1a
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %INT (3RPG)
+.BR %INT,
+.BR %INTH,
+.BR END-FREE,
+.BR ETD,
+.BR FREE

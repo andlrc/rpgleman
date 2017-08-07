@@ -79,5 +79,7 @@ D token           s             50a   varying
 See also Figure 2\[char46]
 
 .SH SEE ALSO
-.BR %SUBST (3RPG),
-.BR %LEN (3RPG)
+.BR %CHECK,
+.BR %LEN,
+.BR %SUBST,
+.BR UCS

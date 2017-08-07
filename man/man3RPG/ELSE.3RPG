@@ -50,3 +50,6 @@ Figure 1 shows an example of an \fIELSE\fR operation with an IFxx operation\[cha
 
 For more information, see Structured Programming Operations\[char46]
 
+.SH SEE ALSO
+.BR ELSE,
+.BR ENDIF

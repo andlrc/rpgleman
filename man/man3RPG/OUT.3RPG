@@ -39,10 +39,7 @@ _
 T}
 .TE
 
-
-
-
-
+The \fIOUT\fR operation updates the data area specified in the data-area-name  operand\[char46] To specify a data area as the data-area-name  operand of an \fIOUT\fR operation, you must ensure two things: 
 .IP "" 2
 .RS
 \[bu] The data area must also be specified in the result field of a \fI*DTAARA\fR \fIDEFINE\fR  statement, or defined using the \fIDTAARA\fR keyword on the Definition specification\[char46]
@@ -52,6 +49,7 @@ T}
 \[bu] The data area must have been locked previously by a \fI*LOCK\fR IN  statement or it must have been specified as a data area data structure by a U in position 23  of the definition specifications\[char46] (The \fIRPG\fR IV  language implicitly retrieves and locks data area data structures at program initialization\[char46])
 .RE
 .PP
+
 
 You can specify the optional reserved word \fI*LOCK\fR\[char46] When \fI*LOCK\fR is specified, the data area remains locked after it is updated\[char46] When \fI*LOCK\fR is not specified, the data area is unlocked after it is updated\[char46]
 
@@ -73,3 +71,11 @@ For further rules for the \fIOUT\fR operation, see Data-Area Operations\[char46]
 
 See Figure 1 for an example of the \fIOUT\fR operation\[char46]
 
+.SH SEE ALSO
+.BR DEFINE,
+.BR DTAARA,
+.BR OCK,
+.BR OUT,
+.BR PIP,
+.BR RPG,
+.BR TAARA

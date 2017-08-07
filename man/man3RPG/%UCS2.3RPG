@@ -60,3 +60,14 @@ C                   CALLP     proc(ufield2)
 
 
 
+.SH SEE ALSO
+.BR %UCS2,
+.BR AABB,
+.BR CALLP,
+.BR CCSID,
+.BR CONST,
+.BR ETD,
+.BR EVAL,
+.BR INZ,
+.BR OVAL,
+.BR UCS

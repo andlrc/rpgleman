@@ -22,10 +22,7 @@ It must be the first keyword\[char46]
 The parameter is optional\[char46] It specifies the time format and separator\[char46] See Time Data Type for information on the default format for time items\[char46]
 
 
-
-
-
-
+In the following example, field time_dft  is defined as a time field with the default format for the module, and field time_mdy  is defined with \fI*HMS\fR as the format and period as the separator\[char46] 
 .SH EXAMPLE
 
 .PP
@@ -33,3 +30,7 @@ The parameter is optional\[char46] It specifies the time format and separator\[c
   DCL-S time_dft TIME;
   DCL-S time_hms TIME(*HMS\[char46]);
 .fi
+
+.SH SEE ALSO
+.BR DCL,
+.BR TIME

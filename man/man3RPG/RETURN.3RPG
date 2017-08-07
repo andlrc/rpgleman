@@ -34,10 +34,7 @@ T}
 The \fIRETURN\fR operation causes a return to the caller\[char46] If a value is returned to the caller, the return value is specified in the expression operand\[char46]
 
 
-
-
-
-
+The actions which occur as a result of the \fIRETURN\fR operation differ depending on whether the operation is in a cycle-main  procedure or subprocedure\[char46] When a cycle-main  procedure returns, the following occurs: 
 .IP 1. 2
 .RS
 The halt indicators are checked\[char46] If a halt indicator is on, the procedure ends abnormally\[char46] (All open files are closed, an error return code is set to indicate to the calling routine that the procedure has ended abnormally, and control returns to the calling routine\[char46])
@@ -53,6 +50,7 @@ If no halt indicator is on and LR is not on, the procedure returns to the callin
   for information on how running in a \fI*NEW\fR activation group affects the operation of \fIRETURN\fR\[char46]
 .RE
 .PP
+
 
 When a subprocedure returns, the return value, if specified on the prototype of the called program or procedure, is passed to the caller\[char46] Automatic files are closed\[char46] Nothing else occurs automatically\[char46] All static or global files and data areas must be closed manually\[char46] You can set on indicators such as LR, but this will not cause program termination to occur\[char46]
 
@@ -153,3 +151,17 @@ Examples of the \fIRETURN\fR Operation
      C                   RETURN        BigArr
      P RetArr          E
 .fi
+.SH SEE ALSO
+.BR DATFMT,
+.BR DIM,
+.BR EVAL,
+.BR HMR,
+.BR ILE,
+.BR INZ,
+.BR PARM,
+.BR RETARR,
+.BR RETFLD,
+.BR RETNONE,
+.BR RETURN,
+.BR RPG,
+.BR RTNPARM

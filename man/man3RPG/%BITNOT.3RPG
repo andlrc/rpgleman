@@ -33,3 +33,6 @@ For more information, see Bit Operations or Built-in Functions\[char46]
 .SH RETURN VALUE
 \fB%BITNOT\fR returns the bit-wise inverse of the bits of the argument\[char46] That is, the result bit is ON when the corresponding bit in the argument is \fIOFF\fR, and \fIOFF\fR otherwise\[char46]
 
+.SH SEE ALSO
+.BR %BITNOT,
+.BR OFF

@@ -13,6 +13,7 @@
 %FOUND{(file_name)}
 .fi
 .SH DESCRIPTION
+The operations that set \fB%FOUND\fR are: 
 .IP "" 2
 .RS
 \[bu] File operations: 
@@ -66,6 +67,7 @@
 
 .RE
 .PP
+
 
 If \fB%FOUND\fR is used without the optional file_name parameter, then it returns the value set for the most recent relevant operation\[char46] When a file_name is specified, then it applies to the most recent relevant operation on that file\[char46]
 
@@ -154,4 +156,28 @@ C                   EXSR      HandleNonNum
 C                   ENDIF
 .fi
 .SH SEE ALSO
-.BR %SCAN (3RPG)
+.BR %FOUND,
+.BR %SCAN,
+.BR AID,
+.BR CHAIN,
+.BR CHECK,
+.BR CHECKR,
+.BR CUSTREC,
+.BR CUSTS,
+.BR DELETE,
+.BR DISK,
+.BR END-FREE,
+.BR ENDIF,
+.BR ETD,
+.BR EXSR,
+.BR FCUSTS,
+.BR FGOLD,
+.BR FMASTER,
+.BR FREE,
+.BR GOLD,
+.BR IPEASFR,
+.BR LOOKUP,
+.BR MASTER,
+.BR SCAN,
+.BR SETGT,
+.BR SETLL

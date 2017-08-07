@@ -50,3 +50,9 @@ No input or output operation occurs when the \fIACQ\fR operation is processed\[c
 
 For more information, see File Operations\[char46]
 
+.SH SEE ALSO
+.BR ACQ,
+.BR ILE,
+.BR INFSR,
+.BR RPG,
+.BR WORKSTN

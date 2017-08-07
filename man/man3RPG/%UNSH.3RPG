@@ -48,4 +48,8 @@ D a               s              1a
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %UNS (3RPG)
+.BR %UNS,
+.BR %UNSH,
+.BR END-FREE,
+.BR ETD,
+.BR FREE

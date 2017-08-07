@@ -22,8 +22,7 @@ The starting-position parameter must be a value between 1 and the length of the 
 The parameter can be a literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46]
 
 
-
-
+The following example is defining an \fIINDDS\fR  data structure\[char46] It uses the \fIPOS\fR keyword to place the indicators at specific positions in the data structure\[char46] 
 .SH EXAMPLE
 
 .PP
@@ -37,6 +36,8 @@ The parameter can be a literal or a named constant\[char46] If it is a named con
    END-DS;
 .fi
 
+
+The following example is defining a data structure to use with an \fIAPI\fR\[char46] It uses the \fIPOS\fR keyword to place the subfields at the positions specified in the \fIAPI\fR documentation\[char46] 
 .SH EXAMPLE
 
 .PP
@@ -47,3 +48,16 @@ The parameter can be a literal or a named constant\[char46] If it is a named con
       Default_Wait INT(10) POS(73);
    END-DS;
 .fi
+
+.SH SEE ALSO
+.BR API,
+.BR CHAR,
+.BR DCL,
+.BR END,
+.BR IND,
+.BR INDDS,
+.BR INT,
+.BR JOBI,
+.BR LEN,
+.BR POS,
+.BR QUALIFIED

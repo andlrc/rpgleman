@@ -22,6 +22,7 @@ Float expressions are not allowed in the first parameter (you can use \fB%DEC\fR
 For more information, see Conversion Operations or Built-in Functions\[char46]
 
 
+
 .SH EXAMPLE
 \fB%EDITC\fR Example 1
 .PP
@@ -53,6 +54,8 @@ C                   EVAL      msg = \[char39]The date is \[char39]
 C                                + %trim(%editc(*date : \[char39]Y\[char39]))
 .fi
 
+
+A common requirement is to edit a field as follows: 
 .IP "" 2
 .RS
 \[bu] Leading zeros are suppressed
@@ -63,9 +66,11 @@ C                                + %trim(%editc(*date : \[char39]Y\[char39]))
 .RE
 .PP
 
+
 The following accomplishes this using an \fB%EDITC\fR in a subprocedure:
 
 .SH RETURN VALUE
+This function returns a character result representing the numeric value edited according to the edit code\[char46] In general, the rules for the numeric value and edit code are identical to those for editing numeric values in output specifications\[char46] The third parameter is optional, and if specified, must be one of: 
 .TP 5
 .B \fI*ASTFILL\fR
 Indicates that asterisk protection is to be used\[char46] This means that leading zeros are replaced with asterisks in the returned value\[char46] For example, \fB%EDITC\fR( -0012\[char46]5  : \[char39]K\[char39] : \fI*ASTFILL\fR) returns \[char39]**\fI*12\fR\[char46]5-\[char39]\[char46]
@@ -76,6 +81,7 @@ Indicates that a floating currency symbol is to be used\[char46] The actual symb
 .B currency-symbol
 Indicates that floating currency is to be used with the provided currency symbol\[char46] It must be a 1-byte character constant (literal, named constant or expression that can be evaluated at compile time)\[char46] For example, \fB%EDITC(0012\[char46]5 : \[char39]K\[char39] : \[char39]X\[char39])\fR returns \[char39]Â Â Â X12\[char46]5Â \[char39]\[char46]
 .PP
+
 .SH EXAMPLE
 \fB%EDITC\fR Example 2
 .PP
@@ -114,5 +120,16 @@ C                             rparen
 P editparens      E
 .fi
 .SH SEE ALSO
-.BR %DEC (3RPG),
-.BR %TRIM (3RPG)
+.BR %DEC,
+.BR %EDITC,
+.BR %TRIM,
+.BR CURSYM,
+.BR EDITPARENS,
+.BR ENDIF,
+.BR ETD,
+.BR EVAL,
+.BR INZ,
+.BR NUM,
+.BR RETURN,
+.BR STFILL,
+.BR URSYM

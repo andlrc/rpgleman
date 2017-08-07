@@ -39,6 +39,7 @@ _
 T}
 .TE
 
+The \fIPOST\fR operation puts information in an \fIINFDS\fR (file information data structure)\[char46] This information contains the following: 
 .IP "" 2
 .RS
 \[bu] File Feedback Information specific to \fIRPG\fR I/O for the file
@@ -53,16 +54,14 @@ T}
 .RE
 .PP
 
+
 The program-device operand specifies a program device name to get information about that specific program device\[char46] If you specify a program device, the file must be defined as a \fIWORKSTN\fR file\[char46] If program-device is specified, then the \fIINFDS\fR will contain Get Attribute Information following the Open Feedback Information\[char46] Use either a character field of length 10 or less, a character literal, or a character named constant\[char46] If program-device is not specified, then the \fIINFDS\fR will contain Input/Output Feedback Information and Device Dependent Feedback Information following the Open Feedback Information\[char46]
 
 
 Specify the name of a file in the file-name operand\[char46] Information for this file is posted in the \fIINFDS\fR associated with this file\[char46]
 
 
-
-
-
-
+In free-form syntax, you must specify a file-name  and cannot specify an \fIINFDS\fR name\[char46] In traditional syntax, you can specify a file-name , an \fIINFDS\fR name, or both\[char46] 
 .IP "" 2
 .RS
 \[bu] If you do not specify an \fIINFDS\fR name , the \fIINFDS\fR associated with this file using the \fIINFDS\fR keyword in the file specification will be used\[char46]
@@ -73,11 +72,11 @@ Specify the name of a file in the file-name operand\[char46] Information for thi
 .RE
 .PP
 
+
 To handle \fIPOST\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
 
 
-
-
+Even when a \fIPOST\fR operation code is not processed, its existence in your program can affect the way the \fIRPG\fR IV  language operates\[char46] The presence of a \fIPOST\fR operation with no program-device specified can affect the posting of feedback to one or more files\[char46] 
 .IP "" 2
 .RS
 \[bu] The presence of a \fIPOST\fR operation with no program-device specified for a file defined on a global File specification will affect the implicit posting of feedback to the \fIINFDS\fR for all global files in the module\[char46]
@@ -100,6 +99,7 @@ To handle \fIPOST\fR exceptions (file status codes greater than 1000), either th
 .RE
 .PP
 
+
 Usually, the \fIINFDS\fR is updated at each input and output operation or block of operations\[char46] However, if the presence of a \fIPOST\fR operation affects the posting of feedback to the \fIINFDS\fR of a file, then \fIRPG\fR IV updates the I/O Feedback Information area and the Device Dependent Feedback Information area in the \fIINFDS\fR of the file only when you process a \fIPOST\fR operation for the file\[char46] The File Dependent Information in the \fIINFDS\fR is updated on all Input/Output operations\[char46] If you have opened a file for multiple-member processing, the Open Feedback Information in the \fIINFDS\fR will be updated when an input operation (\fIREAD\fR, \fIREADP\fR, \fIREADE\fR \fIREADPE\fR) causes a new member to be opened\[char46]
 
 
@@ -114,3 +114,13 @@ When a \fIPOST\fR operation is processed, the associated file must be open\[char
 
 For more information, see File Operations\[char46]
 
+.SH SEE ALSO
+.BR DUMP,
+.BR INFDS,
+.BR POST,
+.BR READ,
+.BR READE,
+.BR READP,
+.BR READPE,
+.BR RPG,
+.BR WORKSTN

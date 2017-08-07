@@ -91,7 +91,9 @@ D string          s             50a   varying inz(\[char39]$****12\[char46]345**
 Â
 
 .SH SEE ALSO
-.BR %TRIM (3RPG),
-.BR %LEN (3RPG),
-.BR %CHECK (3RPG),
-.BR %SUBST (3RPG)
+.BR %CHECK,
+.BR %CHECKR,
+.BR %LEN,
+.BR %SUBST,
+.BR %TRIM,
+.BR UCS

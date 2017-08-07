@@ -9,6 +9,7 @@
 .SH NAME
 DESCEND
 .SH DESCRIPTION
+The \fIDESCEND\fR keyword describes the sequence of the data in any of the following: 
 .IP "" 2
 .RS
 \[bu] An array
@@ -22,6 +23,7 @@ DESCEND
 \[bu] A prototyped parameter
 .RE
 .PP
+
 
 See also \fIASCEND\fR\[char46]
 
@@ -44,5 +46,11 @@ A sequence (ascending or descending) must be specified if the \fILOOKUP\fR opera
 If the \fISORTA\fR operation code is used with an array, and no sequence is specified, an ascending sequence is assumed\[char46]
 
 .SH SEE ALSO
-.BR %LOOKUPXX (3RPG),
-.BR %TLOOKUPXX (3RPG)
+.BR %LOOKUPXX,
+.BR %TLOOKUPXX,
+.BR ALTSEQ,
+.BR ASCEND,
+.BR DESCEND,
+.BR LOOKUP,
+.BR RPG,
+.BR SORTA

@@ -74,4 +74,10 @@ C                   EVAL      Result = CustOK
 C                   ENDSR
 .fi
 .SH SEE ALSO
-.BR %FOUND (3RPG)
+.BR %FOUND,
+.BR BEGSR,
+.BR CHAIN,
+.BR ENDIF,
+.BR ENDSR,
+.BR EVAL,
+.BR LEAVESR

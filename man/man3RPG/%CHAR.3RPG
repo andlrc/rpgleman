@@ -17,3 +17,6 @@
 
 \fB%CHAR\fR converts the value of the expression from character, graphic, \fIUCS\fR-2, numeric, date, time or timestamp data to type character\[char46]
 
+.SH SEE ALSO
+.BR %CHAR,
+.BR UCS

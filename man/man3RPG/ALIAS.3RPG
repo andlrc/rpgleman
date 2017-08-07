@@ -15,10 +15,7 @@ When the \fIALIAS\fR keyword is specified for an externally-described data struc
 When alias names are being used and you want to rename a subfield, you specify the alias name as the parameter to the \fIEXTFLD\fR keyword\[char46] The \fIEXTFLD\fR keyword does not support continuation, so you must specify the entire name on one source specification\[char46] Figure 1 shows an example with two data structures, defined for the same file\[char46] The data structure that has the \fIALIAS\fR keyword coded uses the alias name, \fICUSTOMER\fR_ADDRESS, as the parameter for the \fIEXTFLD\fR keyword\[char46] The data structure that does not have the \fIALIAS\fR keyword coded uses the standard name, \fICUSTAD\fR, as the parameter for the \fIEXTFLD\fR keyword\[char46]
 
 
-
-
-
-
+When the \fIPREFIX\fR  keyword is specified with the \fIALIAS\fR keyword, the second parameter of \fIPREFIX\fR, indicating the number of characters to be replaced, does not apply to the alias names\[char46] In the following discussion, assume that the external file \fIMYFILE\fR has fields \fIXYCUSTNM\fR and \fIXYID\fR_NUM, and the \fIXYCUSTNM\fR field has the alias name \fICUSTOMER\fR_NAME\[char46] 
 .IP "" 2
 .RS
 \[bu] If keyword \fIPREFIX\fR(\fINEW\fR_) is specified, there is no second parameter, so no characters will be replaced for any names\[char46] The names used for the \fIRPG\fR subfields will be \fINEW\fR_CUSTOMER_NAME and \fINEW\fR_XYID_NUM\[char46]
@@ -32,6 +29,9 @@ When alias names are being used and you want to rename a subfield, you specify t
 \[bu] If keyword \fIPREFIX\fR(\[char39]\[char39]:2) is specified, two characters will be removed the names of fields that do not have an alias name\[char46] The names used for the \fIRPG\fR subfields will be \fICUSTOMER\fR_NAME and ID_NUM\[char46] The first two characters, "XY", are replaced in \fIXYID\fR_NUM, but no characters are replaced in \fICUSTOMER\fR_NAME\[char46]
 .RE
 .PP
+
+.SH NOTICE
+Note:  If the alternate name for a particular external field is enclosed in quotes, the standard external field name is used for that field\[char46]
 .SH EXAMPLE
 Using the \fIALIAS\fR keyword for an externally-described data structure
 .PP
@@ -65,3 +65,24 @@ D   cust_addr   e                     EXTFLD(CUSTAD)
     aliasDs\[char46]cust_addr = \[char39]123 Mockingbird Lane\[char39];
     noAliasDs\[char46]id_num = 12345;
 .fi
+.SH SEE ALSO
+.BR ADDR,
+.BR ADDRESS,
+.BR ALIAS,
+.BR CUST,
+.BR CUSTAD,
+.BR CUSTNM,
+.BR CUSTOMER,
+.BR CUSTREC,
+.BR DDS,
+.BR EXTFLD,
+.BR EXTNAME,
+.BR MYFILE,
+.BR NAME,
+.BR NEW,
+.BR NUM,
+.BR PREFIX,
+.BR QUALIFIED,
+.BR RPG,
+.BR XYCUSTNM,
+.BR XYID

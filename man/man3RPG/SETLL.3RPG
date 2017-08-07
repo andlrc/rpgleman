@@ -74,10 +74,7 @@ If name is a record format name for which the lower limit is to be set, the file
 
 
 
-
-
-
-
+ You can use the special values \fI*START\fR and \fI*END\fR for search-arg \[char46] \fI*START\fR positions to the beginning of the file and \fI*END\fR positions to the end of the file\[char46] Both positionings are independent of the collating sequence used for keyed files and independent of null-valued key fields\[char46] If you specify either \fI*START\fR or \fI*END\fR for search-arg , note the following: 
 .IP "" 2
 .RS
 \[bu] The name of the file must be specified as the name  operand\[char46]
@@ -87,17 +84,21 @@ If name is a record format name for which the lower limit is to be set, the file
 \[bu] Either an error indicator (positions 73-74) or the \[char39]E\[char39] extender may be specified\[char46]
 .RE
 .PP
+ 
 
 
 
 
 
+ Figurative constants can also be used to position the file\[char46] However, there are some situations where using \fI*LOVAL\fR or \fI*HIVAL\fR does not position the file exactly at the first or last record in the file; it is better to use \fI*START\fR and \fI*END\fR if you want to position to the first or last record in the file\[char46] 
+
+ 
 
 
 
 
 
-
+ When used with a file with a composite key, figurative constants are treated as though each field of the key contained the figurative constant value\[char46] Using \fISETLL\fR with \fI*LOVAL\fR positions the file so that the first read retrieves the record with the lowest key, if the file does not contain any records with null-capable key fields\[char46] In most cases (when duplicate keys are not allowed), \fI*HIVAL\fR positions the file so that a \fIREADP\fR retrieves the last record in the file, or a \fIREAD\fR receives an end-of-file indication\[char46] However, note the following cases for using \fI*LOVAL\fR and \fI*HIVAL\fR: 
 .IP "" 2
 .RS
 \[bu] 
@@ -127,12 +128,14 @@ If name is a record format name for which the lower limit is to be set, the file
 
 .RE
 .PP
+ 
 
 
 
 Figure 1 shows the use of figurative constants with the \fISETGT\fR operation\[char46] Figurative constants are used the same way with the \fISETLL\fR operation\[char46]
 
 
+Remember the following when using the \fISETLL\fR operation: 
 .IP "" 2
 .RS
 \[bu] If the \fISETLL\fR operation is not successful (no records found condition), the file is positioned to the end of the file\[char46]
@@ -151,16 +154,17 @@ Figure 1 shows the use of figurative constants with the \fISETGT\fR operation\[c
 .RE
 .PP
 
+
 See Database Null Value Support for information on handling records with null-capable fields and keys\[char46]
 
 
 For more information, see File Operations\[char46]
 
 
-
-
 In the following example, the file \fIORDFIL\fR contains order records\[char46] The key field is the order number (\fIORDER\fR) field\[char46] There are multiple records for each order\[char46] \fIORDFIL\fR looks like this in the calculation specifications:
 
+.SH NOTICE
+Note:  Operation code extenders H, M, and R are allowed only when the search argument is a list or is \fB%KDS()\fR\[char46]
 .SH EXAMPLE
 \fISETLL\fR Operation
 .PP
@@ -197,7 +201,31 @@ C
 
 
 .SH SEE ALSO
-.BR %KDS (3RPG),
-.BR %FOUND (3RPG),
-.BR %EQUAL (3RPG),
-.BR %EOF (3RPG)
+.BR %EOF,
+.BR %EQUAL,
+.BR %FOUND,
+.BR %KDS,
+.BR CCSID,
+.BR CHAIN,
+.BR DETAIL,
+.BR DOU,
+.BR EHMR,
+.BR ENDDO,
+.BR ENDIF,
+.BR EXCEPT,
+.BR IBM,
+.BR ILE,
+.BR IVAL,
+.BR KLIST,
+.BR NOT,
+.BR ORDER,
+.BR ORDFIL,
+.BR OVAL,
+.BR READ,
+.BR READE,
+.BR READP,
+.BR RPG,
+.BR SETGT,
+.BR SETLL,
+.BR TART,
+.BR URL

@@ -16,8 +16,10 @@
 \fB%KDS\fR is allowed as the search argument for any keyed Input/Output operation (\fICHAIN\fR, \fIDELETE\fR, \fIREADE\fR, \fIREADPE\fR, \fISETGT\fR, \fISETLL\fR) coded in a free-form group\[char46] The search argument is specified by the subfields of the data structure name coded as the first argument of the built-in function\[char46] The key data structure may be (but is not limited to), an externally described data structure with keyword \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*KEY\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*KEY\fR)\[char46]\[char46]
 
 
+Example:
 
-
+.SH NOTICE
+Note: 
 .IP 1. 2
 .RS
 The first argument must be the name of a data structure\[char46] This includes any subfield defined with keyword \fILIKEDS\fR or \fILIKEREC\fR\[char46]
@@ -52,8 +54,6 @@ Opcode extenders H, M, or R specified on the keyed Input/Output operations code 
 .RE
 .PP
 
-Example:
-
 .SH EXAMPLE
 Example of Search on Keyed Input/Output Operations
 .PP
@@ -78,3 +78,22 @@ D custRecKeys     ds                  likerec(custRec : *key)
          chain %kds(custRecKeys) custRec;
  /end-free
 .fi
+.SH SEE ALSO
+.BR %KDS,
+.BR ADDR,
+.BR CCSID,
+.BR CHAIN,
+.BR CUSTR,
+.BR DELETE,
+.BR DIM,
+.BR ETD,
+.BR EXTNAME,
+.BR IPEASF,
+.BR LIKEDS,
+.BR LIKEREC,
+.BR NAME,
+.BR READE,
+.BR READPE,
+.BR SETGT,
+.BR SETLL,
+.BR ZIP

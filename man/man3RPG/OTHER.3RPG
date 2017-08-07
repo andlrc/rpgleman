@@ -42,6 +42,7 @@ T}
 The \fIOTHER\fR operation begins the sequence of operations to be processed if no \fIWHEN\fRxx or \fIWHEN\fR (When True Then Select) condition is satisfied in a \fISELECT\fR group\[char46] The sequence ends with the \fIENDSL\fR or \fIEND\fR operation\[char46]
 
 
+Rules to remember when using the \fIOTHER\fR operation: 
 .IP "" 2
 .RS
 \[bu] The \fIOTHER\fR operation is optional in a \fISELECT\fR group\[char46]
@@ -63,6 +64,7 @@ The \fIOTHER\fR operation begins the sequence of operations to be processed if n
 \[bu] Within total calculations, the control level entry (positions 7 and 8)  can be blank or can contain an L1 through L9 indicator, an LR indicator, or an L0 entry to group the statement within the appropriate section of the program\[char46] The control level entry is for documentation purposes only\[char46] Conditioning indicator entries (positions 9 through 11) are not allowed\[char46]
 .RE
 .PP
+
 
 For more information, see Structured Programming Operations\[char46]
 
@@ -99,3 +101,10 @@ C                      :
 C                      :
 C                   ENDSL
 .fi
+.SH SEE ALSO
+.BR END,
+.BR ENDSL,
+.BR OTHER,
+.BR SELECT,
+.BR WHEN,
+.BR WHENEQ

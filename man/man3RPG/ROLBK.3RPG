@@ -39,6 +39,7 @@ _
 T}
 .TE
 
+The \fIROLBK\fR operation: 
 .IP "" 2
 .RS
 \[bu] Eliminates all the changes to your files that have been specified in output operations since the previous \fICOMMIT\fR or \fIROLBK\fR operation (or since the beginning of operations under commitment control if there has been no previous \fICOMMIT\fR or \fIROLBK\fR operation)\[char46]
@@ -52,6 +53,7 @@ T}
 \[bu] Repositions the file to its position at the time of the previous \fICOMMIT\fR operation (or at the time of the file \fIOPEN\fR, if there has been no previous \fICOMMIT\fR operation\[char46])
 .RE
 .PP
+
 
 Commitment control starts when the CL command \fISTRCMTCTL\fR is executed\[char46] See the chapter on âCommitment Controlâ in the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide for more information\[char46]
 
@@ -67,3 +69,10 @@ For information on how the rollback function is performed by the system, refer t
 
 For more information, see File Operations\[char46]
 
+.SH SEE ALSO
+.BR COMMIT,
+.BR ILE,
+.BR OPEN,
+.BR ROLBK,
+.BR RPG,
+.BR STRCMTCTL

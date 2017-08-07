@@ -22,6 +22,7 @@
 For more information, see File Operations, Result Operations, or Built-in Functions\[char46]
 
 
+The operations that set \fB%STATUS\fR are: 
 .IP "" 2
 .RS
 \[bu] \fIACQ\fR (Acquire)
@@ -191,6 +192,7 @@ For more information, see File Operations, Result Operations, or Built-in Functi
 \[bu] \fIXLATE\fR (Translate)
 .RE
 .PP
+
 .SH RETURN VALUE
 \fB%STATUS\fR returns the most recent value set for the program or file status\[char46] \fB%STATUS\fR is set whenever the program status or any file status changes, usually when an error occurs\[char46]
 
@@ -293,4 +295,63 @@ C                   GOTO      BAD_SCAN
 C \[char46]\[char46]\[char46]
 .fi
 .SH SEE ALSO
-.BR %ERROR (3RPG)
+.BR %ERROR,
+.BR %STATUS,
+.BR ABC,
+.BR ACQ,
+.BR ADDDUR,
+.BR ALLOC,
+.BR AND,
+.BR BAD,
+.BR BEGSR,
+.BR CALL,
+.BR CALLB,
+.BR CALLP,
+.BR CHAIN,
+.BR CHECK,
+.BR CHECKR,
+.BR CLOSE,
+.BR COMMIT,
+.BR DEALLOC,
+.BR DELETE,
+.BR DSPLY,
+.BR END-FREE,
+.BR ETD,
+.BR EXFMT,
+.BR EXTRCT,
+.BR FEOD,
+.BR FREE,
+.BR GOTO,
+.BR INFDS,
+.BR INFSR,
+.BR INZ,
+.BR NEXT,
+.BR OCCUR,
+.BR OPEN,
+.BR OUT,
+.BR POST,
+.BR READ,
+.BR READC,
+.BR READE,
+.BR READP,
+.BR READPE,
+.BR REALLOC,
+.BR REC,
+.BR REL,
+.BR RESET,
+.BR ROLBK,
+.BR SCAN,
+.BR SELECT,
+.BR SETGT,
+.BR SETLL,
+.BR SSR,
+.BR SUBDUR,
+.BR SUBST,
+.BR TAG,
+.BR TATUS,
+.BR TEST,
+.BR UNLOCK,
+.BR UPDATE,
+.BR WHEN,
+.BR WRITE,
+.BR XLATE

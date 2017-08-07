@@ -13,6 +13,7 @@ STATIC
 STATIC{(*ALLTHREAD)} 
 .fi
 .SH DESCRIPTION
+The \fISTATIC\fR keyword is used: 
 .IP "" 2
 .RS
 \[bu] To specify that a local variable is stored in static storage
@@ -26,6 +27,7 @@ STATIC{(*ALLTHREAD)}
 \[bu] To specify that a Javaâ¢ method is defined as a static method\[char46]
 .RE
 .PP
+
 
 For a local variable of a subprocedure, the \fISTATIC\fR keyword specifies that the data item is to be stored in static storage, and thereby hold its value across calls to the procedure in which it is defined\[char46] The keyword can only be used within a subprocedure\[char46] All global fields are static\[char46]
 
@@ -42,6 +44,7 @@ For any variable in a module where \fITHREAD\fR(\fI*CONCURRENT\fR) is specified 
 If you have a copy file that may be copied into source with or without the \fITHREAD\fR(\fI*CONCURRENT\fR) keyword, you can check for the predefined condition \fI*THREAD_CONCURRENT\fR to control whether to include the \fISTATIC\fR(\fI*ALLTHREAD\fR) keyword\[char46] See Conditions Relating to Control Specification Keywords for more information\[char46]
 
 
+The following rules apply to the use of the \fISTATIC\fR(\fI*ALLTHREAD\fR) keyword: 
 .IP "" 2
 .RS
 \[bu] \fISTATIC\fR(\fI*ALLTHREAD\fR) is not allowed unless \fITHREAD\fR(\fI*CONCURRENT\fR) is specified on the Control specification\[char46]
@@ -59,8 +62,22 @@ If you have a copy file that may be copied into source with or without the \fITH
 
 
 
-
-
-
 For a Java method, the \fISTATIC\fR keyword specifies that the method is defined as static\[char46] If \fISTATIC\fR is not specified, the method is assumed to be an instance method\[char46] You must code the \fISTATIC\fR keyword for your prototype if and only if the Java method has the "static" attribute\[char46] The \fI*ALLTHREAD\fR parameter is not allowed when the \fISTATIC\fR keyword is specified for a prototype\[char46]
 
+.SH NOTICE
+It is up to you to ensure that a static variable used in all threads is handled in a thread-safe manner\[char46] See the "Multithreading Considerations" section in the 
+
+ , and \[char46]
+
+Tip:  It is a good idea to have a naming convention for your all-thread static variables to alert maintenance programmers and code reviewers that the variables need special handling\[char46] For example, you could add the prefix \fIATS\fR_ to all your variable names that are defined with \fISTATIC\fR(\fI*ALLTHREAD\fR)\[char46]
+.SH SEE ALSO
+.BR ATS,
+.BR CAUTION,
+.BR CONCURRENT,
+.BR HREAD,
+.BR ILE,
+.BR LLTHREAD,
+.BR ONCURRENT,
+.BR RPG,
+.BR STATIC,
+.BR THREAD

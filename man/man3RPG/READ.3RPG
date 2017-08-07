@@ -63,8 +63,7 @@ You can specify an indicator in positions 75-76 to signal whether an end of file
 Figure 1 illustrates the \fIREAD\fR operation\[char46]
 
 
-
-
+When name  specifies a multiple device file, the \fIREAD\fR operation does one of the following: 
 .IP "" 2
 .RS
 \[bu] Reads data from the device specified in the most recent \fINEXT\fR operation (if such a \fINEXT\fR operation has been processed)\[char46]
@@ -75,6 +74,7 @@ Figure 1 illustrates the \fIREAD\fR operation\[char46]
 Refer to \fIICF\fR Programming, SC41-5442 for more information on format selection processing for an \fIICF\fR file\[char46]
 
  
+The \fIREAD\fR operation will stop waiting after a period of time in which no input is provided, or when one of the following CL commands has been entered with the controlled option specified: 
 .IP "" 2
 .RS
 \[bu] \fIENDJOB\fR (End Job)
@@ -92,12 +92,14 @@ Refer to \fIICF\fR Programming, SC41-5442 for more information on format selecti
 \[bu] \fIENDSYS\fR (End System)\[char46]
 .RE
 .PP
+
  
 This results in a file exception/error that is handled by the method specified in your program (see File Exception/Errors)\[char46] See \fIICF\fR Programming, SC41-5442 for a discussion of the \fIWAITRCD\fR parameter on the commands to create or modify a file\[char46] This parameter controls the length of time the \fIREAD\fR operation waits for input\[char46]
 
 
 .RE
 .PP
+
 
 When name specifies a format name and the format name is associated with a multiple device file, data is read from the device identified by the field specified in the \fIDEVID\fR keyword in file specifications\[char46] If there is no such entry, data is read from the device used in the last successful input operation\[char46]
 
@@ -140,4 +142,31 @@ C   64              LEAVE
 C                   ENDDO
 .fi
 .SH SEE ALSO
-.BR %EOF (3RPG)
+.BR %EOF,
+.BR CHAIN,
+.BR DDS,
+.BR DEVID,
+.BR DOW,
+.BR ENDDO,
+.BR ENDIF,
+.BR ENDJOB,
+.BR ENDSBS,
+.BR ENDSYS,
+.BR EOF,
+.BR EXTNAME,
+.BR FILEA,
+.BR ICF,
+.BR ILE,
+.BR INVITE,
+.BR LEAVE,
+.BR LIKEREC,
+.BR NEXT,
+.BR NPUT,
+.BR PWRDWNSYS,
+.BR READ,
+.BR READP,
+.BR REC,
+.BR RPG,
+.BR SETGT,
+.BR SETLL,
+.BR WAITRCD

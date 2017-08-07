@@ -63,8 +63,11 @@ If the \fISETGT\fR operation is not successful (no-record-found condition), the 
 Use \fI*END\fR with the \fISETLL\fR operation to position to the last record in the file\[char46]
 
 
+Figurative constants can also be used to position the file\[char46] 
 
 
+
+When used with a file with a composite key, figurative constants are treated as though each field of the key contained the figurative constant value\[char46] In most cases, \fI*LOVAL\fR positions the file so that the first read retrieves the record with the lowest key\[char46] In most cases, \fI*HIVAL\fR positions the file so that a \fIREAD\fR receives an end-of-file indication; a subsequent \fIREADP\fR retrieves the last record in the file\[char46] However, note the following cases for using \fI*LOVAL\fR and \fI*HIVAL\fR: 
 .IP "" 2
 .RS
 \[bu] With an externally described file that has a key in descending order, \fI*HIVAL\fR positions the file so that the first read operation retrieves the first record in the file (the record with the highest key), and \fI*LOVAL\fR positions the file so that a \fIREADP\fR operation retrieves the last record in the file (the record with the lowest key)\[char46]
@@ -74,6 +77,7 @@ Use \fI*END\fR with the \fISETLL\fR operation to position to the last record in 
 \[bu] If a record is added or a key field is altered after a \fISETGT\fR operation with either \fI*LOVAL\fR or \fI*HIVAL\fR, the file may no longer be positioned to the record with the lowest or highest key\[char46] key value Xâ99\[char46]\[char46]\[char46]9Dâ and \fI*HIVAL\fR for numeric keys represents a key value Xâ99\[char46]\[char46]\[char46]9Fâ\[char46] If the keys are float numeric, \fI*LOVAL\fR and \fI*HIVAL\fR are defined differently\[char46] See Figurative Constants \[char46] When a program described file has a packed decimal key specified in the file specifications but the actual file key field contains character data, records may have keys that are less than \fI*LOVAL\fR or greater than \fI*HIVAL\fR\[char46] When a key field contains unsigned binary data, \fI*LOVAL\fR may not be the lowest key\[char46]
 .RE
 .PP
+
 
 When \fI*LOVAL\fR or \fI*HIVAL\fR are used with key fields with a Date or Time data type, the values are dependent of the Date-Time format used\[char46] For details on these values please see Data Types and Data Formats\[char46]
 
@@ -86,8 +90,8 @@ See Database Null Value Support for information on handling records with null-ca
 
 For more information, see File Operations\[char46]
 
-
-
+.SH NOTICE
+Note:  Operation code extenders H, M, and R are allowed only when the search argument is a list or is \fB%KDS()\fR\[char46]
 .SH EXAMPLE
 \fISETGT\fR Operation
 .PP
@@ -146,5 +150,21 @@ C                   READP     RECDB                                  64
 
 
 .SH SEE ALSO
-.BR %KDS (3RPG),
-.BR %FOUND (3RPG)
+.BR %FOUND,
+.BR %KDS,
+.BR CCSID,
+.BR EHMR,
+.BR FILEA,
+.BR FILEB,
+.BR IBM,
+.BR IVAL,
+.BR KEY,
+.BR KLIST,
+.BR OVAL,
+.BR READ,
+.BR READP,
+.BR RECDA,
+.BR RECDB,
+.BR SETGT,
+.BR SETLL,
+.BR URL

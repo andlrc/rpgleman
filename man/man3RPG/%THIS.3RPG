@@ -54,4 +54,12 @@ C                   endif
 P vacationDays    E
 .fi
 .SH SEE ALSO
-.BR %FOUND (3RPG)
+.BR %FOUND,
+.BR %THIS,
+.BR AVA,
+.BR EMPFILE,
+.BR EXPORT,
+.BR EXTPROC,
+.BR RPG,
+.BR STATIC,
+.BR VACDAYS

@@ -16,6 +16,7 @@ ALTSEQ(*NONE)
 When the \fIALTSEQ\fR(\fI*NONE\fR) keyword is specified, the alternate collating sequence will not be used for comparisons involving this field, even when the \fIALTSEQ\fR keyword is specified on the control specification\[char46] \fIALTSEQ\fR(\fI*NONE\fR) on Data Definition specifications will be meaningful only if one of \fIALTSEQ\fR, \fIALTSEQ\fR(\fI*SRC\fR) or \fIALTSEQ\fR(\fI*EXT\fR) is coded in the control specifications\[char46] It is ignored if this is not true\[char46]
 
 
+\fIALTSEQ\fR(\fI*NONE\fR) is a valid keyword for: 
 .IP "" 2
 .RS
 \[bu] Character standalone fields
@@ -45,3 +46,7 @@ When the \fIALTSEQ\fR(\fI*NONE\fR) keyword is specified, the alternate collating
 \[bu] Character Prototyped Parameters
 .RE
 .PP
+
+.SH SEE ALSO
+.BR ALTSEQ,
+.BR ONE

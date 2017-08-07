@@ -33,3 +33,7 @@ For more information, see Bit Operations or Built-in Functions\[char46]
 .SH RETURN VALUE
 \fB%BITOR\fR returns the bit-wise ORing of the bits of all the arguments\[char46] That is, the result bit is ON when any of the corresponding bits in the arguments are ON, and \fIOFF\fR otherwise\[char46]
 
+.SH SEE ALSO
+.BR %BITOR,
+.BR BIF,
+.BR OFF

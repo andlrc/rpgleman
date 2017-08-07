@@ -100,4 +100,20 @@ C   72              GOTO      BOF
 C     BOF           TAG
 .fi
 .SH SEE ALSO
-.BR %EOF (3RPG)
+.BR %EOF,
+.BR BOF,
+.BR CHAIN,
+.BR ENDIF,
+.BR EXTNAME,
+.BR FILEA,
+.BR GOTO,
+.BR ILE,
+.BR LIKEREC,
+.BR NPUT,
+.BR PREC,
+.BR READP,
+.BR REC,
+.BR RPG,
+.BR SETGT,
+.BR SETLL,
+.BR TAG

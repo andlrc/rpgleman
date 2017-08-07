@@ -48,3 +48,13 @@ D array_dims      C                   const (%elem (arr1d))
     num = %elem (mds);    // num is now 30
  /END-FREE
 .fi
+.SH SEE ALSO
+.BR %ELEM,
+.BR CUST,
+.BR DIM,
+.BR END-FREE,
+.BR ETD,
+.BR FREE,
+.BR INFO,
+.BR LIKEDS,
+.BR ORDERS

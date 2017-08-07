@@ -51,3 +51,11 @@ D string          S             10A   inz(\[char39]rpg dept\[char39])
    // string now contains \[char39]RPG Dept\[char39]
  /END-FREE
 .fi
+.SH SEE ALSO
+.BR %XLATE,
+.BR ABCDEFGHIJKLMNOPQRSTUVWXYZ,
+.BR DEPT,
+.BR END-FREE,
+.BR FREE,
+.BR RPG,
+.BR UCS

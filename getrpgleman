@@ -76,6 +76,13 @@ sub man_build
 			} @{$man->{return_value}}) . "\n";
 		}
 
+		if (@{$man->{notice}}) {
+			print $fh ".SH NOTICE\n";
+			print $fh join("\n\n", map {
+				man_node($_, 1);
+			} @{$man->{notice}}) . "\n";
+		}
+
 		if (@{$man->{examples}}) {
 			print $fh join("\n\n", map {
 				man_node($_);
@@ -85,7 +92,9 @@ sub man_build
 		if (@{$man->{see_also}}) {
 			print $fh ".SH SEE ALSO\n";
 			print $fh join(",\n", map {
-				".BR $_ ($man->{section})";
+				".BR $_";
+			} sort {
+				$a cmp $b;
 			} @{$man->{see_also}}) . "\n";
 		}
 
@@ -97,6 +106,7 @@ sub man_node
 {
 	my ($node, $print_text) = @_;
 	my $tag_name = $node->{_tag};
+	my $class    = $node->attr('class') || '';
 
 	# <p>-tags
 	if ($tag_name =~ m{ \b p \b }xms) {
@@ -160,11 +170,11 @@ sub man_node
 		my @rows = ();
 		my $size = -1;
 
-		for my $tr ($node->findnodes('tbody/tr')) {
-			my @tds = $tr->findnodes_as_strings('td');
-			if ($tds[0] !~ m{ ^ \h* Note }xms) {
-				$size = @tds if (@tds > $size);
-				push @rows, \@tds;
+		for my $tr ($node->findnodes('thead/tr'), $node->findnodes('tbody/tr')) {
+			my @columns = ($tr->findnodes_as_strings('th'), $tr->findnodes_as_strings('td'));
+			if ($columns[0] !~ m{ ^ \h* Note }xms) {
+				$size = @columns if (@columns > $size);
+				push @rows, \@columns;
 			}
 		}
 
@@ -181,9 +191,7 @@ sub man_node
 	}
 
 	# Code Blocks
-	if (($node->attr('class') || '') =~ m{
-		\b (?: fig ) \b
-	}xms) {
+	if ($class =~ m{ \b fig \b }xms) {
 		my @ex_nodes = $node->findnodes('*');
 		if (@ex_nodes >= 1) {
 			my $cap = '';
@@ -227,10 +235,15 @@ sub man_node
 		} @{$node->{_content}});
 	}
 	else {
-		# Sometimes nodes is wrapped.
-		return join("\n\n", map {
-			man_node($_);
-		} $node->findnodes("*"));
+		# <div class="p">-tags
+		if ($tag_name =~ m{ \b div \b }xms && $class =~ m{ \b p \b }xms) {
+			return man_node($node, 1);
+		} else {
+			# Sometimes nodes is wrapped.
+			return join("\n\n", map {
+				man_node($_);
+			} $node->findnodes("*"));
+		}
 	}
 }
 
@@ -276,6 +289,7 @@ sub read_url
 		"short_names" => [],
 		"synopsis" => "",
 		"description" => [],
+		"notice" => [],
 		"examples" => [],
 		"return_value" => [],
 		"see_also" => []
@@ -344,7 +358,12 @@ sub read_url
 		&& ($nodes[0]->attr('class') || '') !~ m{
 			\b (?:fig|section) \b
 		}xmsi) {
-		push @{$man->{description}}, shift @nodes;
+		# Tip, Note, Warning and Cautions:
+		if (($nodes[0]->attr('class') || '') =~ m{ \b (?: note | noteParent ) \b }xms) {
+			push @{$man->{notice}}, shift @nodes;
+		} else {
+			push @{$man->{description}}, shift @nodes;
+		}
 	}
 
 	while ($nodes[0]) {
@@ -354,12 +373,13 @@ sub read_url
 	@{$man->{see_also}} = do {
 		my %seen = ();
 		grep {
-			my $bif = $_;
-			!$seen{$bif}++ && !grep {
-				m{ $bif \b }xmsi;
+			my $name = $_;
+			!$seen{$name}++ && !grep {
+				m{ \Q $name \E \b }xmsi;
 			} @{$man->{short_names}}, $man->{orig_short_name};
-		} map { uc } $tree->findnodes_as_string('//body') =~ m{ % \w+ }xmsg;
-
+		} map { uc } $tree->findnodes_as_string('//body') =~ m{
+			( % \w+ | (?<! [%*]) [A-Z]{3,} (?: - [A-Z]{3,} )* )
+		}xmsg;
 	};
 
 	man_build($man);

@@ -103,7 +103,15 @@ D BasedFld        S              7A   BASED(Ptr1)
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %ALLOC (3RPG),
-.BR %ADDR (3RPG),
-.BR %ERROR (3RPG),
-.BR %STATUS (3RPG)
+.BR %ADDR,
+.BR %ALLOC,
+.BR %ERROR,
+.BR %STATUS,
+.BR ALLOC,
+.BR BASED,
+.BR DEALLOC,
+.BR END-FREE,
+.BR ETD,
+.BR FREE,
+.BR RPG,
+.BR ULL

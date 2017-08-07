@@ -42,12 +42,7 @@ T}
 The \fIREADE\fR operation retrieves the next sequential record from a full procedural file if the key of the record matches the search argument\[char46] If the key of the record does not match the search argument, an \fIEOF\fR condition occurs, and the record is not returned to the program\[char46] An \fIEOF\fR condition also applies when end of file occurs\[char46]
 
 
-
-
-
-
-
-
+The search argument, search-arg , identifies the record to be retrieved\[char46] The search-arg  operand is optional in traditional syntax but is required in free-form syntax\[char46] search-arg  can be: 
 .IP "" 2
 .RS
 \[bu] A field name, a literal, a named constant, or a figurative constant\[char46]
@@ -69,38 +64,6 @@ The \fIREADE\fR operation retrieves the next sequential record from a full proce
 \[bu] \fI*KEY\fR or (in traditional syntax only) no value\[char46] If the full key of the next record is equal to that of the current record, the next record in the file is retrieved\[char46] The full key is defined by the record format or file specified in name \[char46]
 .RE
 .PP
-
-
-
-In most cases, \fIRPG\fR can perform \fIREADE\fR by using system support that does not require obtaining a temporary record lock to determine whether there is a matching record\[char46] However, in other cases, \fIRPG\fR cannot use this support, and must request the next record before it can determine whether the record matches the \fIREADE\fR request\[char46]
-
-
-.IP "" 2
-.RS
-\[bu] the key of the current record is not the same as the search argument
-.RE
-.IP "" 2
-.RS
-\[bu] the current record is not the same as the requested record
-.RE
-.IP "" 2
-.RS
-\[bu] there are null-capable fields in the file
-.RE
-.IP "" 2
-.RS
-\[bu] 
-
- \fIALWNULL\fR(\fI*USRCTL\fR) was specified for the module 
-
-
-.RE
-.IP "" 2
-.RS
-\[bu] the file has end-of-file delay
-.RE
-.PP
-
 
 
 Graphic and \fIUCS\fR-2 keys must have the same \fICCSID\fR\[char46]
@@ -135,8 +98,43 @@ See Database Null Value Support for information on handling records with null-ca
 
 For more information, see File Operations\[char46]
 
+.SH NOTICE
+Note:  If a file is defined as update and the N operation extender is not specified, occasionally a \fIREADE\fR operation will be forced to wait for a temporary record lock for a record whose key value does not match the search argument\[char46] Once the temporary lock has been obtained, if the key value does not match the search argument, the temporary lock is released\[char46] 
+In most cases, \fIRPG\fR can perform \fIREADE\fR by using system support that does not require obtaining a temporary record lock to determine whether there is a matching record\[char46] However, in other cases, \fIRPG\fR cannot use this support, and must request the next record before it can determine whether the record matches the \fIREADE\fR request\[char46]
+
+ 
+Some of the reasons that would require \fIRPG\fR to obtain a temporary lock on the next record for a \fIREADE\fR operation are: 
+.IP "" 2
+.RS
+\[bu] the key of the current record is not the same as the search argument
+.RE
+.IP "" 2
+.RS
+\[bu] the current record is not the same as the requested record
+.RE
+.IP "" 2
+.RS
+\[bu] there are null-capable fields in the file
+.RE
+.IP "" 2
+.RS
+\[bu] 
+
+ \fIALWNULL\fR(\fI*USRCTL\fR) was specified for the module 
 
 
+.RE
+.IP "" 2
+.RS
+\[bu] the file has end-of-file delay
+.RE
+.PP
+
+
+
+Note:
+
+Note:  Operation code extenders H, M, and R are allowed only when the search argument is a list or is \fB%KDS()\fR\[char46]
 .SH EXAMPLE
 \fIREADE\fR Operation
 .PP
@@ -179,6 +177,26 @@ C                   READE     FILEA
 C                   READE(N)  REC1                                   56
 .fi
 .SH SEE ALSO
-.BR %KDS (3RPG),
-.BR %EOF (3RPG),
-.BR %ERROR (3RPG)
+.BR %EOF,
+.BR %ERROR,
+.BR %KDS,
+.BR ALWNULL,
+.BR CCSID,
+.BR CHAIN,
+.BR ENHMR,
+.BR EOF,
+.BR EXTNAME,
+.BR FILEA,
+.BR ILE,
+.BR KEYFLD,
+.BR KLIST,
+.BR LIKEREC,
+.BR NPUT,
+.BR OPEN,
+.BR READE,
+.BR REC,
+.BR RPG,
+.BR SETGT,
+.BR SETLL,
+.BR SRCTL,
+.BR UCS

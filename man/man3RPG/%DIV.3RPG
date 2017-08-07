@@ -25,4 +25,5 @@ This function is illustrated in Figure 1\[char46]
 \fB%DIV\fR returns the integer portion of the quotient that results from dividing operands n by m\[char46] The two operands must be numeric values with zero decimal positions\[char46] If either operand is a packed, zoned, or binary numeric value, the result is packed numeric\[char46] If either operand is an integer numeric value, the result is integer\[char46] Otherwise, the result is unsigned numeric\[char46] Float numeric operands are not allowed\[char46] (See also \fB%REM\fR (Return Integer Remainder)\[char46])
 
 .SH SEE ALSO
-.BR %REM (3RPG)
+.BR %DIV,
+.BR %REM

@@ -35,10 +35,11 @@ If the search argument contains trailing blanks, the scan will include those tra
 
 For more information, see String Operations or Built-in Functions\[char46]
 
+.SH NOTICE
+Note:  Unlike the \fISCAN\fR operation code, \fB%SCAN\fR cannot return an array containing all occurrences of the search string and its results cannot be tested using the \fB%FOUND\fR built-in function\[char46]
 
 
-
-
+Consider the following definitions 
 .SH EXAMPLE
 
 .PP
@@ -52,6 +53,7 @@ D posVar          S              5U 0
 D srchFld         S             10A
 D srchFldVar      S             10A   varying
 .fi
+
 
 .SH EXAMPLE
 
@@ -130,6 +132,10 @@ After the previous statements, the value of pos is 0 because srchFld is a 10-byt
 For an example comparing \fB%SCAN\fR and \fB%SCANR\fR, see Example using \fB%SCAN\fR and \fB%SCANR\fR together\[char46]
 
 .SH SEE ALSO
-.BR %TRIMR (3RPG),
-.BR %FOUND (3RPG),
-.BR %SCANR (3RPG)
+.BR %FOUND,
+.BR %SCAN,
+.BR %SCANR,
+.BR %TRIMR,
+.BR ETD,
+.BR SCAN,
+.BR UCS

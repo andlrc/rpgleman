@@ -18,8 +18,7 @@
 The unit can be \fI*MSECONDS\fR, \fI*SECONDS\fR, \fI*MINUTES\fR, \fI*HOURS\fR, \fI*DAYS\fR, \fI*MONTHS\fR, or \fI*YEARS\fR\[char46] You can also use the following abbreviated forms of the unit: \fI*MS\fR, \fI*S\fR, \fI*MN\fR, \fI*H\fR, \fI*D\fR, \fI*M\fR, or \fI*Y\fR\[char46]
 
 
-
-
+\fB%DIFF\fR produces the difference (duration) between two date or time values\[char46] The first and second parameters must have the same, or compatible types\[char46]  The following combinations are possible: 
 .IP "" 2
 .RS
 \[bu] Date and date
@@ -42,6 +41,8 @@ The unit can be \fI*MSECONDS\fR, \fI*SECONDS\fR, \fI*MINUTES\fR, \fI*HOURS\fR, \
 .RE
 .PP
 
+
+The third parameter specifies the unit\[char46] The following units are valid: 
 .IP "" 2
 .RS
 \[bu] For two dates or a date and a timestamp: \fI*DAYS\fR, \fI*MONTHS\fR, and \fI*YEARS\fR
@@ -55,6 +56,7 @@ The unit can be \fI*MSECONDS\fR, \fI*SECONDS\fR, \fI*MINUTES\fR, \fI*HOURS\fR, \
 \[bu] For two timestamps: \fI*MSECONDS\fR, \fI*SECONDS\fR, \fI*MINUTES\fR, \fI*HOURS\fR, \fI*DAYS\fR, \fI*MONTHS\fR, and \fI*YEARS\fR
 .RE
 .PP
+
 
 The results for \fI*MONTHS\fR and \fI*YEARS\fR may be surprising\[char46] See Unexpected Results\[char46]
 
@@ -146,5 +148,16 @@ D prev_end        S               D   INZ(D\[char39]2003-06-24\[char39])
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %TIMESTAMP (3RPG),
-.BR %DATE (3RPG)
+.BR %DATE,
+.BR %DIFF,
+.BR %TIMESTAMP,
+.BR AYS,
+.BR EARS,
+.BR ECONDS,
+.BR END-FREE,
+.BR FREE,
+.BR INUTES,
+.BR INZ,
+.BR ONTHS,
+.BR OURS,
+.BR SECONDS

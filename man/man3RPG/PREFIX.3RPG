@@ -22,6 +22,7 @@ If the \[char39]nbr_of_char_replaced\[char39] is specified, it must represent a 
 The \[char39]nbr_of_char_replaced\[char39] parameter can be a numeric literal, a built-in function that returns a numeric value, or a numeric constant\[char46] If it is a named constant, then the constant must be defined prior to the specification containing the \fIPREFIX\fR keyword\[char46] In addition, if it is a built-in function, all parameters to the built-in function must be defined prior to the specification containing the keyword \fIPREFIX\fR\[char46]
 
 
+The following rules apply: 
 .IP "" 2
 .RS
 \[bu] Subfields that are explicitly renamed using the \fIEXTFLD\fR keyword are not affected by this keyword\[char46]
@@ -43,6 +44,7 @@ The \[char39]nbr_of_char_replaced\[char39] parameter can be a numeric literal, a
 \[bu] If the prefix is a character literal, it must be uppercase\[char46]
 .RE
 .PP
+
 
 See the \fIALIAS\fR keyword for information on how the \fIPREFIX\fR keyword interacts with the \fIALIAS\fR keyword\[char46]
 
@@ -68,3 +70,12 @@ D                                     qualified
 
 For more examples, see \fIPREFIX\fR(prefix{:nbr_of_char_replaced})\[char46]
 
+.SH SEE ALSO
+.BR ALIAS,
+.BR EVAL-CORR,
+.BR EXTFLD,
+.BR FILE,
+.BR PREFIX,
+.BR RPG,
+.BR YETOTAL,
+.BR YTDTOTAL

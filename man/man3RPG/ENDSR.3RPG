@@ -42,9 +42,7 @@ T}
 The \fIENDSR\fR operation defines the end of an \fIRPG\fR IV subroutine and the return point (return-point) to the cycle-main program\[char46] \fIENDSR\fR must be the last statement in the subroutine\[char46] In traditional syntax, the label operand can be specified as a point to which a \fIGOTO\fR operation within the subroutine can branch\[char46] (You cannot specify a label in free-form syntax\[char46]) The control level entry (positions 7 and 8) can be SR or blank\[char46] Conditioning indicator entries are not allowed\[char46]
 
 
-
-
-
+The \fIENDSR\fR operation ends a subroutine and causes a branch back to the statement immediately following the \fIEXSR\fR or \fICAS\fRxx operation unless the subroutine is a program exception/error subroutine (\fI*PSSR\fR) or a file exception/error subroutine (\fIINFSR\fR)\[char46] For these subroutines, the return-point  operand of the \fIENDSR\fR operation can contain an entry that specifies where control is to be returned following processing of the subroutine\[char46] This entry can be a field name that contains a reserved keyword or a literal or named constant that is a reserved keyword\[char46] If a return point that is not valid is specified, the \fIRPG\fR IV  error handler receives control\[char46] 
 
 
 
@@ -58,3 +56,11 @@ See Figure 1 for an example of coding an \fIRPG\fR IV subroutine\[char46]
 
 For more information, see Subroutine Operations\[char46]
 
+.SH SEE ALSO
+.BR CAS,
+.BR ENDSR,
+.BR EXSR,
+.BR GOTO,
+.BR INFSR,
+.BR RPG,
+.BR SSR

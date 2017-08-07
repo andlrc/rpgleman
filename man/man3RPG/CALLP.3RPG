@@ -49,16 +49,14 @@ If the called program or procedure is defined in a different module, a prototype
 Note that if \fICALLP\fR is used to call a procedure which returns a value, that value will not be available to the caller\[char46] If the value is required, call the prototyped procedure from within an expression\[char46]
 
 
-
-
-
-
+To handle \fICALLP\fR exceptions ( program status codes  202, 211, or 231), the operation code extender \[char39]E\[char39] can be specified\[char46] For more information on error handling, see Program Exception/Errors \[char46] 
 
 
 .PP
 .nf
 CALLP(E) PROGNAME(FileRecs(Fld) + 1)
 .fi
+
 
 For more information on call operations, see Call Operations\[char46] For more information on defining prototypes, see Prototypes and Parameters\[char46] For information on how operation extenders M and R are used, see Precision Rules for Numeric Operations\[char46]
 
@@ -209,7 +207,33 @@ D HexPos          S              5P 0
 
 .fi
 .SH SEE ALSO
-.BR %SIZE (3RPG),
-.BR %SUBST (3RPG),
-.BR %DIV (3RPG),
-.BR %REM (3RPG)
+.BR %DIV,
+.BR %REM,
+.BR %SIZE,
+.BR %SUBST,
+.BR ABCDEF,
+.BR API,
+.BR ARSIZE,
+.BR CALLP,
+.BR CDEF,
+.BR CEE,
+.BR CEEDOD,
+.BR CONST,
+.BR COPY,
+.BR CVTHEXPR,
+.BR EMR,
+.BR END-FREE,
+.BR EXTPGM,
+.BR FREE,
+.BR ILE,
+.BR INZ,
+.BR MIT,
+.BR MYLIB,
+.BR OPDESC,
+.BR OPTIONS,
+.BR OVERLAY,
+.BR PROGNAME,
+.BR QCMDEXC,
+.BR QRPGLESRC,
+.BR RPG,
+.BR WRKSPLF

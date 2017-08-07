@@ -111,3 +111,18 @@ The keyword is optional\[char46] If not specified, the name extracted from the e
 
 If the \fIPREFIX\fR keyword is specified for the data structure, the prefix will not be applied to fields renamed with \fIEXTFLD\fR\[char46] Figure 1 shows an example of the \fIEXTFLD\fR keyword with the \fIALIAS\fR keyword\[char46]
 
+.SH SEE ALSO
+.BR ADR,
+.BR ALIAS,
+.BR CUSTMAST,
+.BR DCL,
+.BR END,
+.BR EXT,
+.BR EXTFLD,
+.BR EXTNAME,
+.BR INZ,
+.BR MYFIELD,
+.BR NAME,
+.BR PREFIX,
+.BR RPG,
+.BR UNKNOWN

@@ -13,6 +13,7 @@
 %EOF{(file_name)}
 .fi
 .SH DESCRIPTION
+The operations that set \fB%EOF\fR are: 
 .IP "" 2
 .RS
 \[bu] \fIREAD\fR (Read a Record)
@@ -39,6 +40,8 @@
 .RE
 .PP
 
+
+The following operations, if successful, set \fB%EOF(filename)\fR off\[char46] If the operation is not successful, \fB%EOF(filename)\fR is not changed\[char46] \fB%EOF\fR with no parameter is not changed by these operations\[char46] 
 .IP "" 2
 .RS
 \[bu] \fICHAIN\fR (Random Retrieval from a File)
@@ -56,6 +59,7 @@
 \[bu] \fISETLL\fR (Set Lower Limit)
 .RE
 .PP
+
 
 When a full-procedural file is specified, this function returns \[char39]1\[char39] if the previous operation in the list above, for the specified file, resulted in an end of file or beginning of file condition\[char46] For primary and secondary files, \fB%EOF\fR is available only if the file name is specified\[char46] It is set to \[char39]1\[char39] if the most recent input operation during \fI*GETIN\fR processing resulted in an end of file or beginning of file condition\[char46] Otherwise, it returns \[char39]0\[char39]\[char46]
 
@@ -123,3 +127,34 @@ FFILE2     IF   E             DISK
   // \[char46]\[char46]\[char46]
  /END-FREE
 .fi
+.SH SEE ALSO
+.BR %EOF,
+.BR AID,
+.BR AND,
+.BR CHAIN,
+.BR DISK,
+.BR DOU,
+.BR ELSE,
+.BR ELSEIF,
+.BR END-FREE,
+.BR ENDDO,
+.BR ENDIF,
+.BR ETIN,
+.BR EXSR,
+.BR FFILE,
+.BR FILE,
+.BR FINFILE,
+.BR FREE,
+.BR INFILE,
+.BR INREC,
+.BR IPEASFR,
+.BR OPEN,
+.BR READ,
+.BR READC,
+.BR READE,
+.BR READP,
+.BR READPE,
+.BR REC,
+.BR SETGT,
+.BR SETLL,
+.BR WRITE

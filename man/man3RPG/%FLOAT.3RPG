@@ -16,6 +16,7 @@
 \fB%FLOAT\fR converts the value of the expression to float format\[char46] This built-in function may only be used in expressions\[char46]
 
 
+If the parameter is a character expression, the following rules apply: 
 .IP "" 2
 .RS
 \[bu] The sign is optional\[char46] It can be \[char39]+\[char39] or \[char39]-\[char39]\[char46] It must precede the numeric data\[char46]
@@ -37,6 +38,7 @@
 \[bu] If invalid numeric data is found, an exception occurs with status code 105\[char46]
 .RE
 .PP
+
 
 For more information, see Conversion Operations or Built-in Functions\[char46]
 
@@ -66,3 +68,8 @@ D result4         s              8f
    result4 = %float (c15b);    //  "result4" is now  5\[char46]2E0
  /END-FREE
 .fi
+.SH SEE ALSO
+.BR %FLOAT,
+.BR END-FREE,
+.BR ETD,
+.BR FREE

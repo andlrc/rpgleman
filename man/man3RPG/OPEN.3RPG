@@ -98,4 +98,20 @@ C                   CALL      \[char39]RTNX\[char39]
 C                   OPEN      FILEX
 .fi
 .SH SEE ALSO
-.BR %ERROR (3RPG)
+.BR %ERROR,
+.BR AID,
+.BR CALL,
+.BR CLOSE,
+.BR DEVID,
+.BR DISK,
+.BR ENDIF,
+.BR ERREC,
+.BR EXCEPTN,
+.BR FEXCEPTN,
+.BR FFILEX,
+.BR FILEX,
+.BR IPEASFR,
+.BR OPEN,
+.BR RTNX,
+.BR USROPN,
+.BR WRITE

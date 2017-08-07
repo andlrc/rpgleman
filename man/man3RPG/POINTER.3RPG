@@ -25,6 +25,7 @@ The parameter is optional\[char46] If the parameter is specified, it must be \fI
 If the parameter is not specified, the item is a basing pointer\[char46]
 
 
+In the following example 
 .IP "" 2
 .RS
 \[bu] Field userspace  is defined as a basing pointer field
@@ -34,7 +35,7 @@ If the parameter is not specified, the item is a basing pointer\[char46]
 \[bu] Field callback  is defined as a procedure-pointer field\[char46]
 .RE
 .PP
-
+ 
 .SH EXAMPLE
 
 .PP
@@ -43,3 +44,8 @@ If the parameter is not specified, the item is a basing pointer\[char46]
 
   DCL-S callback POINTER(*PROC);
 .fi
+
+.SH SEE ALSO
+.BR DCL,
+.BR POINTER,
+.BR ROC

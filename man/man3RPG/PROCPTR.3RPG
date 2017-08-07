@@ -14,11 +14,17 @@ The \fIPROCPTR\fR keyword defines an item as a procedure pointer\[char46] The in
 
 See \fIEXTPROC\fR({\fI*CL\fR|\fI*CWIDEN\fR|\fI*CNOWIDEN\fR| {\fI*JAVA\fR:class-name:}}name) for information on how to use a procedure pointer to call a procedure\[char46]
 
+.SH NOTICE
+Note:  
+
+ The \fIPROCPTR\fR keyword is not used in a free-form definition\[char46] Instead, keyword \fIPOINTER\fR(\fI*PROC\fR)  is specified to define the item as a procedure pointer\[char46] 
 
 
-
-
-
-
-
-
+.SH SEE ALSO
+.BR AVA,
+.BR EXTPROC,
+.BR NOWIDEN,
+.BR POINTER,
+.BR PROCPTR,
+.BR ROC,
+.BR WIDEN

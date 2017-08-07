@@ -21,8 +21,10 @@ The impact on performance due to the \fIRTNPARM\fR keyword will vary from having
 Using \fIRTNPARM\fR for a procedure prototype may also reduce the amount of automatic storage required for other procedures that contain calls to that procedure\[char46] For example, if procedure \fIMYCALLER\fR contains a call to procedure \fIMYPROC\fR that returns a large value, procedure \fIMYCALLER\fR will require additional automatic storage (even if \fIMYCALLER\fR does not actually call procedure \fIMYPROC\fR at run time)\[char46] In some cases, procedure \fIMYCALLER\fR will not compile due to excessive automatic storage requirements; in other cases, \fIMYCALLER\fR is not able to be called because the total automatic storage on the call stack would exceed the maximum\[char46] Using \fIRTNPARM\fR avoids this problem with additional automatic storage\[char46]
 
 
+The \fIRTNPARM\fR keyword applies both to a prototype definition and to a procedure-interface definition\[char46]
 
-
+.SH NOTICE
+Note: 
 .IP 1. 2
 .RS
 The additional parameter is passed as the first parameter\[char46]
@@ -52,8 +54,6 @@ When \fIRTNPARM\fR is specified for the procedure, the maximum number of prototy
 The \fIRTNPARM\fR keyword is not allowed for a Javaâ¢ method call\[char46]
 .RE
 .PP
-
-The \fIRTNPARM\fR keyword applies both to a prototype definition and to a procedure-interface definition\[char46]
 
 .SH EXAMPLE
 Example of a procedure with the \fIRTNPARM\fR keyword
@@ -178,8 +178,20 @@ D   name                        10a   const
           \[char46]\[char46]\[char46]
 .fi
 .SH SEE ALSO
-.BR %PARMS (3RPG),
-.BR %PARMNUM (3RPG),
-.BR %LEN (3RPG),
-.BR %SUBST (3RPG),
-.BR %ADDR (3RPG)
+.BR %ADDR,
+.BR %LEN,
+.BR %PARMNUM,
+.BR %PARMS,
+.BR %SUBST,
+.BR API,
+.BR CEEDOD,
+.BR CEETSTA,
+.BR DCL,
+.BR GETLIBTEXT,
+.BR MYCALLER,
+.BR MYLIB,
+.BR MYPROC,
+.BR PARM,
+.BR PGM,
+.BR RPG,
+.BR RTNPARM

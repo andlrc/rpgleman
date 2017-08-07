@@ -9,6 +9,7 @@
 .SH NAME
 DTAARA
 .SH DESCRIPTION
+The syntax of the \fIDTAARA\fR keyword is different in free-form and fixed-form specifications\[char46] 
 .TP 5
 .B Free-form standalone field or subfield
 \fIDTAARA\fR{(name)}\[char46] 
@@ -30,19 +31,13 @@ See Fixed-form \fIDTAARA\fR keyword\[char46]
 .PP
 
 
-
-
-
-
-
-
-
 The \fIDTAARA\fR keyword is used to associate a standalone field, data structure, data-structure subfield or data-area data structure with an external data area\[char46] The \fIDTAARA\fR keyword has the same function as the \fI*DTAARA\fR \fIDEFINE\fR operation code (see \fI*DTAARA\fR \fIDEFINE\fR)\[char46]
 
 
 The \fIDTAARA\fR keyword can only be used in the main source section\[char46] It cannot be used in a subprocedure\[char46]
 
 
+You can create three kinds of data areas: 
 .IP "" 2
 .RS
 \[bu] \fI*CHAR\fR Character
@@ -57,19 +52,28 @@ The \fIDTAARA\fR keyword can only be used in the main source section\[char46] It
 .RE
 .PP
 
+
 You can also create a \fIDDM\fR data area (type \fI*DDM\fR) that points to a data area on a remote system of one of the three types above\[char46]
 
 
 Only character, numeric (excluding float numeric), and indicator types are allowed to be associated with data areas\[char46] The actual data area on the system must be of the same type as the field in the program, with the same length and decimal positions\[char46] Indicator fields can be associated with either a logical data area or a character data area\[char46] If you want to store other types in a data area, you can use a data structure for the data area, and code the subfields of any type, except pointers\[char46] Pointers cannot be stored in data areas\[char46]
 
+.SH NOTICE
+Note:  
+
+ An unquoted name is handled differently in free-form and fixed-form definitions\[char46] Consider the \fIDTAAARA\fR(name) keyword\[char46] If it is in a free-form definition, name  is assumed to be the name of a named constant or variable, where the named constant or variable holds the name of the data area at runtime\[char46] If it is in a fixed-form definition, \fI*LIBL\fR/\fINAME\fR is assumed to be the name of the data area at runtime\[char46] 
 
 
+
+
+You can specify the value in any of the following forms: 
 .PP
 .nf
   dtaaraname
   libname/dtaaraname
   *LIBL/dtaaraname
 .fi
+
 
 
 
@@ -98,3 +102,19 @@ If you specify a data area name without a library name, \fI*LIBL\fR is used\[cha
 
 
 
+.SH SEE ALSO
+.BR DDM,
+.BR DEFINE,
+.BR DTAAARA,
+.BR DTAARA,
+.BR EXPORT,
+.BR HAR,
+.BR IBL,
+.BR IMPORT,
+.BR MYDTA,
+.BR NAME,
+.BR QTEMP,
+.BR SRCTL,
+.BR TAARA,
+.BR URLIB,
+.BR UTO

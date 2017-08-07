@@ -16,6 +16,7 @@
 \fB%INT\fR converts the value of the expression to integer\[char46] Any decimal digits are truncated\[char46] This built-in function may only be used in expressions\[char46] \fB%INT\fR can be used to truncate the decimal positions from a float or decimal value allowing it to be used as an array index\[char46]
 
 
+If the parameter is a character expression, the following rules apply: 
 .IP "" 2
 .RS
 \[bu] The sign is optional\[char46] It can be \[char39]+\[char39] or \[char39]-\[char39]\[char46] It can precede or follow the numeric data\[char46]
@@ -38,10 +39,12 @@
 .RE
 .PP
 
+
 For more information, see Conversion Operations or Built-in Functions\[char46]
 
 
 Figure 1 shows an example of the \fB%INT\fR built-in function\[char46]
 
 .SH SEE ALSO
-.BR %INTH (3RPG)
+.BR %INT,
+.BR %INTH

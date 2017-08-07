@@ -32,3 +32,9 @@ For more information, see Information Operations or Built-in Functions\[char46]
    ENDIF;
  /END-FREE
 .fi
+.SH SEE ALSO
+.BR %SHTDN,
+.BR END-FREE,
+.BR ENDIF,
+.BR FREE,
+.BR SHTDN

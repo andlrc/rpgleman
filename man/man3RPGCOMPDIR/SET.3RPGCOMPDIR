@@ -15,6 +15,7 @@ Use the compiler directive /\fISET\fR to temporarily set a new default values fo
 To reverse the effect of the /\fISET\fR directive for one or more keywords, use the /\fIRESTORE\fR directive\[char46]
 
 
+You can specify the following keywords with the /\fISET\fR directive: 
 .TP 5
 .B \fICCSID\fR(\fI*CHAR\fR : ccsid)
 Specifies the default \fICCSID\fR for alphanumeric items that are defined without \fICCSID\fR keyword or the \fILIKE\fR keyword, and for alphanumeric externally-described subfields for data structures defined without keyword \fICCSID\fR(\fI*EXACT\fR)\[char46] See \fICCSID\fR(\fI*CHAR\fR : \fI*JOBRUN\fR | \fI*JOBRUNMIX\fR | \fI*UTF8\fR | \fI*HEX\fR | number)
@@ -32,12 +33,14 @@ Specifies the default format and separator for date items that are specified wit
 Specifies the default format and separator for time items that are specified without the time format (the \fITIME\fR keyword is specified without a parameter in a free-form definition or the \fITIMFMT\fR keyword is not specified in a fixed-form definition)\[char46] See \fITIMFMT\fR(fmt{separator})
 .PP
 
+
 Specify the \fISET\fR directive in a copy file to ensure that all modules that include the copy file use the same values for the time and date formats and the \fICCSID\fRs\[char46] Any values set by /\fISET\fR directives within a copy file are implicitly restored to their values prior to the /\fICOPY\fR or /\fIINCLUDE\fR directive\[char46]
 
 
 If you cannot change the copy file, you can code the /\fISET\fR directive prior to the /\fICOPY\fR or /\fIINCLUDE\fR directive, and then code the /\fIRESTORE\fR directive after the /\fICOPY\fR or /\fIINCLUDE\fR directive to restore the defaults to the values that were previously in effect before the /\fISET\fR directive\[char46]
 
 
+Rules for /\fISET\fR and /\fIRESTORE\fR 
 .IP "" 2
 .RS
 \[bu] You can nest /\fISET\fR directives\[char46]
@@ -47,6 +50,7 @@ If you cannot change the copy file, you can code the /\fISET\fR directive prior 
 \[bu] The keywords specified on a /\fIRESTORE\fR directive do not have to exactly match the keywords specified on the previous /\fISET\fR directive\[char46] A /\fIRESTORE\fR directive can some or all of the values set by any previous /\fISET\fR directives\[char46]
 .RE
 .PP
+
 
 Examples of /\fISET\fR and /\fIRESTORE\fR
 
@@ -134,3 +138,23 @@ Main source file
    DCL-S char4 char(10); Â 12Â
    Â 13Â
 .fi
+.SH SEE ALSO
+.BR CCSID,
+.BR COPY,
+.BR CTL-OPT,
+.BR DATE,
+.BR DATFMT,
+.BR DCL,
+.BR GNORE,
+.BR HAR,
+.BR INCLUDE,
+.BR LIKE,
+.BR OBRUN,
+.BR OBRUNMIX,
+.BR RAPH,
+.BR RESTORE,
+.BR SET,
+.BR TIME,
+.BR TIMFMT,
+.BR UCS,
+.BR XACT

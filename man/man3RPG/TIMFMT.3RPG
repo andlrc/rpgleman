@@ -19,13 +19,16 @@ The \fITIMFMT\fR keyword allows the specification of an internal time format, an
 If \fITIMFMT\fR is not specified, the Time field will have the time format and separator as specified by the current default time format for the module\[char46] The default fimt format for the module is initialially set using the \fITIMFMT\fR keyword on a control statement\[char46] It can be temporarily set to a different value using the \fITIMFMT\fR keyword on /\fISET\fR and /\fIRESTORE\fR directives\[char46] The time format defaults to \fI*ISO\fR\[char46] See /\fISET\fR\[char46]
 
 
-
-
-
-
-
-
-
-
 See Table 1 for valid formats and separators\[char46] For more information on internal formats, see Internal and External Formats\[char46]
 
+.SH NOTICE
+Note:  
+
+ The \fITIMFMT\fR keyword is not used in a free-form definition\[char46] Instead, the time format is specified as the parameter of the \fITIME\fR  keyword\[char46] 
+
+
+.SH SEE ALSO
+.BR RESTORE,
+.BR SET,
+.BR TIME,
+.BR TIMFMT

@@ -25,15 +25,20 @@ The parameter specifies the length in digits\[char46] It must be one of 3, 5, 10
 The parameter can be a literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46]
 
 
+In the following example 
 .IP "" 2
 .RS
 \[bu] field num_elems  is defined as an integer field with 10 digits\[char46] It occupies 4 bytes in storage\[char46]
 .RE
 .PP
-
+ 
 .SH EXAMPLE
 
 .PP
 .nf
   DCL-S num_elems INT(10);
 .fi
+
+.SH SEE ALSO
+.BR DCL,
+.BR INT

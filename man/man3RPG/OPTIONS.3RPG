@@ -13,6 +13,7 @@ OPTIONS
 OPTIONS(*NOPASS *OMIT *VARSIZE *STRING *TRIM *RIGHTADJ *NULLIND)
 .fi
 .SH DESCRIPTION
+The \fIOPTIONS\fR keyword is used to specify one or more parameter passing options: 
 .IP "" 2
 .RS
 \[bu] Whether a parameter must be passed
@@ -43,6 +44,7 @@ OPTIONS(*NOPASS *OMIT *VARSIZE *STRING *TRIM *RIGHTADJ *NULLIND)
 .RE
 .PP
 
+
 When \fIOPTIONS\fR(\fI*NOPASS\fR) is specified on a definition specification, the parameter does not have to be passed on the call\[char46] Any parameters following that specification must also have \fI*NOPASS\fR specified\[char46] When the parameter is not passed to a program or procedure, the called program or procedure will simply function as if the parameter list did not include that parameter\[char46] If the unpassed parameter is accessed in the called program or procedure, unpredictable results will occur\[char46]
 
 
@@ -61,12 +63,6 @@ When \fIOPTIONS\fR(\fI*VARSIZE\fR) is specified, the passed parameter may be sho
 When \fIOPTIONS\fR(\fI*VARSIZE\fR) is omitted for fixed-length fields, you must pass at least as much data as is required by the prototype; for variable-length fields, the parameter must have the same declared maximum length as indicated on the definition\[char46]
 
 
-
-
-
-
-
-
 When \fIOPTIONS\fR(\fI*STRING\fR) is specified for a basing pointer parameter passed by value or by constant-reference, you may either pass a pointer or a character expression\[char46] If you pass a character expression, a temporary value will be created containing the value of the character expression followed by a null-terminator (x\[char39]00\[char39])\[char46] The address of this temporary value will be passed to the called program or procedure\[char46]
 
 
@@ -79,6 +75,7 @@ When \fIOPTIONS\fR(\fI*TRIM\fR) is specified for a \fICONST\fR or \fIVALUE\fR pa
 When \fIOPTIONS\fR(\fI*STRING\fR : \fI*TRIM\fR) is specified for a \fICONST\fR or \fIVALUE\fR parameter of type pointer, the character parameter or \fB%STR\fR of the pointer parameter is copied without leading or trailing blanks to a temporary, a null-terminator is added to the temporary and the address of the temporary is passed\[char46]
 
 
+When \fIOPTIONS\fR(\fI*NULLIND\fR) is specified for a parameter, the null-byte map is passed with the parameter, giving the called procedure direct access to the null-byte map of the caller\[char39]s parameter\[char46] Note the following rules for \fIOPTIONS\fR(\fI*NULLIND\fR)\[char46] 
 .IP "" 2
 .RS
 \[bu] \fIALWNULL\fR(\fI*USRCTL\fR) must be in effect\[char46]
@@ -123,11 +120,14 @@ When \fIOPTIONS\fR(\fI*STRING\fR : \fI*TRIM\fR) is specified for a \fICONST\fR o
 .RE
 .PP
 
+
 You can specify more than one option\[char46] For example, to specify that an optional parameter can be shorter than the prototype indicates, you would code \fIOPTIONS\fR(\fI*VARSIZE\fR : \fI*NOPASS\fR)\[char46]
 
 
 The following example shows how to code a prototype and procedure that use \fIOPTIONS\fR(\fI*NOPASS\fR) to indicate that a parameter is optional\[char46]
 
+.SH NOTICE
+Note:  For the parameter passing options \fI*NOPASS\fR, \fI*OMIT\fR, and \fI*VARSIZE\fR, it is up to the programmer of the procedure to ensure that these options are handled\[char46] For example, if \fIOPTIONS\fR(\fI*NOPASS\fR) is coded and you choose to pass the parameter, the procedure must check that the parameter was passed before it accesses it\[char46] The compiler will not do any checking for this\[char46] If you call \fIAPI\fRs such as \fICEEDOD\fR or \fICEETSTA\fR to get information about a parameter that uses these options, the \fIRTNPARM\fR keyword can affect the way you call the \fIAPI\fRs\[char46] See \fIRTNPARM\fR  and \fB%PARMNUM\fR (Return Parameter Number)  for more information\[char46]
 .SH EXAMPLE
 Using \fIOPTIONS\fR(\fI*NOPASS\fR) to Indicate that a Parameter is Optional
 .PP
@@ -513,15 +513,65 @@ D   parm3                       10A   OPTIONS(*NULLIND) CONST
 P                 E
 .fi
 .SH SEE ALSO
-.BR %LEN (3RPG),
-.BR %PARMNUM (3RPG),
-.BR %TRIM (3RPG),
-.BR %STR (3RPG),
-.BR %PARMS (3RPG),
-.BR %TRIMR (3RPG),
-.BR %ADDR (3RPG),
-.BR %SIZE (3RPG),
-.BR %ELEM (3RPG),
-.BR %SUBST (3RPG),
-.BR %ALLOC (3RPG),
-.BR %NULLIND (3RPG)
+.BR %ADDR,
+.BR %ALLOC,
+.BR %ELEM,
+.BR %LEN,
+.BR %NULLIND,
+.BR %PARMNUM,
+.BR %PARMS,
+.BR %SIZE,
+.BR %STR,
+.BR %SUBST,
+.BR %TRIM,
+.BR %TRIMR,
+.BR ALLOC,
+.BR ALWNULL,
+.BR API,
+.BR ARR,
+.BR ARSIZE,
+.BR CALLP,
+.BR CEEDOD,
+.BR CEETSTA,
+.BR CONST,
+.BR CTDATA,
+.BR DDS,
+.BR DEALLOC,
+.BR DIM,
+.BR ENDDO,
+.BR ENDIF,
+.BR EVAL,
+.BR EXTNAME,
+.BR FQSYSPRT,
+.BR IGHTADJ,
+.BR ILE,
+.BR INZ,
+.BR LIKEDS,
+.BR LIKEREC,
+.BR MIT,
+.BR NOTNULL,
+.BR NULL,
+.BR NULLFILE,
+.BR NULLIND,
+.BR OPASS,
+.BR OPEN,
+.BR OPTIONS,
+.BR PARM,
+.BR PERRCD,
+.BR PRINTER,
+.BR PROC,
+.BR QSYSPRT,
+.BR RETURN,
+.BR RIM,
+.BR RPG,
+.BR RTNPARM,
+.BR SETOFF,
+.BR SRCTL,
+.BR TDATA,
+.BR TESTREC,
+.BR TRING,
+.BR UCS,
+.BR ULL,
+.BR ULLIND,
+.BR USROPN,
+.BR VALUE

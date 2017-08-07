@@ -44,4 +44,8 @@ D editwd          C                    \[char39]$ ,   ,  **Dollars&  &Cents\[cha
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %DEC (3RPG)
+.BR %DEC,
+.BR %EDITW,
+.BR END-FREE,
+.BR ETD,
+.BR FREE

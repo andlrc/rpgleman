@@ -18,3 +18,6 @@ The \fIFROMFILE\fR keyword is used to specify the file with input data for the p
 
 See also \fITOFILE\fR(file_name)\[char46]
 
+.SH SEE ALSO
+.BR FROMFILE,
+.BR TOFILE

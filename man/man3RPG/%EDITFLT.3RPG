@@ -35,3 +35,8 @@ D string          s             40a   varying
     // Value of "string" is \[char39]Float value is +1\[char46]000000000000000E+004\[char46] \[char39]
  /END-FREE
 .fi
+.SH SEE ALSO
+.BR %EDITFLT,
+.BR END-FREE,
+.BR ETD,
+.BR FREE

@@ -110,6 +110,7 @@ An indicator specified as a parameter to a \fINULLIND\fR keyword can be addresse
 .IP "" 2
 .RS
 \[bu] In the following example, array empBonus  is defined with the \fINULLIND\fR keyword with parameter empBonus_null \[char46] empBonus_null  is also defined as an array with the same dimension\[char46] The null-indicator for empBonus  can be addressed by using either the \fB%NULLIND\fR built-in function or the empBonus_null  array\[char46] 
+The two \fIFOR\fR loops behave the same: 
 .IP 1. 2
 .RS
 In the first \fIFOR\fR loop, the null-indicator is used directly\[char46]
@@ -119,6 +120,7 @@ In the first \fIFOR\fR loop, the null-indicator is used directly\[char46]
 In the second \fIFOR\fR loop, the \fB%NULLIND\fR is used\[char46]
 .RE
 .PP
+
  
 .SH EXAMPLE
 
@@ -146,6 +148,7 @@ In the second \fIFOR\fR loop, the \fB%NULLIND\fR is used\[char46]
 .IP "" 2
 .RS
 \[bu] In the following example of a trigger program, data structure beforeDs  is defined with \fIEXTNAME\fR(\fI*INPUT\fR), and data structure beforeNull  is defined with \fIEXTNAME\fR(\fI*INPUT\fR : \fI*NULL\fR)\[char46] Data structure beforeNull  is specified as the null-indicator data structure for data structure beforeDsl \[char46] The subfields of the beforeNull  data structure can be addressed either by their names, or by using the \fB%NULLIND\fR built-in function with the subfields of the beforeDsl  data structure\[char46] 
+The two IF statements behave the same: 
 .IP 1. 2
 .RS
 In the first IF statement, the null-indicator is used directly\[char46]
@@ -155,6 +158,7 @@ In the first IF statement, the null-indicator is used directly\[char46]
 In the second IF statement, \fB%NULLIND\fR is used to address the null-indicator\[char46]
 .RE
 .PP
+
  
 .SH EXAMPLE
 
@@ -242,6 +246,25 @@ The null-indicator relationships for the subfields of DS2  are inherited from th
 .RE
 .PP
 .SH SEE ALSO
-.BR %NULLIND (3RPG),
-.BR %DATE (3RPG),
-.BR %ADDR (3RPG)
+.BR %ADDR,
+.BR %DATE,
+.BR %NULLIND,
+.BR ALWNULL,
+.BR CUSTFILE,
+.BR DUEDATE,
+.BR EMPLOYEES,
+.BR EXTNAME,
+.BR FLD,
+.BR FOR,
+.BR LIKE,
+.BR LIKEDS,
+.BR LIKEREC,
+.BR MAX,
+.BR NPUT,
+.BR NULL,
+.BR NULLIND,
+.BR OPTIONS,
+.BR SRCTL,
+.BR SUB,
+.BR ULL,
+.BR ULLIND

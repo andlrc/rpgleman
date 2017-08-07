@@ -1,7 +1,7 @@
 MANDIR	= $(PREFIX)/usr/share/man
 RPGLEMAN	= ./getrpgleman $(FLAGS)
 
-all: bif kw op cd more
+all: bif dkw cop cd more
 
 debug: clean
 	$(MAKE) FLAGS=-d
@@ -27,41 +27,41 @@ bif:	bif_ABS		bif_ADDR	bif_ALLOC	bif_BITAND	\
 	bif_UNS		bif_UNSH	bif_XFOOT	bif_XLATE	\
 	bif_XML		bif_YEARS	
 
-# Keywords
-kw:	kw_ALIAS	kw_ALIGN	kw_ALT		kw_ALTSEQ	\
-	kw_ASCEND	kw_BASED	kw_BINDEC	kw_CCSID	\
-	kw_CHAR		kw_CLASS	kw_CONST	kw_CTDATA	\
-	kw_DATE		kw_DATFMT	kw_DESCEND	kw_DIM		\
-	kw_DTAARA	kw_EXPORT	kw_EXT		kw_EXTFLD	\
-	kw_EXTFMT	kw_EXTNAME	kw_EXTPGM	kw_EXTPROC	\
-	kw_FLOAT	kw_FROMFILE	kw_GRAPH	kw_IMPORT	\
-	kw_INT		kw_IND		kw_INZ		kw_LEN		\
-	kw_LIKE		kw_LIKEDS	kw_LIKEFILE	kw_LIKEREC	\
-	kw_NOOPT	kw_NULLIND	kw_OBJECT	kw_OCCURS	\
-	kw_OPDESC	kw_OPTIONS	kw_OVERLAY	kw_PACKED	\
-	kw_PACKEVEN	kw_PERRCD	kw_POINTER	kw_POS		\
-	kw_PREFIX	kw_PROCPTR	kw_PSDS		kw_QUALIFIED	\
-	kw_RTNPARM	kw_STATIC	kw_TEMPLATE	kw_TIME		\
-	kw_TIMESTAMP	kw_TIMFMT	kw_TOFILE	kw_UCS2		\
-	kw_UNS		kw_VALUE	kw_VARCHAR	kw_VARGRAPH	\
-	kw_VARUCS2	kw_VARYING	kw_ZONED
+# Definition Keywords
+dkw:	dkw_ALIAS	dkw_ALIGN	dkw_ALT		dkw_ALTSEQ	\
+	dkw_ASCEND	dkw_BASED	dkw_BINDEC	dkw_CCSID	\
+	dkw_CHAR	dkw_CLASS	dkw_CONST	dkw_CTDATA	\
+	dkw_DATE	dkw_DATFMT	dkw_DESCEND	dkw_DIM		\
+	dkw_DTAARA	dkw_EXPORT	dkw_EXT		dkw_EXTFLD	\
+	dkw_EXTFMT	dkw_EXTNAME	dkw_EXTPGM	dkw_EXTPROC	\
+	dkw_FLOAT	dkw_FROMFILE	dkw_GRAPH	dkw_IMPORT	\
+	dkw_INT		dkw_IND		dkw_INZ		dkw_LEN		\
+	dkw_LIKE	dkw_LIKEDS	dkw_LIKEFILE	dkw_LIKEREC	\
+	dkw_NOOPT	dkw_NULLIND	dkw_OBJECT	dkw_OCCURS	\
+	dkw_OPDESC	dkw_OPTIONS	dkw_OVERLAY	dkw_PACKED	\
+	dkw_PACKEVEN	dkw_PERRCD	dkw_POINTER	dkw_POS		\
+	dkw_PREFIX	dkw_PROCPTR	dkw_PSDS	dkw_QUALIFIED	\
+	dkw_RTNPARM	dkw_STATIC	dkw_TEMPLATE	dkw_TIME	\
+	dkw_TIMESTAMP	dkw_TIMFMT	dkw_TOFILE	dkw_UCS2	\
+	dkw_UNS		dkw_VALUE	dkw_VARCHAR	dkw_VARGRAPH	\
+	dkw_VARUCS2	dkw_VARYING	dkw_ZONED
 
 # Free-Form Operations
-op:	op_ACQ		op_BEGSR	op_CALLP	op_CHAIN	\
-	op_CLEAR	op_CLOSE	op_COMMIT	op_DEALLOC	\
-	op_DELETE	op_DOU		op_DOW		op_DSPLY	\
-	op_DUMP		op_ELSE		op_ELSEIF	op_ENDDO	\
-	op_ENDFOR	op_ENDIF	op_ENDMON	op_ENDSL	\
-	op_ENDSR	op_EVAL		op_EVALR	op_EXCEPT	\
-	op_EXFMT	op_EXSR		op_FEOD		op_FOR		\
-	op_FORCE	op_IF		op_IN		op_ITER		\
-	op_LEAVE	op_LEAVESR	op_MONITOR	op_NEXT		\
-	op_ON-ERROR	op_ON-EXIT	op_OPEN		op_OTHER	\
-	op_OUT		op_POST		op_READ		op_READC	\
-	op_READE	op_READP	op_READPE	op_REL		\
-	op_RESET	op_RETURN	op_ROLBK	op_SELECT	\
-	op_SETGT	op_SETLL	op_SORTA	op_TEST		\
-	op_UNLOCK	op_UPDATE	op_WHEN		op_WRITE
+cop:	cop_ACQ		cop_BEGSR	cop_CALLP	cop_CHAIN	\
+	cop_CLEAR	cop_CLOSE	cop_COMMIT	cop_DEALLOC	\
+	cop_DELETE	cop_DOU		cop_DOW		cop_DSPLY	\
+	cop_DUMP	cop_ELSE	cop_ELSEIF	cop_ENDDO	\
+	cop_ENDFOR	cop_ENDIF	cop_ENDMON	cop_ENDSL	\
+	cop_ENDSR	cop_EVAL	cop_EVALR	cop_EXCEPT	\
+	cop_EXFMT	cop_EXSR	cop_FEOD	cop_FOR		\
+	cop_FORCE	cop_IF		cop_IN		cop_ITER	\
+	cop_LEAVE	cop_LEAVESR	cop_MONITOR	cop_NEXT	\
+	cop_ON-ERROR	cop_ON-EXIT	cop_OPEN	cop_OTHER	\
+	cop_OUT		cop_POST	cop_READ	cop_READC	\
+	cop_READE	cop_READP	cop_READPE	cop_REL		\
+	cop_RESET	cop_RETURN	cop_ROLBK	cop_SELECT	\
+	cop_SETGT	cop_SETLL	cop_SORTA	cop_TEST	\
+	cop_UNLOCK	cop_UPDATE	cop_WHEN	cop_WRITE
 
 # Compiler Directives
 cd:	cd_TITLE	cd_EJECT	cd_SPACE	cd_SET		\
@@ -230,140 +230,140 @@ bif_XML:
 bif_YEARS:
 	$(RPGLEMAN) bbyear
 
-# Keywords
-kw_ALIAS:
+# Definition Keywords
+dkw_ALIAS:
 	$(RPGLEMAN) dalias
-kw_ALIGN:
+dkw_ALIGN:
 	$(RPGLEMAN) dalign
-kw_ALT:
+dkw_ALT:
 	$(RPGLEMAN) dalt
-kw_ALTSEQ:
+dkw_ALTSEQ:
 	$(RPGLEMAN) daltsq
-kw_ASCEND:
+dkw_ASCEND:
 	$(RPGLEMAN) dascend
-kw_BASED:
+dkw_BASED:
 	$(RPGLEMAN) dbased
-kw_BINDEC:
+dkw_BINDEC:
 	$(RPGLEMAN) dkwbindec
-kw_CCSID:
+dkw_CCSID:
 	$(RPGLEMAN) dccsid
-kw_CHAR:
+dkw_CHAR:
 	$(RPGLEMAN) dkwchar
-kw_CLASS:
+dkw_CLASS:
 	$(RPGLEMAN) dclass
-kw_CONST:
+dkw_CONST:
 	$(RPGLEMAN) dconst
-kw_CTDATA:
+dkw_CTDATA:
 	$(RPGLEMAN) dctdata
-kw_DATE:
+dkw_DATE:
 	$(RPGLEMAN) dkwdate
-kw_DATFMT:
+dkw_DATFMT:
 	$(RPGLEMAN) ddatfmt
-kw_DESCEND:
+dkw_DESCEND:
 	$(RPGLEMAN) ddescnd
-kw_DIM:
+dkw_DIM:
 	$(RPGLEMAN) ddim
-kw_DTAARA:
+dkw_DTAARA:
 	$(RPGLEMAN) ddtaara
-kw_EXPORT:
+dkw_EXPORT:
 	$(RPGLEMAN) dexport
-kw_EXT:
+dkw_EXT:
 	$(RPGLEMAN) dkwext
-kw_EXTFLD:
+dkw_EXTFLD:
 	$(RPGLEMAN) dextfld
-kw_EXTFMT:
+dkw_EXTFMT:
 	$(RPGLEMAN) dextfmt
-kw_EXTNAME:
+dkw_EXTNAME:
 	$(RPGLEMAN) dextnam
-kw_EXTPGM:
+dkw_EXTPGM:
 	$(RPGLEMAN) dextpgm
-kw_EXTPROC:
+dkw_EXTPROC:
 	$(RPGLEMAN) dextprc
-kw_FLOAT:
+dkw_FLOAT:
 	$(RPGLEMAN) dkwfloat
-kw_FROMFILE:
+dkw_FROMFILE:
 	$(RPGLEMAN) dfrfile
-kw_GRAPH:
+dkw_GRAPH:
 	$(RPGLEMAN) dkwgraph
-kw_IMPORT:
+dkw_IMPORT:
 	$(RPGLEMAN) dimport
-kw_INT:
+dkw_INT:
 	$(RPGLEMAN) dkwint
-kw_IND:
+dkw_IND:
 	$(RPGLEMAN) dkwind
-kw_INZ:
+dkw_INZ:
 	$(RPGLEMAN) dinz
-kw_LEN:
+dkw_LEN:
 	$(RPGLEMAN) dkwlen
-kw_LIKE:
+dkw_LIKE:
 	$(RPGLEMAN) dlike
-kw_LIKEDS:
+dkw_LIKEDS:
 	$(RPGLEMAN) dlikeds
-kw_LIKEFILE:
+dkw_LIKEFILE:
 	$(RPGLEMAN) dlikefile
-kw_LIKEREC:
+dkw_LIKEREC:
 	$(RPGLEMAN) dlikerec
-kw_NOOPT:
+dkw_NOOPT:
 	$(RPGLEMAN) dnoopt
-kw_NULLIND:
+dkw_NULLIND:
 	$(RPGLEMAN) dkwnullind
-kw_OBJECT:
+dkw_OBJECT:
 	$(RPGLEMAN) dkwobject
-kw_OCCURS:
+dkw_OCCURS:
 	$(RPGLEMAN) doccurs
-kw_OPDESC:
+dkw_OPDESC:
 	$(RPGLEMAN) dopdesc
-kw_OPTIONS:
+dkw_OPTIONS:
 	$(RPGLEMAN) doptns
-kw_OVERLAY:
+dkw_OVERLAY:
 	$(RPGLEMAN) doverly
-kw_PACKED:
+dkw_PACKED:
 	$(RPGLEMAN) dkwpacked
-kw_PACKEVEN:
+dkw_PACKEVEN:
 	$(RPGLEMAN) dpackev
-kw_PERRCD:
+dkw_PERRCD:
 	$(RPGLEMAN) dperrcd
-kw_POINTER:
+dkw_POINTER:
 	$(RPGLEMAN) dkwpointer
-kw_POS:
+dkw_POS:
 	$(RPGLEMAN) dkwpos
-kw_PREFIX:
+dkw_PREFIX:
 	$(RPGLEMAN) dprefix
-kw_PROCPTR:
+dkw_PROCPTR:
 	$(RPGLEMAN) dprcptr
-kw_PSDS:
+dkw_PSDS:
 	$(RPGLEMAN) dkwpsds
-kw_QUALIFIED:
+dkw_QUALIFIED:
 	$(RPGLEMAN) dqualif
-kw_RTNPARM:
+dkw_RTNPARM:
 	$(RPGLEMAN) drtnparm
-kw_STATIC:
+dkw_STATIC:
 	$(RPGLEMAN) dstatic
-kw_TEMPLATE:
+dkw_TEMPLATE:
 	$(RPGLEMAN) dtemplatekw
-kw_TIME:
+dkw_TIME:
 	$(RPGLEMAN) dkwtime
-kw_TIMESTAMP:
+dkw_TIMESTAMP:
 	$(RPGLEMAN) dkwtimestamp
-kw_TIMFMT:
+dkw_TIMFMT:
 	$(RPGLEMAN) dtimfmt
-kw_TOFILE:
+dkw_TOFILE:
 	$(RPGLEMAN) dtofile
-kw_UCS2:
+dkw_UCS2:
 	$(RPGLEMAN) dkwucs2
-kw_UNS:
+dkw_UNS:
 	$(RPGLEMAN) dkwuns
-kw_VALUE:
+dkw_VALUE:
 	$(RPGLEMAN) dvalue
-kw_VARCHAR:
+dkw_VARCHAR:
 	$(RPGLEMAN) dkwvarchar
-kw_VARGRAPH:
+dkw_VARGRAPH:
 	$(RPGLEMAN) dkwvargraph
-kw_VARUCS2:
+dkw_VARUCS2:
 	$(RPGLEMAN) dkwvarucs2
-kw_VARYING:
+dkw_VARYING:
 	$(RPGLEMAN) dvaryg
-kw_ZONED:
+dkw_ZONED:
 	$(RPGLEMAN) dkwzoned
 
 # Free-Form Operations

@@ -13,6 +13,7 @@ EXTPROC
 EXTPROC({*CL|*CWIDEN|*CNOWIDEN| {*JAVA:class-name:}}name)
 .fi
 .SH DESCRIPTION
+The \fIEXTPROC\fR keyword can have one of the following formats: 
 .TP 5
 .B 
 
@@ -39,6 +40,7 @@ For more information about invoking Java procedures, see Rational Development St
 Specifies an external procedure that is written in or to be called by \fIRPG\fR or \fICOBOL\fR\[char46] This format should also be used for a procedure that can be called by any of \fIRPG\fR, \fICOBOL\fR, C, or CL; in this case, you must ensure that the return value and the parameters do not have any of the problems listed above for \fI*CL\fR, \fI*CWIDEN\fR, and \fI*CNOWIDEN\fR\[char46]
 .PP
 
+
 The \fIEXTPROC\fR keyword indicates the external name of the procedure whose prototype is being defined\[char46] The name can be a character constant, or procedure pointer\[char46]
 
 
@@ -54,10 +56,12 @@ If neither \fIEXTPGM\fR or \fIEXTPROC\fR is specified, then the compiler assumes
 If the name specified for \fIEXTPROC\fR (or the prototype or procedure name, if neither \fIEXTPGM\fR or \fIEXTPROC\fR is specified or if \fIEXTPROC\fR(\fI*DCLCASE\fR) is specified) starts with "\fICEE\fR" or an underscore (\[char39]_\[char39]), the compiler will treat this as a system built-in\[char46] To avoid confusion with system provided \fIAPI\fRs, you should not name your procedures starting with "\fICEE\fR"\[char46]
 
 
+For example, to define the prototype for the procedure \fISQLA\fRllocEnv, that is in the service program \fIQSQCLI\fR, the following definition specification could be coded: 
 .PP
 .nf
       D SQLEnv          PR                  EXTPROC(\[char39]SQLAllocEnv\[char39])
 .fi
+
 
 If a procedure pointer is specified, it must be assigned a valid address before it is used in a call\[char46] It should point to a procedure whose return value and parameters are consistent with the prototype definition\[char46]
 
@@ -264,5 +268,40 @@ D isValid         S              N    INZ(*OFF)
 P                 E
 .fi
 .SH SEE ALSO
-.BR %PADDR (3RPG),
-.BR %SIZE (3RPG)
+.BR %PADDR,
+.BR %SIZE,
+.BR API,
+.BR AVA,
+.BR CALLPRC,
+.BR CEE,
+.BR CHAR,
+.BR CLCASE,
+.BR COBOL,
+.BR CONST,
+.BR DCL,
+.BR DSPMSG,
+.BR DSPMSGPPTR,
+.BR ELSE,
+.BR ENDIF,
+.BR EVAL,
+.BR EXPORT,
+.BR EXTPGM,
+.BR EXTPROC,
+.BR HAR,
+.BR ILE,
+.BR INZ,
+.BR LEN,
+.BR LIKE,
+.BR MYDSPMSG,
+.BR NOWIDEN,
+.BR ONSTRUCTOR,
+.BR PROC,
+.BR QSQCLI,
+.BR RETURN,
+.BR RPG,
+.BR RTNVAR,
+.BR SQLA,
+.BR SQLE,
+.BR TYPE,
+.BR VALUE,
+.BR WIDEN

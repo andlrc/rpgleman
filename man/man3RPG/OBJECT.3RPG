@@ -31,8 +31,7 @@ The first parameter must be \fI*JAVA\fR\[char46]
 The second parameter specifies the Java class of the object\[char46] See Object Data Type for information on specifying the Java class\[char46] The parameter must be a literal or a named constant\[char46]
 
 
-
-
+In the following example 
 .IP "" 2
 .RS
 \[bu] Field str  is defined as an object field of class java\[char46]lang\[char46]String\[char46]
@@ -42,7 +41,7 @@ The second parameter specifies the Java class of the object\[char46] See Object 
 \[bu] The return value of the prototype newBigDecimal  for the Java BigDecimal object constructor is defined as an object\[char46] The \fIOBJECT\fR keyword has no parameters, so the class of the return value, \[char39]java\[char46]math\[char46]BigDecimal\[char39], is derived from the class specified in the \fIEXTPROC\fR keyword\[char46]
 .RE
 .PP
-
+ 
 .SH EXAMPLE
 
 .PP
@@ -54,3 +53,17 @@ The second parameter specifies the Java class of the object\[char46] See Object 
      val VARUCS2(100) CONST;
   END-PR;
 .fi
+
+.SH NOTICE
+Note:  If you do specify the parameters for the \fIOBJECT\fR keyword when defining the return value for a Java constructor, the class must be the same as the class specified by the \fIEXTPROC\fR keyword\[char46]
+.SH SEE ALSO
+.BR AVA,
+.BR CONST,
+.BR DCL,
+.BR END,
+.BR EXTPROC,
+.BR NOWIDEN,
+.BR OBJECT,
+.BR ONSTRUCTOR,
+.BR VARUCS,
+.BR WIDEN

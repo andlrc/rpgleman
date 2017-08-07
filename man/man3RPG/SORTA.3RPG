@@ -50,8 +50,6 @@ For an array data structure, the keyed-ds-array operand is a qualified name cons
 If the sequence for the array is defined by the \fIASCEND\fR or \fIDESCEND\fR keyword on the definition specification for the array, then the array is always sorted in that sequence\[char46] If no sequence is specified for the array, then the sequence defaults to ascending sequence\[char46] If the \[char39]A\[char39] operation extender is specified, then the array is sorted in ascending sequence\[char46] If the \[char39]D\[char39] operation extender is specified, then the array is sorted in descending sequence\[char46]
 
 
-
-
 If the array is defined with the \fIOVERLAY\fR keyword and the \[char39]A\[char39] or \[char39]D\[char39] operation extender is not specified, the base array will be sorted in the sequence defined by the \fIOVERLAY\fR array\[char46]
 
 
@@ -61,8 +59,12 @@ Graphic and \fIUCS\fR-2 arrays will be sorted by the hexadecimal values of the a
 To sort a portion of an array, use the \fB%SUBARR\fR built-in function\[char46]
 
 
+For more information, see Array Operations\[char46]
 
+.SH NOTICE
+Note:  The \fIASCEND\fR and \fIDESCEND\fR keywords cannot be specified for an array data structure\[char46]
 
+Note: 
 .IP 1. 2
 .RS
 Sorting an array does not preserve any previous order\[char46] For example, if you sort an array twice, using different overlay arrays, the final sequence will be that of the last sort\[char46] Elements that are equal in the sort sequence but have different hexadecimal values (for example, due to alternate collating sequence or the use of an overlay array to determine sequence), may not be in the same order after sorting as they were before\[char46]
@@ -106,8 +108,6 @@ If the sort key is an element of a sequenced array, its sequence is not consider
 
 .RE
 .PP
-
-For more information, see Array Operations\[char46]
 
 .SH EXAMPLE
 \fISORTA\fR Operation
@@ -290,5 +290,32 @@ endfor;
 //    teams(2)\[char46]emps(2)\[char46]name = \[char39]Yvonne\[char39]   <----- 2
 .fi
 .SH SEE ALSO
-.BR %SUBARR (3RPG),
-.BR %ELEM (3RPG)
+.BR %ELEM,
+.BR %SUBARR,
+.BR ABGLT,
+.BR ARR,
+.BR ARRO,
+.BR ARRY,
+.BR ASCEND,
+.BR CHILD,
+.BR DARRY,
+.BR DESCEND,
+.BR DIM,
+.BR EMP,
+.BR EMPS,
+.BR ETD,
+.BR FAMILY,
+.BR INFO,
+.BR LIKEDS,
+.BR MANAGER,
+.BR NAME,
+.BR OVERLAY,
+.BR PET,
+.BR QUALIFIED,
+.BR SALARY,
+.BR SORTA,
+.BR TEAMS,
+.BR TEMPLATE,
+.BR TLGBA,
+.BR UCS,
+.BR VARYING

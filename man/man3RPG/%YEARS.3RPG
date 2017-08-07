@@ -30,3 +30,5 @@ For an example of the \fB%YEARS\fR built-in function, see Figure 1\[char46]
 
 For more information, see Date Operations, Built-in Functions, and Unexpected Results\[char46]
 
+.SH SEE ALSO
+.BR %YEARS

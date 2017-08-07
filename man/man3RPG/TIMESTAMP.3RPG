@@ -24,6 +24,7 @@ It must be the first keyword\[char46]
 
 
 
+ The following example shows several timestamps, with different numbers of fractional seconds\[char46] 
 .SH EXAMPLE
 
 .PP
@@ -34,5 +35,10 @@ It must be the first keyword\[char46]
   DCL-S TS6B TIMESTAMP(6);   // YYYY-MM-DD-hh-mm-ss\[char46]ffffff
   DCL-S TS12 TIMESTAMP(12);  // YYYY-MM-DD-hh-mm-ss\[char46]ffffffffffff
 .fi
+ 
 
 
+.SH SEE ALSO
+.BR DCL,
+.BR TIMESTAMP,
+.BR YYYY

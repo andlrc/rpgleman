@@ -39,6 +39,7 @@ _
 T}
 .TE
 
+The \fICOMMIT\fR operation: 
 .IP "" 2
 .RS
 \[bu] Makes all the changes to your files, opened for commitment control, that have been specified in output operations since the previous commit or rollback \fIROLBK\fR (Roll Back)  operation (or since the beginning of operations under commitment control if there has been no previous commit or rollback operation)\[char46] You specify a file to be opened for commit by specifying the \fICOMMIT\fR keyword on the file specification\[char46]
@@ -48,6 +49,7 @@ T}
 \[bu] Releases all the record locks for files you have under commitment control\[char46]
 .RE
 .PP
+
 
 The file changes and the record-lock releases apply to all the files you have under commitment control, whether the changes have been requested by the program issuing the \fICOMMIT\fR operation, or by another program in the same activation group or job, dependent on the commit scope specified on the \fISTRCMTCTL\fR command\[char46] The program issuing the \fICOMMIT\fR operation does not need to have any files under commitment control\[char46] The \fICOMMIT\fR operation does not change the file position\[char46]
 
@@ -63,3 +65,9 @@ To handle \fICOMMIT\fR exceptions (program status codes 802 to 805), either the 
 
 For more information, see File Operations\[char46]
 
+.SH SEE ALSO
+.BR COMMIT,
+.BR ILE,
+.BR ROLBK,
+.BR RPG,
+.BR STRCMTCTL

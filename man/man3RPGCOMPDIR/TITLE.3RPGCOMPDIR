@@ -26,3 +26,6 @@ A program can contain more than one /\fITITLE\fR statement\[char46] Each /\fITIT
 
 The /\fITITLE\fR statement causes a skip to the next page before the title is printed\[char46] The /\fITITLE\fR statement is not printed on the compiler listing\[char46]
 
+.SH SEE ALSO
+.BR RPG,
+.BR TITLE

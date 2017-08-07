@@ -59,3 +59,12 @@ To process any further sequential operations to the file after the \fIFEOD\fR op
 
 For more information, see File Operations\[char46]
 
+.SH SEE ALSO
+.BR CLOSE,
+.BR DISK,
+.BR FEOD,
+.BR IBM,
+.BR OPEN,
+.BR READ,
+.BR READP,
+.BR SEQ

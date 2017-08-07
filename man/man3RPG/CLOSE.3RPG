@@ -79,4 +79,10 @@ For more information, see File Operations\[char46]
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %ERROR (3RPG)
+.BR %ERROR,
+.BR CLOSE,
+.BR END-FREE,
+.BR FILEB,
+.BR FREE,
+.BR OPEN,
+.BR TOFILE

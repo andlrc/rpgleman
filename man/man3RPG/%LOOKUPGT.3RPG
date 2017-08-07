@@ -21,8 +21,7 @@
 
 
 
-
-
+ The following functions return the array index of the item in the array that matches that matches arg \[char46] \fB%LOOKUP\fR can also be used to return the array index of the item in a keyed array data structure\[char46] 
 .TP 5
 .B \fB%LOOKUP\fR
 An exact match\[char46]
@@ -39,6 +38,7 @@ The value that is closest to arg but greater than arg \[char46]
 .B \fB%LOOKUPGE\fR
 An exact match, or the value that is closest to arg but greater than arg \[char46]
 .PP
+ 
 
 
 
@@ -47,6 +47,7 @@ If no value matches the specified condition, zero is returned\[char46] The value
 
 
 
+ There could be more than one element that matches the specified condition\[char46] For the following discussion, assume the following values for the ascending and descending arrays\[char46] 
 .PP
 .nf
            +---+---+---+---+---+---+---+
@@ -57,7 +58,7 @@ ASCEND     | A | C | C | C | E | E | G |
 DESCEND    | G | E | E | E | C | C | A |
 -----------+---+---+---+---+---+---+---+
 .fi
-
+ 
 .IP "" 2
 .RS
 \[bu] For \fB%LOOKUP\fR, \fB%LOOKUPLE\fR, or \fB%LOOKUPGE\fR, if there is more than one element that is equal to the search argument, then the index of the first matching element is returned\[char46] For example, if the search argument is C, these built-in functions will return 2 for the ascending array and 5 for the descending array\[char46]
@@ -95,6 +96,7 @@ DESCEND    | G | E | E | E | C | C | A |
 \[bu] For \fB%LOOKUPGT\fR for descending arrays, the built-in function returns the index of the last element greater than the search argument\[char46] For example, if the search argument is D, \fB%LOOKUPGT\fR returns 4\[char46]
 .RE
 .PP
+ 
 
 
 
@@ -119,8 +121,7 @@ Built-in functions \fB%FOUND\fR and \fB%EQUAL\fR are not set following a \fB%LOO
 The \fB%LOOKUPxx\fR built-in functions use a binary search for sequenced arrays (arrays that have the \fIASCEND\fR or \fIDESCEND\fR keyword specified)\[char46]
 
 
-
-
+For more information, see: 
 .IP "" 2
 .RS
 \[bu] Array Operations
@@ -134,6 +135,9 @@ The \fB%LOOKUPxx\fR built-in functions use a binary search for sequenced arrays 
 \[bu] Array Data Structures
 .RE
 .PP
+
+.SH NOTICE
+Note: Unlike the \fILOOKUP\fR operation code, \fB%LOOKUP\fR applies only to arrays\[char46] To look up a value in a table, use the \fB%TLOOKUP\fR built-in function\[char46]
 .SH EXAMPLE
 \fB%LOOKUPxx\fR with a scalar array
 .PP
@@ -200,6 +204,27 @@ D numEmps         S             10I 0
    // n = 0
 .fi
 .SH SEE ALSO
-.BR %FOUND (3RPG),
-.BR %EQUAL (3RPG),
-.BR %TLOOKUP (3RPG)
+.BR %EQUAL,
+.BR %FOUND,
+.BR %LOOKUP,
+.BR %LOOKUPGE,
+.BR %LOOKUPGT,
+.BR %LOOKUPLE,
+.BR %LOOKUPLT,
+.BR %LOOKUPXX,
+.BR %TLOOKUP,
+.BR ALTSEQ,
+.BR ARRAY,
+.BR ASCEND,
+.BR CODE,
+.BR DESCEND,
+.BR DIM,
+.BR END-FREE,
+.BR FREE,
+.BR INFO,
+.BR LOOKUP,
+.BR NAME,
+.BR ONE,
+.BR QUALIFIED,
+.BR SUBFIELD,
+.BR VARYING

@@ -23,6 +23,7 @@ The first parameter must be a basing-pointer value\[char46] (Any basing pointer 
 The first parameter must point to storage that is at least as long as the length given by the second parameter\[char46]
 
 
+Error conditions: 
 .IP 1. 2
 .RS
 If the length parameter is less than 1 or greater than the maximum length allowed, an error will occur\[char46]
@@ -47,7 +48,10 @@ Data corruption will occur\[char46]
 .RE
 .PP
 
+
 For more information, see String Operations or Built-in Functions\[char46]
 
 .SH SEE ALSO
-.BR %ADDR (3RPG)
+.BR %ADDR,
+.BR %STR,
+.BR DATA

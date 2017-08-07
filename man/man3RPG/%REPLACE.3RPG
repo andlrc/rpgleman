@@ -88,6 +88,13 @@ D result          S            100A   VARYING
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %SCAN (3RPG),
-.BR %CHAR (3RPG),
-.BR %LEN (3RPG)
+.BR %CHAR,
+.BR %LEN,
+.BR %REPLACE,
+.BR %SCAN,
+.BR END-FREE,
+.BR ETD,
+.BR FREE,
+.BR INZ,
+.BR UCS,
+.BR VARYING

@@ -43,4 +43,8 @@ See Figure 1 for an example of \fB%DECPOS\fR with \fB%LEN\fR\[char46]
 For more information, see Size Operations or Built-in Functions\[char46]
 
 .SH SEE ALSO
-.BR %LEN (3RPG)
+.BR %DECPOS,
+.BR %LEN,
+.BR END-FREE,
+.BR ETD,
+.BR FREE

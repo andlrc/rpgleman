@@ -22,10 +22,7 @@ It must be the first keyword\[char46]
 The parameter is optional\[char46] It specifies the date format and separator\[char46] See Date Data Type for information on the default format for date items\[char46]
 
 
-
-
-
-
+In the following example, field date_dft  is defined as a date field with the default format for the module, and field date_mdy  is defined with \fI*MDY\fR as the format and hyphen as the separator\[char46] 
 .SH EXAMPLE
 
 .PP
@@ -33,3 +30,7 @@ The parameter is optional\[char46] It specifies the date format and separator\[c
   DCL-S date_dft DATE;
   DCL-S date_mdy DATE(*MDY-);
 .fi
+
+.SH SEE ALSO
+.BR DATE,
+.BR DCL

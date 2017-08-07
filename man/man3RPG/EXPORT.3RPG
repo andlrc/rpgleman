@@ -22,8 +22,7 @@ In a free-form definition, you can specify \fI*DCLCASE\fR for the external_name 
 The \fIEXPORT\fR keyword on the definition specification is used to export data items and cannot be used to export procedure names\[char46] To export a procedure name, use the \fIEXPORT\fR keyword on the procedure specification\[char46]
 
 
-
-
+The following restrictions apply when \fIEXPORT\fR is specified: 
 .IP "" 2
 .RS
 \[bu] Only one module may define the data item as exported
@@ -50,13 +49,27 @@ The \fIEXPORT\fR keyword on the definition specification is used to export data 
 .RE
 .PP
 
+
 For a multiple-occurrence data structure or table, each module will contain its own copy of the occurrence number or table index\[char46] An \fIOCCUR\fR or \fILOOKUP\fR operation in any module will have only a local impact since the occurrence number or index is local to each module\[char46]
 
 
 See also \fIIMPORT\fR{(external_name)}\[char46]
 
+.SH NOTICE
+Note:  The initialization for the storage occurs when the program entry procedure (of the program containing the module) is first called\[char46] \fIRPG\fR IV will not do any further initialization on this storage, even if the procedure ended with LR on, or ended abnormally on the previous call\[char46]
 
-
-
+Tip: 
 The keywords \fIIMPORT\fR and \fIEXPORT\fR allow you to define a "hidden" interface between modules\[char46] As a result, use of these keywords should be limited only to those data items which are global throughout the application\[char46] It is also suggested that this global data be limited to things like global attributes which are set once and never modified elsewhere\[char46]
 
+
+.SH SEE ALSO
+.BR BASED,
+.BR CLCASE,
+.BR EXPORT,
+.BR IMPORT,
+.BR LOOKUP,
+.BR NTRY,
+.BR OCCUR,
+.BR PARM,
+.BR PLIST,
+.BR RPG

@@ -24,3 +24,9 @@ The constant value does not need to be known at the time the keyword is processe
 
 When \fIDIM\fR is specified on a data structure definition, the data structure must be a qualified data structure, and subfields must be referenced as fully qualified names, i\[char46]e\[char46] "dsname(x)\[char46]subf"\[char46] Other array keywords, such as \fICTDATA\fR, \fIFROMFILE\fR, \fITOFILE\fR, and \fIPERRCD\fR are not allowed with an array data structure definition\[char46]
 
+.SH SEE ALSO
+.BR CTDATA,
+.BR DIM,
+.BR FROMFILE,
+.BR PERRCD,
+.BR TOFILE

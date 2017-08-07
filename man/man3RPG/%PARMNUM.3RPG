@@ -9,8 +9,13 @@
 .SH NAME
 %PARMNUM - Return Parameter Number
 .SH DESCRIPTION
+For more information, see Built-in Functions\[char46]
 
+.SH RETURN VALUE
+\fB%PARMNUM\fR returns the number of the parameter in the parameter list\[char46] The operand for \fB%PARMNUM\fR is the name of a parameter defined as part of a procedure interface\[char46]
 
+.SH NOTICE
+Note: 
 .IP 1. 2
 .RS
 A parameter defined using a \fI*ENTRY\fR \fIPLIST\fR cannot be specified as the operand for \fB%PARMNUM\fR\[char46]
@@ -24,11 +29,6 @@ The parameter must be specified the same way it appears in the procedure interfa
 If the \fIRTNPARM\fR keyword is coded for a procedure, the return value is handled as an additional first parameter\[char46] The other parameters have a number one higher than the apparent number\[char46] For example, if a procedure defined with \fIRTNPARM\fR has two parameters P1 and P2, \fB%PARMNUM(P1)\fR will return 2 and \fB%PARMNUM(P2)\fR will return 3\[char46]
 .RE
 .PP
-
-For more information, see Built-in Functions\[char46]
-
-.SH RETURN VALUE
-\fB%PARMNUM\fR returns the number of the parameter in the parameter list\[char46] The operand for \fB%PARMNUM\fR is the name of a parameter defined as part of a procedure interface\[char46]
 
 .SH EXAMPLE
 Example of \fB%PARMNUM\fR
@@ -59,4 +59,15 @@ D   cityName                    25A   OPTIONS(*NOPASS)
     endif;
 .fi
 .SH SEE ALSO
-.BR %PARMS (3RPG)
+.BR %PARMNUM,
+.BR %PARMS,
+.BR ARSIZE,
+.BR CEEDOD,
+.BR CEETSTA,
+.BR MIT,
+.BR NTRY,
+.BR OPASS,
+.BR OPDESC,
+.BR OPTIONS,
+.BR PLIST,
+.BR RTNPARM

@@ -19,6 +19,8 @@ The string can be character, graphic, or \fIUCS\fR-2 data\[char46]
 If the characters to trim parameter is specified, it must be the same type as the string parameter\[char46]
 
 
+When specified as a parameter for a definition specification keyword, the string parameter must be a constant\[char46] 
+
 
 
 For more information, see String Operations or Built-in Functions\[char46]
@@ -74,4 +76,11 @@ D numeric         S             15P 3
      numeric = %dec(%trim(edited : \[char39]$* \[char39]) : 31 : 9);     // numeric is now 5\[char46]27
 .fi
 .SH SEE ALSO
-.BR %DEC (3RPG)
+.BR %DEC,
+.BR %TRIM,
+.BR END-FREE,
+.BR ETD,
+.BR FREE,
+.BR INZ,
+.BR LOCATION,
+.BR UCS

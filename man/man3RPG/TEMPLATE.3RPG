@@ -11,3 +11,7 @@ TEMPLATE
 .SH DESCRIPTION
 The \fITEMPLATE\fR keyword indicates that the definition is to be used only for further \fILIKE\fR or \fILIKEDS\fR definitions\[char46] The \fITEMPLATE\fR keyword is valid for Data Structure definitions and Standalone field definitions\[char46]
 
+.SH SEE ALSO
+.BR LIKE,
+.BR LIKEDS,
+.BR TEMPLATE

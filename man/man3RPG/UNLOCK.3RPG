@@ -50,3 +50,5 @@ Positions 71,72,75 and 76 must be blank\[char46]
 
 For further rules for the \fIUNLOCK\fR operation, see Data-Area Operations\[char46]
 
+.SH SEE ALSO
+.BR UNLOCK

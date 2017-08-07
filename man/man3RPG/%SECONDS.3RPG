@@ -24,12 +24,14 @@
 
 
 
+ If you are adding or subtracting \fB%SECONDS\fR from a timestamp value, the parameter can have decimal places specifying the number of fractional seconds to add or subtract\[char46] For example, the following example adds 5\[char46]72 seconds to the timestamp\[char46] 
 .SH EXAMPLE
 
 .PP
 .nf
    timestamp2 = timestamp1 + %SECONDS(5\[char46]72);
 .fi
+ 
 
 
 
@@ -38,3 +40,5 @@ For an example of date and time arithmetic operations, see Figure 1\[char46]
 
 For more information, see Date Operations or Built-in Functions\[char46]
 
+.SH SEE ALSO
+.BR %SECONDS

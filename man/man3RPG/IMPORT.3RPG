@@ -25,6 +25,7 @@ If a name is defined as imported but no module in the program contains an export
 The \fIIMPORT\fR keyword on the definition specification is used to import data items and cannot be used to import procedure names\[char46] Procedure names are imported implicitly, to all modules in the program, when the \fIEXPORT\fR keyword is specified on a procedure specification\[char46]
 
 
+The following restrictions apply when \fIIMPORT\fR is specified: 
 .IP "" 2
 .RS
 \[bu] The data item may not be initialized (the \fIINZ\fR keyword is not allowed)\[char46] The exporting module manages all initialization for the data\[char46]
@@ -59,5 +60,29 @@ The \fIIMPORT\fR keyword on the definition specification is used to import data 
 .RE
 .PP
 
+
 For a multiple-occurrence data structure or table, each module will contain its own copy of the occurrence number or table index\[char46] An \fIOCCUR\fR or \fILOOKUP\fR operation in any module will have only a local impact since the occurrence number or index is local to each module\[char46]
 
+.SH SEE ALSO
+.BR BASED,
+.BR CLCASE,
+.BR CTDATA,
+.BR DIM,
+.BR DTAARA,
+.BR EXPORT,
+.BR EXTFMT,
+.BR EXTNAME,
+.BR FROMFILE,
+.BR IMPORT,
+.BR INZ,
+.BR LIKE,
+.BR LOOKUP,
+.BR NTRY,
+.BR OCCUR,
+.BR OCCURS,
+.BR PARM,
+.BR PERRCD,
+.BR PLIST,
+.BR PREFIX,
+.BR RESET,
+.BR TOFILE

@@ -58,10 +58,12 @@ If the result represents an unindexed array or an array specified as array(*), t
 On a free-form calculation specification, the operation code name may be omitted if no extenders are needed, and if the variable does not have the same name as an operation code\[char46]
 
 
+For the assignment operators +=, -=, *=, /=, and **=, the appropriate operation is applied to the result and the expression, and the result is assigned to the result\[char46] For example, statement X+=Y is roughly equivalent to X=X+Y\[char46] The difference between the two statements is that for these assignment operators, the result operand is evaluated only once\[char46] This difference is significant when the evaluation of the result operation involves a call to a subprocedure which has side-effects, for example: 
 .PP
 .nf
      warnings(getNextCustId(OVERDRAWN)) += 1;
 .fi
+
 
 See Expressions for general information on expressions\[char46] See Precision Rules for Numeric Operations for information on precision rules for numeric expressions\[char46] This is especially important if the expression contains any divide operations, or if the \fIEVAL\fR uses any of the operation extenders\[char46]
 
@@ -121,7 +123,23 @@ See Expressions for general information on expressions\[char46] See Precision Ru
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %SUBST (3RPG),
-.BR %TRIMR (3RPG),
-.BR %TRIML (3RPG),
-.BR %ADDR (3RPG)
+.BR %ADDR,
+.BR %SUBST,
+.BR %TRIML,
+.BR %TRIMR,
+.BR ARR,
+.BR CHARFIELD,
+.BR DIM,
+.BR DMYDATE,
+.BR END-FREE,
+.BR EVAL,
+.BR FIELD,
+.BR FREE,
+.BR HMR,
+.BR ISODATE,
+.BR OVERDRAWN,
+.BR PTR,
+.BR RES,
+.BR RESULT,
+.BR RPG,
+.BR UCS

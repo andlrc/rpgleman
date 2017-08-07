@@ -16,8 +16,21 @@
 A list of fields can be specified as the final argument to Input/Output operation \fIUPDATE\fR coded in a free-form group\[char46] Only the fields specified are updated into the Input/Output buffer\[char46]
 
 
+\fB%FIELDS\fR specifies a list of fields to update\[char46] For example: 
 
+ 
+.PP
+.nf
+ /free
+   chain empno record;
+   salary = salary + 2000;
+   status = STATEXEMPT;
+   update record %fields(salary:status);
+ /end-free
+.fi
 
+.SH NOTICE
+Note: 
 .IP 1. 2
 .RS
 Each name must be the name of a field in the input buffer for the record\[char46] If the field is renamed, the internal name is used\[char46]
@@ -36,14 +49,12 @@ The name can be a subfield of a data structure defined with the \fILIKEDS\fR key
 .RE
 .PP
 
-
-
-.PP
-.nf
- /free
-   chain empno record;
-   salary = salary + 2000;
-   status = STATEXEMPT;
-   update record %fields(salary:status);
- /end-free
-.fi
+.SH SEE ALSO
+.BR %FIELDS,
+.BR EXTNAME,
+.BR LIKEDS,
+.BR LIKEREC,
+.BR NPUT,
+.BR STATEXEMPT,
+.BR ULL,
+.BR UPDATE

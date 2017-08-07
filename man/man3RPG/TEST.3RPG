@@ -87,12 +87,7 @@ T}
 The \fITEST\fR operation code allows users to test the validity of date, time, or timestamp fields prior to using them\[char46]
 
 
-
-
-
-
-
-
+For information on the formats that can be used see Date Data Type , Time Data Type , and Timestamp Data Type \[char46] 
 .IP "" 2
 .RS
 \[bu] If the field-name  operand is a field declared as Date, Time, or Timestamp: 
@@ -161,6 +156,7 @@ The \fITEST\fR operation code allows users to test the validity of date, time, o
 .RE
 .PP
 
+
 Numeric fields and character fields without separators are tested for valid digit portions of a Date, Time, or Timestamp value\[char46] Character fields are tested for both valid digits and separators\[char46]
 
 
@@ -225,4 +221,13 @@ C
 C     *LONGJUL      TEST (DE)               char_date3
 .fi
 .SH SEE ALSO
-.BR %ERROR (3RPG)
+.BR %ERROR,
+.BR DATFMT,
+.BR EDTZ,
+.BR ETD,
+.BR INZ,
+.BR MDY,
+.BR ONGJUL,
+.BR TEST,
+.BR TIMFMT,
+.BR USA

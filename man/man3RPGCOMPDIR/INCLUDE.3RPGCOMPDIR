@@ -15,12 +15,15 @@ The /\fICOPY\fR and /\fIINCLUDE\fR directives have the same purpose and the same
 The /\fICOPY\fR and /\fIINCLUDE\fR compiler directives cause records from other files to be inserted, at the point where the directive occurs, with the file being compiled\[char46] The inserted files may contain any valid specification including /\fICOPY\fR and /\fIINCLUDE\fR up to the maximum nesting depth specified by the \fICOPYNEST\fR keyword (32 when not specified)\[char46]
 
 
+The following is a restriction on the implementation of the /\fICOPY\fR and /\fIINCLUDE\fR compiler directives when using the Program Verifier: 
 .IP "" 2
 .RS
 \[bu] /\fICOPY\fR or /\fIINCLUDE\fR of the main source member is not allowed\[char46] This will result in an error message, indicating that it was unable to open /\fICOPY\fR or /\fIINCLUDE\fR file\[char46]
 .RE
 .PP
 
+
+/\fICOPY\fR and /\fIINCLUDE\fR files can be either physical files or \fIIFS\fR files\[char46] To specify a physical file, code your /\fICOPY\fR and /\fIINCLUDE\fR statement in the following way : 
 .IP "" 2
 .RS
 \[bu] /\fICOPY\fR or /\fIINCLUDE\fR followed by exactly one space followed by the file name or path
@@ -81,11 +84,12 @@ membername
 .PP
 
 
+Figure 1 shows some examples of the /\fICOPY\fR and /\fIINCLUDE\fR directive statements\[char46]
 
+.SH NOTICE
+Tip: 
 To facilitate application maintenance, you may want to place the prototypes of exported procedures in a separate source member\[char46] If you do, be sure to place a â\fICOPY\fR or â\fIINCLUDE\fR directive for that member in both the module containing the exported procedure and any modules that contain calls to the exported procedure\[char46]
 
-
-Figure 1 shows some examples of the /\fICOPY\fR and /\fIINCLUDE\fR directive statements\[char46]
 
 .SH EXAMPLE
 Examples of the /\fICOPY\fR and /\fIINCLUDE\fR Compiler Directive Statements
@@ -138,3 +142,16 @@ Copies from the \fIIFS\fR file file\[char46]rpg in directory dir1/dir2, searchin
 .B Â 8Â
 Copies from a file whose name contains blanks\[char46]
 .PP
+.SH SEE ALSO
+.BR COPY,
+.BR COPYNEST,
+.BR IFS,
+.BR ILE,
+.BR INCLUDE,
+.BR MBR,
+.BR QRPGLESRC,
+.BR RPG,
+.BR SQL,
+.BR SRC,
+.BR SRCFIL,
+.BR SRCLIB

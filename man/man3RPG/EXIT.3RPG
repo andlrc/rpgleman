@@ -31,6 +31,7 @@ status indicator
 T}
 .TE
 
+The ON-\fIEXIT\fR operation code begins the ON-\fIEXIT\fR section\[char46] The ON-\fIEXIT\fR section contains code that runs every time that the procedure ends, whether it ends normally or abnormally\[char46] The ON-\fIEXIT\fR section runs under the following conditions: 
 .IP "" 2
 .RS
 \[bu] The procedure reaches the end of the main part of the procedure\[char46]
@@ -48,6 +49,7 @@ T}
 \[bu] The procedure is canceled, due to the end of the job or subsystem, or due to an exception message being sent to a procedure higher in the call stack\[char46]
 .RE
 .PP
+
 
 By placing your clean-up code, such as deleting temporary files and deallocating heap storage, in the ON-\fIEXIT\fR section, you ensure that it is always run, even if your procedure ends with an unhandled exception, or if it is canceled\[char46]
 
@@ -67,6 +69,7 @@ Running the ON-\fIEXIT\fR part of the procedure does not change the state of the
 For a procedure that returns a value, if the procedure ends normally, the value set by the \fIRETURN\fR statement can be overridden by a \fIRETURN\fR statement in the ON-\fIEXIT\fR procedure\[char46] If the ON-\fIEXIT\fR does not have a \fIRETURN\fR statement, then the procedure returns the value set by the \fIRETURN\fR statement in the main body of the procedure\[char46] See Example where the ON-\fIEXIT\fR section returns a new value\[char46]
 
 
+If there is an exception during ON-\fIEXIT\fR processing, the effect of the exception depends on how the procedure ended\[char46] 
 .IP "" 2
 .RS
 \[bu] If the procedure ended normally, then the procedure now ends with the new exception\[char46]
@@ -81,6 +84,8 @@ For a procedure that returns a value, if the procedure ends normally, the value 
 .RE
 .PP
 
+
+An exception during ON-\fIEXIT\fR processing can occur in the following cases: 
 .IP "" 2
 .RS
 \[bu] An exception that occurs while setting the status indicator\[char46] This can occur if the status indicator is an array element, and the index is out of bounds, or if the status indicator is based on a pointer that is not set\[char46]
@@ -90,6 +95,7 @@ For a procedure that returns a value, if the procedure ends normally, the value 
 \[bu] An exception that occurs within the code that follows the ON-\fIEXIT\fR statement\[char46]
 .RE
 .PP
+
 
 The ON-\fIEXIT\fR section is run in a separate subprocedure\[char46] The name of the ON-\fIEXIT\fR subprocedure begins with "_QRNI_ON_EXIT_" and ends with the name of the procedure that contains the ON-\fIEXIT\fR operation\[char46] For example, the external name of the ON-\fIEXIT\fR subprocedure for a procedure with the external name "myProc" is "_QRNI_ON_EXIT_myProc"\[char46]
 
@@ -234,6 +240,7 @@ on-exit;
 end-proc;
 .fi
 
+The output from the procedure is 
 .SH EXAMPLE
 
 .PP
@@ -248,6 +255,25 @@ DSPLY  myproc2 on-exit
 DSPLY  myproc2 ON-EXIT returning 6
 DSPLY  value returned is 6
 .fi
+
 .SH SEE ALSO
-.BR %ALLOC (3RPG),
-.BR %CHAR (3RPG)
+.BR %ALLOC,
+.BR %CHAR,
+.BR API,
+.BR BEGSR,
+.BR CEEDOD,
+.BR CEEGSI,
+.BR CEETSTA,
+.BR DSPLY,
+.BR DUMP,
+.BR ERROR,
+.BR EXIT,
+.BR EXSR,
+.BR GOTO,
+.BR MONITOR,
+.BR QRNI,
+.BR RESET,
+.BR RETURN,
+.BR SPECIAL,
+.BR SSR,
+.BR TAG

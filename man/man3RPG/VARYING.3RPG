@@ -19,17 +19,17 @@ The \fIVARYING\fR keyword indicates that a character, graphic, or \fIUCS\fR-2 fi
 The parameter of the \fIVARYING\fR keyword indicates the number of bytes used to store the current length of the variable-length item\[char46] See Size of the Length-Prefix for a Varying Length Item\[char46]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 For more information, see Variable-Length Character, Graphic and \fIUCS\fR-2 Formats\[char46]
 
+.SH NOTICE
+Note:  
+
+ The \fIVARYING\fR keyword is not used in a free-form definition\[char46] Instead, the \fIVARCHAR\fR , \fIVARGRAPH\fR , or \fIVARUCS\fR2  keyword is used to specify the data type of the item\[char46] keyword\[char46] 
+
+
+.SH SEE ALSO
+.BR UCS,
+.BR VARCHAR,
+.BR VARGRAPH,
+.BR VARUCS,
+.BR VARYING
