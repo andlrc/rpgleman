@@ -48,13 +48,21 @@ VIM INTEGRATION
     One can change the ``keywordprg'' to search the proper man pages:
 
     :setlocal keywordprg=man\ --sections=3RPG,3RPGHSPEC,3RPGCOMPDIR
-    :setlocal iskeyword+=%,-
 
     Which makes ``K'' look for man pages in ``3RPG'', ``3RPGHSPEC'' and
-    ``3RPGCOMPDIR''.  If ``rpgle.vim''[0] is used then ``iskeyword'' is already
-    updated.
+    ``3RPGCOMPDIR''.
+
+    Change the ``iskeyword'' option to avoid having to visual select keywords
+    containing ``%'' and ``-''.
+
+    :setlocal iskeyword+=%,-
+
+    If ``rpgle.vim''[0] is used, then this is already changed.
 
     [0]: https://github.com/andlrc/rpgle.vim
+
+SEE ALSO
+    make(1), cpan(1perl), man(1)
 
 AUTHOR
     Andreas Louv <andreas@louv.dk>
@@ -65,7 +73,3 @@ LICENSE
 
     All the content is copyright IBM and one should contact them to get a
     license.
-
-SEE ALSO
-
-    make(1), cpan(1perl)
