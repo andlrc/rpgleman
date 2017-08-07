@@ -1,0 +1,79 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzxmlsa.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH XML-SAX 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+XML-SAX - XML-SAX (Parse an XML Document)
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIXML-SAX\fR{(E)} \fB%HANDLER(handlerProc : commArea)\fR \fB%XML(xmlDoc {: options })\fR;
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fIXML-SAX\fR{(E)}
+T}	T{
+Â
+T}	T{
+\fB%HANDLER(handlerProc : commArea)\fR \fB%XML(xmlDoc {: options })\fR
+T}
+.TE
+
+Tip: If you are not familiar with the basic concepts of \fIXML\fR and of processing \fIXML\fR documents, you may find it helpful to read the "Processing \fIXML\fR Documents" section in Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide before reading further in this section\[char46]
+
+
+\fIXML-SAX\fR initiates a \fISAX\fR parse for an \fIXML\fR document\[char46] The \fIXML-SAX\fR operation code begins by calling an \fIXML\fR parser which begins to parse the document\[char46] When an event occurs such as the parser finding the start of an element, finding an attribute name, finding the end of an element and so on, the parser calls the handling procedure handlerProc with parameters describing the event\[char46] When the handling procedure returns, the parser continues to parse until it finds the next event and calls the handling procedure again\[char46] When the parser has finished parsing the document, control passes to the statement following the \fIXML-SAX\fR operation\[char46]
+
+
+The first operand must be the \fB%HANDLER\fR built-in function; handlerProc is a prototype name that specifies the procedure to be called to handle the \fISAX\fR events and commArea is the communication-area parameter to be passed by the parser to the handling procedure\[char46] The communication-area parameter must be the same type as the first prototyped parameter of the handling procedure\[char46] It provides a way for the procedure specifying the \fIXML-SAX\fR operation code to communicate with the handling procedure, and for the handling procedure to save information related to the parse from one event to the next\[char46] See \fB%HANDLER\fR (handlingProcedure : communicationArea ) for more information on \fB%HANDLER\fR\[char46]
+
+
+The second operand must be the \fB%XML\fR built-in function, identifying the \fIXML\fR document to be parsed and the options controlling the way the parsing is done\[char46] See \fB%XML\fR (xmlDocument {:options}) for more information on \fB%XML\fR\[char46]
+
+
+Operation extender E can be specified to handle the following status codes: 
+.TP 5
+.B 00351
+Error in \fIXML\fR parsing
+.TP 5
+.B 00352
+Invalid \fIXML\fR option
+.TP 5
+.B 00354
+Error preparing for \fIXML\fR parsing
+.PP
+
+
+For status 00351, the return code from the parser will be placed in the subfield "External return code" in positions 368-371 of the \fIPSDS\fR\[char46] This subfield will be set to zero at the beginning of the operation and set to the value returned by the parser at the end of the operation\[char46] This subfield is relevant only in a module that has an \fIXML-SAX\fR operation\[char46] \fISAX\fR event-handling procedures receive the information from the parser as parameters\[char46]
+
+
+The event-handling procedure will not be called if an exception occurs before parsing begins\[char46] For example, if the specified file is not found, the operation will end immediately with status 00354 and the event-handling procedure will never get control\[char46]
+
+
+If an error occurs during parsing, the handling procedure will be called with a \fI*XML_EXCEPTION\fR event, and when the handling procedure returns, parsing will end and the \fIXML-SAX\fR operation will fail with status code 00351\[char46] The return code from the parser will be placed in the "External return code" subfield in positions 368 - 371 of the \fIPSDS\fR\[char46]
+
+
+If an unknown, invalid or unrelated option is found in the \fB%XML\fR options string, \fIXML-SAX\fR will fail with status code 00352\[char46] The External return code subfield in positions 368 - 371 of the \fIPSDS\fR will not be updated from the initial value of zero, set when the operation begins\[char46]
+
+.SH SEE ALSO
+.BR %HANDLER,
+.BR %XML,
+.BR EXCEPTION,
+.BR ILE,
+.BR PSDS,
+.BR RPG,
+.BR SAX,
+.BR XML,
+.BR XML-SAX

@@ -52,16 +52,17 @@ cop:	cop_ACQ		cop_BEGSR	cop_CALLP	cop_CHAIN	\
 	cop_DELETE	cop_DOU		cop_DOW		cop_DSPLY	\
 	cop_DUMP	cop_ELSE	cop_ELSEIF	cop_ENDDO	\
 	cop_ENDFOR	cop_ENDIF	cop_ENDMON	cop_ENDSL	\
-	cop_ENDSR	cop_EVAL	cop_EVALR	cop_EXCEPT	\
-	cop_EXFMT	cop_EXSR	cop_FEOD	cop_FOR		\
-	cop_FORCE	cop_IF		cop_IN		cop_ITER	\
-	cop_LEAVE	cop_LEAVESR	cop_MONITOR	cop_NEXT	\
-	cop_ON-ERROR	cop_ON-EXIT	cop_OPEN	cop_OTHER	\
-	cop_OUT		cop_POST	cop_READ	cop_READC	\
-	cop_READE	cop_READP	cop_READPE	cop_REL		\
-	cop_RESET	cop_RETURN	cop_ROLBK	cop_SELECT	\
-	cop_SETGT	cop_SETLL	cop_SORTA	cop_TEST	\
-	cop_UNLOCK	cop_UPDATE	cop_WHEN	cop_WRITE
+	cop_ENDSR	cop_EVAL	cop_EVAL-CORR	cop_EVALR	\
+	cop_EXCEPT	cop_EXFMT	cop_EXSR	cop_FEOD	\
+	cop_FOR		cop_FORCE	cop_IF		cop_IN		\
+	cop_ITER	cop_LEAVE	cop_LEAVESR	cop_MONITOR	\
+	cop_NEXT	cop_ON-ERROR	cop_ON-EXIT	cop_OPEN	\
+	cop_OTHER	cop_OUT		cop_POST	cop_READ	\
+	cop_READC	cop_READE	cop_READP	cop_READPE	\
+	cop_REL		cop_RESET	cop_RETURN	cop_ROLBK	\
+	cop_SELECT	cop_SETGT	cop_SETLL	cop_SORTA	\
+	cop_TEST	cop_UNLOCK	cop_UPDATE	cop_WHEN	\
+	cop_WRITE	cop_XML-INTO	cop_XML-SAX
 
 # Control Keywords
 hkw:	hkw_ALLOC	hkw_ACTGRP	hkw_ALTSEQ	hkw_ALWNULL	\
@@ -425,6 +426,8 @@ cop_ENDSR:
 	$(RPGLEMAN) zzendsr
 cop_EVAL:
 	$(RPGLEMAN) zzeval
+cop_EVAL-CORR:
+	$(RPGLEMAN) --name EVAL-CORR zzevalco
 cop_EVALR:
 	$(RPGLEMAN) zzevalr
 cop_EXCEPT:
@@ -501,6 +504,10 @@ cop_WHEN:
 	$(RPGLEMAN) zzwhen
 cop_WRITE:
 	$(RPGLEMAN) zzwrite
+cop_XML-INTO:
+	$(RPGLEMAN) --name=XML-INTO zzxmlin
+cop_XML-SAX:
+	$(RPGLEMAN) --name=XML-SAX zzxmlsa
 
 # Control Keywords
 hkw_ALLOC:

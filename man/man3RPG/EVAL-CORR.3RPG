@@ -1,0 +1,168 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzevalco.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH EVAL-CORR 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+EVAL-CORR - EVAL-CORR (Assign corresponding subfields)
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIEVAL-CORR\fR{(\fIHMR\fR)} target = source;
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fIEVAL-CORR\fR
+T}	T{
+Â
+T}	T{
+target = source
+T}
+.TE
+
+The \fIEVAL-CORR\fR operation assigns data and null-indicators from the corresponding subfields of the source data structure to the subfields of the target data structure\[char46] The subfields that are assigned are the subfields that have the same name and compatible data type in both data structures\[char46] For example, if data structure DS1 has character subfields A, B, and C, and data structure DS2 has character subfields B, C, and D, statement 
+.PP
+.nf
+EVAL-CORR DS1 = DS2
+.fi
+  will assign data from subfields DS2\[char46]B and DS2\[char46]C to DS1\[char46]B and DS1\[char46]C\[char46] Null-capable subfields in the target data structure that are affected by the \fIEVAL-CORR\fR operation will also have their null-indicators set from the null-indicator from the source data structure\[char39]s subfield, or to \fI*OFF\fR, if the source subfield is not null-capable\[char46]
+
+If an operation code extender H is specified, the half-adjust function applies on all numeric assignments\[char46] Extenders for \fIEVAL-CORR\fR can be specified only in Free-form calculations\[char46]
+
+
+If operation code extender M or R is specified, it applies to the arguments of any procedure call specified as part of the source or target expression\[char46] Extenders for \fIEVAL-CORR\fR can be specified only in Free-form calculations\[char46]
+
+
+The \fIEVAL-CORR\fR Summary section  in the compiler listing can be used to determine 
+.IP "" 2
+.RS
+\[bu] which subfields were selected to be affected by the \fIEVAL-CORR\fR operation
+.RE
+.IP "" 2
+.RS
+\[bu] for subfields not selected, the reason the subfield was not selected
+.RE
+.IP "" 2
+.RS
+\[bu] for subfields that are selected, any additional information about the subfields such as a difference in the dimension or null-capability of the subfields\[char46]
+.RE
+.PP
+
+
+See the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide for more information about the \fIEVAL-CORR\fR Summary section\[char46]
+
+
+Remember the following when using the \fIEVAL-CORR\fR operation: 
+.IP "" 2
+.RS
+\[bu] Operation code \fIEVAL-CORR\fR may be coded either in free-form calculations or in fixed-form calculations\[char46] When coded in fixed-form calculations, the assignment expression is coded in the Extended Factor 2 entry, with the Factor 1 entry left blank\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The source and target operands must both be data structure variables, including data structure subfields defined with \fILIKEDS\fR or \fILIKEREC\fR\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The operands may be qualified or unqualified data structures\[char46] However, for the operation to be successful, at least one of the operands must be a qualified data structure; otherwise, it would not be possible for the two data structures to have any subfields with the same name\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The subfields involved in the assignment are those that have the same name in both data structures and have data types that are compatible for assignment using \fIEVAL\fR\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When comparing the subfield names to find corresponding subfieds, the names used are the internal program names; the internal program names may be different from the external names in the case of fields from externally-described files or data structures\[char46] For fields defined externally and renamed or prefixed, the name used is the name after applying the rename or prefix\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] For subfields in the source and target that correspond by name and are both data structures defined with \fILIKEDS\fR or \fILIKEREC\fR, the subfields that are assigned are the corresponding subfields of the subfield data structures\[char46] If two subfields in the source and target have the same name but one is a data structure defined with \fILIKEDS\fR or \fILIKEREC\fR, and the other is not a data structure, the subfield is not assigned by the \fIEVAL-CORR\fR operation\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The assignment of data from the source subfields to the target subfields follows the same rules as for operation code \fIEVAL\fR\[char46] For example, character values are assigned left adjusted with truncation or padding with blanks for unequal lengths\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Data is assigned subfield by subfield by the order of subfields in the source data structure\[char46] If there are overlapping subfields in the target data structure, either due to overlapping from-and-to positions or due to the \fIOVERLAY\fR keyword, later assignment may overwrite earlier moves\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] When the source and target data structures or corresponding source and target subfields which are both data structures are defined the same way with \fILIKEDS\fR or \fILIKEREC\fR, that is, both data structures are defined like the same data structure, the compiler will optimize the assignment and assign the data structure as a whole, and not as a series of individual subfield assignments\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If either the source or target operand is a multiple occurrence data structure, the current occurrence is used\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If you are working with arrays: 
+.IP "" 2
+.RS
+\[bu] If the source operand is an unindexed array data structure, the target data structure must also be an array data structure\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the target operand is an unindexed array data structure, the operation works on each element of the array data structure, following the same rules as \fIEVAL\fR with an array result\[char46] \fB%SUBARR\fR may be used to restrict the number of elements used in either the source or target data structure array\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If one subfield is an array, both subfields must be arrays\[char46] If the dimension of one array subfield is smaller than the other, only the smaller number of array elements is assigned\[char46] If the target subfield has more elements, the additional elements are unchanged by the \fIEVAL-CORR\fR operation\[char46]
+.RE
+.PP
+
+.RE
+.IP "" 2
+.RS
+\[bu] If you are working with null-capable subfields: 
+.IP "" 2
+.RS
+\[bu] \fIEVAL-CORR\fR automatically handles assignment of null-indicators for null-capable subfields that are not data structure subfields\[char46] 
+.IP "" 2
+.RS
+\[bu] If both the source and target subfields are null-capable, the source subfield\[char39]s null-indicator is copied to the target subfield\[char39]s null-indicator\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the target subfield is null-capable and the source subfield is not null-capable, the target subfield\[char39]s null-indicator is set to \fI*OFF\fR\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the source subfield is null-capable and the target subfield is not null-capable, the source subfield\[char39]s null-indicator is ignored\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The \fIEVAL-CORR\fR operation sets the null-indicators for scalar and array subfields only\[char46] If a null-capable subfield is a data structure, its null-indicator will not be set by the \fIEVAL-CORR\fR operation; similarly, if the target data structure itself is null-capable, its null-indicator will not be set by the \fIEVAL-CORR\fR operation\[char46]\[char46]
+.RE
+.PP
+
+.RE
+.IP "" 2
+.RS
+\[bu] If the subfield is a data structure and a null-indicator is assigned to the data structure itself, the null-indicator is not affected by the \fIEVAL-CORR\fR operation\[char46]
+.RE
+.PP
+
+.RE
+.PP
+
+.SH SEE ALSO
+.BR %SUBARR,
+.BR EVAL,
+.BR EVAL-CORR,
+.BR HMR,
+.BR ILE,
+.BR LIKEDS,
+.BR LIKEREC,
+.BR OVERLAY,
+.BR RPG
