@@ -20,7 +20,7 @@ REBUILD MAN PAGES
 
 DEPENDENCIES
     The following Perl modules is used and should be installed in order to
-    rebuild man pages.
+    rebuild man pages:
 
     HTML::TreeBuilder::XPath;
     HTTP::Tiny;
@@ -47,7 +47,7 @@ VIM INTEGRATION
     One can change the ``keywordprg'' to search the proper man pages:
 
     :setlocal keywordprg=man\ --sections=3RPG,3RPGHSPEC,3RPGCOMPDIR
-    :setlocal iskeyword+=%
+    :setlocal iskeyword+=%,-
 
     Which makes ``K'' look for man pages in ``3RPG'', ``3RPGHSPEC'' and
     ``3RPGCOMPDIR''.  If ``rpgle.vim''[0] is used then ``iskeyword'' is already
