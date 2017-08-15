@@ -81,5 +81,3 @@ If you do not specify a parameter, or if you specify \fI*SYS\fR as the first par
    dsply (%timestamp(*SYS : 0));
     // It displays 2014-06-27-01\[char46]02\[char46]03
 .fi
-.SH SEE ALSO
-.BR %TIMESTAMP

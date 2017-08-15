@@ -102,7 +102,6 @@ dcl-f myfile2 disk(%size(myDS)); //Â 6Â
 .SH SEE ALSO
 .BR %SIZE,
 .BR DATA,
-.BR DCLOPT,
 .BR DIM,
 .BR LIKEFILE,
 .BR LINE,

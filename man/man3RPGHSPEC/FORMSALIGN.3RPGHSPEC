@@ -45,5 +45,3 @@ The \fIFORMSALIGN\fR keyword indicates that the first line of an output file con
 .RE
 .PP
 
-.SH SEE ALSO
-.BR FORMSALIGN

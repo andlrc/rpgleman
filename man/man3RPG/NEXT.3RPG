@@ -76,7 +76,6 @@ C                   READ (E)  Devicefile
 .BR DEV,
 .BR DEVICEFILE,
 .BR EXFMT,
-.BR NEXT,
 .BR READ,
 .BR READC,
 .BR WORKSTN

@@ -48,7 +48,6 @@ D E               S             10I 0
 .fi
 .SH SEE ALSO
 .BR %DIV,
-.BR %REM,
 .BR DIV,
 .BR END-FREE,
 .BR ETD,

@@ -67,6 +67,5 @@ D Name            S             20A
 .BR END-FREE,
 .BR ETD,
 .BR EVAL,
-.BR EVALR,
 .BR FREE,
 .BR UCS

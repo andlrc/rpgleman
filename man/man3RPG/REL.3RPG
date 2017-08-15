@@ -56,6 +56,5 @@ For more information, see File Operations\[char46]
 
 .SH SEE ALSO
 .BR READ,
-.BR REL,
 .BR UNLOCK,
 .BR WORKSTN

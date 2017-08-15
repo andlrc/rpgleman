@@ -54,7 +54,6 @@ In the following example
 .fi
 
 .SH SEE ALSO
-.BR BINDEC,
 .BR DCL,
 .BR DEC,
 .BR NUM,

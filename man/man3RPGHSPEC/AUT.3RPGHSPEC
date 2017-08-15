@@ -37,7 +37,6 @@ The authorization-list-name is the name of an authorization list of users and au
 If the \fIAUT\fR keyword is not specified, then the value specified on the command is used\[char46]
 
 .SH SEE ALSO
-.BR AUT,
 .BR CRTAUT,
 .BR GRTOBJAUT,
 .BR HANGE,

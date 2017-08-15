@@ -67,7 +67,6 @@ For more information, see Compare Operations or Structured Programming Operation
 .fi
 .SH SEE ALSO
 .BR %ELEM,
-.BR DOU,
 .BR END-FREE,
 .BR ENDDO,
 .BR FIELD,

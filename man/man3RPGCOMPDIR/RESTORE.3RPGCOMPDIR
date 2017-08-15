@@ -39,6 +39,5 @@ Note:  Any values set by /\fISET\fR directives within a copy file are implicitly
 .BR HAR,
 .BR INCLUDE,
 .BR RAPH,
-.BR RESTORE,
 .BR SET,
 .BR TIMFMT

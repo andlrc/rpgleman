@@ -58,5 +58,4 @@ If the \fISTGMDL\fR keyword is not specified, then the value specified on the co
 .BR DFTACTGRP,
 .BR ERASPACE,
 .BR NGLVL,
-.BR NHERIT,
-.BR STGMDL
+.BR NHERIT

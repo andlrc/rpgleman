@@ -63,7 +63,6 @@ Trimming characters other than blanks
      // string is now \[char39]($******5\[char46]27)\[char39]
 .fi
 .SH SEE ALSO
-.BR %TRIMR,
 .BR ETD,
 .BR LOCATION,
 .BR UCS

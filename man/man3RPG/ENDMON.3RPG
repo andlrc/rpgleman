@@ -183,7 +183,6 @@ For more information, see Error-Handling Operations or Structured Programming Op
 .BR ENDDO,
 .BR ENDFOR,
 .BR ENDIF,
-.BR ENDMON,
 .BR ENDSL,
 .BR FOR,
 .BR MONITOR,

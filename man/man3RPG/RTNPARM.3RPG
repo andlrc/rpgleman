@@ -193,5 +193,4 @@ D   name                        10a   const
 .BR MYPROC,
 .BR PARM,
 .BR PGM,
-.BR RPG,
-.BR RTNPARM
+.BR RPG

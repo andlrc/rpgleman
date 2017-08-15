@@ -104,7 +104,6 @@ C                   ENDSL
 .SH SEE ALSO
 .BR END,
 .BR ENDSL,
-.BR OTHER,
 .BR SELECT,
 .BR WHEN,
 .BR WHENEQ

@@ -19,5 +19,4 @@ The rules for what can be passed as a value parameter to a called procedure are 
 
 .SH SEE ALSO
 .BR EVAL,
-.BR EXTPGM,
-.BR VALUE
+.BR EXTPGM

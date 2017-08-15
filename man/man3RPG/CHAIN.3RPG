@@ -154,7 +154,6 @@ D custRecDs       ds                  likerec(custRec)
 .BR %KDS,
 .BR %XLATE,
 .BR CCSID,
-.BR CHAIN,
 .BR DEVID,
 .BR DISK,
 .BR END-FREE,

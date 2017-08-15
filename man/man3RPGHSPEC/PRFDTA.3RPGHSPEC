@@ -26,5 +26,4 @@ If the \fIPRFDTA\fR keyword is not specified, then the value specified on the co
 
 .SH SEE ALSO
 .BR OCOL,
-.BR PRFDTA,
 .BR ULL

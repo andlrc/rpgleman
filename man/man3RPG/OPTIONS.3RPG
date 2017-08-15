@@ -555,7 +555,6 @@ P                 E
 .BR NULLIND,
 .BR OPASS,
 .BR OPEN,
-.BR OPTIONS,
 .BR PARM,
 .BR PERRCD,
 .BR PRINTER,

@@ -180,7 +180,6 @@ For more information, see Error-Handling Operations or Structured Programming Op
 .BR DOW,
 .BR END,
 .BR ENDCS,
-.BR ENDDO,
 .BR ENDFOR,
 .BR ENDIF,
 .BR ENDMON,

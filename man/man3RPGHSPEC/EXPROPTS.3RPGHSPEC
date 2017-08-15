@@ -18,5 +18,4 @@ The \fIEXPROPTS\fR (expression options) keyword specifies the type of precision 
 
 .SH SEE ALSO
 .BR AXDIGITS,
-.BR ESDECPOS,
-.BR EXPROPTS
+.BR ESDECPOS

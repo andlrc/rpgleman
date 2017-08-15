@@ -109,7 +109,6 @@ D BasedFld        S              7A   BASED(Ptr1)
 .BR %STATUS,
 .BR ALLOC,
 .BR BASED,
-.BR DEALLOC,
 .BR END-FREE,
 .BR ETD,
 .BR FREE,

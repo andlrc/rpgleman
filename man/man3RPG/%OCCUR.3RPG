@@ -42,7 +42,6 @@ D mds             DS                  OCCURS(10)
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %OCCUR,
 .BR END-FREE,
 .BR EVAL,
 .BR FREE,

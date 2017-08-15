@@ -48,7 +48,6 @@ Every subroutine must have a unique symbolic name\[char46] The keyword \fI*PSSR\
 See Figure 1 for an example of coding subroutines; see Subroutine Operations for general information on subroutine operations\[char46]
 
 .SH SEE ALSO
-.BR BEGSR,
 .BR CAS,
 .BR EXSR,
 .BR INFSR,

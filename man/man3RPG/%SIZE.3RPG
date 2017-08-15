@@ -122,7 +122,6 @@ See Examples showing the effect of the \fIALIGN\fR keyword for an example of \fB
 
 .SH SEE ALSO
 .BR %ADDR,
-.BR %SIZE,
 .BR ALIGN,
 .BR CUST,
 .BR DIM,

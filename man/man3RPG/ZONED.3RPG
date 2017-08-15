@@ -57,5 +57,4 @@ In the following example
 .BR DCL,
 .BR DEC,
 .BR NUM,
-.BR POS,
-.BR ZONED
+.BR POS

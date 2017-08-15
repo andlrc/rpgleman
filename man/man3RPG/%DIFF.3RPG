@@ -149,7 +149,6 @@ D prev_end        S               D   INZ(D\[char39]2003-06-24\[char39])
 .fi
 .SH SEE ALSO
 .BR %DATE,
-.BR %DIFF,
 .BR %TIMESTAMP,
 .BR AYS,
 .BR EARS,

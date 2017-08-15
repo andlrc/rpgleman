@@ -22,5 +22,4 @@ Unlike, \fB%DEC\fR, all three parameters are required\[char46]
 For more information, see Conversion Operations or Built-in Functions\[char46]
 
 .SH SEE ALSO
-.BR %DEC,
-.BR %DECH
+.BR %DEC

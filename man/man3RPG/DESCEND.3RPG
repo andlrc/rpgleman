@@ -50,7 +50,6 @@ If the \fISORTA\fR operation code is used with an array, and no sequence is spec
 .BR %TLOOKUPXX,
 .BR ALTSEQ,
 .BR ASCEND,
-.BR DESCEND,
 .BR LOOKUP,
 .BR RPG,
 .BR SORTA

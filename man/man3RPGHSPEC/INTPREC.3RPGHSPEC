@@ -21,5 +21,3 @@ The \fIINTPREC\fR keyword is used to specify the decimal precision of integer an
 
 \fIINTPREC\fR(20) indicates that the decimal precision of integer and unsigned operations is 20 digits\[char46]
 
-.SH SEE ALSO
-.BR INTPREC

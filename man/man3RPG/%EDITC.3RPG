@@ -121,7 +121,6 @@ P editparens      E
 .fi
 .SH SEE ALSO
 .BR %DEC,
-.BR %EDITC,
 .BR %TRIM,
 .BR CURSYM,
 .BR EDITPARENS,

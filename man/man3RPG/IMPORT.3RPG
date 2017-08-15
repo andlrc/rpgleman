@@ -73,7 +73,6 @@ For a multiple-occurrence data structure or table, each module will contain its 
 .BR EXTFMT,
 .BR EXTNAME,
 .BR FROMFILE,
-.BR IMPORT,
 .BR INZ,
 .BR LIKE,
 .BR LOOKUP,

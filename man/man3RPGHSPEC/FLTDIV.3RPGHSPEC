@@ -18,5 +18,3 @@ The \fIFLTDIV\fR keyword indicates that all divide operations within expressions
 
 If \fIFLTDIV\fR is specified, optionally with \fI*YES\fR, then all divide operations are performed in float format (guaranteeing that the result always has 15 digits of precision)\[char46]
 
-.SH SEE ALSO
-.BR FLTDIV

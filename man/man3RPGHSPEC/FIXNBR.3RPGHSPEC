@@ -36,7 +36,6 @@ If the \fIFIXNBR\fR keyword is not specified, then the values specified on the c
 .SH NOTICE
 Note:  If the keyword \fIFIXNBR\fR does not contain a member from a pair, then the value specified on the command for this particular data type will be used\[char46] For example, if the keyword \fIFIXNBR\fR(\fI*NOINPUTPACKED\fR) is specified on the Control specification, then for the pair (\fI*ZONED\fR, \fI*NOZONED\fR), whatever was specified implicitly or explicitly on the command will be used\[char46]
 .SH SEE ALSO
-.BR FIXNBR,
 .BR INPUTPACKED,
 .BR NPUTPACKED,
 .BR OINPUTPACKED,

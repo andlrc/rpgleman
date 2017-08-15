@@ -27,6 +27,5 @@ The /\fIDEFINE\fR directive adds a condition-name to the list of currently defin
 .SH SEE ALSO
 .BR CRTBNDRPG,
 .BR CRTRPGMOD,
-.BR DEFINE,
 .BR DEFINED,
 .BR NOT

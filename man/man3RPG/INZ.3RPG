@@ -108,7 +108,6 @@ This keyword is not valid in combination with \fIBASED\fR or \fIIMPORT\fR\[char4
 .BR FROMFILE,
 .BR IKEDS,
 .BR IMPORT,
-.BR INZ,
 .BR LIKEDS,
 .BR NTRY,
 .BR PLIST,

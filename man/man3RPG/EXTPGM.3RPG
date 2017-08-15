@@ -40,6 +40,5 @@ Any parameters defined by a prototype or procedure interface with \fIEXTPGM\fR m
 
 .SH SEE ALSO
 .BR DCL,
-.BR EXTPGM,
 .BR EXTPROC,
 .BR QCMDEXC

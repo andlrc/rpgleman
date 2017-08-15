@@ -122,7 +122,6 @@ RNF7357     1200             *JOBRUN            28     921    1073
 .PP
 .SH SEE ALSO
 .BR CCSID,
-.BR CCSIDCVT,
 .BR DBCS,
 .BR FEFE,
 .BR HAR,

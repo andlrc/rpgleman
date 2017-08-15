@@ -24,5 +24,4 @@ The \fIPERRCD\fR keyword is valid only when the keyword \fIFROMFILE\fR, \fITOFIL
 .SH SEE ALSO
 .BR CTDATA,
 .BR FROMFILE,
-.BR PERRCD,
 .BR TOFILE

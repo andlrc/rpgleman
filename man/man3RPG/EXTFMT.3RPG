@@ -66,7 +66,6 @@ The default external format for \fIUCS\fR-2 arrays is character\[char46] The num
 .PP
 
 .SH SEE ALSO
-.BR EXTFMT,
 .BR FROMFILE,
 .BR TOFILE,
 .BR UCS

@@ -22,6 +22,5 @@ The default date format for definitions can be temporarily changed using the /\f
 If the \fIDATFMT\fR keyword is not specified, the \fI*ISO\fR format is assumed\[char46] For more information on internal formats, see Internal and External Formats\[char46] Table 1 describes the various date formats and their separators\[char46]
 
 .SH SEE ALSO
-.BR DATFMT,
 .BR RESTORE,
 .BR SET

@@ -50,7 +50,6 @@ The name can be a subfield of a data structure defined with the \fILIKEDS\fR key
 .PP
 
 .SH SEE ALSO
-.BR %FIELDS,
 .BR EXTNAME,
 .BR LIKEDS,
 .BR LIKEREC,

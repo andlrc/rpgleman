@@ -205,7 +205,6 @@ D     Language                   1A   OVERLAY(PartNumber:*NEXT)
 .BR ETD,
 .BR EXT,
 .BR MOVEA,
-.BR OVERLAY,
 .BR PARM,
 .BR POS,
 .BR QUALIFIED,

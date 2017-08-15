@@ -31,7 +31,6 @@ Similarly, \fIDSPSRVPGM\fR \fIDETAIL\fR(\fI*COPYRIGHT\fR) gives the copyright in
 
 
 .SH SEE ALSO
-.BR COPYRIGHT,
 .BR DETAIL,
 .BR DSPMOD,
 .BR DSPPGM,

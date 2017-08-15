@@ -111,7 +111,6 @@ C                   OPEN      FILEX
 .BR FFILEX,
 .BR FILEX,
 .BR IPEASFR,
-.BR OPEN,
 .BR RTNX,
 .BR USROPN,
 .BR WRITE

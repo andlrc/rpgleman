@@ -31,5 +31,4 @@ The number of digits used in the affected operations is always computed followin
 .BR %DECPOS,
 .BR %EDITC,
 .BR %EDITW,
-.BR %LEN,
-.BR DECPREC
+.BR %LEN

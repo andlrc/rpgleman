@@ -51,7 +51,6 @@ If the \fIALWNULL\fR keyword is not specified, then the value specified on the c
 For more information, see Database Null Value Support
 
 .SH SEE ALSO
-.BR ALWNULL,
 .BR NPUTONLY,
 .BR NULLIND,
 .BR SRCTL

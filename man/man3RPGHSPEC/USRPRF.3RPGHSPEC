@@ -30,5 +30,4 @@ The \fIUSRPRF\fR keyword is valid only if the \fICRTBNDRPG\fR command is used\[c
 .SH SEE ALSO
 .BR CRTBNDRPG,
 .BR SER,
-.BR USRPRF,
 .BR WNER

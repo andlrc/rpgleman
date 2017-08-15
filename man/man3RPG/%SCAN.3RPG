@@ -133,7 +133,6 @@ For an example comparing \fB%SCAN\fR and \fB%SCANR\fR, see Example using \fB%SCA
 
 .SH SEE ALSO
 .BR %FOUND,
-.BR %SCAN,
 .BR %SCANR,
 .BR %TRIMR,
 .BR ETD,

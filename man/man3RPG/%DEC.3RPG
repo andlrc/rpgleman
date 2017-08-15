@@ -16,5 +16,3 @@
 .SH DESCRIPTION
 \fB%DEC\fR converts the value of the first parameter to decimal (packed) format\[char46]
 
-.SH SEE ALSO
-.BR %DEC

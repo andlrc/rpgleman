@@ -22,5 +22,4 @@ Following the /\fIENDIF\fR directive, if the matching /IF directive was a select
 
 .SH SEE ALSO
 .BR ELSE,
-.BR ELSEIF,
-.BR ENDIF
+.BR ELSEIF

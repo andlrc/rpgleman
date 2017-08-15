@@ -169,7 +169,6 @@ Examples of the \fIFOR\fR Operation
 .BR DOWNTO,
 .BR END,
 .BR ENDFOR,
-.BR FOR,
 .BR GOTO,
 .BR ITER,
 .BR LEAVE,

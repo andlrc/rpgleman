@@ -39,6 +39,5 @@ By specifying the \fIEXTBININT\fR keyword, your program can make use of the full
 
 .SH SEE ALSO
 .BR DDS,
-.BR EXTBININT,
 .BR INT,
 .BR RPG

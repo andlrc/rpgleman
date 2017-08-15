@@ -135,7 +135,6 @@ See Aligning Data Structure Subfields for more information\[char46]
 .SH SEE ALSO
 .BR %ELEM,
 .BR %SIZE,
-.BR ALIGN,
 .BR API,
 .BR CHAR,
 .BR DCL,

@@ -69,7 +69,6 @@ D result4         s              8f
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %FLOAT,
 .BR END-FREE,
 .BR ETD,
 .BR FREE

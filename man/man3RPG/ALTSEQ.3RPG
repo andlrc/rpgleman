@@ -48,5 +48,4 @@ When the \fIALTSEQ\fR(\fI*NONE\fR) keyword is specified, the alternate collating
 .PP
 
 .SH SEE ALSO
-.BR ALTSEQ,
 .BR ONE

@@ -92,7 +92,6 @@ D string          s             50a   varying inz(\[char39]$****12\[char46]345**
 
 .SH SEE ALSO
 .BR %CHECK,
-.BR %CHECKR,
 .BR %LEN,
 .BR %SUBST,
 .BR %TRIM,

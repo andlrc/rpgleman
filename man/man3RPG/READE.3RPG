@@ -193,7 +193,6 @@ C                   READE(N)  REC1                                   56
 .BR LIKEREC,
 .BR NPUT,
 .BR OPEN,
-.BR READE,
 .BR REC,
 .BR RPG,
 .BR SETGT,

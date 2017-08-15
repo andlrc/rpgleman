@@ -20,5 +20,3 @@ See Compiler Directives for information on the columns available for directives\
 
 Use /\fIEJECT\fR to indicate that subsequent specifications are to begin on a new page of the compiler listing\[char46] If the spool file is already at the top of a new page, /\fIEJECT\fR will not advance to a new page\[char46] /\fIEJECT\fR is not printed on the compiler listing\[char46]
 
-.SH SEE ALSO
-.BR EJECT

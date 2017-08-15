@@ -26,6 +26,5 @@ Any data item defined in an \fIOPM\fR \fIRPG\fR/400Â® program is implicitly de
 
 
 .SH SEE ALSO
-.BR NOOPT,
 .BR OPM,
 .BR RPG

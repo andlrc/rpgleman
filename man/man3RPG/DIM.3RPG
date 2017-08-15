@@ -26,7 +26,6 @@ When \fIDIM\fR is specified on a data structure definition, the data structure m
 
 .SH SEE ALSO
 .BR CTDATA,
-.BR DIM,
 .BR FROMFILE,
 .BR PERRCD,
 .BR TOFILE

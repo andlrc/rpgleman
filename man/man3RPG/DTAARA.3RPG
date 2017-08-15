@@ -106,7 +106,6 @@ If you specify a data area name without a library name, \fI*LIBL\fR is used\[cha
 .BR DDM,
 .BR DEFINE,
 .BR DTAAARA,
-.BR DTAARA,
 .BR EXPORT,
 .BR HAR,
 .BR IBL,

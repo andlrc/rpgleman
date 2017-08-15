@@ -50,7 +50,6 @@ D a               s              1a
 .fi
 .SH SEE ALSO
 .BR %INT,
-.BR %INTH,
 .BR END-FREE,
 .BR ETD,
 .BR FREE

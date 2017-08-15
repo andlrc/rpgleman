@@ -25,5 +25,4 @@ If the previous /IF or /\fIELSEIF\fR was not satisfied, and the condition expres
 
 .SH SEE ALSO
 .BR ELSE,
-.BR ELSEIF,
 .BR ENDIF

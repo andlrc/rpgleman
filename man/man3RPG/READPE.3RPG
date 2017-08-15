@@ -195,7 +195,6 @@ C                   READPE    RecA                                 8899
 .BR READ,
 .BR READE,
 .BR READP,
-.BR READPE,
 .BR RPG,
 .BR SETGT,
 .BR SETLL,

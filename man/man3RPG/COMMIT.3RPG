@@ -66,7 +66,6 @@ To handle \fICOMMIT\fR exceptions (program status codes 802 to 805), either the 
 For more information, see File Operations\[char46]
 
 .SH SEE ALSO
-.BR COMMIT,
 .BR ILE,
 .BR ROLBK,
 .BR RPG,

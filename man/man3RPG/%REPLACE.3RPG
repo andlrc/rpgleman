@@ -90,7 +90,6 @@ D result          S            100A   VARYING
 .SH SEE ALSO
 .BR %CHAR,
 .BR %LEN,
-.BR %REPLACE,
 .BR %SCAN,
 .BR END-FREE,
 .BR ETD,

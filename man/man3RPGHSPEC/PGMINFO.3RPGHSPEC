@@ -101,5 +101,4 @@ The \fIPGMINFO\fR setting defaults to the values specified on the \fIPGMINFO\fR 
 .BR LIKEREC,
 .BR ODULE,
 .BR PCML,
-.BR PGMINFO,
 .BR QBNRPII

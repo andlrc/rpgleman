@@ -41,7 +41,6 @@ If the operation cannot complete successfully, exception 00425 or 00426 is issue
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %ALLOC,
 .BR ALLOC,
 .BR END-FREE,
 .BR FREE,

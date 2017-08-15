@@ -132,7 +132,6 @@ See Expressions for general information on expressions\[char46] See Precision Ru
 .BR DIM,
 .BR DMYDATE,
 .BR END-FREE,
-.BR EVAL,
 .BR FIELD,
 .BR FREE,
 .BR HMR,

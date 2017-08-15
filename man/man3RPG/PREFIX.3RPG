@@ -75,7 +75,6 @@ For more examples, see \fIPREFIX\fR(prefix{:nbr_of_char_replaced})\[char46]
 .BR EVAL-CORR,
 .BR EXTFLD,
 .BR FILE,
-.BR PREFIX,
 .BR RPG,
 .BR YETOTAL,
 .BR YTDTOTAL

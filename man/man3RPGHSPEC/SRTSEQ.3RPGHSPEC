@@ -47,5 +47,4 @@ If the \fISRTSEQ\fR keyword is not specified, then the value specified on the co
 .BR ILE,
 .BR LANGID,
 .BR OBRUN,
-.BR RPG,
-.BR SRTSEQ
+.BR RPG

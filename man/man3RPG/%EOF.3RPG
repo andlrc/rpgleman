@@ -128,7 +128,6 @@ FFILE2     IF   E             DISK
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %EOF,
 .BR AID,
 .BR AND,
 .BR CHAIN,

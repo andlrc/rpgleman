@@ -133,7 +133,6 @@ C                  ENDMON
 .BR ITER,
 .BR LEAVE,
 .BR LEAVESR,
-.BR MONITOR,
 .BR NOT,
 .BR READ,
 .BR RETURN,

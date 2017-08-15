@@ -15,5 +15,4 @@ In earlier releases, the /\fIFREE\fR compiler directive specified the beginning 
 If you code the /\fIFREE\fR or /\fIEND-FREE\fR directive, it will be ignored, but the syntax of the directive will be checked\[char46] The columns following the directive must be blank\[char46] See Free-Form Statements for information on free-form statements\[char46]
 
 .SH SEE ALSO
-.BR END-FREE,
-.BR FREE
+.BR END-FREE

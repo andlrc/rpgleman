@@ -49,7 +49,6 @@ In the following example
 For information on defining a variable-length character item, see \fIVARCHAR\fR(length {:2 | 4})\[char46]
 
 .SH SEE ALSO
-.BR CHAR,
 .BR DCL,
 .BR LEN,
 .BR MSG,

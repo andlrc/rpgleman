@@ -68,7 +68,6 @@ In the following example, there is a free-form Control statement, but none of th
 .BR BNDDIR,
 .BR CRTBNDRPG,
 .BR CTL-OPT,
-.BR DFTACTGRP,
 .BR ILE,
 .BR NHERIT,
 .BR OPM,

@@ -15,5 +15,4 @@ The \fIEXT\fR keyword is used in a free-form data structure definition to indica
 If the \fIEXT\fR keyword is specified, it must be the first keyword\[char46]
 
 .SH SEE ALSO
-.BR EXT,
 .BR EXTNAME

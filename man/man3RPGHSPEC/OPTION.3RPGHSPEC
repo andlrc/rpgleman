@@ -113,7 +113,6 @@ Note:  If the keyword \fIOPTION\fR does not contain a member from a pair, then t
 .BR OEXPDDS,
 .BR OEXT,
 .BR OGEN,
-.BR OPTION,
 .BR OSECLVL,
 .BR OSHOWCPY,
 .BR OSHOWSKP,

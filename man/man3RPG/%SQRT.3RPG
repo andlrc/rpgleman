@@ -40,6 +40,5 @@ D f               S              4F
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %SQRT,
 .BR END-FREE,
 .BR FREE

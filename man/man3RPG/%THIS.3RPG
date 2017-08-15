@@ -55,7 +55,6 @@ P vacationDays    E
 .fi
 .SH SEE ALSO
 .BR %FOUND,
-.BR %THIS,
 .BR AVA,
 .BR EMPFILE,
 .BR EXPORT,

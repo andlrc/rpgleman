@@ -77,7 +77,6 @@ D numeric         S             15P 3
 .fi
 .SH SEE ALSO
 .BR %DEC,
-.BR %TRIM,
 .BR END-FREE,
 .BR ETD,
 .BR FREE,

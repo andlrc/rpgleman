@@ -35,7 +35,6 @@ Note:  If you use the \fIOPDESC\fR keyword for your own procedures, the \fIRTNPA
 .BR CEEDOD,
 .BR EXTPGM,
 .BR ILE,
-.BR OPDESC,
 .BR RPG,
 .BR RTNPARM,
 .BR UCS

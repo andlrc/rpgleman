@@ -128,7 +128,6 @@ O                       VERSNO
 .SH SEE ALSO
 .BR AUTH,
 .BR DETAIL,
-.BR EXCEPT,
 .BR HDG,
 .BR PAGE,
 .BR RPG,

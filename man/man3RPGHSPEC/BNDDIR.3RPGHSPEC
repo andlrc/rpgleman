@@ -32,7 +32,6 @@ See \fIDFTACTGRP\fR(\fI*YES\fR | \fI*NO\fR) for information on how the \fIBNDDIR
 
 .SH SEE ALSO
 .BR ACTGRP,
-.BR BNDDIR,
 .BR CRTBNDRPG,
 .BR CRTRPGMOD,
 .BR DFTACTGRP,

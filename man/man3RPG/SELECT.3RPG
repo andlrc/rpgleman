@@ -127,5 +127,4 @@ C                   ADD       1              N
 .BR MOVE,
 .BR NOT,
 .BR OTHER,
-.BR SELECT,
 .BR WHEN

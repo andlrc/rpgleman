@@ -214,7 +214,6 @@ D HexPos          S              5P 0
 .BR ABCDEF,
 .BR API,
 .BR ARSIZE,
-.BR CALLP,
 .BR CDEF,
 .BR CEE,
 .BR CEEDOD,

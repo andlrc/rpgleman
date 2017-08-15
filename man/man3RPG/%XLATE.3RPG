@@ -52,7 +52,6 @@ D string          S             10A   inz(\[char39]rpg dept\[char39])
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %XLATE,
 .BR ABCDEFGHIJKLMNOPQRSTUVWXYZ,
 .BR DEPT,
 .BR END-FREE,

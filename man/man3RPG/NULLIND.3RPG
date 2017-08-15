@@ -262,7 +262,6 @@ The null-indicator relationships for the subfields of DS2  are inherited from th
 .BR MAX,
 .BR NPUT,
 .BR NULL,
-.BR NULLIND,
 .BR OPTIONS,
 .BR SRCTL,
 .BR SUB,

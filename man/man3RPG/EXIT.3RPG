@@ -267,7 +267,6 @@ DSPLY  value returned is 6
 .BR DSPLY,
 .BR DUMP,
 .BR ERROR,
-.BR EXIT,
 .BR EXSR,
 .BR GOTO,
 .BR MONITOR,

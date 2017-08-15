@@ -79,5 +79,4 @@ Tip:  It is a good idea to have a naming convention for your all-thread static v
 .BR LLTHREAD,
 .BR ONCURRENT,
 .BR RPG,
-.BR STATIC,
 .BR THREAD

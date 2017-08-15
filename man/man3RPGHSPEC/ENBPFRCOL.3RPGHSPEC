@@ -28,6 +28,5 @@ If \fI*FULL\fR is specified, then performance statistics are gathered on entry a
 If the \fIENBPFRCOL\fR keyword is not specified, then the value specified on the command is used\[char46]
 
 .SH SEE ALSO
-.BR ENBPFRCOL,
 .BR NTRYEXIT,
 .BR ULL

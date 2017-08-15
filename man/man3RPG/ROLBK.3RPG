@@ -73,6 +73,5 @@ For more information, see File Operations\[char46]
 .BR COMMIT,
 .BR ILE,
 .BR OPEN,
-.BR ROLBK,
 .BR RPG,
 .BR STRCMTCTL

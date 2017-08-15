@@ -59,7 +59,6 @@ D   cityName                    25A   OPTIONS(*NOPASS)
     endif;
 .fi
 .SH SEE ALSO
-.BR %PARMNUM,
 .BR %PARMS,
 .BR ARSIZE,
 .BR CEEDOD,

@@ -36,7 +36,6 @@ If the \fIALLOC\fR keyword is not specified, \fIALLOC\fR(\fI*STGMDL\fR) is assum
 See Memory Management Operations for more information on teraspace and single-level memory management operations\[char46]
 
 .SH SEE ALSO
-.BR ALLOC,
 .BR ERASPACE,
 .BR NGLVL,
 .BR NHERIT,

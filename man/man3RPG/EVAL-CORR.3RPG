@@ -159,7 +159,6 @@ Remember the following when using the \fIEVAL-CORR\fR operation:
 .SH SEE ALSO
 .BR %SUBARR,
 .BR EVAL,
-.BR EVAL-CORR,
 .BR HMR,
 .BR ILE,
 .BR LIKEDS,

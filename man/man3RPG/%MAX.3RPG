@@ -19,5 +19,4 @@ See \fB%MAX\fR and \fB%MIN\fR (Maximum or Minimum Value) for detailed informatio
 \fB%MAX\fR returns the maximum value of its operands\[char46]
 
 .SH SEE ALSO
-.BR %MAX,
 .BR %MIN

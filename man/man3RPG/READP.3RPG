@@ -111,7 +111,6 @@ C     BOF           TAG
 .BR LIKEREC,
 .BR NPUT,
 .BR PREC,
-.BR READP,
 .BR REC,
 .BR RPG,
 .BR SETGT,

@@ -29,5 +29,4 @@ If the \fITEXT\fR keyword is not specified, then the value specified on the comm
 
 .SH SEE ALSO
 .BR LANK,
-.BR RCMBRTXT,
-.BR TEXT
+.BR RCMBRTXT

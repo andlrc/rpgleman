@@ -49,7 +49,6 @@ D array_dims      C                   const (%elem (arr1d))
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %ELEM,
 .BR CUST,
 .BR DIM,
 .BR END-FREE,

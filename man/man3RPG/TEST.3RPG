@@ -228,6 +228,5 @@ C     *LONGJUL      TEST (DE)               char_date3
 .BR INZ,
 .BR MDY,
 .BR ONGJUL,
-.BR TEST,
 .BR TIMFMT,
 .BR USA

@@ -50,7 +50,6 @@ See Coding Subroutines, Subroutine Operations, or Compare Operations for more in
 .SH SEE ALSO
 .BR BEGSR,
 .BR ENDSR,
-.BR EXSR,
 .BR GOTO,
 .BR NZSR,
 .BR RPG,

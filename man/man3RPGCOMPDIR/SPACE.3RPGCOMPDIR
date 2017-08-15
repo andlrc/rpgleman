@@ -26,5 +26,3 @@ If the number of lines is greater than 112, 112 will be used as the /\fISPACE\fR
 
 /\fISPACE\fR is not printed on the compiler listing, but is replaced by the specified line spacing\[char46] The line spacing caused by /\fISPACE\fR is in addition to the two lines that are skipped between specification types\[char46]
 
-.SH SEE ALSO
-.BR SPACE

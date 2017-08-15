@@ -27,6 +27,5 @@ If the previous /IF or /\fIELSEIF\fR was not satisfied, source lines are selecte
 If the previous /IF or /\fIELSEIF\fR was satisfied, source lines are excluded until the next /\fIENDIF\fR\[char46]
 
 .SH SEE ALSO
-.BR ELSE,
 .BR ELSEIF,
 .BR ENDIF

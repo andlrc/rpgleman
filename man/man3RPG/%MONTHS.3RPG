@@ -48,7 +48,6 @@ For more information, see Date Operations, Built-in Functions, and Unexpected Re
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %MONTHS,
 .BR %YEARS,
 .BR END-FREE,
 .BR FREE

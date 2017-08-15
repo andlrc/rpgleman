@@ -33,5 +33,4 @@ The subfields can have any valid name, even if the name has been used elsewhere 
 .SH SEE ALSO
 .BR %ERROR,
 .BR FILE,
-.BR FILESTATUS,
-.BR QUALIFIED
+.BR FILESTATUS

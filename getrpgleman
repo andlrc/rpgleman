@@ -375,7 +375,7 @@ sub read_url
 		grep {
 			my $name = $_;
 			!$seen{$name}++ && !grep {
-				m{ \Q $name \E \b }xmsi;
+				m{ ^ \Q$name\E $ }xmsi;
 			} @{$man->{short_names}}, $man->{orig_short_name};
 		} map { uc } $tree->findnodes_as_string('//body') =~ m{
 			( % \w+ | (?<! [%*]) [A-Z]{3,} (?: - [A-Z]{3,} )* )

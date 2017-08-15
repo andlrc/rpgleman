@@ -55,5 +55,4 @@ For information on defining a fixed-length graphic item, see \fIGRAPH\fR(length)
 
 .SH SEE ALSO
 .BR DCL,
-.BR GRAPH,
-.BR VARGRAPH
+.BR GRAPH

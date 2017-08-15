@@ -38,7 +38,6 @@ D p7         s              7p 3 inz (-1234\[char46]567)
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %ABS,
 .BR END-FREE,
 .BR ETD,
 .BR FREE

@@ -65,7 +65,6 @@ The keywords \fIIMPORT\fR and \fIEXPORT\fR allow you to define a "hidden" interf
 .SH SEE ALSO
 .BR BASED,
 .BR CLCASE,
-.BR EXPORT,
 .BR IMPORT,
 .BR LOOKUP,
 .BR NTRY,

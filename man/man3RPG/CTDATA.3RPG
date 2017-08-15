@@ -15,5 +15,4 @@ The \fICTDATA\fR keyword indicates that the array or table is loaded using compi
 When an array or table is loaded at compilation time, it is compiled along with the source program and included in the program\[char46] Such an array or table does not need to be loaded separately every time the program is run\[char46]
 
 .SH SEE ALSO
-.BR CTDATA,
 .BR TDATA

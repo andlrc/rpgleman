@@ -61,7 +61,6 @@ C                   CALLP     proc(ufield2)
 
 
 .SH SEE ALSO
-.BR %UCS2,
 .BR AABB,
 .BR CALLP,
 .BR CCSID,

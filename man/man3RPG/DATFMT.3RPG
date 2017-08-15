@@ -28,5 +28,4 @@ Note:
 
 
 .SH SEE ALSO
-.BR DATE,
-.BR DATFMT
+.BR DATE

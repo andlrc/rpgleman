@@ -16,5 +16,4 @@ COPYNEST(number)
 The \fICOPYNEST\fR keyword specifies the maximum depth to which nesting can occur for /\fICOPY\fR directives\[char46] The depth must be greater than or equal to 1 and less than or equal to 2048\[char46] The default depth is 32\[char46]
 
 .SH SEE ALSO
-.BR COPY,
-.BR COPYNEST
+.BR COPY

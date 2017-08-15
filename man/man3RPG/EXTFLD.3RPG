@@ -118,7 +118,6 @@ If the \fIPREFIX\fR keyword is specified for the data structure, the prefix will
 .BR DCL,
 .BR END,
 .BR EXT,
-.BR EXTFLD,
 .BR EXTNAME,
 .BR INZ,
 .BR MYFIELD,

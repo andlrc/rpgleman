@@ -49,7 +49,6 @@ For more information, see String Operations or Built-in Functions\[char46]
      // trimmed is now \[char39]5\[char46]27***        \[char39]
 .fi
 .SH SEE ALSO
-.BR %TRIML,
 .BR FREE,
 .BR LOCATION,
 .BR UCS

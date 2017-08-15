@@ -79,7 +79,6 @@ D custRecKeys     ds                  likerec(custRec : *key)
  /end-free
 .fi
 .SH SEE ALSO
-.BR %KDS,
 .BR ADDR,
 .BR CCSID,
 .BR CHAIN,

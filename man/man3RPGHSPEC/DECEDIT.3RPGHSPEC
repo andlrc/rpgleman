@@ -116,6 +116,5 @@ If \fIDECEDIT\fR is not specified, a period (\[char46]) is used for editing nume
 
 
 .SH SEE ALSO
-.BR DECEDIT,
 .BR DECFMT,
 .BR OBRUN

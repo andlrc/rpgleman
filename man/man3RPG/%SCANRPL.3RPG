@@ -82,7 +82,6 @@ string2 = %ScanRpl(\[char39]**\[char39] : \[char39]\[char39] : string3);
 // string2 = \[char39]See NAME\[char46] See Tom run\[char46] Run NAME run\[char46]\[char39]
 .fi
 .SH SEE ALSO
-.BR %SCANRPL,
 .BR CCSID,
 .BR NAME,
 .BR UCS

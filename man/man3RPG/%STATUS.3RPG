@@ -296,7 +296,6 @@ C \[char46]\[char46]\[char46]
 .fi
 .SH SEE ALSO
 .BR %ERROR,
-.BR %STATUS,
 .BR ABC,
 .BR ACQ,
 .BR ADDDUR,

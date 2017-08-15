@@ -18,5 +18,3 @@ The \fIGENLVL\fR keyword controls the creation of the object\[char46] The object
 
 If the \fIGENLVL\fR keyword is not specified, then the value specified on the command is used\[char46]
 
-.SH SEE ALSO
-.BR GENLVL

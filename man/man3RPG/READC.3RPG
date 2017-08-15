@@ -122,7 +122,6 @@ C                   ENDDO
 .BR LIKEREC,
 .BR NOT,
 .BR NPUT,
-.BR READC,
 .BR RRN,
 .BR SCUSADR,
 .BR SCUSNAM,

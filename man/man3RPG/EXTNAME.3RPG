@@ -132,7 +132,6 @@ If the format-name is not specified, the record defaults to the first record in 
 .BR CVTOPT,
 .BR EXT,
 .BR EXTFLD,
-.BR EXTNAME,
 .BR FILE,
 .BR IBL,
 .BR LIBRARY,

@@ -45,7 +45,6 @@ D editwd          C                    \[char39]$ ,   ,  **Dollars&  &Cents\[cha
 .fi
 .SH SEE ALSO
 .BR %DEC,
-.BR %EDITW,
 .BR END-FREE,
 .BR ETD,
 .BR FREE

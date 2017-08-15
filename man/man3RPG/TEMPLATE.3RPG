@@ -13,5 +13,4 @@ The \fITEMPLATE\fR keyword indicates that the definition is to be used only for 
 
 .SH SEE ALSO
 .BR LIKE,
-.BR LIKEDS,
-.BR TEMPLATE
+.BR LIKEDS

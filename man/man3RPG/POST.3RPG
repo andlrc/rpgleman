@@ -117,7 +117,6 @@ For more information, see File Operations\[char46]
 .SH SEE ALSO
 .BR DUMP,
 .BR INFDS,
-.BR POST,
 .BR READ,
 .BR READE,
 .BR READP,

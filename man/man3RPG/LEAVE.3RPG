@@ -111,6 +111,5 @@ C                   :
 .BR FOR,
 .BR IFEQ,
 .BR ITER,
-.BR LEAVE,
 .BR NUM,
 .BR SETON

@@ -63,7 +63,6 @@ Note:  If you do specify the parameters for the \fIOBJECT\fR keyword when defini
 .BR END,
 .BR EXTPROC,
 .BR NOWIDEN,
-.BR OBJECT,
 .BR ONSTRUCTOR,
 .BR VARUCS,
 .BR WIDEN

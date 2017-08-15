@@ -190,7 +190,6 @@ The operations that set \fB%ERROR\fR are:
 \fB%ERROR\fR returns \[char39]1\[char39] if the most recent operation with extender \[char39]E\[char39] specified resulted in an error condition\[char46] This is the same as the error indicator being set on for the operation\[char46] Before an operation with extender \[char39]E\[char39] specified begins, \fB%ERROR\fR is set to return \[char39]0\[char39] and remains unchanged following the operation if no error occurs\[char46] All operations that allow an error indicator can also set the \fB%ERROR\fR built-in function\[char46] The \fICALLP\fR operation can also set \fB%ERROR\fR\[char46]
 
 .SH SEE ALSO
-.BR %ERROR,
 .BR ACQ,
 .BR ADDDUR,
 .BR ALLOC,

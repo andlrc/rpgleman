@@ -75,5 +75,4 @@ If an unknown, invalid or unrelated option is found in the \fB%XML\fR options st
 .BR PSDS,
 .BR RPG,
 .BR SAX,
-.BR XML,
-.BR XML-SAX
+.BR XML

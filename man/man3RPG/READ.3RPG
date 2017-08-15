@@ -163,7 +163,6 @@ C                   ENDDO
 .BR NEXT,
 .BR NPUT,
 .BR PWRDWNSYS,
-.BR READ,
 .BR READP,
 .BR REC,
 .BR RPG,

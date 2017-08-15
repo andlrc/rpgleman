@@ -162,6 +162,5 @@ Examples of the \fIRETURN\fR Operation
 .BR RETARR,
 .BR RETFLD,
 .BR RETNONE,
-.BR RETURN,
 .BR RPG,
 .BR RTNPARM

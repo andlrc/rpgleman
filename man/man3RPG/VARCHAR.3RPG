@@ -55,5 +55,4 @@ For information on defining a fixed-length character item, see \fICHAR\fR(length
 
 .SH SEE ALSO
 .BR CHAR,
-.BR DCL,
-.BR VARCHAR
+.BR DCL

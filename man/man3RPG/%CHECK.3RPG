@@ -79,7 +79,6 @@ D token           s             50a   varying
 See also Figure 2\[char46]
 
 .SH SEE ALSO
-.BR %CHECK,
 .BR %LEN,
 .BR %SUBST,
 .BR UCS

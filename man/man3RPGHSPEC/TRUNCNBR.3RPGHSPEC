@@ -26,5 +26,3 @@ If the \fITRUNCNBR\fR keyword is not specified, then the value specified on the 
 
 .SH NOTICE
 Note:  The \fITRUNCNBR\fR option does not apply to calculations performed within expressions\[char46] (Expressions are found in the Extended-Factor 2 field\[char46]) If overflow occurs for these calculations, an error will always occur\[char46]
-.SH SEE ALSO
-.BR TRUNCNBR

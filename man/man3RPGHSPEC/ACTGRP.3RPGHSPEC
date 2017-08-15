@@ -30,7 +30,6 @@ See \fIDFTACTGRP\fR(\fI*YES\fR | \fI*NO\fR) for information on how the \fIACTGRP
 .SH NOTICE
 Note:  The name of the activation group created when the program is called will have exactly the same case as the text entered for the activation-group-name\[char46] The \fIRCLACTGRP\fR command does not allow lower-case text to be specified for its \fIACTGRP\fR parameter\[char46] If it is required to reclaim an activation group individually using the \fIRCLACTGRP\fR command then do not enter lower-case case text for the activation-group-name\[char46]
 .SH SEE ALSO
-.BR ACTGRP,
 .BR ALLER,
 .BR BNDDIR,
 .BR CRTBNDRPG,

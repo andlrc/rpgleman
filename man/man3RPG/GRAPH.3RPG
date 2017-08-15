@@ -50,7 +50,6 @@ For information on defining a variable-length graphic item, see \fIVARGRAPH\fR(l
 
 .SH SEE ALSO
 .BR DCL,
-.BR GRAPH,
 .BR LEN,
 .BR MSG,
 .BR VARGRAPH

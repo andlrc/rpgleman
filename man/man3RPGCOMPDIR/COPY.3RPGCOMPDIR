@@ -143,7 +143,6 @@ Copies from the \fIIFS\fR file file\[char46]rpg in directory dir1/dir2, searchin
 Copies from a file whose name contains blanks\[char46]
 .PP
 .SH SEE ALSO
-.BR COPY,
 .BR COPYNEST,
 .BR IFS,
 .BR ILE,

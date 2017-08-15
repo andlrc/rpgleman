@@ -32,5 +32,4 @@ In the following example, field date_dft  is defined as a date field with the de
 .fi
 
 .SH SEE ALSO
-.BR DATE,
 .BR DCL

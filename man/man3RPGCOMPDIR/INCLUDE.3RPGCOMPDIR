@@ -147,7 +147,6 @@ Copies from a file whose name contains blanks\[char46]
 .BR COPYNEST,
 .BR IFS,
 .BR ILE,
-.BR INCLUDE,
 .BR MBR,
 .BR QRPGLESRC,
 .BR RPG,

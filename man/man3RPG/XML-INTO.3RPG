@@ -269,5 +269,4 @@ Note:  Operation extenders can be specified only when Free-form syntax is used\[
 .BR RPG,
 .BR UCS,
 .BR XML,
-.BR XML-INTO,
 .BR XML-SAX

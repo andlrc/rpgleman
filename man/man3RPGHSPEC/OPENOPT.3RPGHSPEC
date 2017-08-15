@@ -42,7 +42,6 @@ For a program that has one or more printer files defined with an overflow indica
 .BR OCVT,
 .BR OCVTDATA,
 .BR OINZOFL,
-.BR OPENOPT,
 .BR SEQ,
 .BR VTDATA,
 .BR XACT

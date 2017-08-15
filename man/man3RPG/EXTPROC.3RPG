@@ -286,7 +286,6 @@ P                 E
 .BR EVAL,
 .BR EXPORT,
 .BR EXTPGM,
-.BR EXTPROC,
 .BR HAR,
 .BR ILE,
 .BR INZ,

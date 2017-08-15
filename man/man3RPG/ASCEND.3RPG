@@ -49,7 +49,6 @@ If the \fISORTA\fR operation code is used with an array, and no sequence is spec
 .BR %LOOKUPXX,
 .BR %TLOOKUPXX,
 .BR ALTSEQ,
-.BR ASCEND,
 .BR DESCEND,
 .BR LOOKUP,
 .BR RPG,

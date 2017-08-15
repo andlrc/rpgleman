@@ -51,7 +51,6 @@ Note:  If the keyword \fICVTOPT\fR does not contain a member from a pair, then t
 .BR ARCHAR,
 .BR ARGRAPHIC,
 .BR ATETIME,
-.BR CVTOPT,
 .BR DATETIME,
 .BR DBCS,
 .BR GRAPHIC,

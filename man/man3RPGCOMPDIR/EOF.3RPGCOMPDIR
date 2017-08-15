@@ -64,6 +64,5 @@ The second time this member is read, \fIXYZ\fR_COPIED is defined, so the /\fIEOF
 .BR DEFINED,
 .BR ELSE,
 .BR ENDIF,
-.BR EOF,
 .BR READ,
 .BR XYZ

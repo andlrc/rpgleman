@@ -79,5 +79,4 @@ C                   ENDSR
 .BR CHAIN,
 .BR ENDIF,
 .BR ENDSR,
-.BR EVAL,
-.BR LEAVESR
+.BR EVAL

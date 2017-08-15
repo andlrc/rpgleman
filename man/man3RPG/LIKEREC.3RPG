@@ -95,7 +95,6 @@ The following should be taken into account when using the \fILIKEREC\fR keyword:
 .BR ALIAS,
 .BR DDS,
 .BR DISK,
-.BR LIKEREC,
 .BR NPUT,
 .BR QUALIFIED,
 .BR SUBF,

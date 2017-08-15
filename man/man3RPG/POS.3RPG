@@ -59,5 +59,4 @@ The following example is defining a data structure to use with an \fIAPI\fR\[cha
 .BR INT,
 .BR JOBI,
 .BR LEN,
-.BR POS,
 .BR QUALIFIED

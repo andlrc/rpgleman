@@ -44,6 +44,5 @@ This built-in function is similar to the \fIXFOOT\fR operation, except that floa
 For more information, see Array Operations or Built-in Functions\[char46]
 
 .SH SEE ALSO
-.BR %XFOOT,
 .BR ARR,
 .BR XFOOT

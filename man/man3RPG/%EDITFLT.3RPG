@@ -36,7 +36,6 @@ D string          s             40a   varying
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %EDITFLT,
 .BR END-FREE,
 .BR ETD,
 .BR FREE

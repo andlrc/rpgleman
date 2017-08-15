@@ -102,7 +102,6 @@ P createSpace     E
 .BR IBL,
 .BR IKEDS,
 .BR INZ,
-.BR LIKEDS,
 .BR NOOPT,
 .BR NULLIND,
 .BR OCCURS,

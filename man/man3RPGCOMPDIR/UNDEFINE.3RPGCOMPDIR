@@ -28,5 +28,4 @@ The /\fIUNDEFINE\fR directive removes a condition-name from the list of currentl
 .BR DEFINE,
 .BR DEFINED,
 .BR ELSEIF,
-.BR NOT,
-.BR UNDEFINE
+.BR NOT

@@ -82,7 +82,6 @@ D    gparm                       2G   ccsid (4396) value
 
 
 .SH SEE ALSO
-.BR %GRAPH,
 .BR %UCS2,
 .BR AABBCC,
 .BR AABBCCDDEE,

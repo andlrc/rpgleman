@@ -156,7 +156,6 @@ C                   EXSR      HandleNonNum
 C                   ENDIF
 .fi
 .SH SEE ALSO
-.BR %FOUND,
 .BR %SCAN,
 .BR AID,
 .BR CHAIN,

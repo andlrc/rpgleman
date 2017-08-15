@@ -43,7 +43,6 @@ For more information, see Information Operations or Built-in Functions\[char46]
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %DATE,
 .BR ATE,
 .BR DATFMT,
 .BR END-FREE,

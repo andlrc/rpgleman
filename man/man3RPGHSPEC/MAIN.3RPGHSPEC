@@ -111,7 +111,6 @@ A linear main program that is not intended to be called from within any \fIRPG\f
 .BR EXPORT,
 .BR EXTPGM,
 .BR FREE,
-.BR MAIN,
 .BR NOMAIN,
 .BR PRTCUSTRPT,
 .BR RPG

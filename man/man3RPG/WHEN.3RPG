@@ -71,5 +71,4 @@ C                   ENDSL
 .BR NKA,
 .BR NOT,
 .BR OTHER,
-.BR SELECT,
-.BR WHEN
+.BR SELECT

@@ -128,7 +128,6 @@ data_size = %size(fld) - prefix_size;
 max_dbcs_chars = data_size / 2;
 .fi
 .SH SEE ALSO
-.BR %ADDR,
 .BR %LEN,
 .BR %OCCUR,
 .BR %SIZE,

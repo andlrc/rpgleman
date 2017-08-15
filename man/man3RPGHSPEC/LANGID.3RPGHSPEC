@@ -32,7 +32,6 @@ If the \fILANGID\fR keyword is not specified, then the value specified on the co
 .BR ANGIDUNQ,
 .BR DEU,
 .BR FRA,
-.BR LANGID,
 .BR OBRUN,
 .BR RPG,
 .BR SRTSEQ

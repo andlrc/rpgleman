@@ -68,7 +68,6 @@ D   cust_addr   e                     EXTFLD(CUSTAD)
 .SH SEE ALSO
 .BR ADDR,
 .BR ADDRESS,
-.BR ALIAS,
 .BR CUST,
 .BR CUSTAD,
 .BR CUSTNM,

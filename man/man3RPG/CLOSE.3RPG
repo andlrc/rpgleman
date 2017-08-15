@@ -80,7 +80,6 @@ For more information, see File Operations\[char46]
 .fi
 .SH SEE ALSO
 .BR %ERROR,
-.BR CLOSE,
 .BR END-FREE,
 .BR FILEB,
 .BR FREE,

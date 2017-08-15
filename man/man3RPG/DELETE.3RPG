@@ -85,7 +85,6 @@ Leave positions 75 and 76 blank\[char46]
 .BR %KDS,
 .BR CCSID,
 .BR CHAIN,
-.BR DELETE,
 .BR EHMR,
 .BR ELETE,
 .BR IBM,

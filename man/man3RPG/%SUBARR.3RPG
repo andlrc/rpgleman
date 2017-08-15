@@ -181,7 +181,6 @@ For more information, see Built-in Functions\[char46]
 .BR %LOOKUPXX,
 .BR %REALLOC,
 .BR %SIZE,
-.BR %SUBARR,
 .BR %SUBST,
 .BR %TRIM,
 .BR %XFOOT,

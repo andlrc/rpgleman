@@ -110,7 +110,6 @@ C                   RETURN    Max
 P MaxInt          E
 .fi
 .SH SEE ALSO
-.BR %PARMS,
 .BR %SIZE,
 .BR ARMS,
 .BR DIM,

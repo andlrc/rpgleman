@@ -71,7 +71,6 @@ Note:  The \fIDEBUG\fR keyword does not control whether the module is created to
 .BR CRTBNDRPG,
 .BR CRTRPGMOD,
 .BR DBGVIEW,
-.BR DEBUG,
 .BR DOCUMENT,
 .BR DUMP,
 .BR END,

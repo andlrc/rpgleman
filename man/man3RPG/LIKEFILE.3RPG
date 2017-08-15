@@ -16,5 +16,3 @@ LIKEFILE(filename)
 The \fILIKEFILE\fR keyword is used to define a prototyped parameter as a file with the same characteristics as the filename parameter\[char46] 
 
 
-.SH SEE ALSO
-.BR LIKEFILE

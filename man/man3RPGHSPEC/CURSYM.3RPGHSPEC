@@ -56,5 +56,4 @@ The \fICURSYM\fR keyword specifies a character used as a currency symbol in edit
 If the keyword is not specified, $ (dollar sign) will be used as the currency symbol\[char46]
 
 .SH SEE ALSO
-.BR CURSYM,
 .BR RPG

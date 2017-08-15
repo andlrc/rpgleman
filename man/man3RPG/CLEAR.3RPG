@@ -48,6 +48,5 @@ Fully qualified names may be specified as the Result-Field operand for \fICLEAR\
 See Initialization Operations\[char46]
 
 .SH SEE ALSO
-.BR CLEAR,
 .BR OKEY,
 .BR UCS

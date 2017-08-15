@@ -157,7 +157,6 @@ D   Employee_Id                 10I 0 VALUE
 .BR IKE,
 .BR INT,
 .BR INZ,
-.BR LIKE,
 .BR LIKEDS,
 .BR NOOPT,
 .BR ONE,

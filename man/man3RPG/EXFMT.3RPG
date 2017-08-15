@@ -122,7 +122,6 @@ D recDs           ds                  likerec(rec : *all)
 .BR AID,
 .BR CITY,
 .BR DDS,
-.BR EXFMT,
 .BR EXTNAME,
 .BR FPROMTD,
 .BR IPEASFRL,

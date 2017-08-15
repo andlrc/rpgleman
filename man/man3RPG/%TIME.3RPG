@@ -43,7 +43,6 @@ For more information, see Information Operations or Built-in Functions\[char46]
  /END-FREE
 .fi
 .SH SEE ALSO
-.BR %TIME,
 .BR END-FREE,
 .BR FREE,
 .BR TIMFMT
