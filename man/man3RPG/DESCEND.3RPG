@@ -9,7 +9,8 @@
 .SH NAME
 DESCEND
 .SH DESCRIPTION
-The \fIDESCEND\fR keyword describes the sequence of the data in any of the following: 
+The \fIDESCEND\fR keyword describes the sequence of the data in any of the
+following: 
 .IP "" 2
 .RS
 \[bu] An array
@@ -28,22 +29,36 @@ The \fIDESCEND\fR keyword describes the sequence of the data in any of the follo
 See also \fIASCEND\fR\[char46]
 
 
-Descending sequence means that the array or table entries must start with the highest data entry (according to the collating sequence) and go to the lowest\[char46] Items with equal value are allowed\[char46]
+Descending sequence means that the array or table entries must start with the highest data entry
+(according to the collating sequence) and go to the lowest\[char46] Items with equal value are
+allowed\[char46]
 
 
-A prerun-time array or table is checked for the specified sequence at the time the array or table is loaded with data\[char46] If the array or table is out of sequence, control passes to the \fIRPG\fR IV exception/error handling routine\[char46] A run-time array (loaded by input and/or calculation specifications) is not sequence checked\[char46]
+A prerun-time array or table is checked for the specified sequence at the time the array or table is
+loaded with data\[char46] If the array or table is out of sequence, control passes to the \fIRPG\fR
+IV exception/error handling routine\[char46] A run-time array (loaded by input and/or calculation
+specifications) is not sequence checked\[char46]
 
 
-If there is insufficient data in the file to load a pre-run array or table, and the array or table is defined with the \fIDESCEND\fR keyword, an error with status code 1041 will be issued during the initialization of the \fIRPG\fR module if the elements at the end of the array have lower values than the elements loaded from the file\[char46]
+If there is insufficient data in the file to load a pre-run array or table, and the array or table
+is defined with the \fIDESCEND\fR keyword, an error with status code 1041 will be issued during the
+initialization of the \fIRPG\fR module if the elements at the end of the array have lower values
+than the elements loaded from the file\[char46]
 
 
-When \fIALTSEQ\fR(\fI*EXT\fR) is specified, the alternate collating sequence is used when checking the sequence of compile-time arrays or tables\[char46] If the alternate sequence is not known until run-time, the sequence is checked at run-time; if the array or table is out of sequence, control passes to the \fIRPG\fR IV exception/error handling routine\[char46]
+When \fIALTSEQ\fR(\fI*EXT\fR) is specified, the alternate collating sequence is used when checking
+the sequence of compile-time arrays or tables\[char46] If the alternate sequence is not known until
+run-time, the sequence is checked at run-time; if the array or table is out of sequence, control
+passes to the \fIRPG\fR IV exception/error handling routine\[char46]
 
 
-A sequence (ascending or descending) must be specified if the \fILOOKUP\fR operation, \fB%LOOKUPxx\fR built-in, or \fB%TLOOKUPxx\fR built-in is used to search an array or table for an entry to determine whether the entry is high or low compared to the search argument\[char46]
+A sequence (ascending or descending) must be specified if the \fILOOKUP\fR operation,
+\fB%LOOKUPxx\fR built-in, or \fB%TLOOKUPxx\fR built-in is used to search an array or table for an
+entry to determine whether the entry is high or low compared to the search argument\[char46]
 
 
-If the \fISORTA\fR operation code is used with an array, and no sequence is specified, an ascending sequence is assumed\[char46]
+If the \fISORTA\fR operation code is used with an array, and no sequence is specified, an ascending
+sequence is assumed\[char46]
 
 .SH SEE ALSO
 .BR %LOOKUPXX,

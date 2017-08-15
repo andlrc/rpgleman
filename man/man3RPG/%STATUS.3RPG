@@ -13,10 +13,13 @@
 %STATUS{(file_name)}
 .fi
 .SH DESCRIPTION
-\fB%STATUS\fR starts with a return value of 00000 and is reset to 00000 before any operation with an \[char39]E\[char39] extender specified begins\[char46]
+\fB%STATUS\fR starts with a return value of 00000 and is reset to 00000 before any operation with an
+\[char39]E\[char39] extender specified begins\[char46]
 
 
-\fB%STATUS\fR is best checked immediately after an operation with the \[char39]E\[char39] extender or an error indicator specified, or at the beginning of an \fIINFSR\fR or the \fI*PSSR\fR subroutine\[char46]
+\fB%STATUS\fR is best checked immediately after an operation with the \[char39]E\[char39] extender
+or an error indicator specified, or at the beginning of an \fIINFSR\fR or the \fI*PSSR\fR
+subroutine\[char46]
 
 
 For more information, see File Operations, Result Operations, or Built-in Functions\[char46]
@@ -194,10 +197,15 @@ The operations that set \fB%STATUS\fR are:
 .PP
 
 .SH RETURN VALUE
-\fB%STATUS\fR returns the most recent value set for the program or file status\[char46] \fB%STATUS\fR is set whenever the program status or any file status changes, usually when an error occurs\[char46]
+\fB%STATUS\fR returns the most recent value set for the program or file status\[char46]
+\fB%STATUS\fR is set whenever the program status or any file status changes, usually when an error
+occurs\[char46]
 
 
-If \fB%STATUS\fR is used without the optional file_name parameter, then it returns the program or file status most recently changed\[char46] If a file is specified, the value contained in the \fIINFDS\fR \fI*STATUS\fR field for the specified file is returned\[char46] The \fIINFDS\fR does not have to be specified for the file\[char46]
+If \fB%STATUS\fR is used without the optional file_name parameter, then it returns the program or
+file status most recently changed\[char46] If a file is specified, the value contained in the
+\fIINFDS\fR \fI*STATUS\fR field for the specified file is returned\[char46] The \fIINFDS\fR does not
+have to be specified for the file\[char46]
 
 .SH EXAMPLE
 \fB%STATUS\fR and \fB%ERROR\fR with \[char39]E\[char39] Extender
@@ -248,7 +256,8 @@ If \fB%STATUS\fR is used without the optional file_name parameter, then it retur
 .fi
 
 .SH EXAMPLE
-\fB%STATUS\fR and \fB%ERROR\fR with \[char39]E\[char39] Extender, Error Indicator and \fI*PSSR\fR
+\fB%STATUS\fR and \fB%ERROR\fR with \[char39]E\[char39] Extender, Error Indicator and
+\fI*PSSR\fR
 .PP
 .nf
 DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords++++++++++++++++++++++++++

@@ -13,13 +13,21 @@ LIKE
 LIKE(name {: length-adjustment})
 .fi
 .SH DESCRIPTION
-The \fILIKE\fR keyword is used to define an item like an existing one\[char46] For information about using \fILIKE\fR with an object, see \fILIKE\fR(object-name)\[char46]
+The \fILIKE\fR keyword is used to define an item like an existing one\[char46] For information about
+using \fILIKE\fR with an object, see \fILIKE\fR(object-name)\[char46]
 
 
-When the \fILIKE\fR keyword is specified, the item being defined takes on the length and the data format of the item specified as the parameter\[char46] Standalone fields, prototypes, parameters, and data-structure subfields may be defined using this keyword\[char46] The parameter of \fILIKE\fR can be a standalone field, a data structure, a data structure subfield, a parameter in a procedure interface definition, or a prototype name\[char46] The data type entry (position 40) must be blank\[char46]
+When the \fILIKE\fR keyword is specified, the item being defined takes on the length and the data
+format of the item specified as the parameter\[char46] Standalone fields, prototypes, parameters,
+and data-structure subfields may be defined using this keyword\[char46] The parameter of \fILIKE\fR
+can be a standalone field, a data structure, a data structure subfield, a parameter in a procedure
+interface definition, or a prototype name\[char46] The data type entry (position 40) must be
+blank\[char46]
 
 
-This keyword is similar to the \fI*LIKE\fR \fIDEFINE\fR operation code (see \fI*LIKE\fR \fIDEFINE\fR )\[char46] However, it differs from \fI*LIKE\fR \fIDEFINE\fR in that the defined data takes on the data format and \fICCSID\fR as well as the length\[char46] 
+This keyword is similar to the \fI*LIKE\fR \fIDEFINE\fR operation code
+(see \fI*LIKE\fR \fIDEFINE\fR )\[char46] However, it differs from \fI*LIKE\fR \fIDEFINE\fR in that the defined data takes on the
+data format and \fICCSID\fR as well as the length\[char46] 
 
 
 
@@ -27,16 +35,24 @@ This keyword is similar to the \fI*LIKE\fR \fIDEFINE\fR operation code (see \fI*
 
 
 
-When \fILIKE\fR is used to define an item like an array, the \fIDIM\fR keyword is required to define the array dimensions\[char46] However, \fIDIM\fR(\fB%ELEM(array)\fR) can be used to define an array with the same dimension as another array\[char46]
+When \fILIKE\fR is used to define an item like an array, the \fIDIM\fR keyword is required to define
+the array dimensions\[char46] However, \fIDIM\fR(\fB%ELEM(array)\fR) can be used to define an array
+with the same dimension as another array\[char46]
 
 
-If the parameter of \fILIKE\fR is a prototype, then the item being defined will have the same data type as the return value of the prototype\[char46] If there is no return value, then an error message is issued\[char46]
+If the parameter of \fILIKE\fR is a prototype, then the item being defined will have the same data
+type as the return value of the prototype\[char46] If there is no return value, then an error
+message is issued\[char46]
 
 
-The length of the item being defined can be adjusted\[char46] You specify the length adjustment in the second parameter of the \fILIKE\fR keyword in free-form definitions, or the Length entry in fixed-form definitions\[char46] The length adjust must be specified with either a positive (+) or negative (-) sign\[char46]
+The length of the item being defined can be adjusted\[char46] You specify the length adjustment in
+the second parameter of the \fILIKE\fR keyword in free-form definitions, or the Length entry in
+fixed-form definitions\[char46] The length adjust must be specified with either a positive (+) or
+negative (-) sign\[char46]
 
 
-Here are some considerations for using the \fILIKE\fR keyword with different data types: 
+Here are some considerations for using the \fILIKE\fR keyword with different data
+types: 
 .IP "" 2
 .RS
 \[bu] 
@@ -53,7 +69,10 @@ Here are some considerations for using the \fILIKE\fR keyword with different dat
 
  
 
- , the length adjustment is the number of additional (or fewer) digits\[char46] For integer or unsigned fields, adjustment values must be such that the resulting number of digits for the field are 3, 5, 10, or 20\[char46] For float fields, length adjustment is not allowed\[char46] 
+ , the length adjustment is the number of additional (or fewer) digits\[char46] For integer or
+unsigned fields, adjustment values must be such that the resulting number of digits for the field
+are 3, 5, 10, or 20\[char46] For float fields, length adjustment is not
+allowed\[char46] 
 
 
 .RE
@@ -63,7 +82,8 @@ Here are some considerations for using the \fILIKE\fR keyword with different dat
 
  
 
- , the length adjustment is the number of additional (or fewer) graphic or \fIUCS\fR-2 characters (1 graphic or \fIUCS\fR-2 character = 2 bytes)\[char46] 
+ , the length adjustment is the number of additional (or fewer) graphic or \fIUCS\fR-2 characters (1
+graphic or \fIUCS\fR-2 character = 2 bytes)\[char46] 
 
 
 .RE
@@ -80,7 +100,8 @@ Here are some considerations for using the \fILIKE\fR keyword with different dat
 .PP
 
 
-Use \fILIKEDS\fR to define a data structure like another data structure, with the same subfields\[char46]
+Use \fILIKEDS\fR to define a data structure like another data structure, with the same
+subfields\[char46]
 
 
 
@@ -108,13 +129,13 @@ Defining fields \fILIKE\fR other fields in Free Form
 .PP
 .nf
  DCL-S Name CHAR(20);
- DCL-S Long_name LIKE(Name : +5); Â 1Â
+ DCL-S Long_name LIKE(Name : +5);  1�
 
  DCL-DS Struct;
-    NameList LIKE(Name) DIM(20) INZ(*ALL\[char39]X\[char39]); Â 2Â
+    NameList LIKE(Name) DIM(20) INZ(*ALL\[char39]X\[char39]);  2�
  END-DS;
 
- DCL-PR GetBonus LIKE(Salary : -2); Â 3Â
+ DCL-PR GetBonus LIKE(Salary : -2);  3�
     Employee_Id INT(10) VALUE;
  END-PR;
 .fi
@@ -131,12 +152,12 @@ Defining fields \fILIKE\fR other fields in Fixed Form
 DName+++++++++++ETDsFrom+++To/L+++IDc\[char46]Keywords+++++++++++++++++++++++++++++
 D\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]\[char46]Keywords+++++++++++++++++++++++++++++
 D  Name           S             20
-D  Long_name      S             +5    LIKE(Name) Â 1Â
+D  Long_name      S             +5    LIKE(Name)  1�
 
 D  Struct         DS
-D   NameList                          LIKE(Name) DIM(20) INZ(*ALL\[char39]X\[char39]) Â 2Â
+D   NameList                          LIKE(Name) DIM(20) INZ(*ALL\[char39]X\[char39])  2�
 
-D  GetBonus       PR         -2    LIKE(Salary) Â 3Â
+D  GetBonus       PR         -2    LIKE(Salary)  3�
 D   Employee_Id                 10I 0 VALUE
 .fi
 

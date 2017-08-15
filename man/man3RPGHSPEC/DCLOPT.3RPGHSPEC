@@ -19,7 +19,8 @@ The \fIDCLOPT\fR keyword specifies options related to declarations\[char46]
 The parameter must be \fI*NOCHGDSLEN\fR\[char46]
 
 
-When \fIDCLOPT\fR(\fI*NOCHGDSLEN\fR)  is specified, you can use \fB%SIZE\fR  with a data structure parameter in a free-form File or Definition statement if the following conditions are met: 
+When \fIDCLOPT\fR(\fI*NOCHGDSLEN\fR)  is specified, you can use \fB%SIZE\fR  with a data structure parameter in a free-form File or Definition statement if the following
+conditions are met: 
 .IP "" 2
 .RS
 \[bu] All the subfields are defined\[char46]
@@ -30,7 +31,8 @@ When \fIDCLOPT\fR(\fI*NOCHGDSLEN\fR)  is specified, you can use \fB%SIZE\fR  wit
 .RE
 .IP "" 2
 .RS
-\[bu] The usage of \fB%SIZE\fR  and the data structure definition must be either both in the global declarations or both in the same subprocedure\[char46]
+\[bu] The usage of \fB%SIZE\fR  and the data structure definition must be either both in the global declarations or both in the
+same subprocedure\[char46]
 .RE
 .PP
 
@@ -42,11 +44,14 @@ The following additional rules apply:
 .RE
 .IP "" 2
 .RS
-\[bu] If a data structure appears in the result field of a Calculation specification, the Length entry cannot be specified\[char46]
+\[bu] If a data structure appears in the result field of a Calculation specification, the Length entry
+cannot be specified\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If an externally-described file has Input or Output specifications generated, a field name in the file cannot be the name of a data structure\[char46] (Input and Output specifications are generated for any global file that does not have the \fIQUALIFIED\fR  or \fILIKEFILE\fR  keyword\[char46])
+\[bu] If an externally-described file has Input or Output specifications generated, a field name in the
+file cannot be the name of a data structure\[char46] (Input and Output specifications are generated
+for any global file that does not have the \fIQUALIFIED\fR  or \fILIKEFILE\fR  keyword\[char46])
 .RE
 .PP
 
@@ -79,25 +84,27 @@ The second file declaration is valid because the value of \fB%SIZE(\fIMYDS\fR)\f
 .PP
 
 
-Without \fIDCLOPT\fR(\fI*NOCHGDSLEN\fR), neither file declaration would be valid because the size of \fIMYDS\fR would not be known until the compiler had processed all the statements of the procedure\[char46]
+Without \fIDCLOPT\fR(\fI*NOCHGDSLEN\fR), neither file declaration would be valid because the size of
+\fIMYDS\fR would not be known until the compiler had processed all the statements of the
+procedure\[char46]
 
 .SH EXAMPLE
 
 .PP
 .nf
-ctl-opt dclopt(*nochgdslen); //Â 1Â
+ctl-opt dclopt(*nochgdslen); // 1�
 
-dcl-ds myDs; //Â 2Â
+dcl-ds myDs; // 2�
   seq zoned(6:2);
   dat zoned(6);
-  data like(line); //Â 3Â
+  data like(line); // 3�
 end-ds;
 
-dcl-f myfile1 disk(%size(myDS)); //Â 4Â
+dcl-f myfile1 disk(%size(myDS)); // 4�
 
-dcl-s line char(100); //Â 5Â
+dcl-s line char(100); // 5�
 
-dcl-f myfile2 disk(%size(myDS)); //Â 6Â
+dcl-f myfile2 disk(%size(myDS)); // 6�
 .fi
 .SH SEE ALSO
 .BR %SIZE,

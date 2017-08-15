@@ -9,7 +9,8 @@
 .SH NAME
 IND
 .SH DESCRIPTION
-The \fIIND\fR keyword is used in a free-form definition to indicate that the item is an indicator\[char46]
+The \fIIND\fR keyword is used in a free-form definition to indicate that the item is an
+indicator\[char46]
 
 
 It must be the first keyword\[char46]

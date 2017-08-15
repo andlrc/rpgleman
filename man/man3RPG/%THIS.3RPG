@@ -13,10 +13,16 @@
 %THIS
 .fi
 .SH DESCRIPTION
-A non-static native method works on a specific instance of its class\[char46] This object is actually passed as a parameter to the native method by Javaâ¢, but it does not appear in the prototype or procedure interface for the native method\[char46] In a Java method, the object instance is referred to by the Java reserved word this\[char46] In an \fIRPG\fR native method, the object instance is referred to by the \fB%THIS\fR built-in function\[char46]
+A non-static native method works on a specific instance of its class\[char46] This object is
+actually passed as a parameter to the native method by Java™, but it does not appear in the
+prototype or procedure interface for the native method\[char46] In a Java method, the object
+instance is referred to by the Java reserved word this\[char46] In an \fIRPG\fR native method, the
+object instance is referred to by the \fB%THIS\fR built-in function\[char46]
 
 .SH RETURN VALUE
-\fB%THIS\fR returns an Object value that contains a reference to the class instance on whose behalf the native method is being called\[char46] \fB%THIS\fR is valid only in non-static native methods\[char46] This built-in gives non-static native methods access to the class instance\[char46]
+\fB%THIS\fR returns an Object value that contains a reference to the class instance on whose behalf
+the native method is being called\[char46] \fB%THIS\fR is valid only in non-static native
+methods\[char46] This built-in gives non-static native methods access to the class instance\[char46]
 
 .SH EXAMPLE
 \fB%THIS\fR Example

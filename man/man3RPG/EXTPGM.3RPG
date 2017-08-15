@@ -13,15 +13,20 @@ EXTPGM
 EXTPGM{(name)}
 .fi
 .SH DESCRIPTION
-The \fIEXTPGM\fR keyword indicates that the prototype represents a dynamic call to a program\[char46]
+The \fIEXTPGM\fR keyword indicates that the prototype represents a dynamic call to a
+program\[char46]
 
 
-The parameter specifies the external name of the program whose prototype is being defined\[char46] The name can be a character constant or a character variable\[char46]
+The parameter specifies the external name of the program whose prototype is being defined\[char46]
+The name can be a character constant or a character variable\[char46]
 
 
 
 
- The parameter is optional if the prototype name is not longer than 10 characters\[char46] If the parameter is not specified, the external program name is the same as the upper-case form of the prototype name\[char46] The following example defines a prototype for program \[char39]\fIQCMDEXC\fR\[char39]\[char46] 
+ The parameter is optional if the prototype name is not longer than 10 characters\[char46] If the
+parameter is not specified, the external program name is the same as the upper-case form of the
+prototype name\[char46] The following example defines a prototype for program
+\[char39]\fIQCMDEXC\fR\[char39]\[char46] 
 .SH EXAMPLE
 
 .PP
@@ -33,10 +38,13 @@ The parameter specifies the external name of the program whose prototype is bein
 
 
 
-If neither \fIEXTPGM\fR or \fIEXTPROC\fR is specified for a prototype, then the compiler assumes that you are defining a prototype for a procedure, and assigns the external procedure name to be the upper-case form of the prototype name\[char46]
+If neither \fIEXTPGM\fR or \fIEXTPROC\fR is specified for a prototype, then the compiler assumes
+that you are defining a prototype for a procedure, and assigns the external procedure name to be the
+upper-case form of the prototype name\[char46]
 
 
-Any parameters defined by a prototype or procedure interface with \fIEXTPGM\fR must be passed by reference\[char46] In addition, you cannot define a return value\[char46]
+Any parameters defined by a prototype or procedure interface with \fIEXTPGM\fR must be passed by
+reference\[char46] In addition, you cannot define a return value\[char46]
 
 .SH SEE ALSO
 .BR DCL,

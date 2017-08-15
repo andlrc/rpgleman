@@ -13,18 +13,29 @@ DECPREC
 DECPREC(30|31|63)
 .fi
 .SH DESCRIPTION
-Keyword \fIDECPREC\fR is used to specify the decimal precision of decimal (packed, zoned, or binary) intermediate values in arithmetic operations in expressions\[char46] Decimal intermediate values are always maintained in the proper precision, but this keyword affects how decimal expressions are presented when used in \fB%EDITC\fR, \fB%EDITW\fR, \fB%CHAR\fR, \fB%LEN\fR, and \fB%DECPOS\fR\[char46]
+Keyword \fIDECPREC\fR is used to specify the decimal precision of decimal (packed, zoned, or binary)
+intermediate values in arithmetic operations in expressions\[char46] Decimal intermediate values are
+always maintained in the proper precision, but this keyword affects how decimal expressions are
+presented when used in \fB%EDITC\fR, \fB%EDITW\fR, \fB%CHAR\fR, \fB%LEN\fR, and
+\fB%DECPOS\fR\[char46]
 
 
 .TP 5
 .B \fIDECPREC\fR(30)
-The default decimal precision\[char46] It indicates that the maximum precision of decimal values when used in the affected operations is 30 digits\[char46] However, if at least one operand in the expression is a decimal variable with 31 digits, \fIDECPREC\fR(31) is assumed for that expression\[char46] If at least one operand in the expression is a decimal variable with 32 or more digits, \fIDECPREC\fR(63) is assumed for that expression\[char46]
+The default decimal precision\[char46] It indicates that the maximum precision of decimal values
+when used in the affected operations is 30 digits\[char46] However, if at least one operand in the
+expression is a decimal variable with 31 digits, \fIDECPREC\fR(31) is assumed for that
+expression\[char46] If at least one operand in the expression is a decimal variable with 32 or more
+digits, \fIDECPREC\fR(63) is assumed for that expression\[char46]
 .TP 5
 .B \fIDECPREC\fR(31)
- The maximum precision of decimal values when used in the affected operations is 31 digits\[char46] However, if at least one operand in the expression is a decimal variable with 32 digits or more, \fIDECPREC\fR(63) is assumed for that expression\[char46]
+ The maximum precision of decimal values when used in the affected operations is 31 digits\[char46]
+However, if at least one operand in the expression is a decimal variable with 32 digits or more,
+\fIDECPREC\fR(63) is assumed for that expression\[char46]
 .TP 5
 .B \fIDECPREC\fR(63)
-The number of digits used in the affected operations is always computed following the normal rules for decimal precision, which can be up to the maximum of 63 digits\[char46]
+The number of digits used in the affected operations is always computed following the normal rules
+for decimal precision, which can be up to the maximum of 63 digits\[char46]
 .PP
 .SH SEE ALSO
 .BR %CHAR,

@@ -16,22 +16,29 @@
 The start parameter represents the starting position of the substring\[char46]
 
 
-The length parameter represents the length of the substring\[char46] If it is not specified, the length is the length of the string parameter less the start value plus one\[char46]
+The length parameter represents the length of the substring\[char46] If it is not specified, the
+length is the length of the string parameter less the start value plus one\[char46]
 
 
-The string must be character, graphic, or \fIUCS\fR-2data\[char46] Starting position and length may be any numeric value or numeric expression with zero decimal positions\[char46] The starting position must be greater than zero\[char46] The length may be greater than or equal to zero\[char46]
+The string must be character, graphic, or \fIUCS\fR-2data\[char46] Starting position and length may
+be any numeric value or numeric expression with zero decimal positions\[char46] The starting
+position must be greater than zero\[char46] The length may be greater than or equal to zero\[char46]
 
 
-When the string parameter is varying length, the values of the other parameters are checked against the current length, not the maximum length\[char46]
+When the string parameter is varying length, the values of the other parameters are checked against
+the current length, not the maximum length\[char46]
 
 
-When specified as a parameter for a definition specification keyword, the parameters must be literals or named constants representing literals\[char46] When specified on a free-form calculation specification, the parameters may be any expression\[char46]
+When specified as a parameter for a definition specification keyword, the parameters must be
+literals or named constants representing literals\[char46] When specified on a free-form calculation
+specification, the parameters may be any expression\[char46]
 
 
 For more information, see String Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%SUBST\fR returns a portion of argument string\[char46] It may also be used as the result of an assignment with the \fIEVAL\fR operation code\[char46]
+\fB%SUBST\fR returns a portion of argument string\[char46] It may also be used as the result of an
+assignment with the \fIEVAL\fR operation code\[char46]
 
 .SH SEE ALSO
 .BR EVAL,

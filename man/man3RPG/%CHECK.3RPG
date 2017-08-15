@@ -13,16 +13,21 @@
 %CHECK(comparator : base {: start})
 .fi
 .SH DESCRIPTION
-The check begins at the starting position and continues to the right until a character that is not contained in the comparator string is found\[char46] The starting position defaults to 1\[char46]
+The check begins at the starting position and continues to the right until a character that is not
+contained in the comparator string is found\[char46] The starting position defaults to 1\[char46]
 
 
-The first parameter must be of type character, graphic, or \fIUCS\fR-2, fixed or varying length\[char46] The second parameter must be the same type as the first parameter\[char46] The third parameter, if specified, must be a non-float numeric with zero decimal positions\[char46]
+The first parameter must be of type character, graphic, or \fIUCS\fR-2, fixed or varying
+length\[char46] The second parameter must be the same type as the first parameter\[char46] The third
+parameter, if specified, must be a non-float numeric with zero decimal positions\[char46]
 
 
 For more information, see String Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%CHECK\fR returns the first position of the string base that contains a character that does not appear in string comparator\[char46] If all of the characters in base also appear in comparator, the function returns 0\[char46]
+\fB%CHECK\fR returns the first position of the string base that contains a character that does not
+appear in string comparator\[char46] If all of the characters in base also appear in comparator, the
+function returns 0\[char46]
 
 .SH EXAMPLE
 \fB%CHECK\fR Example

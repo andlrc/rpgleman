@@ -9,13 +9,20 @@
 .SH NAME
 VALUE
 .SH DESCRIPTION
-The \fIVALUE\fR keyword indicates that the parameter is passed by value rather than by reference\[char46] Parameters can be passed by value when the procedure they are associated with are called using a procedure call\[char46]
+The \fIVALUE\fR keyword indicates that the parameter is passed by value rather than by
+reference\[char46] Parameters can be passed by value when the procedure they are associated with are
+called using a procedure call\[char46]
 
 
-The \fIVALUE\fR keyword cannot be specified for a parameter if its prototype was defined using the \fIEXTPGM\fR keyword\[char46] Calls to programs require that parameters be passed by reference\[char46]
+The \fIVALUE\fR keyword cannot be specified for a parameter if its prototype was defined using the
+\fIEXTPGM\fR keyword\[char46] Calls to programs require that parameters be passed by
+reference\[char46]
 
 
-The rules for what can be passed as a value parameter to a called procedure are the same as the rules for what can be assigned using the \fIEVAL\fR operation\[char46] The parameter received by the procedure corresponds to the left-hand side of the expression; the passed parameter corresponds to the right-hand side\[char46] See \fIEVAL\fR (Evaluate expression) for more information\[char46]
+The rules for what can be passed as a value parameter to a called procedure are the same as the
+rules for what can be assigned using the \fIEVAL\fR operation\[char46] The parameter received by the
+procedure corresponds to the left-hand side of the expression; the passed parameter corresponds to
+the right-hand side\[char46] See \fIEVAL\fR (Evaluate expression) for more information\[char46]
 
 .SH SEE ALSO
 .BR EVAL,

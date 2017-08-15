@@ -13,17 +13,22 @@ EXTNAME
 EXTNAME(file-name{:format-name}{:*ALL| *INPUT|*OUTPUT|*KEY|*NULL})
 .fi
 .SH DESCRIPTION
-The \fIEXTNAME\fR keyword is used to specify the name of the file that contains the field descriptions used as the subfield description for the data structure being defined\[char46]
+The \fIEXTNAME\fR keyword is used to specify the name of the file that contains the field
+descriptions used as the subfield description for the data structure being defined\[char46]
 
 
-The file_name parameter is required\[char46] Optionally a format name may be specified to direct the compiler to a specific format within a file\[char46] If format_name parameter is not specified the first record format is used\[char46]
+The file_name parameter is required\[char46] Optionally a format name may be specified to direct the
+compiler to a specific format within a file\[char46] If format_name parameter is not specified the
+first record format is used\[char46]
 
 
 .IP "" 2
 .RS
 \[bu] 
 
- In a free-form definition, the file-name and format-name parameters must be character literals or named constants representing character literals\[char46] If a parameter is a named constant, the constant must be defined prior to the definition statement\[char46] 
+ In a free-form definition, the file-name and format-name parameters must be character literals or
+named constants representing character literals\[char46] If a parameter is a named constant, the
+constant must be defined prior to the definition statement\[char46] 
 
 
 .RE
@@ -31,13 +36,18 @@ The file_name parameter is required\[char46] Optionally a format name may be spe
 .RS
 \[bu] 
 
- In a fixed-form definition, the file-name and format-name parameters can be either names or character literals\[char46] 
+ In a fixed-form definition, the file-name and format-name parameters can be either names or
+character literals\[char46] 
 
 
 .RE
 .PP
 
-If a character literal is specified, the file or format name must be specified in the correct case\[char46] For example, if the external file is \fIMYFILE\fR, the file-name parameter could be specified as a name in mixed case such as myFile or myfile, but if specified as a literal it must be \[char39]\fIMYFILE\fR\[char39]\[char46] If the file-name is a character literal, it can be in any of the following forms 
+If a character literal is specified, the file or format name must be specified in the correct
+case\[char46] For example, if the external file is \fIMYFILE\fR, the file-name parameter could be
+specified as a name in mixed case such as myFile or myfile, but if specified as a literal it must be
+\[char39]\fIMYFILE\fR\[char39]\[char46] If the file-name is a character literal, it can be in any of
+the following forms 
 .PP
 .nf
 \[char39]LIBRARY/FILE\[char39]
@@ -46,7 +56,8 @@ If a character literal is specified, the file or format name must be specified i
 .fi
 
 
-The remaining extract-type parameters specify which fields in the external record to extract\[char46]
+The remaining extract-type parameters specify which fields in the external record to
+extract\[char46]
 
 
 .IP "" 2
@@ -67,21 +78,28 @@ The remaining extract-type parameters specify which fields in the external recor
 .RE
 .PP
 
-\fI*NULL\fR can also be specified to indicate that instead of defining the subfields with the same data types as the fields in the file, the subfields are all indicators\[char46] For a database file, these indicators have the same layout as the null byte map for the record\[char46]
+\fI*NULL\fR can also be specified to indicate that instead of defining the subfields with the same
+data types as the fields in the file, the subfields are all indicators\[char46] For a database file,
+these indicators have the same layout as the null byte map for the record\[char46]
 
 
-If no extract-type is specified, or only \fI*NULL\fR is specified, the compiler extracts the fields of the input buffer\[char46]
+If no extract-type is specified, or only \fI*NULL\fR is specified, the compiler extracts the fields
+of the input buffer\[char46]
 
 
-If an externally-described data structure (\fIEXT\fR keyword for a free-form definition, or E in position 22 for a free-form definition, and the \fIEXTNAME\fR keyword is not specified, the data structure name is used for the external name\[char46]
+If an externally-described data structure (\fIEXT\fR keyword for a free-form definition, or E in
+position 22 for a free-form definition, and the \fIEXTNAME\fR keyword is not specified, the data
+structure name is used for the external name\[char46]
 
 
 
 
- If \fI*NULL\fR is not specified, the compiler generates the following definition specification entries for all fields of the externally described data structure: 
+ If \fI*NULL\fR is not specified, the compiler generates the following definition specification
+entries for all fields of the externally described data structure: 
 .IP "" 2
 .RS
-\[bu] Subfield name (Name will be the same as the external name, unless the \fIALIAS\fR  keyword is specified for the data structure, or the field is renamed by the \fIEXTFLD\fR  keyword, or the \fIPREFIX\fR  keyword on a definition specification is used to apply a prefix)\[char46]
+\[bu] Subfield name (Name will be the same as the external name, unless the \fIALIAS\fR  keyword is specified for the data structure, or the field is renamed by
+the \fIEXTFLD\fR  keyword, or the \fIPREFIX\fR  keyword on a definition specification is used to apply a prefix)\[char46]
 .RE
 .IP "" 2
 .RS
@@ -89,23 +107,28 @@ If an externally-described data structure (\fIEXT\fR keyword for a free-form def
 .RE
 .IP "" 2
 .RS
-\[bu] Subfield internal data type (will be the same as the external type, unless the \fICVTOPT\fR control specification keyword or command parameter is specified for the type\[char46] In that case the data type will be character)\[char46]
+\[bu] Subfield internal data type (will be the same as the external type, unless the \fICVTOPT\fR control
+specification keyword or command parameter is specified for the type\[char46] In that case the data
+type will be character)\[char46]
 .RE
 .PP
  
 
 
 
-If \fI*NULL\fR is specified, the subfield name will be generated in the same way\[char46] However, the length will be 1 and the data type will be indicator\[char46]
+If \fI*NULL\fR is specified, the subfield name will be generated in the same way\[char46] However,
+the length will be 1 and the data type will be indicator\[char46]
 
 
-All data structure keywords except \fILIKEDS\fR and \fILIKEREC\fR are allowed with the \fIEXTNAME\fR keyword\[char46]
+All data structure keywords except \fILIKEDS\fR and \fILIKEREC\fR are allowed with the \fIEXTNAME\fR
+keyword\[char46]
 
 
 However, if \fI*NULL\fR is specified, \fICCSID\fR(\fI*EXACT\fR) is not allowed\[char46]
 
 
-Data structures that are defined with the extract-type \fI*NULL\fR cannot be used with I/O operations\[char46]
+Data structures that are defined with the extract-type \fI*NULL\fR cannot be used with I/O
+operations\[char46]
 
 
 Data structures that are defined with no extract-type cannot be used with I/O operations\[char46]
@@ -114,13 +137,18 @@ Data structures that are defined with no extract-type cannot be used with I/O op
 Note: 
 .IP 1. 2
 .RS
-If the format-name is not specified, the record defaults to the first record in the file\[char46]
+If the format-name is not specified, the record defaults to the first record in the
+file\[char46]
 .RE
 .IP 2. 2
 .RS
 
 
- For \fI*INPUT\fR and \fI*OUTPUT\fR when \fI*NULL\fR is not specified, subfields included in the data structure occupy the same start positions as in the external record description\[char46] When \fI*NULL\fR is specified, the indicators occupy the same start position as the null indicators in the null byte map for the external record for a database file\[char46] For other types of files, the start positions of the indicator subfields are assigned sequentially\[char46] 
+ For \fI*INPUT\fR and \fI*OUTPUT\fR when \fI*NULL\fR is not specified, subfields included in the data
+structure occupy the same start positions as in the external record description\[char46] When
+\fI*NULL\fR is specified, the indicators occupy the same start position as the null indicators in
+the null byte map for the external record for a database file\[char46] For other types of files, the
+start positions of the indicator subfields are assigned sequentially\[char46] 
 
 
 .RE

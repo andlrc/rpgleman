@@ -13,38 +13,51 @@ IMPORT
 IMPORT{(external_name)}
 .fi
 .SH DESCRIPTION
-The \fIIMPORT\fR keyword specifies that storage for the data item being defined is allocated in another module, but may be accessed in this module\[char46] The external_name parameter, if specified, must be a character literal or constant\[char46]
+The \fIIMPORT\fR keyword specifies that storage for the data item being defined is allocated in
+another module, but may be accessed in this module\[char46] The external_name parameter, if
+specified, must be a character literal or constant\[char46]
 
 
-In a free-form definition, you can specify \fI*DCLCASE\fR for the external_name parameter, indicating that the external name of the item is the same as the name of the item, in the same case as the name is specified\[char46] See Specifying \fI*DCLCASE\fR as the External Name\[char46]
+In a free-form definition, you can specify \fI*DCLCASE\fR for the external_name parameter,
+indicating that the external name of the item is the same as the name of the item, in the same case
+as the name is specified\[char46] See Specifying \fI*DCLCASE\fR as the External Name\[char46]
 
 
-If a name is defined as imported but no module in the program contains an exported definition of the name, an error will occur at link time\[char46] See \fIEXPORT\fR{(external_name)}\[char46]
+If a name is defined as imported but no module in the program contains an exported definition of the
+name, an error will occur at link time\[char46] See \fIEXPORT\fR{(external_name)}\[char46]
 
 
-The \fIIMPORT\fR keyword on the definition specification is used to import data items and cannot be used to import procedure names\[char46] Procedure names are imported implicitly, to all modules in the program, when the \fIEXPORT\fR keyword is specified on a procedure specification\[char46]
+The \fIIMPORT\fR keyword on the definition specification is used to import data items and cannot be
+used to import procedure names\[char46] Procedure names are imported implicitly, to all modules in
+the program, when the \fIEXPORT\fR keyword is specified on a procedure specification\[char46]
 
 
 The following restrictions apply when \fIIMPORT\fR is specified: 
 .IP "" 2
 .RS
-\[bu] The data item may not be initialized (the \fIINZ\fR keyword is not allowed)\[char46] The exporting module manages all initialization for the data\[char46]
+\[bu] The data item may not be initialized (the \fIINZ\fR keyword is not allowed)\[char46] The exporting
+module manages all initialization for the data\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] An imported field cannot be defined as a compile-time or prerun-time array or table, or as a data area\[char46] (Keywords \fICTDATA\fR, \fIFROMFILE\fR, \fITOFILE\fR, \fIEXTFMT\fR, \fIPERRCD\fR, and \fIDTAARA\fR are not allowed\[char46])
+\[bu] An imported field cannot be defined as a compile-time or prerun-time array or table, or as a data
+area\[char46] (Keywords \fICTDATA\fR, \fIFROMFILE\fR, \fITOFILE\fR, \fIEXTFMT\fR, \fIPERRCD\fR, and
+\fIDTAARA\fR are not allowed\[char46])
 .RE
 .IP "" 2
 .RS
-\[bu] An imported field may not be specified as an argument to the \fIRESET\fR operation code since the initial value is defined in the exporting module\[char46]
+\[bu] An imported field may not be specified as an argument to the \fIRESET\fR operation code since the
+initial value is defined in the exporting module\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] You cannot specify an imported field in the Result-Field entry of a \fIPARM\fR in the \fI*ENTRY\fR \fIPLIST\fR\[char46]
+\[bu] You cannot specify an imported field in the Result-Field entry of a \fIPARM\fR in the \fI*ENTRY\fR
+\fIPLIST\fR\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] You cannot define an imported field as based (the keyword \fIBASED\fR is not allowed)\[char46]
+\[bu] You cannot define an imported field as based (the keyword \fIBASED\fR is not
+allowed)\[char46]
 .RE
 .IP "" 2
 .RS
@@ -52,16 +65,20 @@ The following restrictions apply when \fIIMPORT\fR is specified:
 .RE
 .IP "" 2
 .RS
-\[bu] The only other keywords allowed are \fIDIM\fR, \fIEXTNAME\fR, \fILIKE\fR, \fIOCCURS\fR, and \fIPREFIX\fR\[char46]
+\[bu] The only other keywords allowed are \fIDIM\fR, \fIEXTNAME\fR, \fILIKE\fR, \fIOCCURS\fR, and
+\fIPREFIX\fR\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] The same external field name cannot be specified more than once per module and also cannot be used as an external procedure name\[char46]
+\[bu] The same external field name cannot be specified more than once per module and also cannot be used
+as an external procedure name\[char46]
 .RE
 .PP
 
 
-For a multiple-occurrence data structure or table, each module will contain its own copy of the occurrence number or table index\[char46] An \fIOCCUR\fR or \fILOOKUP\fR operation in any module will have only a local impact since the occurrence number or index is local to each module\[char46]
+For a multiple-occurrence data structure or table, each module will contain its own copy of the
+occurrence number or table index\[char46] An \fIOCCUR\fR or \fILOOKUP\fR operation in any module
+will have only a local impact since the occurrence number or index is local to each module\[char46]
 
 .SH SEE ALSO
 .BR BASED,

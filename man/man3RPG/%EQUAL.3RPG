@@ -25,16 +25,21 @@ The operations that set \fB%EQUAL\fR are:
 .PP
 
 
-If \fB%EQUAL\fR is used without the optional file_name parameter, then it returns the value set for the most recent relevant operation\[char46]
+If \fB%EQUAL\fR is used without the optional file_name parameter, then it returns the value set for
+the most recent relevant operation\[char46]
 
 
-For the \fISETLL\fR operation, this function returns \[char39]1\[char39] if a record is present whose key or relative record number is equal to the search argument\[char46]
+For the \fISETLL\fR operation, this function returns \[char39]1\[char39] if a record is present
+whose key or relative record number is equal to the search argument\[char46]
 
 
-For the \fILOOKUP\fR operation with the EQ indicator specified, this function returns \[char39]1\[char39] if an element is found that exactly matches the search argument\[char46]
+For the \fILOOKUP\fR operation with the EQ indicator specified, this function returns
+\[char39]1\[char39] if an element is found that exactly matches the search argument\[char46]
 
 
-If a file name is specified, this function applies to the most recent \fISETLL\fR operation for the specified file\[char46] This function is allowed only for files that allow the \fISETLL\fR operation code\[char46]
+If a file name is specified, this function applies to the most recent \fISETLL\fR operation for the
+specified file\[char46] This function is allowed only for files that allow the \fISETLL\fR operation
+code\[char46]
 
 
 For more examples, see Figure 1 and Figure 1\[char46]
@@ -43,7 +48,8 @@ For more examples, see Figure 1 and Figure 1\[char46]
 For more information, see File Operations, Result Operations, or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%EQUAL\fR returns \[char39]1\[char39] if the most recent relevant operation found an exact match; otherwise, it returns \[char39]0\[char39]\[char46]
+\fB%EQUAL\fR returns \[char39]1\[char39] if the most recent relevant operation found an exact match;
+otherwise, it returns \[char39]0\[char39]\[char46]
 
 .SH EXAMPLE
 \fB%EQUAL\fR with \fISETLL\fR Example

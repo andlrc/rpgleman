@@ -13,25 +13,44 @@ AUT
 AUT(*LIBRCRTAUT | *ALL | *CHANGE | *USE | *EXCLUDE | 'authorization-list-name')
 .fi
 .SH DESCRIPTION
-The \fIAUT\fR keyword specifies the authority given to users who do not have specific authority to the object, who are not on the authorization list, and whose user group has no specific authority to the object\[char46] The authority can be altered for all users or for specified users after the object is created with the CL commands Grant Object Authority (\fIGRTOBJAUT\fR) or Revoke Object Authority (\fIRVKOBJAUT\fR)\[char46]
+The \fIAUT\fR keyword specifies the authority given to users who do not have specific authority to
+the object, who are not on the authorization list, and whose user group has no specific authority to
+the object\[char46] The authority can be altered for all users or for specified users after the
+object is created with the CL commands Grant Object Authority (\fIGRTOBJAUT\fR) or Revoke Object
+Authority (\fIRVKOBJAUT\fR)\[char46]
 
 
-If \fIAUT\fR(\fI*LIBRCRTAUT\fR) is specified, then the public authority for the object is taken from the \fICRTAUT\fR keyword of the target library (the library that contains the object)\[char46] The value is determined when the object is created\[char46] If the \fICRTAUT\fR value for the library changes after the create, the new value will not affect any existing objects\[char46]
+If \fIAUT\fR(\fI*LIBRCRTAUT\fR) is specified, then the public authority for the object is taken from
+the \fICRTAUT\fR keyword of the target library (the library that contains the object)\[char46] The
+value is determined when the object is created\[char46] If the \fICRTAUT\fR value for the library
+changes after the create, the new value will not affect any existing objects\[char46]
 
 
-If \fIAUT\fR(\fI*ALL\fR) is specified, then authority is provided for all operations on the object, except those limited to the owner or controlled by authorization list management authority\[char46] The user can control the object\[char39]s existence, specify this security for it, change it, and perform basic functions on it, but cannot transfer its ownership\[char46]
+If \fIAUT\fR(\fI*ALL\fR) is specified, then authority is provided for all operations on the object,
+except those limited to the owner or controlled by authorization list management authority\[char46]
+The user can control the object\[char39]s existence, specify this security for it, change it, and
+perform basic functions on it, but cannot transfer its ownership\[char46]
 
 
-If \fIAUT\fR(\fI*CHANGE\fR) is specified, then it provides all data authority and the authority to perform all operations on the object except those limited to the owner or controlled by object authority and object management authority\[char46] The user can change the object and perform basic functions on it\[char46]
+If \fIAUT\fR(\fI*CHANGE\fR) is specified, then it provides all data authority and the authority to
+perform all operations on the object except those limited to the owner or controlled by object
+authority and object management authority\[char46] The user can change the object and perform basic
+functions on it\[char46]
 
 
-If \fIAUT\fR(\fI*USE\fR) is specified, then it provides object operational authority and read authority; that is, authority for basic operations on the object\[char46] The user is prevented from changing the object\[char46]
+If \fIAUT\fR(\fI*USE\fR) is specified, then it provides object operational authority and read
+authority; that is, authority for basic operations on the object\[char46] The user is prevented from
+changing the object\[char46]
 
 
-If \fIAUT\fR(\fI*EXCLUDE\fR) is specified, then it prevents the user from accessing the object\[char46]
+If \fIAUT\fR(\fI*EXCLUDE\fR) is specified, then it prevents the user from accessing the
+object\[char46]
 
 
-The authorization-list-name is the name of an authorization list of users and authorities to which the object is added\[char46] The object will be secured by this authorization list, and the public authority for the object will be set to \fI*AUTL\fR\[char46] The authorization list must exist on the system at compilation time\[char46]
+The authorization-list-name is the name of an authorization list of users and authorities to which
+the object is added\[char46] The object will be secured by this authorization list, and the public
+authority for the object will be set to \fI*AUTL\fR\[char46] The authorization list must exist on
+the system at compilation time\[char46]
 
 
 If the \fIAUT\fR keyword is not specified, then the value specified on the command is used\[char46]

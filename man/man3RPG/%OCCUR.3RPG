@@ -16,13 +16,18 @@
 \fB%OCCUR\fR gets or sets the current position of a multiple-occurrence data structure\[char46]
 
 
-When this function is evaluated for its value, it returns the current occurrence number of the specified data structure\[char46] This is an unsigned numeric value\[char46]
+When this function is evaluated for its value, it returns the current occurrence number of the
+specified data structure\[char46] This is an unsigned numeric value\[char46]
 
 
-When this function is specified on the left-hand side of an \fIEVAL\fR statement, the specified number becomes the current occurrence number\[char46] This must be a non-float numeric value with zero decimal places\[char46] Exception 00122 is issued if the value is less than 1 or greater than the total number of occurrences\[char46]
+When this function is specified on the left-hand side of an \fIEVAL\fR statement, the specified
+number becomes the current occurrence number\[char46] This must be a non-float numeric value with
+zero decimal places\[char46] Exception 00122 is issued if the value is less than 1 or greater than
+the total number of occurrences\[char46]
 
 
-For more information about multiple-occurrence data structures and the \fIOCCUR\fR operation code, see \fIOCCUR\fR (Set/Get Occurrence of a Data Structure)\[char46]
+For more information about multiple-occurrence data structures and the \fIOCCUR\fR operation code,
+see \fIOCCUR\fR (Set/Get Occurrence of a Data Structure)\[char46]
 
 .SH EXAMPLE
 \fB%OCCUR\fR Example

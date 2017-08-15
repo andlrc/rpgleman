@@ -29,7 +29,7 @@ program-device
 T}	T{
 file-name
 T}	T{
-Ã‚
+Â
 T}	T{
 _
 T}	T{
@@ -39,13 +39,24 @@ _
 T}
 .TE
 
-The \fINEXT\fR operation code forces the next input for a multiple device file to come from the program device specified by the program-device operand, providing the input operation is a cycle read or a \fIREAD\fR-by-file-name\[char46] Any read operation, including \fICHAIN\fR, \fIEXFMT\fR, \fIREAD\fR, and \fIREADC\fR, ends the effect of the previous \fINEXT\fR operation\[char46] If \fINEXT\fR is specified more than once between input operations, only the last operation is processed\[char46] The \fINEXT\fR operation code can be used only for a multiple device file\[char46]
+The \fINEXT\fR operation code forces the next input for a multiple device file to come from the
+program device specified by the program-device operand, providing the input operation is a cycle
+read or a \fIREAD\fR-by-file-name\[char46] Any read operation, including \fICHAIN\fR, \fIEXFMT\fR,
+\fIREAD\fR, and \fIREADC\fR, ends the effect of the previous \fINEXT\fR operation\[char46] If
+\fINEXT\fR is specified more than once between input operations, only the last operation is
+processed\[char46] The \fINEXT\fR operation code can be used only for a multiple device
+file\[char46]
 
 
-For the program-device operand, enter the name of a 10-character field that contains the program device name, a character literal, or named constant that is the program device name\[char46] The file-name operand is the name of the multiple device \fIWORKSTN\fR file for which the operation is requested\[char46]
+For the program-device operand, enter the name of a 10-character field that contains the program
+device name, a character literal, or named constant that is the program device name\[char46] The
+file-name operand is the name of the multiple device \fIWORKSTN\fR file for which the operation is
+requested\[char46]
 
 
-To handle \fINEXT\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+To handle \fINEXT\fR exceptions (file status codes greater than 1000), either the operation code
+extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For
+more information on error handling, see File Exception/Errors\[char46]
 
 
 For more information, see File Operations\[char46]

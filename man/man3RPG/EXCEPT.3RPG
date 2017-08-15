@@ -25,54 +25,67 @@ l l l l l l l  .
 T{
 \fIEXCEPT\fR
 T}	T{
-Ã‚
+Â
 T}	T{
 except-name
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}
 .TE
 
-The \fIEXCEPT\fR operation allows one or more records to be written during either detail calculations or total calculations\[char46] See Figure 1 for examples of the \fIEXCEPT\fR operation\[char46]
+The \fIEXCEPT\fR operation allows one or more records to be written during either detail
+calculations or total calculations\[char46] See Figure 1 for examples of the \fIEXCEPT\fR
+operation\[char46]
 
 
 When specifying the \fIEXCEPT\fR operation remember: 
 .IP "" 2
 .RS
-\[bu] The exception records that are to be written during calculation time are indicated by an E in position 17  of the output specifications\[char46] An \fIEXCEPT\fR name, which is the same name as specified by the except-name  operand of an \fIEXCEPT\fR operation, can be specified in positions 30 through 39  of the output specifications of the exception records\[char46]
+\[bu] The exception records that are to be written during calculation time are indicated by an E
+in position 17  of the output specifications\[char46] An \fIEXCEPT\fR name, which is the same name as specified by
+the except-name  operand of an \fIEXCEPT\fR operation, can be specified in positions 30 through 39  of the output specifications of the exception records\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Only exception records, not heading, detail, or total records, can contain an \fIEXCEPT\fR name\[char46]
+\[bu] Only exception records, not heading, detail, or total records, can contain an \fIEXCEPT\fR
+name\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] When the \fIEXCEPT\fR operation with a name specified in the except-name  operand is processed, only those exception records with the same \fIEXCEPT\fR name are checked and written if the conditioning indicators are satisfied\[char46]
+\[bu] When the \fIEXCEPT\fR operation with a name specified in the except-name  operand is processed, only those exception records with the same \fIEXCEPT\fR name are checked and
+written if the conditioning indicators are satisfied\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] When no except-name  is specified, only those exception records with no name in positions 30 through 39 of the output specifications are checked and written if the conditioning indicators are satisfied\[char46]
+\[bu] When no except-name  is specified, only those exception records with no name in positions 30 through 39 of the output
+specifications are checked and written if the conditioning indicators are
+satisfied\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If an exception record is conditioned by an overflow indicator on the output specification, the record is written only during the overflow portion of the \fIRPG\fR IV  cycle or during fetch overflow\[char46] The record is not written at the time the \fIEXCEPT\fR operation is processed\[char46]
+\[bu] If an exception record is conditioned by an overflow indicator on the output specification, the
+record is written only during the overflow portion of the \fIRPG\fR IV  cycle or during fetch overflow\[char46] The record is not written at the time the \fIEXCEPT\fR
+operation is processed\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If an exception output is specified to a format that contains no fields, the following occurs: 
+\[bu] If an exception output is specified to a format that contains no fields, the following
+occurs: 
 .IP "" 2
 .RS
 \[bu] If an output file is specified, a record is written with default values\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If a record is locked, the system treats the operation as a request to unlock the record\[char46] This is the alternative form of requesting an unlock\[char46] The preferred method is with the \fIUNLOCK\fR operation\[char46]
+\[bu] If a record is locked, the system treats the operation as a request to unlock the record\[char46]
+This is the alternative form of requesting an unlock\[char46] The preferred method is with the
+\fIUNLOCK\fR operation\[char46]
 .RE
 .PP
 

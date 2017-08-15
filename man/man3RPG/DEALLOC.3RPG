@@ -25,9 +25,9 @@ l l l l l l l  .
 T{
 \fIDEALLOC\fR (E/N)
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
 pointer-name
 T}	T{
@@ -39,25 +39,39 @@ _
 T}
 .TE
 
-The \fIDEALLOC\fR operation frees one previous allocation of heap storage\[char46] pointer-name is a pointer that must be the value previously set by a heap-storage allocation operation (either an \fIALLOC\fR operation in \fIRPG\fR, or some other heap-storage allocation mechanism)\[char46] It is not sufficient to simply point to heap storage; the pointer must be set to the beginning of an allocation\[char46]
+The \fIDEALLOC\fR operation frees one previous allocation of heap storage\[char46] pointer-name is a
+pointer that must be the value previously set by a heap-storage allocation operation (either an
+\fIALLOC\fR operation in \fIRPG\fR, or some other heap-storage allocation mechanism)\[char46] It is
+not sufficient to simply point to heap storage; the pointer must be set to the beginning of an
+allocation\[char46]
 
 
-The storage pointed to by the pointer is freed for subsequent allocation by this program or any other in the activation group\[char46]
+The storage pointed to by the pointer is freed for subsequent allocation by this program or any
+other in the activation group\[char46]
 
 
-If operation code extender N is specified, the pointer is set to \fI*NULL\fR after a successful deallocation\[char46]
+If operation code extender N is specified, the pointer is set to \fI*NULL\fR after a successful
+deallocation\[char46]
 
 
-To handle \fIDEALLOC\fR exceptions (program status code 426), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] The result field pointer will not be changed if an error occurs, even if \[char39]N\[char39] is specified\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+To handle \fIDEALLOC\fR exceptions (program status code 426), either the operation code extender
+\[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] The result
+field pointer will not be changed if an error occurs, even if \[char39]N\[char39] is
+specified\[char46] For more information on error handling, see Program Exception/Errors\[char46]
 
 
-pointer-name must be a basing pointer scalar variable (a standalone field, data structure subfield, table name or array element)\[char46]
+pointer-name must be a basing pointer scalar variable (a standalone field, data structure subfield,
+table name or array element)\[char46]
 
 
 No error is given at runtime if the pointer is already \fI*NULL\fR\[char46]
 
 
-When \fIRPG\fR memory management operations for the module are using single-level heap storage due to the \fIALLOC\fR keyword on the Control specification, the \fIDEALLOC\fR operation can only handle pointers to single-level heap storage\[char46] When \fIRPG\fR memory management operations for the module are using teraspace heap storage, the \fIDEALLOC\fR operation can handle pointers to both single-level and teraspace heap storage\[char46]
+When \fIRPG\fR memory management operations for the module are using single-level heap storage due
+to the \fIALLOC\fR keyword on the Control specification, the \fIDEALLOC\fR operation can only handle
+pointers to single-level heap storage\[char46] When \fIRPG\fR memory management operations for the
+module are using teraspace heap storage, the \fIDEALLOC\fR operation can handle pointers to both
+single-level and teraspace heap storage\[char46]
 
 
 For more information, see Memory Management Operations\[char46]

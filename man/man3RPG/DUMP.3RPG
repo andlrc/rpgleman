@@ -27,49 +27,79 @@ T{
 T}	T{
 identifier
 T}	T{
-Â
+�
 T}	T{
-Â
+�
 T}	T{
-Â
+�
 T}	T{
-Â
+�
 T}	T{
-Â
+�
 T}
 .TE
 
-The \fIDUMP\fR operation provides a dump (all fields, all files, indicators, data structures, arrays, and tables defined) of the module\[char46] It can be used independently or in combination with the \fIIBM\fRÂ® i testing and debugging functions\[char46] When the \fIOPTIMIZE\fR(\fI*FULL\fR) compiler option is selected on either the \fICRTBNDRPG\fR or \fICRTRPGMOD\fR command or as a keyword on a control specification, the field values shown in the dump may not reflect the actual content due to the effects of optimization\[char46]
+The \fIDUMP\fR operation provides a dump (all fields, all files, indicators, data structures,
+arrays, and tables defined) of the module\[char46] It can be used independently or in combination
+with the \fIIBM\fR® i testing and debugging functions\[char46] When the \fIOPTIMIZE\fR(\fI*FULL\fR)
+compiler option is selected on either the \fICRTBNDRPG\fR or \fICRTRPGMOD\fR command or as a keyword
+on a control specification, the field values shown in the dump may not reflect the actual content
+due to the effects of optimization\[char46]
 
 
-If the \fIDBGVIEW\fR(\fI*NONE\fR) compiler option is specified, the dump will only show the program status data structure, the file information data structures, and the \fI*IN\fR indicators\[char46] Other variables will not have their contents shown because the object does not contain the necessary observability information\[char46]
+If the \fIDBGVIEW\fR(\fI*NONE\fR) compiler option is specified, the dump will only show the program
+status data structure, the file information data structures, and the \fI*IN\fR indicators\[char46]
+Other variables will not have their contents shown because the object does not contain the necessary
+observability information\[char46]
 
 
-If the \fIDEBUG\fR(\fI*NO\fR) control-specification keyword is specified, no dump is performed\[char46] You can override this keyword by specifying operation extender A\[char46] This operation extender means that a dump is always performed, regardless of the value of the \fIDEBUG\fR keyword\[char46]
+If the \fIDEBUG\fR(\fI*NO\fR) control-specification keyword is specified, no dump is
+performed\[char46] You can override this keyword by specifying operation extender A\[char46] This
+operation extender means that a dump is always performed, regardless of the value of the \fIDEBUG\fR
+keyword\[char46]
 
 
-The contents of the optional identifier operand identify the \fIDUMP\fR operation\[char46] It will replace the default heading on the dump listing if specified\[char46] It must contain a character or graphic entry that can be one of: a field name, literal, named constant, table name, or array element whose contents identify the dump\[char46] If the identifier operand is a graphic entry, it is limited to 64 double byte characters\[char46] identifier cannot be a figurative constant\[char46]
+The contents of the optional identifier operand identify the \fIDUMP\fR operation\[char46] It will
+replace the default heading on the dump listing if specified\[char46] It must contain a character or
+graphic entry that can be one of: a field name, literal, named constant, table name, or array
+element whose contents identify the dump\[char46] If the identifier operand is a graphic entry, it
+is limited to 64 double byte characters\[char46] identifier cannot be a figurative constant\[char46]
 
 
-The program continues processing the next calculation statement following the \fIDUMP\fR operation\[char46]
+The program continues processing the next calculation statement following the \fIDUMP\fR
+operation\[char46]
 
 
-The \fIDUMP\fR operation is performed if the \fIDEBUG\fR keyword is specified on the control specification, or the A operation extender is coded for the \fIDUMP\fR operation\[char46] Otherwise, the \fIDUMP\fR operation is checked for errors and the statement is printed on the listing, but the \fIDUMP\fR operation is not processed\[char46]
+The \fIDUMP\fR operation is performed if the \fIDEBUG\fR keyword is specified on the control
+specification, or the A operation extender is coded for the \fIDUMP\fR operation\[char46] Otherwise,
+the \fIDUMP\fR operation is checked for errors and the statement is printed on the listing, but the
+\fIDUMP\fR operation is not processed\[char46]
 
 
-When dumping files, the \fIDUMP\fR will dump the File Feedback Information section of the \fIINFDS\fR, but not the Open Feedback Information or the Input/Output Feedback Information sections of the \fIINFDS\fR\[char46] \fIDUMP\fR will instead dump the actual Open Feedback, and Device Feedback Information for the file\[char46]
+When dumping files, the \fIDUMP\fR will dump the File Feedback Information section of the
+\fIINFDS\fR, but not the Open Feedback Information or the Input/Output Feedback Information sections
+of the \fIINFDS\fR\[char46] \fIDUMP\fR will instead dump the actual Open Feedback, and Device
+Feedback Information for the file\[char46]
 
 
-Note that if the \fIINFDS\fR you have declared is not large enough to contain the Open Feedback, or Input/Output Feedback Information, then you do not have to worry about doing a \fIPOST\fR before \fIDUMP\fR since the File Feedback Information in the \fIINFDS\fR is always up to date\[char46]
+Note that if the \fIINFDS\fR you have declared is not large enough to contain the Open Feedback, or
+Input/Output Feedback Information, then you do not have to worry about doing a \fIPOST\fR before
+\fIDUMP\fR since the File Feedback Information in the \fIINFDS\fR is always up to date\[char46]
 
 
-The values of variables in subprocedures may not be valid if the subprocedure is not active\[char46] If a subprocedure has been called recursively, the values from the most recent invocation are shown\[char46]
+The values of variables in subprocedures may not be valid if the subprocedure is not active\[char46]
+If a subprocedure has been called recursively, the values from the most recent invocation are
+shown\[char46]
 
 
-Javaâ¢ object variables may not show the expected value\[char46] The \fIRPG\fR module may retain the reference to an object after the object no longer exists; it is possible for an object reference to be reused, and refer to a different object that is unrelated to the \fIRPG\fR module being dumped\[char46] That different object is the one that will appear in the formatted dump\[char46]
+Java™ object variables may not show the expected value\[char46] The \fIRPG\fR module may retain
+the reference to an object after the object no longer exists; it is possible for an object reference
+to be reused, and refer to a different object that is unrelated to the \fIRPG\fR module being
+dumped\[char46] That different object is the one that will appear in the formatted dump\[char46]
 
 
-For an sample dump listing, see the chapter on obtaining dumps in the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
+For an sample dump listing, see the chapter on obtaining dumps in the Rational Development Studio
+for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
 
 
 For more information, see Information Operations\[char46]

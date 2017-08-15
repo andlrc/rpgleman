@@ -14,19 +14,25 @@
 %STR(basing pointer : max-length)(left-hand-side)
 .fi
 .SH DESCRIPTION
-\fB%STR\fR is used to create or use null-terminated character strings, which are very commonly used in C and C++ applications\[char46]
+\fB%STR\fR is used to create or use null-terminated character strings, which are very commonly used
+in C and C++ applications\[char46]
 
 
-The first parameter must be a basing-pointer value\[char46] (Any basing pointer expression is valid, such as "\fB%ADDR(\fIDATA\fR)\fR" or "P+1"\[char46]) The second parameter, if specified, must be a numeric value with zero decimal positions\[char46] If not specified, it defaults to the maximum allowed length for defining a character variable\[char46]
+The first parameter must be a basing-pointer value\[char46] (Any basing pointer expression is valid,
+such as "\fB%ADDR(\fIDATA\fR)\fR" or "P+1"\[char46]) The second parameter, if specified, must be a
+numeric value with zero decimal positions\[char46] If not specified, it defaults to the maximum
+allowed length for defining a character variable\[char46]
 
 
-The first parameter must point to storage that is at least as long as the length given by the second parameter\[char46]
+The first parameter must point to storage that is at least as long as the length given by the second
+parameter\[char46]
 
 
 Error conditions: 
 .IP 1. 2
 .RS
-If the length parameter is less than 1 or greater than the maximum length allowed, an error will occur\[char46]
+If the length parameter is less than 1 or greater than the maximum length allowed, an error will
+occur\[char46]
 .RE
 .IP 2. 2
 .RS
@@ -34,7 +40,8 @@ If the pointer is not set, an error will occur\[char46]
 .RE
 .IP 3. 2
 .RS
-If the storage addressed by the pointer is shorter than indicated by the length parameter, either 
+If the storage addressed by the pointer is shorter than indicated by the length parameter,
+either 
 .IP 1. 2
 .RS
 An error will occur

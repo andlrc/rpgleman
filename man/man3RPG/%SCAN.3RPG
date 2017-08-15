@@ -15,28 +15,42 @@
 .SH DESCRIPTION
 
 
-\fB%SCAN\fR returns the first position of the search argument in the source string, or 0 if it was not found\[char46]
+\fB%SCAN\fR returns the first position of the search argument in the source string, or 0 if it was
+not found\[char46]
 
 
-The start position and length specify the substring of the source string to be searched\[char46] The start position defaults to 1 and the length defaults to the remainder of the source string\[char46] The result is always the position in the source string even if the starting position is specified\[char46]
+The start position and length specify the substring of the source string to be searched\[char46] The
+start position defaults to 1 and the length defaults to the remainder of the source string\[char46]
+The result is always the position in the source string even if the starting position is
+specified\[char46]
 
 
-The first parameter must be of type character, graphic, or \fIUCS\fR-2\[char46] The second parameter must be the same type as the first parameter\[char46] The third and fourth parameters, if specified, must be numeric with zero decimal positions\[char46]
+The first parameter must be of type character, graphic, or \fIUCS\fR-2\[char46] The second parameter
+must be the same type as the first parameter\[char46] The third and fourth parameters, if specified,
+must be numeric with zero decimal positions\[char46]
 
 
-When any parameter is variable in length, the values of the other parameters are checked against the current length, not the maximum length\[char46]
+When any parameter is variable in length, the values of the other parameters are checked against the
+current length, not the maximum length\[char46]
 
 
-The type of the return value is unsigned integer\[char46] This built-in function can be used anywhere that an unsigned integer expression is valid\[char46]
+The type of the return value is unsigned integer\[char46] This built-in function can be used
+anywhere that an unsigned integer expression is valid\[char46]
 
 
-If the search argument contains trailing blanks, the scan will include those trailing blanks\[char46] For example if \[char39]b\[char39] represents a blank, \fB%SCAN(\[char39]12b\[char39]:\[char39]12312b\[char39])\fR would return 4\[char46] If trailing blanks should not be considered in the scan, use \fB%TRIMR\fR on the search argument\[char46] For example \fB%SCAN(%TRIMR(\[char39]12b\[char39])\fR:\[char39]12312b\[char39]) would return 1\[char46]
+If the search argument contains trailing blanks, the scan will include those trailing
+blanks\[char46] For example if \[char39]b\[char39] represents a blank,
+\fB%SCAN(\[char39]12b\[char39]:\[char39]12312b\[char39])\fR would return 4\[char46] If trailing
+blanks should not be considered in the scan, use \fB%TRIMR\fR on the search argument\[char46] For
+example \fB%SCAN(%TRIMR(\[char39]12b\[char39])\fR:\[char39]12312b\[char39]) would return 1\[char46]
 
 
 For more information, see String Operations or Built-in Functions\[char46]
 
 .SH NOTICE
-Note:  Unlike the \fISCAN\fR operation code, \fB%SCAN\fR cannot return an array containing all occurrences of the search string and its results cannot be tested using the \fB%FOUND\fR built-in function\[char46]
+Note:  Unlike the \fISCAN\fR operation code, \fB%SCAN\fR cannot return an array containing all occurrences
+of the search string and its results cannot be tested using the \fB%FOUND\fR built-in
+function\[char46]
 
 
 Consider the following definitions 
@@ -62,7 +76,8 @@ D srchFldVar      S             10A   varying
      pos = %scan (\[char39]oo\[char39] : source);
 .fi
 
-After the previous assignment, the value of pos is 6 because \[char39]oo\[char39] begins at position 6 in \[char39]Dr\[char46] Doolittle\[char39]\[char46]
+After the previous assignment, the value of pos is 6 because \[char39]oo\[char39] begins at position
+6 in \[char39]Dr\[char46] Doolittle\[char39]\[char46]
 
 
 .SH EXAMPLE
@@ -72,7 +87,8 @@ After the previous assignment, the value of pos is 6 because \[char39]oo\[char39
      pos = %scan (\[char39]D\[char39] : source : 2);
 .fi
 
-After the previous assignment, the value of pos is 5 because the first \[char39]D\[char39] found, starting from position 2, is in position 5\[char46]
+After the previous assignment, the value of pos is 5 because the first \[char39]D\[char39] found,
+starting from position 2, is in position 5\[char46]
 
 
 .SH EXAMPLE
@@ -82,7 +98,8 @@ After the previous assignment, the value of pos is 5 because the first \[char39]
      pos = %scan (\[char39]D\[char39] : source : 2 : 3);
 .fi
 
-After the previous assignment, the value of pos is 0 because no \[char39]D\[char39] is found starting at position 2 for a length of 3\[char46]
+After the previous assignment, the value of pos is 0 because no \[char39]D\[char39] is found
+starting at position 2 for a length of 3\[char46]
 
 
 .SH EXAMPLE
@@ -92,7 +109,8 @@ After the previous assignment, the value of pos is 0 because no \[char39]D\[char
      pos = %scan (\[char39]D\[char39] : source : 2 : 4);
 .fi
 
-After the previous assignment, the value of pos is 5 because the \[char39]D\[char39] is found when the search starts at position 2 for a length of 4\[char46]
+After the previous assignment, the value of pos is 5 because the \[char39]D\[char39] is found when
+the search starts at position 2 for a length of 4\[char46]
 
 
 .SH EXAMPLE
@@ -102,7 +120,8 @@ After the previous assignment, the value of pos is 5 because the \[char39]D\[cha
      pos = %scan (\[char39]abc\[char39] : source);
 .fi
 
-After the previous assignment, the value of pos is 0 because \[char39]abc\[char39] is not found in \[char39]Dr\[char46] Doolittle\[char39]\[char46]
+After the previous assignment, the value of pos is 0 because \[char39]abc\[char39] is not found in
+\[char39]Dr\[char46] Doolittle\[char39]\[char46]
 
 
 .SH EXAMPLE
@@ -112,7 +131,8 @@ After the previous assignment, the value of pos is 0 because \[char39]abc\[char3
      pos = %scan (\[char39]Dr\[char46]\[char39] : source : 2);
 .fi
 
-After the previous assignment, the value of pos is 0 because \[char39]Dr\[char46]\[char39] is not found in \[char39]Dr\[char46] Doolittle\[char39], if the search starts at position 2\[char46]
+After the previous assignment, the value of pos is 0 because \[char39]Dr\[char46]\[char39] is not
+found in \[char39]Dr\[char46] Doolittle\[char39], if the search starts at position 2\[char46]
 
 
 .SH EXAMPLE
@@ -126,10 +146,14 @@ After the previous assignment, the value of pos is 0 because \[char39]Dr\[char46
      posVar = %scan (srchFldVar : source);
 .fi
 
-After the previous statements, the value of pos is 0 because srchFld is a 10-byte field, so the search argument is \[char39]Dr\[char46]\[char39] followed by seven blanks\[char46] However, the values of posTrim and posVar are both 1, since the \fB%TRIMR\fR and srchFldVar scans both use a 3-byte search argument \[char39]Dr\[char46]\[char39], with no trailing blanks\[char46]
+After the previous statements, the value of pos is 0 because srchFld is a 10-byte field, so the
+search argument is \[char39]Dr\[char46]\[char39] followed by seven blanks\[char46] However, the
+values of posTrim and posVar are both 1, since the \fB%TRIMR\fR and srchFldVar scans both use a
+3-byte search argument \[char39]Dr\[char46]\[char39], with no trailing blanks\[char46]
 
 
-For an example comparing \fB%SCAN\fR and \fB%SCANR\fR, see Example using \fB%SCAN\fR and \fB%SCANR\fR together\[char46]
+For an example comparing \fB%SCAN\fR and \fB%SCANR\fR, see Example using \fB%SCAN\fR and
+\fB%SCANR\fR together\[char46]
 
 .SH SEE ALSO
 .BR %FOUND,

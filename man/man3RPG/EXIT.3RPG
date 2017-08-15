@@ -25,13 +25,16 @@ l l l  .
 T{
 ON-\fIERROR\fR
 T}	T{
-Â
+�
 T}	T{
 status indicator
 T}
 .TE
 
-The ON-\fIEXIT\fR operation code begins the ON-\fIEXIT\fR section\[char46] The ON-\fIEXIT\fR section contains code that runs every time that the procedure ends, whether it ends normally or abnormally\[char46] The ON-\fIEXIT\fR section runs under the following conditions: 
+The ON-\fIEXIT\fR operation code begins the ON-\fIEXIT\fR section\[char46] The ON-\fIEXIT\fR section
+contains code that runs every time that the procedure ends, whether it ends normally or
+abnormally\[char46] The ON-\fIEXIT\fR section runs under the following
+conditions: 
 .IP "" 2
 .RS
 \[bu] The procedure reaches the end of the main part of the procedure\[char46]
@@ -46,61 +49,90 @@ The ON-\fIEXIT\fR operation code begins the ON-\fIEXIT\fR section\[char46] The O
 .RE
 .IP "" 2
 .RS
-\[bu] The procedure is canceled, due to the end of the job or subsystem, or due to an exception message being sent to a procedure higher in the call stack\[char46]
+\[bu] The procedure is canceled, due to the end of the job or subsystem, or due to an exception message
+being sent to a procedure higher in the call stack\[char46]
 .RE
 .PP
 
 
-By placing your clean-up code, such as deleting temporary files and deallocating heap storage, in the ON-\fIEXIT\fR section, you ensure that it is always run, even if your procedure ends with an unhandled exception, or if it is canceled\[char46]
+By placing your clean-up code, such as deleting temporary files and deallocating heap storage, in
+the ON-\fIEXIT\fR section, you ensure that it is always run, even if your procedure ends with an
+unhandled exception, or if it is canceled\[char46]
 
 
-Extended Factor 2 contains an optional indicator variable that indicates whether the procedure ended normally or abnormally\[char46] If the procedure returned normally, the indicator is set to \fI*OFF\fR\[char46] If the procedure ended with an unhandled exception or if the procedure was canceled for any other reason, the indicator is set to \fI*ON\fR\[char46]
+Extended Factor 2 contains an optional indicator variable that indicates whether the procedure ended
+normally or abnormally\[char46] If the procedure returned normally, the indicator is set to
+\fI*OFF\fR\[char46] If the procedure ended with an unhandled exception or if the procedure was
+canceled for any other reason, the indicator is set to \fI*ON\fR\[char46]
 
 
-The ON-\fIEXIT\fR section is coded at the end of the subprocedure, following any subroutines\[char46]
+The ON-\fIEXIT\fR section is coded at the end of the subprocedure, following any
+subroutines\[char46]
 
 
 All variables and files defined in the procedure are available in the ON-\fIEXIT\fR section\[char46]
 
 
-Running the ON-\fIEXIT\fR part of the procedure does not change the state of the main part of the procedure\[char46] If the procedure was canceled due to an unhandled exception, that exception is still active after the ON-\fIEXIT\fR part of the procedure runs\[char46]
+Running the ON-\fIEXIT\fR part of the procedure does not change the state of the main part of the
+procedure\[char46] If the procedure was canceled due to an unhandled exception, that exception is
+still active after the ON-\fIEXIT\fR part of the procedure runs\[char46]
 
 
-For a procedure that returns a value, if the procedure ends normally, the value set by the \fIRETURN\fR statement can be overridden by a \fIRETURN\fR statement in the ON-\fIEXIT\fR procedure\[char46] If the ON-\fIEXIT\fR does not have a \fIRETURN\fR statement, then the procedure returns the value set by the \fIRETURN\fR statement in the main body of the procedure\[char46] See Example where the ON-\fIEXIT\fR section returns a new value\[char46]
+For a procedure that returns a value, if the procedure ends normally, the value set by the
+\fIRETURN\fR statement can be overridden by a \fIRETURN\fR statement in the ON-\fIEXIT\fR
+procedure\[char46] If the ON-\fIEXIT\fR does not have a \fIRETURN\fR statement, then the procedure
+returns the value set by the \fIRETURN\fR statement in the main body of the procedure\[char46] See
+Example where the ON-\fIEXIT\fR section returns a new value\[char46]
 
 
-If there is an exception during ON-\fIEXIT\fR processing, the effect of the exception depends on how the procedure ended\[char46] 
+If there is an exception during ON-\fIEXIT\fR processing, the effect of the exception depends on how
+the procedure ended\[char46] 
 .IP "" 2
 .RS
-\[bu] If the procedure ended normally, then the procedure now ends with the new exception\[char46]
+\[bu] If the procedure ended normally, then the procedure now ends with the new
+exception\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If the procedure ended abnormally due to an unhandled exception, then the ON-\fIEXIT\fR section ends immediately and the exception handling for the original exception continues\[char46] The new exception has no effect on the exception handling for the original procedure call\[char46] The procedure is still considered to have ended due to the original exception\[char46]
+\[bu] If the procedure ended abnormally due to an unhandled exception, then the ON-\fIEXIT\fR section ends
+immediately and the exception handling for the original exception continues\[char46] The new
+exception has no effect on the exception handling for the original procedure call\[char46] The
+procedure is still considered to have ended due to the original exception\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If the procedure was canceled due to some other reason such as the job ending, then the ON-\fIEXIT\fR section ends immediately\[char46] The exception in the ON-\fIEXIT\fR section has no effect on the overall cancelation processing\[char46]
+\[bu] If the procedure was canceled due to some other reason such as the job ending, then the
+ON-\fIEXIT\fR section ends immediately\[char46] The exception in the ON-\fIEXIT\fR section has no
+effect on the overall cancelation processing\[char46]
 .RE
 .PP
 
 
-An exception during ON-\fIEXIT\fR processing can occur in the following cases: 
+An exception during ON-\fIEXIT\fR processing can occur in the following
+cases: 
 .IP "" 2
 .RS
-\[bu] An exception that occurs while setting the status indicator\[char46] This can occur if the status indicator is an array element, and the index is out of bounds, or if the status indicator is based on a pointer that is not set\[char46]
+\[bu] An exception that occurs while setting the status indicator\[char46] This can occur if the status
+indicator is an array element, and the index is out of bounds, or if the status indicator is based
+on a pointer that is not set\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] An exception that occurs within the code that follows the ON-\fIEXIT\fR statement\[char46]
+\[bu] An exception that occurs within the code that follows the ON-\fIEXIT\fR
+statement\[char46]
 .RE
 .PP
 
 
-The ON-\fIEXIT\fR section is run in a separate subprocedure\[char46] The name of the ON-\fIEXIT\fR subprocedure begins with "_QRNI_ON_EXIT_" and ends with the name of the procedure that contains the ON-\fIEXIT\fR operation\[char46] For example, the external name of the ON-\fIEXIT\fR subprocedure for a procedure with the external name "myProc" is "_QRNI_ON_EXIT_myProc"\[char46]
+The ON-\fIEXIT\fR section is run in a separate subprocedure\[char46] The name of the ON-\fIEXIT\fR
+subprocedure begins with "_QRNI_ON_EXIT_" and ends with the name of the procedure that contains the
+ON-\fIEXIT\fR operation\[char46] For example, the external name of the ON-\fIEXIT\fR subprocedure
+for a procedure with the external name "myProc" is "_QRNI_ON_EXIT_myProc"\[char46]
 
 
-The ON-\fIEXIT\fR section is invoked exactly once for each call to the procedure\[char46] If an exception occurs in the ON-\fIEXIT\fR section after a normal return, the ON-\fIEXIT\fR section is not run again\[char46]
+The ON-\fIEXIT\fR section is invoked exactly once for each call to the procedure\[char46] If an
+exception occurs in the ON-\fIEXIT\fR section after a normal return, the ON-\fIEXIT\fR section is
+not run again\[char46]
 
 
 
@@ -121,7 +153,8 @@ The ON-\fIEXIT\fR section is invoked exactly once for each call to the procedure
 .RE
 .IP "" 2
 .RS
-\[bu] Multiple occurrence data structures\[char46] Use a data structure array instead\[char46]
+\[bu] Multiple occurrence data structures\[char46] Use a data structure array
+instead\[char46]
 .RE
 .IP "" 2
 .RS
@@ -132,22 +165,27 @@ The ON-\fIEXIT\fR section is invoked exactly once for each call to the procedure
 .RE
 .IP "" 2
 .RS
-\[bu] ON-\fIEXIT\fR is not allowed in a Java native method\[char46] Move the logic for the native method into another procedure that is called by the native method\[char46]
+\[bu] ON-\fIEXIT\fR is not allowed in a Java native method\[char46] Move the logic for the native method
+into another procedure that is called by the native method\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] ON-\fIEXIT\fR is not allowed in a cycle-main procedure\[char46] Move the logic for the cycle-main procedure into another procedure that is called by the cycle-main procedure, or change your module to use a linear-main procedure\[char46]
+\[bu] ON-\fIEXIT\fR is not allowed in a cycle-main procedure\[char46] Move the logic for the cycle-main
+procedure into another procedure that is called by the cycle-main procedure, or change your module
+to use a linear-main procedure\[char46]
 .RE
 .IP "" 2
 .RS
 \[bu] The following are not allowed in the ON-\fIEXIT\fR section: 
 .IP "" 2
 .RS
-\[bu] Calls to the \fIAPI\fRs \fICEEDOD\fR, \fICEEGSI\fR, and \fICEETSTA\fR\[char46] Call these procedures in the main body of the procedure and save the results in local variables\[char46]
+\[bu] Calls to the \fIAPI\fRs \fICEEDOD\fR, \fICEEGSI\fR, and \fICEETSTA\fR\[char46] Call these procedures
+in the main body of the procedure and save the results in local variables\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Operation codes \fIBEGSR\fR, \fIDUMP\fR, \fIEXSR\fR, \fIGOTO\fR, \fIRESET\fR, \fITAG\fR\[char46]
+\[bu] Operation codes \fIBEGSR\fR, \fIDUMP\fR, \fIEXSR\fR, \fIGOTO\fR, \fIRESET\fR,
+\fITAG\fR\[char46]
 .RE
 .PP
 
@@ -158,24 +196,34 @@ The ON-\fIEXIT\fR section is invoked exactly once for each call to the procedure
 
 .IP "" 2
 .RS
-\[bu] When the breakpoint for the ON-\fIEXIT\fR operation is reached, the status indicator is already set\[char46]
+\[bu] When the breakpoint for the ON-\fIEXIT\fR operation is reached, the status indicator is already
+set\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] The breakpoint for the statement that ends the procedure is reached when the ON-\fIEXIT\fR section ends\[char46] It is not reached at the end of the main body of the procedure\[char46]
+\[bu] The breakpoint for the statement that ends the procedure is reached when the ON-\fIEXIT\fR section
+ends\[char46] It is not reached at the end of the main body of the procedure\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Since the ON-\fIEXIT\fR section is implemented as a separate procedure, it is not possible to simply step from the main part of the procedure to the ON-\fIEXIT\fR section using the step-over debugger command\[char46] To debug the ON-\fIEXIT\fR section, you can either use the step-into debugger command from the last statement in the main body of the procedure, or set a breakpoint on the ON-\fIEXIT\fR operation\[char46]
+\[bu] Since the ON-\fIEXIT\fR section is implemented as a separate procedure, it is not possible to simply
+step from the main part of the procedure to the ON-\fIEXIT\fR section using the step-over debugger
+command\[char46] To debug the ON-\fIEXIT\fR section, you can either use the step-into debugger
+command from the last statement in the main body of the procedure, or set a breakpoint on the
+ON-\fIEXIT\fR operation\[char46]
 .RE
 .PP
 
 
 
-In the following example, if num_orders has the value zero at the line marked Â 1Â , resulting in a divide-by-zero exception, control passes immediately to the ON-\fIEXIT\fR section beginning at the line marked Â 3Â \[char46] The indicator isAbnormalReturn has the value \[char39]1\[char39]\[char46]
+In the following example, if num_orders has the value zero at the line marked  1 , resulting in a
+divide-by-zero exception, control passes immediately to the ON-\fIEXIT\fR section beginning at the
+line marked  3 \[char46] The indicator isAbnormalReturn has the value \[char39]1\[char39]\[char46]
 
 
-If num_orders is not zero, the procedure continues to the return operation at the line marked Â 2Â  and control passes to the ON-\fIEXIT\fR section at Â 3Â \[char46] The indicator isAbnormalReturn has the value \[char39]0\[char39]\[char46]
+If num_orders is not zero, the procedure continues to the return operation at the line marked  2 
+and control passes to the ON-\fIEXIT\fR section at  3 \[char46] The indicator isAbnormalReturn has
+the value \[char39]0\[char39]\[char46]
 
 
 .SH EXAMPLE
@@ -186,10 +234,10 @@ dcl-proc myproc;
    dcl-s isAbnormalReturn ind;
    \[char46]\[char46]\[char46]
    p = %alloc(100);
-   price = total_cost / num_orders; Â 1Â
+   price = total_cost / num_orders;  1�
    filename = crtTempFile();
-   return; Â 2Â
-on-exit isAbnormalReturn; Â 3Â
+   return;  2�
+on-exit isAbnormalReturn;  3�
    dealloc(n) p;
    if filename <> blanks;
       dltTempFile (filename);
@@ -202,13 +250,21 @@ end-proc;
 
 
 
-In the following example, the procedure has a \fIRETURN\fR operation in the main part of the procedure at the line marked Â 3Â , and in the ON-\fIEXIT\fR section at the line marked Â 4Â \[char46] The \fIRETURN\fR in the ON-\fIEXIT\fR section is only run if the returnFromOnExit parameter has the value \fI*ON\fR\[char46]
+In the following example, the procedure has a \fIRETURN\fR operation in the main part of the
+procedure at the line marked  3 , and in the ON-\fIEXIT\fR section at the line marked
+ 4 \[char46] The \fIRETURN\fR in the ON-\fIEXIT\fR section is only run if the returnFromOnExit
+parameter has the value \fI*ON\fR\[char46]
 
 
-The first time the procedure is called, at the line marked Â 1Â , the parameter has the value \fI*OFF\fR, so the \fIRETURN\fR operation in the ON-\fIEXIT\fR section is not run\[char46] The procedure returns the value set by the \fIRETURN\fR operation in the main part of the procedure\[char46]
+The first time the procedure is called, at the line marked  1 , the parameter has the value
+\fI*OFF\fR, so the \fIRETURN\fR operation in the ON-\fIEXIT\fR section is not run\[char46] The
+procedure returns the value set by the \fIRETURN\fR operation in the main part of the
+procedure\[char46]
 
 
-The second time the procedure is called, at the line marked Â 2Â , the parameter has the value \fI*ON\fR, so the \fIRETURN\fR operation in the ON-\fIEXIT\fR section is run\[char46] The procedure returns the value set by the \fIRETURN\fR operation in the ON-\fIEXIT\fR section\[char46]
+The second time the procedure is called, at the line marked  2 , the parameter has the value
+\fI*ON\fR, so the \fIRETURN\fR operation in the ON-\fIEXIT\fR section is run\[char46] The procedure
+returns the value set by the \fIRETURN\fR operation in the ON-\fIEXIT\fR section\[char46]
 
 
 .SH EXAMPLE
@@ -218,9 +274,9 @@ The second time the procedure is called, at the line marked Â 2Â , the param
 ctl-opt dftactgrp(*no);
 dcl-s rc packed(5);
 
-rc = myProc2 (*off);  // Â 1Â
+rc = myProc2 (*off);  //  1�
 dsply (\[char39]value returned is \[char39] + %char(rc));
-rc = myProc2 (*on);   // Â 2Â
+rc = myProc2 (*on);   //  2�
 dsply (\[char39]value returned is \[char39] + %char(rc));
 return;
 
@@ -230,12 +286,12 @@ dcl-proc myproc2;
    end-pi;
    dsply \[char39]myproc2\[char39];
    dsply \[char39]myproc2 returning 5\[char39];
-   return 5; // Â 3Â
+   return 5; //  3�
 on-exit;
    dsply \[char39]myproc2 on-exit\[char39];
    if returnFromOnExit;
       dsply \[char39]myproc2 ON-EXIT returning 6\[char39];
-      return 6; // Â 4Â
+      return 6; //  4�
    endif;
 end-proc;
 .fi

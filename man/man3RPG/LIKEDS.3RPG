@@ -13,19 +13,33 @@ LIKEDS
 LIKEDS(data_structure_name)
 .fi
 .SH DESCRIPTION
-The \fILIKEDS\fR keyword is used to define a data structure, data structure subfield, prototyped return value, or prototyped parameter like another data structure\[char46] The subfields of the new item will be identical to the subfields of the parent data structure specified as the parameter to the \fILIKEDS\fR keyword\[char46]
+The \fILIKEDS\fR keyword is used to define a data structure, data structure subfield, prototyped
+return value, or prototyped parameter like another data structure\[char46] The subfields of the new
+item will be identical to the subfields of the parent data structure specified as the parameter to
+the \fILIKEDS\fR keyword\[char46]
 
 
-A data structure defined using \fILIKEDS\fR is automatically qualified even if the parent data structure is not qualified\[char46] The subfields must be referred to using the qualified notation \fIDSNAME\fR\[char46]\fISUBFIELDNAME\fR\[char46] If the parent data structure has any unnamed subfields, the child data structure will have the same unnamed subfields\[char46]
+A data structure defined using \fILIKEDS\fR is automatically qualified even if the parent data
+structure is not qualified\[char46] The subfields must be referred to using the qualified notation
+\fIDSNAME\fR\[char46]\fISUBFIELDNAME\fR\[char46] If the parent data structure has any unnamed
+subfields, the child data structure will have the same unnamed subfields\[char46]
 
 
-\fILIKEDS\fR can be coded for subfields of a qualified data structure\[char46] When \fILIKEDS\fR is coded on a data structure subfield definition, the subfield data structure is automatically defined as \fIQUALIFIED\fR\[char46] Subfields in a \fILIKEDS\fR subfield data structure are referenced in fully qualified form: "ds\[char46]subf\[char46]subfa"\[char46] Subfields defined with \fILIKEDS\fR are themselves data structures, and can be used wherever a data structure is required\[char46]
+\fILIKEDS\fR can be coded for subfields of a qualified data structure\[char46] When \fILIKEDS\fR is
+coded on a data structure subfield definition, the subfield data structure is automatically defined
+as \fIQUALIFIED\fR\[char46] Subfields in a \fILIKEDS\fR subfield data structure are referenced in
+fully qualified form: "ds\[char46]subf\[char46]subfa"\[char46] Subfields defined with \fILIKEDS\fR
+are themselves data structures, and can be used wherever a data structure is required\[char46]
 
 
-The values of the \fIALIGN\fR and \fIALTSEQ\fR keywords are inherited by the new data structure\[char46] The values of the \fIOCCURS\fR, \fIDIM\fR, \fINOOPT\fR, \fINULLIND\fR, and \fIINZ\fR keywords are not inherited\[char46] To initialize the subfields in the same way as the parent data structure, specify \fIINZ\fR(\fI*LIKEDS\fR)\[char46]
+The values of the \fIALIGN\fR and \fIALTSEQ\fR keywords are inherited by the new data
+structure\[char46] The values of the \fIOCCURS\fR, \fIDIM\fR, \fINOOPT\fR, \fINULLIND\fR, and
+\fIINZ\fR keywords are not inherited\[char46] To initialize the subfields in the same way as the
+parent data structure, specify \fIINZ\fR(\fI*LIKEDS\fR)\[char46]
 
 
-However, the values of the \fIDIM\fR, \fINOOPT\fR, and \fINULLIND\fR keywords specified for the subfields of the parent data structure are inherited by the new data structure\[char46]
+However, the values of the \fIDIM\fR, \fINOOPT\fR, and \fINULLIND\fR keywords specified for the
+subfields of the parent data structure are inherited by the new data structure\[char46]
 
 .SH EXAMPLE
 Defining data structures using \fILIKEDS\fR

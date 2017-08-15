@@ -15,7 +15,8 @@ l l  .
 T{
 Free-Form Syntax
 T}	T{
-{\fICALLP\fR{(\fIEMR\fR)}} name( {parm1{:parm2\[char46]\[char46]\[char46]}} )
+{\fICALLP\fR{(\fIEMR\fR)}} name( {parm1{:parm2\[char46]\[char46]\[char46]}}
+)
 T}
 .TE
 
@@ -25,31 +26,44 @@ l l l  .
 T{
 \fICALLP\fR (E M/R)
 T}	T{
-Â
+�
 T}	T{
-name{ (parm1 {:parm2â¦}) }
+name{ (parm1 {:parm2…}) }
 T}
 .TE
 
 The \fICALLP\fR operation is used to call prototyped procedures or programs\[char46]
 
 
-Unlike the other call operations, \fICALLP\fR uses a free-form syntax\[char46] You use the name operand to specify the name of the prototype of the called program or procedure, as well as any parameters to be passed\[char46] (This is similar to calling a built-in function\[char46]) A maximum of 255 parameters are allowed for a program call, and a maximum of 399 for a procedure call\[char46]
+Unlike the other call operations, \fICALLP\fR uses a free-form syntax\[char46] You use the name
+operand to specify the name of the prototype of the called program or procedure, as well as any
+parameters to be passed\[char46] (This is similar to calling a built-in function\[char46]) A maximum
+of 255 parameters are allowed for a program call, and a maximum of 399 for a procedure call\[char46]
 
 
-On a free-form calculation specification, the operation code name may be omitted if no extenders are needed, and if the prototype does not have the same name as an operation code\[char46]
+On a free-form calculation specification, the operation code name may be omitted if no extenders are
+needed, and if the prototype does not have the same name as an operation code\[char46]
 
 
- The compiler then uses the prototype name to obtain an external name, if required, for the call\[char46] If the keyword \fIEXTPGM\fR is specified on the prototype, the call will be a dynamic external call; otherwise it will be a bound procedure call\[char46]
+ The compiler then uses the prototype name to obtain an external name, if required, for the
+call\[char46] If the keyword \fIEXTPGM\fR is specified on the prototype, the call will be a dynamic
+external call; otherwise it will be a bound procedure call\[char46]
 
 
-If the called program or procedure is defined in a different module, a prototype for the program or procedure being called must be included in the definition specifications preceding the \fICALLP\fR\[char46] If the called program or procedure is defined in the same module as the call, an explicit prototype is not required; the prototype can be implicitly defined from the procedure interface of the called program or procedure\[char46]
+If the called program or procedure is defined in a different module, a prototype for the program or
+procedure being called must be included in the definition specifications preceding the
+\fICALLP\fR\[char46] If the called program or procedure is defined in the same module as the call,
+an explicit prototype is not required; the prototype can be implicitly defined from the procedure
+interface of the called program or procedure\[char46]
 
 
-Note that if \fICALLP\fR is used to call a procedure which returns a value, that value will not be available to the caller\[char46] If the value is required, call the prototyped procedure from within an expression\[char46]
+Note that if \fICALLP\fR is used to call a procedure which returns a value, that value will not be
+available to the caller\[char46] If the value is required, call the prototyped procedure from within
+an expression\[char46]
 
 
-To handle \fICALLP\fR exceptions ( program status codes  202, 211, or 231), the operation code extender \[char39]E\[char39] can be specified\[char46] For more information on error handling, see Program Exception/Errors \[char46] 
+To handle \fICALLP\fR exceptions ( program status codes  202, 211, or 231), the operation code extender \[char39]E\[char39] can be specified\[char46] For
+more information on error handling, see Program Exception/Errors \[char46] 
 
 
 .PP
@@ -58,7 +72,9 @@ CALLP(E) PROGNAME(FileRecs(Fld) + 1)
 .fi
 
 
-For more information on call operations, see Call Operations\[char46] For more information on defining prototypes, see Prototypes and Parameters\[char46] For information on how operation extenders M and R are used, see Precision Rules for Numeric Operations\[char46]
+For more information on call operations, see Call Operations\[char46] For more information on
+defining prototypes, see Prototypes and Parameters\[char46] For information on how operation
+extenders M and R are used, see Precision Rules for Numeric Operations\[char46]
 
 .SH EXAMPLE
 Calling a Prototyped Program Using \fICALLP\fR
@@ -95,7 +111,12 @@ D array           s             10a   dim(5)
 C                   callp     proc (array)
 .fi
 
-The following example of \fICALLP\fR is from the service program example in Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46] CvtToHex is a procedure in a service program created to hold conversion routines\[char46] CvtToHex converts an input string to its hexadecimal form\[char46] The prototyped calls are to the \fIILE\fR \fICEE\fR \fIAPI\fR, \fICEEDOD\fR (Retrieve Operational Descriptor)\[char46] It is used to determine the length of the input string\[char46]
+The following example of \fICALLP\fR is from the service program example in Rational Development
+Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46] CvtToHex is a procedure in a
+service program created to hold conversion routines\[char46] CvtToHex converts an input string to
+its hexadecimal form\[char46] The prototyped calls are to the \fIILE\fR \fICEE\fR \fIAPI\fR,
+\fICEEDOD\fR (Retrieve Operational Descriptor)\[char46] It is used to determine the length of the
+input string\[char46]
 
 
 .SH EXAMPLE

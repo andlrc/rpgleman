@@ -16,7 +16,8 @@
 The numeric expression must not be a float variable or expression\[char46]
 
 .SH RETURN VALUE
-\fB%DECPOS\fR returns the number of decimal positions of the numeric variable or expression\[char46] The value returned is a constant, and so may participate in constant folding\[char46]
+\fB%DECPOS\fR returns the number of decimal positions of the numeric variable or expression\[char46]
+The value returned is a constant, and so may participate in constant folding\[char46]
 
 .SH EXAMPLE
 \fB%DECPOS\fR Example

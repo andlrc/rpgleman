@@ -13,7 +13,9 @@ FROMFILE
 FROMFILE(file_name)
 .fi
 .SH DESCRIPTION
-The \fIFROMFILE\fR keyword is used to specify the file with input data for the prerun-time array or table being defined\[char46] The \fIFROMFILE\fR keyword must be specified for every prerun-time array or table used in the program\[char46]
+The \fIFROMFILE\fR keyword is used to specify the file with input data for the prerun-time array or
+table being defined\[char46] The \fIFROMFILE\fR keyword must be specified for every prerun-time
+array or table used in the program\[char46]
 
 
 See also \fITOFILE\fR(file_name)\[char46]

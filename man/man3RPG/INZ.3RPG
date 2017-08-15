@@ -13,45 +13,74 @@ INZ
 INZ{(initial value)}
 .fi
 .SH DESCRIPTION
-The \fIINZ\fR keyword initializes the standalone field, data structure, data-structure subfield, or object to the default value for its data type or, optionally, to the constant specified in parentheses\[char46] 
+The \fIINZ\fR keyword initializes the standalone field, data structure, data-structure subfield, or
+object to the default value for its data type or, optionally, to the constant specified in
+parentheses\[char46] 
 .IP "" 2
 .RS
-\[bu] For a program described data structure, no parameter is allowed for the \fIINZ\fR keyword\[char46]
+\[bu] For a program described data structure, no parameter is allowed for the \fIINZ\fR
+keyword\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For an externally described data structure, only the \fI*EXTDFT\fR parameter is allowed\[char46]
+\[bu] For an externally described data structure, only the \fI*EXTDFT\fR parameter is
+allowed\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For a data structure that is defined with the \fILIKEDS\fR keyword, the value \fI*LIKEDS\fR specifies that subfields are initialized in the same way as the parent data structure\[char46]  This applies only to initialization specified by the \fIINZ\fR keyword on the parent subfield\[char46] It does not apply to initialization specified by the \fICTDATA\fR or \fIFROMFILE\fR keywords\[char46] If the parent data structure has some subfields initialized by \fICTDATA\fR or \fIFROMFILE\fR, the data structure initialized with \fIINZ\fR(\fI*LIKEDS\fR) will not have the \fICTDATA\fR or \fIFROMFILE\fR data\[char46]
+\[bu] For a data structure that is defined with the \fILIKEDS\fR keyword, the value \fI*LIKEDS\fR
+specifies that subfields are initialized in the same way as the parent data
+structure\[char46]  This applies only to initialization specified by the \fIINZ\fR keyword on the parent
+subfield\[char46] It does not apply to initialization specified by the \fICTDATA\fR or
+\fIFROMFILE\fR keywords\[char46] If the parent data structure has some subfields initialized by
+\fICTDATA\fR or \fIFROMFILE\fR, the data structure initialized with \fIINZ\fR(\fI*LIKEDS\fR) will
+not have the \fICTDATA\fR or \fIFROMFILE\fR data\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For an object, only the \fI*NULL\fR parameter is allowed\[char46] Every object is initialized to \fI*NULL\fR, whether or not you specify \fIINZ\fR(\fI*NULL\fR)\[char46]
+\[bu] For an object, only the \fI*NULL\fR parameter is allowed\[char46] Every object is initialized to
+\fI*NULL\fR, whether or not you specify \fIINZ\fR(\fI*NULL\fR)\[char46]
 .RE
 .PP
 
 
-The initial value specified must be consistent with the type being initialized\[char46] The initial value can be a literal, named constant, figurative constant, built-in function, or one of the special values \fI*SYS\fR, \fI*JOB\fR, \fI*EXTDFT\fR, \fI*USER\fR, \fI*LIKEDS\fR, or \fI*NULL\fR\[char46] When initializing Date or Time data type fields or named constants with Date or Time values, the format of the literal must be consistent with the default format as derived from the Control specification, regardless of the actual format of the date or time field\[char46]
+The initial value specified must be consistent with the type being initialized\[char46] The initial
+value can be a literal, named constant, figurative constant, built-in function, or one of the
+special values \fI*SYS\fR, \fI*JOB\fR, \fI*EXTDFT\fR, \fI*USER\fR, \fI*LIKEDS\fR, or
+\fI*NULL\fR\[char46] When initializing Date or Time data type fields or named constants with Date or
+Time values, the format of the literal must be consistent with the default format as derived from
+the Control specification, regardless of the actual format of the date or time field\[char46]
 
 
-A \fIUCS\fR-2 field may be initialized with a character, \fIUCS\fR-2 or graphic constant\[char46] If the constant is not \fIUCS\fR-2, the compiler will implicitly convert it to \fIUCS\fR-2 at compile time\[char46]
+A \fIUCS\fR-2 field may be initialized with a character, \fIUCS\fR-2 or graphic constant\[char46] If
+the constant is not \fIUCS\fR-2, the compiler will implicitly convert it to \fIUCS\fR-2 at compile
+time\[char46]
 
 
-A numeric field may be initialized with any type of numeric literal\[char46] However, a float literal can only be used with a float field\[char46] Any numeric field can be initialized with a hexadecimal literal of 16 digits or fewer\[char46] In this case, the hexadecimal literal is considered an unsigned numeric value\[char46]
+A numeric field may be initialized with any type of numeric literal\[char46] However, a float
+literal can only be used with a float field\[char46] Any numeric field can be initialized with a
+hexadecimal literal of 16 digits or fewer\[char46] In this case, the hexadecimal literal is
+considered an unsigned numeric value\[char46]
 
 
-Specifying \fIINZ\fR(\fI*EXTDFT\fR) initializes externally described data-structure subfields with the default values from the \fIDFT\fR keyword in the \fIDDS\fR\[char46] If no \fIDFT\fR or constant value is specified, the \fIDDS\fR default value for the field type is used\[char46] You can override the value specified in the \fIDDS\fR by coding \fIINZ\fR with or without a parameter on the subfield specification\[char46]
+Specifying \fIINZ\fR(\fI*EXTDFT\fR) initializes externally described data-structure subfields with
+the default values from the \fIDFT\fR keyword in the \fIDDS\fR\[char46] If no \fIDFT\fR or constant
+value is specified, the \fIDDS\fR default value for the field type is used\[char46] You can override
+the value specified in the \fIDDS\fR by coding \fIINZ\fR with or without a parameter on the subfield
+specification\[char46]
 
 
-Specifying \fIINZ\fR(\fI*EXTDFT\fR) on the external data structure definition, initializes all externally described subfields to their \fIDDS\fR default values\[char46] If the externally described data structure has additional program described subfields, these are initialized to the \fIRPG\fR default values\[char46]
+Specifying \fIINZ\fR(\fI*EXTDFT\fR) on the external data structure definition, initializes all
+externally described subfields to their \fIDDS\fR default values\[char46] If the externally
+described data structure has additional program described subfields, these are initialized to the
+\fIRPG\fR default values\[char46]
 
 
 When using \fIINZ\fR(\fI*EXTDFT\fR), take note of the following: 
 .IP "" 2
 .RS
-\[bu] If the \fIDDS\fR value for a date or time field is not in the \fIRPG\fR internal format, the value will be converted to the internal format in effect for the program\[char46]
+\[bu] If the \fIDDS\fR value for a date or time field is not in the \fIRPG\fR internal format, the value
+will be converted to the internal format in effect for the program\[char46]
 .RE
 .IP "" 2
 .RS
@@ -59,40 +88,53 @@ When using \fIINZ\fR(\fI*EXTDFT\fR), take note of the following:
 .RE
 .IP "" 2
 .RS
-\[bu] If \fI*NULL\fR is specified for a null-capable field in the \fIDDS\fR, the compiler will use the \fIDDS\fR default value for that field as the initial value\[char46]
+\[bu] If \fI*NULL\fR is specified for a null-capable field in the \fIDDS\fR, the compiler will use the
+\fIDDS\fR default value for that field as the initial value\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If \fIDFT\fR(\[char39]\[char39]) is specified for a varying length field, the field will be initialized with a string of length 0\[char46]
+\[bu] If \fIDFT\fR(\[char39]\[char39]) is specified for a varying length field, the field will be
+initialized with a string of length 0\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] \fIINZ\fR(\fI*EXTDFT\fR) is not allowed if the \fICVTOPT\fR option is in effect\[char46]
+\[bu] \fIINZ\fR(\fI*EXTDFT\fR) is not allowed if the \fICVTOPT\fR option is in
+effect\[char46]
 .RE
 .PP
 
 
-Specifying \fIINZ\fR(\fI*USER\fR) intializes any character field or subfield to the name of the current user profile\[char46] Character fields must be at least 10 characters long\[char46] If the field is longer than 10 characters, the user name is left-justified in the field with blanks in the remainder\[char46]
+Specifying \fIINZ\fR(\fI*USER\fR) intializes any character field or subfield to the name of the
+current user profile\[char46] Character fields must be at least 10 characters long\[char46] If the
+field is longer than 10 characters, the user name is left-justified in the field with blanks in the
+remainder\[char46]
 
 
-Date fields can be initialized to \fI*SYS\fR or \fI*JOB\fR\[char46] Time and Timestamp fields can be initialized to \fI*SYS\fR\[char46]
+Date fields can be initialized to \fI*SYS\fR or \fI*JOB\fR\[char46] Time and Timestamp fields can be
+initialized to \fI*SYS\fR\[char46]
 
 
-Please see Initialization of Nested Data Structures for a complete description of the use of the \fIINZ\fR keyword in the inititlization of nested data structures\[char46]
+Please see Initialization of Nested Data Structures for a complete description of the use of the
+\fIINZ\fR keyword in the inititlization of nested data structures\[char46]
 
 
-A data structure, data-structure subfield, or standalone field defined with the \fIINZ\fR keyword cannot be specified as a parameter on an \fI*ENTRY\fR \fIPLIST\fR\[char46] 
+A data structure, data-structure subfield, or standalone field defined with the \fIINZ\fR keyword
+cannot be specified as a parameter on an \fI*ENTRY\fR \fIPLIST\fR\[char46] 
 
 
 
 
 .IP "" 2
 .RS
-\[bu] Static standalone fields and subfields of initialized data structures are initialized to their \fIRPG\fR default initial values (for example, blanks for character, 0 for numeric)\[char46]
+\[bu] Static standalone fields and subfields of initialized data structures are initialized to their
+\fIRPG\fR default initial values (for example, blanks for character, 0 for
+numeric)\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Subfields of uninitialized data structures (\fIINZ\fR not specified on the definition specification for the data structure) are initialized to blanks (regardless of their data type)\[char46]
+\[bu] Subfields of uninitialized data structures (\fIINZ\fR not specified on the definition specification
+for the data structure) are initialized to blanks (regardless of their data
+type)\[char46]
 .RE
 .PP
 

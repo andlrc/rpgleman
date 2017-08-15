@@ -13,16 +13,23 @@
 %YEARS(number)
 .fi
 .SH DESCRIPTION
-\fB%YEARS\fR converts a number into a duration that can be added to a date or timestamp value\[char46]
+\fB%YEARS\fR converts a number into a duration that can be added to a date or timestamp
+value\[char46]
 
 
 
 
 
-\fB%YEARS\fR can only follow the plus or minus sign in an addition or subtraction expression\[char46] The value before the plus or minus sign must be a date or timestamp\[char46] The result is a date or timestamp value with the appropriate number of years added or subtracted\[char46] For a date, the resulting value is in \fI*ISO\fR format\[char46]
+\fB%YEARS\fR can only follow the plus or minus sign in an addition or subtraction
+expression\[char46] The value before the plus or minus sign must be a date or timestamp\[char46] The
+result is a date or timestamp value with the appropriate number of years added or
+subtracted\[char46] For a date, the resulting value is in \fI*ISO\fR format\[char46]
 
 
-If the date represented by the date or timestamp value is February 29 and the resulting year is not a leap year, February 28 is used instead\[char46] Adding or subtracting a number of years to a February 29 date may not be reversible\[char46] For example, 2000-02-29 + \fB%YEARS(1)\fR - \fB%YEARS(1)\fR is 2000-02-28\[char46]
+If the date represented by the date or timestamp value is February 29 and the resulting year is not
+a leap year, February 28 is used instead\[char46] Adding or subtracting a number of years to a
+February 29 date may not be reversible\[char46] For example, 2000-02-29 + \fB%YEARS(1)\fR -
+\fB%YEARS(1)\fR is 2000-02-28\[char46]
 
 
 For an example of the \fB%YEARS\fR built-in function, see Figure 1\[char46]

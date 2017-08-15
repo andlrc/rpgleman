@@ -18,7 +18,8 @@ T}	T{
 \fISORTA\fR{(A/D)} array-name | keyed-ds-array
 T}
 T{
-\fISORTA\fR{(A/D)} \fB%SUBARR(array-name | keyed-ds-array: start-element { : number-of-elements })\fR
+\fISORTA\fR{(A/D)} \fB%SUBARR(array-name | keyed-ds-array: start-element { : number-of-elements
+})\fR
 T}
 .TE
 
@@ -28,32 +29,51 @@ l l l  .
 T{
 \fISORTA\fR(A/D)
 T}	T{
-Ã‚
+Â
 T}	T{
  Array or keyed-ds-array
 T}
 T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-\fB%SUBARR(Array or keyed-ds-array : start-element {:number-of-elements} )\fR
+\fB%SUBARR(Array or keyed-ds-array : start-element {:number-of-elements}
+)\fR
 T}
 .TE
 
-For a scalar array, the array-name operand is the name of an array to be sorted\[char46] The array \fI*IN\fR cannot be specified\[char46] If the array is defined as a compile-time or prerun-time array with data in alternating form, the alternate array is not sorted\[char46] Only the array specified as array-name is sorted\[char46]
+For a scalar array, the array-name operand is the name of an array to be sorted\[char46] The array
+\fI*IN\fR cannot be specified\[char46] If the array is defined as a compile-time or prerun-time
+array with data in alternating form, the alternate array is not sorted\[char46] Only the array
+specified as array-name is sorted\[char46]
 
 
-For an array data structure, the keyed-ds-array operand is a qualified name consisting of the array to be sorted followed by the subfield to be used as a key for the sort\[char46] The array data structure to be sorted is indicated by specifying * as the index for the array\[char46] For example, if array data structure \fIINFO\fR has subfields \fINAME\fR and \fISALARY\fR, then to sort array \fIINFO\fR using subfield \fINAME\fR as a key, specify \fIINFO\fR(*)\[char46]\fINAME\fR as the operand for \fISORTA\fR\[char46] To sort the \fIINFO\fR array by \fISALARY\fR, specify \fIINFO\fR(*)\[char46]\fISALARY\fR as the operand for \fISORTA\fR\[char46]
+For an array data structure, the keyed-ds-array operand is a qualified name consisting of the array
+to be sorted followed by the subfield to be used as a key for the sort\[char46] The array data
+structure to be sorted is indicated by specifying * as the index for the array\[char46] For example,
+if array data structure \fIINFO\fR has subfields \fINAME\fR and \fISALARY\fR, then to sort array
+\fIINFO\fR using subfield \fINAME\fR as a key, specify \fIINFO\fR(*)\[char46]\fINAME\fR as the
+operand for \fISORTA\fR\[char46] To sort the \fIINFO\fR array by \fISALARY\fR, specify
+\fIINFO\fR(*)\[char46]\fISALARY\fR as the operand for \fISORTA\fR\[char46]
 
 
-If the sequence for the array is defined by the \fIASCEND\fR or \fIDESCEND\fR keyword on the definition specification for the array, then the array is always sorted in that sequence\[char46] If no sequence is specified for the array, then the sequence defaults to ascending sequence\[char46] If the \[char39]A\[char39] operation extender is specified, then the array is sorted in ascending sequence\[char46] If the \[char39]D\[char39] operation extender is specified, then the array is sorted in descending sequence\[char46]
+If the sequence for the array is defined by the \fIASCEND\fR or \fIDESCEND\fR keyword on the
+definition specification for the array, then the array is always sorted in that sequence\[char46] If
+no sequence is specified for the array, then the sequence defaults to ascending sequence\[char46] If
+the \[char39]A\[char39] operation extender is specified, then the array is sorted in ascending
+sequence\[char46] If the \[char39]D\[char39] operation extender is specified, then the array is
+sorted in descending sequence\[char46]
 
 
-If the array is defined with the \fIOVERLAY\fR keyword and the \[char39]A\[char39] or \[char39]D\[char39] operation extender is not specified, the base array will be sorted in the sequence defined by the \fIOVERLAY\fR array\[char46]
+If the array is defined with the \fIOVERLAY\fR keyword and the \[char39]A\[char39] or
+\[char39]D\[char39] operation extender is not specified, the base array will be sorted in the
+sequence defined by the \fIOVERLAY\fR array\[char46]
 
 
-Graphic and \fIUCS\fR-2 arrays will be sorted by the hexadecimal values of the array elements, disregarding the alternate collating sequence, in the order specified on the definition specification\[char46]
+Graphic and \fIUCS\fR-2 arrays will be sorted by the hexadecimal values of the array elements,
+disregarding the alternate collating sequence, in the order specified on the definition
+specification\[char46]
 
 
 To sort a portion of an array, use the \fB%SUBARR\fR built-in function\[char46]
@@ -62,47 +82,72 @@ To sort a portion of an array, use the \fB%SUBARR\fR built-in function\[char46]
 For more information, see Array Operations\[char46]
 
 .SH NOTICE
-Note:  The \fIASCEND\fR and \fIDESCEND\fR keywords cannot be specified for an array data structure\[char46]
+Note:  The \fIASCEND\fR and \fIDESCEND\fR keywords cannot be specified for an array data
+structure\[char46]
 
 Note: 
 .IP 1. 2
 .RS
-Sorting an array does not preserve any previous order\[char46] For example, if you sort an array twice, using different overlay arrays, the final sequence will be that of the last sort\[char46] Elements that are equal in the sort sequence but have different hexadecimal values (for example, due to alternate collating sequence or the use of an overlay array to determine sequence), may not be in the same order after sorting as they were before\[char46]
+Sorting an array does not preserve any previous order\[char46] For example, if you sort an array
+twice, using different overlay arrays, the final sequence will be that of the last sort\[char46]
+Elements that are equal in the sort sequence but have different hexadecimal values (for example, due
+to alternate collating sequence or the use of an overlay array to determine sequence), may not be in
+the same order after sorting as they were before\[char46]
 .RE
 .IP 2. 2
 .RS
-When sorting arrays of basing pointers, you must ensure that all values in the arrays are addresses within the same space\[char46] Otherwise, inconsistent results may occur\[char46] See Compare Operations  for more information\[char46]
+When sorting arrays of basing pointers, you must ensure that all values in the arrays are addresses
+within the same space\[char46] Otherwise, inconsistent results may occur\[char46]
+See Compare Operations  for more information\[char46]
 .RE
 .IP 3. 2
 .RS
-If a null-capable array is sorted, the sorting will not take the settings of the null flags into consideration\[char46]
+If a null-capable array is sorted, the sorting will not take the settings of the null flags into
+consideration\[char46]
 .RE
 .IP 4. 2
 .RS
-Sorting a dynamically allocated array without all defined elements allocated may cause errors to occur\[char46] Use the \fB%SUBARR\fR built-in function to limit the sort to only the allocated elements\[char46]
+Sorting a dynamically allocated array without all defined elements allocated may cause errors to
+occur\[char46] Use the \fB%SUBARR\fR built-in function to limit the sort to only the allocated
+elements\[char46]
 .RE
 .IP 5. 2
 .RS
-The \[char39]A\[char39] operation extender is not allowed when sorting an array that is defined with the \fIDESCEND\fR keyword and the \[char39]D\[char39] operation extender is not allowed when sorting an array that is defined with the \fIASCEND\fR keyword\[char46]
+The \[char39]A\[char39] operation extender is not allowed when sorting an array that is defined with
+the \fIDESCEND\fR keyword and the \[char39]D\[char39] operation extender is not allowed when sorting
+an array that is defined with the \fIASCEND\fR keyword\[char46]
 .RE
 .IP 6. 2
 .RS
 When sorting an array data structure: 
 .IP 1. 2
 .RS
-The part of the qualified name preceding the (*) index must represent an array, and the part of the qualified name after the (*) must represent a scalar subfield or an indexed scalar array\[char46]
+The part of the qualified name preceding the (*) index must represent an array, and the part of the
+qualified name after the (*) must represent a scalar subfield or an indexed scalar
+array\[char46]
 .RE
 .IP 2. 2
 .RS
-If there is more than one array subfield in a complex qualified name, only one array subfield can be sorted\[char46] All other arrays in the qualified name must have an index specified\[char46] For example, if array data structure \fIFAMILY\fR has an array subfield \fICHILD\fR and the \fICHILD\fR elements have an array subfield \fIPET\fR, and the \fIPET\fR subfield has a subfield \fINAME\fR, then only one of the \fIFAMILY\fR, \fICHILD\fR and \fIPET\fR arrays can be sorted in one \fISORTA\fR operation\[char46] If the \fICHILD\fR array is to be sorted, then the \fIFAMILY\fR and \fIPET\fR arrays must have explicit indexes\[char46] One valid operand for \fISORTA\fR would be \fIFAMILY\fR(i)\[char46]\fICHILD\fR(*)\[char46]\fIPET\fR(1)\[char46]\fINAME\fR\[char46] That \fISORTA\fR operation would sort the \fICHILD\fR array of \fIFAMILY\fR(i) by the \fINAME\fR subfield of \fIPET\fR(1)\[char46]
+If there is more than one array subfield in a complex qualified name, only one array subfield can be
+sorted\[char46] All other arrays in the qualified name must have an index specified\[char46] For
+example, if array data structure \fIFAMILY\fR has an array subfield \fICHILD\fR and the \fICHILD\fR
+elements have an array subfield \fIPET\fR, and the \fIPET\fR subfield has a subfield \fINAME\fR,
+then only one of the \fIFAMILY\fR, \fICHILD\fR and \fIPET\fR arrays can be sorted in one \fISORTA\fR
+operation\[char46] If the \fICHILD\fR array is to be sorted, then the \fIFAMILY\fR and \fIPET\fR
+arrays must have explicit indexes\[char46] One valid operand for \fISORTA\fR would be
+\fIFAMILY\fR(i)\[char46]\fICHILD\fR(*)\[char46]\fIPET\fR(1)\[char46]\fINAME\fR\[char46] That
+\fISORTA\fR operation would sort the \fICHILD\fR array of \fIFAMILY\fR(i) by the \fINAME\fR subfield
+of \fIPET\fR(1)\[char46]
 .RE
 .IP 3. 2
 .RS
-An array data structure is sorted in the ascending sequence of the key unless the \[char39]D\[char39] operation extender is specified\[char46]
+An array data structure is sorted in the ascending sequence of the key unless the
+\[char39]D\[char39] operation extender is specified\[char46]
 .RE
 .IP 4. 2
 .RS
-If the sort key is an element of a sequenced array, its sequence is not considered when sorting the array data structure\[char46]
+If the sort key is an element of a sequenced array, its sequence is not considered when sorting the
+array data structure\[char46]
 .RE
 .PP
 

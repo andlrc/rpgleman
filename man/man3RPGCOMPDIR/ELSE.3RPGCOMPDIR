@@ -9,22 +9,26 @@
 .SH NAME
 ELSE
 .SH DESCRIPTION
-The /\fIELSE\fR compiler directive is used to unconditionally select source lines to be read following a failed /IF or /\fIELSEIF\fR test\[char46]
+The /\fIELSE\fR compiler directive is used to unconditionally select source lines to be read
+following a failed /IF or /\fIELSEIF\fR test\[char46]
 
 
 See Compiler Directives for information on the columns available for directives\[char46]
 
 
-/\fIELSE\fR can be specified within any free-form statement other than a free-form calculation statement\[char46] See Conditional Directives Within a Free-Form Statement\[char46]
+/\fIELSE\fR can be specified within any free-form statement other than a free-form calculation
+statement\[char46] See Conditional Directives Within a Free-Form Statement\[char46]
 
 
 The remainder of the line containing /\fIELSE\fR must be blank\[char46]
 
 
-If the previous /IF or /\fIELSEIF\fR was not satisfied, source lines are selected until the next /\fIENDIF\fR\[char46]
+If the previous /IF or /\fIELSEIF\fR was not satisfied, source lines are selected until the next
+/\fIENDIF\fR\[char46]
 
 
-If the previous /IF or /\fIELSEIF\fR was satisfied, source lines are excluded until the next /\fIENDIF\fR\[char46]
+If the previous /IF or /\fIELSEIF\fR was satisfied, source lines are excluded until the next
+/\fIENDIF\fR\[char46]
 
 .SH SEE ALSO
 .BR ELSEIF,

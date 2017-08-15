@@ -13,7 +13,9 @@ CURSYM
 CURSYM('sym')
 .fi
 .SH DESCRIPTION
-The \fICURSYM\fR keyword specifies a character used as a currency symbol in editing\[char46] The symbol must be a single character enclosed in quotes\[char46] Any character in the \fIRPG\fR character set (see Symbolic Names and Reserved Words ) may be used except: 
+The \fICURSYM\fR keyword specifies a character used as a currency symbol in editing\[char46] The
+symbol must be a single character enclosed in quotes\[char46] Any character in the \fIRPG\fR
+character set (see Symbolic Names and Reserved Words ) may be used except: 
 .IP "" 2
 .RS
 \[bu] 0 (zero)

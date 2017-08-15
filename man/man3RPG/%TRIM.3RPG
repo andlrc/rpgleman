@@ -16,20 +16,24 @@
 The string can be character, graphic, or \fIUCS\fR-2 data\[char46]
 
 
-If the characters to trim parameter is specified, it must be the same type as the string parameter\[char46]
+If the characters to trim parameter is specified, it must be the same type as the string
+parameter\[char46]
 
 
-When specified as a parameter for a definition specification keyword, the string parameter must be a constant\[char46] 
+When specified as a parameter for a definition specification keyword, the string parameter must be a
+constant\[char46] 
 
 
 
 For more information, see String Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%TRIM\fR with only one parameter returns the given string with any leading and trailing blanks removed\[char46]
+\fB%TRIM\fR with only one parameter returns the given string with any leading and trailing blanks
+removed\[char46]
 
 
-\fB%TRIM\fR with two parameters returns the given string with any leading and trailing characters that are in the characters to trim parameter removed\[char46]
+\fB%TRIM\fR with two parameters returns the given string with any leading and trailing characters
+that are in the characters to trim parameter removed\[char46]
 
 .SH EXAMPLE
 \fB%TRIM\fR Example

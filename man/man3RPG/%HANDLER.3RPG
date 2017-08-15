@@ -9,43 +9,69 @@
 .SH NAME
 %HANDLER - handlingProcedure : communicationArea 
 .SH DESCRIPTION
-\fB%HANDLER\fR is used to identify a procedure to handle an event or a series of events\[char46] \fB%HANDLER\fR does not return a value, and it can only be specified as the first operand of \fIXML-SAX\fR and \fIXML-INTO\fR\[char46]
+\fB%HANDLER\fR is used to identify a procedure to handle an event or a series of events\[char46]
+\fB%HANDLER\fR does not return a value, and it can only be specified as the first operand of
+\fIXML-SAX\fR and \fIXML-INTO\fR\[char46]
 
 
-The first operand, handlingProcedure specifies the prototype of the handling procedure\[char46] The return value and parameters specified by the prototype, or by the procedure interface if the prototype is not explicitly specified, must match the parameters required for the handling procedure; the requirements are determined by the operation that \fB%HANDLER\fR is specified for\[char46] See \fIXML-SAX\fR (Parse an \fIXML\fR Document) and \fIXML-INTO\fR (Parse an \fIXML\fR Document into a Variable) for the specific requirements for the definition of the handling procedures\[char46]
+The first operand, handlingProcedure specifies the prototype of the handling procedure\[char46] The
+return value and parameters specified by the prototype, or by the procedure interface if the
+prototype is not explicitly specified, must match the parameters required for the handling
+procedure; the requirements are determined by the operation that \fB%HANDLER\fR is specified
+for\[char46] See \fIXML-SAX\fR (Parse an \fIXML\fR Document) and \fIXML-INTO\fR (Parse an \fIXML\fR
+Document into a Variable) for the specific requirements for the definition of the handling
+procedures\[char46]
 
 
-The second operand, communicationArea, specifies a variable to be passed as a parameter on every call to the handling procedure\[char46] The operand must be an exact match for the first prototyped parameter of the handling procedure, according to the same rules that are used for checking prototyped parameters passed by reference\[char46] The communication-area parameter can be any type, including arrays and data structures\[char46]
+The second operand, communicationArea, specifies a variable to be passed as a parameter on every
+call to the handling procedure\[char46] The operand must be an exact match for the first prototyped
+parameter of the handling procedure, according to the same rules that are used for checking
+prototyped parameters passed by reference\[char46] The communication-area parameter can be any type,
+including arrays and data structures\[char46]
 
 
-When an operation code uses the \fB%HANDLER\fR built-in function, the following sequence of events occurs: 
+When an operation code uses the \fB%HANDLER\fR built-in function, the following sequence of events
+occurs: 
 .IP 1. 2
 .RS
 The operation using the \fB%HANDLER\fR built-in function begins\[char46]
 .RE
 .IP 2. 2
 .RS
-When an event occurs during the operation that must be handled by the handling procedure, the \fIRPG\fR runtime calls the handling procedure specified as the first operand of \fB%HANDLER\fR\[char46] The first parameter passed to the handling procedure is the communication area that was specified as the second operand of \fB%HANDLER\fR\[char46] The other parameters depend on the operation and the nature of the event that occurred\[char46]
+When an event occurs during the operation that must be handled by the handling procedure, the
+\fIRPG\fR runtime calls the handling procedure specified as the first operand of
+\fB%HANDLER\fR\[char46] The first parameter passed to the handling procedure is the communication
+area that was specified as the second operand of \fB%HANDLER\fR\[char46] The other parameters depend
+on the operation and the nature of the event that occurred\[char46]
 .RE
 .IP 3. 2
 .RS
-The handling procedure processes the parameters, possibly updating the communication-area parameter\[char46]
+The handling procedure processes the parameters, possibly updating the communication-area
+parameter\[char46]
 .RE
 .IP 4. 2
 .RS
-The handling procedure returns a zero if it completed successfully, and a non-zero value if it did not complete successfully\[char46]
+The handling procedure returns a zero if it completed successfully, and a non-zero value if it did
+not complete successfully\[char46]
 .RE
 .IP 5. 2
 .RS
-If the returned value was zero, the \fIRPG\fR runtime continues processing until either the operation is complete, or another event occurs\[char46] If the returned value was not zero, the operation ends\[char46]
+If the returned value was zero, the \fIRPG\fR runtime continues processing until either the
+operation is complete, or another event occurs\[char46] If the returned value was not zero, the
+operation ends\[char46]
 .RE
 .IP 6. 2
 .RS
-If another event occurs, the handling procedure is called again\[char46] If the previous call to the handling procedure changed the communication area, the changes can be seen on subsequent calls\[char46]
+If another event occurs, the handling procedure is called again\[char46] If the previous call to the
+handling procedure changed the communication area, the changes can be seen on subsequent
+calls\[char46]
 .RE
 .IP 7. 2
 .RS
-When the operation is complete, control passes to the statement following the operation that used the \fB%HANDLER\fR built-in function\[char46] If the handling procedure changed the communication area, the changes can be seen in the procedure that used the \fB%HANDLER\fR built-in function\[char46]
+When the operation is complete, control passes to the statement following the operation that used
+the \fB%HANDLER\fR built-in function\[char46] If the handling procedure changed the communication
+area, the changes can be seen in the procedure that used the \fB%HANDLER\fR built-in
+function\[char46]
 .RE
 .PP
 
@@ -53,15 +79,21 @@ When the operation is complete, control passes to the statement following the op
 The communication area can be used for several purposes\[char46] 
 .IP 1. 2
 .RS
-To communicate information from the procedure coding the \fB%HANDLER\fR built-in function to the handling procedure\[char46]
+To communicate information from the procedure coding the \fB%HANDLER\fR built-in function to the
+handling procedure\[char46]
 .RE
 .IP 2. 2
 .RS
-To communicate information from the handling procedure back to the procedure coding the \fB%HANDLER\fR built-in function\[char46]
+To communicate information from the handling procedure back to the procedure coding the
+\fB%HANDLER\fR built-in function\[char46]
 .RE
 .IP 3. 2
 .RS
-To keep state information between successive calls of the handling procedure\[char46] State information can also be kept in static variables in the handling procedure, but when static variables are used, incorrect results can occur if the handling procedure has been enabled by more than one \fB%HANDLER\fR operation\[char46] By using a communication area parameter, the usages of the handling procedure are independent from each other\[char46]
+To keep state information between successive calls of the handling procedure\[char46] State
+information can also be kept in static variables in the handling procedure, but when static
+variables are used, incorrect results can occur if the handling procedure has been enabled by more
+than one \fB%HANDLER\fR operation\[char46] By using a communication area parameter, the usages of
+the handling procedure are independent from each other\[char46]
 .RE
 .PP
 
@@ -183,7 +215,8 @@ D rc              S             10I 0  INZ(0)
 P                 E
 .fi
 
-For more examples of \fB%HANDLER\fR, see \fIXML-SAX\fR (Parse an \fIXML\fR Document) and \fIXML-INTO\fR (Parse an \fIXML\fR Document into a Variable)\[char46]
+For more examples of \fB%HANDLER\fR, see \fIXML-SAX\fR (Parse an \fIXML\fR Document) and
+\fIXML-INTO\fR (Parse an \fIXML\fR Document into a Variable)\[char46]
 
 
 For more information, see \fIXML\fR Operations or Built-in Functions\[char46]

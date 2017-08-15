@@ -25,21 +25,22 @@ l l l l l l l  .
 T{
 \fIMONITOR\fR
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}
 .TE
 
-The monitor group performs conditional error handling based on the status code\[char46] It consists of: 
+The monitor group performs conditional error handling based on the status code\[char46] It consists
+of: 
 .IP "" 2
 .RS
 \[bu] A \fIMONITOR\fR statement
@@ -55,34 +56,56 @@ The monitor group performs conditional error handling based on the status code\[
 .PP
 
 
-After the \fIMONITOR\fR statement, control passes to the next statement\[char46] The monitor block consists of all the statements from the \fIMONITOR\fR statement to the first ON-\fIERROR\fR statement\[char46] If an error occurs when the monitor block is processed, control is passed to the appropriate ON-\fIERROR\fR group\[char46]
+After the \fIMONITOR\fR statement, control passes to the next statement\[char46] The monitor block
+consists of all the statements from the \fIMONITOR\fR statement to the first ON-\fIERROR\fR
+statement\[char46] If an error occurs when the monitor block is processed, control is passed to the
+appropriate ON-\fIERROR\fR group\[char46]
 
 
-If all the statements in the \fIMONITOR\fR block are processed without errors, control passes to the statement following the \fIENDMON\fR statement\[char46]
+If all the statements in the \fIMONITOR\fR block are processed without errors, control passes to the
+statement following the \fIENDMON\fR statement\[char46]
 
 
-The monitor group can be specified anywhere in calculations\[char46] It can be nested within IF, DO, \fISELECT\fR, or other monitor groups\[char46] The IF, DO, and \fISELECT\fR groups can be nested within monitor groups\[char46]
+The monitor group can be specified anywhere in calculations\[char46] It can be nested within IF, DO,
+\fISELECT\fR, or other monitor groups\[char46] The IF, DO, and \fISELECT\fR groups can be nested
+within monitor groups\[char46]
 
 
-If a monitor group is nested within another monitor group, the innermost group is considered first when an error occurs\[char46] If that monitor group does not handle the error condition, the next group is considered\[char46]
+If a monitor group is nested within another monitor group, the innermost group is considered first
+when an error occurs\[char46] If that monitor group does not handle the error condition, the next
+group is considered\[char46]
 
 
-Level indicators can be used on the \fIMONITOR\fR operation, to indicate that the \fIMONITOR\fR group is part of total calculations\[char46] For documentation purposes, you can also specify a level indicator on an ON-\fIERROR\fR or \fIENDMON\fR operation but this level indicator will be ignored\[char46]
+Level indicators can be used on the \fIMONITOR\fR operation, to indicate that the \fIMONITOR\fR
+group is part of total calculations\[char46] For documentation purposes, you can also specify a
+level indicator on an ON-\fIERROR\fR or \fIENDMON\fR operation but this level indicator will be
+ignored\[char46]
 
 
-Conditioning indicators can be used on the \fIMONITOR\fR statement\[char46] If they are not satisfied, control passes immediately to the statement following the \fIENDMON\fR statement of the monitor group\[char46] Conditioning indicators cannot be used on ON-\fIERROR\fR operations individually\[char46]
+Conditioning indicators can be used on the \fIMONITOR\fR statement\[char46] If they are not
+satisfied, control passes immediately to the statement following the \fIENDMON\fR statement of the
+monitor group\[char46] Conditioning indicators cannot be used on ON-\fIERROR\fR operations
+individually\[char46]
 
 
-If a monitor block contains a call to a subprocedure, and the subprocedure has an error, the subprocedure\[char39]s error handling will take precedence\[char46] For example, if the subprocedure has a \fI*PSSR\fR subroutine, it will get called\[char46] The \fIMONITOR\fR group containing the call will only be considered if the subprocedure fails to handle the error and the call fails with the error-in-call status of 00202\[char46]
+If a monitor block contains a call to a subprocedure, and the subprocedure has an error, the
+subprocedure\[char39]s error handling will take precedence\[char46] For example, if the subprocedure
+has a \fI*PSSR\fR subroutine, it will get called\[char46] The \fIMONITOR\fR group containing the
+call will only be considered if the subprocedure fails to handle the error and the call fails with
+the error-in-call status of 00202\[char46]
 
 
-The monitor group does handle errors that occur in a subroutine\[char46] If the subroutine contains its own monitor groups, they are considered first\[char46]
+The monitor group does handle errors that occur in a subroutine\[char46] If the subroutine contains
+its own monitor groups, they are considered first\[char46]
 
 
-Branching operations are not allowed within a monitor block, but are allowed within an ON-\fIERROR\fR block\[char46]
+Branching operations are not allowed within a monitor block, but are allowed within an
+ON-\fIERROR\fR block\[char46]
 
 
-A \fILEAVE\fR or \fIITER\fR operation within a monitor block applies to any active DO group that contains the monitor block\[char46] A \fILEAVESR\fR or \fIRETURN\fR operation within a monitor block applies to any subroutine, subprocedure, or procedure that contains the monitor block\[char46]
+A \fILEAVE\fR or \fIITER\fR operation within a monitor block applies to any active DO group that
+contains the monitor block\[char46] A \fILEAVESR\fR or \fIRETURN\fR operation within a monitor block
+applies to any subroutine, subprocedure, or procedure that contains the monitor block\[char46]
 
 
 For more information, see Error-Handling Operations\[char46]

@@ -18,7 +18,8 @@
 %LEN(varying-length expression : *MAX)
 .fi
 
-\fB%LEN\fR can be used to get the length of a variable expression, to set the current length of a variable-length field, or to get the maximum length of a varying-length expression\[char46]
+\fB%LEN\fR can be used to get the length of a variable expression, to set the current length of a
+variable-length field, or to get the maximum length of a varying-length expression\[char46]
 
 
 The parameter must not be a figurative constant\[char46]

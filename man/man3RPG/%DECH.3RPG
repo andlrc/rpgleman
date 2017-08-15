@@ -13,7 +13,9 @@
 %DECH(numeric or character expression :precision:decimal places )
 .fi
 .SH DESCRIPTION
-\fB%DECH\fR is the same as \fB%DEC\fR except that if the expression is a decimal or float value, half adjust is applied to the value of the expression when converting to the desired precision\[char46] No message is issued if half adjust cannot be performed\[char46]\[char46]
+\fB%DECH\fR is the same as \fB%DEC\fR except that if the expression is a decimal or float value,
+half adjust is applied to the value of the expression when converting to the desired
+precision\[char46] No message is issued if half adjust cannot be performed\[char46]\[char46]
 
 
 Unlike, \fB%DEC\fR, all three parameters are required\[char46]

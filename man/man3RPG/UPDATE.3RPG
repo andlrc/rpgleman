@@ -25,7 +25,7 @@ l l l l l l l  .
 T{
 \fIUPDATE\fR (E)
 T}	T{
-Ã‚
+Â
 T}	T{
 name (file or record format)
 T}	T{
@@ -39,26 +39,37 @@ _
 T}
 .TE
 
-The \fIUPDATE\fR operation modifies the last locked record retrieved for processing from an update disk file or subfile\[char46] No other operation should be performed on the file between the input operation that retrieved the record and the \fIUPDATE\fR operation\[char46]
+The \fIUPDATE\fR operation modifies the last locked record retrieved for processing from an update
+disk file or subfile\[char46] No other operation should be performed on the file between the input
+operation that retrieved the record and the \fIUPDATE\fR operation\[char46]
 
 
-The name operand must be the name of a file or record format to be updated\[char46] A record format name is required with an externally described file\[char46] The record format name must be the name of the last record read from the file; otherwise, an error occurs\[char46] A file name as the name operand is required with a program described file\[char46]
+The name operand must be the name of a file or record format to be updated\[char46] A record format
+name is required with an externally described file\[char46] The record format name must be the name
+of the last record read from the file; otherwise, an error occurs\[char46] A file name as the name
+operand is required with a program described file\[char46]
 
 
-If the data-structure operand is specified, the record is updated directly from the data structure\[char46] The data structure must conform to the rules below: 
+If the data-structure operand is specified, the record is updated directly from the data
+structure\[char46] The data structure must conform to the rules below: 
 .IP 1. 2
 .RS
 If the data-structure  operand is specified, the record is updated directly from the data structure\[char46]
 .RE
 .IP 2. 2
 .RS
-If name  refers to a program-described file, the data structure can be any data structure of the same length as the file\[char39]s declared record length\[char46]
+If name  refers to a program-described file, the data structure can be any data structure of the same length
+as the file\[char39]s declared record length\[char46]
 .RE
 .IP 3. 2
 .RS
 
 
- If name  refers to an externally-described file or a record format from an externally described database file, the data structure must be a data structure defined from the same file or record format, with \fI*INPUT\fR, \fI*OUTPUT\fR, or \fI*ALL\fR specified as the second parameter of the \fILIKEREC\fR or \fIEXTNAME\fR keyword, or no second parameter specified for the \fILIKEREC\fR keyword\[char46] 
+ If name  refers to an externally-described file or a record format from an externally described database
+file, the data structure must be a data structure defined from the same file or record format, with
+\fI*INPUT\fR, \fI*OUTPUT\fR, or \fI*ALL\fR specified as the second parameter of the \fILIKEREC\fR or
+\fIEXTNAME\fR keyword, or no second parameter specified for the \fILIKEREC\fR
+keyword\[char46] 
 
 
 .RE
@@ -66,63 +77,102 @@ If name  refers to a program-described file, the data structure can be any data 
 .RS
 
 
- If name  refers to a subfile record format from an externally described display file, the data structure must be a data structure defined from the same file or record format, with \fI*OUTPUT\fR or \fI*ALL\fR specified as the second parameter of the \fILIKEREC\fR or \fIEXTNAME\fR keyword\[char46] 
+ If name  refers to a subfile record format from an externally described display file, the data structure
+must be a data structure defined from the same file or record format, with \fI*OUTPUT\fR or
+\fI*ALL\fR specified as the second parameter of the \fILIKEREC\fR or \fIEXTNAME\fR
+keyword\[char46] 
 
 
 .RE
 .IP 5. 2
 .RS
-See File Operations  for information on how to define the data structure and how data is transferred between the data structure and the file\[char46]
+See File Operations  for information on how to define the data structure and how data is transferred between the data
+structure and the file\[char46]
 .RE
 .PP
 
 
-A list of the fields to update can be specified using \fB%FIELDS\fR\[char46] The parameter to \fB%FIELDS\fR is a list of the field names to update\[char46] See the example at the end of \fB%FIELDS\fR (Fields to update) for an illustration of updating fields\[char46]
+A list of the fields to update can be specified using \fB%FIELDS\fR\[char46] The parameter to
+\fB%FIELDS\fR is a list of the field names to update\[char46] See the example at the end of
+\fB%FIELDS\fR (Fields to update) for an illustration of updating fields\[char46]
 
 
-To handle \fIUPDATE\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+To handle \fIUPDATE\fR exceptions (file status codes greater than 1000), either the operation code
+extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For
+more information on error handling, see File Exception/Errors\[char46]
 
 
 Remember the following when using the \fIUPDATE\fR operation: 
 .IP "" 2
 .RS
-\[bu] When name  is a record format name, the current values in the program for the fields in the record definition are used to modify the record\[char46]
+\[bu] When name  is a record format name, the current values in the program for the fields in the record definition
+are used to modify the record\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If some but not all fields in a record are to be updated, either use the output specifications without an \fIUPDATE\fR operation or use \fB%FIELDS\fR to identify which fields to update\[char46]
+\[bu] If some but not all fields in a record are to be updated, either use the output specifications
+without an \fIUPDATE\fR operation or use \fB%FIELDS\fR to identify which fields to
+update\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Before \fIUPDATE\fR is issued to a file or record, a valid input operation with lock (\fIREAD\fR, \fIREADC\fR, \fIREADE\fR, \fIREADP\fR, \fIREADPE\fR, \fICHAIN\fR, or primary/secondary file) must be issued to the same file or record\[char46] If the read operation returns with an error condition or if it was read without locking, the record is not locked and \fIUPDATE\fR cannot be issued\[char46] The record must be read again with the default of a blank operation extender to specify a lock request\[char46]
+\[bu] Before \fIUPDATE\fR is issued to a file or record, a valid input operation with lock (\fIREAD\fR,
+\fIREADC\fR, \fIREADE\fR, \fIREADP\fR, \fIREADPE\fR, \fICHAIN\fR, or primary/secondary file) must be
+issued to the same file or record\[char46] If the read operation returns with an error condition or
+if it was read without locking, the record is not locked and \fIUPDATE\fR cannot be issued\[char46]
+The record must be read again with the default of a blank operation extender to specify a lock
+request\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Consecutive \fIUPDATE\fR operations to the same file or record are not valid\[char46] Intervening successful read operations must be issued to position to and lock the record to be updated\[char46]
+\[bu] Consecutive \fIUPDATE\fR operations to the same file or record are not valid\[char46] Intervening
+successful read operations must be issued to position to and lock the record to be
+updated\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Beware of using the \fIUPDATE\fR operation on primary or secondary files during total calculations\[char46] At this stage in the \fIRPG\fR IV  cycle, the fields from the current record (the record that is about to be processed) have not yet been moved to the processing area\[char46] Therefore, the \fIUPDATE\fR operation updates the current record with the fields from the preceding record\[char46] Also, when the fields from the current record are moved to the processing area, they are the fields that were updated from the preceding record\[char46]
+\[bu] Beware of using the \fIUPDATE\fR operation on primary or secondary files during total
+calculations\[char46] At this stage in the \fIRPG\fR IV  cycle, the fields from the current record (the record that is about to be processed) have not yet
+been moved to the processing area\[char46] Therefore, the \fIUPDATE\fR operation updates the current
+record with the fields from the preceding record\[char46] Also, when the fields from the current
+record are moved to the processing area, they are the fields that were updated from the preceding
+record\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For multiple device files, specify a subfile record format as the name  operand\[char46] The operation is processed for the program device identified in the fieldname specified using the \fIDEVID\fR keyword in the file specification\[char46] If the program device is not specified, the device used in the last successful input operation is used\[char46] This device must be the same one you specified for the input operation that must precede the \fIUPDATE\fR operation\[char46] You must not process input or output operations to other devices in between the input and \fIUPDATE\fR operations\[char46] If you do, your \fIUPDATE\fR operation will fail\[char46]
+\[bu] For multiple device files, specify a subfile record format as the name  operand\[char46] The operation is processed for the program device identified in the fieldname
+specified using the \fIDEVID\fR keyword in the file specification\[char46] If the program device is
+not specified, the device used in the last successful input operation is used\[char46] This device
+must be the same one you specified for the input operation that must precede the \fIUPDATE\fR
+operation\[char46] You must not process input or output operations to other devices in between the
+input and \fIUPDATE\fR operations\[char46] If you do, your \fIUPDATE\fR operation will
+fail\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For a display file which has multiple subfile record formats, you must not process read-for-update operations to one subfile record in between the input and \fIUPDATE\fR operations to another subfile in the same display file\[char46] If you do, the \fIUPDATE\fR operation will fail\[char46]
+\[bu] For a display file which has multiple subfile record formats, you must not process read-for-update
+operations to one subfile record in between the input and \fIUPDATE\fR operations to another subfile
+in the same display file\[char46] If you do, the \fIUPDATE\fR operation will
+fail\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] An \fIUPDATE\fR operation is valid to a subfile record format as long as at least one successful input operation (\fIREADC\fR, \fICHAIN\fR) has occurred to that format name without an intervening input operation to a different format name\[char46] The record updated will be the record retrieved on the last successful input operation\[char46] This means that if you read a record successfully, then read unsuccessfully to the same format, an update will succeed, but will update the first record\[char46] This is different from the behavior of \fIDISK\fR files\[char46] 
-To avoid updating the wrong record, check the resulting indicator or record-identifying indicator to ensure that a successful input operation has occurred before doing the update operation\[char46]
+\[bu] An \fIUPDATE\fR operation is valid to a subfile record format as long as at least one successful
+input operation (\fIREADC\fR, \fICHAIN\fR) has occurred to that format name without an intervening
+input operation to a different format name\[char46] The record updated will be the record retrieved
+on the last successful input operation\[char46] This means that if you read a record successfully,
+then read unsuccessfully to the same format, an update will succeed, but will update the first
+record\[char46] This is different from the behavior of \fIDISK\fR files\[char46] 
+To avoid updating the wrong record, check the resulting indicator or record-identifying indicator to
+ensure that a successful input operation has occurred before doing the update operation\[char46]
 
 
 .RE
 .PP
 
 
-See Database Null Value Support for information on updating records with null-capable fields containing null values\[char46]
+See Database Null Value Support for information on updating records with null-capable fields
+containing null values\[char46]
 
 
 For more information, see File Operations\[char46]

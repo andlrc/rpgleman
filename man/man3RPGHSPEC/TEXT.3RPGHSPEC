@@ -13,7 +13,9 @@ TEXT
 TEXT(*SRCMBRTXT | *BLANK | 'description')
 .fi
 .SH DESCRIPTION
-The \fITEXT\fR keyword allows you to enter text that briefly describes the object and its function\[char46] The text is used when creating the object and appears when object information is displayed\[char46]
+The \fITEXT\fR keyword allows you to enter text that briefly describes the object and its
+function\[char46] The text is used when creating the object and appears when object information is
+displayed\[char46]
 
 
 If \fI*SRCMBRTXT\fR is specified, the text of the source member is used\[char46]
@@ -22,7 +24,8 @@ If \fI*SRCMBRTXT\fR is specified, the text of the source member is used\[char46]
 If \fI*BLANK\fR is specified, no text will appear\[char46]
 
 
-If a literal is specified, it can be a maximum of 50 characters and must be enclosed in apostrophes\[char46] (The apostrophes are not part of the 50-character string\[char46])
+If a literal is specified, it can be a maximum of 50 characters and must be enclosed in
+apostrophes\[char46] (The apostrophes are not part of the 50-character string\[char46])
 
 
 If the \fITEXT\fR keyword is not specified, then the value specified on the command is used\[char46]

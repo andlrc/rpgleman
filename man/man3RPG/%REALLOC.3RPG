@@ -13,22 +13,37 @@
 %REALLOC(ptr:num)
 .fi
 .SH DESCRIPTION
-\fB%REALLOC\fR changes the heap storage pointed to by the first parameter to be the length specified in the second parameter\[char46] The heap storage pointed to by the returned pointer has the same value as the heap storage pointed to by ptr\[char46] If the new length is longer than the old length, the additional storage is uninitialized\[char46]
+\fB%REALLOC\fR changes the heap storage pointed to by the first parameter to be the length specified
+in the second parameter\[char46] The heap storage pointed to by the returned pointer has the same
+value as the heap storage pointed to by ptr\[char46] If the new length is longer than the old
+length, the additional storage is uninitialized\[char46]
 
 
-The first parameter must be a basing pointer value\[char46] The second parameter must be a non-float numeric value with zero decimal places\[char46] The length specified must be between 1 and the maximum size allowed\[char46]
+The first parameter must be a basing pointer value\[char46] The second parameter must be a non-float
+numeric value with zero decimal places\[char46] The length specified must be between 1 and the
+maximum size allowed\[char46]
 
 
-The maximum size allowed depends on the type of heap storage used for \fIRPG\fR memory management operations due to the \fIALLOC\fR keyword on the Control specification\[char46] If the module uses teraspace heap storage, the maximum size allowed is 4294967295 bytes\[char46] Otherwise, the maximum size allowed is 16776704 bytes\[char46]
+The maximum size allowed depends on the type of heap storage used for \fIRPG\fR memory management
+operations due to the \fIALLOC\fR keyword on the Control specification\[char46] If the module uses
+teraspace heap storage, the maximum size allowed is 4294967295 bytes\[char46] Otherwise, the maximum
+size allowed is 16776704 bytes\[char46]
 
 
-The maximum size available at runtime may be less than the maximum size allowed by \fIRPG\fR\[char46]
+The maximum size available at runtime may be less than the maximum size allowed by
+\fIRPG\fR\[char46]
 
 
-The function returns a pointer to the allocated storage\[char46] This may be the same as ptr or different\[char46] If the \fB%REALLOC\fR function is successful, the original pointer value specified in the first operand should not be used\[char46]
+The function returns a pointer to the allocated storage\[char46] This may be the same as ptr or
+different\[char46] If the \fB%REALLOC\fR function is successful, the original pointer value
+specified in the first operand should not be used\[char46]
 
 
-When \fIRPG\fR memory management operations for the module are using single-level heap storage due to the \fIALLOC\fR keyword on the Control specification, the \fB%REALLOC\fR built-in function can only handle pointers to single-level heap storage\[char46] When \fIRPG\fR memory management operations for the module are using teraspace heap storage, the \fB%REALLOC\fR built-in function operation can handle pointers to both single-level and teraspace heap storage\[char46]
+When \fIRPG\fR memory management operations for the module are using single-level heap storage due
+to the \fIALLOC\fR keyword on the Control specification, the \fB%REALLOC\fR built-in function can
+only handle pointers to single-level heap storage\[char46] When \fIRPG\fR memory management
+operations for the module are using teraspace heap storage, the \fB%REALLOC\fR built-in function
+operation can handle pointers to both single-level and teraspace heap storage\[char46]
 
 
 For more information, see Memory Management Operations\[char46]

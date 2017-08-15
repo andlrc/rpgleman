@@ -13,5 +13,8 @@ DATEDIT
 DATEDIT(fmt{separator})
 .fi
 .SH DESCRIPTION
-The \fIDATEDIT\fR keyword specifies the format of numeric fields when using the Y edit code\[char46] The separator character is optional\[char46] The value (fmt) can be \fI*DMY\fR, \fI*MDY\fR, or \fI*YMD\fR\[char46] The default separator is â\[char46] A separator character of & (ampersand) may be used to specify a blank separator\[char46]
+The \fIDATEDIT\fR keyword specifies the format of numeric fields when using the Y edit code\[char46]
+The separator character is optional\[char46] The value (fmt) can be \fI*DMY\fR, \fI*MDY\fR, or
+\fI*YMD\fR\[char46] The default separator is ⁄\[char46] A separator character of & (ampersand) may
+be used to specify a blank separator\[char46]
 

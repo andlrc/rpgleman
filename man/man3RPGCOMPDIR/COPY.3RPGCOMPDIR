@@ -9,28 +9,41 @@
 .SH NAME
 COPY - /COPY or /INCLUDE
 .SH DESCRIPTION
-The /\fICOPY\fR and /\fIINCLUDE\fR directives have the same purpose and the same syntax, but are handled differently by the \fISQL\fR precompiler\[char46] If your program does not have embedded \fISQL\fR, you can freely choose which directive to use\[char46] If your program has embedded \fISQL\fR, see Using /\fICOPY\fR, /\fIINCLUDE\fR in Source Files with Embedded \fISQL\fR for information about which directive to use\[char46]
+The /\fICOPY\fR and /\fIINCLUDE\fR directives have the same purpose and the same syntax, but are
+handled differently by the \fISQL\fR precompiler\[char46] If your program does not have embedded
+\fISQL\fR, you can freely choose which directive to use\[char46] If your program has embedded
+\fISQL\fR, see Using /\fICOPY\fR, /\fIINCLUDE\fR in Source Files with Embedded \fISQL\fR for
+information about which directive to use\[char46]
 
 
-The /\fICOPY\fR and /\fIINCLUDE\fR compiler directives cause records from other files to be inserted, at the point where the directive occurs, with the file being compiled\[char46] The inserted files may contain any valid specification including /\fICOPY\fR and /\fIINCLUDE\fR up to the maximum nesting depth specified by the \fICOPYNEST\fR keyword (32 when not specified)\[char46]
+The /\fICOPY\fR and /\fIINCLUDE\fR compiler directives cause records from other files to be
+inserted, at the point where the directive occurs, with the file being compiled\[char46] The
+inserted files may contain any valid specification including /\fICOPY\fR and /\fIINCLUDE\fR up to
+the maximum nesting depth specified by the \fICOPYNEST\fR keyword (32 when not specified)\[char46]
 
 
-The following is a restriction on the implementation of the /\fICOPY\fR and /\fIINCLUDE\fR compiler directives when using the Program Verifier: 
+The following is a restriction on the implementation of the /\fICOPY\fR and /\fIINCLUDE\fR compiler
+directives when using the Program Verifier: 
 .IP "" 2
 .RS
-\[bu] /\fICOPY\fR or /\fIINCLUDE\fR of the main source member is not allowed\[char46] This will result in an error message, indicating that it was unable to open /\fICOPY\fR or /\fIINCLUDE\fR file\[char46]
+\[bu] /\fICOPY\fR or /\fIINCLUDE\fR of the main source member is not allowed\[char46] This will result in
+an error message, indicating that it was unable to open /\fICOPY\fR or /\fIINCLUDE\fR
+file\[char46]
 .RE
 .PP
 
 
-/\fICOPY\fR and /\fIINCLUDE\fR files can be either physical files or \fIIFS\fR files\[char46] To specify a physical file, code your /\fICOPY\fR and /\fIINCLUDE\fR statement in the following way : 
+/\fICOPY\fR and /\fIINCLUDE\fR files can be either physical files or \fIIFS\fR files\[char46] To
+specify a physical file, code your /\fICOPY\fR and /\fIINCLUDE\fR statement in the following way
+: 
 .IP "" 2
 .RS
 \[bu] /\fICOPY\fR or /\fIINCLUDE\fR followed by exactly one space followed by the file name or path
 .RE
 .IP "" 2
 .RS
-\[bu] when specifying a physical file, the library, file, and member name, can be in one of these formats: 
+\[bu] when specifying a physical file, the library, file, and member name, can be in one of these
+formats: 
 .PP
 .nf
 libraryname/filename,membername
@@ -48,7 +61,9 @@ membername
 .RE
 .IP "" 2
 .RS
-\[bu] If a library is not specified, the library list is searched for the file\[char46] All occurrences of the specified source file in the library list are searched for the member until it is located or the search is complete\[char46]
+\[bu] If a library is not specified, the library list is searched for the file\[char46] All occurrences of
+the specified source file in the library list are searched for the member until it is located or the
+search is complete\[char46]
 .RE
 .IP "" 2
 .RS
@@ -59,14 +74,18 @@ membername
 .RE
 .IP "" 2
 .RS
-\[bu] When specifying an \fIIFS\fR (Integrated File System) file, the path can be either absolute (beginning with /) or relative\[char46] 
+\[bu] When specifying an \fIIFS\fR (Integrated File System) file, the path can be either absolute
+(beginning with /) or relative\[char46] 
 .IP "" 2
 .RS
-\[bu] The path can be enclosed in single or double quotes\[char46] If the path contains blanks, it must be enclosed in quotes\[char46]
+\[bu] The path can be enclosed in single or double quotes\[char46] If the path contains blanks, it must be
+enclosed in quotes\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If the path does not end with a suffix (for example "\[char46]txt"), the compiler will search for the file as named, and also for files with suffixes of "\[char46]rpgle" or "\[char46]rpgleinc"\[char46]
+\[bu] If the path does not end with a suffix (for example "\[char46]txt"), the compiler will search for
+the file as named, and also for files with suffixes of "\[char46]rpgle" or
+"\[char46]rpgleinc"\[char46]
 .RE
 .IP "" 2
 .RS
@@ -88,58 +107,72 @@ Figure 1 shows some examples of the /\fICOPY\fR and /\fIINCLUDE\fR directive sta
 
 .SH NOTICE
 Tip: 
-To facilitate application maintenance, you may want to place the prototypes of exported procedures in a separate source member\[char46] If you do, be sure to place a â\fICOPY\fR or â\fIINCLUDE\fR directive for that member in both the module containing the exported procedure and any modules that contain calls to the exported procedure\[char46]
+To facilitate application maintenance, you may want to place the prototypes of exported procedures
+in a separate source member\[char46] If you do, be sure to place a ⁄\fICOPY\fR or ⁄\fIINCLUDE\fR
+directive for that member in both the module containing the exported procedure and any modules that
+contain calls to the exported procedure\[char46]
 
 
 .SH EXAMPLE
 Examples of the /\fICOPY\fR and /\fIINCLUDE\fR Compiler Directive Statements
 .PP
 .nf
-C/COPY MBR1 Â 1Â
+C/COPY MBR1  1�
 
-I/INCLUDE SRCFIL,MBR2 Â 2Â
+I/INCLUDE SRCFIL,MBR2  2�
 
-O/COPY SRCLIB/SRCFIL,MBR3 Â 3Â
+O/COPY SRCLIB/SRCFIL,MBR3  3�
 
-O/INCLUDE "SRCLIB!"/"SRC>3","MBRÂ¬3" Â 4Â
+O/INCLUDE "SRCLIB!"/"SRC>3","MBR¬3"  4�
 
-O/COPY /dir1/dir2/file\[char46]rpg Â 5Â
+O/COPY /dir1/dir2/file\[char46]rpg  5�
 
-O/COPY /dir1/dir2/file Â 6Â
+O/COPY /dir1/dir2/file  6�
 
-O/COPY dir1/dir2/file\[char46]rpg Â 7Â
+O/COPY dir1/dir2/file\[char46]rpg  7�
 
-O/COPY "ifs file containing blanks"  Â 8Â
+O/COPY "ifs file containing blanks"   8�
 
-O/COPY \[char39]ifs file containing blanks\[char39]  Â 8Â
+O/COPY \[char39]ifs file containing blanks\[char39]   8�
 
 
 
 .fi
 
 .TP 5
-.B Â 1Â
-Copies from member \fIMBR\fR1 in source file \fIQRPGLESRC\fR\[char46] The current library list is used to search for file \fIQRPGLESRC\fR\[char46] If the file is not found in the library list, the search will proceed to the \fIIFS\fR, looking for file \fIMBR\fR1, \fIMBR\fR1\[char46]rpgle or \fIMBR\fR1\[char46]rpgleinc in the include search path\[char46] See the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide for information on using \fIIFS\fR source files\[char46]
+.B  1�
+Copies from member \fIMBR\fR1 in source file \fIQRPGLESRC\fR\[char46] The current library list is
+used to search for file \fIQRPGLESRC\fR\[char46] If the file is not found in the library list, the search will proceed to the \fIIFS\fR, looking for
+file \fIMBR\fR1, \fIMBR\fR1\[char46]rpgle or \fIMBR\fR1\[char46]rpgleinc in the include search
+path\[char46] See the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s
+Guide for information on using \fIIFS\fR source files\[char46]
 .TP 5
-.B Â 2Â
-Copies from member \fIMBR\fR2 in file \fISRCFIL\fR\[char46] The current library list is used to search for file \fISRCFIL\fR\[char46] Note that the comma is used to separate the file name from the member name\[char46] If the file is not found in the library list, the search will proceed to the \fIIFS\fR, looking for file \fISRCFIL\fR, \fIMBR\fR1 in the include search path, possibly with the \[char46]rpgle or \[char46]rpgleinc suffixes\[char46]
+.B  2�
+Copies from member \fIMBR\fR2 in file \fISRCFIL\fR\[char46] The current library list is used to
+search for file \fISRCFIL\fR\[char46] Note that the comma is used to separate the file name from the
+member name\[char46] If the file is not found in the library list, the search will proceed to the \fIIFS\fR, looking for
+file \fISRCFIL\fR, \fIMBR\fR1 in the include search path, possibly with the \[char46]rpgle or
+\[char46]rpgleinc suffixes\[char46]
 .TP 5
-.B Â 3Â
-Copies from member \fIMBR\fR3 in file \fISRCFIL\fR in library \fISRCLIB\fR or from the \fIIFS\fR file \fISRCFIL\fR, \fIMBR\fR3  in directory \fISRCLIB\fR\[char46]
+.B  3�
+Copies from member \fIMBR\fR3 in file \fISRCFIL\fR in library \fISRCLIB\fR or from the \fIIFS\fR
+file \fISRCFIL\fR, \fIMBR\fR3  in directory \fISRCLIB\fR\[char46]
 .TP 5
-.B Â 4Â
-Copies from member "\fIMBR\fRÂ¬3" in file "\fISRC\fR>3" in library "\fISRCLIB\fR!"
+.B  4�
+Copies from member "\fIMBR\fR¬3" in file "\fISRC\fR>3" in library "\fISRCLIB\fR!"
 .TP 5
-.B Â 5Â
+.B  5�
 Copies from the \fIIFS\fR file file\[char46]rpg in directory /dir1/dir2\[char46]
 .TP 5
-.B Â 6Â
-Copies from file, or file\[char46]rpgleinc or file\[char46]rpgle in directory /dir1/dir2
+.B  6�
+Copies from file, or file\[char46]rpgleinc or file\[char46]rpgle in directory
+/dir1/dir2
 .TP 5
-.B Â 7Â
-Copies from the \fIIFS\fR file file\[char46]rpg in directory dir1/dir2, searching for directory dir1/dir2 using the \fIIFS\fR search path\[char46]
+.B  7�
+Copies from the \fIIFS\fR file file\[char46]rpg in directory dir1/dir2, searching for directory
+dir1/dir2 using the \fIIFS\fR search path\[char46]
 .TP 5
-.B Â 8Â
+.B  8�
 Copies from a file whose name contains blanks\[char46]
 .PP
 .SH SEE ALSO

@@ -13,6 +13,7 @@ LIKEFILE
 LIKEFILE(filename)
 .fi
 .SH DESCRIPTION
-The \fILIKEFILE\fR keyword is used to define a prototyped parameter as a file with the same characteristics as the filename parameter\[char46] 
+The \fILIKEFILE\fR keyword is used to define a prototyped parameter as a file with the same
+characteristics as the filename parameter\[char46] 
 
 

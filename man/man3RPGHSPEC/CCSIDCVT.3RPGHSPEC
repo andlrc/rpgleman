@@ -13,16 +13,27 @@ CCSIDCVT
 CCSIDCVT(*EXCP | *LIST)
 .fi
 .SH DESCRIPTION
-The \fICCSIDCVT\fR keyword allows you to control how the compiler handles conversions between data with different \fICCSID\fRs\[char46]
+The \fICCSIDCVT\fR keyword allows you to control how the compiler handles conversions between data
+with different \fICCSID\fRs\[char46]
 
 
-When two \fICCSID\fRs support different character sets, it is possible for a character in one \fICCSID\fR not to have a matching character in the other \fICCSID\fR\[char46] For example, the Japanese and Thai character sets each contain many characters that are not part of the other character set\[char46] If a \fIUCS\fR-2 variable contains both Japanese and Thai characters, and the \fIUCS\fR-2 variable is converted to a Japanese Graphic variable, the Thai characters will not have matching characters in the \fIDBCS\fR variable\[char46] When the conversion cannot find a matching character in the target character set, the conversion will place a substitution character in the target variable\[char46]
+When two \fICCSID\fRs support different character sets, it is possible for a character in one
+\fICCSID\fR not to have a matching character in the other \fICCSID\fR\[char46] For example, the
+Japanese and Thai character sets each contain many characters that are not part of the other
+character set\[char46] If a \fIUCS\fR-2 variable contains both Japanese and Thai characters, and the
+\fIUCS\fR-2 variable is converted to a Japanese Graphic variable, the Thai characters will not have
+matching characters in the \fIDBCS\fR variable\[char46] When the conversion cannot find a matching
+character in the target character set, the conversion will place a substitution character in the
+target variable\[char46]
 
 
-The substitution character for alphanumeric data is x\[char39]3F\[char39]\[char46] The substitution character for Graphic data is x\[char39]\fIFEFE\fR\[char39]\[char46]
+The substitution character for alphanumeric data is x\[char39]3F\[char39]\[char46] The substitution
+character for Graphic data is x\[char39]\fIFEFE\fR\[char39]\[char46]
 
 
-One or both parameters may be specified for the \fICCSIDCVT\fR keyword\[char46] If both parameters are specified, they are separated by a colon\[char46] They may be specified in any order\[char46] 
+One or both parameters may be specified for the \fICCSIDCVT\fR keyword\[char46] If both parameters
+are specified, they are separated by a colon\[char46] They may be specified in any
+order\[char46] 
 .IP "" 2
 .RS
 \[bu] \fICCSIDCVT\fR(\fI*EXCP\fR : \fI*LIST\fR)
@@ -44,20 +55,29 @@ One or both parameters may be specified for the \fICCSIDCVT\fR keyword\[char46] 
 
 .TP 5
 .B \fI*EXCP\fR
-\fI*EXCP\fR indicates that when a conversion results in a substitution character at run time, that it will cause an \fIRPG\fR exception with status code 452\[char46]
+\fI*EXCP\fR indicates that when a conversion results in a substitution character at run time, that
+it will cause an \fIRPG\fR exception with status code 452\[char46]
 .TP 5
 .B \fI*LIST\fR
-\fI*LIST\fR indicates that the compiler should add a section to the listing indicating all the implicit and explicit \fICCSID\fR conversions, with an indication of which conversions could result in loss of data due to substitution characters being placed in the result because of the lack of matching characters in the target character set\[char46] 
+\fI*LIST\fR indicates that the compiler should add a section to the listing indicating all the
+implicit and explicit \fICCSID\fR conversions, with an indication of which conversions could result
+in loss of data due to substitution characters being placed in the result because of the lack of
+matching characters in the target character set\[char46] 
 
  
 You can use this information for two purposes: 
 .IP "" 2
 .RS
-\[bu] You can improve performance by reducing the number of conversions by changing the data types of some of your variables\[char46]
+\[bu] You can improve performance by reducing the number of conversions by changing the data types of some
+of your variables\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] You can improve the reliability of your program by eliminating some of the conversions that have the potential to result in substitution characters\[char46] For example, if you have a conversion from \fIUCS\fR-2 to a alphanumeric variable, and that alphanumeric data is later converted back to \fIUCS\fR-2, you may be able to change the type of the alphanumeric variable to \fIUCS\fR-2, to avoid the potential data loss\[char46]
+\[bu] You can improve the reliability of your program by eliminating some of the conversions that have the
+potential to result in substitution characters\[char46] For example, if you have a conversion from
+\fIUCS\fR-2 to a alphanumeric variable, and that alphanumeric data is later converted back to
+\fIUCS\fR-2, you may be able to change the type of the alphanumeric variable to \fIUCS\fR-2, to
+avoid the potential data loss\[char46]
 .RE
 .PP
 
@@ -82,10 +102,13 @@ The following types of conversions can result in substitution characters:
 .PP
 
  
-For each \fICCSID\fR conversion used in the module, there is a list of the statement numbers with that conversion\[char46] See Conversions for more information\[char46]
+For each \fICCSID\fR conversion used in the module, there is a list of the statement numbers with
+that conversion\[char46] See Conversions for more information\[char46]
 
  
-If the conversion could result in substitution characters, a message number will be shown to the left of the conversion entry\[char46] That message will appear in the Message Summary at the end of the compile\[char46]
+If the conversion could result in substitution characters, a message number will be shown to the
+left of the conversion entry\[char46] That message will appear in the Message Summary at the end of
+the compile\[char46]
 
  
 The following special values are used for some \fICCSID\fRs whose value is not known until runtime:
@@ -93,19 +116,34 @@ The following special values are used for some \fICCSID\fRs whose value is not k
  
 .TP 5
 .B \fI*JOBRUN\fR
-The job \fICCSID\fR, or the default job \fICCSID\fR if the job \fICCSID\fR is 65535\[char46] This is default the \fICCSID\fR for alphanumeric data in the \fIRPG\fR module if \fICCSID\fR(\fI*CHAR\fR : \fI*JOBRUN\fR)  is specified in the Control specification\[char46]
+The job \fICCSID\fR, or the default job \fICCSID\fR if the job \fICCSID\fR is 65535\[char46] This is
+default the \fICCSID\fR for alphanumeric data in the \fIRPG\fR module if \fICCSID\fR(\fI*CHAR\fR : \fI*JOBRUN\fR)  is specified in the Control specification\[char46]
 .TP 5
 .B \fI*JOBRUN_MIXED\fR
-The mixed-byte \fICCSID\fR related to the job \fICCSID\fR, or related to the default job \fICCSID\fR if the job \fICCSID\fR is 65535\[char46] This \fICCSID\fR may be the same as the actual job \fICCSID\fR, if the job \fICCSID\fR is a mixed-byte \fICCSID\fR\[char46] This is the default \fICCSID\fR for alphanumeric data in the \fIRPG\fR module if neither \fICCSID\fR(\fI*CHAR\fR : \fI*JOBRUN\fR)  nor \fICCSID\fR(\fI*EXACT\fR)  is specified in the Control specification\[char46] See \fICCSID\fR control keyword  for more information\[char46]
+The mixed-byte \fICCSID\fR related to the job \fICCSID\fR, or related to the default job \fICCSID\fR
+if the job \fICCSID\fR is 65535\[char46] This \fICCSID\fR may be the same as the actual job
+\fICCSID\fR, if the job \fICCSID\fR is a mixed-byte \fICCSID\fR\[char46] This is the default
+\fICCSID\fR for alphanumeric data in the \fIRPG\fR module if neither \fICCSID\fR(\fI*CHAR\fR : \fI*JOBRUN\fR)  nor \fICCSID\fR(\fI*EXACT\fR)  is specified in the Control specification\[char46] See \fICCSID\fR control keyword  for more information\[char46]
 .TP 5
 .B \fI*JOBRUN_DBCS\fR
-The double-byte \fICCSID\fR related to the job \fICCSID\fR, or related to the default job \fICCSID\fR if the job \fICCSID\fR is 65535\[char46] This \fICCSID\fR may be used as the \fICCSID\fR of the non-shift alphanumeric data for conversions between alphanumeric data and graphic data\[char46]
+The double-byte \fICCSID\fR related to the job \fICCSID\fR, or related to the default job
+\fICCSID\fR if the job \fICCSID\fR is 65535\[char46] This \fICCSID\fR may be used as the \fICCSID\fR
+of the non-shift alphanumeric data for conversions between alphanumeric data and graphic
+data\[char46]
 .TP 5
 .B \fI*JOBRUN_JAVA\fR
-The \fICCSID\fR used for parameters and return values of Javaâ¢ methods when the \fIRPG\fR parameter or return value is defined as alphanumeric\[char46] The \fIRPG\fR compiler assumes that this \fICCSID\fR is related to the job \fICCSID\fR, so the \fIRPG\fR compiler assumes that there will be no possibility of the conversion resulting in substitution characters\[char46]
+The \fICCSID\fR used for parameters and return values of Java™ methods when the \fIRPG\fR
+parameter or return value is defined as alphanumeric\[char46] The \fIRPG\fR compiler assumes that
+this \fICCSID\fR is related to the job \fICCSID\fR, so the \fIRPG\fR compiler assumes that there
+will be no possibility of the conversion resulting in substitution characters\[char46]
 .PP
  
-The following example shows a \fICCSID\fR Conversion Summary\[char46] The first entry shows that six statements have conversions from alphanumeric data in the job \fICCSID\fR to \fIUCS\fR-2 data with \fICCSID\fR 1200\[char46] The second entry shows that three statements have conversions from \fIUCS\fR-2 data with \fICCSID\fR 1200 to alphanumeric data in the job \fICCSID\fR\[char46] The message \fIRNF\fR7357  preceding the second entry indicates that these conversions could result in substitution characters being placed in the alphanumeric data\[char46] 
+The following example shows a \fICCSID\fR Conversion Summary\[char46] The first entry shows that six
+statements have conversions from alphanumeric data in the job \fICCSID\fR to \fIUCS\fR-2 data with
+\fICCSID\fR 1200\[char46] The second entry shows that three statements have conversions from
+\fIUCS\fR-2 data with \fICCSID\fR 1200 to alphanumeric data in the job \fICCSID\fR\[char46] The
+message \fIRNF\fR7357  preceding the second entry indicates that these conversions could result in substitution characters
+being placed in the alphanumeric data\[char46] 
 .SH EXAMPLE
 Sample \fICCSID\fR Conversion Summary
 .PP

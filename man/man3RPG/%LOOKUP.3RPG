@@ -21,7 +21,9 @@
 
 
 
- The following functions return the array index of the item in the array that matches that matches arg \[char46] \fB%LOOKUP\fR can also be used to return the array index of the item in a keyed array data structure\[char46] 
+ The following functions return the array index of the item in the array that matches that
+matches arg \[char46] \fB%LOOKUP\fR can also be used to return the array index of the item in a keyed array data
+structure\[char46] 
 .TP 5
 .B \fB%LOOKUP\fR
 An exact match\[char46]
@@ -42,12 +44,15 @@ An exact match, or the value that is closest to arg  but greater than arg \[char
 
 
 
-If no value matches the specified condition, zero is returned\[char46] The value returned is in unsigned integer format (type U)\[char46]
+If no value matches the specified condition, zero is returned\[char46] The value returned is in
+unsigned integer format (type U)\[char46]
 
 
 
 
- There could be more than one element that matches the specified condition\[char46] For the following discussion, assume the following values for the ascending and descending arrays\[char46] 
+ There could be more than one element that matches the specified condition\[char46] For the following
+discussion, assume the following values for the ascending and descending
+arrays\[char46] 
 .PP
 .nf
            +---+---+---+---+---+---+---+
@@ -61,64 +66,102 @@ DESCEND    | G | E | E | E | C | C | A |
  
 .IP "" 2
 .RS
-\[bu] For \fB%LOOKUP\fR, \fB%LOOKUPLE\fR, or \fB%LOOKUPGE\fR, if there is more than one element that is equal to the search argument, then the index of the first matching element is returned\[char46] For example, if the search argument is C, these built-in functions will return 2 for the ascending array and 5 for the descending array\[char46]
+\[bu] For \fB%LOOKUP\fR, \fB%LOOKUPLE\fR, or \fB%LOOKUPGE\fR, if there is more than one element that is
+equal to the search argument, then the index of the first matching element is returned\[char46] For
+example, if the search argument is C, these built-in functions will return 2 for the ascending array
+and 5 for the descending array\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For \fB%LOOKUPLE\fR for ascending arrays, if there is no element that is equal to the search argument, then the built-in function returns the index of the last element less than the search argument\[char46] For example, if the search argument is D, \fB%LOOKUPLE\fR returns 4\[char46]
+\[bu] For \fB%LOOKUPLE\fR for ascending arrays, if there is no element that is equal to the search
+argument, then the built-in function returns the index of the last element less than the search
+argument\[char46] For example, if the search argument is D, \fB%LOOKUPLE\fR returns
+4\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For \fB%LOOKUPLE\fR for descending arrays, if there is no element that is equal to the search argument, then the built-in function returns the index of the first element less than the search argument\[char46] For example, if the search argument is D, \fB%LOOKUPLE\fR returns 5\[char46]
+\[bu] For \fB%LOOKUPLE\fR for descending arrays, if there is no element that is equal to the search
+argument, then the built-in function returns the index of the first element less than the search
+argument\[char46] For example, if the search argument is D, \fB%LOOKUPLE\fR returns
+5\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For \fB%LOOKUPGE\fR for ascending arrays, if there is no element that is equal to the search argument, then the built-in function returns the index of the first element greater than the search argument\[char46] For example, if the search argument is D, \fB%LOOKUPGE\fR returns 5\[char46]
+\[bu] For \fB%LOOKUPGE\fR for ascending arrays, if there is no element that is equal to the search
+argument, then the built-in function returns the index of the first element greater than the search
+argument\[char46] For example, if the search argument is D, \fB%LOOKUPGE\fR returns
+5\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For \fB%LOOKUPGE\fR for descending arrays, if there is no element that is equal to the search argument, then the built-in function returns the index of the last element greater than the search argument\[char46] For example, if the search argument is D, \fB%LOOKUPGE\fR returns 4\[char46]
+\[bu] For \fB%LOOKUPGE\fR for descending arrays, if there is no element that is equal to the search
+argument, then the built-in function returns the index of the last element greater than the search
+argument\[char46] For example, if the search argument is D, \fB%LOOKUPGE\fR returns
+4\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For \fB%LOOKUPLT\fR for ascending arrays, the built-in function returns the index of the last element less than the search argument\[char46] For example, if the search argument is D, \fB%LOOKUPLT\fR returns 4\[char46]
+\[bu] For \fB%LOOKUPLT\fR for ascending arrays, the built-in function returns the index of the last
+element less than the search argument\[char46] For example, if the search argument is D,
+\fB%LOOKUPLT\fR returns 4\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For \fB%LOOKUPLT\fR for descending arrays, the built-in function returns the index of the first element less than the search argument\[char46] For example, if the search argument is D, \fB%LOOKUPLT\fR returns 5\[char46]
+\[bu] For \fB%LOOKUPLT\fR for descending arrays, the built-in function returns the index of the first
+element less than the search argument\[char46] For example, if the search argument is D,
+\fB%LOOKUPLT\fR returns 5\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For \fB%LOOKUPGT\fR for ascending arrays, the built-in function returns the index of the first element greater than the search argument\[char46] For example, if the search argument is D, \fB%LOOKUPGT\fR returns 5\[char46]
+\[bu] For \fB%LOOKUPGT\fR for ascending arrays, the built-in function returns the index of the first
+element greater than the search argument\[char46] For example, if the search argument is D,
+\fB%LOOKUPGT\fR returns 5\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] For \fB%LOOKUPGT\fR for descending arrays, the built-in function returns the index of the last element greater than the search argument\[char46] For example, if the search argument is D, \fB%LOOKUPGT\fR returns 4\[char46]
+\[bu] For \fB%LOOKUPGT\fR for descending arrays, the built-in function returns the index of the last
+element greater than the search argument\[char46] For example, if the search argument is D,
+\fB%LOOKUPGT\fR returns 4\[char46]
 .RE
 .PP
  
 
 
 
-The search starts at index start_index and continues for number_of_elems elements\[char46] By default, the entire array is searched\[char46]
+The search starts at index start_index and continues for number_of_elems elements\[char46] By
+default, the entire array is searched\[char46]
 
 
-The second parameter can be a scalar array in the form \fIARRAY\fR_NAME\[char46] For \fB%LOOKUP\fR, it can also be a keyed array data structure in the form \fIARRAY\fR_DS_NAME(*)\[char46]\fISUBFIELD\fR_NAME\[char46]
+The second parameter can be a scalar array in the form \fIARRAY\fR_NAME\[char46] For \fB%LOOKUP\fR,
+it can also be a keyed array data structure in the form \fIARRAY\fR_DS_NAME(*)\[char46]\fISUBFIELD\fR_NAME\[char46]
 
 
-To search an array data structure, specify the data structure name with an index of (*), then specify the subfield to be used as the key for the search\[char46] For example, to search for a value of \[char39]XP2\[char39] in the \fICODE\fR subfield of array data structure \fIINFO\fR, specify \[char39]XP2\[char39] as the first parameter and specify \fIINFO\fR(*)\[char46]\fICODE\fR as the second parameter\[char46] The part of the qualified name up to the (*) index must represent an array, and the part of the qualified name after the (*) must represent a scalar subfield, or indexed array of scalars\[char46]
+To search an array data structure, specify the data structure name with an index of (*), then
+specify the subfield to be used as the key for the search\[char46] For example, to search for a
+value of \[char39]XP2\[char39] in the \fICODE\fR subfield of array data structure \fIINFO\fR,
+specify \[char39]XP2\[char39] as the first parameter and specify \fIINFO\fR(*)\[char46]\fICODE\fR as
+the second parameter\[char46] The part of the qualified name up to the (*) index must represent an
+array, and the part of the qualified name after the (*) must represent a scalar subfield, or indexed
+array of scalars\[char46]
 
 
-The first two parameters can have any type but must have the same type\[char46] For a keyed data structure array, the first parameter must have the same type as the key\[char46] They do not need to have the same length or number of decimal positions\[char46] The third and fourth parameters must be non-float numeric values with zero decimal positions\[char46]
+The first two parameters can have any type but must have the same type\[char46] For a keyed data
+structure array, the first parameter must have the same type as the key\[char46] They do not need to
+have the same length or number of decimal positions\[char46] The third and fourth parameters must be
+non-float numeric values with zero decimal positions\[char46]
 
 
-For \fB%LOOKUPLT\fR, \fB%LOOKUPLE\fR, \fB%LOOKUPGT\fR, and \fB%LOOKUPGE\fR, the array must be defined with keyword \fIASCEND\fR or \fIDESCEND\fR\[char46] The \fIALTSEQ\fR table is used, unless arg or array is defined with \fIALTSEQ\fR(\fI*NONE\fR)\[char46]
+For \fB%LOOKUPLT\fR, \fB%LOOKUPLE\fR, \fB%LOOKUPGT\fR, and \fB%LOOKUPGE\fR, the array must be
+defined with keyword \fIASCEND\fR or \fIDESCEND\fR\[char46] The \fIALTSEQ\fR table is used, unless
+arg or array is defined with \fIALTSEQ\fR(\fI*NONE\fR)\[char46]
 
 
-Built-in functions \fB%FOUND\fR and \fB%EQUAL\fR are not set following a \fB%LOOKUP\fR operation\[char46]
+Built-in functions \fB%FOUND\fR and \fB%EQUAL\fR are not set following a \fB%LOOKUP\fR
+operation\[char46]
 
 
-The \fB%LOOKUPxx\fR built-in functions use a binary search for sequenced arrays (arrays that have the \fIASCEND\fR or \fIDESCEND\fR keyword specified)\[char46]
+The \fB%LOOKUPxx\fR built-in functions use a binary search for sequenced arrays (arrays that have
+the \fIASCEND\fR or \fIDESCEND\fR keyword specified)\[char46]
 
 
 For more information, see: 
@@ -137,7 +180,8 @@ For more information, see:
 .PP
 
 .SH NOTICE
-Note:  Unlike the \fILOOKUP\fR operation code, \fB%LOOKUP\fR applies only to arrays\[char46] To look up a value in a table, use the \fB%TLOOKUP\fR built-in function\[char46]
+Note:  Unlike the \fILOOKUP\fR operation code, \fB%LOOKUP\fR applies only to arrays\[char46] To look up a
+value in a table, use the \fB%TLOOKUP\fR built-in function\[char46]
 .SH EXAMPLE
 \fB%LOOKUPxx\fR with a scalar array
 .PP

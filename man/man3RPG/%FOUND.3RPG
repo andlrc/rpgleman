@@ -69,22 +69,29 @@ The operations that set \fB%FOUND\fR are:
 .PP
 
 
-If \fB%FOUND\fR is used without the optional file_name parameter, then it returns the value set for the most recent relevant operation\[char46] When a file_name is specified, then it applies to the most recent relevant operation on that file\[char46]
+If \fB%FOUND\fR is used without the optional file_name parameter, then it returns the value set for
+the most recent relevant operation\[char46] When a file_name is specified, then it applies to the
+most recent relevant operation on that file\[char46]
 
 
-For file operations, \fB%FOUND\fR is opposite in function to the "no record found NR" indicator\[char46]
+For file operations, \fB%FOUND\fR is opposite in function to the "no record found NR"
+indicator\[char46]
 
 
 For string operations, \fB%FOUND\fR is the same in function as the "found FD" indicator\[char46]
 
 
-For the \fILOOKUP\fR operation, \fB%FOUND\fR returns \[char39]1\[char39] if the operation found an element satisfying the search conditions\[char46] For an example of \fB%FOUND\fR with \fILOOKUP\fR, see Figure Figure 2\[char46]
+For the \fILOOKUP\fR operation, \fB%FOUND\fR returns \[char39]1\[char39] if the operation found an
+element satisfying the search conditions\[char46] For an example of \fB%FOUND\fR with \fILOOKUP\fR,
+see Figure Figure 2\[char46]
 
 
 For more information, see File Operations, Result Operations, or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%FOUND\fR returns \[char39]1\[char39] if the most recent relevant file operation found a record, a string operation found a match, or a search operation found an element\[char46] Otherwise, this function returns \[char39]0\[char39]\[char46]
+\fB%FOUND\fR returns \[char39]1\[char39] if the most recent relevant file operation found a record,
+a string operation found a match, or a search operation found an element\[char46] Otherwise, this
+function returns \[char39]0\[char39]\[char46]
 
 .SH EXAMPLE
 \fB%FOUND\fR used to Test a File Operation without a Parameter

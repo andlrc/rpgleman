@@ -25,24 +25,30 @@ l l l l l l l  .
 T{
 \fIELSE\fR
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}
 .TE
 
-The \fIELSE\fR operation is an optional part of the IFxx and IF operations\[char46] If the IFxx comparison is met, the calculations before \fIELSE\fR are processed; otherwise, the calculations after \fIELSE\fR are processed\[char46]
+The \fIELSE\fR operation is an optional part of the IFxx and IF operations\[char46] If the IFxx
+comparison is met, the calculations before \fIELSE\fR are processed; otherwise, the calculations
+after \fIELSE\fR are processed\[char46]
 
 
-Within total calculations, the control level entry (positions 7 and 8) can be blank or can contain an L1 through L9 indicator, an LR indicator, or an L0 entry to group the statement within the appropriate section of the program\[char46] The control level entry is for documentation purposes only\[char46] Conditioning indicator entries (positions 9 through 11) are not permitted\[char46] To close the IFxx/\fIELSE\fR group use an \fIENDIF\fR operation\[char46]
+Within total calculations, the control level entry (positions 7 and 8) can be blank or can contain
+an L1 through L9 indicator, an LR indicator, or an L0 entry to group the statement within the
+appropriate section of the program\[char46] The control level entry is for documentation purposes
+only\[char46] Conditioning indicator entries (positions 9 through 11) are not permitted\[char46] To
+close the IFxx/\fIELSE\fR group use an \fIENDIF\fR operation\[char46]
 
 
 Figure 1 shows an example of an \fIELSE\fR operation with an IFxx operation\[char46]

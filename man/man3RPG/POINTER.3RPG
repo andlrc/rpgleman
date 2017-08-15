@@ -13,13 +13,15 @@ POINTER
 POINTER{(*PROC)}
 .fi
 .SH DESCRIPTION
-The \fIPOINTER\fR keyword is used in a free-form definition to indicate that the item has type basing pointer or type procedure pointer\[char46]
+The \fIPOINTER\fR keyword is used in a free-form definition to indicate that the item has type
+basing pointer or type procedure pointer\[char46]
 
 
 It must be the first keyword\[char46]
 
 
-The parameter is optional\[char46] If the parameter is specified, it must be \fI*PROC\fR, indicating that the item is a procedure pointer\[char46]
+The parameter is optional\[char46] If the parameter is specified, it must be \fI*PROC\fR, indicating
+that the item is a procedure pointer\[char46]
 
 
 If the parameter is not specified, the item is a basing pointer\[char46]

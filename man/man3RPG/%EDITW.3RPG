@@ -13,7 +13,8 @@
 %EDITW(numeric : editword)
 .fi
 .SH DESCRIPTION
-Float expressions are not allowed in the first parameter\[char46] Use \fB%DEC\fR to convert a float to an editable format\[char46]
+Float expressions are not allowed in the first parameter\[char46] Use \fB%DEC\fR to convert a float
+to an editable format\[char46]
 
 
 The edit word must be a character constant\[char46]
@@ -22,7 +23,9 @@ The edit word must be a character constant\[char46]
 For more information, see Conversion Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-This function returns a character result representing the numeric value edited according to the edit word\[char46] The rules for the numeric value and edit word are identical to those for editing numeric values in output specifications\[char46]
+This function returns a character result representing the numeric value edited according to the edit
+word\[char46] The rules for the numeric value and edit word are identical to those for editing
+numeric values in output specifications\[char46]
 
 .SH EXAMPLE
 \fB%EDITW\fR Example

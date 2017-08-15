@@ -13,19 +13,25 @@
 %DATE{(expression{:date-format})}
 .fi
 .SH DESCRIPTION
-\fB%DATE\fR converts the value of the expression from character, numeric, or timestamp data to type date\[char46] The converted value remains unchanged, but is returned as a date\[char46]
+\fB%DATE\fR converts the value of the expression from character, numeric, or timestamp data to type
+date\[char46] The converted value remains unchanged, but is returned as a date\[char46]
 
 
-The first parameter is the value to be converted\[char46] If you do not specify a value, \fB%DATE\fR returns the current system date\[char46]
+The first parameter is the value to be converted\[char46] If you do not specify a value, \fB%DATE\fR
+returns the current system date\[char46]
 
 
-The second parameter is the date format for character or numeric input\[char46] Regardless of the input format, the output is returned in \fI*ISO\fR format\[char46]
+The second parameter is the date format for character or numeric input\[char46] Regardless of the
+input format, the output is returned in \fI*ISO\fR format\[char46]
 
 
-For information on the input formats that can be used, see Date Data Type\[char46] If the date format is not specified for character or numeric input, the default format is \fI*ISO\fR\[char46] For more information, see \fIDATFMT\fR(fmt{separator})\[char46]
+For information on the input formats that can be used, see Date Data Type\[char46] If the date
+format is not specified for character or numeric input, the default format is \fI*ISO\fR\[char46]
+For more information, see \fIDATFMT\fR(fmt{separator})\[char46]
 
 
-If the first parameter is a timestamp, \fI*DATE\fR, or \fIUDATE\fR, do not specify the second parameter\[char46] The system knows the format of the input in these cases\[char46]
+If the first parameter is a timestamp, \fI*DATE\fR, or \fIUDATE\fR, do not specify the second
+parameter\[char46] The system knows the format of the input in these cases\[char46]
 
 
 For more information, see Information Operations or Built-in Functions\[char46]

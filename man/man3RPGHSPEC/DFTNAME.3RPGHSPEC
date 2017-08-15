@@ -13,7 +13,10 @@ DFTNAME
 DFTNAME(rpg_name)
 .fi
 .SH DESCRIPTION
-The \fIDFTNAME\fR keyword specifies a default program or module name\[char46] When \fI*CTLSPEC\fR is specified on the create command, the rpg_name is used as the program or module name\[char46] If rpg_name is not specified, then the default name is \fIRPGPGM\fR or \fIRPGMOD\fR for a program or module respectively\[char46] The \fIRPG\fR rules for names (see Symbolic Names) apply\[char46]
+The \fIDFTNAME\fR keyword specifies a default program or module name\[char46] When \fI*CTLSPEC\fR is
+specified on the create command, the rpg_name is used as the program or module name\[char46] If
+rpg_name is not specified, then the default name is \fIRPGPGM\fR or \fIRPGMOD\fR for a program or
+module respectively\[char46] The \fIRPG\fR rules for names (see Symbolic Names) apply\[char46]
 
 .SH SEE ALSO
 .BR RPG,

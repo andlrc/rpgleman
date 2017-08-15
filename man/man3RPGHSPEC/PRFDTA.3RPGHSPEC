@@ -16,13 +16,16 @@ PRFDTA(*NOCOL | *COL)
 The \fIPRFDTA\fR keyword specifies whether the collection of profiling data is enabled\[char46]
 
 
-If \fI*NOCOL\fR is specified, the collection of profiling data is not enabled for this object\[char46]
+If \fI*NOCOL\fR is specified, the collection of profiling data is not enabled for this
+object\[char46]
 
 
-If \fI*COL\fR is specified, the collection of profiling is enabled for this object\[char46] \fI*COL\fR can be specified only when the optimization level of the object is \fI*FULL\fR\[char46]
+If \fI*COL\fR is specified, the collection of profiling is enabled for this object\[char46]
+\fI*COL\fR can be specified only when the optimization level of the object is \fI*FULL\fR\[char46]
 
 
-If the \fIPRFDTA\fR keyword is not specified, then the value specified on the command is used\[char46]
+If the \fIPRFDTA\fR keyword is not specified, then the value specified on the command is
+used\[char46]
 
 .SH SEE ALSO
 .BR OCOL,

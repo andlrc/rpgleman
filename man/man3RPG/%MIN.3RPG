@@ -13,7 +13,8 @@
 %MIN(item1 : item2 {: item3 { item4 ... } })
 .fi
 .SH DESCRIPTION
-See \fB%MAX\fR and \fB%MIN\fR (Maximum or Minimum Value) for detailed information about both \fB%MAX\fR and \fB%MIN\fR\[char46]
+See \fB%MAX\fR and \fB%MIN\fR (Maximum or Minimum Value) for detailed information about both
+\fB%MAX\fR and \fB%MIN\fR\[char46]
 
 .SH RETURN VALUE
 \fB%MIN\fR returns the minimum value of its operands\[char46]

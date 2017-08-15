@@ -29,7 +29,7 @@ search-arg
 T}	T{
 name (file or record format)
 T}	T{
-Â
+�
 T}	T{
 NR
 T}	T{
@@ -39,31 +39,56 @@ _
 T}
 .TE
 
-The \fIDELETE\fR operation deletes a record from a database file\[char46] The file must be an delete-capable file (identified by specifying \fI*UPDATE\fR or \fI*DELETE\fR in the \fIUSAGE\fR keyword of a free-form definition, or by a U in position 17 of a fixed-form file description specification)\[char46] The deleted record can never be retrieved\[char46]
+The \fIDELETE\fR operation deletes a record from a database file\[char46] The file must be an
+delete-capable file (identified by specifying \fI*UPDATE\fR or \fI*DELETE\fR in the \fIUSAGE\fR
+keyword of a free-form definition, or by a U in position 17 of a fixed-form file description
+specification)\[char46] The deleted record can never be retrieved\[char46]
 
 
-If a search argument (search-arg) is not specified, the \fIDELETE\fR operation deletes the current record (the last record retrieved)\[char46] The record must have been locked by a previous input operation (for example, \fICHAIN\fR or \fIREAD\fR)\[char46]
+If a search argument (search-arg) is not specified, the \fIDELETE\fR operation deletes the current
+record (the last record retrieved)\[char46] The record must have been locked by a previous input
+operation (for example, \fICHAIN\fR or \fIREAD\fR)\[char46]
 
 
-The search argument, search-arg, must be the key or relative record number used to retrieve the record to be deleted\[char46] If access is by key, search-arg can be a single key in the form of a field name, a named constant, a figurative constant, or a literal\[char46]
+The search argument, search-arg, must be the key or relative record number used to retrieve the
+record to be deleted\[char46] If access is by key, search-arg can be a single key in the form of a
+field name, a named constant, a figurative constant, or a literal\[char46]
 
 
-If the file is an externally-described file, search-arg can also be a composite key in the form of a \fIKLIST\fR name, a list of values, or \fB%KDS\fR\[char46] Graphic and \fIUCS\fR-2 key fields must have the same \fICCSID\fR as the key in the file\[char46] For an example of \fB%KDS\fR, see the example at the end of \fB%KDS\fR (Search Arguments in Data Structure)\[char46] If access is by relative record number, search-arg must be an integer literal or a numeric field with zero decimal positions\[char46] For an example of using a list of values to search for the record to be deleted, see Figure 2\[char46]
+If the file is an externally-described file, search-arg can also be a composite key in the form of a
+\fIKLIST\fR name, a list of values, or \fB%KDS\fR\[char46] Graphic and \fIUCS\fR-2 key fields must
+have the same \fICCSID\fR as the key in the file\[char46] For an example of \fB%KDS\fR, see the
+example at the end of \fB%KDS\fR (Search Arguments in Data Structure)\[char46] If access is by
+relative record number, search-arg must be an integer literal or a numeric field with zero decimal
+positions\[char46] For an example of using a list of values to search for the record to be deleted,
+see Figure 2\[char46]
 
 
-The name operand must be the name of the update file or a record format in the file from which a record is to be deleted\[char46] A record format name is valid only with an externally described file\[char46] If search-arg is not specified, the record format name must be the name of the last record read from the file; otherwise, an error occurs\[char46]
+The name operand must be the name of the update file or a record format in the file from which a
+record is to be deleted\[char46] A record format name is valid only with an externally described
+file\[char46] If search-arg is not specified, the record format name must be the name of the last
+record read from the file; otherwise, an error occurs\[char46]
 
 
-If search-arg is specified, positions 71 and 72 can contain an indicator that is set on if the record to be deleted is not found in the file\[char46] If search-arg is not specified, leave these positions blank\[char46] This information can also be obtained from the \fB%FOUND\fR built-in function, which returns \[char39]0\[char39] if no record is found, and \[char39]1\[char39] if a record is found\[char46]
+If search-arg is specified, positions 71 and 72 can contain an indicator that is set on if the
+record to be deleted is not found in the file\[char46] If search-arg is not specified, leave these
+positions blank\[char46] This information can also be obtained from the \fB%FOUND\fR built-in
+function, which returns \[char39]0\[char39] if no record is found, and \[char39]1\[char39] if a
+record is found\[char46]
 
 
-To handle \fIDELETE\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+To handle \fIDELETE\fR exceptions (file status codes greater than 1000), either the operation code
+extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For
+more information on error handling, see File Exception/Errors\[char46]
 
 
-Under the \fIIBM\fRÂ® i operating system, if a read operation is done on the file specified in file-name after a successful \fIDELETE\fR operation to that file, the next record after the deleted record is obtained\[char46]
+Under the \fIIBM\fR® i operating system, if a read operation is done on the file specified in
+file-name after a successful \fIDELETE\fR operation to that file, the next record after the deleted
+record is obtained\[char46]
 
 
-See Database Null Value Support for information on handling records with null-capable fields and keys\[char46]
+See Database Null Value Support for information on handling records with null-capable fields and
+keys\[char46]
 
 
 For more information, see File Operations\[char46]
@@ -72,7 +97,8 @@ For more information, see File Operations\[char46]
 Note: 
 .IP 1. 2
 .RS
-Operation code extenders H, M, and R are allowed only when the search argument is a list or is \fB%KDS()\fR\[char46]
+Operation code extenders H, M, and R are allowed only when the search argument is a list or is
+\fB%KDS()\fR\[char46]
 .RE
 .IP 2. 2
 .RS

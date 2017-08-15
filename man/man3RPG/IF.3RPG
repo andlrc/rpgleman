@@ -31,7 +31,12 @@ indicator-expression
 T}
 .TE
 
-The IF operation code allows a series of operation codes to be processed if a condition is met\[char46] Its function is similar to that of the IFxx operation code\[char46] It differs in that the logical condition is expressed by an indicator valued expression (indicator-expression)\[char46] The operations controlled by the IF operation are performed when the expression in the indicator-expression operand is true\[char46] For information on how operation extenders M and R are used, see Precision Rules for Numeric Operations\[char46]
+The IF operation code allows a series of operation codes to be processed if a condition is
+met\[char46] Its function is similar to that of the IFxx operation code\[char46] It differs in that
+the logical condition is expressed by an indicator valued expression (indicator-expression)\[char46]
+The operations controlled by the IF operation are performed when the expression in the
+indicator-expression operand is true\[char46] For information on how operation extenders M and R are
+used, see Precision Rules for Numeric Operations\[char46]
 
 
 For more information, see Structured Programming Operations\[char46]

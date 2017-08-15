@@ -13,22 +13,31 @@ OCCURS
 OCCURS(numeric_constant)
 .fi
 .SH DESCRIPTION
-The \fIOCCURS\fR keyword allows the specification of the number of occurrences of a multiple-occurrence data structure\[char46]
+The \fIOCCURS\fR keyword allows the specification of the number of occurrences of a
+multiple-occurrence data structure\[char46]
 
 
-The numeric_constant parameter must be a value greater than 0 with no decimal positions\[char46] It can be a numeric literal, a built-in function returning a numeric value, or a numeric constant\[char46]
+The numeric_constant parameter must be a value greater than 0 with no decimal positions\[char46] It
+can be a numeric literal, a built-in function returning a numeric value, or a numeric
+constant\[char46]
 
 
-The constant value does not need to be known at the time the keyword is processed, but the value must be known at compile-time\[char46]
+The constant value does not need to be known at the time the keyword is processed, but the value
+must be known at compile-time\[char46]
 
 
-This keyword is not valid for a program status data structure, a file information data structure, or a data area data structure\[char46]
+This keyword is not valid for a program status data structure, a file information data structure, or
+a data area data structure\[char46]
 
 
-If a multiple occurrence data structure contains pointer subfields, the distance between occurrences must be an exact multiple of 16 because of system storage restrictions for pointers\[char46] This means that the distance between occurrences may be greater than the length of each occurrence\[char46]
+If a multiple occurrence data structure contains pointer subfields, the distance between occurrences
+must be an exact multiple of 16 because of system storage restrictions for pointers\[char46] This
+means that the distance between occurrences may be greater than the length of each
+occurrence\[char46]
 
 
-The following is an example showing the storage allocation of a multiple occurrence data structure with pointer subfields\[char46]
+The following is an example showing the storage allocation of a multiple occurrence data structure
+with pointer subfields\[char46]
 
 .SH EXAMPLE
 Storage Allocation of Multiple Occurrence Data Structure with Pointer Subfields
@@ -44,7 +53,8 @@ D   CHAR16                      16
 D   CHR5                         5
 .fi
 
-Allocation of fields in storage\[char46] The occurrences of DS1 are 32 bytes apart, while the occurrences of DS2 are 21 bytes apart\[char46]
+Allocation of fields in storage\[char46] The occurrences of DS1 are 32 bytes apart, while the
+occurrences of DS2 are 21 bytes apart\[char46]
 
 
 

@@ -25,11 +25,11 @@ l l l l l l l  .
 T{
 \fIUNLOCK\fR (E)
 T}	T{
-Ã‚
+Â
 T}	T{
 name (file or data area)
 T}	T{
-Ã‚
+Â
 T}	T{
 _
 T}	T{
@@ -42,7 +42,9 @@ T}
 The \fIUNLOCK\fR operation is used to unlock data areas and release record locks\[char46]
 
 
-To handle \fIUNLOCK\fR exceptions (program status codes 401-421, 431, and 432), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+To handle \fIUNLOCK\fR exceptions (program status codes 401-421, 431, and 432), either the operation
+code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46]
+For more information on error handling, see Program Exception/Errors\[char46]
 
 
 Positions 71,72,75 and 76 must be blank\[char46]

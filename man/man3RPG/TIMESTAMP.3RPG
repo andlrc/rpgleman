@@ -13,10 +13,12 @@ TIMESTAMP
 TIMESTAMP{(fractional-seconds)}
 .fi
 .SH DESCRIPTION
-The \fITIMESTAMP\fR keyword is used in a free-form definition to indicate that the item has type timestamp\[char46]
+The \fITIMESTAMP\fR keyword is used in a free-form definition to indicate that the item has type
+timestamp\[char46]
 
 
-The optional parameter specifies the number of fractional seconds\[char46] If the parameter is not specified, the number of fractional seconds defaults to 6\[char46]
+The optional parameter specifies the number of fractional seconds\[char46] If the parameter is not
+specified, the number of fractional seconds defaults to 6\[char46]
 
 
 It must be the first keyword\[char46]
@@ -24,7 +26,8 @@ It must be the first keyword\[char46]
 
 
 
- The following example shows several timestamps, with different numbers of fractional seconds\[char46] 
+ The following example shows several timestamps, with different numbers of fractional
+seconds\[char46] 
 .SH EXAMPLE
 
 .PP

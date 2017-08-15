@@ -16,7 +16,9 @@
 For more information, see Arithmetic Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%SQRT\fR returns the square root of the specified numeric expression\[char46] If the operand is of type float, the result is of type float; otherwise, the result is packed decimal numeric\[char46] If the parameter has a value less than zero, exception 00101 is issued\[char46]
+\fB%SQRT\fR returns the square root of the specified numeric expression\[char46] If the operand is
+of type float, the result is of type float; otherwise, the result is packed decimal numeric\[char46]
+If the parameter has a value less than zero, exception 00101 is issued\[char46]
 
 .SH EXAMPLE
 \fB%SQRT\fR Example

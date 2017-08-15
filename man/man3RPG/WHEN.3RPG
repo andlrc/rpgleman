@@ -25,13 +25,18 @@ l l l  .
 T{
 \fIWHEN\fR (M/R)
 T}	T{
-Ã‚
+Â
 T}	T{
 indicator-expression
 T}
 .TE
 
-The \fIWHEN\fR operation code is similar to the \fIWHEN\fRxx operation code in that it controls the processing of lines in a \fISELECT\fR operation\[char46] It differs in that the condition is specified by a logical expression in the indicator-expression operand\[char46] The operations controlled by the \fIWHEN\fR operation are performed when the expression in the indicator-expression operand is true\[char46] See Expressions for details on expressions\[char46] For information on how operation extenders M and R are used, see Precision Rules for Numeric Operations\[char46]
+The \fIWHEN\fR operation code is similar to the \fIWHEN\fRxx operation code in that it controls the
+processing of lines in a \fISELECT\fR operation\[char46] It differs in that the condition is
+specified by a logical expression in the indicator-expression operand\[char46] The operations
+controlled by the \fIWHEN\fR operation are performed when the expression in the indicator-expression
+operand is true\[char46] See Expressions for details on expressions\[char46] For information on how
+operation extenders M and R are used, see Precision Rules for Numeric Operations\[char46]
 
 
 For more information, see Compare Operations or Structured Programming Operations\[char46]

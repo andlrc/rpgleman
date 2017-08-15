@@ -9,24 +9,33 @@
 .SH NAME
 OPDESC
 .SH DESCRIPTION
-The \fIOPDESC\fR keyword specifies that operational descriptors are to be passed with the parameters that are defined within a prototype\[char46]
+The \fIOPDESC\fR keyword specifies that operational descriptors are to be passed with the parameters
+that are defined within a prototype\[char46]
 
 
-When \fIOPDESC\fR is specified, operational descriptors are passed with all character or graphic parameters that are passed by reference\[char46] If you attempt to retrieve an operational descriptor for a parameter passed by value, an error will result\[char46]
+When \fIOPDESC\fR is specified, operational descriptors are passed with all character or graphic
+parameters that are passed by reference\[char46] If you attempt to retrieve an operational
+descriptor for a parameter passed by value, an error will result\[char46]
 
 
-Using \fICALLP\fR with a prototyped procedure whose prototype contains \fIOPDESC\fR is the same as calling a procedure using \fICALLB\fR (D)\[char46] Operational descriptors are also passed for procedures called within expressions\[char46]
+Using \fICALLP\fR with a prototyped procedure whose prototype contains \fIOPDESC\fR is the same as
+calling a procedure using \fICALLB\fR (D)\[char46] Operational descriptors are also passed for
+procedures called within expressions\[char46]
 
 
-The keyword applies both to a prototype definition and to a procedure-interface definition\[char46] It cannot be used with the \fIEXTPGM\fR keyword\[char46]
+The keyword applies both to a prototype definition and to a procedure-interface definition\[char46]
+It cannot be used with the \fIEXTPGM\fR keyword\[char46]
 
 
-For an example of the \fIOPDESC\fR keyword, see the service program example in the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
+For an example of the \fIOPDESC\fR keyword, see the service program example in the Rational
+Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
 
 .SH NOTICE
 Note:  Operational descriptors are not passed for \fIUCS\fR-2 fields\[char46]
 
-Note:  If you use the \fIOPDESC\fR keyword for your own procedures, the \fIRTNPARM\fR keyword can affect the way you call \fIAPI\fRs such as \fICEEDOD\fR to get information about your parameters\[char46] See \fIRTNPARM\fR  and \fB%PARMNUM\fR (Return Parameter Number)  for more information\[char46]
+Note:  If you use the \fIOPDESC\fR keyword for your own procedures, the \fIRTNPARM\fR keyword can affect
+the way you call \fIAPI\fRs such as \fICEEDOD\fR to get information about your parameters\[char46]
+See \fIRTNPARM\fR  and \fB%PARMNUM\fR (Return Parameter Number)  for more information\[char46]
 .SH SEE ALSO
 .BR %PARMNUM,
 .BR API,

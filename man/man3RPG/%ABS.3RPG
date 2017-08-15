@@ -13,13 +13,18 @@
 %ABS(numeric expression)
 .fi
 .SH DESCRIPTION
-\fB%ABS\fR may be used either in expressions or as parameters to keywords\[char46] When used with keywords, the operand must be a numeric literal, a constant name representing a numeric value, or a built-in function with a numeric value known at compile-time\[char46]
+\fB%ABS\fR may be used either in expressions or as parameters to keywords\[char46] When used with
+keywords, the operand must be a numeric literal, a constant name representing a numeric value, or a
+built-in function with a numeric value known at compile-time\[char46]
 
 
 For more information, see Arithmetic Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%ABS\fR returns the absolute value of the numeric expression specified as the parameter\[char46] If the value of the numeric expression is non-negative, the value is returned unchanged\[char46] If the value is negative, the value returned is the value of the expression but with the negative sign removed\[char46]
+\fB%ABS\fR returns the absolute value of the numeric expression specified as the parameter\[char46]
+If the value of the numeric expression is non-negative, the value is returned unchanged\[char46] If
+the value is negative, the value returned is the value of the expression but with the negative sign
+removed\[char46]
 
 .SH EXAMPLE
 \fB%ABS\fR Example

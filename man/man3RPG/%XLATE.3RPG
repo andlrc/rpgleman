@@ -16,16 +16,21 @@
 \fB%XLATE\fR translates string according to the values of from, to, and startpos\[char46]
 
 
-The first parameter contains a list of characters that should be replaced, and the second parameter contains their replacements\[char46] For example, if the string contains the third character in from, every occurrence of that character is replaced with the third character in to\[char46]
+The first parameter contains a list of characters that should be replaced, and the second parameter
+contains their replacements\[char46] For example, if the string contains the third character in
+from, every occurrence of that character is replaced with the third character in to\[char46]
 
 
-The third parameter is the string to be translated\[char46] The fourth parameter is the starting position for translation\[char46] By default, translation starts at position 1\[char46]
+The third parameter is the string to be translated\[char46] The fourth parameter is the starting
+position for translation\[char46] By default, translation starts at position 1\[char46]
 
 
-If the first parameter is longer than the second parameter, the additional characters in the first parameter are ignored\[char46]
+If the first parameter is longer than the second parameter, the additional characters in the first
+parameter are ignored\[char46]
 
 
-The first three parameters can be of type character, graphic, or \fIUCS\fR-2\[char46] All three must have the same type\[char46] The value returned has the same type and length as string\[char46]
+The first three parameters can be of type character, graphic, or \fIUCS\fR-2\[char46] All three must
+have the same type\[char46] The value returned has the same type and length as string\[char46]
 
 
 The fourth parameter is a non-float numeric with zero decimal positions\[char46]

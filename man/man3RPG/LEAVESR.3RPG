@@ -25,24 +25,27 @@ l l l l l l l  .
 T{
 \fILEAVESR\fR
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}
 .TE
 
-The \fILEAVESR\fR operation exits a subroutine from any point within the subroutine\[char46] Control passes to the \fIENDSR\fR operation for the subroutine\[char46] \fILEAVESR\fR is allowed only from within a subroutine\[char46]
+The \fILEAVESR\fR operation exits a subroutine from any point within the subroutine\[char46] Control
+passes to the \fIENDSR\fR operation for the subroutine\[char46] \fILEAVESR\fR is allowed only from
+within a subroutine\[char46]
 
 
-The control level entry (positions 7 and 8) can be SR or blank\[char46] Conditioning indicator entries (positions 9 to 11) can be specified\[char46]
+The control level entry (positions 7 and 8) can be SR or blank\[char46] Conditioning indicator
+entries (positions 9 to 11) can be specified\[char46]
 
 
 For more information, see Subroutine Operations\[char46]

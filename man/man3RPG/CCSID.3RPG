@@ -16,14 +16,20 @@ This keyword sets the \fICCSID\fR for alphanumeric, graphic, and \fIUCS\fR-2 def
 
  
 
-  must be an integer between 0 and 65535\[char46] It must be a valid \fICCSID\fR value\[char46] 
+  must be an integer between 0 and 65535\[char46] It must be a valid \fICCSID\fR
+value\[char46] 
 .IP "" 2
 .RS
-\[bu] A valid alphanumeric \fICCSID\fR is 65535, or an \fIEBCDIC\fR \fICCSID\fR with encoding scheme x\[char39]1100\[char39] or x\[char39]1301\[char39], or an \fIASCII\fR \fICCSID\fR with encoding scheme X\[char39]2100\[char39], X\[char39]3100\[char39], X\[char39]4100\[char39], X\[char39]4105\[char39], X\[char39]5100\[char39], X\[char39]2300\[char39], X\[char39]3300\[char39], or the \fIUTF\fR-8 \fICCSID\fR 1208\[char46]
+\[bu] A valid alphanumeric \fICCSID\fR is 65535, or an \fIEBCDIC\fR \fICCSID\fR with encoding scheme
+x\[char39]1100\[char39] or x\[char39]1301\[char39], or an \fIASCII\fR \fICCSID\fR with encoding
+scheme X\[char39]2100\[char39], X\[char39]3100\[char39], X\[char39]4100\[char39],
+X\[char39]4105\[char39], X\[char39]5100\[char39], X\[char39]2300\[char39], X\[char39]3300\[char39],
+or the \fIUTF\fR-8 \fICCSID\fR 1208\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] A valid graphic \fICCSID\fR is 65535 or a \fICCSID\fR with the \fIEBCDIC\fR double-byte encoding scheme (X\[char39]1200\[char39])\[char46]
+\[bu] A valid graphic \fICCSID\fR is 65535 or a \fICCSID\fR with the \fIEBCDIC\fR double-byte encoding
+scheme (X\[char39]1200\[char39])\[char46]
 .RE
 .IP "" 2
 .RS
@@ -34,7 +40,9 @@ This keyword sets the \fICCSID\fR for alphanumeric, graphic, and \fIUCS\fR-2 def
 
 
 
-For program-described fields, the \fICCSID\fR keyword overrides the defaults set on the control specification or the /\fISET\fR directive with the \fICCSID\fR(\fI*CHAR\fR), \fICCSID\fR(\fI*GRAPH\fR), or \fICCSID\fR(\fI*UCS2\fR) keyword\[char46]
+For program-described fields, the \fICCSID\fR keyword overrides the defaults set on the control
+specification or the /\fISET\fR directive with the \fICCSID\fR(\fI*CHAR\fR),
+\fICCSID\fR(\fI*GRAPH\fR), or \fICCSID\fR(\fI*UCS2\fR) keyword\[char46]
 
 
 
@@ -42,29 +50,42 @@ For program-described fields, the \fICCSID\fR keyword overrides the defaults set
  Some special values are allowed 
 .TP 5
 .B \fI*DFT\fR
-\fICCSID\fR(\fI*DFT\fR) indicates that the current default \fICCSID\fR for the module is to be used\[char46] This is useful when the \fILIKE\fR keyword is used since the new field would otherwise inherit the \fICCSID\fR of the source field\[char46] See /\fISET\fR  for more information about the current default \fICCSID\fR\[char46]
+\fICCSID\fR(\fI*DFT\fR) indicates that the current default \fICCSID\fR for the module is to be
+used\[char46] This is useful when the \fILIKE\fR keyword is used since the new field would otherwise
+inherit the \fICCSID\fR of the source field\[char46] See /\fISET\fR  for more information about the current default \fICCSID\fR\[char46]
 .TP 5
 .B *{NO}\fIEXACT\fR
 
 
- \fICCSID\fR(\fI*EXACT\fR) and \fICCSID\fR(\fI*NOEXACT\fR) are valid for externally-described data structures and data structures defined with the \fILIKEREC\fR keyword when \fI*NULL\fR is not specified as an extract type on the \fIEXTNAME\fR or \fILIKEREC\fR keyword\[char46] The \fICCSID\fR keyword for a data structure controls the \fICCSID\fR of alphanumeric subfields\[char46] See \fICCSID\fR(\fI*EXACT\fR | \fI*NOEXACT\fR)  for more information\[char46] 
+ \fICCSID\fR(\fI*EXACT\fR) and \fICCSID\fR(\fI*NOEXACT\fR) are valid for externally-described data
+structures and data structures defined with the \fILIKEREC\fR keyword when \fI*NULL\fR is not
+specified as an extract type on the \fIEXTNAME\fR or \fILIKEREC\fR keyword\[char46] The \fICCSID\fR
+keyword for a data structure controls the \fICCSID\fR of alphanumeric subfields\[char46]
+See \fICCSID\fR(\fI*EXACT\fR | \fI*NOEXACT\fR)  for more information\[char46] 
 
 
 .TP 5
 .B \fI*HEX\fR, or 65535
-\fICCSID\fR(\fI*HEX\fR) is valid for alphanumeric and graphic definitions\[char46] It indicates that the data is not considered to have a \fICCSID\fR\[char46] Items defined with \fICCSID\fR(\fI*HEX\fR) or \fICCSID\fR(65535) cannot be used in \fICCSID\fR conversions\[char46]
+\fICCSID\fR(\fI*HEX\fR) is valid for alphanumeric and graphic definitions\[char46] It indicates that
+the data is not considered to have a \fICCSID\fR\[char46] Items defined with \fICCSID\fR(\fI*HEX\fR)
+or \fICCSID\fR(65535) cannot be used in \fICCSID\fR conversions\[char46]
 .TP 5
 .B \fI*JOBRUN\fR
-\fICCSID\fR(\fI*JOBRUN\fR) is valid for alphanumeric and graphic definitions\[char46] It indicates that the data is is in the job \fICCSID\fR at runtime\[char46]
+\fICCSID\fR(\fI*JOBRUN\fR) is valid for alphanumeric and graphic definitions\[char46] It indicates
+that the data is is in the job \fICCSID\fR at runtime\[char46]
 .TP 5
 .B \fI*JOBRUNMIX\fR
-\fICCSID\fR(\fI*JOBRUNMIX\fR) is valid for alphanumeric definitions\[char46] It indicates that the \fICCSID\fR is the mixed-byte \fICCSID\fR related to the job \fICCSID\fR\[char46]
+\fICCSID\fR(\fI*JOBRUNMIX\fR) is valid for alphanumeric definitions\[char46] It indicates that the
+\fICCSID\fR is the mixed-byte \fICCSID\fR related to the job \fICCSID\fR\[char46]
 .TP 5
 .B \fI*UTF8\fR
-\fICCSID\fR(\fI*UTF8\fR) is valid for alphanumeric definitions\[char46] It indicates that the \fICCSID\fR is 1208, which is the \fICCSID\fR for \fIUTF\fR-8 Unicode data\[char46]
+\fICCSID\fR(\fI*UTF8\fR) is valid for alphanumeric definitions\[char46] It indicates that the
+\fICCSID\fR is 1208, which is the \fICCSID\fR for \fIUTF\fR-8 Unicode data\[char46]
 .TP 5
 .B \fI*UTF16\fR
-\fICCSID\fR(\fI*UTF16\fR) is valid for \fIUCS\fR-2 definitions\[char46] It indicates that the \fICCSID\fR is 1200, which is the \fICCSID\fR for \fIUTF\fR-16 Unicode data\[char46]
+\fICCSID\fR(\fI*UTF16\fR) is valid for \fIUCS\fR-2 definitions\[char46] It indicates that the
+\fICCSID\fR is 1200, which is the \fICCSID\fR for \fIUTF\fR-16 Unicode
+data\[char46]
 .PP
  
 
@@ -75,11 +96,13 @@ For program-described fields, the \fICCSID\fR keyword overrides the defaults set
  If the keyword is not specified 
 .IP "" 2
 .RS
-\[bu] If a data type is specified, the current default \fICCSID\fR for the module is assumed\[char46] See /\fISET\fR  for more information about the current default \fICCSID\fR\[char46]
+\[bu] If a data type is specified, the current default \fICCSID\fR for the module is assumed\[char46]
+See /\fISET\fR  for more information about the current default \fICCSID\fR\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If the \fILIKE\fR keyword is specified, the new field will have the same \fICCSID\fR as the \fILIKE\fR field\[char46]
+\[bu] If the \fILIKE\fR keyword is specified, the new field will have the same \fICCSID\fR as the
+\fILIKE\fR field\[char46]
 .RE
 .PP
  
@@ -91,7 +114,17 @@ Note:
  
 .IP "" 2
 .RS
-\[bu] If this keyword is not specified for a character definition, and neither \fICCSID\fR(\fI*EXACT\fR) nor \fICCSID\fR(\fI*CHAR\fR) is specified on a control statement, and \fICCSID\fR(\fI*CHAR\fR) has not been specified on a /\fISET\fR statement that is in effect, the \fICCSID\fR for the character field is the mixed \fICCSID\fR related to the job \fICCSID\fR\[char46] The mixed \fICCSID\fR is capable of handling both single-byte character set (\fISBCS\fR) data and double-byte character set (\fIDBCS\fR) data\[char46] For example, if the job \fICCSID\fR is the single-byte \fICCSID\fR 37, the mixed \fICCSID\fR is 937\[char46] The characters X\[char39]0E\[char39] and X\[char39]0F\[char39] will be interpreted as shift characters\[char46] This can lead to incorrect results when this data is converted to another \fICCSID\fR, if the data happens to contain X\[char39]0E\[char39] or X\[char39]0F\[char39], and the job \fICCSID\fR is not a \fIDBCS\fR-capable \fICCSID\fR\[char46]
+\[bu] If this keyword is not specified for a character definition, and neither \fICCSID\fR(\fI*EXACT\fR)
+nor \fICCSID\fR(\fI*CHAR\fR) is specified on a control statement, and \fICCSID\fR(\fI*CHAR\fR) has
+not been specified on a /\fISET\fR statement that is in effect, the \fICCSID\fR for the character
+field is the mixed \fICCSID\fR related to the job \fICCSID\fR\[char46] The mixed \fICCSID\fR is
+capable of handling both single-byte character set (\fISBCS\fR) data and double-byte character set
+(\fIDBCS\fR) data\[char46] For example, if the job \fICCSID\fR is the single-byte \fICCSID\fR 37,
+the mixed \fICCSID\fR is 937\[char46] The characters X\[char39]0E\[char39] and X\[char39]0F\[char39]
+will be interpreted as shift characters\[char46] This can lead to incorrect results when this data
+is converted to another \fICCSID\fR, if the data happens to contain X\[char39]0E\[char39] or
+X\[char39]0F\[char39], and the job \fICCSID\fR is not a \fIDBCS\fR-capable
+\fICCSID\fR\[char46]
 .RE
 .IP "" 2
 .RS

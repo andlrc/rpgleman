@@ -13,22 +13,38 @@ ACTGRP
 ACTGRP(*STGMDL | *NEW | *CALLER | 'activation-group-name')
 .fi
 .SH DESCRIPTION
-The \fIACTGRP\fR keyword allows you to specify the activation group the program is associated with when it is called\[char46] If \fIACTGRP\fR(\fI*STGMDL\fR) is specified and \fISTGMDL\fR(\fI*SNGLVL\fR) or \fISTGMDL\fR(\fI*INHERIT\fR) is in effect, the program will be activated into the \fIQILE\fR activation group when it is called\[char46] If \fIACTGRP\fR(\fI*STGMDL\fR) is specified and \fISTGMDL\fR(\fI*TERASPACE\fR) is in effect, the program will be activated into the \fIQILETS\fR activation group when it is called\[char46] If \fIACTGRP\fR(\fI*NEW\fR) is specified, then the program is activated into a new activation group\[char46] If \fIACTGRP\fR(\fI*CALLER\fR) is specified, then the program is activated into the caller\[char39]s activation group\[char46] If an activation-group-name is specified, then that name is used when this program is called\[char46]
+The \fIACTGRP\fR keyword allows you to specify the activation group the program is associated with
+when it is called\[char46] If \fIACTGRP\fR(\fI*STGMDL\fR) is specified and
+\fISTGMDL\fR(\fI*SNGLVL\fR) or \fISTGMDL\fR(\fI*INHERIT\fR) is in effect, the program will be
+activated into the \fIQILE\fR activation group when it is called\[char46] If
+\fIACTGRP\fR(\fI*STGMDL\fR) is specified and \fISTGMDL\fR(\fI*TERASPACE\fR) is in effect, the
+program will be activated into the \fIQILETS\fR activation group when it is called\[char46] If
+\fIACTGRP\fR(\fI*NEW\fR) is specified, then the program is activated into a new activation
+group\[char46] If \fIACTGRP\fR(\fI*CALLER\fR) is specified, then the program is activated into the
+caller\[char39]s activation group\[char46] If an activation-group-name is specified, then that name
+is used when this program is called\[char46]
 
 
-If the \fIACTGRP\fR keyword is not specified, then the value specified on the command is used\[char46]
+If the \fIACTGRP\fR keyword is not specified, then the value specified on the command is
+used\[char46]
 
 
 The \fIACTGRP\fR keyword is valid only if the \fICRTBNDRPG\fR command is used\[char46]
 
 
-You cannot use the \fIACTGRP\fR, \fIBNDDIR\fR, or \fISTGMDL\fR keywords when creating a program with \fIDFTACTGRP\fR(\fI*YES\fR)\[char46]
+You cannot use the \fIACTGRP\fR, \fIBNDDIR\fR, or \fISTGMDL\fR keywords when creating a program with
+\fIDFTACTGRP\fR(\fI*YES\fR)\[char46]
 
 
-See \fIDFTACTGRP\fR(\fI*YES\fR | \fI*NO\fR) for information on how the \fIACTGRP\fR keyword affects the setting of the \fIDFTACTGRP\fR keyword\[char46]
+See \fIDFTACTGRP\fR(\fI*YES\fR | \fI*NO\fR) for information on how the \fIACTGRP\fR keyword affects
+the setting of the \fIDFTACTGRP\fR keyword\[char46]
 
 .SH NOTICE
-Note:  The name of the activation group created when the program is called will have exactly the same case as the text entered for the activation-group-name\[char46] The \fIRCLACTGRP\fR command does not allow lower-case text to be specified for its \fIACTGRP\fR parameter\[char46] If it is required to reclaim an activation group individually using the \fIRCLACTGRP\fR command then do not enter lower-case case text for the activation-group-name\[char46]
+Note:  The name of the activation group created when the program is called will have exactly the same case
+as the text entered for the activation-group-name\[char46] The \fIRCLACTGRP\fR command does not
+allow lower-case text to be specified for its \fIACTGRP\fR parameter\[char46] If it is required to
+reclaim an activation group individually using the \fIRCLACTGRP\fR command then do not enter
+lower-case case text for the activation-group-name\[char46]
 .SH SEE ALSO
 .BR ALLER,
 .BR BNDDIR,

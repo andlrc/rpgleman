@@ -25,24 +25,33 @@ l l l l l l l  .
 T{
 \fIEXSR\fR
 T}	T{
-Ã‚
+Â
 T}	T{
 subroutine-name
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}
 .TE
 
-The \fIEXSR\fR operation causes the \fIRPG\fR IV subroutine named in the subroutine-name operand to be processed\[char46] The subroutine name must be a unique symbolic name and must appear as the subroutine-name operand of a \fIBEGSR\fR operation\[char46] The \fIEXSR\fR operation can appear anywhere in the calculation specifications\[char46] Whenever it appears, the subroutine that is named is processed\[char46] After operations in the subroutine are processed, the statement following the \fIEXSR\fR operation is processed, except when a \fIGOTO\fR within the subroutine is given to a label outside the subroutine or when the subroutine is an exception/error subroutine specified by the return-point operand of the \fIENDSR\fR operation\[char46]
+The \fIEXSR\fR operation causes the \fIRPG\fR IV subroutine named in the subroutine-name operand to
+be processed\[char46] The subroutine name must be a unique symbolic name and must appear as the
+subroutine-name operand of a \fIBEGSR\fR operation\[char46] The \fIEXSR\fR operation can appear
+anywhere in the calculation specifications\[char46] Whenever it appears, the subroutine that is
+named is processed\[char46] After operations in the subroutine are processed, the statement
+following the \fIEXSR\fR operation is processed, except when a \fIGOTO\fR within the subroutine is
+given to a label outside the subroutine or when the subroutine is an exception/error subroutine
+specified by the return-point operand of the \fIENDSR\fR operation\[char46]
 
 
-\fI*PSSR\fR used in the subroutine-name operand specifies that the program exception/error subroutine is to be processed\[char46] \fI*INZSR\fR used in the subroutine-name operand specifies that the program initialization subroutine is to be processed\[char46]
+\fI*PSSR\fR used in the subroutine-name operand specifies that the program exception/error
+subroutine is to be processed\[char46] \fI*INZSR\fR used in the subroutine-name operand specifies
+that the program initialization subroutine is to be processed\[char46]
 
 
 See Coding Subroutines, Subroutine Operations, or Compare Operations for more information\[char46]

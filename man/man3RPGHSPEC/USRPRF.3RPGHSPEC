@@ -13,16 +13,24 @@ USRPRF
 USRPRF(*USER | *OWNER)
 .fi
 .SH DESCRIPTION
-The \fIUSRPRF\fR keyword specifies the user profile that will run the created program object\[char46] The profile of the program owner or the program user is used to run the program and to control which objects can be used by the program (including the authority the program has for each object)\[char46] This keyword is not updated if the program already exists\[char46]
+The \fIUSRPRF\fR keyword specifies the user profile that will run the created program
+object\[char46] The profile of the program owner or the program user is used to run the program and
+to control which objects can be used by the program (including the authority the program has for
+each object)\[char46] This keyword is not updated if the program already exists\[char46]
 
 
-If \fI*USER\fR is specified, the user profile of the program\[char39]s user will run the created program object\[char46]
+If \fI*USER\fR is specified, the user profile of the program\[char39]s user will run the created
+program object\[char46]
 
 
-If \fI*OWNER\fR is specified, the user profiles of both the program\[char39]s user and owner will run the created program object\[char46] The collective set of object authority in both user profiles is used to find and access objects while the program is running\[char46] Any objects created during the program are owned by the program\[char39]s user\[char46]
+If \fI*OWNER\fR is specified, the user profiles of both the program\[char39]s user and owner will
+run the created program object\[char46] The collective set of object authority in both user profiles
+is used to find and access objects while the program is running\[char46] Any objects created during
+the program are owned by the program\[char39]s user\[char46]
 
 
-If the \fIUSRPRF\fR keyword is not specified, then the value specified on the command is used\[char46]
+If the \fIUSRPRF\fR keyword is not specified, then the value specified on the command is
+used\[char46]
 
 
 The \fIUSRPRF\fR keyword is valid only if the \fICRTBNDRPG\fR command is used\[char46]

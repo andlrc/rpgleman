@@ -9,7 +9,10 @@
 .SH NAME
 EXT
 .SH DESCRIPTION
-The \fIEXT\fR keyword is used in a free-form data structure definition to indicate that the data structure is externally-described\[char46] If the \fIEXTNAME\fR keyword is not also specified, the name of the data structure is used to locate the external file that provides the subfield definitions\[char46]
+The \fIEXT\fR keyword is used in a free-form data structure definition to indicate that the data
+structure is externally-described\[char46] If the \fIEXTNAME\fR keyword is not also specified, the
+name of the data structure is used to locate the external file that provides the subfield
+definitions\[char46]
 
 
 If the \fIEXT\fR keyword is specified, it must be the first keyword\[char46]

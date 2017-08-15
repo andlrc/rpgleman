@@ -13,10 +13,16 @@
 %EDITFLT(numeric expression)
 .fi
 .SH DESCRIPTION
-\fB%EDITFLT\fR converts the value of the numeric expression to the character external display representation of float\[char46] The result is either 14 or 23 characters\[char46] If the argument is a 4-byte float field, the result is 14 characters\[char46] Otherwise, it is 23 characters\[char46]
+\fB%EDITFLT\fR converts the value of the numeric expression to the character external display
+representation of float\[char46] The result is either 14 or 23 characters\[char46] If the argument
+is a 4-byte float field, the result is 14 characters\[char46] Otherwise, it is 23
+characters\[char46]
 
 
-If specified as a parameter to a definition specification keyword, the parameter must be a numeric literal, float literal, or numeric valued constant name or built-in function\[char46] When specified in an expression, constant folding is applied if the numeric expression has a constant value\[char46]
+If specified as a parameter to a definition specification keyword, the parameter must be a numeric
+literal, float literal, or numeric valued constant name or built-in function\[char46] When specified
+in an expression, constant folding is applied if the numeric expression has a constant
+value\[char46]
 
 
 For more information, see Conversion Operations or Built-in Functions\[char46]

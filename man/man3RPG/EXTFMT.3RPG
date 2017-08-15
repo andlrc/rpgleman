@@ -13,7 +13,10 @@ EXTFMT
 EXTFMT(code)
 .fi
 .SH DESCRIPTION
-The \fIEXTFMT\fR keyword is used to specify the external data type for compile-time and prerun-time numeric arrays and tables\[char46] The external data type is the format of the data in the records in the file\[char46] This entry has no effect on the format used for internal processing (internal data type) of the array or table in the program\[char46] 
+The \fIEXTFMT\fR keyword is used to specify the external data type for compile-time and prerun-time
+numeric arrays and tables\[char46] The external data type is the format of the data in the records
+in the file\[char46] This entry has no effect on the format used for internal processing (internal
+data type) of the array or table in the program\[char46] 
 
   The possible values for the parameter are: 
 .TP 5
@@ -27,10 +30,12 @@ The data for the array or table is in \fIUCS\fR-2 format\[char46]
 The data for the array or table is in integer format\[char46]
 .TP 5
 .B L
-The data for a numeric array or table element has a preceding (left) plus or minus sign\[char46]
+The data for a numeric array or table element has a preceding (left) plus or minus
+sign\[char46]
 .TP 5
 .B R
-The data for a numeric array or table element has a following (right) plus or minus sign\[char46]
+The data for a numeric array or table element has a following (right) plus or minus
+sign\[char46]
 .TP 5
 .B P
 The data for the array or table is in packed decimal format\[char46]
@@ -49,19 +54,33 @@ The data for the array or table is in float numeric format\[char46]
 Note: 
 .IP 1. 2
 .RS
-If the \fIEXTFMT\fR keyword is not specified, the external format defaults to \[char39]S\[char39] for non-float arrays and tables, and to the external display float representation for float pre-runtime arrays and tables\[char46]
+If the \fIEXTFMT\fR keyword is not specified, the external format defaults to \[char39]S\[char39]
+for non-float arrays and tables, and to the external display float representation for float
+pre-runtime arrays and tables\[char46]
 .RE
 .IP 2. 2
 .RS
-For compile-time arrays and tables, the only values allowed are S, L, and R, unless the data type is float, in which case the \fIEXTFMT\fR keyword is not allowed\[char46]
+For compile-time arrays and tables, the only values allowed are S, L, and R, unless the data type is
+float, in which case the \fIEXTFMT\fR keyword is not allowed\[char46]
 .RE
 .IP 3. 2
 .RS
-When \fIEXTFMT\fR(I) or \fIEXTFMT\fR(U) is used, arrays defined as having 1 to 5 digits will occupy 2 bytes per element\[char46] Arrays defined as having 6 to 10 digits will occupy 4 bytes per element\[char46] Arrays defined as having 11 to 20 digits will occupy 8 bytes per element\[char46]
+When \fIEXTFMT\fR(I) or \fIEXTFMT\fR(U) is used, arrays defined as having 1 to 5 digits will occupy
+2 bytes per element\[char46] Arrays defined as having 6 to 10 digits will occupy 4 bytes per
+element\[char46] Arrays defined as having 11 to 20 digits will occupy 8 bytes per
+element\[char46]
 .RE
 .IP 4. 2
 .RS
-The default external format for \fIUCS\fR-2 arrays is character\[char46] The number of characters allowed for \fIUCS\fR-2 compile-time data is the number of double-byte characters in the \fIUCS\fR-2 array\[char46] If graphic data is included in the data, the presence of double-byte data and the shift-out and shift-in characters in the data will reduce the actual amount of data that can be placed in the array element; the rest of the element will be padded with blanks\[char46] For example, for a 4-character \fIUCS\fR-2 array, only one double-byte character can be specified in the compile-time data; if the compile-time data were \[char39]oXXi\[char39], where \[char39]XX\[char39] is converted to the \fIUCS\fR-2 character U\[char39]yyyy\[char39], the \fIUCS\fR-2 element would contain the value U\[char39]yyyy002000200020\[char39]\[char46]
+The default external format for \fIUCS\fR-2 arrays is character\[char46] The number of characters
+allowed for \fIUCS\fR-2 compile-time data is the number of double-byte characters in the \fIUCS\fR-2
+array\[char46] If graphic data is included in the data, the presence of double-byte data and the
+shift-out and shift-in characters in the data will reduce the actual amount of data that can be
+placed in the array element; the rest of the element will be padded with blanks\[char46] For
+example, for a 4-character \fIUCS\fR-2 array, only one double-byte character can be specified in the
+compile-time data; if the compile-time data were \[char39]oXXi\[char39], where \[char39]XX\[char39]
+is converted to the \fIUCS\fR-2 character U\[char39]yyyy\[char39], the \fIUCS\fR-2 element would
+contain the value U\[char39]yyyy002000200020\[char39]\[char46]
 .RE
 .PP
 

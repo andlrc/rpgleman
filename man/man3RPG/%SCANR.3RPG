@@ -13,25 +13,37 @@
 %SCANR(search argument : source string {: start position {: length}})
 .fi
 .SH DESCRIPTION
-The start position and length specify the substring of the source string to be searched\[char46] The start position defaults to 1 and the length defaults to the remainder of the source string\[char46] The result is always the position in the source string even if the starting position is specified\[char46]
+The start position and length specify the substring of the source string to be searched\[char46] The
+start position defaults to 1 and the length defaults to the remainder of the source string\[char46]
+The result is always the position in the source string even if the starting position is
+specified\[char46]
 
 
-The first parameter must be of type character, graphic, or \fIUCS\fR-2\[char46] The second parameter must be the same type as the first parameter\[char46] The third and fourth parameters, if specified, must be numeric with zero decimal positions\[char46]
+The first parameter must be of type character, graphic, or \fIUCS\fR-2\[char46] The second parameter
+must be the same type as the first parameter\[char46] The third and fourth parameters, if specified,
+must be numeric with zero decimal positions\[char46]
 
 
-When any parameter is variable in length, the values of the other parameters are checked against the current length, not the maximum length\[char46]
+When any parameter is variable in length, the values of the other parameters are checked against the
+current length, not the maximum length\[char46]
 
 
-The type of the return value is unsigned integer\[char46] This built-in function can be used anywhere that an unsigned integer expression is valid\[char46]
+The type of the return value is unsigned integer\[char46] This built-in function can be used
+anywhere that an unsigned integer expression is valid\[char46]
 
 
-If the search argument contains trailing blanks, the scan will include those trailing blanks\[char46] For example if \[char39]b\[char39] represents a blank, \fB%SCANR(\[char39]12b\[char39]:\[char39]12b312\[char39])\fR would return 1\[char46] If trailing blanks should not be considered in the scan, use \fB%TRIMR\fR on the search argument\[char46] For example \fB%SCAN(%TRIMR(\[char39]12b\[char39])\fR:\[char39]12b312\[char39]) would return 5\[char46]
+If the search argument contains trailing blanks, the scan will include those trailing
+blanks\[char46] For example if \[char39]b\[char39] represents a blank,
+\fB%SCANR(\[char39]12b\[char39]:\[char39]12b312\[char39])\fR would return 1\[char46] If trailing
+blanks should not be considered in the scan, use \fB%TRIMR\fR on the search argument\[char46] For
+example \fB%SCAN(%TRIMR(\[char39]12b\[char39])\fR:\[char39]12b312\[char39]) would return 5\[char46]
 
 
 For more information, see String Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%SCANR\fR returns the last position of the search argument in the source string, or 0 if it was not found\[char46]
+\fB%SCANR\fR returns the last position of the search argument in the source string, or 0 if it was
+not found\[char46]
 
 
 
@@ -47,7 +59,8 @@ The value of lastSlash  is 27 after it is assigned the result of the \fB%SCANR\f
 .RE
 .IP 2. 2
 .RS
-Since lastSlash  is not zero, the \fB%SUBST\fR built-in function is used to obtain the file name\[char46] The value of filename  "a\[char46]txt" after the code completes\[char46]
+Since lastSlash  is not zero, the \fB%SUBST\fR built-in function is used to obtain the file name\[char46] The value
+of filename  "a\[char46]txt" after the code completes\[char46]
 .RE
 .PP
  
@@ -56,28 +69,33 @@ Since lastSlash  is not zero, the \fB%SUBST\fR built-in function is used to obta
 .PP
 .nf
    path = \[char39]/home/locations/manchester/a\[char46]txt\[char39];
-   lastSlash = %SCANR(\[char39]/\[char39] : path); Â 1Â
+   lastSlash = %SCANR(\[char39]/\[char39] : path);  1�
    if lastSlash = 0;
       filename = path;
    else;
-      filename = %SUBST(path : lastSlash + 1); Â 2Â
+      filename = %SUBST(path : lastSlash + 1);  2�
    endif;
 .fi
 
 .RE
 .IP "" 2
 .RS
-\[bu] Using the third operand of \fB%SCANR\fR to specify the starting position of the part of the source string to be searched 
+\[bu] Using the third operand of \fB%SCANR\fR to specify the starting position of the part of the source
+string to be searched 
 The following example finds the suffix of the filename in a path, if it exists\[char46]
 
  
 .IP 1. 2
 .RS
-\fB%SCANR\fR is used to find the location of the last slash, which indicates the beginning of the file name\[char46]
+\fB%SCANR\fR is used to find the location of the last slash, which indicates the beginning of the
+file name\[char46]
 .RE
 .IP 2. 2
 .RS
-\fB%SCANR\fR is used to find the location of the last period, starting at the beginning of the file name\[char46] By specifying the start position for the \fB%SCANR\fR built-in function, the program avoids finding any irrelevant periods in the path, such as the period in the "st\[char46]johns" directory\[char46]
+\fB%SCANR\fR is used to find the location of the last period, starting at the beginning of the file
+name\[char46] By specifying the start position for the \fB%SCANR\fR built-in function, the program
+avoids finding any irrelevant periods in the path, such as the period in the "st\[char46]johns"
+directory\[char46]
 .RE
 .IP 3. 2
 .RS
@@ -85,7 +103,8 @@ In this example, there is no period following the last slash in path  so the val
 .RE
 .IP 4. 2
 .RS
-However, if the value of path  was "/home/locations/st\[char46]johns/report\[char46]txt", then the value of suffix  will be "txt"\[char46]
+However, if the value of path  was "/home/locations/st\[char46]johns/report\[char46]txt", then the value
+of suffix  will be "txt"\[char46]
 .RE
 .PP
  
@@ -94,15 +113,15 @@ However, if the value of path  was "/home/locations/st\[char46]johns/report\[cha
 .PP
 .nf
    path = \[char39]/home/locations/st\[char46]johns/report\[char39];
-   p = %SCANR(\[char39]/\[char39] : path); Â 1Â
+   p = %SCANR(\[char39]/\[char39] : path);  1�
    if p = 0;
       p = 1; // start the next search at the beginning
    endif;
-   dot = %SCANR(\[char39]\[char46]\[char39] : path : p + 1); Â 2Â
+   dot = %SCANR(\[char39]\[char46]\[char39] : path : p + 1);  2�
    if dot = 0;
-      suffix = \[char39]\[char39]; Â 3Â
+      suffix = \[char39]\[char39];  3�
    else;
-        suffix = %SUBST(path : dot + 1);  Â 4Â
+        suffix = %SUBST(path : dot + 1);   4�
    endif;
 .fi
 
@@ -119,11 +138,13 @@ The final slash is found at position 27\[char46]
 .RE
 .IP 2. 2
 .RS
-The second \fB%SCANR\fR built-in function indicates the search for the slash should only be done between positions 1 and 26\[char46]
+The second \fB%SCANR\fR built-in function indicates the search for the slash should only be done
+between positions 1 and 26\[char46]
 .RE
 .IP 3. 2
 .RS
-Since p  is not zero in this example, the \fB%SUBST\fR built-in function will be used to obtain the directory name\[char46] At the end of the code, dir  will have the value "manchester"\[char46]
+Since p  is not zero in this example, the \fB%SUBST\fR built-in function will be used to obtain the
+directory name\[char46] At the end of the code, dir  will have the value "manchester"\[char46]
 .RE
 .PP
  
@@ -133,7 +154,7 @@ Since p  is not zero in this example, the \fB%SUBST\fR built-in function will be
 .nf
    path = \[char39]/home/locations/manchester/a\[char46]txt\[char39];
    dir = \[char39]\[char39];
-   p = %SCANR(\[char39]/\[char39] : path);  Â 1Â
+   p = %SCANR(\[char39]/\[char39] : path);   1�
    if p > 0;
       p2 = %SCANR(\[char39]/\[char39] : path : 1 : p - 1);
       if p2 > 0;
@@ -147,7 +168,10 @@ Since p  is not zero in this example, the \fB%SUBST\fR built-in function will be
 
 
 
-In the following example, \fB%SCAN\fR and \fB%SCANR\fR are used with the same operands\[char46] Since \fB%SCAN\fR searches from the beginning and \fB%SCANR\fR searches from the end, they will return different results if there is more than one occurrence of the search argument in the search string\[char46]
+In the following example, \fB%SCAN\fR and \fB%SCANR\fR are used with the same operands\[char46]
+Since \fB%SCAN\fR searches from the beginning and \fB%SCANR\fR searches from the end, they will
+return different results if there is more than one occurrence of the search argument in the search
+string\[char46]
 
 
 .IP 1. 2
@@ -160,7 +184,8 @@ The value returned by the \fB%SCANR\fR built-in function is 24\[char46]
 .RE
 .IP 3. 2
 .RS
-The values are not the same\[char46] This indicates that there are at least two occurrences of "\fIVALUE\fR" in the string\[char46]
+The values are not the same\[char46] This indicates that there are at least two occurrences of
+"\fIVALUE\fR" in the string\[char46]
 .RE
 .PP
 
@@ -169,10 +194,10 @@ The values are not the same\[char46] This indicates that there are at least two 
 .PP
 .nf
    string = \[char39]VALUE 9\[char46]56, VALUE 7\[char46]3, VALUE 4\[char46]71\[char39];
-   p1 = %SCAN (\[char39]VALUE\[char39] : string); Â 1Â
-   p2 = %SCANR (\[char39]VALUE\[char39] : string); Â 2Â
+   p1 = %SCAN (\[char39]VALUE\[char39] : string);  1�
+   p2 = %SCANR (\[char39]VALUE\[char39] : string);  2�
    if p1 <> p2;
-      moreThanOne = *ON; Â 3Â
+      moreThanOne = *ON;  3�
    endif;
 .fi
 .SH SEE ALSO

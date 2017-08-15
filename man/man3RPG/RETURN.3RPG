@@ -25,49 +25,72 @@ l l l  .
 T{
 \fIRETURN\fR (H M/R)
 T}	T{
-Ã‚
+Â
 T}	T{
 expression
 T}
 .TE
 
-The \fIRETURN\fR operation causes a return to the caller\[char46] If a value is returned to the caller, the return value is specified in the expression operand\[char46]
+The \fIRETURN\fR operation causes a return to the caller\[char46] If a value is returned to the
+caller, the return value is specified in the expression operand\[char46]
 
 
-The actions which occur as a result of the \fIRETURN\fR operation differ depending on whether the operation is in a cycle-main  procedure or subprocedure\[char46] When a cycle-main  procedure returns, the following occurs: 
+The actions which occur as a result of the \fIRETURN\fR operation differ depending on whether the
+operation is in a cycle-main  procedure or subprocedure\[char46] When a cycle-main  procedure returns, the following occurs: 
 .IP 1. 2
 .RS
-The halt indicators are checked\[char46] If a halt indicator is on, the procedure ends abnormally\[char46] (All open files are closed, an error return code is set to indicate to the calling routine that the procedure has ended abnormally, and control returns to the calling routine\[char46])
+The halt indicators are checked\[char46] If a halt indicator is on, the procedure ends
+abnormally\[char46] (All open files are closed, an error return code is set to indicate to the
+calling routine that the procedure has ended abnormally, and control returns to the calling
+routine\[char46])
 .RE
 .IP 2. 2
 .RS
-If no halt indicators are on, the LR indicator is checked\[char46] If LR is on, the program ends normally\[char46] (Locked data area structures, arrays, and tables are written, and external indicators are reset\[char46])
+If no halt indicators are on, the LR indicator is checked\[char46] If LR is on, the program ends
+normally\[char46] (Locked data area structures, arrays, and tables are written, and external
+indicators are reset\[char46])
 .RE
 .IP 3. 2
 .RS
-If no halt indicator is on and LR is not on, the procedure returns to the calling routine\[char46] Data is preserved for the next time the procedure is run\[char46] Files and data areas are not written out\[char46] See the chapter on calling programs and procedures in the 
+If no halt indicator is on and LR is not on, the procedure returns to the calling routine\[char46]
+Data is preserved for the next time the procedure is run\[char46] Files and data areas are not
+written out\[char46] See the chapter on calling programs and procedures in
+the 
 
-  for information on how running in a \fI*NEW\fR activation group affects the operation of \fIRETURN\fR\[char46]
+  for information on how running in a \fI*NEW\fR activation group affects the operation of
+\fIRETURN\fR\[char46]
 .RE
 .PP
 
 
-When a subprocedure returns, the return value, if specified on the prototype of the called program or procedure, is passed to the caller\[char46] Automatic files are closed\[char46] Nothing else occurs automatically\[char46] All static or global files and data areas must be closed manually\[char46] You can set on indicators such as LR, but this will not cause program termination to occur\[char46]
+When a subprocedure returns, the return value, if specified on the prototype of the called program
+or procedure, is passed to the caller\[char46] Automatic files are closed\[char46] Nothing else
+occurs automatically\[char46] All static or global files and data areas must be closed
+manually\[char46] You can set on indicators such as LR, but this will not cause program termination
+to occur\[char46]
 
 
-For information on how operation extenders H, M, and R are used, see Precision Rules for Numeric Operations\[char46]
+For information on how operation extenders H, M, and R are used, see Precision Rules for Numeric
+Operations\[char46]
 
 
-In a subprocedure that returns a value, a \fIRETURN\fR operation must be coded within the subprocedure\[char46] The actual returned value has the same role as the left-hand side of the \fIEVAL\fR expression, while the extended factor 2 of the \fIRETURN\fR operation has the same role as the right-hand side\[char46] An array may be returned only if the prototype has defined the return value as an array\[char46]
+In a subprocedure that returns a value, a \fIRETURN\fR operation must be coded within the
+subprocedure\[char46] The actual returned value has the same role as the left-hand side of the
+\fIEVAL\fR expression, while the extended factor 2 of the \fIRETURN\fR operation has the same role
+as the right-hand side\[char46] An array may be returned only if the prototype has defined the
+return value as an array\[char46]
 
 
 
-If the subprocedure returns a value, you should ensure that a \fIRETURN\fR operation is performed before reaching the end of the procedure\[char46] If the subprocedure ends without encountering a \fIRETURN\fR operation, an exception is signalled to the caller\[char46]
+If the subprocedure returns a value, you should ensure that a \fIRETURN\fR operation is performed
+before reaching the end of the procedure\[char46] If the subprocedure ends without encountering a
+\fIRETURN\fR operation, an exception is signalled to the caller\[char46]
 
 
 
 
-Specifying the \fIRTNPARM\fR keyword on your prototype may significantly improve the performance for returning large values\[char46] See \fIRTNPARM\fR for more information\[char46]
+Specifying the \fIRTNPARM\fR keyword on your prototype may significantly improve the performance for
+returning large values\[char46] See \fIRTNPARM\fR for more information\[char46]
 
 
 For more information, see Call Operations\[char46]

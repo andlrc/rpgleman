@@ -16,16 +16,22 @@ OPTIMIZE(*NONE | *BASIC | *FULL)
 The \fIOPTIMIZE\fR keyword specifies the level of optimization, if any, of the object\[char46]
 
 
-If \fI*NONE\fR is specified, then the generated code is not optimized\[char46] This is the fastest in terms of translation time\[char46] It allows you to display and modify variables while in debug mode\[char46]
+If \fI*NONE\fR is specified, then the generated code is not optimized\[char46] This is the fastest
+in terms of translation time\[char46] It allows you to display and modify variables while in debug
+mode\[char46]
 
 
-If \fI*BASIC\fR is specified, it performs some optimization on the generated code\[char46] This allows user variables to be displayed but not modified while the program is in debug mode\[char46]
+If \fI*BASIC\fR is specified, it performs some optimization on the generated code\[char46] This
+allows user variables to be displayed but not modified while the program is in debug mode\[char46]
 
 
-If \fI*FULL\fR is specified, then the most efficient code is generated\[char46] Translation time is the longest\[char46] In debug mode, user variables may not be modified but may be displayed, although the presented values may not be the current values\[char46]
+If \fI*FULL\fR is specified, then the most efficient code is generated\[char46] Translation time is
+the longest\[char46] In debug mode, user variables may not be modified but may be displayed,
+although the presented values may not be the current values\[char46]
 
 
-If the \fIOPTIMIZE\fR keyword is not specified, then the value specified on the command is used\[char46]
+If the \fIOPTIMIZE\fR keyword is not specified, then the value specified on the command is
+used\[char46]
 
 .SH SEE ALSO
 .BR ASIC,

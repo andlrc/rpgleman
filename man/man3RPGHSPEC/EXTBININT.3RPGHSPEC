@@ -15,24 +15,31 @@ EXTBININT{(*NO | *YES)}
 .SH DESCRIPTION
 
 
- The \fIEXTBININT\fR keyword is used to process externally described fields with binary external format and zero decimal positions as if they had an external integer format\[char46] If not specified or specified with \fI*NO\fR, then an externally described binary field is processed with an external binary-decimal  format\[char46] If \fIEXTBININT\fR is specified, optionally with \fI*YES\fR, then an externally described field is processed as follows: 
+ The \fIEXTBININT\fR keyword is used to process externally described fields with binary external
+format and zero decimal positions as if they had an external integer format\[char46] If not
+specified or specified with \fI*NO\fR, then an externally described binary field is processed with
+an external binary-decimal  format\[char46] If \fIEXTBININT\fR is specified, optionally with \fI*YES\fR, then an externally
+described field is processed as follows: 
 .TP 5
 .B \fIDDS\fR Definition
 
 
 
 .TP 5
-.B B(n,0) where 1 â¤ n â¤ 4
+.B B(n,0) where 1 ≤ n ≤ 4
 \fIINT\fR(5)
 .TP 5
-.B B(n,0) where 5 â¤ n â¤ 9
+.B B(n,0) where 5 ≤ n ≤ 9
 \fIINT\fR(10)
 .PP
  
 
 
 
-By specifying the \fIEXTBININT\fR keyword, your program can make use of the full range of \fIDDS\fR binary values available\[char46] (The range of \fIDDS\fR binary values is the same as for signed integers: -32768 to 32767 for a 5-digit field or -2147483648 to 2147483647 for a 10-digit field\[char46]) 
+By specifying the \fIEXTBININT\fR keyword, your program can make use of the full range of \fIDDS\fR
+binary values available\[char46] (The range of \fIDDS\fR binary values is the same as for signed
+integers: -32768 to 32767 for a 5-digit field or -2147483648 to 2147483647 for a 10-digit
+field\[char46]) 
 
 
 

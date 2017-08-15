@@ -9,10 +9,16 @@
 .SH NAME
 NOMAIN
 .SH DESCRIPTION
-The \fINOMAIN\fR keyword indicates that there is no main procedure in this module\[char46] It also means that the module in which it is coded cannot be a program-entry module\[char46] Consequently, if \fINOMAIN\fR is specified, then you cannot use the \fICRTBNDRPG\fR command to create a program\[char46] Instead you must either use the \fICRTPGM\fR command to bind the module with \fINOMAIN\fR specified to another module that has a program entry procedure or you must use the \fICRTSRVPGM\fR command\[char46]
+The \fINOMAIN\fR keyword indicates that there is no main procedure in this module\[char46] It also
+means that the module in which it is coded cannot be a program-entry module\[char46] Consequently,
+if \fINOMAIN\fR is specified, then you cannot use the \fICRTBNDRPG\fR command to create a
+program\[char46] Instead you must either use the \fICRTPGM\fR command to bind the module with
+\fINOMAIN\fR specified to another module that has a program entry procedure or you must use the
+\fICRTSRVPGM\fR command\[char46]
 
 
-A no-main module will not include logic for the \fIRPG\fR program cycle; thus language features dependent on the cycle must not be specified\[char46] 
+A no-main module will not include logic for the \fIRPG\fR program cycle; thus language features
+dependent on the cycle must not be specified\[char46] 
 
 
 

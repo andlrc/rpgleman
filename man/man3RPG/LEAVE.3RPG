@@ -25,30 +25,36 @@ l l l l l l l  .
 T{
 \fILEAVE\fR
 T}	T{
-Â
+�
 T}	T{
-Â
+�
 T}	T{
-Â
+�
 T}	T{
-Â
+�
 T}	T{
-Â
+�
 T}	T{
-Â
+�
 T}
 .TE
 
-The \fILEAVE\fR operation transfers control from within a DO or \fIFOR\fR group to the statement following the \fIENDDO\fR or \fIENDFOR\fR operation\[char46]
+The \fILEAVE\fR operation transfers control from within a DO or \fIFOR\fR group to the statement
+following the \fIENDDO\fR or \fIENDFOR\fR operation\[char46]
 
 
-You can use \fILEAVE\fR within a DO, \fIDOU\fR, \fIDOU\fRxx, \fIDOW\fR, \fIDOW\fRxx, or \fIFOR\fR loop to transfer control immediately from the innermost loop to the statement following the innermost loop\[char39]s \fIENDDO\fR or \fIENDFOR\fR operation\[char46] Using \fILEAVE\fR to leave a DO or \fIFOR\fR group does not increment the index\[char46]
+You can use \fILEAVE\fR within a DO, \fIDOU\fR, \fIDOU\fRxx, \fIDOW\fR, \fIDOW\fRxx, or \fIFOR\fR
+loop to transfer control immediately from the innermost loop to the statement following the
+innermost loop\[char39]s \fIENDDO\fR or \fIENDFOR\fR operation\[char46] Using \fILEAVE\fR to leave a
+DO or \fIFOR\fR group does not increment the index\[char46]
 
 
-In nested loops, \fILEAVE\fR causes control to transfer âoutwardsâ by one level only\[char46] \fILEAVE\fR is not allowed outside a DO or \fIFOR\fR group\[char46]
+In nested loops, \fILEAVE\fR causes control to transfer “outwards” by one level only\[char46]
+\fILEAVE\fR is not allowed outside a DO or \fIFOR\fR group\[char46]
 
 
-The \fIITER\fR (Iterate) operation is similar to the \fILEAVE\fR operation; however, \fIITER\fR transfers control to the \fIENDDO\fR or \fIENDFOR\fR statement\[char46]
+The \fIITER\fR (Iterate) operation is similar to the \fILEAVE\fR operation; however, \fIITER\fR
+transfers control to the \fIENDDO\fR or \fIENDFOR\fR statement\[char46]
 
 
 For more information, see Branching Operations or Structured Programming Operations\[char46]

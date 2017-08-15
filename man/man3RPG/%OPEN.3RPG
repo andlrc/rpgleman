@@ -16,7 +16,11 @@
 For more information, see File Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%OPEN\fR returns \[char39]1\[char39] if the specified file is open\[char46] A file is considered "open" if it has been opened by the \fIRPG\fR module during initialization or by an \fIOPEN\fR operation, and has not subsequently been closed\[char46] If the file is conditioned by an external indicator and the external indicator was off at module initialization, the file is considered closed, and \fB%OPEN\fR returns \[char39]0\[char39]\[char46]
+\fB%OPEN\fR returns \[char39]1\[char39] if the specified file is open\[char46] A file is considered
+"open" if it has been opened by the \fIRPG\fR module during initialization or by an \fIOPEN\fR
+operation, and has not subsequently been closed\[char46] If the file is conditioned by an external
+indicator and the external indicator was off at module initialization, the file is considered
+closed, and \fB%OPEN\fR returns \[char39]0\[char39]\[char46]
 
 .SH EXAMPLE
 \fB%OPEN\fR Example

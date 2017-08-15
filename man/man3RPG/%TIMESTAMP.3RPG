@@ -14,21 +14,29 @@
 %TIMESTAMP{(date-timestamp-expression { : fractional-seconds})}
 .fi
 .SH DESCRIPTION
-\fB%TIMESTAMP\fR converts the value of the expression from character, numeric, date or timestamp data to type timestamp\[char46] The converted value is returned as a timestamp\[char46]
+\fB%TIMESTAMP\fR converts the value of the expression from character, numeric, date or timestamp
+data to type timestamp\[char46] The converted value is returned as a timestamp\[char46]
 
 
-The first parameter is the value to be converted\[char46] If you do not specify a value, \fB%TIMESTAMP\fR returns the current system timestamp\[char46] Only the first three digits of the fractional seconds portion of the timestamp will be set to a non-zero value\[char46] The remaining fractional seconds will be zero\[char46]
+The first parameter is the value to be converted\[char46] If you do not specify a value,
+\fB%TIMESTAMP\fR returns the current system timestamp\[char46] Only the first three digits of the
+fractional seconds portion of the timestamp will be set to a non-zero value\[char46] The remaining
+fractional seconds will be zero\[char46]
 
 
 .IP "" 2
 .RS
 \[bu] 
 
- If the first parameter is a character or numeric expression, the second parameter is the timestamp format\[char46] Regardless of the input format, the output is returned in \fI*ISO\fR format\[char46] 
-For character input, you can specify either \fI*ISO\fR (the default) or \fI*ISO0\fR\[char46] For more information, see Timestamp Data Type\[char46]
+ If the first parameter is a character or numeric expression, the second parameter is the timestamp
+format\[char46] Regardless of the input format, the output is returned in \fI*ISO\fR
+format\[char46] 
+For character input, you can specify either \fI*ISO\fR (the default) or \fI*ISO0\fR\[char46] For
+more information, see Timestamp Data Type\[char46]
 
  
-If the first parameter is numeric, you do not need to specify the second parameter\[char46] The only allowed value is \fI*ISO\fR (the default)\[char46]
+If the first parameter is numeric, you do not need to specify the second parameter\[char46] The only
+allowed value is \fI*ISO\fR (the default)\[char46]
 
  
 The optional third parameter is the number of fractional seconds in the timestamp\[char46]
@@ -41,8 +49,10 @@ The optional third parameter is the number of fractional seconds in the timestam
 .RS
 \[bu] 
 
- If the first parameter is \fI*SYS\fR or a date or timestamp expression, the optional second parameter is the number of fractional seconds in the returned timestamp\[char46] 
-If the first operand is a date, the system converts the date from its current format to \fI*ISO\fR format and adds a time of 00\[char46]00\[char46]00 and zero fractional seconds\[char46]
+ If the first parameter is \fI*SYS\fR or a date or timestamp expression, the optional second
+parameter is the number of fractional seconds in the returned timestamp\[char46] 
+If the first operand is a date, the system converts the date from its current format to \fI*ISO\fR
+format and adds a time of 00\[char46]00\[char46]00 and zero fractional seconds\[char46]
 
  
 
@@ -50,13 +60,15 @@ If the first operand is a date, the system converts the date from its current fo
 .RE
 .PP
 
-The number of fractional seconds can be between 0 and 12\[char46] It defaults to 6 fractional seconds\[char46]
+The number of fractional seconds can be between 0 and 12\[char46] It defaults to 6 fractional
+seconds\[char46]
 
 
 For more information, see Information Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-If you do not specify a parameter, or if you specify \fI*SYS\fR as the first parameter, \fB%TIMESTAMP\fR returns the current system timestamp\[char46]
+If you do not specify a parameter, or if you specify \fI*SYS\fR as the first parameter,
+\fB%TIMESTAMP\fR returns the current system timestamp\[char46]
 
 .SH EXAMPLE
 \fB%TIMESTAMP\fR Example

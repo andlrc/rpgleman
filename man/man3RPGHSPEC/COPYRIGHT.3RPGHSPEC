@@ -13,7 +13,12 @@ COPYRIGHT
 COPYRIGHT('copyright string')
 .fi
 .SH DESCRIPTION
-The \fICOPYRIGHT\fR keyword provides copyright information that can be seen using the \fIDSPMOD\fR, \fIDSPPGM\fR, or \fIDSPSRVPGM\fR commands\[char46] The copyright string is a character literal with a maximum length of 256\[char46] The literal may be continued on a continuation specification\[char46] (See Continuation Rules for rules on using continuation lines\[char46]) If the \fICOPYRIGHT\fR keyword is not specified, copyright information is not added to the created module or program\[char46]
+The \fICOPYRIGHT\fR keyword provides copyright information that can be seen using the \fIDSPMOD\fR,
+\fIDSPPGM\fR, or \fIDSPSRVPGM\fR commands\[char46] The copyright string is a character literal with
+a maximum length of 256\[char46] The literal may be continued on a continuation
+specification\[char46] (See Continuation Rules for rules on using continuation lines\[char46]) If
+the \fICOPYRIGHT\fR keyword is not specified, copyright information is not added to the created
+module or program\[char46]
 
 .SH NOTICE
 Tip: 
@@ -24,10 +29,12 @@ To see the copyright information for a module, use the command:
 .fi
 
  
-For a program, use the \fIDSPPGM\fR command with \fIDETAIL\fR(\fI*COPYRIGHT\fR)\[char46] This information includes the copyright information from all modules bound into the program\[char46]
+For a program, use the \fIDSPPGM\fR command with \fIDETAIL\fR(\fI*COPYRIGHT\fR)\[char46] This
+information includes the copyright information from all modules bound into the program\[char46]
 
  
-Similarly, \fIDSPSRVPGM\fR \fIDETAIL\fR(\fI*COPYRIGHT\fR) gives the copyright information for all modules in a service program\[char46]
+Similarly, \fIDSPSRVPGM\fR \fIDETAIL\fR(\fI*COPYRIGHT\fR) gives the copyright information for all
+modules in a service program\[char46]
 
 
 .SH SEE ALSO

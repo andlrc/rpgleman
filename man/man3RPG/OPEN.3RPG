@@ -25,11 +25,11 @@ l l l l l l l  .
 T{
 \fIOPEN\fR (E)
 T}	T{
-Ã‚
+Â
 T}	T{
 file-name
 T}	T{
-Ã‚
+Â
 T}	T{
 _
 T}	T{
@@ -39,22 +39,37 @@ _
 T}
 .TE
 
-The explicit \fIOPEN\fR operation opens the file named in the file-name operand\[char46] The file named cannot be designated as a primary, secondary, or table file\[char46]
+The explicit \fIOPEN\fR operation opens the file named in the file-name operand\[char46] The file
+named cannot be designated as a primary, secondary, or table file\[char46]
 
 
-To handle \fIOPEN\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+To handle \fIOPEN\fR exceptions (file status codes greater than 1000), either the operation code
+extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For
+more information on error handling, see File Exception/Errors\[char46]
 
 
-To open the file specified in the file-name operand for the first time in a module or subprocedure with an explicit \fIOPEN\fR operation, specify the \fIUSROPN\fR keyword on the file description specifications\[char46] (See File Description Specifications for restrictions when using the \fIUSROPN\fR keyword\[char46])
+To open the file specified in the file-name operand for the first time in a module or subprocedure
+with an explicit \fIOPEN\fR operation, specify the \fIUSROPN\fR keyword on the file description
+specifications\[char46] (See File Description Specifications for restrictions when using the
+\fIUSROPN\fR keyword\[char46])
 
 
-If a file is opened and later closed by the \fICLOSE\fR operation in the module or subprocedure, the programmer can reopen the file with the \fIOPEN\fR operation and the \fIUSROPN\fR keyword on the file description specification is not required\[char46] When the \fIUSROPN\fR keyword is not specified on the file description specification, the file is opened at module initialization for global files, or subprocedure initialization for local files\[char46] If an \fIOPEN\fR operation is specified for a file that is already open, an error occurs\[char46]
+If a file is opened and later closed by the \fICLOSE\fR operation in the module or subprocedure, the
+programmer can reopen the file with the \fIOPEN\fR operation and the \fIUSROPN\fR keyword on the
+file description specification is not required\[char46] When the \fIUSROPN\fR keyword is not
+specified on the file description specification, the file is opened at module initialization for
+global files, or subprocedure initialization for local files\[char46] If an \fIOPEN\fR operation is
+specified for a file that is already open, an error occurs\[char46]
 
 
-Multiple \fIOPEN\fR operations in a program to the same file are valid as long as the file is closed when the \fIOPEN\fR operation is issued to it\[char46]
+Multiple \fIOPEN\fR operations in a program to the same file are valid as long as the file is closed
+when the \fIOPEN\fR operation is issued to it\[char46]
 
 
-When you open a file with the \fIDEVID\fR keyword specified (on the file description specifications), the fieldname specified as a parameter on the \fIDEVID\fR keyword is set to blanks\[char46] See the description of the \fIDEVID\fR keyword, in File Description Specifications\[char46]
+When you open a file with the \fIDEVID\fR keyword specified (on the file description
+specifications), the fieldname specified as a parameter on the \fIDEVID\fR keyword is set to
+blanks\[char46] See the description of the \fIDEVID\fR keyword, in File Description
+Specifications\[char46]
 
 
 For more information, see File Operations\[char46]

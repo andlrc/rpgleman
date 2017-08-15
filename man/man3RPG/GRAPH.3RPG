@@ -13,16 +13,19 @@ GRAPH
 GRAPH(length)
 .fi
 .SH DESCRIPTION
-The \fIGRAPH\fR keyword is used in a free-form definition to indicate that the item is fixed-length graphic\[char46]
+The \fIGRAPH\fR keyword is used in a free-form definition to indicate that the item is fixed-length
+graphic\[char46]
 
 
 It must be the first keyword\[char46]
 
 
-The parameter specifies the length in double-byte characters\[char46] It can be between 1 and 8,386,552\[char46]
+The parameter specifies the length in double-byte characters\[char46] It can be between 1 and
+8,386,552\[char46]
 
 
-The parameter can be a literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46]
+The parameter can be a literal or a named constant\[char46] If it is a named constant, the constant
+must be defined prior to the definition statement\[char46]
 
 
 In the following example 
@@ -32,7 +35,8 @@ In the following example
 .RE
 .IP "" 2
 .RS
-\[bu] field message  is defined as a fixed-length graphic field with 5000 characters\[char46] The length is defined using named constant \fIMSG\fR_LEN \[char46]
+\[bu] field message  is defined as a fixed-length graphic field with 5000 characters\[char46] The length is defined
+using named constant \fIMSG\fR_LEN \[char46]
 .RE
 .PP
  
@@ -46,7 +50,8 @@ In the following example
 .fi
 
 
-For information on defining a variable-length graphic item, see \fIVARGRAPH\fR(length {:2 | 4})\[char46]
+For information on defining a variable-length graphic item, see \fIVARGRAPH\fR(length {:2 |
+4})\[char46]
 
 .SH SEE ALSO
 .BR DCL,

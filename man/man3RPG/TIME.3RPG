@@ -13,16 +13,19 @@ TIME
 TIME{(format{separator})}
 .fi
 .SH DESCRIPTION
-The \fITIME\fR keyword is used in a free-form definition to indicate that the item has type time\[char46]
+The \fITIME\fR keyword is used in a free-form definition to indicate that the item has type
+time\[char46]
 
 
 It must be the first keyword\[char46]
 
 
-The parameter is optional\[char46] It specifies the time format and separator\[char46] See Time Data Type for information on the default format for time items\[char46]
+The parameter is optional\[char46] It specifies the time format and separator\[char46] See Time Data
+Type for information on the default format for time items\[char46]
 
 
-In the following example, field time_dft  is defined as a time field with the default format for the module, and field time_mdy  is defined with \fI*HMS\fR as the format and period as the separator\[char46] 
+In the following example, field time_dft  is defined as a time field with the default format for the module, and
+field time_mdy  is defined with \fI*HMS\fR as the format and period as the separator\[char46] 
 .SH EXAMPLE
 
 .PP

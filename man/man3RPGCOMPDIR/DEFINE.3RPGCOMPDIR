@@ -9,10 +9,12 @@
 .SH NAME
 DEFINE
 .SH DESCRIPTION
-The /\fIDEFINE\fR compiler directive defines conditions for conditional compilation\[char46] The entries in the condition-name area are free-format (do not have to be left justified)\[char46]
+The /\fIDEFINE\fR compiler directive defines conditions for conditional compilation\[char46] The
+entries in the condition-name area are free-format (do not have to be left justified)\[char46]
 
 
-/\fIDEFINE\fR must be followed by at least one space, and then the condition-name must be specified on the same line\[char46] The remainder of the line must be blank\[char46]
+/\fIDEFINE\fR must be followed by at least one space, and then the condition-name must be specified
+on the same line\[char46] The remainder of the line must be blank\[char46]
 
 
 See Compiler Directives for information on the columns available for directives\[char46]
@@ -21,7 +23,9 @@ See Compiler Directives for information on the columns available for directives\
 /\fIDEFINE\fR cannot be specified within a free-form statement\[char46]
 
 
-The /\fIDEFINE\fR directive adds a condition-name to the list of currently defined conditions\[char46] A subsequent /IF \fIDEFINED\fR(condition-name) would be true\[char46] A subsequent /IF \fINOT\fR \fIDEFINED\fR(condition-name) would be false\[char46] 
+The /\fIDEFINE\fR directive adds a condition-name to the list of currently defined
+conditions\[char46] A subsequent /IF \fIDEFINED\fR(condition-name) would be true\[char46] A
+subsequent /IF \fINOT\fR \fIDEFINED\fR(condition-name) would be false\[char46] 
 
 
 .SH SEE ALSO

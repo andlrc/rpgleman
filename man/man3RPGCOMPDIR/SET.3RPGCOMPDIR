@@ -9,35 +9,55 @@
 .SH NAME
 SET
 .SH DESCRIPTION
-Use the compiler directive /\fISET\fR to temporarily set a new default values for definitions\[char46]
+Use the compiler directive /\fISET\fR to temporarily set a new default values for
+definitions\[char46]
 
 
-To reverse the effect of the /\fISET\fR directive for one or more keywords, use the /\fIRESTORE\fR directive\[char46]
+To reverse the effect of the /\fISET\fR directive for one or more keywords, use the /\fIRESTORE\fR
+directive\[char46]
 
 
 You can specify the following keywords with the /\fISET\fR directive: 
 .TP 5
 .B \fICCSID\fR(\fI*CHAR\fR : ccsid)
-Specifies the default \fICCSID\fR for alphanumeric items that are defined without \fICCSID\fR keyword or the \fILIKE\fR keyword, and for alphanumeric externally-described subfields for data structures defined without keyword \fICCSID\fR(\fI*EXACT\fR)\[char46] See \fICCSID\fR(\fI*CHAR\fR : \fI*JOBRUN\fR | \fI*JOBRUNMIX\fR | \fI*UTF8\fR | \fI*HEX\fR | number)
+Specifies the default \fICCSID\fR for alphanumeric items that are defined without \fICCSID\fR
+keyword or the \fILIKE\fR keyword, and for alphanumeric externally-described subfields for data
+structures defined without keyword \fICCSID\fR(\fI*EXACT\fR)\[char46] See \fICCSID\fR(\fI*CHAR\fR : \fI*JOBRUN\fR | \fI*JOBRUNMIX\fR | \fI*UTF8\fR | \fI*HEX\fR |
+number)
 .TP 5
 .B \fICCSID\fR(\fI*GRAPH\fR : ccsid)
-Specifies the default \fICCSID\fR for graphic items that are specified without the \fICCSID\fR keyword\[char46] See \fICCSID\fR(\fI*GRAPH\fR : \fI*JOBRUN\fR | \fI*SRC\fR | \fI*HEX\fR | \fI*IGNORE\fR | number)
+Specifies the default \fICCSID\fR for graphic items that are specified without the \fICCSID\fR
+keyword\[char46] See \fICCSID\fR(\fI*GRAPH\fR : \fI*JOBRUN\fR | \fI*SRC\fR | \fI*HEX\fR | \fI*IGNORE\fR |
+number)
 .TP 5
 .B \fICCSID\fR(\fI*UCS2\fR : ccsid)
-Specifies the default \fICCSID\fR for \fIUCS\fR-2 items that are specified without the \fICCSID\fR keyword\[char46] See \fICCSID\fR(\fI*UCS2\fR : \fI*UTF16\fR | number)
+Specifies the default \fICCSID\fR for \fIUCS\fR-2 items that are specified without the \fICCSID\fR
+keyword\[char46] See \fICCSID\fR(\fI*UCS2\fR : \fI*UTF16\fR | number)
 .TP 5
 .B \fIDATFMT\fR(format)
-Specifies the default format and separator for date items that are specified without the date format (the \fIDATE\fR keyword is specified without a parameter in a free-form definition or the \fIDATFMT\fR keyword is not specified in a fixed-form definition)\[char46] See \fIDATFMT\fR(fmt{separator})
+Specifies the default format and separator for date items that are specified without the date format
+(the \fIDATE\fR keyword is specified without a parameter in a free-form definition or the
+\fIDATFMT\fR keyword is not specified in a fixed-form definition)\[char46]
+See \fIDATFMT\fR(fmt{separator})
 .TP 5
 .B \fITIMFMT\fR(format)
-Specifies the default format and separator for time items that are specified without the time format (the \fITIME\fR keyword is specified without a parameter in a free-form definition or the \fITIMFMT\fR keyword is not specified in a fixed-form definition)\[char46] See \fITIMFMT\fR(fmt{separator})
+Specifies the default format and separator for time items that are specified without the time format
+(the \fITIME\fR keyword is specified without a parameter in a free-form definition or the
+\fITIMFMT\fR keyword is not specified in a fixed-form definition)\[char46]
+See \fITIMFMT\fR(fmt{separator})
 .PP
 
 
-Specify the \fISET\fR directive in a copy file to ensure that all modules that include the copy file use the same values for the time and date formats and the \fICCSID\fRs\[char46] Any values set by /\fISET\fR directives within a copy file are implicitly restored to their values prior to the /\fICOPY\fR or /\fIINCLUDE\fR directive\[char46]
+Specify the \fISET\fR directive in a copy file to ensure that all modules that include the copy file
+use the same values for the time and date formats and the \fICCSID\fRs\[char46] Any values set by
+/\fISET\fR directives within a copy file are implicitly restored to their values prior to the
+/\fICOPY\fR or /\fIINCLUDE\fR directive\[char46]
 
 
-If you cannot change the copy file, you can code the /\fISET\fR directive prior to the /\fICOPY\fR or /\fIINCLUDE\fR directive, and then code the /\fIRESTORE\fR directive after the /\fICOPY\fR or /\fIINCLUDE\fR directive to restore the defaults to the values that were previously in effect before the /\fISET\fR directive\[char46]
+If you cannot change the copy file, you can code the /\fISET\fR directive prior to the /\fICOPY\fR
+or /\fIINCLUDE\fR directive, and then code the /\fIRESTORE\fR directive after the /\fICOPY\fR or
+/\fIINCLUDE\fR directive to restore the defaults to the values that were previously in effect before
+the /\fISET\fR directive\[char46]
 
 
 Rules for /\fISET\fR and /\fIRESTORE\fR 
@@ -47,7 +67,9 @@ Rules for /\fISET\fR and /\fIRESTORE\fR
 .RE
 .IP "" 2
 .RS
-\[bu] The keywords specified on a /\fIRESTORE\fR directive do not have to exactly match the keywords specified on the previous /\fISET\fR directive\[char46] A /\fIRESTORE\fR directive can some or all of the values set by any previous /\fISET\fR directives\[char46]
+\[bu] The keywords specified on a /\fIRESTORE\fR directive do not have to exactly match the keywords
+specified on the previous /\fISET\fR directive\[char46] A /\fIRESTORE\fR directive can some or all
+of the values set by any previous /\fISET\fR directives\[char46]
 .RE
 .PP
 
@@ -57,86 +79,108 @@ Examples of /\fISET\fR and /\fIRESTORE\fR
 
 .IP 1. 2
 .RS
-The default \fICCSID\fR for alphanumeric and graphic items and the default date format for date items are specified using Control specification keywords\[char46] \fICCSID\fR(\fI*UCS2\fR) defaults to 13488, and \fITIMFMT\fR defaults to \fI*ISO\fR\[char46]
+The default \fICCSID\fR for alphanumeric and graphic items and the default date format for date
+items are specified using Control specification keywords\[char46] \fICCSID\fR(\fI*UCS2\fR) defaults
+to 13488, and \fITIMFMT\fR defaults to \fI*ISO\fR\[char46]
 .RE
 .IP 2. 2
 .RS
-Field char1  is alphanumeric\[char46] The \fICCSID\fR keyword is not specified, so the \fICCSID\fR defaults to \fI*UTF8\fR\[char46]
+Field char1  is alphanumeric\[char46] The \fICCSID\fR keyword is not specified, so the \fICCSID\fR defaults to
+\fI*UTF8\fR\[char46]
 .RE
 .IP 3. 2
 .RS
-Field graph1  is graphic\[char46] The \fICCSID\fR keyword is not specified, so the \fICCSID\fR defaults to 835\[char46]
+Field graph1  is graphic\[char46] The \fICCSID\fR keyword is not specified, so the \fICCSID\fR defaults to
+835\[char46]
 .RE
 .IP 4. 2
 .RS
-The /\fISET\fR directive sets the default alphanumeric \fICCSID\fR to 37 and it sets the default \fIUCS\fR-2 \fICCSID\fR to 1200\[char46]
+The /\fISET\fR directive sets the default alphanumeric \fICCSID\fR to 37 and it sets the default
+\fIUCS\fR-2 \fICCSID\fR to 1200\[char46]
 .RE
 .IP 5. 2
 .RS
-Field char2  is alphanumeric\[char46] The \fICCSID\fR keyword is not specified, so the \fICCSID\fR defaults to 37\[char46]
+Field char2  is alphanumeric\[char46] The \fICCSID\fR keyword is not specified, so the \fICCSID\fR defaults to
+37\[char46]
 .RE
 .IP 6. 2
 .RS
-Field char3  is defined using the \fILIKE\fR keyword\[char46] \fICCSID\fR(\fI*DFT\fR) is specified, indicating that it will use the default \fICCSID\fR\[char46] It is defined like an alphanumeric field, so it uses the current default alphanumeric \fICCSID\fR which is 37\[char46]
+Field char3  is defined using the \fILIKE\fR keyword\[char46] \fICCSID\fR(\fI*DFT\fR) is specified, indicating
+that it will use the default \fICCSID\fR\[char46] It is defined like an alphanumeric field, so it
+uses the current default alphanumeric \fICCSID\fR which is 37\[char46]
 .RE
 .IP 7. 2
 .RS
-The /\fIRESTORE\fR directive restores \fICCSID\fR(\fI*CHAR\fR) to its previous value of \fI*UTF8\fR\[char46] \fICCSID\fR(\fI*UCS2\fR) is not specified for the /\fIRESTORE\fR directive, so the value 1200 set by the previous /\fISET\fR directive is still in effect\[char46]
+The /\fIRESTORE\fR directive restores \fICCSID\fR(\fI*CHAR\fR) to its previous value of
+\fI*UTF8\fR\[char46] \fICCSID\fR(\fI*UCS2\fR) is not specified for the /\fIRESTORE\fR directive, so
+the value 1200 set by the previous /\fISET\fR directive is still in effect\[char46]
 .RE
 .IP 8. 2
 .RS
-Field ucs1  is \fIUCS\fR-2\[char46] The \fICCSID\fR keyword is not specified, so the \fICCSID\fR defaults to 1200, which is the current default \fIUCS\fR-2 \fICCSID\fR\[char46]
+Field ucs1  is \fIUCS\fR-2\[char46] The \fICCSID\fR keyword is not specified, so the \fICCSID\fR defaults to
+1200, which is the current default \fIUCS\fR-2 \fICCSID\fR\[char46]
 .RE
 .IP 9. 2
 .RS
-/\fICOPY\fR is used to include source member copyfile \[char46] At this point, the defaults are \fICCSID\fR(\fI*CHAR\fR:\fI*UTF8\fR), \fICCSID\fR(\fI*GRAPH\fR:835), \fICCSID\fR(\fI*UCS2\fR:1200), \fIDATFMT\fR(\fI*YMD\fR), \fITIMFMT\fR(\fI*ISO\fR)\[char46]
+/\fICOPY\fR is used to include source member copyfile \[char46] At this point, the defaults are \fICCSID\fR(\fI*CHAR\fR:\fI*UTF8\fR),
+\fICCSID\fR(\fI*GRAPH\fR:835), \fICCSID\fR(\fI*UCS2\fR:1200), \fIDATFMT\fR(\fI*YMD\fR),
+\fITIMFMT\fR(\fI*ISO\fR)\[char46]
 .RE
 .IP 10. 2
 .RS
-The copy file begins with the /\fISET\fR directive setting defaults for the data types used in the copy file\[char46] After this point, the defaults are \fICCSID\fR(\fI*CHAR\fR:\fI*UTF8\fR), \fICCSID\fR(\fI*GRAPH\fR:835), \fICCSID\fR(\fI*UCS2\fR:13488), \fIDATFMT\fR(\fI*ISO\fR), \fITIMFMT\fR(\fI*HMS\fR)\[char46]
+The copy file begins with the /\fISET\fR directive setting defaults for the data types used in the
+copy file\[char46] After this point, the defaults are \fICCSID\fR(\fI*CHAR\fR:\fI*UTF8\fR),
+\fICCSID\fR(\fI*GRAPH\fR:835), \fICCSID\fR(\fI*UCS2\fR:13488), \fIDATFMT\fR(\fI*ISO\fR),
+\fITIMFMT\fR(\fI*HMS\fR)\[char46]
 .RE
 .IP 11. 2
 .RS
-Field time1  is a time field\[char46] The \fITIMFMT\fR keyword is not specified, so the time format defaults to \fI*HMS\fR, which is the default set by the /\fISET\fR directive in the copy file\[char46]
+Field time1  is a time field\[char46] The \fITIMFMT\fR keyword is not specified, so the time format defaults to
+\fI*HMS\fR, which is the default set by the /\fISET\fR directive in the copy
+file\[char46]
 .RE
 .IP 12. 2
 .RS
-Field char4  is alphanumeric\[char46] The \fICCSID\fR keyword is not specified, so the \fICCSID\fR defaults to \fI*UTF8\fR\[char46]
+Field char4  is alphanumeric\[char46] The \fICCSID\fR keyword is not specified, so the \fICCSID\fR defaults to
+\fI*UTF8\fR\[char46]
 .RE
 .IP 13. 2
 .RS
-At the end of the copy file, any values set by /\fISET\fR directives within the copy file are implicitly restored\[char46]
+At the end of the copy file, any values set by /\fISET\fR directives within the copy file are
+implicitly restored\[char46]
 .RE
 .IP 14. 2
 .RS
-At this point, the defaults are the same as they were before the /\fICOPY\fR directive: \fICCSID\fR(\fI*CHAR\fR:\fI*UTF8\fR), \fICCSID\fR(\fI*GRAPH\fR:835), \fICCSID\fR(\fI*UCS2\fR:1200), \fIDATFMT\fR(\fI*YMD\fR), \fITIMFMT\fR(\fI*ISO\fR)\[char46]
+At this point, the defaults are the same as they were before the /\fICOPY\fR directive:
+\fICCSID\fR(\fI*CHAR\fR:\fI*UTF8\fR), \fICCSID\fR(\fI*GRAPH\fR:835), \fICCSID\fR(\fI*UCS2\fR:1200),
+\fIDATFMT\fR(\fI*YMD\fR), \fITIMFMT\fR(\fI*ISO\fR)\[char46]
 .RE
 .PP
 .SH EXAMPLE
 Main source file
 .PP
 .nf
-   CTL-OPT CCSID(*CHAR : *UTF8) CCSID(*GRAPH : 835) Â 1Â
-           DATFMT(*YMD); Â 1Â
-   DCL-S char1 char(10); Â 2Â
-   DCL-S graph1 graph(10); Â 3Â
-   /SET CCSID(*CHAR : 37) CCSID(*UCS2:1200) Â 4Â
-   DCL-S char2 char(10); Â 5Â
-   DCL-S char3 LIKE(char1) CCSID(*DFT); Â 6Â
-   /RESTORE CCSID(*CHAR) Â 7Â
-   DCL-S ucs1 UCS2(10); Â 8Â
-   /COPY copyfile Â 9Â
-   Â 14Â
+   CTL-OPT CCSID(*CHAR : *UTF8) CCSID(*GRAPH : 835)  1�
+           DATFMT(*YMD);  1�
+   DCL-S char1 char(10);  2�
+   DCL-S graph1 graph(10);  3�
+   /SET CCSID(*CHAR : 37) CCSID(*UCS2:1200)  4�
+   DCL-S char2 char(10);  5�
+   DCL-S char3 LIKE(char1) CCSID(*DFT);  6�
+   /RESTORE CCSID(*CHAR)  7�
+   DCL-S ucs1 UCS2(10);  8�
+   /COPY copyfile  9�
+    14�
 .fi
 
 .SH EXAMPLE
 /\fICOPY\fR file copyfile
 .PP
 .nf
-   /SET CCSID(*UCS2 : 13488) DATFMT(*ISO) TIMFMT(*HMS) Â 10Â
-   DCL-S time1 time; Â 11Â
-   DCL-S char4 char(10); Â 12Â
-   Â 13Â
+   /SET CCSID(*UCS2 : 13488) DATFMT(*ISO) TIMFMT(*HMS)  10�
+   DCL-S time1 time;  11�
+   DCL-S char4 char(10);  12�
+    13�
 .fi
 .SH SEE ALSO
 .BR CCSID,

@@ -9,20 +9,27 @@
 .SH NAME
 SPACE
 .SH DESCRIPTION
-Use the compiler directive /\fISPACE\fR to control line spacing within the source section of the compiler listing\[char46]
+Use the compiler directive /\fISPACE\fR to control line spacing within the source section of the
+compiler listing\[char46]
 
 
 See Compiler Directives for information on the columns available for directives\[char46]
 
 
-/\fISPACE\fR must be followed by exactly one blank, and then followed by a positive integer value from 1 through 112 that defines the number of lines to space on the compiler listing, followed by at least two blanks\[char46] The remaining columns can contain comments\[char46]
+/\fISPACE\fR must be followed by exactly one blank, and then followed by a positive integer value
+from 1 through 112 that defines the number of lines to space on the compiler listing, followed by at
+least two blanks\[char46] The remaining columns can contain comments\[char46]
 
 
 /\fISPACE\fR cannot be coded within a free-form statement\[char46]
 
 
-If the number of lines is greater than 112, 112 will be used as the /\fISPACE\fR value\[char46] If the number of lines is greater than the number of lines remaining on the current page, subsequent specifications begin at the top of the next page\[char46]
+If the number of lines is greater than 112, 112 will be used as the /\fISPACE\fR value\[char46] If
+the number of lines is greater than the number of lines remaining on the current page, subsequent
+specifications begin at the top of the next page\[char46]
 
 
-/\fISPACE\fR is not printed on the compiler listing, but is replaced by the specified line spacing\[char46] The line spacing caused by /\fISPACE\fR is in addition to the two lines that are skipped between specification types\[char46]
+/\fISPACE\fR is not printed on the compiler listing, but is replaced by the specified line
+spacing\[char46] The line spacing caused by /\fISPACE\fR is in addition to the two lines that are
+skipped between specification types\[char46]
 

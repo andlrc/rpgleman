@@ -13,16 +13,19 @@ DATE
 DATE{(format{separator})}
 .fi
 .SH DESCRIPTION
-The \fIDATE\fR keyword is used in a free-form definition to indicate that the item has type date\[char46]
+The \fIDATE\fR keyword is used in a free-form definition to indicate that the item has type
+date\[char46]
 
 
 It must be the first keyword\[char46]
 
 
-The parameter is optional\[char46] It specifies the date format and separator\[char46] See Date Data Type for information on the default format for date items\[char46]
+The parameter is optional\[char46] It specifies the date format and separator\[char46] See Date Data
+Type for information on the default format for date items\[char46]
 
 
-In the following example, field date_dft  is defined as a date field with the default format for the module, and field date_mdy  is defined with \fI*MDY\fR as the format and hyphen as the separator\[char46] 
+In the following example, field date_dft  is defined as a date field with the default format for the module, and
+field date_mdy  is defined with \fI*MDY\fR as the format and hyphen as the separator\[char46] 
 .SH EXAMPLE
 
 .PP

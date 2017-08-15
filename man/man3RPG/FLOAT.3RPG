@@ -13,7 +13,8 @@ FLOAT
 FLOAT(bytes)
 .fi
 .SH DESCRIPTION
-The \fIFLOAT\fR keyword is a numeric data type keyword\[char46] It is used in a free-form definition to indicate that the item has float format\[char46]
+The \fIFLOAT\fR keyword is a numeric data type keyword\[char46] It is used in a free-form definition
+to indicate that the item has float format\[char46]
 
 
 It must be the first keyword\[char46]
@@ -22,7 +23,8 @@ It must be the first keyword\[char46]
 The parameter specifies the length in bytes\[char46] It must be one of 4 or 8\[char46]
 
 
-The parameter can be a literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46]
+The parameter can be a literal or a named constant\[char46] If it is a named constant, the constant
+must be defined prior to the definition statement\[char46]
 
 
 In the following example 

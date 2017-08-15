@@ -13,7 +13,10 @@ FTRANS
 FTRANS{(*NONE | *SRC)}
 .fi
 .SH DESCRIPTION
-The \fIFTRANS\fR keyword specifies whether file translation will occur\[char46] If specified, optionally with \fI*SRC\fR, file translation will take place and the translate table must be specified in the program\[char46] If not specified or specified with \fI*NONE\fR, no file translation will take place and the translate table must not be present\[char46]
+The \fIFTRANS\fR keyword specifies whether file translation will occur\[char46] If specified,
+optionally with \fI*SRC\fR, file translation will take place and the translate table must be
+specified in the program\[char46] If not specified or specified with \fI*NONE\fR, no file
+translation will take place and the translate table must not be present\[char46]
 
 .SH SEE ALSO
 .BR ONE

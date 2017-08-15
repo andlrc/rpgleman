@@ -13,8 +13,12 @@ GENLVL
 GENLVL(number)
 .fi
 .SH DESCRIPTION
-The \fIGENLVL\fR keyword controls the creation of the object\[char46] The object is created if all errors encountered during compilation have a severity level less than or equal to the generation severity level specified\[char46] The value must be between 0 and 20 inclusive\[char46] For errors greater than severity 20, the object will not be created\[char46]
+The \fIGENLVL\fR keyword controls the creation of the object\[char46] The object is created if all
+errors encountered during compilation have a severity level less than or equal to the generation
+severity level specified\[char46] The value must be between 0 and 20 inclusive\[char46] For errors
+greater than severity 20, the object will not be created\[char46]
 
 
-If the \fIGENLVL\fR keyword is not specified, then the value specified on the command is used\[char46]
+If the \fIGENLVL\fR keyword is not specified, then the value specified on the command is
+used\[char46]
 

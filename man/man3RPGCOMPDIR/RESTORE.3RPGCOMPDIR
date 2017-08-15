@@ -9,29 +9,37 @@
 .SH NAME
 RESTORE
 .SH DESCRIPTION
-Use the compiler directive /\fIRESTORE\fR to restore values previously set by /\fISET\fR  directives in the same source member\[char46] 
+Use the compiler directive /\fIRESTORE\fR to restore values previously set
+by /\fISET\fR  directives in the same source member\[char46] 
 .TP 5
 .B \fICCSID\fR(\fI*CHAR\fR)
-Undoes the effect of the previous /\fISET\fR directive containing the \fICCSID\fR(\fI*CHAR\fR) keyword\[char46]
+Undoes the effect of the previous /\fISET\fR directive containing the \fICCSID\fR(\fI*CHAR\fR)
+keyword\[char46]
 .TP 5
 .B \fICCSID\fR(\fI*GRAPH\fR)
-Undoes the effect of the previous /\fISET\fR directive containing the \fICCSID\fR(\fI*GRAPH\fR) keyword\[char46]
+Undoes the effect of the previous /\fISET\fR directive containing the \fICCSID\fR(\fI*GRAPH\fR)
+keyword\[char46]
 .TP 5
 .B \fICCSID\fR(\fI*UCS2\fR)
-Undoes the effect of the previous /\fISET\fR directive containing the \fICCSID\fR(\fI*UCS2\fR) keyword\[char46]
+Undoes the effect of the previous /\fISET\fR directive containing the \fICCSID\fR(\fI*UCS2\fR)
+keyword\[char46]
 .TP 5
 .B \fIDATFMT\fR
-Undoes the effect of the previous /\fISET\fR directive containing the \fIDATFMT\fR keyword\[char46]
+Undoes the effect of the previous /\fISET\fR directive containing the \fIDATFMT\fR
+keyword\[char46]
 .TP 5
 .B \fITIMFMT\fR
-Undoes the effect of the previous /\fISET\fR directive containing the \fITIMFMT\fR keyword\[char46]
+Undoes the effect of the previous /\fISET\fR directive containing the \fITIMFMT\fR
+keyword\[char46]
 .PP
 
 
-See /\fISET\fR for information about the rules for /\fISET\fR and /\fIRESTORE\fR, and examples\[char46]
+See /\fISET\fR for information about the rules for /\fISET\fR and /\fIRESTORE\fR, and
+examples\[char46]
 
 .SH NOTICE
-Note:  Any values set by /\fISET\fR directives within a copy file are implicitly restored to their values prior to the /\fICOPY\fR or /\fIINCLUDE\fR directive\[char46]
+Note:  Any values set by /\fISET\fR directives within a copy file are implicitly restored to their values
+prior to the /\fICOPY\fR or /\fIINCLUDE\fR directive\[char46]
 .SH SEE ALSO
 .BR CCSID,
 .BR COPY,

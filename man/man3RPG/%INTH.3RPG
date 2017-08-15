@@ -13,7 +13,9 @@
 %INTH(numeric or character expression)
 .fi
 .SH DESCRIPTION
-\fB%INTH\fR is the same as \fB%INT\fR except that if the expression is a decimal, float or character value, half adjust is applied to the value of the expression when converting to integer type\[char46] No message is issued if half adjust cannot be performed\[char46]
+\fB%INTH\fR is the same as \fB%INT\fR except that if the expression is a decimal, float or character
+value, half adjust is applied to the value of the expression when converting to integer
+type\[char46] No message is issued if half adjust cannot be performed\[char46]
 
 
 For more information, see Conversion Operations or Built-in Functions\[char46]

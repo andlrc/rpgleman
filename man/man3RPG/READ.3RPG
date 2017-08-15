@@ -25,7 +25,7 @@ l l l l l l l  .
 T{
 \fIREAD\fR (E N)
 T}	T{
-Â
+�
 T}	T{
 name (file or record format)
 T}	T{
@@ -39,42 +39,78 @@ T}	T{
 T}
 .TE
 
-The \fIREAD\fR operation reads the record, currently pointed to, from a full procedural file\[char46]
+The \fIREAD\fR operation reads the record, currently pointed to, from a full procedural
+file\[char46]
 
 
-The name operand is required and must be the name of a file or record format\[char46] A record format name is allowed only with an externally described file\[char46] It may be the case that a \fIREAD\fR-by-format-name operation will receive a different format from the one you specified in the name operand\[char46] If so, your \fIREAD\fR operation ends in error\[char46]
+The name operand is required and must be the name of a file or record format\[char46] A record
+format name is allowed only with an externally described file\[char46] It may be the case that a
+\fIREAD\fR-by-format-name operation will receive a different format from the one you specified in
+the name operand\[char46] If so, your \fIREAD\fR operation ends in error\[char46]
 
 
-If the data-structure operand is specified, the record is read directly into the data structure\[char46] If name refers to a program-described file, the data structure can be any data structure of the same length as the file\[char39]s declared record length\[char46] If name refers to an externally-described file or a record format from an externally described file, the data structure must be a data structure defined with \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR)\[char46] See File Operations for information on how to define the data structure and how data is transferred between the file and the data structure\[char46]
+If the data-structure operand is specified, the record is read directly into the data
+structure\[char46] If name refers to a program-described file, the data structure can be any data
+structure of the same length as the file\[char39]s declared record length\[char46] If name refers to
+an externally-described file or a record format from an externally described file, the data
+structure must be a data structure defined with \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR
+or \fI*ALL\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR)\[char46] See
+File Operations for information on how to define the data structure and how data is transferred
+between the file and the data structure\[char46]
 
 
-If a \fIREAD\fR operation is successful, the file is positioned at the next record that satisfies the read\[char46] If there is a record-lock error (status 1218), the file is still positioned at the locked record and the next read operation will attempt to read that record again\[char46] Otherwise, if there is any other error or an end of file condition, you must reposition the file (using a \fICHAIN\fR, \fISETLL\fR, or \fISETGT\fR operation)\[char46]
+If a \fIREAD\fR operation is successful, the file is positioned at the next record that satisfies
+the read\[char46] If there is a record-lock error (status 1218), the file is still positioned at the
+locked record and the next read operation will attempt to read that record again\[char46] Otherwise,
+if there is any other error or an end of file condition, you must reposition the file (using a
+\fICHAIN\fR, \fISETLL\fR, or \fISETGT\fR operation)\[char46]
 
 
-If the file from which you are reading is an update disk file, you can specify an N operation extender to indicate that no lock should be placed on the record when it is read\[char46] See the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide for more information\[char46]
+If the file from which you are reading is an update disk file, you can specify an N operation
+extender to indicate that no lock should be placed on the record when it is read\[char46] See the
+Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide for more
+information\[char46]
 
 
-To handle \fIREAD\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+To handle \fIREAD\fR exceptions (file status codes greater than 1000), either the operation code
+extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For
+more information on error handling, see File Exception/Errors\[char46]
 
 
-You can specify an indicator in positions 75-76 to signal whether an end of file occurred on the \fIREAD\fR operation\[char46] The indicator is either set on (an \fIEOF\fR condition) or off every time the \fIREAD\fR operation is performed\[char46] This information can also be obtained from the \fB%EOF\fR built-in function, which returns \[char39]1\[char39] if an \fIEOF\fR condition occurs and \[char39]0\[char39] otherwise\[char46] The file must be repositioned after an \fIEOF\fR condition, in order to process any further successful sequential operations (for example, \fIREAD\fR or \fIREADP\fR) to the file\[char46]
+You can specify an indicator in positions 75-76 to signal whether an end of file occurred on the
+\fIREAD\fR operation\[char46] The indicator is either set on (an \fIEOF\fR condition) or off every
+time the \fIREAD\fR operation is performed\[char46] This information can also be obtained from the
+\fB%EOF\fR built-in function, which returns \[char39]1\[char39] if an \fIEOF\fR condition occurs and
+\[char39]0\[char39] otherwise\[char46] The file must be repositioned after an \fIEOF\fR condition,
+in order to process any further successful sequential operations (for example, \fIREAD\fR or
+\fIREADP\fR) to the file\[char46]
 
 
 Figure 1 illustrates the \fIREAD\fR operation\[char46]
 
 
-When name  specifies a multiple device file, the \fIREAD\fR operation does one of the following: 
+When name  specifies a multiple device file, the \fIREAD\fR operation does one of the
+following: 
 .IP "" 2
 .RS
-\[bu] Reads data from the device specified in the most recent \fINEXT\fR operation (if such a \fINEXT\fR operation has been processed)\[char46]
+\[bu] Reads data from the device specified in the most recent \fINEXT\fR operation (if such a \fINEXT\fR
+operation has been processed)\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Accepts the first response from any device that has been acquired for the file, and that was specified for âinvite statusâ with the \fIDDS\fR keyword \fIINVITE\fR\[char46] If there are no invited devices, the operation receives an end of file\[char46] The input is processed according to the corresponding format\[char46] If the device is a workstation, the last format written to it is used\[char46] If the device is a communications device, you can select the format\[char46] 
-Refer to \fIICF\fR Programming, SC41-5442 for more information on format selection processing for an \fIICF\fR file\[char46]
+\[bu] Accepts the first response from any device that has been acquired for the file, and that was
+specified for “invite status” with the \fIDDS\fR keyword \fIINVITE\fR\[char46] If there are no
+invited devices, the operation receives an end of file\[char46] The input is processed according to
+the corresponding format\[char46] If the device is a workstation, the last format written to it is
+used\[char46] If the device is a communications device, you can select the
+format\[char46] 
+Refer to \fIICF\fR Programming, SC41-5442 for more information on format selection processing for an
+\fIICF\fR file\[char46]
 
  
-The \fIREAD\fR operation will stop waiting after a period of time in which no input is provided, or when one of the following CL commands has been entered with the controlled option specified: 
+The \fIREAD\fR operation will stop waiting after a period of time in which no input is provided, or
+when one of the following CL commands has been entered with the controlled option
+specified: 
 .IP "" 2
 .RS
 \[bu] \fIENDJOB\fR (End Job)
@@ -94,14 +130,20 @@ The \fIREAD\fR operation will stop waiting after a period of time in which no in
 .PP
 
  
-This results in a file exception/error that is handled by the method specified in your program (see File Exception/Errors)\[char46] See \fIICF\fR Programming, SC41-5442 for a discussion of the \fIWAITRCD\fR parameter on the commands to create or modify a file\[char46] This parameter controls the length of time the \fIREAD\fR operation waits for input\[char46]
+This results in a file exception/error that is handled by the method specified in your program (see
+File Exception/Errors)\[char46] See \fIICF\fR Programming, SC41-5442 for a discussion of the
+\fIWAITRCD\fR parameter on the commands to create or modify a file\[char46] This parameter controls
+the length of time the \fIREAD\fR operation waits for input\[char46]
 
 
 .RE
 .PP
 
 
-When name specifies a format name and the format name is associated with a multiple device file, data is read from the device identified by the field specified in the \fIDEVID\fR keyword in file specifications\[char46] If there is no such entry, data is read from the device used in the last successful input operation\[char46]
+When name specifies a format name and the format name is associated with a multiple device file,
+data is read from the device identified by the field specified in the \fIDEVID\fR keyword in file
+specifications\[char46] If there is no such entry, data is read from the device used in the last
+successful input operation\[char46]
 
 
 See Database Null Value Support for information on reading records with null-capable fields\[char46]

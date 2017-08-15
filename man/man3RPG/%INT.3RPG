@@ -13,13 +13,17 @@
 %INT(numeric or character expression)
 .fi
 .SH DESCRIPTION
-\fB%INT\fR converts the value of the expression to integer\[char46] Any decimal digits are truncated\[char46] This built-in function may only be used in expressions\[char46] \fB%INT\fR can be used to truncate the decimal positions from a float or decimal value allowing it to be used as an array index\[char46]
+\fB%INT\fR converts the value of the expression to integer\[char46] Any decimal digits are
+truncated\[char46] This built-in function may only be used in expressions\[char46] \fB%INT\fR can be
+used to truncate the decimal positions from a float or decimal value allowing it to be used as an
+array index\[char46]
 
 
 If the parameter is a character expression, the following rules apply: 
 .IP "" 2
 .RS
-\[bu] The sign is optional\[char46] It can be \[char39]+\[char39] or \[char39]-\[char39]\[char46] It can precede or follow the numeric data\[char46]
+\[bu] The sign is optional\[char46] It can be \[char39]+\[char39] or \[char39]-\[char39]\[char46] It can
+precede or follow the numeric data\[char46]
 .RE
 .IP "" 2
 .RS
@@ -27,15 +31,18 @@ If the parameter is a character expression, the following rules apply:
 .RE
 .IP "" 2
 .RS
-\[bu] Blanks are allowed anywhere in the data\[char46] For example, \[char39] + 3 \[char39] is a valid parameter\[char46]
+\[bu] Blanks are allowed anywhere in the data\[char46] For example, \[char39] + 3 \[char39] is a valid
+parameter\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Floating point data is not allowed\[char46] That is, where the numeric value is followed by E and an exponent, for example \[char39]1\[char46]2E6\[char39]\[char46]
+\[bu] Floating point data is not allowed\[char46] That is, where the numeric value is followed by E and an
+exponent, for example \[char39]1\[char46]2E6\[char39]\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If invalid numeric data is found, an exception occurs with status code 105
+\[bu] If invalid numeric data is found, an exception occurs with status code
+105
 .RE
 .PP
 

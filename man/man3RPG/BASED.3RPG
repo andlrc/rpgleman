@@ -13,16 +13,21 @@ BASED
 BASED(basing_pointer_name)
 .fi
 .SH DESCRIPTION
-When the \fIBASED\fR keyword is specified for a data structure or standalone field, a 
+When the \fIBASED\fR keyword is specified for a data structure or standalone field,
+a 
 
-  is created using the name specified as the keyword parameter\[char46] This basing pointer holds the address (storage location) of the 
+  is created using the name specified as the keyword parameter\[char46] This basing pointer holds the
+address (storage location) of the 
 
-  data structure or standalone field being defined\[char46] In other words, the name specified in positions 7-21 is used to refer to the data stored at the location contained in the basing pointer\[char46] 
+  data structure or standalone field being defined\[char46] In other words, the name specified in
+positions 7-21 is used to refer to the data stored at the location contained in the basing
+pointer\[char46] 
 
 
 
 If an array is defined as a based standalone field it must be a run-time array\[char46]
 
 
-If a based field is defined within a subprocedure, then both the field and the basing pointer are local\[char46]
+If a based field is defined within a subprocedure, then both the field and the basing pointer are
+local\[char46]
 

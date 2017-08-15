@@ -13,13 +13,19 @@ DATFMT
 DATFMT(fmt{separator})
 .fi
 .SH DESCRIPTION
-The \fIDATFMT\fR keyword specifies the internal date format for date literals and the default internal format for date fields within the program\[char46] You can specify a different internal date format for a particular field by specifying the format with the \fIDATFMT\fR keyword on the definition specification for that field\[char46]
+The \fIDATFMT\fR keyword specifies the internal date format for date literals and the default
+internal format for date fields within the program\[char46] You can specify a different internal
+date format for a particular field by specifying the format with the \fIDATFMT\fR keyword on the
+definition specification for that field\[char46]
 
 
-The default date format for definitions can be temporarily changed using the /\fISET\fR and /\fIRESTORE\fR directives\[char46] See /\fISET\fR\[char46]
+The default date format for definitions can be temporarily changed using the /\fISET\fR and
+/\fIRESTORE\fR directives\[char46] See /\fISET\fR\[char46]
 
 
-If the \fIDATFMT\fR keyword is not specified, the \fI*ISO\fR format is assumed\[char46] For more information on internal formats, see Internal and External Formats\[char46] Table 1 describes the various date formats and their separators\[char46]
+If the \fIDATFMT\fR keyword is not specified, the \fI*ISO\fR format is assumed\[char46] For more
+information on internal formats, see Internal and External Formats\[char46] Table 1 describes the
+various date formats and their separators\[char46]
 
 .SH SEE ALSO
 .BR RESTORE,

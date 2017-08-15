@@ -18,7 +18,8 @@ T}	T{
 \fIXML-INTO\fR{(EH)} receiver \fB%XML(xmlDoc {: options })\fR;
 T}
 T{
-\fIXML-INTO\fR{(EH)} \fB%HANDLER(handlerProc : commArea)\fR \fB%XML(xmlDoc {: options })\fR;
+\fIXML-INTO\fR{(EH)} \fB%HANDLER(handlerProc : commArea)\fR \fB%XML(xmlDoc {: options
+})\fR;
 T}
 .TE
 
@@ -28,20 +29,23 @@ l l l  .
 T{
 \fIXML-INTO\fR
 T}	T{
-Ã‚
+Â
 T}	T{
 receiver \fB%XML(xmlDoc {: options })\fR
 T}
 T{
 \fIXML-INTO\fR
 T}	T{
-Ã‚
+Â
 T}	T{
 \fB%HANDLER(handlerProc : commArea)\fR \fB%XML(xmlDoc {: options })\fR
 T}
 .TE
 
-Tip: If you are not familiar with the basic concepts of \fIXML\fR and of processing \fIXML\fR documents, you may find it helpful to read the "Processing \fIXML\fR Documents" section in Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide before reading further in this section\[char46]
+Tip: If you are not familiar with the basic concepts of \fIXML\fR and of processing \fIXML\fR
+documents, you may find it helpful to read the "Processing \fIXML\fR Documents" section in Rational
+Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide before reading further in
+this section\[char46]
 
 
 \fIXML-INTO\fR can operate in two different ways: 
@@ -51,15 +55,19 @@ Tip: If you are not familiar with the basic concepts of \fIXML\fR and of process
 .RE
 .IP "" 2
 .RS
-\[bu] Reading \fIXML\fR data gradually into an array parameter that it passes to the procedure specified by \fB%HANDLER(handlerProc)\fR\[char46]
+\[bu] Reading \fIXML\fR data gradually into an array parameter that it passes to the procedure specified
+by \fB%HANDLER(handlerProc)\fR\[char46]
 .RE
 .PP
 
 
-The first operand specifies the target of the parsed data\[char46] It can contain a variable name or the \fB%HANDLER\fR built-in function\[char46]
+The first operand specifies the target of the parsed data\[char46] It can contain a variable name or
+the \fB%HANDLER\fR built-in function\[char46]
 
 
-The second operand must be the \fB%XML\fR built-in function, identifying the \fIXML\fR document to be parsed and the options controlling the way the parsing is done\[char46] See \fB%XML\fR (xmlDocument {:options}) for more information on \fB%XML\fR\[char46]
+The second operand must be the \fB%XML\fR built-in function, identifying the \fIXML\fR document to
+be parsed and the options controlling the way the parsing is done\[char46] See \fB%XML\fR
+(xmlDocument {:options}) for more information on \fB%XML\fR\[char46]
 
 
 If the first operand is a variable name: 
@@ -69,15 +77,22 @@ If the first operand is a variable name:
 .RE
 .IP "" 2
 .RS
-\[bu] The name of the variable will be used to establish the name of the \fIXML\fR element to parse; this can be overridden using the path option \[char46]
+\[bu] The name of the variable will be used to establish the name of the \fIXML\fR element to parse; this
+can be overridden using the path option \[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If the variable is a data structure, some subfields may be set by the operation even if the operation ends in error\[char46]
+\[bu] If the variable is a data structure, some subfields may be set by the operation even if the
+operation ends in error\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If the variable is an array, the parsing will only search for as much data as will fit in the array\[char46] The "Number of \fIXML\fR Elements" subfield in positions 372 - 379 of the \fIPSDS\fR will be set to the number of elements successfully set by the operation\[char46] For an array of data structures, this value will not include the element being set if a parsing error occurs while parsing the data for the subfields of the element; however, this array element may have some of its subfields set by the operation\[char46]
+\[bu] If the variable is an array, the parsing will only search for as much data as will fit in the
+array\[char46] The "Number of \fIXML\fR Elements" subfield in positions 372 - 379 of the \fIPSDS\fR
+will be set to the number of elements successfully set by the operation\[char46] For an array of
+data structures, this value will not include the element being set if a parsing error occurs while
+parsing the data for the subfields of the element; however, this array element may have some of its
+subfields set by the operation\[char46]
 .RE
 .PP
 
@@ -85,25 +100,42 @@ If the first operand is a variable name:
 If the first operand is the \fB%HANDLER\fR built-in function: 
 .IP "" 2
 .RS
-\[bu] The procedure specified as the first operand of \fB%HANDLER\fR will be called when the parser has parsed enough \fIXML\fR data to fill the specified number of \fIRPG\fR array elements handled by the procedure\[char46] When the handler returns, the parser will continue to parse the \fIXML\fR data until it has parsed enough \fIXML\fR data to again fill the specified number of array elements to call the handling procedure\[char46] This continues until the document is completely parsed, or until the procedure returns a return code indicating that the parsing should halt\[char46] 
-The final call to the handling procedure may have fewer \fIRPG\fR array elements than the handling procedure can handle\[char46] The handling procedure should always refer to the "number of elements" parameter to ensure it does not access array elements that do not have any \fIXML\fR data\[char46]
+\[bu] The procedure specified as the first operand of \fB%HANDLER\fR will be called when the parser has
+parsed enough \fIXML\fR data to fill the specified number of \fIRPG\fR array elements handled by the
+procedure\[char46] When the handler returns, the parser will continue to parse the \fIXML\fR data
+until it has parsed enough \fIXML\fR data to again fill the specified number of array elements to
+call the handling procedure\[char46] This continues until the document is completely parsed, or
+until the procedure returns a return code indicating that the parsing should
+halt\[char46] 
+The final call to the handling procedure may have fewer \fIRPG\fR array elements than the handling
+procedure can handle\[char46] The handling procedure should always refer to the "number of elements"
+parameter to ensure it does not access array elements that do not have any \fIXML\fR data\[char46]
 
  
-The communication-area variable specified as the second operand of \fB%HANDLER\fR will be passed by the parser as the first parameter to the handling procedure, allowing the procedure coding the \fIXML-INTO\fR operation to communicate with the handling procedure, and allowing the handling procedure to save information from one call to the next\[char46]
+The communication-area variable specified as the second operand of \fB%HANDLER\fR will be passed by
+the parser as the first parameter to the handling procedure, allowing the procedure coding the
+\fIXML-INTO\fR operation to communicate with the handling procedure, and allowing the handling
+procedure to save information from one call to the next\[char46]
 
 
 .RE
 .IP "" 2
 .RS
-\[bu] Each element of the temporary variable used to hold the array parameter for the procedure will be cleared to its default value before it is loaded from the \fIXML\fR data\[char46]
+\[bu] Each element of the temporary variable used to hold the array parameter for the procedure will be
+cleared to its default value before it is loaded from the \fIXML\fR data\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] The path  option must be used to specify the name of the \fIXML\fR element to search for\[char46] See \fB%XML\fR options for the \fIXML-INTO\fR operation code  and Expected format of \fIXML\fR data  and for information about the path  option\[char46]
+\[bu] The path  option must be used to specify the name of the \fIXML\fR element to search for\[char46]
+See \fB%XML\fR options for the \fIXML-INTO\fR operation code  and Expected format of \fIXML\fR data  and for information about the path  option\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] The array-handling procedure may be called several times during the \fIXML-INTO\fR operaton\[char46] When the parser has found the number of elements specified by the \fIDIM\fR keyword on the second parameter, the procedure will be called\[char46] The final time the procedure is called may have fewer elements than specified by the \fIDIM\fR keyword\[char46] If there are no elements found, the procedure will not be called\[char46] 
+\[bu] The array-handling procedure may be called several times during the \fIXML-INTO\fR operaton\[char46]
+When the parser has found the number of elements specified by the \fIDIM\fR keyword on the second
+parameter, the procedure will be called\[char46] The final time the procedure is called may have
+fewer elements than specified by the \fIDIM\fR keyword\[char46] If there are no elements found, the
+procedure will not be called\[char46] 
 The handling procedure must have the following parameters and return type: 
 .TS
 allbox;
@@ -120,28 +152,33 @@ Return value
 T}	T{
 4-byte integer (10I 0)
 T}	T{
-Returning a value of zero indicates that parsing should continue; returning any other value indictes that parsing should end\[char46]
+Returning a value of zero indicates that parsing should continue; returning any other value indictes
+that parsing should end\[char46]
 T}
 T{
 1
 T}	T{
 Any type, passed by reference
 T}	T{
-Used to communicate between the \fIXML-INTO\fR operation and the handler, and between successive calls to the handler\[char46]
+Used to communicate between the \fIXML-INTO\fR operation and the handler, and between successive
+calls to the handler\[char46]
 T}
 T{
 2
 T}	T{
-Array, or array of data structures, passed by read-only reference (\fICONST\fR keyword)
+Array, or array of data structures, passed by read-only reference (\fICONST\fR
+keyword)
 T}	T{
-The array elements contain the data from the \fIXML\fR elements specified by the path option\[char46]
+The array elements contain the data from the \fIXML\fR elements specified by the path
+option\[char46]
 T}
 T{
 3
 T}	T{
 4-byte unsigned (10U 0), passed by value
 T}	T{
-The number of array elements in the second parameter that represent \fIXML\fR data\[char46]
+The number of array elements in the second parameter that represent \fIXML\fR
+data\[char46]
 T}
 .TE
 
@@ -154,13 +191,15 @@ T}
 .PP
 
 
-Subfields of a data structure will be set in the order they appear in the \fIXML\fR document; the order could be important if subfields overlap within the data structure\[char46]
+Subfields of a data structure will be set in the order they appear in the \fIXML\fR document; the
+order could be important if subfields overlap within the data structure\[char46]
 
 
 \fB%NULLIND\fR is not updated for any field or subfield during an \fIXML-INTO\fR operation\[char46]
 
 
-Operation extender H can be specified to cause numeric data to be assigned half-adjusted\[char46] Operation extender E can be specified to handle the following status codes: 
+Operation extender H can be specified to cause numeric data to be assigned half-adjusted\[char46]
+Operation extender E can be specified to handle the following status codes: 
 .TP 5
 .B 00351
 Error in \fIXML\fR parsing
@@ -176,27 +215,49 @@ Error preparing for \fIXML\fR parsing
 .PP
 
 
-For status 00351, the return code from the parser will be placed in the subfield "External return code" in positions 368-371 of the \fIPSDS\fR\[char46] This subfield will be set to zero at the beginning of the operation and set to the value returned by the parser at the end of the operation\[char46]
+For status 00351, the return code from the parser will be placed in the subfield "External return
+code" in positions 368-371 of the \fIPSDS\fR\[char46] This subfield will be set to zero at the
+beginning of the operation and set to the value returned by the parser at the end of the
+operation\[char46]
 
 
-If an unknown, invalid or unrelated option is found in the options parameter of the \fB%XML\fR built-in function, the operation will fail with status code 00352 (Error in \fIXML\fR options)\[char46] The External return code subfield in the \fIPSDS\fR will not be updated from the initial value of zero, set when the operation begins\[char46]
+If an unknown, invalid or unrelated option is found in the options parameter of the \fB%XML\fR
+built-in function, the operation will fail with status code 00352 (Error in \fIXML\fR
+options)\[char46] The External return code subfield in the \fIPSDS\fR will not be updated from the
+initial value of zero, set when the operation begins\[char46]
 
 
-The \fIXML\fR document is expected to match the \fIRPG\fR variable with respect to the names of the \fIXML\fR elements or attributes\[char46] 
+The \fIXML\fR document is expected to match the \fIRPG\fR variable with respect to the names of the
+\fIXML\fR elements or attributes\[char46] 
 .IP "" 2
 .RS
-\[bu] The \fIXML\fR data for an \fIRPG\fR data structure is expected to have an \fIXML\fR element with the same name as the data structure and child elements and/or attributes with the same names as the \fIRPG\fR subfields\[char46]
+\[bu] The \fIXML\fR data for an \fIRPG\fR data structure is expected to have an \fIXML\fR element with the
+same name as the data structure and child elements and/or attributes with the same names as the
+\fIRPG\fR subfields\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] The \fIXML\fR data for an \fIRPG\fR array is expected to have a series of elements with the same name as the \fIRPG\fR array\[char46]
+\[bu] The \fIXML\fR data for an \fIRPG\fR array is expected to have a series of elements with the same
+name as the \fIRPG\fR array\[char46]
 .RE
 .PP
-  The path  option can be used to set the name of the \fIXML\fR element matching the name of the specified variable, but it cannot be used to set the names of the \fIXML\fR elements and/or attributes matching a specified variable\[char39]s subfields\[char46] For example, if variable DS1 has a subfield SF1, the \fIXML\fR element for DS1 can have any name, but the \fIXML\fR element or attribute for SF1 must have the name "sf1" (or "SF1", "Sf1", etc\[char46], depending on the case  option)\[char46] 
+  The path  option can be used to set the name of the \fIXML\fR element matching the name of the specified
+variable, but it cannot be used to set the names of the \fIXML\fR elements and/or attributes
+matching a specified variable\[char39]s subfields\[char46] For example, if variable DS1 has a
+subfield SF1, the \fIXML\fR element for DS1 can have any name, but the \fIXML\fR element or
+attribute for SF1 must have the name "sf1" (or "SF1", "Sf1", etc\[char46], depending on
+the case  option)\[char46] 
 
 
 
-When the \fIRPG\fR variable is an array or array of data structures, or when the \fB%HANDLER\fR built-in function is specified, the \fIXML\fR elements corresponding to the array elements are expected to be contained in another \fIXML\fR element\[char46] By default, the \fIXML\fR elements will be expected to be child elements of the outermost \fIXML\fR element in the document\[char46] The path  option can be used to specify the exact path to the \fIXML\fR elements corresponding to the array elements\[char46] For example, if the outermost \fIXML\fR element is named "transaction", and it has a child element named "parts" which itself has several child elements named "part", then to read the "part" \fIXML\fR elements into an array, you would specify the option \[char39]path=transaction/parts/part\[char39]\[char46] 
+When the \fIRPG\fR variable is an array or array of data structures, or when the \fB%HANDLER\fR
+built-in function is specified, the \fIXML\fR elements corresponding to the array elements are
+expected to be contained in another \fIXML\fR element\[char46] By default, the \fIXML\fR elements
+will be expected to be child elements of the outermost \fIXML\fR element in the document\[char46]
+The path  option can be used to specify the exact path to the \fIXML\fR elements corresponding to the array
+elements\[char46] For example, if the outermost \fIXML\fR element is named "transaction", and it has
+a child element named "parts" which itself has several child elements named "part", then to read the
+"part" \fIXML\fR elements into an array, you would specify the option \[char39]path=transaction/parts/part\[char39]\[char46] 
 .PP
 .nf
   <transaction>
@@ -208,25 +269,52 @@ When the \fIRPG\fR variable is an array or array of data structures, or when the
 .fi
 
 
-When the \fIXML\fR document does not match the \fIRPG\fR variable, for example if the \fIXML\fR document does not contain the default or specified path, or if it is missing some \fIXML\fR elements or attributes to match the subfields of an \fIRPG\fR data structure, the \fIXML-INTO\fR operation will fail with status 00353\[char46] The allowextra and allowmissing options can be used to specify whether an \fIXML\fR element can have more or less data than is required to fully set the \fIRPG\fR variable\[char46]
+When the \fIXML\fR document does not match the \fIRPG\fR variable, for example if the \fIXML\fR
+document does not contain the default or specified path, or if it is missing some \fIXML\fR elements
+or attributes to match the subfields of an \fIRPG\fR data structure, the \fIXML-INTO\fR operation
+will fail with status 00353\[char46] The allowextra and allowmissing options can be used to specify
+whether an \fIXML\fR element can have more or less data than is required to fully set the \fIRPG\fR
+variable\[char46]
 
 
-For some \fIRPG\fR data types, \fIXML\fR attributes can be specified to control how the \fIXML\fR data is assigned to the \fIRPG\fR variable\[char46] See Rules for transferring \fIXML\fR data to \fIRPG\fR variables for more information on these attributes\[char46]
+For some \fIRPG\fR data types, \fIXML\fR attributes can be specified to control how the \fIXML\fR
+data is assigned to the \fIRPG\fR variable\[char46] See Rules for transferring \fIXML\fR data to
+\fIRPG\fR variables for more information on these attributes\[char46]
 
 
-If an \fIXML\fR reference other than the predefined references &amp, &apos, &lt, &gt, &quot, or the hexadecimal unicode references &#xxxx is found, the result will contain the reference itself, in the form "&refname;"\[char46] If this value is not valid for the data type, the operation will fail\[char46] For example, if an \fIXML\fR element has the value <data>1&decpoint;50/data> the string "1&decpoint;50" would be built up from the three pieces "1", "&decpoint;", and "0"\[char46] This data is valid for a character or \fIUCS\fR-2 variable, but it would cause an error if converted to other types\[char46]
+If an \fIXML\fR reference other than the predefined references &amp, &apos, &lt, &gt, &quot, or the
+hexadecimal unicode references &#xxxx is found, the result will contain the reference itself, in the
+form "&refname;"\[char46] If this value is not valid for the data type, the operation will
+fail\[char46] For example, if an \fIXML\fR element has the value <data>1&decpoint;50/data> the
+string "1&decpoint;50" would be built up from the three pieces "1", "&decpoint;", and "0"\[char46]
+This data is valid for a character or \fIUCS\fR-2 variable, but it would cause an error if converted
+to other types\[char46]
 
 
-Tip: If \fIXML\fR data is known to contain such references, then following the completion of the \fIXML-INTO\fR operation, character and \fIUCS\fR-2 data should be inspected for the presence of references, and the correct value for the reference substituted using string operations such as \fB%SCANRPL\fR, or \fB%SCAN\fR and \fB%REPLACE\fR\[char46]
+Tip: If \fIXML\fR data is known to contain such references, then following the completion of the
+\fIXML-INTO\fR operation, character and \fIUCS\fR-2 data should be inspected for the presence of
+references, and the correct value for the reference substituted using string operations such as
+\fB%SCANRPL\fR, or \fB%SCAN\fR and \fB%REPLACE\fR\[char46]
 
 
-If \fIXML\fR data is not valid for the type of the \fIRPG\fR variable it matches, the operation will fail with status 0353; the specific status code for the assignment error will appear in the replacement text for message \fIRNX\fR0353\[char46]
+If \fIXML\fR data is not valid for the type of the \fIRPG\fR variable it matches, the operation will
+fail with status 0353; the specific status code for the assignment error will appear in the
+replacement text for message \fIRNX\fR0353\[char46]
 
 
-Tip: To avoid the \fIXML-INTO\fR operation failing because the data cannot be successfully assigned to \fIRPG\fR fields with types such as Date or Numeric, the receiver variable can be defined with subfields that are all of type character or \fIUCS\fR-2\[char46] Then the data can be converted to other data types by the \fIRPG\fR program using the conversion built-in functions \fB%DATE\fR, \fB%INT\fR, and so on\[char46]
+Tip: To avoid the \fIXML-INTO\fR operation failing because the data cannot be successfully assigned
+to \fIRPG\fR fields with types such as Date or Numeric, the receiver variable can be defined with
+subfields that are all of type character or \fIUCS\fR-2\[char46] Then the data can be converted to
+other data types by the \fIRPG\fR program using the conversion built-in functions \fB%DATE\fR,
+\fB%INT\fR, and so on\[char46]
 
 
-The \fIXML-INTO\fR operation ignores the \fIDOCTYPE\fR declaration\[char46] The \fIDOCTYPE\fR declaration may contain the values of entity references that your program will have to handle manually\[char46] If you want to have access to the \fIDOCTYPE\fR declaration of the \fIXML\fR document, you can use the \fIXML-SAX\fR operation\[char46] Your \fIXML-SAX\fR handling procedure can halt the parsing as soon as it has found the \fIDOCTYPE\fR declaration value, or as soon as it knows that there will be no \fIDOCTYPE\fR declaration\[char46]
+The \fIXML-INTO\fR operation ignores the \fIDOCTYPE\fR declaration\[char46] The \fIDOCTYPE\fR
+declaration may contain the values of entity references that your program will have to handle
+manually\[char46] If you want to have access to the \fIDOCTYPE\fR declaration of the \fIXML\fR
+document, you can use the \fIXML-SAX\fR operation\[char46] Your \fIXML-SAX\fR handling procedure can
+halt the parsing as soon as it has found the \fIDOCTYPE\fR declaration value, or as soon as it knows
+that there will be no \fIDOCTYPE\fR declaration\[char46]
 
 
 The following links provide more information on \fIXML-INTO\fR\[char46]

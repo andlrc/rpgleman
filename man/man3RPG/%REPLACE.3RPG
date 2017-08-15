@@ -14,25 +14,39 @@
 length to replace}})
 .fi
 .SH DESCRIPTION
-The first and second parameter must be of type character, graphic, or \fIUCS\fR-2 and can be in either fixed- or variable-length format\[char46] The second parameter must be the same type as the first\[char46]
+The first and second parameter must be of type character, graphic, or \fIUCS\fR-2 and can be in
+either fixed- or variable-length format\[char46] The second parameter must be the same type as the
+first\[char46]
 
 
-The third parameter represents the starting position, measured in characters, for the replacement string\[char46] If it is not specified, the starting position is at the beginning of the source string\[char46] The value may range from one to the current length of the source string plus one\[char46]
+The third parameter represents the starting position, measured in characters, for the replacement
+string\[char46] If it is not specified, the starting position is at the beginning of the source
+string\[char46] The value may range from one to the current length of the source string plus
+one\[char46]
 
 
-The fourth parameter represents the number of characters in the source string to be replaced\[char46] If zero is specified, then the replacement string is inserted before the specified starting position\[char46] If the parameter is not specified, the number of characters replaced is the same as the length of the replacement string\[char46] The value must be greater than or equal to zero, and less than or equal to the current length of the source string\[char46]
+The fourth parameter represents the number of characters in the source string to be
+replaced\[char46] If zero is specified, then the replacement string is inserted before the specified
+starting position\[char46] If the parameter is not specified, the number of characters replaced is
+the same as the length of the replacement string\[char46] The value must be greater than or equal to
+zero, and less than or equal to the current length of the source string\[char46]
 
 
-The starting position and length may be any numeric value or numeric expression with no decimal positions\[char46]
+The starting position and length may be any numeric value or numeric expression with no decimal
+positions\[char46]
 
 
-The returned value is varying length if the source string or replacement string are varying length, or if the start position or source length to replace are variables\[char46] Otherwise, the result is fixed length\[char46]
+The returned value is varying length if the source string or replacement string are varying length,
+or if the start position or source length to replace are variables\[char46] Otherwise, the result is
+fixed length\[char46]
 
 
 For more information, see String Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%REPLACE\fR returns the character string produced by inserting a replacement string into the source string, starting at the start position and replacing the specified number of characters\[char46]
+\fB%REPLACE\fR returns the character string produced by inserting a replacement string into the
+source string, starting at the start position and replacing the specified number of
+characters\[char46]
 
 .SH EXAMPLE
 \fB%REPLACE\fR Example

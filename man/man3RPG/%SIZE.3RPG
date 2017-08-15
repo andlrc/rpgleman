@@ -17,16 +17,21 @@
 %SIZE(multiple-occurrence data structure{:*ALL})
 .fi
 .SH DESCRIPTION
-For a graphic literal, the size is the number of bytes occupied by the graphic characters, not including leading and trailing shift characters\[char46] For a hexadecimal or \fIUCS\fR-2 literal, the size returned is half the number of hexadecimal digits in the literal\[char46]
+For a graphic literal, the size is the number of bytes occupied by the graphic characters, not
+including leading and trailing shift characters\[char46] For a hexadecimal or \fIUCS\fR-2 literal,
+the size returned is half the number of hexadecimal digits in the literal\[char46]
 
 
-For variable-length fields, \fB%SIZE\fR returns the total number of bytes occupied by the field (two bytes longer than the declared maximum length)\[char46]
+For variable-length fields, \fB%SIZE\fR returns the total number of bytes occupied by the field (two
+bytes longer than the declared maximum length)\[char46]
 
 
-The length returned for a null-capable field (\fB%SIZE\fR) is always its full length, regardless of the setting of its null indicator\[char46]
+The length returned for a null-capable field (\fB%SIZE\fR) is always its full length, regardless of
+the setting of its null indicator\[char46]
 
 
-Note the following considerations for \fB%SIZE\fR when the argument is an array name, table name, or multiple-occurrence data structure name\[char46]
+Note the following considerations for \fB%SIZE\fR when the argument is an array name, table name, or
+multiple-occurrence data structure name\[char46]
 
 
 .IP "" 2
@@ -35,13 +40,19 @@ Note the following considerations for \fB%SIZE\fR when the argument is an array 
 .RE
 .IP "" 2
 .RS
-\[bu] If \fI*ALL\fR is specified as the second parameter for \fB%SIZE\fR, the value returned is the storage taken up by all elements or occurrences\[char46]
+\[bu] If \fI*ALL\fR is specified as the second parameter for \fB%SIZE\fR, the value returned is the
+storage taken up by all elements or occurrences\[char46]
 .RE
 .IP "" 2
 .RS
 \[bu] 
 
- The alignment of a data structure is the largest alignment that is required by the subfields of the data structure\[char46] If \fIALIGN\fR(\fI*FULL\fR) is specified, then the size of each element of the data structure is a multiple of its alignment\[char46] If \fIALIGN\fR is specified without a parameter, or if the \fIALIGN\fR keyword is not specified, and the data structure contains at least one pointer, then the size that is occupied by the data structure might be less than a multiple of its alignment\[char46] See \fIALIGN\fR{(\fI*FULL\fR)}  for more information\[char46] 
+ The alignment of a data structure is the largest alignment that is required by the subfields of the
+data structure\[char46] If \fIALIGN\fR(\fI*FULL\fR) is specified, then the size of each element of
+the data structure is a multiple of its alignment\[char46] If \fIALIGN\fR is specified without a
+parameter, or if the \fIALIGN\fR keyword is not specified, and the data structure contains at least
+one pointer, then the size that is occupied by the data structure might be less than a multiple of
+its alignment\[char46] See \fIALIGN\fR{(\fI*FULL\fR)}  for more information\[char46] 
 
 
 .RE
@@ -49,7 +60,18 @@ Note the following considerations for \fB%SIZE\fR when the argument is an array 
 .RS
 \[bu] 
 
- For a multiple-occurrence data structure or data structure array that contains pointer subfields, the size that is occupied by the entire data structure might be greater than the size of one occurrence times the number of occurrences\[char46] The system requires that pointers be 16-byte aligned; that is, they must be placed in storage at addresses evenly divisible by 16\[char46] As a result, the length of each occurrence might have to be increased enough to make the length an exact multiple of 16 so that the pointer subfields will be positioned correctly in storage for every occurrence\[char46] Similarly, if the \fIALIGN\fR keyword is specified, float, integer and unsigned integer subfields are positioned within the data structure at addresses evenly divisible by the size of the subfield\[char46] To ensure that the size of the entire data structure is the same as the size of is the same as the size of one occurrence times the number of occurrences, specify \fIALIGN\fR(\fI*FULL\fR) if the data structure contains pointers, or if you require float, unsigned integer and integer subfields to be aligned\[char46] 
+ For a multiple-occurrence data structure or data structure array that contains pointer subfields,
+the size that is occupied by the entire data structure might be greater than the size of one
+occurrence times the number of occurrences\[char46] The system requires that pointers be 16-byte
+aligned; that is, they must be placed in storage at addresses evenly divisible by 16\[char46] As a
+result, the length of each occurrence might have to be increased enough to make the length an exact
+multiple of 16 so that the pointer subfields will be positioned correctly in storage for every
+occurrence\[char46] Similarly, if the \fIALIGN\fR keyword is specified, float, integer and unsigned
+integer subfields are positioned within the data structure at addresses evenly divisible by the size
+of the subfield\[char46] To ensure that the size of the entire data structure is the same as the
+size of is the same as the size of one occurrence times the number of occurrences, specify
+\fIALIGN\fR(\fI*FULL\fR) if the data structure contains pointers, or if you require float, unsigned
+integer and integer subfields to be aligned\[char46] 
 
 
 .RE
@@ -57,7 +79,11 @@ Note the following considerations for \fB%SIZE\fR when the argument is an array 
 .RS
 \[bu] 
 
- If the array is non-contiguous due to being overlaid on a larger array, the value returned is the same as it would be if the array were contiguous; it does not include the storage between the non-contiguous array elements\[char46] To obtain the distance between non-contiguous array elements, you can subtract the address of the first element from the address of the second element: 
+ If the array is non-contiguous due to being overlaid on a larger array, the value returned is the
+same as it would be if the array were contiguous; it does not include the storage between the
+non-contiguous array elements\[char46] To obtain the distance between non-contiguous array elements,
+you can subtract the address of the first element from the address of the second
+element: 
 .PP
 .nf
 distance_between = %ADDR(elem(2)) - %ADDR(elem(1));
@@ -68,16 +94,27 @@ distance_between = %ADDR(elem(2)) - %ADDR(elem(1));
 .RE
 .PP
 
-The argument cannot be a complex-qualified name\[char46] If you want to find the size of a complex-qualified subfield, specify the data structure used in the \fILIKEDS\fR keyword that defines the data structure subfield that contains the required subfield\[char46] For example, if you want to find the size of \fIINFO\fR\[char46]\fICUST\fR\[char46]\fINAME\fR, and the \fICUST\fR subfield of data structure \fIINFO\fR was defined with keyword \fILIKEDS\fR(\fICUST\fR_T), then specify \fB%SIZE(\fICUST\fR_T\[char46]\fINAME\fR)\fR\[char46]
+The argument cannot be a complex-qualified name\[char46] If you want to find the size of a
+complex-qualified subfield, specify the data structure used in the \fILIKEDS\fR keyword that defines
+the data structure subfield that contains the required subfield\[char46] For example, if you want to
+find the size of \fIINFO\fR\[char46]\fICUST\fR\[char46]\fINAME\fR, and the \fICUST\fR subfield of
+data structure \fIINFO\fR was defined with keyword \fILIKEDS\fR(\fICUST\fR_T), then specify
+\fB%SIZE(\fICUST\fR_T\[char46]\fINAME\fR)\fR\[char46]
 
 
-\fB%SIZE\fR may be specified anywhere that a numeric constant is allowed on the definition specification and in an expression in the extended factor 2 field of the calculation specification\[char46]
+\fB%SIZE\fR may be specified anywhere that a numeric constant is allowed on the definition
+specification and in an expression in the extended factor 2 field of the calculation
+specification\[char46]
 
 
 For more information, see Size Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%SIZE\fR returns the number of bytes occupied by the constant or field\[char46] The argument may be a literal, a named constant, a data structure, a data structure subfield, a field, an array or a table name\[char46] It cannot contain an expression, but some constant-valued built-in functions and constant expressions may be accepted\[char46] The value returned is in unsigned integer format (type U)\[char46]
+\fB%SIZE\fR returns the number of bytes occupied by the constant or field\[char46] The argument may
+be a literal, a named constant, a data structure, a data structure subfield, a field, an array or a
+table name\[char46] It cannot contain an expression, but some constant-valued built-in functions and
+constant expressions may be accepted\[char46] The value returned is in unsigned integer format (type
+U)\[char46]
 
 .SH EXAMPLE
 \fB%SIZE\fR Example
@@ -118,7 +155,8 @@ D fCity           S             40A           INZ(\[char39]North York\[char39])
  /END-FREE
 .fi
 
-See Examples showing the effect of the \fIALIGN\fR keyword for an example of \fB%SIZE\fR for data structures with and without \fIALIGN\fR(\fI*FULL\fR)\[char46]
+See Examples showing the effect of the \fIALIGN\fR keyword for an example of \fB%SIZE\fR for data
+structures with and without \fIALIGN\fR(\fI*FULL\fR)\[char46]
 
 .SH SEE ALSO
 .BR %ADDR,

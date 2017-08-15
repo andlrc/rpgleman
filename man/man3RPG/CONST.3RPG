@@ -25,32 +25,46 @@ The \fICONST\fR keyword is used
 .PP
 
 
-When specifying the value of a named constant, the \fICONST\fR keyword itself is optional\[char46] That is, the constant value can be specified with or without the \fICONST\fR keyword\[char46]
+When specifying the value of a named constant, the \fICONST\fR keyword itself is optional\[char46]
+That is, the constant value can be specified with or without the \fICONST\fR keyword\[char46]
 
 
-The parameter must be a literal, figurative constant, or built-in-function\[char46] The constant may be continued on subsequent lines by adhering to the appropriate continuation rules (see Continuation Rules for further details)\[char46]
+The parameter must be a literal, figurative constant, or built-in-function\[char46] The constant may
+be continued on subsequent lines by adhering to the appropriate continuation rules (see Continuation
+Rules for further details)\[char46]
 
 
-If a named constant is used as a parameter for the keywords \fIDIM\fR, \fIOCCURS\fR, \fIPERRCD\fR, or \fIOVERLAY\fR, the named constant must be defined prior to its use\[char46]
+If a named constant is used as a parameter for the keywords \fIDIM\fR, \fIOCCURS\fR, \fIPERRCD\fR,
+or \fIOVERLAY\fR, the named constant must be defined prior to its use\[char46]
 
 
-When specifying a read-only reference parameter, you specify the keyword \fICONST\fR on the definition specification of the parameter definition on both the prototype and procedure interface\[char46] No parameter to the keyword is allowed\[char46]
+When specifying a read-only reference parameter, you specify the keyword \fICONST\fR on the
+definition specification of the parameter definition on both the prototype and procedure
+interface\[char46] No parameter to the keyword is allowed\[char46]
 
 
-When the keyword \fICONST\fR is specified, the compiler may copy the parameter to a temporary defined with the same data type and length as the prototyped parameter and pass the address of the temporary\[char46] Some conditions that would cause this are: the passed parameter is an expression or the passed parameter has a different format\[char46]
+When the keyword \fICONST\fR is specified, the compiler may copy the parameter to a temporary
+defined with the same data type and length as the prototyped parameter and pass the address of the
+temporary\[char46] Some conditions that would cause this are: the passed parameter is an expression
+or the passed parameter has a different format\[char46]
 
 
 
-Do not use this keyword on a prototype definition unless you are sure that the parameter will not be changed by the called program or procedure\[char46]
+Do not use this keyword on a prototype definition unless you are sure that the parameter will not be
+changed by the called program or procedure\[char46]
 
 
-If the called program or procedure is compiled using a procedure interface with the same prototype, you do not have to worry about this, since the compiler will check this for you\[char46]
+If the called program or procedure is compiled using a procedure interface with the same prototype,
+you do not have to worry about this, since the compiler will check this for you\[char46]
 
 
-Although a \fICONST\fR parameter cannot be changed by statements within the procedure, the value may be changed as a result of statements outside of the procedure, or by directly referencing a global variable\[char46]
+Although a \fICONST\fR parameter cannot be changed by statements within the procedure, the value may
+be changed as a result of statements outside of the procedure, or by directly referencing a global
+variable\[char46]
 
 
-Passing a parameter by constant value has the same advantages as passing by value\[char46] In particular, it allows you to pass literals and expressions\[char46]
+Passing a parameter by constant value has the same advantages as passing by value\[char46] In
+particular, it allows you to pass literals and expressions\[char46]
 
 .SH SEE ALSO
 .BR DIM,

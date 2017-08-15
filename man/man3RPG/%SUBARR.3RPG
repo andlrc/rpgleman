@@ -13,16 +13,24 @@
 %SUBARR(array:start-index{:number-of-elements})
 .fi
 .SH DESCRIPTION
-The first parameter of \fB%SUBARR\fR must be an array\[char46] That is, a standalone field, data structure, or subfield defined as an array\[char46] The first parameter must not be a table name or procedure call\[char46]
+The first parameter of \fB%SUBARR\fR must be an array\[char46] That is, a standalone field, data
+structure, or subfield defined as an array\[char46] The first parameter must not be a table name or
+procedure call\[char46]
 
 
-The start-index parameter must be a numeric value with zero decimal positions\[char46] A float numeric value is not allowed\[char46] The value must be greater than or equal to 1 and less than or equal to the number of elements of the array\[char46]
+The start-index parameter must be a numeric value with zero decimal positions\[char46] A float
+numeric value is not allowed\[char46] The value must be greater than or equal to 1 and less than or
+equal to the number of elements of the array\[char46]
 
 
-The optional number-of-elements parameter must be a numeric value with zero decimal positions\[char46] A float numeric value is not allowed\[char46] The value must be greater than or equal to 1 and less than or equal to the number of elements remaining in the array after applying the start-index value\[char46]
+The optional number-of-elements parameter must be a numeric value with zero decimal
+positions\[char46] A float numeric value is not allowed\[char46] The value must be greater than or
+equal to 1 and less than or equal to the number of elements remaining in the array after applying
+the start-index value\[char46]
 
 
-Generally, \fB%SUBARR\fR is valid in any expression where an unindexed array is allowed\[char46] However, \fB%SUBARR\fR cannot be used in the following places: 
+Generally, \fB%SUBARR\fR is valid in any expression where an unindexed array is allowed\[char46]
+However, \fB%SUBARR\fR cannot be used in the following places: 
 .IP "" 2
 .RS
 \[bu] as the array argument of built-in function \fB%LOOKUPxx\fR
@@ -35,11 +43,15 @@ Generally, \fB%SUBARR\fR is valid in any expression where an unindexed array is 
   \fB%SUBARR\fR may be used in the following ways: 
 .IP "" 2
 .RS
-\[bu] On the left-hand side of an assignment using \fIEVAL\fR or \fIEVALR\fR\[char46] This changes the specified elements in the specified array\[char46]
+\[bu] On the left-hand side of an assignment using \fIEVAL\fR or \fIEVALR\fR\[char46] This changes the
+specified elements in the specified array\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Within the expression on the right-hand side of an assignment using \fIEVAL\fR or \fIEVALR\fR where the target of the assignment is an array\[char46] This uses the values of the specified elements of the array\[char46] The array elements are used directly; a temporary copy of the sub-array is not made\[char46]
+\[bu] Within the expression on the right-hand side of an assignment using \fIEVAL\fR or \fIEVALR\fR where
+the target of the assignment is an array\[char46] This uses the values of the specified elements of
+the array\[char46] The array elements are used directly; a temporary copy of the sub-array is not
+made\[char46]
 .RE
 .IP "" 2
 .RS
@@ -51,7 +63,8 @@ Generally, \fB%SUBARR\fR is valid in any expression where an unindexed array is 
 .RE
 .IP "" 2
 .RS
-\[bu] Passed by \fIVALUE\fR or by read-only reference (\fICONST\fR keyword) when the corresponding parameter is defined as an array\[char46]
+\[bu] Passed by \fIVALUE\fR or by read-only reference (\fICONST\fR keyword) when the corresponding
+parameter is defined as an array\[char46]
 .RE
 .IP "" 2
 .RS
@@ -63,7 +76,10 @@ Generally, \fB%SUBARR\fR is valid in any expression where an unindexed array is 
 For more information, see Array Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-Built-in function \fB%SUBARR\fR returns a section of the specified array starting at start-index\[char46] The number of elements returned is specified by the optional number-of-elements parameter\[char46] If not specified, the number-of-elements defaults to the remainder of the array\[char46]
+Built-in function \fB%SUBARR\fR returns a section of the specified array starting at
+start-index\[char46] The number of elements returned is specified by the optional number-of-elements
+parameter\[char46] If not specified, the number-of-elements defaults to the remainder of the
+array\[char46]
 
 .SH EXAMPLE
 Using \fB%SUBARR\fR

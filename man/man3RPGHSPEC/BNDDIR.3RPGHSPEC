@@ -10,25 +10,36 @@
 BNDDIR
 .SH SYNOPSIS
 .nf
-BNDDIR('binding-directory-name' {:'binding-directory-name'â¦})
+BNDDIR('binding-directory-name' {:'binding-directory-name'…})
 .fi
 .SH DESCRIPTION
-The \fIBNDDIR\fR keyword specifies the list of binding directories that are used in symbol resolution\[char46]
+The \fIBNDDIR\fR keyword specifies the list of binding directories that are used in symbol
+resolution\[char46]
 
 
-A binding directory name can be qualified by a library name followed by a slash delimiter (\[char39]library-name/binding-directory-name\[char39])\[char46] The library name is the name of the library to be searched\[char46] If the library name is not specified, \fI*LIBL\fR is used to find the binding directory name\[char46] When creating a program using \fICRTBNDRPG\fR, the library list is searched at the time of the compile\[char46] When creating a module using \fICRTRPGMOD\fR, the library list is searched when the module is used to create a program or service program\[char46]
+A binding directory name can be qualified by a library name followed by a slash delimiter
+(\[char39]library-name/binding-directory-name\[char39])\[char46] The library name is the name of the
+library to be searched\[char46] If the library name is not specified, \fI*LIBL\fR is used to find
+the binding directory name\[char46] When creating a program using \fICRTBNDRPG\fR, the library list
+is searched at the time of the compile\[char46] When creating a module using \fICRTRPGMOD\fR, the
+library list is searched when the module is used to create a program or service program\[char46]
 
 
-If \fIBNDDIR\fR is specified on both the control specification and on the command, all binding directories are used for symbol resolution\[char46] The \fIBNDDIR\fR on the control specification does not override the \fIBNDDIR\fR on the command\[char46]
+If \fIBNDDIR\fR is specified on both the control specification and on the command, all binding
+directories are used for symbol resolution\[char46] The \fIBNDDIR\fR on the control specification
+does not override the \fIBNDDIR\fR on the command\[char46]
 
 
-If the \fIBNDDIR\fR keyword is not specified, then the value specified on the command is used\[char46]
+If the \fIBNDDIR\fR keyword is not specified, then the value specified on the command is
+used\[char46]
 
 
-You cannot use the \fIBNDDIR\fR, \fIACTGRP\fR, or \fISTGMDL\fR command parameters or keywords when creating a program with \fIDFTACTGRP\fR(\fI*YES\fR)\[char46]
+You cannot use the \fIBNDDIR\fR, \fIACTGRP\fR, or \fISTGMDL\fR command parameters or keywords when
+creating a program with \fIDFTACTGRP\fR(\fI*YES\fR)\[char46]
 
 
-See \fIDFTACTGRP\fR(\fI*YES\fR | \fI*NO\fR) for information on how the \fIBNDDIR\fR keyword affects the setting of the \fIDFTACTGRP\fR keyword\[char46]
+See \fIDFTACTGRP\fR(\fI*YES\fR | \fI*NO\fR) for information on how the \fIBNDDIR\fR keyword affects
+the setting of the \fIDFTACTGRP\fR keyword\[char46]
 
 .SH SEE ALSO
 .BR ACTGRP,

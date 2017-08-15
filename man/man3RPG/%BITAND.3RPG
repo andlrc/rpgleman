@@ -13,25 +13,38 @@
 %BITAND(expr:expr{:expr...})
 .fi
 .SH DESCRIPTION
-The arguments to this built-in function can be either character or numeric\[char46] For numeric arguments, if they are not integer or unsigned, they are first converted to integer\[char46] If the value does not fit in an 8-byte integer, a numeric overflow exception is issued\[char46]
+The arguments to this built-in function can be either character or numeric\[char46] For numeric
+arguments, if they are not integer or unsigned, they are first converted to integer\[char46] If the
+value does not fit in an 8-byte integer, a numeric overflow exception is issued\[char46]
 
 
-\fB%BITAND\fR can have two or more arguments\[char46] All arguments must be the same type, either character or numeric\[char46] The result type is the same as the types of the arguments\[char46] For numeric arguments, the result is unsigned if all arguments are unsigned, and integer otherwise\[char46]
+\fB%BITAND\fR can have two or more arguments\[char46] All arguments must be the same type, either
+character or numeric\[char46] The result type is the same as the types of the arguments\[char46] For
+numeric arguments, the result is unsigned if all arguments are unsigned, and integer
+otherwise\[char46]
 
 
-The length is the length of the largest operand\[char46] If the arguments have different lengths, they are padded on the left with bit zeros for numeric arguments\[char46] Shorter character arguments are padded on the right with bit ones\[char46]
+The length is the length of the largest operand\[char46] If the arguments have different lengths,
+they are padded on the left with bit zeros for numeric arguments\[char46] Shorter character
+arguments are padded on the right with bit ones\[char46]
 
 
-\fB%BITAND\fR can be coded in any expression\[char46] It can also be coded as the argument to a File or Definition Specification keyword if all arguments are known at compile-time\[char46] If all arguments of this built-in function are hex literals, the compiler produces a constant-folded result that is a hex literal\[char46]
+\fB%BITAND\fR can be coded in any expression\[char46] It can also be coded as the argument to a File
+or Definition Specification keyword if all arguments are known at compile-time\[char46] If all
+arguments of this built-in function are hex literals, the compiler produces a constant-folded result
+that is a hex literal\[char46]
 
 
-Please see Figure 1, Figure 2, and Figure 3 for examples demonstrating the use of \fB%BITAND\fR\[char46]
+Please see Figure 1, Figure 2, and Figure 3 for examples demonstrating the use of
+\fB%BITAND\fR\[char46]
 
 
 For more information, see Bit Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%BITAND\fR returns the bit-wise \fIAND\fRing of the bits of all the arguments\[char46] That is, the result bit is ON when all of the corresponding bits in the arguments are ON, and \fIOFF\fR otherwise\[char46]
+\fB%BITAND\fR returns the bit-wise \fIAND\fRing of the bits of all the arguments\[char46] That is,
+the result bit is ON when all of the corresponding bits in the arguments are ON, and \fIOFF\fR
+otherwise\[char46]
 
 .SH SEE ALSO
 .BR AND,

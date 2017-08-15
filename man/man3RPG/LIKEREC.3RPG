@@ -13,7 +13,11 @@ LIKEREC
 LIKEREC(intrecname{:extract-types})
 .fi
 .SH DESCRIPTION
-Keyword \fILIKEREC\fR is used to define a data structure, data structure subfield, prototyped return value, or prototyped parameter like a record\[char46] The subfields of the data structure will be identical to the fields in the record\[char46] \fILIKEREC\fR can take an optional second parameter which indicates which fields of the record to include in the data structure\[char46] These include: 
+Keyword \fILIKEREC\fR is used to define a data structure, data structure subfield, prototyped return
+value, or prototyped parameter like a record\[char46] The subfields of the data structure will be
+identical to the fields in the record\[char46] \fILIKEREC\fR can take an optional second parameter
+which indicates which fields of the record to include in the data structure\[char46] These
+include: 
 .IP "" 2
 .RS
 \[bu] \fI*ALL\fR  All fields in the external record are extracted\[char46]
@@ -28,64 +32,87 @@ Keyword \fILIKEREC\fR is used to define a data structure, data structure subfiel
 .RE
 .IP "" 2
 .RS
-\[bu] \fI*KEY\fR  The key fields are extracted in the order that the keys are defined on the K specification in the \fIDDS\fR\[char46]
+\[bu] \fI*KEY\fR  The key fields are extracted in the order that the keys are defined on the K specification in the
+\fIDDS\fR\[char46]
 .RE
 .PP
 
 
-\fI*NULL\fR may also be specified to indicate that instead of defining the subfields with the same data types as the fields in the file, the subfields are all indicators\[char46] For a database file, these indicators have the same layout as the null byte map for the record\[char46]
+\fI*NULL\fR may also be specified to indicate that instead of defining the subfields with the same
+data types as the fields in the file, the subfields are all indicators\[char46] For a database file,
+these indicators have the same layout as the null byte map for the record\[char46]
 
 
-The following should be taken into account when using the \fILIKEREC\fR keyword: 
+The following should be taken into account when using the \fILIKEREC\fR
+keyword: 
 .IP "" 2
 .RS
-\[bu] The first parameter for keyword \fILIKEREC\fR is a record name in the program\[char46] If the record name has been renamed, it is the internal name for the record\[char46]
+\[bu] The first parameter for keyword \fILIKEREC\fR is a record name in the program\[char46] If the record
+name has been renamed, it is the internal name for the record\[char46]
 .RE
 .IP "" 2
 .RS
 \[bu] 
 
- The remaining extract-type parameters for \fILIKEREC\fR must match the definition of the associated record of the file on the system\[char46] \fI*INPUT\fR is only allowed for input and update capable records; \fI*OUTPUT\fR is only allowed for output capable records; \fI*ALL\fR is allowed for any type of record; and \fI*KEY\fR is only allowed for keyed files\[char46] If not specified, the parameter defaults to \fI*INPUT\fR\[char46] However, when an extract-type parameter is not specified for a record name from a \fIDISK\fR file, and the output buffer layout exactly matches the input buffer layout, the data structure may be used with a \fIWRITE\fR operation\[char46] 
+ The remaining extract-type parameters for \fILIKEREC\fR must match the definition of the associated
+record of the file on the system\[char46] \fI*INPUT\fR is only allowed for input and update capable
+records; \fI*OUTPUT\fR is only allowed for output capable records; \fI*ALL\fR is allowed for any
+type of record; and \fI*KEY\fR is only allowed for keyed files\[char46] If not specified, the
+parameter defaults to \fI*INPUT\fR\[char46] However, when an extract-type parameter is not specified
+for a record name from a \fIDISK\fR file, and the output buffer layout exactly matches the input
+buffer layout, the data structure may be used with a \fIWRITE\fR operation\[char46] 
 
 
 .RE
 .IP "" 2
 .RS
-\[bu] For \fI*INPUT\fR and \fI*OUTPUT\fR without \fI*NULL\fR, subfields included in the data structure occupy the same start positions as in the external record description\[char46]
+\[bu] For \fI*INPUT\fR and \fI*OUTPUT\fR without \fI*NULL\fR, subfields included in the data structure
+occupy the same start positions as in the external record description\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If a prefix was specified for the file, the specified prefix is applied to the names of the subfields\[char46]
+\[bu] If a prefix was specified for the file, the specified prefix is applied to the names of the
+subfields\[char46]
 .RE
 .IP "" 2
 .RS
 \[bu] 
 
- When \fI*NULL\fR is specified, the indicators occupy the same start position as the null indicators in the null byte map for the external record for a database file\[char46] For other types of files, the start positions of the indicator subfields are assigned sequentially\[char46] 
+ When \fI*NULL\fR is specified, the indicators occupy the same start position as the null indicators
+in the null byte map for the external record for a database file\[char46] For other types of files,
+the start positions of the indicator subfields are assigned sequentially\[char46] 
 
 
 .RE
 .IP "" 2
 .RS
-\[bu] Even if a field in the record is explicitly renamed on an input specification the external name (possibly prefixed) is used, not the internal name\[char46]
+\[bu] Even if a field in the record is explicitly renamed on an input specification the external name
+(possibly prefixed) is used, not the internal name\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If the file is defined with the \fIALIAS\fR  keyword, the alias names will be used for the subfields of the data structure\[char46] Using the \fIALIAS\fR keyword for an externally-described file  shows an example defining a data structure with the \fILIKEREC\fR keyword where the file is defined with the \fIALIAS\fR keyword\[char46]
+\[bu] If the file is defined with the \fIALIAS\fR  keyword, the alias names will be used for the subfields of the data structure\[char46] Using the \fIALIAS\fR keyword for an externally-described file  shows an example defining a data structure with the \fILIKEREC\fR keyword where the file is defined
+with the \fIALIAS\fR keyword\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] A data structure defined with \fILIKEREC\fR is a \fIQUALIFIED\fR data structure\[char46] The names of the subfields will be qualified with the new data structure name, DS1\[char46]\fISUBF\fR1\[char46]
+\[bu] A data structure defined with \fILIKEREC\fR is a \fIQUALIFIED\fR data structure\[char46] The names
+of the subfields will be qualified with the new data structure name, DS1\[char46]\fISUBF\fR1\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] \fILIKEREC\fR can be coded for subfields of a qualified data structure\[char46] When \fILIKEREC\fR is coded on a data structure subfield definition, the subfield data structure is automatically defined as \fIQUALIFIED\fR\[char46] Subfields in a \fILIKEREC\fR subfield data structure are referenced in fully qualified form: "ds\[char46]subf\[char46]subfa" \[char46] Subfields defined with \fILIKEREC\fR are themselves data structures, and can be used wherever a data structure is required\[char46]
+\[bu] \fILIKEREC\fR can be coded for subfields of a qualified data structure\[char46] When \fILIKEREC\fR
+is coded on a data structure subfield definition, the subfield data structure is automatically
+defined as \fIQUALIFIED\fR\[char46] Subfields in a \fILIKEREC\fR subfield data structure are
+referenced in fully qualified form: "ds\[char46]subf\[char46]subfa" \[char46] Subfields defined with \fILIKEREC\fR are themselves data structures, and can be used
+wherever a data structure is required\[char46]
 .RE
 .IP "" 2
 .RS
 \[bu] 
 
- Data structures defined with the extract-type \fI*NULL\fR cannot be used with I/O operations\[char46] 
+ Data structures defined with the extract-type \fI*NULL\fR cannot be used with I/O
+operations\[char46] 
 
 
 .RE

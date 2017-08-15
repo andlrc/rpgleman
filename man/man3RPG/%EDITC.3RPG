@@ -13,10 +13,18 @@
 %EDITC(numeric : editcode {: *ASTFILL | *CURSYM | currency-symbol})
 .fi
 .SH DESCRIPTION
-The result of \fB%EDITC\fR is always the same length, and may contain leading and trailing blanks\[char46] For example, \fB%EDITC(\fINUM\fR : \[char39]A\[char39] : \[char39]$\[char39])\fR might return \[char39]$1,234\[char46]56CR\[char39] for one value of \fINUM\fR and \[char39]Â Â Â Â $4\[char46]56Â Â \[char39] for another value\[char46]
+The result of \fB%EDITC\fR is always the same length, and may contain leading and trailing
+blanks\[char46] For example, \fB%EDITC(\fINUM\fR : \[char39]A\[char39] : \[char39]$\[char39])\fR
+might return \[char39]$1,234\[char46]56CR\[char39] for one value of \fINUM\fR and
+\[char39]    $4\[char46]56  \[char39] for another value\[char46]
 
 
-Float expressions are not allowed in the first parameter (you can use \fB%DEC\fR to convert a float to an editable format)\[char46] In the second parameter, the edit code is specified as a character constant; supported edit codes are: \[char39]A\[char39] - \[char39]D\[char39], \[char39]J\[char39] - \[char39]Q\[char39], \[char39]X\[char39] - \[char39]Z\[char39], \[char39]1\[char39] - \[char39]9\[char39]\[char46] The constant can be a literal, named constant or an expression whose value can be determined at compile time\[char46]
+Float expressions are not allowed in the first parameter (you can use \fB%DEC\fR to convert a float
+to an editable format)\[char46] In the second parameter, the edit code is specified as a character
+constant; supported edit codes are: \[char39]A\[char39] - \[char39]D\[char39], \[char39]J\[char39] -
+\[char39]Q\[char39], \[char39]X\[char39] - \[char39]Z\[char39], \[char39]1\[char39] -
+\[char39]9\[char39]\[char46] The constant can be a literal, named constant or an expression whose
+value can be determined at compile time\[char46]
 
 
 For more information, see Conversion Operations or Built-in Functions\[char46]
@@ -70,16 +78,27 @@ A common requirement is to edit a field as follows:
 The following accomplishes this using an \fB%EDITC\fR in a subprocedure:
 
 .SH RETURN VALUE
-This function returns a character result representing the numeric value edited according to the edit code\[char46] In general, the rules for the numeric value and edit code are identical to those for editing numeric values in output specifications\[char46] The third parameter is optional, and if specified, must be one of: 
+This function returns a character result representing the numeric value edited according to the edit
+code\[char46] In general, the rules for the numeric value and edit code are identical to those for
+editing numeric values in output specifications\[char46] The third parameter is optional, and if
+specified, must be one of: 
 .TP 5
 .B \fI*ASTFILL\fR
-Indicates that asterisk protection is to be used\[char46] This means that leading zeros are replaced with asterisks in the returned value\[char46] For example, \fB%EDITC\fR( -0012\[char46]5  : \[char39]K\[char39] : \fI*ASTFILL\fR) returns \[char39]**\fI*12\fR\[char46]5-\[char39]\[char46]
+Indicates that asterisk protection is to be used\[char46] This means that leading zeros are replaced
+with asterisks in the returned value\[char46] For example, \fB%EDITC\fR( -0012\[char46]5  : \[char39]K\[char39] : \fI*ASTFILL\fR) returns \[char39]**\fI*12\fR\[char46]5-\[char39]\[char46]
 .TP 5
 .B \fI*CURSYM\fR
-Indicates that a floating currency symbol is to be used\[char46] The actual symbol will be the one specified on the control specification in the \fICURSYM\fR keyword, or the default, \[char39]$\[char39]\[char46] When \fI*CURSYM\fR is specified, the currency symbol is placed in the the result just before the first significant digit\[char46] For example, \fB%EDITC(0012\[char46]5 : \[char39]K\[char39] : \fI*CURSYM\fR)\fR returns \[char39]Â Â Â $12\[char46]5Â \[char39] \[char46]
+Indicates that a floating currency symbol is to be used\[char46] The actual symbol will be the one
+specified on the control specification in the \fICURSYM\fR keyword, or the default,
+\[char39]$\[char39]\[char46] When \fI*CURSYM\fR is specified, the currency symbol is placed in the
+the result just before the first significant digit\[char46] For example, \fB%EDITC(0012\[char46]5 :
+\[char39]K\[char39] : \fI*CURSYM\fR)\fR returns \[char39]   $12\[char46]5 \[char39] \[char46]
 .TP 5
 .B currency-symbol
-Indicates that floating currency is to be used with the provided currency symbol\[char46] It must be a 1-byte character constant (literal, named constant or expression that can be evaluated at compile time)\[char46] For example, \fB%EDITC(0012\[char46]5 : \[char39]K\[char39] : \[char39]X\[char39])\fR returns \[char39]Â Â Â X12\[char46]5Â \[char39]\[char46]
+Indicates that floating currency is to be used with the provided currency symbol\[char46] It must be
+a 1-byte character constant (literal, named constant or expression that can be evaluated at compile
+time)\[char46] For example, \fB%EDITC(0012\[char46]5 : \[char39]K\[char39] : \[char39]X\[char39])\fR
+returns \[char39]   X12\[char46]5 \[char39]\[char46]
 .PP
 
 .SH EXAMPLE

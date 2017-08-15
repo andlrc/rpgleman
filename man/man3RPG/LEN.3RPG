@@ -13,12 +13,17 @@ LEN
 LEN(length)
 .fi
 .SH DESCRIPTION
-The \fILEN\fR keyword is used to define the length in characters of a Data Structure or character, \fIUCS\fR-2 or graphic definition\[char46] It is valid for Data Structure definitions, and for Prototype, Prototyped Parameter, Standalone Field and Subfield definitions where the type entry is A (Alphanumeric), C (\fIUCS\fR-2), or G (Graphic)\[char46]
+The \fILEN\fR keyword is used to define the length in characters of a Data Structure or character,
+\fIUCS\fR-2 or graphic definition\[char46] It is valid for Data Structure definitions, and for
+Prototype, Prototyped Parameter, Standalone Field and Subfield definitions where the type entry is A
+(Alphanumeric), C (\fIUCS\fR-2), or G (Graphic)\[char46]
 
 .SH NOTICE
 Note:  
 
- In free-form definitions, the \fILEN\fR keyword is only used for data-structure definitions\[char46] For other definition types, the length of the item is specified as a parameter for the data-type keyword \[char46] 
+ In free-form definitions, the \fILEN\fR keyword is only used for data-structure definitions\[char46]
+For other definition types, the length of the item is specified as a parameter for
+the data-type keyword \[char46] 
 
 
 .SH SEE ALSO

@@ -25,21 +25,23 @@ l l l l l l l  .
 T{
 \fIOTHER\fR
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}
 .TE
 
-The \fIOTHER\fR operation begins the sequence of operations to be processed if no \fIWHEN\fRxx or \fIWHEN\fR (When True Then Select) condition is satisfied in a \fISELECT\fR group\[char46] The sequence ends with the \fIENDSL\fR or \fIEND\fR operation\[char46]
+The \fIOTHER\fR operation begins the sequence of operations to be processed if no \fIWHEN\fRxx or
+\fIWHEN\fR (When True Then Select) condition is satisfied in a \fISELECT\fR group\[char46] The
+sequence ends with the \fIENDSL\fR or \fIEND\fR operation\[char46]
 
 
 Rules to remember when using the \fIOTHER\fR operation: 
@@ -53,15 +55,20 @@ Rules to remember when using the \fIOTHER\fR operation:
 .RE
 .IP "" 2
 .RS
-\[bu] No \fIWHEN\fRxx or \fIWHEN\fR operation can be specified after an \fIOTHER\fR operation in the same \fISELECT\fR group\[char46]
+\[bu] No \fIWHEN\fRxx or \fIWHEN\fR operation can be specified after an \fIOTHER\fR operation in the same
+\fISELECT\fR group\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] The sequence of calculation operations in the \fIOTHER\fR group can be empty; the effect is the same as not specifying an \fIOTHER\fR statement\[char46]
+\[bu] The sequence of calculation operations in the \fIOTHER\fR group can be empty; the effect is the same
+as not specifying an \fIOTHER\fR statement\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Within total calculations, the control level entry (positions 7 and 8)  can be blank or can contain an L1 through L9 indicator, an LR indicator, or an L0 entry to group the statement within the appropriate section of the program\[char46] The control level entry is for documentation purposes only\[char46] Conditioning indicator entries (positions 9 through 11) are not allowed\[char46]
+\[bu] Within total calculations, the control level entry (positions 7 and 8)  can be blank or can contain an L1 through L9 indicator, an LR indicator, or an L0 entry to group
+the statement within the appropriate section of the program\[char46] The control level entry is for
+documentation purposes only\[char46] Conditioning indicator entries (positions 9 through 11) are not
+allowed\[char46]
 .RE
 .PP
 

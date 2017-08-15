@@ -29,7 +29,7 @@ program-device
 T}	T{
 file-name
 T}	T{
-Ã‚
+Â
 T}	T{
 _
 T}	T{
@@ -39,16 +39,24 @@ _
 T}
 .TE
 
-The \fIREL\fR operation releases the program device specified in program-device from the \fIWORKSTN\fR file specified in file-name\[char46]
+The \fIREL\fR operation releases the program device specified in program-device from the
+\fIWORKSTN\fR file specified in file-name\[char46]
 
 
-Specify the program device name in the program-device operand\[char46] Use either a character field of length 10 or less, a character literal, or a named constant\[char46] Specify the file name in file-name operand\[char46]
+Specify the program device name in the program-device operand\[char46] Use either a character field
+of length 10 or less, a character literal, or a named constant\[char46] Specify the file name in
+file-name operand\[char46]
 
 
-To handle \fIREL\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+To handle \fIREL\fR exceptions (file status codes greater than 1000), either the operation code
+extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For
+more information on error handling, see File Exception/Errors\[char46]
 
 
-When there are no program devices acquired to a \fIWORKSTN\fR file, the next \fIREAD\fR-by-file-name or cycle-read gets an end-of-file condition\[char46] You must decide what the program does next\[char46] The \fIREL\fR operation may be used with a multiple device file or, for error recovery purpose, with a single device file\[char46] 
+When there are no program devices acquired to a \fIWORKSTN\fR file, the next \fIREAD\fR-by-file-name
+or cycle-read gets an end-of-file condition\[char46] You must decide what the program does
+next\[char46] The \fIREL\fR operation may be used with a multiple device file or, for error recovery
+purpose, with a single device file\[char46] 
 
 
 

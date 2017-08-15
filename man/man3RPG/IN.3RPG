@@ -29,7 +29,7 @@ T}	T{
 T}	T{
 data-area-name
 T}	T{
-Ã‚
+Â
 T}	T{
 _
 T}	T{
@@ -39,25 +39,48 @@ _
 T}
 .TE
 
-The IN operation retrieves a data area and optionally allows you to specify whether the data area is to be locked from update by another program\[char46] For a data area to be retrieved by the IN operation, it must be specified in the result field of an \fI*DTAARA\fR \fIDEFINE\fR statement or using the \fIDTAARA\fR keyword on the Definition specification\[char46] (See \fIDEFINE\fR (Field Definition) for information on \fI*DTAARA\fR \fIDEFINE\fR operation and the Definition Specification for information on the \fIDTAARA\fR keyword)\[char46]
+The IN operation retrieves a data area and optionally allows you to specify whether the data area is
+to be locked from update by another program\[char46] For a data area to be retrieved by the IN
+operation, it must be specified in the result field of an \fI*DTAARA\fR \fIDEFINE\fR statement or
+using the \fIDTAARA\fR keyword on the Definition specification\[char46] (See \fIDEFINE\fR (Field
+Definition) for information on \fI*DTAARA\fR \fIDEFINE\fR operation and the Definition Specification
+for information on the \fIDTAARA\fR keyword)\[char46]
 
 
-If name of the data area is determined at runtime because \fIDTAARA\fR(\fI*VAR\fR) was specified on the definition of the field, then the variable containing the name of the data area must be set before the IN operation\[char46] However, if the data area is already locked due to a prior \fI*LOCK\fR IN operation, the variable containing the name will not be consulted; instead, the previously locked data area will be used\[char46]
+If name of the data area is determined at runtime because \fIDTAARA\fR(\fI*VAR\fR) was specified on
+the definition of the field, then the variable containing the name of the data area must be set
+before the IN operation\[char46] However, if the data area is already locked due to a prior
+\fI*LOCK\fR IN operation, the variable containing the name will not be consulted; instead, the
+previously locked data area will be used\[char46]
 
 
-The reserved word \fI*LOCK\fR can be specified in Factor 1 to indicate that the data area cannot be updated or locked by another program until (1) an \fIUNLOCK\fR operation is processed, (2) an \fIOUT\fR operation with no data-area-name operand specified, or (3) the \fIRPG\fR IV program implicitly unlocks the data area when the program ends
+The reserved word \fI*LOCK\fR can be specified in Factor 1 to indicate that the data area cannot be
+updated or locked by another program until (1) an \fIUNLOCK\fR operation is processed, (2) an
+\fIOUT\fR operation with no data-area-name operand specified, or (3) the \fIRPG\fR IV program
+implicitly unlocks the data area when the program ends
 
 
-\fI*LOCK\fR cannot be specified when the data-area-name operand is the name of the local data area or the Program Initialization Parameters (\fIPIP\fR) data area\[char46]
+\fI*LOCK\fR cannot be specified when the data-area-name operand is the name of the local data area
+or the Program Initialization Parameters (\fIPIP\fR) data area\[char46]
 
 
-You can specify a \fI*LOCK\fR IN statement for a data area that the program has locked\[char46] When data-area-name is not specified, the lock status is the same as it was before the data area was retrieved: If it was locked, it remains locked; if unlocked, it remains unlocked\[char46]
+You can specify a \fI*LOCK\fR IN statement for a data area that the program has locked\[char46] When
+data-area-name is not specified, the lock status is the same as it was before the data area was
+retrieved: If it was locked, it remains locked; if unlocked, it remains unlocked\[char46]
 
 
-data-area-name must be the name of a definition defined with the \fIDTAARA\fR keyword, the result field of a \fI*DTAARA\fR \fIDEFINE\fR operation, or the reserved word \fI*DTAARA\fR\[char46]\[char46] When \fI*DTAARA\fR is specified, all data areas defined in the program are retrieved\[char46] If an error occurs on the retrieval of a data area (for example, a data area can be retrieved but cannot be locked), an error occurs on the IN operation and the \fIRPG\fR IV exception/error handling routine receives control\[char46] If a message is issued to the requester, the message identifies the data area in error\[char46]
+data-area-name must be the name of a definition defined with the \fIDTAARA\fR keyword, the result
+field of a \fI*DTAARA\fR \fIDEFINE\fR operation, or the reserved word \fI*DTAARA\fR\[char46]\[char46]
+When \fI*DTAARA\fR is specified, all data areas defined in the program are retrieved\[char46] If an
+error occurs on the retrieval of a data area (for example, a data area can be retrieved but cannot
+be locked), an error occurs on the IN operation and the \fIRPG\fR IV exception/error handling
+routine receives control\[char46] If a message is issued to the requester, the message identifies
+the data area in error\[char46]
 
 
-To handle IN exceptions (program status codes 401-421, 431, or 432), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+To handle IN exceptions (program status codes 401-421, 431, or 432), either the operation code
+extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For
+more information on error handling, see Program Exception/Errors\[char46]
 
 
 On a fixed-form calculation, positions 71-72 and 75-76 must be blank\[char46]

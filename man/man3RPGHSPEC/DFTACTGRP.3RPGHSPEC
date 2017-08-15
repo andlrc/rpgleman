@@ -13,13 +13,25 @@ DFTACTGRP
 DFTACTGRP(*YES | *NO)
 .fi
 .SH DESCRIPTION
-The \fIDFTACTGRP\fR keyword specifies the activation group in which the created program will run when it is called\[char46]
+The \fIDFTACTGRP\fR keyword specifies the activation group in which the created program will run
+when it is called\[char46]
 
 
-If \fI*YES\fR is specified, then this program will always run in the default activation group, which is the activation group where all original program model (\fIOPM\fR) programs are run\[char46] This allows \fIILE\fR \fIRPG\fR programs to behave like \fIOPM\fR \fIRPG\fR programs in the areas of file sharing, file scoping, \fIRCLRSC\fR, and handling of unmonitored exceptions\[char46] \fIILE\fR static binding is not available when a program is created with \fIDFTACTGRP\fR(\fI*YES\fR)\[char46] This means that you cannot use the \fIBNDDIR\fR, \fIACTGRP\fR, or \fISTGMDL\fR command parameters or keywords when creating this program\[char46] In addition, any call operation in your source must call a program and not a procedure\[char46] \fIDFTACTGRP\fR(\fI*YES\fR) is useful when attempting to move an application on a program-by-program basis to \fIILE\fR \fIRPG\fR\[char46]
+If \fI*YES\fR is specified, then this program will always run in the default activation group, which
+is the activation group where all original program model (\fIOPM\fR) programs are run\[char46] This
+allows \fIILE\fR \fIRPG\fR programs to behave like \fIOPM\fR \fIRPG\fR programs in the areas of file
+sharing, file scoping, \fIRCLRSC\fR, and handling of unmonitored exceptions\[char46] \fIILE\fR
+static binding is not available when a program is created with \fIDFTACTGRP\fR(\fI*YES\fR)\[char46]
+This means that you cannot use the \fIBNDDIR\fR, \fIACTGRP\fR, or \fISTGMDL\fR command parameters or
+keywords when creating this program\[char46] In addition, any call operation in your source must
+call a program and not a procedure\[char46] \fIDFTACTGRP\fR(\fI*YES\fR) is useful when attempting to
+move an application on a program-by-program basis to \fIILE\fR \fIRPG\fR\[char46]
 
 
-If \fI*NO\fR is specified, then the program is associated with the activation group specified by the \fIACTGRP\fR command parameter or keyword and static binding is allowed\[char46] \fIDFTACTGRP\fR(\fI*NO\fR) is useful when you intend to take advantage of \fIILE\fR concepts; for example, running in a named activation group or binding to a service program\[char46]
+If \fI*NO\fR is specified, then the program is associated with the activation group specified by the
+\fIACTGRP\fR command parameter or keyword and static binding is allowed\[char46]
+\fIDFTACTGRP\fR(\fI*NO\fR) is useful when you intend to take advantage of \fIILE\fR concepts; for
+example, running in a named activation group or binding to a service program\[char46]
 
 
 The \fIDFTACTGRP\fR keyword is valid only if the \fICRTBNDRPG\fR command is used\[char46]
@@ -28,13 +40,16 @@ The \fIDFTACTGRP\fR keyword is valid only if the \fICRTBNDRPG\fR command is used
 
 
 
-If there are any free-form Control statement in the compilation unit, and one or more of the \fIACTGRP\fR, \fIBNDDIR\fR, or \fISTGMDL\fR keywords are used, then \fIDFTACTGRP\fR(\fI*NO\fR) is assumed\[char46]
+If there are any free-form Control statement in the compilation unit, and one or more of the
+\fIACTGRP\fR, \fIBNDDIR\fR, or \fISTGMDL\fR keywords are used, then \fIDFTACTGRP\fR(\fI*NO\fR) is
+assumed\[char46]
 
 
 Otherwise, the value specified on the command is used\[char46]
 
 
-In the following example, the \fICTL-OPT\fR statement is a free-form Control statement\[char46] The \fIACTGRP\fR keyword is specified, so \fIDFTACTGRP\fR(\fI*NO\fR) is assumed\[char46] 
+In the following example, the \fICTL-OPT\fR statement is a free-form Control statement\[char46] The
+\fIACTGRP\fR keyword is specified, so \fIDFTACTGRP\fR(\fI*NO\fR) is assumed\[char46] 
 .SH EXAMPLE
 
 .PP
@@ -43,7 +58,9 @@ In the following example, the \fICTL-OPT\fR statement is a free-form Control sta
 .fi
 
 
-In the following example, the \fISTGMDL\fR keyword is specified in a fixed-form Control statement, but there is also a free-form Control statement, so \fIDFTACTGRP\fR(\fI*NO\fR) is assumed\[char46] 
+In the following example, the \fISTGMDL\fR keyword is specified in a fixed-form Control statement,
+but there is also a free-form Control statement, so \fIDFTACTGRP\fR(\fI*NO\fR) is
+assumed\[char46] 
 .SH EXAMPLE
 
 .PP
@@ -53,7 +70,9 @@ H OPTION(*SRCSTMT) STGMDL(*INHERIT)
 .fi
 
 
-In the following example, there is a free-form Control statement, but none of the \fIACTGRP\fR, \fIBNDDIR\fR, or \fISTGMDL\fR keywords are specified\[char46] The value specified for the \fIDFTACTGRP\fR parameter of the \fICRTBNDRPG\fR command is used\[char46] 
+In the following example, there is a free-form Control statement, but none of the \fIACTGRP\fR,
+\fIBNDDIR\fR, or \fISTGMDL\fR keywords are specified\[char46] The value specified for the
+\fIDFTACTGRP\fR parameter of the \fICRTBNDRPG\fR command is used\[char46] 
 .SH EXAMPLE
 
 .PP

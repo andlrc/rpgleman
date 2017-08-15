@@ -15,7 +15,7 @@ l l  .
 T{
 Free-Form Syntax
 T}	T{
-ON-\fIERROR\fR {exception-id1 {:exception-id2â¦}}
+ON-\fIERROR\fR {exception-id1 {:exception-id2…}}
 T}
 .TE
 
@@ -25,13 +25,15 @@ l l l  .
 T{
 ON-\fIERROR\fR
 T}	T{
-Â
+�
 T}	T{
 List of exception IDs
 T}
 .TE
 
-You specify which error conditions the on-error block handles in the list of exception IDs ( exception-id1 : exception-id2 â¦)\[char46] You can specify any combination of the following, separated by colons: 
+You specify which error conditions the on-error block handles in the list of exception IDs
+( exception-id1 : exception-id2 …)\[char46] You can specify any combination of the following, separated by
+colons: 
 .TP 5
 .B nnnnn
 A status code
@@ -43,20 +45,27 @@ Handles all program-error status codes, from 00100 to 00999
 Handles all file-error status codes, from 01000 to 09999
 .TP 5
 .B \fI*ALL\fR
-Handles both program-error and file-error codes, from 00100 to 09999\[char46] This is the default\[char46]
+Handles both program-error and file-error codes, from 00100 to 09999\[char46] This is the
+default\[char46]
 .PP
 
 
-Status codes outside the range of 00100 to 09999, for example codes from 0 to 99, are not monitored for\[char46] You cannot specify these values for an on-error group\[char46] You also cannot specify any status codes that are not valid for the particular version of the compiler being used\[char46]
+Status codes outside the range of 00100 to 09999, for example codes from 0 to 99, are not monitored
+for\[char46] You cannot specify these values for an on-error group\[char46] You also cannot specify
+any status codes that are not valid for the particular version of the compiler being used\[char46]
 
 
-If the same status code is covered by more than one on-error group, only the first one is used\[char46] For this reason, you should specify special values such as \fI*ALL\fR after the specific status codes\[char46]
+If the same status code is covered by more than one on-error group, only the first one is
+used\[char46] For this reason, you should specify special values such as \fI*ALL\fR after the
+specific status codes\[char46]
 
 
-Any errors that occur within an on-error group are not handled by the monitor group\[char46] To handle errors, you can specify a monitor group within an on-error group\[char46]
+Any errors that occur within an on-error group are not handled by the monitor group\[char46] To
+handle errors, you can specify a monitor group within an on-error group\[char46]
 
 
-When all the statements in an on-error block have been processed, control passes to the statement following the \fIENDMON\fR statement\[char46]
+When all the statements in an on-error block have been processed, control passes to the statement
+following the \fIENDMON\fR statement\[char46]
 
 
 For an example of the ON-\fIERROR\fR statement, see \fIMONITOR\fR (Begin a Monitor Group)\[char46]

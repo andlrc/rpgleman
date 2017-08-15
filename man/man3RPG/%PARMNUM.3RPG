@@ -12,21 +12,29 @@
 For more information, see Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%PARMNUM\fR returns the number of the parameter in the parameter list\[char46] The operand for \fB%PARMNUM\fR is the name of a parameter defined as part of a procedure interface\[char46]
+\fB%PARMNUM\fR returns the number of the parameter in the parameter list\[char46] The operand for
+\fB%PARMNUM\fR is the name of a parameter defined as part of a procedure interface\[char46]
 
 .SH NOTICE
 Note: 
 .IP 1. 2
 .RS
-A parameter defined using a \fI*ENTRY\fR \fIPLIST\fR cannot be specified as the operand for \fB%PARMNUM\fR\[char46]
+A parameter defined using a \fI*ENTRY\fR \fIPLIST\fR cannot be specified as the operand for
+\fB%PARMNUM\fR\[char46]
 .RE
 .IP 2. 2
 .RS
-The parameter must be specified the same way it appears in the procedure interface parameter list\[char46] If the parameter is an array, an index cannot be specified\[char46] If the parameter is a data structure, a subfield cannot be specified\[char46] If the parameter is a file, a record format cannot be specified\[char46]
+The parameter must be specified the same way it appears in the procedure interface parameter
+list\[char46] If the parameter is an array, an index cannot be specified\[char46] If the parameter
+is a data structure, a subfield cannot be specified\[char46] If the parameter is a file, a record
+format cannot be specified\[char46]
 .RE
 .IP 3. 2
 .RS
-If the \fIRTNPARM\fR keyword is coded for a procedure, the return value is handled as an additional first parameter\[char46] The other parameters have a number one higher than the apparent number\[char46] For example, if a procedure defined with \fIRTNPARM\fR has two parameters P1 and P2, \fB%PARMNUM(P1)\fR will return 2 and \fB%PARMNUM(P2)\fR will return 3\[char46]
+If the \fIRTNPARM\fR keyword is coded for a procedure, the return value is handled as an additional
+first parameter\[char46] The other parameters have a number one higher than the apparent
+number\[char46] For example, if a procedure defined with \fIRTNPARM\fR has two parameters P1 and P2,
+\fB%PARMNUM(P1)\fR will return 2 and \fB%PARMNUM(P2)\fR will return 3\[char46]
 .RE
 .PP
 

@@ -9,7 +9,11 @@
 .SH NAME
 PACKEVEN
 .SH DESCRIPTION
-The \fIPACKEVEN\fR keyword indicates that the packed field or array has an even number of digits\[char46] The keyword is only valid for packed program-described data-structure subfields defined using \fIFROM\fR/TO positions\[char46] For a field or array element of length N, if the \fIPACKEVEN\fR keyword is not specified, the number of digits is 2N - 1; if the \fIPACKEVEN\fR keyword is specified, the number of digits is 2(N-1)\[char46]
+The \fIPACKEVEN\fR keyword indicates that the packed field or array has an even number of
+digits\[char46] The keyword is only valid for packed program-described data-structure subfields
+defined using \fIFROM\fR/TO positions\[char46] For a field or array element of length N, if the
+\fIPACKEVEN\fR keyword is not specified, the number of digits is 2N - 1; if the \fIPACKEVEN\fR
+keyword is specified, the number of digits is 2(N-1)\[char46]
 
 .SH SEE ALSO
 .BR FROM

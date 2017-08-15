@@ -25,9 +25,9 @@ l l l l l l l  .
 T{
 \fITEST\fR (E)
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
 Date/Time or Timestamp Field
 T}	T{
@@ -42,7 +42,7 @@ T{
 T}	T{
 Date Format
 T}	T{
-Ã‚
+Â
 T}	T{
 Character or Numeric field
 T}	T{
@@ -57,7 +57,7 @@ T{
 T}	T{
 Time Format
 T}	T{
-Ã‚
+Â
 T}	T{
 Character or Numeric field
 T}	T{
@@ -72,7 +72,7 @@ T{
 T}	T{
 Timestamp Format
 T}	T{
-Ã‚
+Â
 T}	T{
 Character or Numeric field
 T}	T{
@@ -84,7 +84,8 @@ _
 T}
 .TE
 
-The \fITEST\fR operation code allows users to test the validity of date, time, or timestamp fields prior to using them\[char46]
+The \fITEST\fR operation code allows users to test the validity of date, time, or timestamp fields
+prior to using them\[char46]
 
 
 For information on the formats that can be used see Date Data Type , Time Data Type , and Timestamp Data Type \[char46] 
@@ -97,14 +98,17 @@ For information on the formats that can be used see Date Data Type , Time Data T
 .RE
 .IP "" 2
 .RS
-\[bu] Operation code extenders \[char39]D\[char39], \[char39]T\[char39], and \[char39]Z\[char39] are not allowed
+\[bu] Operation code extenders \[char39]D\[char39], \[char39]T\[char39], and \[char39]Z\[char39] are not
+allowed
 .RE
 .PP
 
 .RE
 .IP "" 2
 .RS
-\[bu] If the field-name  operand is a field declared as character or numeric, then one of the operation code extenders \[char39]D\[char39], \[char39]T\[char39], or \[char39]Z\[char39] must be specified\[char46] 
+\[bu] If the field-name  operand is a field declared as character or numeric, then one of the operation code extenders
+\[char39]D\[char39], \[char39]T\[char39], or \[char39]Z\[char39] must be
+specified\[char46] 
 
 
 
@@ -120,7 +124,8 @@ For information on the formats that can be used see Date Data Type , Time Data T
 .RE
 .IP "" 2
 .RS
-\[bu] If dtz-format  is not specified, the format specified on the control specification with the \fIDATFMT\fR keyword is assumed\[char46] If this keyword is not specified, \fI*ISO\fR is assumed\[char46]
+\[bu] If dtz-format  is not specified, the format specified on the control specification with the \fIDATFMT\fR keyword
+is assumed\[char46] If this keyword is not specified, \fI*ISO\fR is assumed\[char46]
 .RE
 .PP
 
@@ -134,7 +139,8 @@ For information on the formats that can be used see Date Data Type , Time Data T
 .RE
 .IP "" 2
 .RS
-\[bu] If dtz-format  is not specified, the format specified on the control specification with the \fITIMFMT\fR keyword is assumed\[char46] If this keyword is not specified, \fI*ISO\fR is assumed\[char46]
+\[bu] If dtz-format  is not specified, the format specified on the control specification with the \fITIMFMT\fR keyword
+is assumed\[char46] If this keyword is not specified, \fI*ISO\fR is assumed\[char46]
 .RE
 .PP
  
@@ -157,16 +163,27 @@ For information on the formats that can be used see Date Data Type , Time Data T
 .PP
 
 
-Numeric fields and character fields without separators are tested for valid digit portions of a Date, Time, or Timestamp value\[char46] Character fields are tested for both valid digits and separators\[char46]
+Numeric fields and character fields without separators are tested for valid digit portions of a
+Date, Time, or Timestamp value\[char46] Character fields are tested for both valid digits and
+separators\[char46]
 
 
-If the character or numeric field specified as the field-name operand is longer than required by the format being tested, extra data is ignored\[char46] For character data, only the leftmost data is used; for numeric data, only the rightmost data is used\[char46] For example, if the dtz-format operand is \fI*MDY\fR for a test of a numeric date, only the rightmost 6 digits of the field-name operand are examined\[char46]
+If the character or numeric field specified as the field-name operand is longer than required by the
+format being tested, extra data is ignored\[char46] For character data, only the leftmost data is
+used; for numeric data, only the rightmost data is used\[char46] For example, if the dtz-format
+operand is \fI*MDY\fR for a test of a numeric date, only the rightmost 6 digits of the field-name
+operand are examined\[char46]
 
 
-For the test operation, either the operation code extender \[char39]E\[char39] or an error indicator ER must be specified, but not both\[char46] If the content of the field-name operand is not valid, program status code 112 is signaled\[char46] Then, the error indicator is set on or the \fB%ERROR\fR built-in function is set to return \[char39]1\[char39] depending on the error handling method specified\[char46] For more information on error handling, see Program Exception/Errors\[char46]
+For the test operation, either the operation code extender \[char39]E\[char39] or an error indicator
+ER must be specified, but not both\[char46] If the content of the field-name operand is not valid,
+program status code 112 is signaled\[char46] Then, the error indicator is set on or the \fB%ERROR\fR
+built-in function is set to return \[char39]1\[char39] depending on the error handling method
+specified\[char46] For more information on error handling, see Program Exception/Errors\[char46]
 
 
-If a numeric or character field is specified with the \[char39]Z\[char39] operation code extender, the value is assumed to have exactly 6 fractional seconds\[char46]
+If a numeric or character field is specified with the \[char39]Z\[char39] operation code extender,
+the value is assumed to have exactly 6 fractional seconds\[char46]
 
 
 For more information, see Date Operations or Test Operations\[char46]

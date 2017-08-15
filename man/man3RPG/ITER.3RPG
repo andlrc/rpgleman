@@ -25,27 +25,35 @@ l l l l l l l  .
 T{
 \fIITER\fR
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}
 .TE
 
-The \fIITER\fR operation transfers control from within a DO or \fIFOR\fR group to the \fIENDDO\fR or \fIENDFOR\fR statement of the group\[char46] It can be used in DO, \fIDOU\fR, \fIDOU\fRxx, \fIDOW\fR, \fIDOW\fRxx, and \fIFOR\fR loops to transfer control immediately to a loop\[char39]s \fIENDDO\fR or \fIENDFOR\fR statement\[char46] It causes the next iteration of the loop to be executed immediately\[char46] \fIITER\fR affects the innermost loop\[char46]
+The \fIITER\fR operation transfers control from within a DO or \fIFOR\fR group to the \fIENDDO\fR or
+\fIENDFOR\fR statement of the group\[char46] It can be used in DO, \fIDOU\fR, \fIDOU\fRxx,
+\fIDOW\fR, \fIDOW\fRxx, and \fIFOR\fR loops to transfer control immediately to a loop\[char39]s
+\fIENDDO\fR or \fIENDFOR\fR statement\[char46] It causes the next iteration of the loop to be
+executed immediately\[char46] \fIITER\fR affects the innermost loop\[char46]
 
 
-If conditioning indicators are present on the \fIENDDO\fR or \fIENDFOR\fR statement to which control is passed, and the condition is not satisfied, processing continues with the statement following the \fIENDDO\fR or \fIENDFOR\fR operation\[char46]
+If conditioning indicators are present on the \fIENDDO\fR or \fIENDFOR\fR statement to which control
+is passed, and the condition is not satisfied, processing continues with the statement following the
+\fIENDDO\fR or \fIENDFOR\fR operation\[char46]
 
 
-The \fILEAVE\fR (Leave a Do/For Group) operation is similar to the \fIITER\fR operation; however, \fILEAVE\fR transfers control to the statement following the \fIENDDO\fR or \fIENDFOR\fR operation\[char46]
+The \fILEAVE\fR (Leave a Do/For Group) operation is similar to the \fIITER\fR operation; however,
+\fILEAVE\fR transfers control to the statement following the \fIENDDO\fR or \fIENDFOR\fR
+operation\[char46]
 
 
 For more information, see Branching Operations or Structured Programming Operations\[char46]

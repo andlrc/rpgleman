@@ -25,22 +25,37 @@ l l l  .
 T{
 \fIEVALR\fR (M/R)
 T}	T{
-Ã‚
+Â
 T}	T{
 Assignment Statement
 T}
 .TE
 
-The \fIEVALR\fR operation code evaluates an assignment statement of the form result=expression\[char46] The expression is evaluated and the result is placed right-adjusted in the result\[char46] Therefore, the result cannot be a literal or constant, but must be a fixed-length character, graphic, or \fIUCS\fR-2 field name, array name, array element, data structure, data structure subfield, or a string using the \fB%SUBST\fR built-in function\[char46] The type of the expression must be the same as the type of the result\[char46] The result will be right justified and padded with blanks on the left, or truncated on the left as required\[char46]
+The \fIEVALR\fR operation code evaluates an assignment statement of the form
+result=expression\[char46] The expression is evaluated and the result is placed right-adjusted in
+the result\[char46] Therefore, the result cannot be a literal or constant, but must be a
+fixed-length character, graphic, or \fIUCS\fR-2 field name, array name, array element, data
+structure, data structure subfield, or a string using the \fB%SUBST\fR built-in function\[char46]
+The type of the expression must be the same as the type of the result\[char46] The result will be
+right justified and padded with blanks on the left, or truncated on the left as required\[char46]
 
 
-If the result represents an unindexed array or an array specified as array(*), the value of the expression is assigned to each element of the result, according to the rules described in Specifying an Array in Calculations\[char46] Otherwise, the expression is evaluated once and the value is placed into each element of the array or sub-array\[char46]
+If the result represents an unindexed array or an array specified as array(*), the value of the
+expression is assigned to each element of the result, according to the rules described in Specifying
+an Array in Calculations\[char46] Otherwise, the expression is evaluated once and the value is
+placed into each element of the array or sub-array\[char46]
 
 
-See Expressions for general information on expressions\[char46] See Precision Rules for Numeric Operations for information on precision rules for numeric expressions\[char46] This is especially important if the expression contains any divide operations, or if the \fIEVALR\fR uses any of the operation extenders\[char46]
+See Expressions for general information on expressions\[char46] See Precision Rules for Numeric
+Operations for information on precision rules for numeric expressions\[char46] This is especially
+important if the expression contains any divide operations, or if the \fIEVALR\fR uses any of the
+operation extenders\[char46]
 
 .SH NOTICE
-Note:  Unlike the \fIEVAL\fR operation, the result of \fIEVALR\fR can only be of type character, graphic, or \fIUCS\fR-2\[char46] In addition, only fixed length result fields are allowed, although \fB%SUBST\fR can contain a variable length field if this built-in function forms the lefthand part of the expression\[char46]
+Note:  Unlike the \fIEVAL\fR operation, the result of \fIEVALR\fR can only be of type character, graphic,
+or \fIUCS\fR-2\[char46] In addition, only fixed length result fields are allowed, although
+\fB%SUBST\fR can contain a variable length field if this built-in function forms the lefthand part
+of the expression\[char46]
 .SH EXAMPLE
 \fIEVALR\fR Operations
 .PP

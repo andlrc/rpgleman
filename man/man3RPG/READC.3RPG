@@ -25,7 +25,7 @@ l l l l l l l  .
 T{
 \fIREADC\fR (E)
 T}	T{
-Ã‚
+Â
 T}	T{
 record-name
 T}	T{
@@ -39,19 +39,36 @@ T}	T{
 T}
 .TE
 
-The \fIREADC\fR operation can be used only with an externally described \fIWORKSTN\fR file to obtain the next changed record in a subfile\[char46] The record-name operand is required and must be the name of a record format defined as a subfile by the \fISFILE\fR keyword on the file description specifications\[char46] (See \fISFILE\fR(recformat:rrnfield) for information on the \fISFILE\fR keyword\[char46])
+The \fIREADC\fR operation can be used only with an externally described \fIWORKSTN\fR file to obtain
+the next changed record in a subfile\[char46] The record-name operand is required and must be the
+name of a record format defined as a subfile by the \fISFILE\fR keyword on the file description
+specifications\[char46] (See \fISFILE\fR(recformat:rrnfield) for information on the \fISFILE\fR
+keyword\[char46])
 
 
-For a multiple device file, data is read from the subfile record associated with a program device; the program device is identified by the field specified in the \fIDEVID\fR keyword on the file specifications\[char46] If there is no such entry, data is read from the program device used for the last successful input operation\[char46]
+For a multiple device file, data is read from the subfile record associated with a program device;
+the program device is identified by the field specified in the \fIDEVID\fR keyword on the file
+specifications\[char46] If there is no such entry, data is read from the program device used for the
+last successful input operation\[char46]
 
 
-To handle \fIREADC\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+To handle \fIREADC\fR exceptions (file status codes greater than 1000), either the operation code
+extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For
+more information on error handling, see File Exception/Errors\[char46]
 
 
-You can specify an indicator in positions 75-76 that will be set on when there are no more changed records in the subfile\[char46] This information can also be obtained from the \fB%EOF\fR built-in function, which returns \[char39]1\[char39] if there are no more changed records in the subfile and \[char39]0\[char39] otherwise\[char46]
+You can specify an indicator in positions 75-76 that will be set on when there are no more changed
+records in the subfile\[char46] This information can also be obtained from the \fB%EOF\fR built-in
+function, which returns \[char39]1\[char39] if there are no more changed records in the subfile and
+\[char39]0\[char39] otherwise\[char46]
 
 
-If the data-structure operand is specified, the record is read directly into the data structure\[char46] The data structure must be a data structure defined with \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR)\[char46] See File Operations for information on how to define the data structure and how data is transferred between the file and the data structure\[char46]
+If the data-structure operand is specified, the record is read directly into the data
+structure\[char46] The data structure must be a data structure defined with
+\fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR) or
+\fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR)\[char46] See File Operations
+for information on how to define the data structure and how data is transferred between the file and
+the data structure\[char46]
 
 .SH EXAMPLE
 \fIREADC\fR example

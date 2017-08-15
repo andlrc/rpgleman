@@ -9,7 +9,8 @@
 .SH NAME
 EOF
 .SH DESCRIPTION
-The /\fIEOF\fR compiler directive is used to indicate that the compiler should consider that end-of-file has been reached for the current source file\[char46]
+The /\fIEOF\fR compiler directive is used to indicate that the compiler should consider that
+end-of-file has been reached for the current source file\[char46]
 
 
 See Compiler Directives for information on the columns available for directives\[char46]
@@ -18,7 +19,9 @@ See Compiler Directives for information on the columns available for directives\
 The remainder of the line containing /\fIEOF\fR must be blank\[char46]
 
 
-/\fIEOF\fR will end any active /IF group that became active during the reading of the current source member\[char46] If the /\fIEOF\fR was in a /\fICOPY\fR file, then any conditions that that were active when the /\fICOPY\fR directive was read will still be active\[char46] 
+/\fIEOF\fR will end any active /IF group that became active during the reading of the current source
+member\[char46] If the /\fIEOF\fR was in a /\fICOPY\fR file, then any conditions that that were
+active when the /\fICOPY\fR directive was read will still be active\[char46] 
 
 
 
@@ -26,7 +29,9 @@ The following is an example of the /\fIEOF\fR directive\[char46]
 
 .SH NOTICE
 Tip: 
-Using the /\fIEOF\fR directive will enhance compile-time performance when an entire /\fICOPY\fR member is to be used only once, but may be copied in multiple times\[char46] (This is not true if excluded lines are being printed)\[char46]
+Using the /\fIEOF\fR directive will enhance compile-time performance when an entire /\fICOPY\fR
+member is to be used only once, but may be copied in multiple times\[char46] (This is not true if
+excluded lines are being printed)\[char46]
 
 
 .SH EXAMPLE
@@ -37,14 +42,14 @@ Using the /\fIEOF\fR directive will enhance compile-time performance when an ent
       * Main source file
       *-----------------------------------------------------------------
       \[char46]\[char46]\[char46]\[char46]
-      /IF DEFINED(READ_XYZ)                       Â 1Â
+      /IF DEFINED(READ_XYZ)                        1�
       /COPY XYZ
-      /ENDIF                                      Â 2Â
+      /ENDIF                                       2�
       \[char46]\[char46]\[char46]\[char46]
       *-----------------------------------------------------------------
       * /COPY file XYZ
       *-----------------------------------------------------------------
-      /IF DEFINED(XYZ_COPIED)                     Â 3Â
+      /IF DEFINED(XYZ_COPIED)                      3�
       /EOF
       /ELSE
       /DEFINE XYZ_COPIED
@@ -52,10 +57,14 @@ Using the /\fIEOF\fR directive will enhance compile-time performance when an ent
       /ENDIF
 .fi
 
-The first time this /\fICOPY\fR member is read, \fIXYZ\fR_COPIED will not be defined, so the /\fIEOF\fR will not be considered\[char46]
+The first time this /\fICOPY\fR member is read, \fIXYZ\fR_COPIED will not be defined, so the
+/\fIEOF\fR will not be considered\[char46]
 
 
-The second time this member is read, \fIXYZ\fR_COPIED is defined, so the /\fIEOF\fR is processed\[char46] The /IF \fIDEFINED\fR(\fIXYZ\fR_COPIED) (Â 3Â ) is considered ended, and the file is closed\[char46] However, the /IF \fIDEFINED\fR(\fIREAD\fR_XYZ) (Â 1Â ) from the main source member is still active until its own /\fIENDIF\fR (Â 2Â ) is reached\[char46]
+The second time this member is read, \fIXYZ\fR_COPIED is defined, so the /\fIEOF\fR is
+processed\[char46] The /IF \fIDEFINED\fR(\fIXYZ\fR_COPIED) ( 3 ) is considered ended, and the file
+is closed\[char46] However, the /IF \fIDEFINED\fR(\fIREAD\fR_XYZ) ( 1 ) from the main source
+member is still active until its own /\fIENDIF\fR ( 2 ) is reached\[char46]
 
 .SH SEE ALSO
 .BR COPIED,

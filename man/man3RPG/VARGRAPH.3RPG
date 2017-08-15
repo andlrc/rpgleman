@@ -13,7 +13,8 @@ VARGRAPH
 VARGRAPH(length {:2 | 4})
 .fi
 .SH DESCRIPTION
-The \fIVARGRAPH\fR keyword is used in a free-form definition to indicate that the item is variable-length graphic\[char46]
+The \fIVARGRAPH\fR keyword is used in a free-form definition to indicate that the item is
+variable-length graphic\[char46]
 
 
 It must be the first keyword\[char46]
@@ -22,23 +23,29 @@ It must be the first keyword\[char46]
 The parameter specifies the length in bytes\[char46] It can be between 1 and 8,386,550\[char46]
 
 
-The parameter can be a literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46]
+The parameter can be a literal or a named constant\[char46] If it is a named constant, the constant
+must be defined prior to the definition statement\[char46]
 
 
-The second parameter is optional\[char46] It specifies the number of bytes used to store the current length of the variable-length item\[char46] See Size of the Length-Prefix for a Varying Length Item\[char46]
+The second parameter is optional\[char46] It specifies the number of bytes used to store the current
+length of the variable-length item\[char46] See Size of the Length-Prefix for a Varying Length
+Item\[char46]
 
 
-Each parameter can be a literal or a named constant\[char46] If it is a named constant, the constant must be defined prior to the definition statement\[char46]
+Each parameter can be a literal or a named constant\[char46] If it is a named constant, the constant
+must be defined prior to the definition statement\[char46]
 
 
 In the following example 
 .IP "" 2
 .RS
-\[bu] field cust_name  is defined as a variable-length graphic field with a maximum length of 50 characters
+\[bu] field cust_name  is defined as a variable-length graphic field with a maximum length of 50
+characters
 .RE
 .IP "" 2
 .RS
-\[bu] field message  is defined as a variable-length graphic field with a maximum length of 500 characters and a prefix size of 4 bytes\[char46]
+\[bu] field message  is defined as a variable-length graphic field with a maximum length of 500 characters and a prefix
+size of 4 bytes\[char46]
 .RE
 .PP
  

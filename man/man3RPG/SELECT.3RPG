@@ -25,21 +25,22 @@ l l l l l l l  .
 T{
 \fISELECT\fR
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}
 .TE
 
-The select group conditionally processes one of several alternative sequences of operations\[char46] It consists of: 
+The select group conditionally processes one of several alternative sequences of operations\[char46]
+It consists of: 
 .IP "" 2
 .RS
 \[bu] A \fISELECT\fR statement
@@ -59,16 +60,27 @@ The select group conditionally processes one of several alternative sequences of
 .PP
 
 
-After the \fISELECT\fR operation, control passes to the statement following the first \fIWHEN\fRxx condition that is satisfied\[char46] All statements are then executed until the next \fIWHEN\fRxx operation\[char46] Control passes to the \fIENDSL\fR statement (only one \fIWHEN\fRxx is executed)\[char46] If no \fIWHEN\fRxx condition is satisfied and an \fIOTHER\fR operation is specified, control passes to the statement following the \fIOTHER\fR operation\[char46] If no \fIWHEN\fRxx condition is satisfied and no \fIOTHER\fR operation is specified, control transfers to the statement following the \fIENDSL\fR operation of the select group\[char46]
+After the \fISELECT\fR operation, control passes to the statement following the first \fIWHEN\fRxx
+condition that is satisfied\[char46] All statements are then executed until the next \fIWHEN\fRxx
+operation\[char46] Control passes to the \fIENDSL\fR statement (only one \fIWHEN\fRxx is
+executed)\[char46] If no \fIWHEN\fRxx condition is satisfied and an \fIOTHER\fR operation is
+specified, control passes to the statement following the \fIOTHER\fR operation\[char46] If no
+\fIWHEN\fRxx condition is satisfied and no \fIOTHER\fR operation is specified, control transfers to
+the statement following the \fIENDSL\fR operation of the select group\[char46]
 
 
-Conditioning indicators can be used on the \fISELECT\fR operation\[char46] If they are not satisfied, control passes immediately to the statement following the \fIENDSL\fR operation of the select group\[char46] Conditioning indicators cannot be used on \fIWHEN\fRxx, \fIWHEN\fR, \fIOTHER\fR and \fIENDSL\fR operation individually\[char46]
+Conditioning indicators can be used on the \fISELECT\fR operation\[char46] If they are not
+satisfied, control passes immediately to the statement following the \fIENDSL\fR operation of the
+select group\[char46] Conditioning indicators cannot be used on \fIWHEN\fRxx, \fIWHEN\fR,
+\fIOTHER\fR and \fIENDSL\fR operation individually\[char46]
 
 
-The select group can be specified anywhere in calculations\[char46] It can be nested within IF, DO, or other select groups\[char46] The IF and DO groups can be nested within select groups\[char46]
+The select group can be specified anywhere in calculations\[char46] It can be nested within IF, DO,
+or other select groups\[char46] The IF and DO groups can be nested within select groups\[char46]
 
 
-If a \fISELECT\fR operation is specified inside a select group, the \fIWHEN\fRxx and \fIOTHER\fR operations apply to the new select group until an \fIENDSL\fR is specified\[char46]
+If a \fISELECT\fR operation is specified inside a select group, the \fIWHEN\fRxx and \fIOTHER\fR
+operations apply to the new select group until an \fIENDSL\fR is specified\[char46]
 
 
 For more information, see Structured Programming Operations\[char46]

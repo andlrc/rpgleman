@@ -13,16 +13,21 @@ ALT
 ALT(array_name)
 .fi
 .SH DESCRIPTION
-The \fIALT\fR keyword is used to indicate that the compile-time or pre-runtime array or table is in alternating format\[char46]
+The \fIALT\fR keyword is used to indicate that the compile-time or pre-runtime array or table is in
+alternating format\[char46]
 
 
-The array defined with the \fIALT\fR keyword is the alternating array and the array name specified as the parameter is the main array\[char46] The alternate array definition may precede or follow the main array definition\[char46]
+The array defined with the \fIALT\fR keyword is the alternating array and the array name specified
+as the parameter is the main array\[char46] The alternate array definition may precede or follow the
+main array definition\[char46]
 
 
-The keywords on the main array define the loading for both arrays\[char46] The initialization data is in alternating order, beginning with the main array, as follows: main/alt/main/alt/\[char46]\[char46]\[char46]
+The keywords on the main array define the loading for both arrays\[char46] The initialization data
+is in alternating order, beginning with the main array, as follows: main/alt/main/alt/\[char46]\[char46]\[char46]
 
 
-In the alternate array definition, the \fIPERRCD\fR, \fIFROMFILE\fR, \fITOFILE\fR, and \fICTDATA\fR keywords are not valid\[char46]
+In the alternate array definition, the \fIPERRCD\fR, \fIFROMFILE\fR, \fITOFILE\fR, and \fICTDATA\fR
+keywords are not valid\[char46]
 
 .SH SEE ALSO
 .BR CTDATA,

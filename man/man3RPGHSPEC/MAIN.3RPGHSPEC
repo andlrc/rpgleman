@@ -13,40 +13,51 @@ MAIN
 MAIN(main_procedure_name)
 .fi
 .SH DESCRIPTION
-The \fIMAIN\fR keyword indicates that this source program is for a linear-main module and contains a linear-main procedure, identified by the main_procedure_name parameter, which will be the program entry procedure for the module\[char46]
+The \fIMAIN\fR keyword indicates that this source program is for a linear-main module and contains a
+linear-main procedure, identified by the main_procedure_name parameter, which will be the program
+entry procedure for the module\[char46]
 
 
-The main_procedure_name must be the name of a procedure defined in the source program\[char46] The linear-main procedure is intended to be called only through the program call interface and not as a bound procedure call; if you make a recursive call to the linear-main procedure, the call will be a dynamic program call\[char46]
+The main_procedure_name must be the name of a procedure defined in the source program\[char46] The
+linear-main procedure is intended to be called only through the program call interface and not as a
+bound procedure call; if you make a recursive call to the linear-main procedure, the call will be a
+dynamic program call\[char46]
 
 
 Therefore, the following rules apply: 
 .IP "" 2
 .RS
-\[bu] If a prototype is specified for the linear-main procedure, it must specify the \fIEXTPGM\fR keyword\[char46]
+\[bu] If a prototype is specified for the linear-main procedure, it must specify the \fIEXTPGM\fR
+keyword\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If a prototype is not specified for the linear-main procedure, and a procedure interface is specified, the procedure interface must specify the \fIEXTPGM\fR keyword\[char46]
+\[bu] If a prototype is not specified for the linear-main procedure, and a procedure interface is
+specified, the procedure interface must specify the \fIEXTPGM\fR keyword\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] If the program has no parameters, and the program is not called from an \fIRPG\fR program, neither a prototype nor a procedure interface is required\[char46]
+\[bu] If the program has no parameters, and the program is not called from an \fIRPG\fR program, neither a
+prototype nor a procedure interface is required\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu]  The procedure cannot be exported; the \fIEXPORT\fR keyword may not be specified on the procedure-begin specification for main_procedure_name\[char46]
+\[bu]  The procedure cannot be exported; the \fIEXPORT\fR keyword may not be specified on the
+procedure-begin specification for main_procedure_name\[char46]
 .RE
 .PP
 
 
-A linear-main module will not include logic for the \fIRPG\fR program cycle; thus language features dependent on the cycle may not be specified\[char46] 
+A linear-main module will not include logic for the \fIRPG\fR program cycle; thus language features
+dependent on the cycle may not be specified\[char46] 
 
   See Linear Module  for more information\[char46]
 
 The following two examples show a linear-main program and its /\fICOPY\fR file\[char46]
 
 .SH EXAMPLE
-/\fICOPY\fR file \fIDSPCURTIME\fR used in the following sample linear-main program
+/\fICOPY\fR file \fIDSPCURTIME\fR used in the following sample linear-main
+program
 .PP
 .nf
       *  The prototype for the linear-main procedure must have
@@ -80,11 +91,18 @@ A sample linear-main procedure used in a program
      P DisplayCurTime  E
 .fi
 
-The following example shows a linear main program that does not require a prototype\[char46] The program is named \fIPRTCUSTRPT\fR, and the module has a linear-main procedure called PrintCustomerReport\[char46] The program is intended to be the command processing program for a \fI*CMD\fR object, so there is no need for an \fIRPG\fR prototype\[char46] The Control specification \fIMAIN\fR keyword signifies that this is a linear-main module, and identifies which procedure is the special subprocedure which serves as the linear-main procedure, which will act as the program-entry procedure\[char46]
+The following example shows a linear main program that does not require a prototype\[char46] The
+program is named \fIPRTCUSTRPT\fR, and the module has a linear-main procedure called
+PrintCustomerReport\[char46] The program is intended to be the command processing program for a
+\fI*CMD\fR object, so there is no need for an \fIRPG\fR prototype\[char46] The Control specification
+\fIMAIN\fR keyword signifies that this is a linear-main module, and identifies which procedure is
+the special subprocedure which serves as the linear-main procedure, which will act as the
+program-entry procedure\[char46]
 
 
 .SH EXAMPLE
-A linear main program that is not intended to be called from within any \fIRPG\fR program or procedure
+A linear main program that is not intended to be called from within any \fIRPG\fR program or
+procedure
 .PP
 .nf
      H MAIN(PrintCustomerReport)

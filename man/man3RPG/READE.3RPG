@@ -39,10 +39,14 @@ T}	T{
 T}
 .TE
 
-The \fIREADE\fR operation retrieves the next sequential record from a full procedural file if the key of the record matches the search argument\[char46] If the key of the record does not match the search argument, an \fIEOF\fR condition occurs, and the record is not returned to the program\[char46] An \fIEOF\fR condition also applies when end of file occurs\[char46]
+The \fIREADE\fR operation retrieves the next sequential record from a full procedural file if the
+key of the record matches the search argument\[char46] If the key of the record does not match the
+search argument, an \fIEOF\fR condition occurs, and the record is not returned to the
+program\[char46] An \fIEOF\fR condition also applies when end of file occurs\[char46]
 
 
-The search argument, search-arg , identifies the record to be retrieved\[char46] The search-arg  operand is optional in traditional syntax but is required in free-form syntax\[char46] search-arg  can be: 
+The search argument, search-arg , identifies the record to be retrieved\[char46] The search-arg  operand is optional in traditional syntax but is required in free-form
+syntax\[char46] search-arg  can be: 
 .IP "" 2
 .RS
 \[bu] A field name, a literal, a named constant, or a figurative constant\[char46]
@@ -57,11 +61,14 @@ The search argument, search-arg , identifies the record to be retrieved\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] \fB%KDS\fR to indicate that the search arguments are the subfields of a data structure\[char46] See the example at the end of \fB%KDS\fR (Search Arguments in Data Structure)  for an illustration of search arguments in a data structure\[char46]
+\[bu] \fB%KDS\fR to indicate that the search arguments are the subfields of a data structure\[char46] See
+the example at the end of \fB%KDS\fR (Search Arguments in Data Structure)  for an illustration of search arguments in a data structure\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] \fI*KEY\fR or (in traditional syntax only) no value\[char46] If the full key of the next record is equal to that of the current record, the next record in the file is retrieved\[char46] The full key is defined by the record format or file specified in name \[char46]
+\[bu] \fI*KEY\fR or (in traditional syntax only) no value\[char46] If the full key of the next record is
+equal to that of the current record, the next record in the file is retrieved\[char46] The full key
+is defined by the record format or file specified in name \[char46]
 .RE
 .PP
 
@@ -69,41 +76,81 @@ The search argument, search-arg , identifies the record to be retrieved\[char46]
 Graphic and \fIUCS\fR-2 keys must have the same \fICCSID\fR\[char46]
 
 
-The name operand must be the name of the file or record format to be retrieved\[char46] A record format name is allowed only with an externally described file\[char46]
+The name operand must be the name of the file or record format to be retrieved\[char46] A record
+format name is allowed only with an externally described file\[char46]
 
 
-If the data-structure operand is specified, the record is read directly into the data structure\[char46] If name refers to a program-described file, the data structure can be any data structure of the same length as the file\[char39]s declared record length\[char46] If name refers to an externally-described file or a record format from an externally described file, the data structure must be a data structure defined with \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR)\[char46] See File Operations for information on how to define the data structure and how data is transferred between the file and the data structure\[char46]
+If the data-structure operand is specified, the record is read directly into the data
+structure\[char46] If name refers to a program-described file, the data structure can be any data
+structure of the same length as the file\[char39]s declared record length\[char46] If name refers to
+an externally-described file or a record format from an externally described file, the data
+structure must be a data structure defined with \fIEXTNAME\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR
+or \fI*ALL\fR) or \fILIKEREC\fR(\[char46]\[char46]\[char46]:\fI*INPUT\fR or \fI*ALL\fR)\[char46] See
+File Operations for information on how to define the data structure and how data is transferred
+between the file and the data structure\[char46]
 
 
-If the file you are reading is an update disk file, you can specify an N operation extender to indicate that no lock should be placed on the record when it is read\[char46] See the Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide for more information\[char46]
+If the file you are reading is an update disk file, you can specify an N operation extender to
+indicate that no lock should be placed on the record when it is read\[char46] See the Rational
+Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide for more
+information\[char46]
 
 
-To handle \fIREADE\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+To handle \fIREADE\fR exceptions (file status codes greater than 1000), either the operation code
+extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For
+more information on error handling, see File Exception/Errors\[char46]
 
 
-You can specify an indicator in positions 75-76 that will be set on if an \fIEOF\fR condition occurs: that is, if a record is not found with a key equal to the search argument or if an end of file is encountered\[char46] This information can also be obtained from the \fB%EOF\fR built-in function, which returns \[char39]1\[char39] if an \fIEOF\fR condition occurs and \[char39]0\[char39] otherwise\[char46]
+You can specify an indicator in positions 75-76 that will be set on if an \fIEOF\fR condition
+occurs: that is, if a record is not found with a key equal to the search argument or if an end of
+file is encountered\[char46] This information can also be obtained from the \fB%EOF\fR built-in
+function, which returns \[char39]1\[char39] if an \fIEOF\fR condition occurs and \[char39]0\[char39]
+otherwise\[char46]
 
 
-If a \fIREADE\fR operation is successful, the file is positioned at the next record that satisfies the operation\[char46] If there is a record-lock error (status 1218), the file is still positioned at the locked record and the next read operation will attempt to read that record again\[char46] Otherwise, if there is any other error or an end of file condition, you must reposition the file (using a \fICHAIN\fR, \fISETLL\fR, or \fISETGT\fR operation)\[char46] See \fICHAIN\fR (Random Retrieval from a File), \fISETGT\fR (Set Greater Than), or \fISETLL\fR (Set Lower Limit)\[char46]
+If a \fIREADE\fR operation is successful, the file is positioned at the next record that satisfies
+the operation\[char46] If there is a record-lock error (status 1218), the file is still positioned
+at the locked record and the next read operation will attempt to read that record again\[char46]
+Otherwise, if there is any other error or an end of file condition, you must reposition the file
+(using a \fICHAIN\fR, \fISETLL\fR, or \fISETGT\fR operation)\[char46] See \fICHAIN\fR (Random
+Retrieval from a File), \fISETGT\fR (Set Greater Than), or \fISETLL\fR (Set Lower Limit)\[char46]
 
 
-Normally, the comparison between the specified key and the actual key in the file is done by data management\[char46] In some cases this is impossible, causing the comparison to be done using the hexadecimal collating sequence\[char46] This can give different results than expected\[char46] For more information, see the section "Unexpected Results Using Keyed Files" in Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
+Normally, the comparison between the specified key and the actual key in the file is done by data
+management\[char46] In some cases this is impossible, causing the comparison to be done using the
+hexadecimal collating sequence\[char46] This can give different results than expected\[char46] For
+more information, see the section "Unexpected Results Using Keyed Files" in Rational Development
+Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
 
 
-A \fIREADE\fR with the search-arg operand specified that immediately follows an \fIOPEN\fR operation or an \fIEOF\fR condition retrieves the first record in the file if the key of the record matches the search argument\[char46] A \fIREADE\fR with no search-arg specified that immediately follows an \fIOPEN\fR operation or an \fIEOF\fR condition results in an error condition\[char46] The error indicator in positions 73 and 74, if specified, is set on or the \[char39]E\[char39] extender, checked with \fB%ERROR\fR, if specified, is set on\[char46] No further I/O operations can be issued against the file until it is successfully closed and reopened\[char46]
+A \fIREADE\fR with the search-arg operand specified that immediately follows an \fIOPEN\fR operation
+or an \fIEOF\fR condition retrieves the first record in the file if the key of the record matches
+the search argument\[char46] A \fIREADE\fR with no search-arg specified that immediately follows an
+\fIOPEN\fR operation or an \fIEOF\fR condition results in an error condition\[char46] The error
+indicator in positions 73 and 74, if specified, is set on or the \[char39]E\[char39] extender,
+checked with \fB%ERROR\fR, if specified, is set on\[char46] No further I/O operations can be issued
+against the file until it is successfully closed and reopened\[char46]
 
 
-See Database Null Value Support for information on handling records with null-capable fields and keys\[char46]
+See Database Null Value Support for information on handling records with null-capable fields and
+keys\[char46]
 
 
 For more information, see File Operations\[char46]
 
 .SH NOTICE
-Note:  If a file is defined as update and the N operation extender is not specified, occasionally a \fIREADE\fR operation will be forced to wait for a temporary record lock for a record whose key value does not match the search argument\[char46] Once the temporary lock has been obtained, if the key value does not match the search argument, the temporary lock is released\[char46] 
-In most cases, \fIRPG\fR can perform \fIREADE\fR by using system support that does not require obtaining a temporary record lock to determine whether there is a matching record\[char46] However, in other cases, \fIRPG\fR cannot use this support, and must request the next record before it can determine whether the record matches the \fIREADE\fR request\[char46]
+Note:  If a file is defined as update and the N operation extender is not specified, occasionally a
+\fIREADE\fR operation will be forced to wait for a temporary record lock for a record whose key
+value does not match the search argument\[char46] Once the temporary lock has been obtained, if the
+key value does not match the search argument, the temporary lock is released\[char46] 
+In most cases, \fIRPG\fR can perform \fIREADE\fR by using system support that does not require
+obtaining a temporary record lock to determine whether there is a matching record\[char46] However,
+in other cases, \fIRPG\fR cannot use this support, and must request the next record before it can
+determine whether the record matches the \fIREADE\fR request\[char46]
 
  
-Some of the reasons that would require \fIRPG\fR to obtain a temporary lock on the next record for a \fIREADE\fR operation are: 
+Some of the reasons that would require \fIRPG\fR to obtain a temporary lock on the next record for a
+\fIREADE\fR operation are: 
 .IP "" 2
 .RS
 \[bu] the key of the current record is not the same as the search argument
@@ -134,7 +181,8 @@ Some of the reasons that would require \fIRPG\fR to obtain a temporary lock on t
 
 Note:
 
-Note:  Operation code extenders H, M, and R are allowed only when the search argument is a list or is \fB%KDS()\fR\[char46]
+Note:  Operation code extenders H, M, and R are allowed only when the search argument is a list or is
+\fB%KDS()\fR\[char46]
 .SH EXAMPLE
 \fIREADE\fR Operation
 .PP

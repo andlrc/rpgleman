@@ -13,19 +13,25 @@
 %TIME{(expression{:time-format})}
 .fi
 .SH DESCRIPTION
-\fB%TIME\fR converts the value of the expression from character, numeric, or timestamp data to type time\[char46] The converted value remains unchanged, but is returned as a time\[char46]
+\fB%TIME\fR converts the value of the expression from character, numeric, or timestamp data to type
+time\[char46] The converted value remains unchanged, but is returned as a time\[char46]
 
 
-The first parameter is the value to be converted\[char46] If you do not specify a value, \fB%TIME\fR returns the current system time\[char46]
+The first parameter is the value to be converted\[char46] If you do not specify a value, \fB%TIME\fR
+returns the current system time\[char46]
 
 
-The second parameter is the time format for numeric or character input\[char46] Regardless of the input format, the output is returned in \fI*ISO\fR format\[char46]
+The second parameter is the time format for numeric or character input\[char46] Regardless of the
+input format, the output is returned in \fI*ISO\fR format\[char46]
 
 
-For information on the input formats that can be used, see Time Data Type\[char46] If the time format is not specified for numeric or character input, the default format is \fI*ISO\fR\[char46] For more information, see \fITIMFMT\fR(fmt{separator})\[char46]
+For information on the input formats that can be used, see Time Data Type\[char46] If the time
+format is not specified for numeric or character input, the default format is \fI*ISO\fR\[char46]
+For more information, see \fITIMFMT\fR(fmt{separator})\[char46]
 
 
-If the first parameter is a timestamp, do not specify the second parameter\[char46] The system knows the format of the input in this case\[char46]
+If the first parameter is a timestamp, do not specify the second parameter\[char46] The system knows
+the format of the input in this case\[char46]
 
 
 For more information, see Information Operations or Built-in Functions\[char46]

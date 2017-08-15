@@ -27,25 +27,35 @@ T{
 T}	T{
 subroutine-name
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}	T{
-Ã‚
+Â
 T}
 .TE
 
-The \fIBEGSR\fR operation identifies the beginning of an \fIRPG\fR IV subroutine\[char46] subroutine-name is the subroutine name\[char46] You may specify the same name as the subroutine-name on the \fIEXSR\fR operation referring to the subroutine, in the result field of the \fICAS\fRxx operation referring to the subroutine, or in the entry of an \fIINFSR\fR file specification keyword of the subroutine is a file-error subroutine\[char46] The control level entry (positions 7 and 8) can be SR or blank\[char46] Conditioning indicator entries are not permitted\[char46]
+The \fIBEGSR\fR operation identifies the beginning of an \fIRPG\fR IV subroutine\[char46]
+subroutine-name is the subroutine name\[char46] You may specify the same name as the subroutine-name
+on the \fIEXSR\fR operation referring to the subroutine, in the result field of the \fICAS\fRxx
+operation referring to the subroutine, or in the entry of an \fIINFSR\fR file specification keyword
+of the subroutine is a file-error subroutine\[char46] The control level entry (positions 7 and 8)
+can be SR or blank\[char46] Conditioning indicator entries are not permitted\[char46]
 
 
-Every subroutine must have a unique symbolic name\[char46] The keyword \fI*PSSR\fR used in factor 1 specifies that this is a program exception/error subroutine to handle program-detected exception/errors\[char46] Only one subroutine can be defined by this keyword\[char46] \fI*INZSR\fR in factor 1 specifies a subroutine to be run during the initialization step\[char46] Only one subroutine can be defined \fI*INZSR\fR\[char46]
+Every subroutine must have a unique symbolic name\[char46] The keyword \fI*PSSR\fR used in factor 1
+specifies that this is a program exception/error subroutine to handle program-detected
+exception/errors\[char46] Only one subroutine can be defined by this keyword\[char46] \fI*INZSR\fR
+in factor 1 specifies a subroutine to be run during the initialization step\[char46] Only one
+subroutine can be defined \fI*INZSR\fR\[char46]
 
 
-See Figure 1 for an example of coding subroutines; see Subroutine Operations for general information on subroutine operations\[char46]
+See Figure 1 for an example of coding subroutines; see Subroutine Operations for general information
+on subroutine operations\[char46]
 
 .SH SEE ALSO
 .BR CAS,

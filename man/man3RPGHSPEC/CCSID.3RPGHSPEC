@@ -9,19 +9,24 @@
 .SH NAME
 CCSID
 .SH DESCRIPTION
-The \fICCSID\fR keyword may be specified several times, but each time must have a different value for the first parameter\[char46]
+The \fICCSID\fR keyword may be specified several times, but each time must have a different value
+for the first parameter\[char46]
 
 
 \fICCSID\fR(\fI*EXACT\fR) controls the general handling of \fICCSID\fRs within the module\[char46]
 
 
-The default \fICCSID\fR for definitions can be temporarily changed using the /\fISET\fR and /\fIRESTORE\fR directives\[char46] See /\fISET\fR\[char46]
+The default \fICCSID\fR for definitions can be temporarily changed using the /\fISET\fR and
+/\fIRESTORE\fR directives\[char46] See /\fISET\fR\[char46]
 
 
-\fICCSID\fR(\fI*CHAR\fR), \fICCSID\fR(\fI*GRAPH\fR), and \fICCSID\fR(\fI*UCS2\fR)\[char46] set the default \fICCSID\fRs for the module\[char46] These defaults are used for program-described input and output fields, and data definitions that do not have the \fICCSID\fR keyword coded\[char46]
+\fICCSID\fR(\fI*CHAR\fR), \fICCSID\fR(\fI*GRAPH\fR), and \fICCSID\fR(\fI*UCS2\fR)\[char46] set the
+default \fICCSID\fRs for the module\[char46] These defaults are used for program-described input and
+output fields, and data definitions that do not have the \fICCSID\fR keyword coded\[char46]
 
 
-The \fICCSID\fR keyword also affects the \fICCSID\fR of literals and compile time data\[char46] See \fICCSID\fR of literals and compile-time data for more information\[char46]
+The \fICCSID\fR keyword also affects the \fICCSID\fR of literals and compile time data\[char46] See
+\fICCSID\fR of literals and compile-time data for more information\[char46]
 
 .SH SEE ALSO
 .BR GNORE,

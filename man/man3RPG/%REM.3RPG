@@ -20,13 +20,20 @@
 .fi
 
 
-If the operands are constants that can fit in 8-byte integer or unsigned fields, constant folding is applied to the built-in function\[char46] In this case, the \fB%REM\fR built-in function can be coded in the definition specifications\[char46]
+If the operands are constants that can fit in 8-byte integer or unsigned fields, constant folding is
+applied to the built-in function\[char46] In this case, the \fB%REM\fR built-in function can be
+coded in the definition specifications\[char46]
 
 
 For more information, see Arithmetic Operations or Built-in Functions\[char46]
 
 .SH RETURN VALUE
-\fB%REM\fR returns the remainder that results from dividing operands n by m\[char46] The two operands must be numeric values with zero decimal positions\[char46] If either operand is a packed, zoned, or binary numeric value, the result is packed numeric\[char46] If either operand is an integer numeric value, the result is integer\[char46] Otherwise, the result is unsigned numeric\[char46] Float numeric operands are not allowed\[char46] The result has the same sign as the dividend\[char46] (See also \fB%DIV\fR (Return Integer Portion of Quotient)\[char46])
+\fB%REM\fR returns the remainder that results from dividing operands n by m\[char46] The two
+operands must be numeric values with zero decimal positions\[char46] If either operand is a packed,
+zoned, or binary numeric value, the result is packed numeric\[char46] If either operand is an
+integer numeric value, the result is integer\[char46] Otherwise, the result is unsigned
+numeric\[char46] Float numeric operands are not allowed\[char46] The result has the same sign as the
+dividend\[char46] (See also \fB%DIV\fR (Return Integer Portion of Quotient)\[char46])
 
 .SH EXAMPLE
 \fB%DIV\fR and \fB%REM\fR Example

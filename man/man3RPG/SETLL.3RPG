@@ -29,7 +29,7 @@ search-arg
 T}	T{
 name (file or record format)
 T}	T{
-Â
+�
 T}	T{
 NR
 T}	T{
@@ -39,49 +39,82 @@ EQ
 T}
 .TE
 
-The \fISETLL\fR operation positions a file at the next record that has a key or relative record number that is greater than or equal to the search argument (key or relative record number) operand specified (search-arg)\[char46] The file must be a full procedural file\[char46]
+The \fISETLL\fR operation positions a file at the next record that has a key or relative record
+number that is greater than or equal to the search argument (key or relative record number) operand
+specified (search-arg)\[char46] The file must be a full procedural file\[char46]
 
 
-The search argument, search-arg, must be the key or relative record number used to retrieve the record\[char46] If access is by key, search-arg can be a a single key in the form of a field name, a named constant, a figurative constant, or a literal\[char46] See Figure 2 for an example of searching key fields\[char46]
+The search argument, search-arg, must be the key or relative record number used to retrieve the
+record\[char46] If access is by key, search-arg can be a a single key in the form of a field name, a
+named constant, a figurative constant, or a literal\[char46] See Figure 2 for an example of
+searching key fields\[char46]
 
 
-If the file is an externally-described file, search-arg can also be a composite key in the form of a \fIKLIST\fR name, a list of values, or \fB%KDS\fR\[char46] For keys specified using a \fIKLIST\fR, key fields must have the same \fICCSID\fR as the key in the file\[char46] See the example at the end of \fB%KDS\fR (Search Arguments in Data Structure) for an illustration of search arguments in a data structure\[char46]
+If the file is an externally-described file, search-arg can also be a composite key in the form of a
+\fIKLIST\fR name, a list of values, or \fB%KDS\fR\[char46] For keys specified using a \fIKLIST\fR,
+key fields must have the same \fICCSID\fR as the key in the file\[char46] See the example at the end
+of \fB%KDS\fR (Search Arguments in Data Structure) for an illustration of search arguments in a data
+structure\[char46]
 
 
-If access is by relative record number, search-arg must be an integer literal or a numeric field with zero decimal positions\[char46]
+If access is by relative record number, search-arg must be an integer literal or a numeric field
+with zero decimal positions\[char46]
 
 
-The name operand is required and can contain either a file name or a record format name\[char46] A record format name is allowed only with an externally described file\[char46]
+The name operand is required and can contain either a file name or a record format name\[char46] A
+record format name is allowed only with an externally described file\[char46]
 
 
-The resulting indicators reflect the status of the operation\[char46] You can specify an indicator in positions 71-72 that is set on when the search argument is greater than the highest key or relative record number in the file\[char46] This information can also be obtained from the \fB%FOUND\fR built-in function, which returns \[char39]0\[char39] if no record is found, and \[char39]1\[char39] if a record is found\[char46]
+The resulting indicators reflect the status of the operation\[char46] You can specify an indicator
+in positions 71-72 that is set on when the search argument is greater than the highest key or
+relative record number in the file\[char46] This information can also be obtained from the
+\fB%FOUND\fR built-in function, which returns \[char39]0\[char39] if no record is found, and
+\[char39]1\[char39] if a record is found\[char46]
 
 
-To handle \fISETLL\fR exceptions (file status codes greater than 1000), either the operation code extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For more information on error handling, see File Exception/Errors\[char46]
+To handle \fISETLL\fR exceptions (file status codes greater than 1000), either the operation code
+extender \[char39]E\[char39] or an error indicator ER can be specified, but not both\[char46] For
+more information on error handling, see File Exception/Errors\[char46]
 
 
-You can specify an indicator in positions 75-76 that is set on when a record is present whose key or relative record number is equal to the search argument\[char46] This information can also be obtained from the \fB%EQUAL\fR built-in function, which returns \[char39]1\[char39] if an exact match is found\[char46]
+You can specify an indicator in positions 75-76 that is set on when a record is present whose key or
+relative record number is equal to the search argument\[char46] This information can also be
+obtained from the \fB%EQUAL\fR built-in function, which returns \[char39]1\[char39] if an exact
+match is found\[char46]
 
 
-When using \fISETLL\fR with an indicator in positions 75 and 76 or with \fB%EQUAL\fR, the comparison between the specified key and the actual key in the file is normally done by data management\[char46] In some cases this is impossible, causing the comparison to be done using the hexadecimal collating sequence\[char46] This can give different results than expected\[char46] For more information, see the section "Unexpected Results Using Keyed Files" in Rational Development Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
+When using \fISETLL\fR with an indicator in positions 75 and 76 or with \fB%EQUAL\fR, the comparison
+between the specified key and the actual key in the file is normally done by data
+management\[char46] In some cases this is impossible, causing the comparison to be done using the
+hexadecimal collating sequence\[char46] This can give different results than expected\[char46] For
+more information, see the section "Unexpected Results Using Keyed Files" in Rational Development
+Studio for i: \fIILE\fR \fIRPG\fR Programmer\[char39]s Guide\[char46]
 
 
-If name is a file name for which the lower limit is to be set, the file is positioned at the first record with a key or relative record number equal to or greater than the search argument specified (search-arg)\[char46]
+If name is a file name for which the lower limit is to be set, the file is positioned at the first
+record with a key or relative record number equal to or greater than the search argument specified
+(search-arg)\[char46]
 
 
-If name is a record format name for which the lower limit is to be set, the file is positioned at the first record of the specified type that has a key equal to or greater than the search argument specified (search-arg)\[char46]
+If name is a record format name for which the lower limit is to be set, the file is positioned at
+the first record of the specified type that has a key equal to or greater than the search argument
+specified (search-arg)\[char46]
 
 
 
 
- You can use the special values \fI*START\fR and \fI*END\fR for search-arg \[char46] \fI*START\fR positions to the beginning of the file and \fI*END\fR positions to the end of the file\[char46] Both positionings are independent of the collating sequence used for keyed files and independent of null-valued key fields\[char46] If you specify either \fI*START\fR or \fI*END\fR for search-arg , note the following: 
+ You can use the special values \fI*START\fR and \fI*END\fR for search-arg \[char46] \fI*START\fR positions to the beginning of the file and \fI*END\fR positions to the end of
+the file\[char46] Both positionings are independent of the collating sequence used for keyed files
+and independent of null-valued key fields\[char46] If you specify either \fI*START\fR or \fI*END\fR
+for search-arg , note the following: 
 .IP "" 2
 .RS
 \[bu] The name of the file must be specified as the name  operand\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] Either an error indicator (positions 73-74) or the \[char39]E\[char39] extender may be specified\[char46]
+\[bu] Either an error indicator (positions 73-74) or the \[char39]E\[char39] extender may be
+specified\[char46]
 .RE
 .PP
  
@@ -90,7 +123,10 @@ If name is a record format name for which the lower limit is to be set, the file
 
 
 
- Figurative constants can also be used to position the file\[char46] However, there are some situations where using \fI*LOVAL\fR or \fI*HIVAL\fR does not position the file exactly at the first or last record in the file; it is better to use \fI*START\fR and \fI*END\fR if you want to position to the first or last record in the file\[char46] 
+ Figurative constants can also be used to position the file\[char46] However, there are some
+situations where using \fI*LOVAL\fR or \fI*HIVAL\fR does not position the file exactly at the first
+or last record in the file; it is better to use \fI*START\fR and \fI*END\fR if you want to position
+to the first or last record in the file\[char46] 
 
  
 
@@ -98,32 +134,52 @@ If name is a record format name for which the lower limit is to be set, the file
 
 
 
- When used with a file with a composite key, figurative constants are treated as though each field of the key contained the figurative constant value\[char46] Using \fISETLL\fR with \fI*LOVAL\fR positions the file so that the first read retrieves the record with the lowest key, if the file does not contain any records with null-capable key fields\[char46] In most cases (when duplicate keys are not allowed), \fI*HIVAL\fR positions the file so that a \fIREADP\fR retrieves the last record in the file, or a \fIREAD\fR receives an end-of-file indication\[char46] However, note the following cases for using \fI*LOVAL\fR and \fI*HIVAL\fR: 
+ When used with a file with a composite key, figurative constants are treated as though each field of
+the key contained the figurative constant value\[char46] Using \fISETLL\fR with \fI*LOVAL\fR
+positions the file so that the first read retrieves the record with the lowest key, if the file does
+not contain any records with null-capable key fields\[char46] In most cases (when duplicate keys are
+not allowed), \fI*HIVAL\fR positions the file so that a \fIREADP\fR retrieves the last record in the
+file, or a \fIREAD\fR receives an end-of-file indication\[char46] However, note the following cases
+for using \fI*LOVAL\fR and \fI*HIVAL\fR: 
 .IP "" 2
 .RS
 \[bu] 
 
- With an externally described file that has a key in descending order, \fI*HIVAL\fR positions the file so that the first read operation retrieves the record with the highest key, and \fI*LOVAL\fR positions the file so that a \fIREADP\fR operation retrieves the record with the lowest key\[char46] 
+ With an externally described file that has a key in descending order, \fI*HIVAL\fR positions the
+file so that the first read operation retrieves the record with the highest key, and \fI*LOVAL\fR
+positions the file so that a \fIREADP\fR operation retrieves the record with the lowest
+key\[char46] 
 
 
 .RE
 .IP "" 2
 .RS
-\[bu] If a record is added or a key field altered after a \fISETLL\fR operation with either \fI*LOVAL\fR or \fI*HIVAL\fR, the file may no longer be positioned to the record with the lowest or highest key\[char46]
+\[bu] If a record is added or a key field altered after a \fISETLL\fR operation with either \fI*LOVAL\fR
+or \fI*HIVAL\fR, the file may no longer be positioned to the record with the lowest or highest
+key\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] \fI*LOVAL\fR for numeric keys represents a key value Xâ99\[char46]\[char46]\[char46]9Dâ and \fI*HIVAL\fR represents a key value Xâ99\[char46]\[char46]\[char46]9Fâ\[char46] If the keys are float numeric, \fI*HIVAL\fR and \fI*LOVAL\fR are defined differently\[char46] See Figurative Constants \[char46] When a program described file has a packed decimal key specified in the file specifications but the actual file key field contains character data, records may have keys that are less than \fI*LOVAL\fR or greater than \fI*HIVAL\fR\[char46] When a key field contains unsigned binary data, \fI*LOVAL\fR may not be the lowest key\[char46]
+\[bu] \fI*LOVAL\fR for numeric keys represents a key value X‘99\[char46]\[char46]\[char46]9D’ and
+\fI*HIVAL\fR represents a key value X‘99\[char46]\[char46]\[char46]9F’\[char46] If the keys are
+float numeric, \fI*HIVAL\fR and \fI*LOVAL\fR are defined differently\[char46]
+See Figurative Constants \[char46] When a program described file has a packed decimal key specified in the file
+specifications but the actual file key field contains character data, records may have keys that are
+less than \fI*LOVAL\fR or greater than \fI*HIVAL\fR\[char46] When a key field contains unsigned
+binary data, \fI*LOVAL\fR may not be the lowest key\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] When \fI*LOVAL\fR or \fI*HIVAL\fR are used with key fields with a Date or Time data type, the values are dependent of the Date-Time format used\[char46] For details on these values please see Data Types and Data Formats \[char46]
+\[bu] When \fI*LOVAL\fR or \fI*HIVAL\fR are used with key fields with a Date or Time data type, the values
+are dependent of the Date-Time format used\[char46] For details on these values please
+see Data Types and Data Formats \[char46]
 .RE
 .IP "" 2
 .RS
 \[bu] 
 
- When figurative constants such as \fI*LOVAL\fR or \fI*HIVAL\fR are used with null-capable key fields, records with null-valued keys will not be found by the search\[char46] 
+ When figurative constants such as \fI*LOVAL\fR or \fI*HIVAL\fR are used with null-capable key
+fields, records with null-valued keys will not be found by the search\[char46] 
 
 
 .RE
@@ -132,39 +188,56 @@ If name is a record format name for which the lower limit is to be set, the file
 
 
 
-Figure 1 shows the use of figurative constants with the \fISETGT\fR operation\[char46] Figurative constants are used the same way with the \fISETLL\fR operation\[char46]
+Figure 1 shows the use of figurative constants with the \fISETGT\fR operation\[char46] Figurative
+constants are used the same way with the \fISETLL\fR operation\[char46]
 
 
 Remember the following when using the \fISETLL\fR operation: 
 .IP "" 2
 .RS
-\[bu] If the \fISETLL\fR operation is not successful (no records found condition), the file is positioned to the end of the file\[char46]
+\[bu] If the \fISETLL\fR operation is not successful (no records found condition), the file is positioned
+to the end of the file\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] When end of file is reached on a file being processed by \fISETLL\fR, another \fISETLL\fR can be issued to reposition the file\[char46]
+\[bu] When end of file is reached on a file being processed by \fISETLL\fR, another \fISETLL\fR can be
+issued to reposition the file\[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] After a \fISETLL\fR operation successfully positions the file at a record, you retrieve this record by reading the file\[char46] Before you read the file, however, records may be deleted from the file by another job or through another file in your job\[char46] Thus, you may not get the record you expected\[char46] Even if the \fB%EQUAL\fR built-in function is also set on or the resulting indicator in positions 75 and 76 is set on to indicate you found a matching record, you may not get that record\[char46] For information on preventing unexpected modification of your files, see the discussion of allocating objects in the \fIIBM\fRÂ® i Information Center Programming topic at \fIURL\fR http://www\[char46]ibm\[char46]com/systems/i/infocenter/\[char46] \[char46]
+\[bu] After a \fISETLL\fR operation successfully positions the file at a record, you retrieve this record
+by reading the file\[char46] Before you read the file, however, records may be deleted from the file
+by another job or through another file in your job\[char46] Thus, you may not get the record you
+expected\[char46] Even if the \fB%EQUAL\fR built-in function is also set on or the resulting
+indicator in positions 75 and 76 is set on to indicate you found a matching record, you may not get
+that record\[char46] For information on preventing unexpected modification of your files, see the
+discussion of allocating objects in the \fIIBM\fR® i Information Center Programming topic at \fIURL\fR http://www\[char46]ibm\[char46]com/systems/i/infocenter/\[char46] \[char46]
 .RE
 .IP "" 2
 .RS
-\[bu] \fISETLL\fR does not cause the system to access a data record\[char46] If you are only interested in verifying that a key actually exists, \fISETLL\fR with an equal indicator (positions 75-76) or the \fB%EQUAL\fR built-in function is a better performing solution than the \fICHAIN\fR operation in most cases\[char46] Under special cases of a multiple format logical file with sparse keys, \fICHAIN\fR can be a faster solution than \fISETLL\fR\[char46]
+\[bu] \fISETLL\fR does not cause the system to access a data record\[char46] If you are only interested in
+verifying that a key actually exists, \fISETLL\fR with an equal indicator (positions 75-76) or the
+\fB%EQUAL\fR built-in function is a better performing solution than the \fICHAIN\fR operation in
+most cases\[char46] Under special cases of a multiple format logical file with sparse keys,
+\fICHAIN\fR can be a faster solution than \fISETLL\fR\[char46]
 .RE
 .PP
 
 
-See Database Null Value Support for information on handling records with null-capable fields and keys\[char46]
+See Database Null Value Support for information on handling records with null-capable fields and
+keys\[char46]
 
 
 For more information, see File Operations\[char46]
 
 
-In the following example, the file \fIORDFIL\fR contains order records\[char46] The key field is the order number (\fIORDER\fR) field\[char46] There are multiple records for each order\[char46] \fIORDFIL\fR looks like this in the calculation specifications:
+In the following example, the file \fIORDFIL\fR contains order records\[char46] The key field is the
+order number (\fIORDER\fR) field\[char46] There are multiple records for each order\[char46]
+\fIORDFIL\fR looks like this in the calculation specifications:
 
 .SH NOTICE
-Note:  Operation code extenders H, M, and R are allowed only when the search argument is a list or is \fB%KDS()\fR\[char46]
+Note:  Operation code extenders H, M, and R are allowed only when the search argument is a list or is
+\fB%KDS()\fR\[char46]
 .SH EXAMPLE
 \fISETLL\fR Operation
 .PP

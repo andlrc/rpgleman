@@ -16,16 +16,24 @@
 \fB%PADDR\fR may be compared with and assigned to only items of type procedure pointer\[char46]
 
 
-The parameter to \fB%PADDR\fR must be a character constant or a prototype name\[char46] If the prototype for a procedure is implicitly defined from its procedure interface, the prototype name is the same as the procedure name\[char46]
+The parameter to \fB%PADDR\fR must be a character constant or a prototype name\[char46] If the
+prototype for a procedure is implicitly defined from its procedure interface, the prototype name is
+the same as the procedure name\[char46]
 
 
-The character constant can be a character or hexadecimal literal or constant name that represents a character or hexadecimal literal\[char46] When a character constant is used, this identifies the entry point by name\[char46]
+The character constant can be a character or hexadecimal literal or constant name that represents a
+character or hexadecimal literal\[char46] When a character constant is used, this identifies the
+entry point by name\[char46]
 
 
-The prototype must a prototype for a bound call\[char46] The \fIEXTPGM\fR keyword cannot be used\[char46] The entry point identified by the prototype is the procedure identified in the \fIEXTPROC\fR keyword for the prototype\[char46] If the \fIEXTPROC\fR keyword is not specified, the entry point is the the same as the prototype name (in upper case)\[char46]
+The prototype must a prototype for a bound call\[char46] The \fIEXTPGM\fR keyword cannot be
+used\[char46] The entry point identified by the prototype is the procedure identified in the
+\fIEXTPROC\fR keyword for the prototype\[char46] If the \fIEXTPROC\fR keyword is not specified, the
+entry point is the the same as the prototype name (in upper case)\[char46]
 
 .SH RETURN VALUE
-\fB%PADDR\fR returns a value of type procedure pointer\[char46] The value is the address of the entry point identified by the argument\[char46]
+\fB%PADDR\fR returns a value of type procedure pointer\[char46] The value is the address of the
+entry point identified by the argument\[char46]
 
 .SH EXAMPLE
 \fB%PADDR\fR Example with an Entry Point
@@ -51,7 +59,7 @@ C                   EVAL      PROC1 = %PADDR (\[char39]NextProg\[char39])
 C                   CALLB     PROC1
 .fi
 
-Ã‚
+Â
 
 .SH SEE ALSO
 .BR CALLB,

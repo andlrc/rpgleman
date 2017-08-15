@@ -31,7 +31,7 @@ sub man_build
 		mkdir $out_dir or die("$out_dir $!") unless -d $out_dir;
 		print STDERR "$out_file: File already exists, overriding...\n"
 			if $DEBUG && -e $out_file;
-		open (my $fh, '>:utf8', $out_file) or die("$out_file $!");
+		open (my $fh, '>', $out_file) or die("$out_file $!");
 
 		# Header
 		print $fh ".\\\" Copyright 2017 Andreas Louv <andreas\@louv.dk>\n";
@@ -267,6 +267,8 @@ sub man_highlight
 	$text =~ s{ %\w+ (?: \( .*? \) )? }{\\fB$&\\fR}xmsg;
 	# *ABC
 	$text =~ s{ \*\w+ }{\\fI$&\\fR}xmsg;
+	# Wrap lines
+	$text =~ s{ ([^\n]{70,100}) \s+ }{$1\n}xmsg;
 	return $text;
 }
 

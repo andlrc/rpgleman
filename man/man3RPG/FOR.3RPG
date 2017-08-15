@@ -15,7 +15,8 @@ l l  .
 T{
 Free-Form Syntax
 T}	T{
-\fIFOR\fR{(MR)} index-name {= start-value} {BY increment} {TO|\fIDOWNTO\fR limit}
+\fIFOR\fR{(MR)} index-name {= start-value} {BY increment} {TO|\fIDOWNTO\fR
+limit}
 T}
 .TE
 
@@ -25,13 +26,18 @@ l l l  .
 T{
 \fIFOR\fR
 T}	T{
-Ã‚
+Â
 T}	T{
 index-name = start-value BY increment TO | \fIDOWNTO\fR limit
 T}
 .TE
 
-The \fIFOR\fR operation begins a group of operations and controls the number of times the group will be processed\[char46] To indicate the number of times the group of operations is to be processed, specify an index name, a starting value, an increment value, and a limit value\[char46] The optional starting, increment, and limit values can be a free-form expressions\[char46] An associated \fIEND\fR or \fIENDFOR\fR statement marks the end of the group\[char46] For further information on \fIFOR\fR groups, see Structured Programming Operations\[char46]
+The \fIFOR\fR operation begins a group of operations and controls the number of times the group will
+be processed\[char46] To indicate the number of times the group of operations is to be processed,
+specify an index name, a starting value, an increment value, and a limit value\[char46] The optional
+starting, increment, and limit values can be a free-form expressions\[char46] An associated
+\fIEND\fR or \fIENDFOR\fR statement marks the end of the group\[char46] For further information on
+\fIFOR\fR groups, see Structured Programming Operations\[char46]
 
 
 The syntax of the \fIFOR\fR operation is as follows: 
@@ -45,28 +51,46 @@ The syntax of the \fIFOR\fR operation is as follows:
 .fi
 
 
- The starting-value, increment-value, and limit-value can be numeric values or expressions with zero decimal positions\[char46] The increment value, if specified, cannot be zero\[char46]
+ The starting-value, increment-value, and limit-value can be numeric values or expressions with zero
+decimal positions\[char46] The increment value, if specified, cannot be zero\[char46]
 
 
-The BY and TO (or \fIDOWNTO\fR) clauses can be specified in either order\[char46] Both "BY 2 TO 10" and "TO 10 BY 2" are allowed\[char46]
+The BY and TO (or \fIDOWNTO\fR) clauses can be specified in either order\[char46] Both "BY 2 TO 10"
+and "TO 10 BY 2" are allowed\[char46]
 
 
-In addition to the \fIFOR\fR operation itself, the conditioning indicators on the \fIFOR\fR and \fIENDFOR\fR (or \fIEND\fR) statements control the \fIFOR\fR group\[char46] The conditioning indicators on the \fIFOR\fR statement control whether or not the \fIFOR\fR operation begins\[char46] These indicators are checked only once, at the beginning of the for loop\[char46] The conditioning indicators on the associated \fIEND\fR or \fIENDFOR\fR statement control whether or not the \fIFOR\fR group is repeated another time\[char46] These indicators are checked at the end of each loop\[char46]
+In addition to the \fIFOR\fR operation itself, the conditioning indicators on the \fIFOR\fR and
+\fIENDFOR\fR (or \fIEND\fR) statements control the \fIFOR\fR group\[char46] The conditioning
+indicators on the \fIFOR\fR statement control whether or not the \fIFOR\fR operation begins\[char46]
+These indicators are checked only once, at the beginning of the for loop\[char46] The conditioning
+indicators on the associated \fIEND\fR or \fIENDFOR\fR statement control whether or not the
+\fIFOR\fR group is repeated another time\[char46] These indicators are checked at the end of each
+loop\[char46]
 
 
 The \fIFOR\fR operation is performed as follows: 
 .IP 1. 2
 .RS
-If the conditioning indicators on the \fIFOR\fR statement line are satisfied, the \fIFOR\fR operation is processed (step 2)\[char46] If the indicators are not satisfied, control passes to the next operation to be processed following the associated \fIEND\fR or \fIENDFOR\fR statement (step 8)\[char46]
+If the conditioning indicators on the \fIFOR\fR statement line are satisfied, the \fIFOR\fR
+operation is processed (step 2)\[char46] If the indicators are not satisfied, control passes to the
+next operation to be processed following the associated \fIEND\fR or \fIENDFOR\fR statement (step
+8)\[char46]
 .RE
 .IP 2. 2
 .RS
-If specified, the initial value is assigned to the index name\[char46] Otherwise, the index name retains the same value it had before the start of the loop\[char46]
+If specified, the initial value is assigned to the index name\[char46] Otherwise, the index name
+retains the same value it had before the start of the loop\[char46]
 .RE
 .IP 3. 2
 .RS
-If specified, the limit value is evaluated and compared to the index name\[char46] If no limit value is specified, the loop repeats indefinitely until it encounters a statement that exits the loop (such as a \fILEAVE\fR or \fIGOTO\fR) or that ends the program or procedure (such as a \fIRETURN\fR)\[char46] 
-If the TO clause is specified and the index name value is greater than the limit value, control passes to the first statement following the \fIENDFOR\fR statement\[char46] If \fIDOWNTO\fR is specified and the index name is less than the limit value, control passes to the first statement after the \fIENDFOR\fR\[char46]
+If specified, the limit value is evaluated and compared to the index name\[char46] If no limit value
+is specified, the loop repeats indefinitely until it encounters a statement that exits the loop
+(such as a \fILEAVE\fR or \fIGOTO\fR) or that ends the program or procedure (such as a
+\fIRETURN\fR)\[char46] 
+If the TO clause is specified and the index name value is greater than the limit value, control
+passes to the first statement following the \fIENDFOR\fR statement\[char46] If \fIDOWNTO\fR is
+specified and the index name is less than the limit value, control passes to the first statement
+after the \fIENDFOR\fR\[char46]
 
 
 .RE
@@ -76,19 +100,28 @@ The operations in the \fIFOR\fR group are processed\[char46]
 .RE
 .IP 5. 2
 .RS
-If the conditioning indicators on the \fIEND\fR or \fIENDFOR\fR statement are not satisfied, control passes to the statement after the associated \fIEND\fR or \fIENDFOR\fR and the loop ends\[char46]
+If the conditioning indicators on the \fIEND\fR or \fIENDFOR\fR statement are not satisfied, control
+passes to the statement after the associated \fIEND\fR or \fIENDFOR\fR and the loop
+ends\[char46]
 .RE
 .IP 6. 2
 .RS
-If the increment value is specified, it is evaluated\[char46] Otherwise, it defaults to 1\[char46]
+If the increment value is specified, it is evaluated\[char46] Otherwise, it defaults to
+1\[char46]
 .RE
 .IP 7. 2
 .RS
-The increment value is either added to (for TO) or subtracted from (for \fIDOWNTO\fR) the index name\[char46] Control passes to step 3\[char46] (Note that the conditioning indicators on the \fIFOR\fR statement are not tested again (step 1) when control passes to step 3\[char46])
+The increment value is either added to (for TO) or subtracted from (for \fIDOWNTO\fR) the index
+name\[char46] Control passes to step 3\[char46] (Note that the conditioning indicators on the
+\fIFOR\fR statement are not tested again (step 1) when control passes to step
+3\[char46])
 .RE
 .IP 8. 2
 .RS
-The statement after the \fIEND\fR or \fIENDFOR\fR statement is processed when the conditioning indicators on the \fIFOR\fR, \fIEND\fR, or \fIENDFOR\fR statements are not satisfied (step 1 or 5), or when the index value is greater than (for TO) or less than (for \fIDOWNTO\fR) the limit value (step 3), or when the index value overflows\[char46]
+The statement after the \fIEND\fR or \fIENDFOR\fR statement is processed when the conditioning
+indicators on the \fIFOR\fR, \fIEND\fR, or \fIENDFOR\fR statements are not satisfied (step 1 or 5),
+or when the index value is greater than (for TO) or less than (for \fIDOWNTO\fR) the limit value
+(step 3), or when the index value overflows\[char46]
 .RE
 .PP
 
@@ -96,7 +129,8 @@ The statement after the \fIEND\fR or \fIENDFOR\fR statement is processed when th
 Remember the following when specifying the \fIFOR\fR operation: 
 .IP "" 2
 .RS
-\[bu] The index name cannot be declared on the \fIFOR\fR operation\[char46] Variables should be declared in the Definition  specifications\[char46]
+\[bu] The index name cannot be declared on the \fIFOR\fR operation\[char46] Variables should be declared
+in the Definition  specifications\[char46]
 .RE
 .IP "" 2
 .RS
@@ -105,13 +139,18 @@ Remember the following when specifying the \fIFOR\fR operation:
 .PP
 
 
-See \fILEAVE\fR (Leave a Do/For Group) and \fIITER\fR (Iterate) for information on how those operations affect a \fIFOR\fR operation\[char46]
+See \fILEAVE\fR (Leave a Do/For Group) and \fIITER\fR (Iterate) for information on how those
+operations affect a \fIFOR\fR operation\[char46]
 
 
 For more information, see Structured Programming Operations\[char46]
 
 .SH NOTICE
-Note:  If the \fIFOR\fR loop is performed n  times, the limit value is evaluated n+1  times and the increment value is evaluated n  times\[char46] This can be important if the limit value or increment value is complex and time-consuming to evaluate, or if the limit value or increment value contains calls to subprocedures with side-effects\[char46] If multiple evaluation of the limit or increment is not desired, calculate the values in temporaries before the \fIFOR\fR loop and use the temporaries in the \fIFOR\fR loop\[char46]
+Note:  If the \fIFOR\fR loop is performed n  times, the limit value is evaluated n+1  times and the increment value is evaluated n  times\[char46] This can be important if the limit value or increment value is complex and
+time-consuming to evaluate, or if the limit value or increment value contains calls to subprocedures
+with side-effects\[char46] If multiple evaluation of the limit or increment is not desired,
+calculate the values in temporaries before the \fIFOR\fR loop and use the temporaries in the
+\fIFOR\fR loop\[char46]
 .SH EXAMPLE
 Examples of the \fIFOR\fR Operation
 .PP

@@ -40,32 +40,53 @@ l l l  .
 T{
 \fIEVAL\fR (H M/R)
 T}	T{
-Ã‚
+Â
 T}	T{
 Assignment Statement
 T}
 .TE
 
-The \fIEVAL\fR operation code evaluates an assignment statement of the form "result = expression" or "result op = expression"\[char46] The expression is evaluated and the result placed in result\[char46] Therefore, result cannot be a literal or constant but must be a field name, array name, array element, data structure, data structure subfield, or a string using the \fB%SUBST\fR built-in function\[char46]
+The \fIEVAL\fR operation code evaluates an assignment statement of the form "result = expression" or
+"result op = expression"\[char46] The expression is evaluated and the result placed in
+result\[char46] Therefore, result cannot be a literal or constant but must be a field name, array
+name, array element, data structure, data structure subfield, or a string using the \fB%SUBST\fR
+built-in function\[char46]
 
 
-The expression may yield any of the \fIRPG\fR data types\[char46] The type of the expression must be the same as the type of the result\[char46] A character, graphic, or \fIUCS\fR-2 result will be left justified and padded with blanks on the right or truncated as required\[char46] If result is a variable-length field, its length will be set to the length of the result of the expression\[char46]
+The expression may yield any of the \fIRPG\fR data types\[char46] The type of the expression must be
+the same as the type of the result\[char46] A character, graphic, or \fIUCS\fR-2 result will be left
+justified and padded with blanks on the right or truncated as required\[char46] If result is a
+variable-length field, its length will be set to the length of the result of the expression\[char46]
 
 
-If the result represents an unindexed array or an array specified as array(*), the value of the expression is assigned to each element of the result, according to the rules described in Specifying an Array in Calculations\[char46] Otherwise, the expression is evaluated once and the value is placed into each element of the array or sub-array\[char46] For numeric expressions, the half-adjust operation code extender is allowed\[char46] The rules for half adjusting are equivalent to those for the arithmetic operations\[char46]
+If the result represents an unindexed array or an array specified as array(*), the value of the
+expression is assigned to each element of the result, according to the rules described in Specifying
+an Array in Calculations\[char46] Otherwise, the expression is evaluated once and the value is
+placed into each element of the array or sub-array\[char46] For numeric expressions, the half-adjust
+operation code extender is allowed\[char46] The rules for half adjusting are equivalent to those for
+the arithmetic operations\[char46]
 
 
-On a free-form calculation specification, the operation code name may be omitted if no extenders are needed, and if the variable does not have the same name as an operation code\[char46]
+On a free-form calculation specification, the operation code name may be omitted if no extenders are
+needed, and if the variable does not have the same name as an operation code\[char46]
 
 
-For the assignment operators +=, -=, *=, /=, and **=, the appropriate operation is applied to the result and the expression, and the result is assigned to the result\[char46] For example, statement X+=Y is roughly equivalent to X=X+Y\[char46] The difference between the two statements is that for these assignment operators, the result operand is evaluated only once\[char46] This difference is significant when the evaluation of the result operation involves a call to a subprocedure which has side-effects, for example: 
+For the assignment operators +=, -=, *=, /=, and **=, the appropriate operation is applied to the
+result and the expression, and the result is assigned to the result\[char46] For example, statement
+X+=Y is roughly equivalent to X=X+Y\[char46] The difference between the two statements is that for
+these assignment operators, the result operand is evaluated only once\[char46] This difference is
+significant when the evaluation of the result operation involves a call to a subprocedure which has
+side-effects, for example: 
 .PP
 .nf
      warnings(getNextCustId(OVERDRAWN)) += 1;
 .fi
 
 
-See Expressions for general information on expressions\[char46] See Precision Rules for Numeric Operations for information on precision rules for numeric expressions\[char46] This is especially important if the expression contains any divide operations, or if the \fIEVAL\fR uses any of the operation extenders\[char46]
+See Expressions for general information on expressions\[char46] See Precision Rules for Numeric
+Operations for information on precision rules for numeric expressions\[char46] This is especially
+important if the expression contains any divide operations, or if the \fIEVAL\fR uses any of the
+operation extenders\[char46]
 
 .SH EXAMPLE
 \fIEVAL\fR Operations
