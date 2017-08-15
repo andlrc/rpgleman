@@ -146,29 +146,5 @@ data_size = %size(fld) - prefix_size;
 max_dbcs_chars = data_size / 2;
 .fi
 .SH SEE ALSO
-.BR %LEN,
-.BR %OCCUR,
-.BR %SIZE,
-.BR %SUBARR,
-.BR ARRAY,
-.BR ATA,
-.BR BASED,
-.BR CHAR,
-.BR CONST,
-.BR DBCS,
-.BR DIM,
-.BR END-FREE,
-.BR ENDIF,
-.BR ETD,
-.BR EVAL,
-.BR FREE,
-.BR INZ,
-.BR NTRY,
-.BR OCCURS,
-.BR PARM,
-.BR PARRAY,
-.BR PLIST,
-.BR PTR,
-.BR SEVEN,
-.BR SUBF,
-.BR UCS
+.BR %PADDR,
+.BR POINTER

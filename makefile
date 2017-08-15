@@ -97,7 +97,7 @@ uninstall:
 bif_ABS:
 	$(RPGLEMAN) bbabs
 bif_ADDR:
-	$(RPGLEMAN) bbaddr
+	$(RPGLEMAN) bbaddr --see=%PADDR,POINTER
 bif_ALLOC:
 	$(RPGLEMAN) bballoc
 bif_BITAND:
@@ -135,7 +135,7 @@ bif_EDITFLT:
 bif_EDITW:
 	$(RPGLEMAN) bbeditw
 bif_ELEM:
-	$(RPGLEMAN) bbelem --see=%SIZE,%LEN,DIM
+	$(RPGLEMAN) bbelem --see=%SIZE,%LEN,DIM,OCCURS
 bif_EOF:
 	$(RPGLEMAN) bbeof
 bif_EQUAL:
@@ -181,7 +181,7 @@ bif_OCCUR:
 bif_OPEN:
 	$(RPGLEMAN) bbopen
 bif_PADDR:
-	$(RPGLEMAN) bbpaddr
+	$(RPGLEMAN) bbpaddr --see=%ADDR,POINTER
 bif_PARMNUM:
 	$(RPGLEMAN) bbparmnum
 bif_PARMS:
@@ -203,7 +203,7 @@ bif_SECONDS:
 bif_SHTDN:
 	$(RPGLEMAN) bbshut
 bif_SIZE:
-	$(RPGLEMAN) bbsize --see=%ELEM,%LEN,%ADDR
+	$(RPGLEMAN) bbsize --see=%ELEM,%LEN
 bif_SQRT:
 	$(RPGLEMAN) bbsqrt
 bif_STATUS:
@@ -339,7 +339,7 @@ dkw_PACKEVEN:
 dkw_PERRCD:
 	$(RPGLEMAN) dperrcd
 dkw_POINTER:
-	$(RPGLEMAN) dkwpointer
+	$(RPGLEMAN) dkwpointer --see=%ADDR,%PADDR
 dkw_POS:
 	$(RPGLEMAN) dkwpos
 dkw_PREFIX:

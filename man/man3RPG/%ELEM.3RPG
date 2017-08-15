@@ -59,4 +59,5 @@ D array_dims      C                   const (%elem (arr1d))
 .SH SEE ALSO
 .BR %LEN,
 .BR %SIZE,
-.BR DIM
+.BR DIM,
+.BR OCCURS

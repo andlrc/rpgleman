@@ -159,6 +159,5 @@ See Examples showing the effect of the \fIALIGN\fR keyword for an example of \fB
 structures with and without \fIALIGN\fR(\fI*FULL\fR)\[char46]
 
 .SH SEE ALSO
-.BR %ADDR,
 .BR %ELEM,
 .BR %LEN

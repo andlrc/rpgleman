@@ -48,5 +48,5 @@ In the following example
 .fi
 
 .SH SEE ALSO
-.BR DCL,
-.BR ROC
+.BR %ADDR,
+.BR %PADDR
