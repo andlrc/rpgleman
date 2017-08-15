@@ -160,17 +160,5 @@ structures with and without \fIALIGN\fR(\fI*FULL\fR)\[char46]
 
 .SH SEE ALSO
 .BR %ADDR,
-.BR ALIGN,
-.BR CUST,
-.BR DIM,
-.BR END-FREE,
-.BR ETD,
-.BR FREE,
-.BR INFO,
-.BR INZ,
-.BR LIKEDS,
-.BR NAME,
-.BR OCCURS,
-.BR UCS,
-.BR ULL,
-.BR VARYING
+.BR %ELEM,
+.BR %LEN

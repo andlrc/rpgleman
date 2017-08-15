@@ -27,3 +27,6 @@ The parameter must not be a figurative constant\[char46]
 
 For more information, see Size Operations or Built-in Functions\[char46]
 
+.SH SEE ALSO
+.BR %ELEM,
+.BR %SIZE

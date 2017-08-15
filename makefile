@@ -135,7 +135,7 @@ bif_EDITFLT:
 bif_EDITW:
 	$(RPGLEMAN) bbeditw
 bif_ELEM:
-	$(RPGLEMAN) bbelem
+	$(RPGLEMAN) bbelem --see=%SIZE,%LEN,DIM
 bif_EOF:
 	$(RPGLEMAN) bbeof
 bif_EQUAL:
@@ -161,7 +161,7 @@ bif_INTH:
 bif_KDS:
 	$(RPGLEMAN) bbkds
 bif_LEN:
-	$(RPGLEMAN) bblen
+	$(RPGLEMAN) bblen --see=%SIZE,%ELEM
 bif_LOOKUPxx:
 	$(RPGLEMAN) bbloo
 bif_MAX:
@@ -203,7 +203,7 @@ bif_SECONDS:
 bif_SHTDN:
 	$(RPGLEMAN) bbshut
 bif_SIZE:
-	$(RPGLEMAN) bbsize
+	$(RPGLEMAN) bbsize --see=%ELEM,%LEN,%ADDR
 bif_SQRT:
 	$(RPGLEMAN) bbsqrt
 bif_STATUS:

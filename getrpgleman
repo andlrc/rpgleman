@@ -294,7 +294,7 @@ sub read_url
 		"notice" => [],
 		"examples" => [],
 		"return_value" => [],
-		"see_also" => []
+		"see_also" => undef
 	};
 
 	for (keys %{$config}) {
@@ -382,7 +382,7 @@ sub read_url
 		} map { uc } $tree->findnodes_as_string('//body') =~ m{
 			( % \w+ | (?<! [%*]) [A-Z]{3,} (?: - [A-Z]{3,} )* )
 		}xmsg;
-	};
+	} unless defined $man->{see_also};
 
 	man_build($man);
 	$tree->delete;
@@ -392,6 +392,10 @@ my $man = {};
 GetOptions(
 	'n|name=s' => \$man->{orig_short_name},
 	's|section=s' => \$man->{section},
+	'see=s' => sub {
+		my ($opt_name, $opt_value) = @_;
+		@{$man->{see_also}} = split /,/, $opt_value;
+	},
 	'd|debug' => \$DEBUG
 ) or exit 1;
 
