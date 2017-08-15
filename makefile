@@ -19,13 +19,13 @@ bif:	bif_ABS		bif_ADDR	bif_ALLOC	bif_BITAND	\
 	bif_MIN		bif_MINUTES	bif_MONTHS	bif_MSECONDS	\
 	bif_NULLIND	bif_OCCUR	bif_OPEN	bif_PADDR	\
 	bif_PARMNUM	bif_PARMS	bif_REALLOC	bif_REM		\
-	bif_REPLACE	bif_SCAN	bif_SCANRPL	bif_SECONDS	\
-	bif_SHTDN	bif_SIZE	bif_SQRT	bif_STATUS	\
-	bif_STR		bif_SUBARR	bif_SUBDT	bif_SUBST	\
-	bif_THIS	bif_TIME	bif_TIMESTAMP	bif_TLOOKUPxx	\
-	bif_TRIM	bif_TRIML	bif_TRIMR	bif_UCS2	\
-	bif_UNS		bif_UNSH	bif_XFOOT	bif_XLATE	\
-	bif_XML		bif_YEARS	
+	bif_REPLACE	bif_SCAN	bif_SCANR	bif_SCANRPL	\
+	bif_SECONDS	bif_SHTDN	bif_SIZE	bif_SQRT	\
+	bif_STATUS	bif_STR		bif_SUBARR	bif_SUBDT	\
+	bif_SUBST	bif_THIS	bif_TIME	bif_TIMESTAMP	\
+	bif_TLOOKUPxx	bif_TRIM	bif_TRIML	bif_TRIMR	\
+	bif_UCS2	bif_UNS		bif_UNSH	bif_XFOOT	\
+	bif_XLATE	bif_XML		bif_YEARS
 
 # Definition Keywords
 dkw:	dkw_ALIAS	dkw_ALIGN	dkw_ALT		dkw_ALTSEQ	\
