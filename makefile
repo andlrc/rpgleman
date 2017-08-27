@@ -1,9 +1,12 @@
-MANDIR	= $(PREFIX)/usr/share/man
+MANDIR		= $(PREFIX)/usr/share/man
 RPGLEMAN	= ./getrpgleman $(FLAGS)
+ALLPHONY	= $(shell sed 's/^\(\w\+\):.*/\1/p;d' makefile | tr '\n' ' ')
 
-all: bif dkw cop hkw cd
+all:	bif dkw cop hkw cd
 
-debug: clean
+.PHONY:	$(ALLPHONY)
+
+debug:	clean
 	$(MAKE) FLAGS=-d
 
 # Built-in Functions
