@@ -1,0 +1,47 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/freestandalone.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DCL-S 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DCL-S - Free-Form Standalone Field Definition
+.SH DESCRIPTION
+A free-form standalone field begins with \fIDCL\fR-S, followed by the name of the field, followed by
+keywords, and finally a semicolon\[char46]
+
+
+If a data-type keyword is specified, it must be the first keyword\[char46]
+
+
+
+.IP "" 2
+.RS
+\[bu] A packed field named limit  with five digits and zero decimal positions, initialized to 100\[char46] The \fIPACKED\fR keyword
+must be first because it is the data-type keyword\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-S limit PACKED(5) INZ(100);
+.fi
+
+.RE
+.IP "" 2
+.RS
+\[bu] A field named num  defined with the \fILIKE\fR keyword, initialized to 0\[char46] There is no data-type
+keyword\[char46] The \fILIKE\fR keyword can appear anywhere\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-S num INZ(0)
+            LIKE(limit);
+.fi
+
+.RE
+.PP
+.SH SEE ALSO
+.BR DCL-C

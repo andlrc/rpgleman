@@ -1,0 +1,47 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/freeconstant.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DCL-C 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DCL-C - Free-Form Named Constant Definition
+.SH DESCRIPTION
+A free-form named constant definition begins with \fIDCL\fR-C; followed by the name of the constant;
+followed by the value either specified directly, or using the \fICONST\fR keyword; and finally a
+semicolon\[char46]
+
+
+
+.IP "" 2
+.RS
+\[bu] The following example shows two constants named \fICON\fR_1  and \fICON\fR_2 \[char46] One uses the \fICONST\fR keyword, and the other defines the value of the constant
+directly\[char46] There is no difference in meaning between specifying the \fICONST\fR keyword and
+not specifying it\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-C CON_1 CONST(1);
+  DCL-C CON_2 2;
+.fi
+
+.RE
+.IP "" 2
+.RS
+\[bu] The following example shows a named constant array_total_size  that is defined with the value of a built-in function\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-S array CHAR(25) DIM(100);
+  DCL-C array_total_size
+           %SIZE(array:*ALL);
+.fi
+
+.RE
+.PP
+.SH SEE ALSO
+.BR DCL-S

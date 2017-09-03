@@ -1,0 +1,134 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/freesubfield.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DCL-SUBF 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DCL-SUBF - Free-Form Subfield Definition
+.SH DESCRIPTION
+A free-form subfield definition begins with the subfield name, or it begins with the \fIDCL-SUBF\fR
+or \fIDCL\fR-DS operation code followed by the subfield name\[char46]
+
+
+The \fIDCL-SUBF\fR operation code must be specified if the subfield name is the same as an operation
+code allowed in free-format calculations\[char46] See Table 1\[char46]
+
+
+The \fIDCL\fR-DS operation code is used to define a nested data structure subfield\[char46]
+
+
+The subfield name is followed by keywords, and finally a semicolon\[char46]
+
+
+
+Specify \fI*N\fR for the subfield name if the subfield does not have a name\[char46]
+
+
+If a data-type keyword is specified, it must be the first keyword\[char46]
+
+
+If the subfield is a predefined subfield in the Program Status Data Structure or a File Information
+Data Structure, specify the subfield reserved word in place of the data type keyword\[char46]
+
+
+In a free-form definition, the \fIOVERLAY\fR keyword can only be used to overlay one subfield on
+another subfield\[char46] If you don\[char39]t want the subfield to be placed at the next available
+position in the data structure, use the \fIPOS\fR keyword to specify the starting position\[char46]
+
+
+
+
+The first keyword for an externally-described subfield must be the \fIEXTFLD\fR keyword\[char46] If
+the subfield name is the same as the external name of the subfield, the parameter of the
+\fIEXTFLD\fR keyword may be omitted\[char46]
+
+
+
+
+Specify \fI*N\fR for the subfield name if the subfield does not have a name\[char46]
+
+
+If a data-type keyword is specified, it must be the first keyword\[char46]
+
+
+If the subfield is a predefined subfield in the Program Status Data Structure or a File Information
+Data Structure, specify the subfield reserved word in place of the data type keyword\[char46]
+
+
+In a free-form definition, the \fIOVERLAY\fR keyword can only be used to overlay one subfield on
+another subfield\[char46] If you don\[char39]t want the subfield to be placed at the next available
+position in the data structure, use the \fIPOS\fR keyword to specify the starting position\[char46]
+
+
+
+
+
+
+You can define a data structure as a nested data structure subfield if the parent data structure is
+defined in free-form syntax and is qualified\[char46] The nested data structure subfield must also
+be defined in free-form syntax\[char46]
+
+
+A nested data structure subfield is automatically qualified\[char46] In the following example,
+subfield address is defined as a nested data structure subfield\[char46] It begins with a
+\fIDCL\fR-DS statement (Â 1Â ), followed by subfields, followed by an \fIEND\fR-DS statement
+(Â 2Â )\[char46] The subfields of the address subfield are qualified by person\[char46]address
+(Â 3Â )\[char46]
+
+
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-DS person QUALIFIED;
+      name VARCHAR(25);
+      DCL-DS address; Â 1Â
+         num int(5);
+         street VARCHAR(25);
+         city VARCHAR(25);
+         province VARCHAR(25);
+         postcode VARCHAR(6);
+      END-DS address; Â 2Â
+      age int(5);
+   END-DS person;
+
+   person\[char46]address\[char46]street = \[char39]Elm Ave\[char46]\[char39]; Â 3Â
+.fi
+
+A nested data structure can be an array\[char46] In the following example,
+subfield person  is defined as a nested data structure array subfield ( Â 1Â ) in data structure family , and subfield pets  ( Â 2Â ) is another array that is nested within subfield person \[char46] The subfields of the pets  subfield are qualified by family\[char46]person(index)\[char46]pets(index)  ( Â 3Â )\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+
+   DCL-DS family QUALIFIED;
+      num int(5);
+      DCL-DS person DIM(10);  Â 1Â
+         name VARCHAR(25);
+         age int(5);
+         numPets int(5);
+         DCL-DS pets DIM(5);  Â 2Â
+            name VARCHAR(25);
+            type VARCHAR(25);
+         END-DS pets;
+      END-DS persom;
+   END-DS;
+
+   family\[char46]person(1)\[char46]numPets = 1;
+   family\[char46]person(1)\[char46]pets(1)\[char46]type = \[char39]fish\[char39]; Â 3Â
+.fi
+
+
+
+
+
+
+See Free-Form Data Structure Definition for examples of free-form subfield definitions\[char46]
+
+.SH SEE ALSO
+.BR DCL-DS,
+.BR END-DS

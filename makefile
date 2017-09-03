@@ -13,22 +13,25 @@ debug:	clean
 bif:	bif_ABS		bif_ADDR	bif_ALLOC	bif_BITAND	\
 	bif_BITNOT	bif_BITOR	bif_BITXOR	bif_CHAR	\
 	bif_CHECK	bif_CHECKR	bif_DATE	bif_DAYS	\
-	bif_DEC		bif_DECH	bif_DECPOS	bif_DIFF	\
-	bif_DIV		bif_EDITC	bif_EDITFLT	bif_EDITW	\
-	bif_ELEM	bif_EOF		bif_EQUAL	bif_ERROR	\
-	bif_FIELDS	bif_FLOAT	bif_FOUND	bif_GRAPH	\
-	bif_HANDLER	bif_HOURS	bif_INT		bif_INTH	\
-	bif_KDS		bif_LEN		bif_LOOKUPxx	bif_MAX		\
-	bif_MIN		bif_MINUTES	bif_MONTHS	bif_MSECONDS	\
-	bif_NULLIND	bif_OCCUR	bif_OPEN	bif_PADDR	\
-	bif_PARMNUM	bif_PARMS	bif_REALLOC	bif_REM		\
-	bif_REPLACE	bif_SCAN	bif_SCANR	bif_SCANRPL	\
-	bif_SECONDS	bif_SHTDN	bif_SIZE	bif_SQRT	\
-	bif_STATUS	bif_STR		bif_SUBARR	bif_SUBDT	\
-	bif_SUBST	bif_THIS	bif_TIME	bif_TIMESTAMP	\
-	bif_TLOOKUPxx	bif_TRIM	bif_TRIML	bif_TRIMR	\
-	bif_UCS2	bif_UNS		bif_UNSH	bif_XFOOT	\
-	bif_XLATE	bif_XML		bif_YEARS
+	bif_DCL-C	bif_DCL-DS	bif_DCL-PARM	bif_DCL-PI	\
+	bif_DCL-PR	bif_DCL-S	bif_DCL-SUBF	bif_DEC		\
+	bif_DECH	bif_DECPOS	bif_DIFF	bif_DIV		\
+	bif_EDITC	bif_EDITFLT	bif_EDITW	bif_ELEM	\
+	bif_END-DS	bif_END-PI	bif_END-PR	bif_EOF		\
+	bif_EQUAL	bif_ERROR	bif_FIELDS	bif_FLOAT	\
+	bif_FOUND	bif_GRAPH	bif_HANDLER	bif_HOURS	\
+	bif_INT		bif_INTH	bif_KDS		bif_LEN		\
+	bif_LOOKUPxx	bif_MAX		bif_MIN		bif_MINUTES	\
+	bif_MONTHS	bif_MSECONDS	bif_NULLIND	bif_OCCUR	\
+	bif_OPEN	bif_PADDR	bif_PARMNUM	bif_PARMS	\
+	bif_REALLOC	bif_REM		bif_REPLACE	bif_SCAN	\
+	bif_SCANR	bif_SCANRPL	bif_SECONDS	bif_SHTDN	\
+	bif_SIZE	bif_SQRT	bif_STATUS	bif_STR		\
+	bif_SUBARR	bif_SUBDT	bif_SUBST	bif_THIS	\
+	bif_TIME	bif_TIMESTAMP	bif_TLOOKUPxx	bif_TRIM	\
+	bif_TRIML	bif_TRIMR	bif_UCS2	bif_UNS		\
+	bif_UNSH	bif_XFOOT	bif_XLATE	bif_XML		\
+	bif_YEARS
 
 # Definition Keywords
 dkw:	dkw_ALIAS	dkw_ALIGN	dkw_ALT		dkw_ALTSEQ	\
@@ -113,6 +116,20 @@ bif_BITXOR:
 	$(RPGLEMAN) bbxor
 bif_CHAR:
 	$(RPGLEMAN) bbchar
+bif_DCL-C:
+	$(RPGLEMAN) freeconstant --name=DCL-C --see=DCL-S
+bif_DCL-DS:
+	$(RPGLEMAN) freedatastructure --name=DCL-DS --see=END-DS,DCL-SUBF
+bif_DCL-PARM:
+	$(RPGLEMAN) freeparameter --name=DCL-PARM --see=DCL-PR,END-PR
+bif_DCL-PI:
+	$(RPGLEMAN) freeinterface --name=DCL-PI --see=END-PI
+bif_DCL-PR:
+	$(RPGLEMAN) freeprototype --name=DCL-PR --see=END-PR,DCL-PARM
+bif_DCL-S:
+	$(RPGLEMAN) freestandalone --name=DCL-S --see=DCL-C
+bif_DCL-SUBF:
+	$(RPGLEMAN) freesubfield --name=DCL-SUBF --see=DCL-DS,END-DS
 bif_CHECK:
 	$(RPGLEMAN) bbchk
 bif_CHECKR:
@@ -139,6 +156,12 @@ bif_EDITW:
 	$(RPGLEMAN) bbeditw
 bif_ELEM:
 	$(RPGLEMAN) bbelem --see=%SIZE,%LEN,DIM,OCCURS
+bif_END-DS:
+	$(RPGLEMAN) freedatastructure --name=END-DS --see=DCL-DS,DCL-SUBF
+bif_END-PI:
+	$(RPGLEMAN) freeinterface --name=END-PI --see=DCL-PI
+bif_END-PR:
+	$(RPGLEMAN) freeprototype --name=END-PR --see=DCL-PR,DCL-PARM
 bif_EOF:
 	$(RPGLEMAN) bbeof
 bif_EQUAL:

@@ -1,0 +1,141 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/freeprototype.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DCL-PR 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DCL-PR - Free-Form Prototype Definition
+.SH DESCRIPTION
+A prototype begins with a \fIDCL\fR-PR statement\[char46]
+
+
+The \fIDCL\fR-PR statement is followed by zero or more parameters, followed by an \fIEND\fR-PR
+statement\[char46]
+
+
+
+The first statement begins with \fIDCL\fR-PR, followed by the name of the prototype, followed by
+keywords, and finally a semicolon\[char46]
+
+
+
+
+See Free-Form Parameter Definition\[char46]
+
+
+
+
+.IP "" 2
+.RS
+\[bu] \fIEND\fR-PR may be followed by the name of the prototype\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If there are no parameters, \fIEND\fR-PR may be specified as part of the \fIDCL\fR-PR statement,
+following the keywords and before the semicolon\[char46] In this case, \fIEND\fR-PR cannot be
+followed by the name of the prototype\[char46]
+.RE
+.PP
+
+
+
+.IP 1. 2
+.RS
+A prototype for a program with one parameter\[char46] The external name of the program is
+\[char39]\fIMYPGM\fR\[char39]\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-PR myPgm EXTPGM; Â 1Â
+      name CHAR(10) CONST;
+   END-PR;
+.fi
+
+.RE
+.IP 2. 2
+.RS
+A prototype addNewOrder  with three parameters\[char46] The \fIEND\fR-PR statement is specified without a
+name\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-PR addNewOrder;
+      id INT(10) CONST;
+      quantity INT(10) CONST;
+      price PACKED(7 : 2) CONST;
+   END-PR; Â 2Â
+.fi
+
+.RE
+.IP 3. 2
+.RS
+A name is specified for the \fIEND\fR-PR statement 
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-PR addNewOrder;
+      id INT(10) CONST;
+      quantity INT(10) CONST;
+      price PACKED(7 : 2) CONST;
+   END-PR addNewOrder; Â 3Â
+.fi
+
+.RE
+.IP 4. 2
+.RS
+The prototype has no parameters, so the \fIEND\fR-PR is specified as part of the \fIDCL\fR-PR
+statement\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+     DCL-PR getCurrentUser CHAR(10) END-PR; Â 4Â
+.fi
+
+.RE
+.IP 5. 2
+.RS
+A prototype using \fIDCL-PARM\fR to define some of its subfields\[char46] 
+.IP 1. 2
+.RS
+Parameter select  has the same name as an operation code allowed in free-form calculations\[char46] \fIDCL-PARM\fR is
+required for this parameter\[char46] See Table 1 \[char46]
+.RE
+.IP 2. 2
+.RS
+Parameter name  does not have the same name as an operation code, so \fIDCL-PARM\fR is not
+required\[char46]
+.RE
+.IP 3. 2
+.RS
+Parameter address  does not have the same name as an operation code, so \fIDCL-PARM\fR is not required, but it is
+valid\[char46]
+.RE
+.PP
+ 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-PR myProc;
+     DCL-PARM select CHAR(10); Â 5aÂ
+     name CHAR(10); Â 5bÂ
+     DCL-PARM address CHAR(25); Â 5cÂ
+  END-PR;
+.fi
+
+.RE
+.IP 6. 2
+.RS
+See Specifying \fI*DCLCASE\fR as the External Name  for more examples\[char46]
+.RE
+.PP
+.SH SEE ALSO
+.BR DCL-PARM,
+.BR END-PR

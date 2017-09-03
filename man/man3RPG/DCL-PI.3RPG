@@ -1,0 +1,191 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/freeinterface.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DCL-PI 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DCL-PI - Free-Form Procedure Interface Definition
+.SH DESCRIPTION
+A procedure interface begins with a \fIDCL\fR-PI statement\[char46]
+
+
+The \fIDCL\fR-PI statement is followed by zero or more parameters, followed by an \fIEND\fR-PI
+statement\[char46]
+
+
+
+The first statement begins with \fIDCL\fR-PI, followed by the name of the procedure or \fI*N\fR if
+you do not want to repeat the name of the procedure, followed by keywords, and finally a
+semicolon\[char46]
+
+
+.IP "" 2
+.RS
+\[bu] If you do not specify a prototype for a cycle-main procedure, you use \fI*N\fR as the name for the
+procedure interface\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If you do not specify a prototype for a linear-main procedure, you can specify
+the \fIEXTPGM\fR  keyword without a parameter for the procedure interface\[char46]
+.RE
+.PP
+
+
+
+See Free-Form Parameter Definition\[char46]
+
+
+
+
+.IP "" 2
+.RS
+\[bu] \fIEND\fR-PI may be followed by the name of the procedure\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If there are no parameters, \fIEND\fR-PI may be specified as part of the \fIDCL\fR-PI statement,
+following the keywords and before the semicolon\[char46] In this case, \fIEND\fR-PI cannot be
+followed by the name of the procedure\[char46]
+.RE
+.PP
+
+
+
+.IP 1. 2
+.RS
+A procedure interface for a cycle-main procedure where there is no prototype\[char46] \fI*N\fR is
+specified for the procedure-interface name\[char46] One parameter, name  is specified in the procedure interface\[char46] (This example shows a complete program with a
+cycle-main procedure\[char46]) 
+.SH EXAMPLE
+
+.PP
+.nf
+   CTL-OPT OPTION(*SRCSTMT);
+
+   DCL-PI *N; Â 1Â
+      name CHAR(10) CONST;
+   END-PI;
+
+   DSPLY (\[char39]Hello \[char39] + name);
+   RETURN;
+.fi
+
+.RE
+.IP 2. 2
+.RS
+A procedure interface for a linear-main procedure where there is no prototype\[char46] The
+\fIEXTPGM\fR keyword is specified without a parameter\[char46] (This example shows a complete
+program with a linear-main procedure\[char46]) 
+.SH EXAMPLE
+
+.PP
+.nf
+   CTL-OPT MAIN(sayHello) OPTION(*SRCSTMT);
+
+   DCL-PROC sayHello;
+      DCL-PI *N EXTPGM; Â 2Â
+         name CHAR(10) CONST;
+      END-PI;
+
+      DSPLY (\[char39]Hello \[char39] + name);
+   END-PROC;
+.fi
+
+.RE
+.IP 3. 2
+.RS
+A procedure interface with three parameters\[char46] The \fIEND\fR-PI statement is specified without
+a name\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-PROC addNewOrder;
+      DCL-PI *N;
+         id INT(10) VALUE;
+         quantity INT(10) CONST;
+         price PACKED(7 : 2) CONST;
+      END-PI; Â 3Â
+      \[char46]\[char46]\[char46]
+   END-PROC;
+.fi
+
+.RE
+.IP 4. 2
+.RS
+A name is specified for the \fIEND\fR-PI statement 
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-PROC addNewOrder;
+      DCL-PI *N;
+         id INT(10) CONST;
+         quantity INT(10) CONST;
+         price PACKED(7 : 2) CONST;
+      END-PI addNewOrder; Â 4Â
+      \[char46]\[char46]\[char46]
+   END-PROC;
+.fi
+
+.RE
+.IP 5. 2
+.RS
+\fIEND\fR-PI is specified as part of the \fIDCL\fR-PI statement\[char46] (This example shows a
+complete procedure\[char46]) 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-PROC getCurrentUser;
+     DCL-PI *N CHAR(10) END-PI; Â 5Â
+
+     DCL-S currentUser CHAR(10) INZ(*USER);
+     RETURN currentUser;
+  END-PROC;
+.fi
+
+.RE
+.IP 6. 2
+.RS
+A procedure interface using \fIDCL-PARM\fR to define some of its subfields\[char46] 
+.IP 1. 2
+.RS
+Parameter select  has the same name as an operation code allowed in free-form calculations\[char46] \fIDCL-PARM\fR is
+required for this parameter\[char46] See Table 1 \[char46]
+.RE
+.IP 2. 2
+.RS
+Parameter name  does not have the same name as an operation code, so \fIDCL-PARM\fR is not
+required\[char46]
+.RE
+.IP 3. 2
+.RS
+Parameter address  does not have the same name as an operation code, so \fIDCL-PARM\fR is not required, but it is
+valid\[char46]
+.RE
+.PP
+ 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-PI *N;
+     DCL-PARM select CHAR(10); Â 6aÂ
+     name CHAR(10); Â 6bÂ
+     DCL-PARM address CHAR(25); Â 6cÂ
+  END-PI;
+.fi
+
+.RE
+.IP 7. 2
+.RS
+See Specifying \fI*DCLCASE\fR as the External Name  for more examples\[char46]
+.RE
+.PP
+.SH SEE ALSO
+.BR END-PI

@@ -1,0 +1,310 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/freedatastructure.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH END-DS 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+END-DS - Free-Form Data Structure Definition
+.SH DESCRIPTION
+A data structure begins with a \fIDCL\fR-DS statement\[char46]
+
+
+If the \fILIKEDS\fR or \fILIKEREC\fR keyword is not specified for the \fIDCL\fR-DS statement, the
+\fIDCL\fR-DS statement is followed by zero or more subfields, followed by an \fIEND\fR-DS
+statement\[char46]
+
+
+
+The first statement begins with \fIDCL\fR-DS, followed by the name of the data structure or \fI*N\fR
+if it does not have a name, followed by keywords, and finally a semicolon\[char46]
+
+
+
+
+
+
+See Free-Form Subfield Definition\[char46]
+
+
+
+
+.IP "" 2
+.RS
+\[bu] \fIEND\fR-DS is not specified for a data structure defined with the \fILIKEDS\fR or \fILIKEREC\fR
+keyword\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] \fIEND\fR-DS may be followed by the name of the data structure\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-DS custInfo QUALIFIED;
+      id INT(10);
+      name VARCHAR(50);
+      city VARCHAR(50);
+      orders LIKEDS(order_t) DIM(100);
+      numOrders INT(10);
+   END-DS custInfo;
+.fi
+
+.RE
+.IP "" 2
+.RS
+\[bu] If the data structure does not have a name, \fIEND\fR-DS must be specified without an
+operand\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If there are no subfields, \fIEND\fR-DS may be specified as part of the \fIDCL\fR-DS statement,
+following the keywords and before the semicolon\[char46] In this case, \fIEND\fR-DS cannot be
+followed by the name of the data structure\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS prtDs LEN(132) END-DS;
+.fi
+
+.RE
+.PP
+
+
+
+Specify either the \fIEXT\fR  keyword or the \fIEXTNAME\fR  keyword as the first keyword\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS myfile EXT END-DS;
+  DCL-DS extds1 EXTNAME(\[char39]MYFILE\[char39]) END-DS;
+.fi
+
+
+If you specify the \fIEXT\fR keyword, you can also specify the \fIEXTNAME\fR keyword as a later
+keyword\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS extds2 EXT INZ(*EXTDFT) EXTNAME(\[char39]MYFILE\[char39]) END-DS;
+.fi
+
+
+
+
+Specify the \fIPSDS\fR  keyword to define the \fIPSDS\fR \[char46] For predefined subfields such as \fI*STATUS\fR, specify the reserved word in place of the
+data-type keyword\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS pgm_stat PSDS;
+     status *STATUS;
+     routine *ROUTINE;
+     library CHAR(10) POS(81);
+  END-DS;
+.fi
+
+
+See Program Status Data Structure for a list of all the predefined subfields for a
+\fIPSDS\fR\[char46]
+
+
+
+
+The name of an \fIINFDS\fR is specified as the parameter for the \fIINFDS\fR keyword of a file
+definition\[char46]
+
+
+For predefined subfields such as \fI*STATUS\fR, specify the reserved word in place of the data-type
+keyword\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-F myfile DISK(*EXT) INFDS(myfileInfo);
+  DCL-DS myfileInfo;
+     status *STATUS;
+     opcode *OPCODE;
+     msgid CHAR(7) POS(46);
+  END-DS;
+.fi
+
+
+See File Feedback Information for a list of all the predefined subfields for an \fIINFDS\fR\[char46]
+
+
+
+
+Specify the \fI*AUTO\fR parameter for the \fIDTAARA\fR  keyword\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS dtaara_ds DTAARA(*AUTO) LEN(100);
+     name CHAR(10);
+  END-DS;
+.fi
+
+
+
+
+.IP 1. 2
+.RS
+Data structures defined with \fILIKEDS\fR and \fILIKEREC\fR are coded as a single statement without
+\fIEND\fR-DS\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-DS info LIKEDS(info_T);
+   DCL-DS inputDs LIKEREC(custFmt : *INPUT);
+.fi
+
+.RE
+.IP 2. 2
+.RS
+A data structure cust_info  with three subfields\[char46] The \fIEND\fR-DS statement is specified without a
+name\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS cust_info;
+     id INT(10);
+     name VARCHAR(25);
+     startDate DATE(*ISO);
+  END-DS;
+.fi
+
+.RE
+.IP 3. 2
+.RS
+A data structure using \fIDCL-SUBF\fR to define some of its subfields\[char46] 
+.IP "" 2
+.RS
+\[bu] Subfield select  has the same name as an operation code allowed in free-form calculations\[char46] \fIDCL-SUBF\fR is
+required for this subfield\[char46] See Table 1 \[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Subfield name  does not have the same name as an operation code, so \fIDCL-SUBF\fR is not
+required\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Subfield address  does not have the same name as an operation code, so \fIDCL-SUBF\fR is not required, but it is
+valid\[char46]
+.RE
+.PP
+ 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS *N;
+     DCL-SUBF select CHAR(10);
+     name CHAR(10);
+     DCL-SUBF address CHAR(25);
+  END-DS;
+.fi
+
+.RE
+.IP 4. 2
+.RS
+A data structure order_info \[char46] The \fIEND\fR-DS statement is specified with a name\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS order_info QUALIFIED;
+     part LIKEDS(part_info_T);
+     quantity INT(10);
+     unit_price PACKED(9 : 2);
+     discount PACKED(7 : 2);
+  END-DS order_info;
+.fi
+
+.RE
+.IP 5. 2
+.RS
+An externally-described data structure with additional subfields\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS cust_info EXTNAME(\[char39]CUSTFILE\[char39]);
+     num_orders INT(10);
+     earliest_order DATE(*ISO);
+     latest_order DATE(*ISO);
+  END-DS;
+.fi
+
+.RE
+.IP 6. 2
+.RS
+An externally-described data structure whose name is the same as the name of the external file,
+\[char39]\fICUSTINFO\fR\[char39]\[char46] The data structure has external subfields identified by
+the \fIEXTFLD\fR keyword\[char46] The \fIEXTFLD\fR keyword is specified without a parameter when the
+subfield name is the same as the external name\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS custInfo EXT;
+     cust_name EXTFLD(\[char39]CSTNAM\[char39]);
+     id_no EXTFLD INZ(0);
+  END-DS;
+.fi
+
+.RE
+.IP 7. 2
+.RS
+
+
+ A data structure with a nested data structure subfield\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS employeeInfo QUALIFIED;
+     id_no int(10);
+     DCL-DS name;
+        last VARCHAR(25);
+        first VARCHAR(25);
+        initial CHAR(1);
+     END-DS;
+     type VARCHAR(10);
+  END-DS;
+
+  employeeInfo\[char46]id_no = 12345;
+  employeeInfo\[char46]name\[char46]first = \[char39]Robin\[char39];
+  employeeInfo\[char46]name\[char46]last = \[char39]Hood\[char39];
+.fi
+ 
+
+
+.RE
+.IP 8. 2
+.RS
+An unnamed data structure\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+  DCL-DS *N;
+     string CHAR(100);
+     string_array CHAR(1) DIM(100) OVERLAY(string);
+  END-DS;
+.fi
+
+.RE
+.PP
+.SH SEE ALSO
+.BR DCL-DS,
+.BR DCL-SUBF
