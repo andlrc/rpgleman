@@ -11,6 +11,13 @@ use Data::Dumper;
 
 our $DEBUG = 0;
 
+sub get_url
+{
+    my ($slug) = @_;
+	my $url = "https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/$slug.htm?view=embed";
+    return "$url";
+}
+
 sub trim
 {
 	my ($text) = @_;
@@ -68,6 +75,13 @@ sub man_build
 		print $fh join("\n\n", map {
 			man_node($_);
 		} @{$man->{description}}) . "\n";
+
+        foreach my $extra_section (@{$man->{extra_sections}}) {
+			print $fh ".SH " . $extra_section->{title} . "\n";
+			print $fh join("\n\n", map {
+				man_node($_);
+			} @{$extra_section->{nodes}}) . "\n";
+        }
 
 		if (@{$man->{return_value}}) {
 			print $fh ".SH RETURN VALUE\n";
@@ -272,9 +286,35 @@ sub man_highlight
 	return $text;
 }
 
-sub read_url
+sub get_extra_section
 {
-	my ($url, $config) = @_;
+    my ($slug) = @_;
+    my $url = get_url($slug);
+
+	my $resp = HTTP::Tiny->new->get($url);
+	if (!$resp->{success}) {
+		print STDERR $resp->{reason} . "\n" . $resp->{content};
+		return;
+	}
+
+
+	my $tree = HTML::TreeBuilder::XPath->new;
+	my $content = $resp->{content};
+	$content =~ s{ \r }{}xmsg;
+	$tree->parse_content($content);
+
+    my $section = {};
+	$section->{title} = uc(($tree->findnodes_as_strings('//h1'))[0]);
+	$section->{nodes} = $tree->findnodes('//*[@class="body"]/*');
+
+    return $section;
+}
+
+sub read_man
+{
+	my ($slug, $config) = @_;
+
+    my $url = get_url($slug);
 
 	my $resp = HTTP::Tiny->new->get($url);
 	if (!$resp->{success}) {
@@ -329,6 +369,14 @@ sub read_url
 	$man->{synopsis} = $nameText if $nameText =~ m{ ^ \w+ [\{\(] }xms;
 
 	my @nodes = $tree->findnodes('//*[@class="body"]/*');
+
+    # Extra sections to download
+    my @extra_sections = ();
+    foreach my $section (@{$man->{extra_sections}}) {
+        my $extra_section = get_extra_section($section);
+        push(@extra_sections, $extra_section) if defined $extra_section;
+    }
+    $man->{extra_sections} = \@extra_sections;
 
 	# Synopsis
 	while ($nodes[0] && $nodes[0]->{_tag} =~ m{ \b (?:a|img|span) \b }xmsi) {
@@ -392,6 +440,10 @@ my $man = {};
 GetOptions(
 	'n|name=s' => \$man->{orig_short_name},
 	's|section=s' => \$man->{section},
+    'x|extra-section=s' => sub {
+        my ($opt_name, $opt_value) = @_;
+        push(@{$man->{extra_sections}}, $opt_value);
+    },
 	'see=s' => sub {
 		my ($opt_name, $opt_value) = @_;
 		@{$man->{see_also}} = split /,/, $opt_value;
@@ -400,8 +452,7 @@ GetOptions(
 ) or exit 1;
 
 for (@ARGV) {
-	my $url = "https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/$_.htm?view=embed";
-	exit 1 if read_url($url, $man);
+	exit 1 if read_man($_, $man);
 }
 
 # vim: tabstop=4 shiftwidth=4

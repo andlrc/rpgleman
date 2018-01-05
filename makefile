@@ -145,7 +145,7 @@ bif_DECH:
 bif_DECPOS:
 	$(RPGLEMAN) bbdecp
 bif_DIFF:
-	$(RPGLEMAN) bbdif
+	$(RPGLEMAN) bbdif --extra-section=dtz_unexp
 bif_DIV:
 	$(RPGLEMAN) bbdiv
 bif_EDITC:
