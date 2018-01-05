@@ -97,6 +97,51 @@ resulting value by 1000000\[char46] For example, if the difference in seconds is
 
 For more information, see Date Operations or Built-in Functions\[char46]
 
+.SH UNEXPECTED RESULTS
+A month can contain 28, 29, 30, or 31 days\[char46] A year can contain 365 or 366 days\[char46]
+Because of this inconsistency, the following operations can give unexpected
+results: 
+.IP "" 2
+.RS
+\[bu] Adding or subtracting a number of months (or calculating a duration in months) with a date that is
+on the 29th, 30th, or 31st of a month
+.RE
+.IP "" 2
+.RS
+\[bu] Adding or subtracting a number of years (or calculating a duration in years) with a February 29
+date\[char46]
+.RE
+.PP
+
+
+The following rules are used: 
+.IP "" 2
+.RS
+\[bu] When months or years are added or subtracted, the day portion remains unchanged if possible\[char46]
+For example, 2000-03-15 + \fB%MONTHS(1)\fR is 2000-04-15\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the addition or subtraction would produce a nonexistent date (for example, April 31), the last
+day of the month is used instead\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] Any month or year operation that changes the day portion is 
+
+  reversible\[char46] For example, 2000-03-31 + \fB%MONTHS(1)\fR is 2000-04-30  changes the day from 31 to 30\[char46] You cannot get back the original 2000-03-31  by subtracting one month\[char46] 
+The operation 2000-03-31 + \fB%MONTHS(1)\fR - \fB%MONTHS(1)\fR becomes 2000-03-30\[char46]
+
+
+.RE
+.IP "" 2
+.RS
+\[bu] The duration between two dates is one month if the later date minus one month gives the first
+date\[char46] For example, the duration in months (rounded down) between 2000-03-31 and 2000-04-30
+is 0 because 2000-04-30 - \fB%MONTHS(1)\fR is 2000-03-30 (not 2000-03-31)\[char46]
+.RE
+.PP
+
 .SH EXAMPLE
 Using the result of \fB%DIFF\fR as a numeric value
 .PP

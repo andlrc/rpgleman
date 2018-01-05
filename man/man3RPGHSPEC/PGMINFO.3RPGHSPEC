@@ -10,7 +10,7 @@
 PGMINFO
 .SH SYNOPSIS
 .nf
-PGMINFO(*PCML | *NO | *DCLCASE { : *MODULE ... } )
+PGMINFO(*PCML | *NO | *DCLCASE { : *MODULE | *V6 | *V7 ... } )
 .fi
 .SH DESCRIPTION
 The \fIPGMINFO\fR keyword specifies how program-interface information is to be generated for the
@@ -37,6 +37,22 @@ information can then be retrieved using \fIAPI\fR \fIQBNRPII\fR\[char46]
 .B \fI*DCLCASE\fR
 Specifying \fI*DCLCASE\fR indicates that the names in the \fIPCML\fR will be generated in the
 declaration case of the name\[char46] See The declaration case of a name \[char46]
+.TP 5
+.B \fI*V6\fR and \fI*V7\fR
+Specifying \fI*V6\fR indicates that the \fIPCML\fR version will be 6\[char46]0\[char46] Specifying
+\fI*V7\fR indicates that the \fIPCML\fR version will be 7\[char46]0\[char46] 
+Version 7\[char46]0 handles varying-length fields differently from version 6\[char46]0\[char46] When
+\fIPCML\fR is generated for version 7\[char46]0, the restrictions on varying-length arrays and
+varying-length subfields do not apply\[char46]
+
+ 
+Specify \fI*V6\fR if you have external dependencies on the way varying-length fields are handled in
+the \fIPCML\fR\[char46] For example, if you have Java code using the ProgramCallDocument class, the
+Java code will depend on the \fIPCML\fR for varying-length fields being generated as
+structures\[char46] If you are unable to change the external dependency, then specify \fI*V6\fR to
+ensure that the \fIPCML\fR for the module will be generated using version 6\[char46]0\[char46]
+
+
 .PP
 
 
@@ -46,7 +62,8 @@ parameters are not allowed if the first parameter is \fI*NO\fR or \fI*DCLCASE\fR
 
 
 If the first parameter is \fI*PCML\fR, at least one additional parameter is required\[char46] The
-additional parameters can be \fI*DCLCASE\fR or \fI*MODULE\fR or both\[char46]
+additional parameters can be any combination of \fI*DCLCASE\fR, \fI*MODULE\fR, or one of \fI*V6\fR
+or \fI*V7\fR\[char46]
 
 
 The \fIPGMINFO\fR setting defaults to the values specified on the \fIPGMINFO\fR and \fIINFOSTMF\fR
@@ -56,6 +73,44 @@ specification keyword overrides the values specified on the command\[char46] How
 requests from the command parameters and the \fIPGMINFO\fR keyword are different but not in
 conflict, the compiler will merge the values of the command parameters and the \fIPGMINFO\fR
 keyword\[char46]
+
+.SH NOTICE
+Note:  
+
+ Instead of coding the \fI*V6\fR or \fI*V7\fR parameter, you can also control the \fIPCML\fR version
+using the \fIQIBM\fR_RPG_PCML_VERSION environment variable\[char46] 
+Use the following command to request that \fIPCML\fR be generated with version 7\[char46]0 in your
+job\[char46] 
+.PP
+.nf
+ADDENVVAR QIBM_RPG_PCML_VERSION VALUE(\[char39]7\[char46]0\[char39])
+.fi
+
+ 
+Use the following command to request that \fIPCML\fR be generated with version 7\[char46]0 in all
+jobs\[char46] 
+.PP
+.nf
+ADDENVVAR QIBM_RPG_PCML_VERSION VALUE(\[char39]7\[char46]0\[char39]) LEVEL(*JOB)
+.fi
+
+ 
+The default \fIPCML\fR version is 6\[char46]0 for programs compiled with target-release V7R2M0 or
+V7R3M0\[char46] For later target releases, the default will change to 7\[char46]0\[char46]
+
+ 
+It is better to use the environment variable to change the default version to 7\[char46]0 than to
+code the \fI*V7\fR parameter for the \fIPGMINFO\fR keyword\[char46] By coding the \fI*V7\fR
+parameter, you will not be able to take advantage of possible \fIPCML\fR enhancements in later
+versions of \fIPCML\fR\[char46]
+
+ 
+If you use the environment variable to change the default \fIPCML\fR version, you can add the
+\fI*P6\fR parameter to the \fIPGMINFO\fR keyword for any modules that have external dependencies on
+the \fIPCML\fR being generated with version 6\[char46]0\[char46]
+
+ 
+
 
 
 
@@ -111,6 +166,7 @@ Procedure-Begin statement for the procedure\[char46]
 
 
 .SH SEE ALSO
+.BR ADDENVVAR,
 .BR API,
 .BR CLCASE,
 .BR CML,
@@ -120,8 +176,13 @@ Procedure-Begin statement for the procedure\[char46]
 .BR DEFINE,
 .BR IKE,
 .BR INFOSTMF,
+.BR LEVEL,
 .BR LIKEDS,
 .BR LIKEREC,
 .BR ODULE,
 .BR PCML,
-.BR QBNRPII
+.BR QBNRPII,
+.BR QIBM,
+.BR RPG,
+.BR VALUE,
+.BR VERSION

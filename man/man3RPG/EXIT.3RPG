@@ -23,7 +23,7 @@ T}
 allbox;
 l l l  .
 T{
-ON-\fIERROR\fR
+ON-\fIEXIT\fR
 T}	T{
 Â
 T}	T{
@@ -322,7 +322,6 @@ DSPLY  value returned is 6
 .BR CEETSTA,
 .BR DSPLY,
 .BR DUMP,
-.BR ERROR,
 .BR EXSR,
 .BR GOTO,
 .BR MONITOR,

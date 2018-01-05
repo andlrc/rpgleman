@@ -18,12 +18,24 @@
 The parameter must be the name of an array, table, or multiple occurrence data structure\[char46]
 
 
-The parameter cannot be a complex-qualified name\[char46] If you want to find the number of elements
-for a complex-qualified subfield, specify the data structure used in the \fILIKEDS\fR keyword that
-defines the data structure subfield that contains the required subfield\[char46] For example, if you
-want to find the number of elements of \fIINFO\fR\[char46]\fICUST\fR\[char46]\fIORDERS\fR, and the
-\fICUST\fR subfield of data structure \fIINFO\fR was defined with keyword
-\fILIKEDS\fR(\fICUST\fR_T), then specify \fB%ELEM(\fICUST\fR_T\[char46]\fIORDERS\fR)\fR\[char46]
+
+
+ If the parameter is a complex-qualified name and the data structures containing the required
+subfield are arrays, then the parameter may be specified in one of two
+ways: 
+.IP "" 2
+.RS
+\[bu] With indexes specified for all of the data structure arrays in the complex qualified
+name\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] With indexes specified for none of the data structure arrays in the complex qualified
+name\[char46]
+.RE
+.PP
+  See \fB%ELEM\fR Example with a Complex Data Structure \[char46] 
+
 
 
 For more information, see Array Operations or Built-in Functions\[char46]
@@ -56,6 +68,45 @@ D array_dims      C                   const (%elem (arr1d))
     num = %elem (mds);    // num is now 30
  /END-FREE
 .fi
+
+
+
+
+
+In the following example, the standard way to reference the complex qualified
+subfield \fIPET\fR  is 
+.PP
+.nf
+family(x)\[char46]child(y)\[char46]pet
+.fi
+
+
+When specified as the parameter for \fB%ELEM\fR, it can be specified either with no indexes
+specified for the data structure arrays, as in statement  1  or with all indexes specified for the
+data structure arrays, as in statement  2 \[char46]
+
+
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-DS family QUALIFIED DIM(3);
+      name VARCHAR(25);
+      numChildren INT(10);
+      DCL-DS child DIM(10);
+         name VARCHAR(25);
+         numPets INT(10);
+         pet VARCHAR(100) DIM(3);
+      END-DS;
+   END-DS;
+   DCL-S x INT(10);
+
+   x = %ELEM(family\[char46]child\[char46]pet);        //  1�
+
+   x = %ELEM(family(1)\[char46]child(1)\[char46]pet);  //  2�
+.fi
+
+
 .SH SEE ALSO
 .BR %LEN,
 .BR %SIZE,

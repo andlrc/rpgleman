@@ -23,7 +23,7 @@ the size returned is half the number of hexadecimal digits in the literal\[char4
 
 
 For variable-length fields, \fB%SIZE\fR returns the total number of bytes occupied by the field (two
-bytes longer than the declared maximum length)\[char46]
+or four bytes longer than the declared maximum length)\[char46]
 
 
 The length returned for a null-capable field (\fB%SIZE\fR) is always its full length, regardless of
@@ -94,12 +94,23 @@ distance_between = %ADDR(elem(2)) - %ADDR(elem(1));
 .RE
 .PP
 
-The argument cannot be a complex-qualified name\[char46] If you want to find the size of a
-complex-qualified subfield, specify the data structure used in the \fILIKEDS\fR keyword that defines
-the data structure subfield that contains the required subfield\[char46] For example, if you want to
-find the size of \fIINFO\fR\[char46]\fICUST\fR\[char46]\fINAME\fR, and the \fICUST\fR subfield of
-data structure \fIINFO\fR was defined with keyword \fILIKEDS\fR(\fICUST\fR_T), then specify
-\fB%SIZE(\fICUST\fR_T\[char46]\fINAME\fR)\fR\[char46]
+
+
+ If the argument is a complex-qualified name and the data structures containing the required subfield
+are arrays, then the parameter may be specified in one of two ways: 
+.IP "" 2
+.RS
+\[bu] With indexes specified for all of the data structure arrays in the complex qualified
+name\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] With indexes specified for none of the data structure arrays in the complex qualified
+name\[char46]
+.RE
+.PP
+  See \fB%SIZE\fR Example with a Complex Data Structure \[char46] 
+
 
 
 \fB%SIZE\fR may be specified anywhere that a numeric constant is allowed on the definition
@@ -157,6 +168,45 @@ D fCity           S             40A           INZ(\[char39]North York\[char39])
 
 See Examples showing the effect of the \fIALIGN\fR keyword for an example of \fB%SIZE\fR for data
 structures with and without \fIALIGN\fR(\fI*FULL\fR)\[char46]
+
+
+
+
+
+
+In the following example, the standard way to reference the complex qualified
+subfield \fIPET\fR  is is 
+.PP
+.nf
+family(x)\[char46]child(y)\[char46]pet
+.fi
+
+
+When specified as the parameter for \fB%SIZE\fR, it can be specified either with no indexes
+specified for the data structure arrays, as in statement  1  or with all indexes specified for the
+data structure arrays, as in statement  2 \[char46]
+
+
+.SH EXAMPLE
+
+.PP
+.nf
+   DCL-DS family QUALIFIED DIM(3);
+      name VARCHAR(25);
+      numChildren INT(10);
+      DCL-DS child DIM(10);
+         name VARCHAR(25);
+         numPets INT(10);
+         pet VARCHAR(100) DIM(3);
+      END-DS;
+   END-DS;
+   DCL-S x INT(10);
+
+   x = %SIZE(family\[char46]child\[char46]pet);        //  1�
+
+   x = %SIZE(family(1)\[char46]child(1)\[char46]pet);  //  2�
+.fi
+
 
 .SH SEE ALSO
 .BR %ELEM,
