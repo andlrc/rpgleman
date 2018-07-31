@@ -265,7 +265,7 @@ sub man_sanitize
 {
 	my ($text) = @_;
 	# Escape
-	$text =~ s{ [.'] }{ "\\[char" . ord($&) . "]"}xmsge;
+	$text =~ s{ [.'\\] }{ "\\[char" . ord($&) . "]"}xmsge;
 	# Right Trim
 	$text =~ s{ \h+ $ }{}xmsg;
 	return $text;
