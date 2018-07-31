@@ -1,0 +1,395 @@
+.\" Copyright 2017 Andreas Louv <andreas@louv.dk>
+.\" All content is copyright IBM
+.\" Original URL: https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasd/zzdatainto.htm?view=embed
+.\"
+.\" This man page is generated with ``rpgleman''
+.\" Project URL: https://github.com/andlrc/rpgleman
+.\"
+.TH DATA-INTO 3RPG  "June 2012" "ILE RPG Language Reference"
+.SH NAME
+DATA-INTO - DATA-INTO (Parse a Document into a Variable)
+.SH DESCRIPTION
+.TS
+allbox;
+l l  .
+T{
+Free-Form Syntax
+T}	T{
+\fIDATA-INTO\fR{(EH)} receiver \fB%DATA(document {: options1 })\fR \fB%PARSER(parser {: options2
+})\fR;
+T}
+T{
+\fIDATA-INTO\fR{(EH)} \fB%HANDLER(handlerProc : commArea)\fR \fB%DATA(document {: options1 })\fR
+\fB%PARSER(parser {: options2 })\fR;
+T}
+.TE
+
+.TS
+allbox;
+l l l  .
+T{
+\fIDATA-INTO\fR
+T}	T{
+Â
+T}	T{
+receiver \fB%DATA(document {: options1 })\fR \fB%PARSER(parser {: options2
+})\fR
+T}
+T{
+\fIDATA-INTO\fR
+T}	T{
+Â
+T}	T{
+\fB%HANDLER(handlerProc : commArea)\fR \fB%DATA(document {: options1 })\fR \fB%PARSER(parser {:
+options2 })\fR
+T}
+.TE
+
+The \fIDATA-INTO\fR operation imports the data from a structured document into an \fIRPG\fR
+variable\[char46] \fIDATA-INTO\fR is similar to \fIXML-INTO\fR except that \fIXML-INTO\fR can only
+work with \fIXML\fR documents, while \fIDATA-INTO\fR can work with any structured document\[char46]
+\fIDATA-INTO\fR also differs from \fIXML-INTO\fR in that \fIDATA-INTO\fR requires a parser that can
+parse the data in the document\[char46]
+
+
+The \fIDATA-INTO\fR operation passes the document text to the parser, which uses callback functions
+to gradually pass the names and values of the data in the document to the \fIDATA-INTO\fR
+operation\[char46] The \fIDATA-INTO\fR operation places the information into the target \fIRPG\fR
+variable\[char46]
+
+
+For information on writing a parser for the \fIDATA-INTO\fR operation, see the Rational Open Access:
+\fIRPG\fR Edition topic\[char46]
+
+
+The \fIDATA-INTO\fR operation can operate in two different ways: 
+.IP "" 2
+.RS
+\[bu] Reading the directly into an \fIRPG\fR variable
+.RE
+.IP "" 2
+.RS
+\[bu] Reading the data gradually into an array parameter is passed to the procedure specified by
+\fB%HANDLER(handlerProc)\fR\[char46]
+.RE
+.PP
+
+
+The first operand specifies the target of the parsed data\[char46] It can contain a variable name or
+the \fB%HANDLER\fR built-in function\[char46]
+
+
+The second operand must be the \fB%DATA\fR built-in function, identifying the document to be parsed
+and the options controlling the way the information is used to set the \fIRPG\fR variable\[char46]
+See \fB%DATA\fR (document {:options}) for more information on \fB%DATA\fR\[char46]
+
+
+The third operand must be the \fB%PARSER\fR built-in function, identifying the program or procedure
+to do the parsing, and the parser-specific options\[char46] See \fB%PARSER\fR (parser {: options})
+for more information on \fB%PARSER\fR\[char46]
+
+
+If the first operand is a variable name: 
+.IP "" 2
+.RS
+\[bu] Parsing will be done directly into the variable\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] It is optional for the parser to report the name of the first item found\[char46] However, if the
+parser does report the name of the first item found, the name is expected to be the same as the name
+of the variable\[char46] This can be overridden using the path option \[char46] 
+For example, if the variable name is \fIMYDS\fR, and the parser reports the name of the outermost
+structure as "order", then "path=order" should be specified in the options for \fB%DATA\fR\[char46]
+
+ 
+If the required information is more deeply nested within the document, then the "path" option must
+be used to locate the required information\[char46] For example, if name of the outermost structure
+in the document is "info", and the required information is in a structure with the name "order"
+nested within the "info" structure, then "path=info/order" should be specified in the options for
+\fB%DATA\fR\[char46]
+
+
+.RE
+.IP "" 2
+.RS
+\[bu] If the variable is a data structure, some subfields may be set by the operation even if the
+operation ends in error\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] If the variable is an array, the parsing will only search for as much data as will fit in the
+array\[char46] subfield in positions 372 - 379 of the \fIPSDS\fR will be set to the number The
+"Number of Elements set by \fIXML-INTO\fR or \fIDATA-INTO\fR" of elements successfully set by the
+operation\[char46] For an array of data structures, this value will not include the element being
+set if a parsing error occurs while parsing the data for the subfields of the element; however, this
+array element may have some of its subfields set by the operation\[char46]
+.RE
+.PP
+
+
+If the first operand is the \fB%HANDLER\fR built-in function: 
+.IP "" 2
+.RS
+\[bu] The procedure specified as the first operand of \fB%HANDLER\fR will be called when the parser has
+parsed enough data to fill the specified number of \fIRPG\fR array elements handled by the
+procedure\[char46] When the handler returns, the parser will continue to parse the data until it has
+parsed enough data to again fill the specified number of array elements to call the handling
+procedure\[char46] This continues until the document is completely parsed, or until the procedure
+returns a return code indicating that the parsing should halt\[char46] 
+The final call to the handling procedure may have fewer \fIRPG\fR array elements than the handling
+procedure can handle\[char46] The handling procedure should always refer to the "number of elements"
+parameter to ensure it does not access array elements that do not have any data\[char46]
+
+ 
+The communication-area variable specified as the second operand of \fB%HANDLER\fR will be passed by
+the parser as the first parameter to the handling procedure, allowing the procedure coding the
+\fIDATA-INTO\fR operation to communicate with the handling procedure, and allowing the handling
+procedure to save information from one call to the next\[char46]
+
+
+.RE
+.IP "" 2
+.RS
+\[bu] Each element of the temporary variable used to hold the array parameter for the procedure will be
+cleared to its default value before it is loaded from the data\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The path  option must be used to specify the name of the item within the document to search for\[char46]
+See \fB%DATA\fR options for the \fIDATA-INTO\fR operation code  and Expected format of data for \fIDATA-INTO\fR  for information about the path  option\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The array-handling procedure may be called several times during the \fIDATA-INTO\fR
+operaton\[char46] When the parser has found the number of elements specified by the \fIDIM\fR
+keyword on the second parameter, the procedure will be called\[char46] The final time the procedure
+is called may have fewer elements than specified by the \fIDIM\fR keyword\[char46] If there are no
+elements found, the procedure will not be called\[char46] 
+The handling procedure must have the following parameters and return type: 
+.TS
+allbox;
+l l l  .
+T{
+Parameter number or return value
+T}	T{
+Data type and passing mode
+T}	T{
+Description
+T}
+T{
+Return value
+T}	T{
+4-byte integer (10I 0)
+T}	T{
+Returning a value of zero indicates that parsing should continue; returning any other value indictes
+that parsing should end\[char46]
+T}
+T{
+1
+T}	T{
+Any type, passed by reference
+T}	T{
+Used to communicate between the \fIDATA-INTO\fR operation and the handler, and between successive
+calls to the handler\[char46]
+T}
+T{
+2
+T}	T{
+Array, or array of data structures, passed by read-only reference (\fICONST\fR
+keyword)
+T}	T{
+The array elements contain the data from the items specified by the path
+option\[char46]
+T}
+T{
+3
+T}	T{
+4-byte unsigned (10U 0), passed by value
+T}	T{
+The number of array elements in the second parameter that represent data\[char46]
+T}
+.TE
+
+
+.RE
+.IP "" 2
+.RS
+\[bu] See \fB%HANDLER\fR (handlingProcedure : communicationArea )  for more information on \fB%HANDLER\fR\[char46]
+.RE
+.PP
+
+
+Subfields of a data structure will be set in the order they appear in the document; the order could
+be important if subfields overlap within the data structure\[char46]
+
+
+\fB%NULLIND\fR is not updated for any field or subfield during an \fIDATA-INTO\fR operation\[char46]
+
+
+Operation extender H can be specified to cause numeric data to be assigned half-adjusted\[char46]
+Operation extender E can be specified to handle the following status codes: 
+.TP 5
+.B 00352
+Invalid \fIDATA-INTO\fR option
+.TP 5
+.B 00354
+Error preparing for parsing
+.TP 5
+.B 00355
+The parser program or procedure is not available\[char46]
+.TP 5
+.B 00356
+The document does not match the \fIRPG\fR variable\[char46]
+.TP 5
+.B 00357
+The parser detected an error in the document\[char46]
+.TP 5
+.B 00358
+The was an error in the information provided by the parser\[char46]
+.TP 5
+.B 00359
+An error occurred while running the parser program or procedure\[char46]
+.PP
+
+
+For status 00357, the error code from the parser will be placed in the subfield "External return
+code" in positions 368-371 of the \fIPSDS\fR\[char46] This subfield will be set to zero at the
+beginning of the operation and set to the value returned by the parser at the end of the
+operation\[char46] The meaning of the error code is determined by the parser\[char46]
+
+
+If an unknown, invalid or unrelated option is found in the options parameter of the \fB%DATA\fR
+built-in function, the operation will fail with status code 00352 (Error in \fIDATA-INTO\fR
+options)\[char46] The External return code subfield in the \fIPSDS\fR will not be updated from the
+initial value of zero, set when the operation begins\[char46]
+
+
+The document is expected to match the \fIRPG\fR variable with respect to the names of the items in
+the document\[char46] 
+.IP "" 2
+.RS
+\[bu] The data for an \fIRPG\fR data structure is expected to have items with the same name as the data
+structure and nested items with the same names as the \fIRPG\fR subfields\[char46]
+.RE
+.IP "" 2
+.RS
+\[bu] The data for an \fIRPG\fR array is normally reported as an array by the parser\[char46] However, it
+is also valid to have a series of items with the same name as the \fIRPG\fR
+array\[char46]
+.RE
+.PP
+  The path  option can be used to set the name of the item matching the name of the specified variable, but it
+cannot be used to set the names of the items matching a specified variable\[char39]s
+subfields\[char46] For example, if variable DS1 has a subfield SF1, the item for DS1 can have any
+name, but the item for SF1 must have the name "sf1" (or "SF1", "Sf1", etc\[char46], depending on
+the case  option)\[char46]
+
+When the document does not match the \fIRPG\fR variable, for example if the document does not
+contain the default or specified path, or if it is missing some items to match the subfields of an
+\fIRPG\fR data structure, the \fIDATA-INTO\fR operation will fail with status 00356\[char46] The
+allowextra, allowmissing, and countprefix options can be used to specify whether an item can have
+more or less data than is required to fully set the \fIRPG\fR variable\[char46]
+
+
+If the data for an item is not valid for the type of the \fIRPG\fR variable it matches, the
+operation will fail with status 0356; the specific status code for the assignment error will appear
+in the replacement text for message \fIRNX\fR0356\[char46]
+
+
+Tip: To avoid the \fIDATA-INTO\fR operation failing because the data cannot be successfully assigned
+to \fIRPG\fR fields with types such as Date or Numeric, the receiver variable can be defined with
+subfields that are all of type character or \fIUCS\fR-2\[char46] Then the data can be converted to
+other data types by the \fIRPG\fR program using the conversion built-in functions \fB%DATE\fR,
+\fB%INT\fR, and so on\[char46]
+
+
+See Examples of \fIDATA-INTO\fR parsers for information about where you can find examples of parsers
+for the \fIDATA-INTO\fR operatoin\[char46]
+
+
+To obtain a trace from the parser, set the \fIQIBM\fR_RPG_DATA_INTO_TRACE_PARSER environment
+variable with a value of "\fI*STDOUT\fR"\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+   ADDENVVAR QIBM_RPG_DATA_INTO_TRACE_PARSER VALUE(\[char39]*STDOUT\[char39])
+.fi
+ 
+
+
+.SH EXAMPLE
+
+.PP
+.nf
+**FREE
+CTL-OPT ACTGRP(*NEW);
+DCL-PR printf EXTPROC(*DCLCASE);
+  p POINTER VALUE OPTIONS(*STRING : *NOPASS);
+END-PR;
+DCL-PR getchar INT(10) EXTPROC(*DCLCASE) END-PR;
+DCL-C EOL x\[char39]15\[char39];
+
+printf (EOL);
+getchar ();
+return;
+.fi
+
+The following C program will accomplish the same thing\[char46] Compile the program with
+\fICRTBNDC\fR\[char46] 
+.SH EXAMPLE
+
+.PP
+.nf
+#include <stdio\[char46]h>
+main()
+{
+   printf("\[char92]n");
+   getchar();
+}
+.fi
+
+
+.SH NOTICE
+Note:  Operation extenders can be specified only when Free-form syntax is used\[char46]
+.SH SEE ALSO
+.BR %DATA,
+.BR %DATE,
+.BR %HANDLER,
+.BR %INT,
+.BR %NULLIND,
+.BR %PARSER,
+.BR ACTGRP,
+.BR ADDENVVAR,
+.BR CLCASE,
+.BR CONST,
+.BR CRTBNDC,
+.BR CRTBNDRPG,
+.BR CTL-OPT,
+.BR DATA,
+.BR DCL,
+.BR DIM,
+.BR END,
+.BR EOL,
+.BR EXTPROC,
+.BR ILE,
+.BR INT,
+.BR INTO,
+.BR MYDS,
+.BR OPASS,
+.BR OPTIONS,
+.BR PARSER,
+.BR POINTER,
+.BR PSDS,
+.BR QIBM,
+.BR REE,
+.BR RNX,
+.BR RPG,
+.BR TDOUT,
+.BR TRACE,
+.BR TRING,
+.BR UCS,
+.BR VALUE,
+.BR XML,
+.BR XML-INTO

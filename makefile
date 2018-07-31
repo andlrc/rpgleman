@@ -68,7 +68,7 @@ cop:	cop_ACQ		cop_BEGSR	cop_CALLP	cop_CHAIN	\
 	cop_REL		cop_RESET	cop_RETURN	cop_ROLBK	\
 	cop_SELECT	cop_SETGT	cop_SETLL	cop_SORTA	\
 	cop_TEST	cop_UNLOCK	cop_UPDATE	cop_WHEN	\
-	cop_WRITE	cop_XML-INTO	cop_XML-SAX
+	cop_WRITE	cop_XML-INTO	cop_XML-SAX	cop_DATA-INTO
 
 # Control Keywords
 hkw:	hkw_ALLOC	hkw_ACTGRP	hkw_ALTSEQ	hkw_ALWNULL	\
@@ -534,6 +534,8 @@ cop_XML-INTO:
 	$(RPGLEMAN) --name=XML-INTO zzxmlin
 cop_XML-SAX:
 	$(RPGLEMAN) --name=XML-SAX zzxmlsa
+cop_DATA-INTO:
+	$(RPGLEMAN) --name=DATA-INTO zzdatainto
 
 # Control Keywords
 hkw_ALLOC:
