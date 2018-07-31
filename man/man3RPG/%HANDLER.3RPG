@@ -11,16 +11,16 @@
 .SH DESCRIPTION
 \fB%HANDLER\fR is used to identify a procedure to handle an event or a series of events\[char46]
 \fB%HANDLER\fR does not return a value, and it can only be specified as the first operand of
-\fIXML-SAX\fR and \fIXML-INTO\fR\[char46]
+\fIXML-SAX\fR, \fIXML-INTO\fR and \fIDATA-INTO\fR\[char46]
 
 
 The first operand, handlingProcedure specifies the prototype of the handling procedure\[char46] The
 return value and parameters specified by the prototype, or by the procedure interface if the
 prototype is not explicitly specified, must match the parameters required for the handling
 procedure; the requirements are determined by the operation that \fB%HANDLER\fR is specified
-for\[char46] See \fIXML-SAX\fR (Parse an \fIXML\fR Document) and \fIXML-INTO\fR (Parse an \fIXML\fR
-Document into a Variable) for the specific requirements for the definition of the handling
-procedures\[char46]
+for\[char46] See \fIXML-SAX\fR (Parse an \fIXML\fR Document), \fIXML-INTO\fR (Parse an \fIXML\fR
+Document into a Variable) or \fIDATA-INTO\fR (Parse a Document into a Variable) for the specific
+requirements for the definition of the handling procedures\[char46]
 
 
 The second operand, communicationArea, specifies a variable to be passed as a parameter on every
@@ -229,6 +229,7 @@ For more information, see \fIXML\fR Operations or Built-in Functions\[char46]
 .BR ATTR,
 .BR BASED,
 .BR CHARS,
+.BR DATA-INTO,
 .BR DOCUMENT,
 .BR END,
 .BR INZ,
